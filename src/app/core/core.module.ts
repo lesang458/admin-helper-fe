@@ -1,15 +1,12 @@
 import { CommonModule } from '@angular/common';
 import { NgModule, Optional, SkipSelf } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { RouterModule } from '@angular/router';
-import { APP_ROUTES } from '../app-routing.module';
 
 @NgModule({
   declarations: [],
   imports: [
     CommonModule,
-    BrowserModule,
-    RouterModule.forRoot(APP_ROUTES, { scrollPositionRestoration: 'enabled' })
+    BrowserModule
   ]
 })
 export class CoreModule {
