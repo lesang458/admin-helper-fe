@@ -4,10 +4,12 @@ import { RouterModule } from '@angular/router';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { EMPLOYEES_ROUTES } from './employees.routes';
 import { GeneralInfoComponent } from './pages/general-info/general-info.component';
+import { GeneralListComponent } from './components/general-list/general-list.component';
 
 @NgModule({
   declarations: [
-    GeneralInfoComponent
+    GeneralInfoComponent,
+    GeneralListComponent
   ],
   imports: [
     CommonModule,
