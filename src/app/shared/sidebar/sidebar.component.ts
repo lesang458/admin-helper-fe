@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'ah-sidebar',
+  selector: '[ah-sidebar]',
   templateUrl: './sidebar.component.html',
   styleUrls: ['./sidebar.component.scss']
 })
