@@ -24,6 +24,7 @@
     ],
     "component-selector": [
       true,
+      "attribute",
       "element",
       "ah",
       "kebab-case"

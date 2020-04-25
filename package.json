@@ -20,6 +20,9 @@
     "@angular/platform-browser-dynamic": "~9.1.2",
     "@angular/router": "~9.1.2",
     "@coreui/coreui": "^3.0.0",
+    "@coreui/icons": "^1.0.1",
+    "@popperjs/core": "^2.3.3",
+    "perfect-scrollbar": "^1.5.0",
     "rxjs": "~6.5.4",
     "tslib": "^1.10.0",
     "zone.js": "~0.10.2"
