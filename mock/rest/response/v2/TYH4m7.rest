@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<restMockResponse>
+    <body>[&#13;
+	{&#13;
+		"id": 1,&#13;
+		"name": "Linh"&#13;
+	}&#13;
+]</body>
+    <contentEncodings/>
+    <headerQueries/>
+    <httpHeaders/>
+    <httpStatusCode>200</httpStatusCode>
+    <id>TYH4m7</id>
+    <jsonPathExpressions/>
+    <methodId>kne3iq</methodId>
+    <name>Get employee list response</name>
+    <parameterQueries/>
+    <status>ENABLED</status>
+    <usingExpressions>false</usingExpressions>
+    <xpathExpressions/>
+</restMockResponse>
