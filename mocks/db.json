@@ -1,0 +1,45 @@
+{
+  "posts": [
+    {
+      "id": 1,
+      "title": "json-server",
+      "author": "typicode"
+    },
+    {
+      "name": "Test 3",
+      "casts": [
+        "Tim Robbins",
+        "Morgan Freeman",
+        "Bob Gunton",
+        "William Sadler"
+      ],
+      "genres": [
+        "Drama"
+      ],
+      "id": 2
+    }
+  ],
+  "comments": [
+    {
+      "id": 1,
+      "body": "some comment",
+      "postId": 1
+    },
+    {
+      "name": "Test 3",
+      "casts": [
+        "Tim Robbins",
+        "Morgan Freeman",
+        "Bob Gunton",
+        "William Sadler"
+      ],
+      "genres": [
+        "Drama"
+      ],
+      "id": 2
+    }
+  ],
+  "profile": {
+    "name": "typicode"
+  }
+}
