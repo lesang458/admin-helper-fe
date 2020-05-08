@@ -1,1 +1,72 @@
-<p>dayoff-table works!</p>
+<div class="card">
+  <div class="card-body">
+    <div class="row mb-2">
+      <div class="col-7">
+        <div class="input-group">
+          <div class="input-group-prepend">
+            <div class="input-group-text">
+              <i class="cil-search"></i>
+            </div>
+          </div>
+          <input type="text"
+                 class="form-control"
+                 id="inlineFormInputGroupUsername"
+                 placeholder="VD: Nguyen, 2020, ...">
+        </div>
+      </div>
+      <div class="col-5">
+        <div class="form-group">
+          <label class="d-inline-block mr-3 ml-2"
+                 for="day-off-type">Loại phép</label>
+          <select class="form-control d-inline-block"
+                  style="width: auto;"
+                  id="day-off-type">
+            <option>Tất cả</option>
+            <option>Phép năm</option>
+            <option>Nghỉ ốm</option>
+          </select>
+        </div>
+      </div>
+    </div>
+    <div class="table-responsive">
+      <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Họ và tên</th>
+            <th scope="col">Ngày sinh</th>
+            <th scope="col">Tổng phép</th>
+            <th scope="col">Phép còn lại</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row">1</th>
+            <td>Nguyễn Văn A</td>
+            <td>01/01/1990</td>
+            <td>15</td>
+            <td>15</td>
+          </tr>
+          <tr>
+            <th scope="row">2</th>
+            <td>Nguyễn Văn B</td>
+            <td>01/01/1990</td>
+            <td>15</td>
+            <td>15</td>
+          </tr>
+          <tr>
+            <th scope="row">3</th>
+            <td>Nguyễn Văn A</td>
+            <td>01/01/1990</td>
+            <td>15</td>
+            <td>15</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="d-flex justify-content-end">
+      <button type="button"
+              class="btn btn-info"><span class="cil-playlist-add btn-icon mr-2"></span> Nhập ngày phép</button>
+    </div>
+  </div>
+</div>
