@@ -1,8 +1,8 @@
-import { debounceTime } from 'rxjs/operators';
+import { EmployeeService } from './../../../../core/services/employee.service';
 import { Component, OnInit } from '@angular/core';
-import { Observable } from 'rxjs';
-import { EmployeeService } from 'src/app/core/services/employee.service';
 import { FormControl } from '@angular/forms';
+import { Observable } from 'rxjs';
+import { debounceTime } from 'rxjs/operators';
 
 @Component({
   selector: 'ah-general-list',
@@ -34,7 +34,6 @@ export class GeneralListComponent implements OnInit {
         val
       );
     });
-    console.log(this.searchStatusFormControl);
   }
 
   onSearch() {
@@ -46,27 +45,24 @@ export class GeneralListComponent implements OnInit {
     );
   }
 
-  underlineToCamelCase(string) {
-    return string.replace(/(\_[a-z])/g, function (match) {
-      return match.toUpperCase().replace('_', '');
+  toCamel(s: string) {
+    return s.replace(/([-_][a-z])/gi, ($1) => {
+      return $1.toUpperCase().replace('-', '').replace('_', '');
     });
   }
 
-  convertToCamelCaseObject(object) {
-    if (typeof object != 'object') return object;
-
-    return Object.keys(object).reduce(function (newObject, key) {
-      var newKey = this.underlineToCamelCase(key);
-
-      if (object[key] instanceof Array) {
-        newObject[newKey] = object[key].map(this.convertToCamelCaseObject);
-      } else if (object[key] instanceof Object) {
-        newObject[newKey] = this.convertToCamelCaseObject(object[key]);
-      } else {
-        newObject[newKey] = object[key];
-      }
-
-      return newObject;
-    }, {});
+  keysToCamel(o: any) {
+    if (o === Object(o) && !Array.isArray(o) && typeof o !== 'function') {
+      const n = {};
+      Object.keys(o).forEach((k) => {
+        n[this.toCamel(k)] = this.keysToCamel(o[k]);
+      });
+      return n;
+    } else if (Array.isArray(o)) {
+      return o.map((i) => {
+        return this.keysToCamel(i);
+      });
+    }
+    return o;
   }
 }

@@ -13,11 +13,17 @@ export class EmployeeService {
     });
   }
 
-  searchEmployee() {
-    return this.http.get<any>(environment.APILink, {
-      headers: {
-        Authorization: localStorage.getItem('token'),
-      },
-    });
+  searchEmployee(searchStr: string, status: string) {
+    let searchString = `search=${searchStr}`;
+    return this.http.get<any>(
+      `${environment.APILink}?${status !== '' ? 'status=' + status : ''}${
+        searchString !== '' ? '&' + searchString : ''
+      }`,
+      {
+        headers: {
+          Authorization: localStorage.getItem('token'),
+        },
+      }
+    );
   }
 }
