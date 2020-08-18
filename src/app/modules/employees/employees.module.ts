@@ -1,3 +1,4 @@
+import { ReactiveFormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { SharedModule } from 'src/app/shared/shared.module';
@@ -12,11 +13,12 @@ import { DayoffTableComponent } from './components/dayoff-table/dayoff-table.com
     GeneralListComponent,
     GeneralInfoComponent,
     DayoffComponent,
-    DayoffTableComponent
+    DayoffTableComponent,
   ],
   imports: [
     SharedModule,
-    RouterModule.forChild(EMPLOYEES_ROUTES)
-  ]
+    RouterModule.forChild(EMPLOYEES_ROUTES),
+    ReactiveFormsModule,
+  ],
 })
-export class EmployeesModule { }
+export class EmployeesModule {}
