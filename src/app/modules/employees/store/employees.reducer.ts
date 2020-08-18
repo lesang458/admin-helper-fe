@@ -1,7 +1,7 @@
 import * as EmployeesAction from './employees.actions';
 
 export const initialState = {
-  employees: [1, 2, 3],
+  employees: [],
 };
 
 export function EmployeesReducer(
