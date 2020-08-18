@@ -6,10 +6,10 @@ export const initialState = {
 
 export function EmployeesReducer(
   state = initialState,
-  action: EmployeesAction.EmployeesList
+  action: EmployeesAction.GetEmployees
 ) {
   switch (action.type) {
-    case EmployeesAction.LIST_EMPLOYEES:
+    case EmployeesAction.GET_EMPLOYEES:
       return [...state.employees, action.payload];
     default:
       return state;
