@@ -6,7 +6,8 @@
         "link3": "Timekeeping"
     },
     "header": {
-        "title": "Employee List"
+        "title": "Employee List",
+        "vietnamese": "Vietnamese"
     },
     "generalList": {
         "name": "Name",

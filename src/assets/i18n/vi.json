@@ -6,7 +6,8 @@
         "link3": "Chấm công"
     },
     "header": {
-        "title": "Danh sách nhân viên"
+        "title": "Danh sách nhân viên",
+        "vietnamese": "Tiếng việt"
     },
     "generalList": {
         "name": "Họ và tên",
