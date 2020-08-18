@@ -20,12 +20,12 @@
         <thead>
           <tr>
             <th scope="col">ID</th>
-            <th scope="col">Họ và tên</th>
-            <th scope="col">Ngày sinh</th>
-            <th scope="col">Ngày vào công ty</th>
-            <th scope="col">Số điện thoại</th>
-            <th scope="col">Trạng thái</th>
-            <th scope="col">Actions</th>
+            <th scope="col">{{ 'generalList.name' | translate}}</th>
+            <th scope="col">{{ 'generalList.birthday' | translate}}</th>
+            <th scope="col">{{ 'generalList.joinDate' | translate}}</th>
+            <th scope="col">{{ 'generalList.phoneNumber' | translate}}</th>
+            <th scope="col">{{ 'generalList.status' | translate}}</th>
+            <th scope="col">{{ 'generalList.actions' | translate}}</th>
           </tr>
         </thead>
         <tbody>
@@ -61,7 +61,7 @@
     </div>
     <div class="d-flex justify-content-end">
       <button type="button"
-              class="btn btn-info"><span class="cil-playlist-add btn-icon mr-2"></span> Tạo hồ sơ nhân viên</button>
+              class="btn btn-info"><span class="cil-playlist-add btn-icon mr-2"></span>{{ 'generalList.createEmployeeProfile' | translate}}</button>
     </div>
   </div>
 </div>

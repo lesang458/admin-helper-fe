@@ -1,0 +1,33 @@
+{
+    "sidebar": {
+        "title": "Employee Management",
+        "link1": "General Information",
+        "link2": "Day off",
+        "link3": "Timekeeping"
+    },
+    "header": {
+        "title": "Employee List"
+    },
+    "generalList": {
+        "name": "Name",
+        "birthday": "Birthday",
+        "joinDate": "Join date",
+        "phoneNumber": "Phone number",
+        "status": "Status",
+        "actions": "Actions",
+        "active": "Active",
+        "deleted": "Deleted",
+        "detail": "Detail",
+        "createEmployeeProfile": "Create employee profile"
+    },
+    "dayOffTable": {
+        "typeOfLeave": "Type of leave",
+        "sickLeave": "Sick leave",
+        "annualLeave": "Annual leave",
+        "name": "Name",
+        "birthday": "Birthday",
+        "totalLeaves": "Total leaves",
+        "numberOfLeavesRemaining": "Number of leaves remaining",
+        "submitTimeOff": "Submit time off"
+    }
+}
