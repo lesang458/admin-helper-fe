@@ -16,10 +16,12 @@ export class EmployeeService {
     );
   }
 
-  searchEmployee() {
-    //thiếu link
+  searchEmployee(searchStr: string, status: string) {
+    let searchString = `search=${searchStr}`;
     return this.http.get<any>(
-      'https://admin-helper-backend.herokuapp.com/api/v1/employees',
+      `https://admin-helper-backend.herokuapp.com/api/v1/employees?${
+        status !== '' ? 'status=' + status : ''
+      }${searchString !== '' ? '&' + searchString : ''}`,
       {
         headers: {
           Authorization:
