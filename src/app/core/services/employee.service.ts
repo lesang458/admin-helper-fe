@@ -14,9 +14,8 @@ export class EmployeeService {
   }
 
   public searchEmployee(searchStr: string, status: string) {
-    let params = new HttpParams();
+    let params = new HttpParams().append('search', searchStr);
     if (status !== '') params = params.append('status', status);
-    params = params.append('search', searchStr);
     return this.http.get<any>(`${environment.APILink}`, {
       headers: {
         Authorization: localStorage.getItem('token'),
