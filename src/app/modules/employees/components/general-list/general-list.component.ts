@@ -36,15 +36,6 @@ export class GeneralListComponent implements OnInit {
     });
   }
 
-  public onSearch(): void {
-    this.employeeObs$ = this.employeeService.searchEmployee(
-      this.searchFormControl.value ? this.searchFormControl.value : '',
-      this.searchStatusFormControl.value
-        ? this.searchStatusFormControl.value
-        : ''
-    );
-  }
-
   private toCamel(s: string): string {
     return s.replace(/([-_][a-z])/gi, ($1) => {
       return $1.toUpperCase().replace('-', '').replace('_', '');
