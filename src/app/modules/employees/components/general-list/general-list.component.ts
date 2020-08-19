@@ -2,7 +2,7 @@ import { EmployeeService } from './../../../../core/services/employee.service';
 import { Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { Observable } from 'rxjs';
-import { debounceTime } from 'rxjs/operators';
+import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
 
 @Component({
   selector: 'ah-general-list',
@@ -10,16 +10,16 @@ import { debounceTime } from 'rxjs/operators';
   styleUrls: ['./general-list.component.scss'],
 })
 export class GeneralListComponent implements OnInit {
-  employeeObs$: Observable<any>;
-  searchFormControl = new FormControl();
-  searchStatusFormControl = new FormControl('');
+  public employeeObs$: Observable<any>;
+  public searchFormControl = new FormControl();
+  public searchStatusFormControl = new FormControl('');
 
-  constructor(private employeeService: EmployeeService) {}
+  public constructor(private employeeService: EmployeeService) {}
 
   ngOnInit(): void {
     this.employeeObs$ = this.employeeService.getAllEmployee();
     this.searchFormControl.valueChanges
-      .pipe(debounceTime(1000))
+      .pipe(debounceTime(1000), distinctUntilChanged())
       .subscribe((val) => {
         this.employeeObs$ = this.employeeService.searchEmployee(
           val,
@@ -36,7 +36,7 @@ export class GeneralListComponent implements OnInit {
     });
   }
 
-  onSearch() {
+  public onSearch(): void {
     this.employeeObs$ = this.employeeService.searchEmployee(
       this.searchFormControl.value ? this.searchFormControl.value : '',
       this.searchStatusFormControl.value
@@ -45,13 +45,13 @@ export class GeneralListComponent implements OnInit {
     );
   }
 
-  toCamel(s: string) {
+  private toCamel(s: string): string {
     return s.replace(/([-_][a-z])/gi, ($1) => {
       return $1.toUpperCase().replace('-', '').replace('_', '');
     });
   }
 
-  keysToCamel(o: any) {
+  public keysToCamel(o: any): object {
     if (o === Object(o) && !Array.isArray(o) && typeof o !== 'function') {
       const n = {};
       Object.keys(o).forEach((k) => {

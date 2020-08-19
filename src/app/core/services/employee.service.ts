@@ -1,11 +1,11 @@
 import { environment } from './../../../environments/environment.prod';
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 
 @Injectable({ providedIn: 'root' })
 export class EmployeeService {
   constructor(private http: HttpClient) {}
-  getAllEmployee() {
+  public getAllEmployee() {
     return this.http.get<any>(environment.APILink, {
       headers: {
         Authorization: localStorage.getItem('token'),
@@ -13,17 +13,15 @@ export class EmployeeService {
     });
   }
 
-  searchEmployee(searchStr: string, status: string) {
-    let searchString = `search=${searchStr}`;
-    return this.http.get<any>(
-      `${environment.APILink}?${status !== '' ? 'status=' + status : ''}${
-        searchString !== '' ? '&' + searchString : ''
-      }`,
-      {
-        headers: {
-          Authorization: localStorage.getItem('token'),
-        },
-      }
-    );
+  public searchEmployee(searchStr: string, status: string) {
+    let params = new HttpParams();
+    if (status !== '') params = params.append('status', status);
+    params = params.append('search', searchStr);
+    return this.http.get<any>(`${environment.APILink}`, {
+      headers: {
+        Authorization: localStorage.getItem('token'),
+      },
+      params: params,
+    });
   }
 }
