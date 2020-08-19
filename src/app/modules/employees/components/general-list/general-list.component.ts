@@ -19,38 +19,22 @@ export class GeneralListComponent implements OnInit {
   constructor(private employeeService: EmployeeService) {}
 
   ngOnInit(): void {
-    this.employeeObs$ = this.employeeService.getAllEmployee().pipe(
-      map((val) => {
-        return CamelCaseHelper.keysToCamel(val);
-      })
-    );
+    this.employeeObs$ = this.employeeService.getAllEmployee();
     this.searchFormControl.valueChanges
       .pipe(debounceTime(1000), distinctUntilChanged())
       .subscribe((val) => {
-        this.employeeObs$ = this.employeeService
-          .searchEmployee(
-            val,
-            this.searchStatusFormControl.value
-              ? this.searchStatusFormControl.value
-              : ''
-          )
-          .pipe(
-            map((val) => {
-              return CamelCaseHelper.keysToCamel(val);
-            })
-          );
+        this.employeeObs$ = this.employeeService.searchEmployee(
+          val,
+          this.searchStatusFormControl.value
+            ? this.searchStatusFormControl.value
+            : ''
+        );
       });
     this.searchStatusFormControl.valueChanges.subscribe((val) => {
-      this.employeeObs$ = this.employeeService
-        .searchEmployee(
-          this.searchFormControl.value ? this.searchFormControl.value : '',
-          val
-        )
-        .pipe(
-          map((val) => {
-            return CamelCaseHelper.keysToCamel(val);
-          })
-        );
+      this.employeeObs$ = this.employeeService.searchEmployee(
+        this.searchFormControl.value ? this.searchFormControl.value : '',
+        val
+      );
     });
   }
 }
