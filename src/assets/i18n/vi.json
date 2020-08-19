@@ -30,5 +30,19 @@
         "TOTAL_LEAVES": "Tổng phép",
         "NUMBER_OF_LEAVES_REMAINING": "Phép còn lại",
         "SUBMIT_TIME_OFF": "Nhập ngày phép"
+    },
+    "PROFILE_CREATE":{
+        "TITLE": "Tạo hồ sơ nhân viên",
+        "FIRST_NAME": "Họ",
+        "LAST_NAME": "Tên",
+        "EMAIL": "Email",
+        "BIRTHDAY": "Ngày sinh",
+        "PASSWORD": "Mật khẩu",
+        "JOIN_DATE": "Ngày vào công ty",
+        "PHONE_NUMBER": "Số điện thoại",
+        "DAY_OFF_INFO": "Thông tin ngày nghỉ",
+        "CLOSE": "Đóng",
+        "SAVE": "Lưu"
     }
 }
+
