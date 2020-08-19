@@ -39,5 +39,19 @@ export class EmployeeService {
       );
   }
 
-  public sortEmployee(sortStr: string) {}
+  public sortEmployee(sortStr: string): Observable<any> {
+    let params = new HttpParams().append('sort', sortStr);
+    return this.http
+      .get<any>(`${environment.APILink}`, {
+        headers: {
+          Authorization: localStorage.getItem('token'),
+        },
+        params,
+      })
+      .pipe(
+        map((val) => {
+          return CamelCaseHelper.keysToCamel(val);
+        })
+      );
+  }
 }
