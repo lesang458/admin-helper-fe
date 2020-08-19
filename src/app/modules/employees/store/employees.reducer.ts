@@ -1,11 +1,16 @@
 import * as EmployeesAction from './employees.actions';
+import { Employee } from 'src/app/shared/models/employees.model';
 
-export const initialState = {
+export interface State {
+  employees: Employee[];
+}
+
+export const initialState: State = {
   employees: [],
 };
 
-export function EmployeesReducer(
-  state = initialState,
+export function employeeReducer(
+  state: State = initialState,
   action: EmployeesAction.GetEmployees
 ) {
   switch (action.type) {
