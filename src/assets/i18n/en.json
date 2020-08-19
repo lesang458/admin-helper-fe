@@ -1,34 +1,34 @@
 {
-    "sidebar": {
-        "title": "Employee Management",
-        "link1": "General Information",
-        "link2": "Day off",
-        "link3": "Timekeeping"
+    "SIDEBAR": {
+        "TITLE": "Employee Management",
+        "LINK_1": "General Information",
+        "LINK_2": "Day off",
+        "LINK_3": "Timekeeping"
     },
-    "header": {
-        "title": "Employee List",
-        "vietnamese": "Vietnamese"
+    "HEADER": {
+        "TITLE": "Employees List",
+        "VIETNAMESE": "Vietnamese"
     },
-    "generalList": {
-        "name": "Name",
-        "birthday": "Birthday",
-        "joinDate": "Join date",
-        "phoneNumber": "Phone number",
-        "status": "Status",
-        "actions": "Actions",
-        "active": "Active",
-        "deleted": "Deleted",
-        "detail": "Detail",
-        "createEmployeeProfile": "Create employee profile"
+    "GENERAL_LIST": {
+        "NAME": "Name",
+        "BIRTHDAY": "Birthday",
+        "JOIN_DATE": "Join date",
+        "PHONE_NUMBER": "Phone number",
+        "STATUS": "Status",
+        "ACTIONS": "Actions",
+        "ACTIVE": "Active",
+        "DELETED": "Deleted",
+        "DETAIL": "Detail",
+        "CREATE_EMPLOYEE_PROFILE": "Create employee profile"
     },
-    "dayOffTable": {
-        "typeOfLeave": "Type of leave",
-        "sickLeave": "Sick leave",
-        "annualLeave": "Annual leave",
-        "name": "Name",
-        "birthday": "Birthday",
-        "totalLeaves": "Total leaves",
-        "numberOfLeavesRemaining": "Number of leaves remaining",
-        "submitTimeOff": "Submit time off"
+    "DAY_OFF_TABLE": {
+        "TYPE_OF_LEAVE": "Type of leave",
+        "SICK_LEAVE": "Sick leave",
+        "ANNUAL_LEAVE": "Annual leave",
+        "NAME": "Name",
+        "BIRTHDAY": "Birthday",
+        "TOTAL_LEAVES": "Total leaves",
+        "NUMBER_OF_LEAVES_REMAINING": "Number of leaves remaining",
+        "SUBMIT_TIME_OFF": "Submit time off"
     }
 }

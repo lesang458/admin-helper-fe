@@ -1,34 +1,34 @@
 {
-    "sidebar": {
-        "title": "Quản lý nhân viên",
-        "link1": "Thông tin chung",
-        "link2": "Ngày phép",
-        "link3": "Chấm công"
+    "SIDEBAR": {
+        "TITLE": "Quản lý nhân viên",
+        "LINK_1": "Thông tin chung",
+        "LINK_2": "Ngày phép",
+        "LINK_3": "Chấm công"
     },
-    "header": {
-        "title": "Danh sách nhân viên",
-        "vietnamese": "Tiếng việt"
+    "HEADER": {
+        "TITLE": "Danh sách nhân viên",
+        "VIETNAMESE": "Tiếng việt"
     },
-    "generalList": {
-        "name": "Họ và tên",
-        "birthday": "Ngày sinh",
-        "joinDate": "Ngày vào công ty",
-        "phoneNumber": "Số điện thoại",
-        "status": "Trạng Thái",
-        "actions": "Hành động",
-        "active": "Hoạt động",
-        "deleted": "Đã xóa",
-        "detail": "Chi tiết",
-        "createEmployeeProfile": "Tạo hồ sơ nhân viên"
+    "GENERAL_LIST": {
+        "NAME": "Họ và tên",
+        "BIRTHDAY": "Ngày sinh",
+        "JOIN_DATE": "Ngày vào công ty",
+        "PHONE_NUMBER": "Số điện thoại",
+        "STATUS": "Trạng Thái",
+        "ACTIONS": "Hành động",
+        "ACTIVE": "Hoạt động",
+        "DELETED": "Đã xóa",
+        "DETAIL": "Chi tiết",
+        "CREATE_EMPLOYEE_PROFILE": "Tạo hồ sơ nhân viên"
     },
-    "dayOffTable": {
-        "typeOfLeave": "Loại phép",
-        "sickLeave": "Nghỉ ốm",
-        "annualLeave": "Phép năm",
-        "name": "Họ và tên",
-        "birthday": "Ngày sinh",
-        "totalLeaves": "Tổng phép",
-        "numberOfLeavesRemaining": "Phép còn lại",
-        "submitTimeOff": "Nhập ngày phép"
+    "DAY_OFF_TABLE": {
+        "TYPE_OF_LEAVE": "Loại phép",
+        "SICH_LEAVE": "Nghỉ ốm",
+        "ANNUAL_LEAVE": "Phép năm",
+        "NAME": "Họ và tên",
+        "BIRTHDAY": "Ngày sinh",
+        "TOTAL_LEAVES": "Tổng phép",
+        "NUMBER_OF_LEAVES_REMAINING": "Phép còn lại",
+        "SUBMIT_TIME_OFF": "Nhập ngày phép"
     }
 }
