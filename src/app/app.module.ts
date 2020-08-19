@@ -9,22 +9,21 @@ import {TranslateModule, TranslateLoader} from '@ngx-translate/core';
 import {TranslateHttpLoader} from '@ngx-translate/http-loader';
 import { EmployeesModule } from './modules/employees/employees.module';
 import { SharedModule } from './shared/shared.module';
+import { StoreModule } from '@ngrx/store';
+import * as fromApp from './store/app.reducer';
 
 export function HttpLoaderFactory(httpClient: HttpClient) {
   return new TranslateHttpLoader(httpClient);
 }
 
 @NgModule({
-  declarations: [
-    AppComponent
-  ],
+  declarations: [AppComponent],
   imports: [
     CoreModule,
     SharedModule,
     BrowserModule,
     EmployeesModule,
     HttpClientModule,
-    RouterModule.forRoot(APP_ROUTES, { scrollPositionRestoration: 'enabled' }),
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,
@@ -32,8 +31,10 @@ export function HttpLoaderFactory(httpClient: HttpClient) {
         deps: [HttpClient]
       }
     })
+    RouterModule.forRoot(APP_ROUTES, { scrollPositionRestoration: 'enabled' }),
+    StoreModule.forRoot(fromApp.appReducer),
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

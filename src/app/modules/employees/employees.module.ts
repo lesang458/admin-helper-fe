@@ -12,11 +12,8 @@ import { DayoffTableComponent } from './components/dayoff-table/dayoff-table.com
     GeneralListComponent,
     GeneralInfoComponent,
     DayoffComponent,
-    DayoffTableComponent
+    DayoffTableComponent,
   ],
-  imports: [
-    SharedModule,
-    RouterModule.forChild(EMPLOYEES_ROUTES)
-  ]
+  imports: [SharedModule, RouterModule.forChild(EMPLOYEES_ROUTES)],
 })
-export class EmployeesModule { }
+export class EmployeesModule {}
