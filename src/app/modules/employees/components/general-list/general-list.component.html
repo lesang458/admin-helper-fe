@@ -42,12 +42,7 @@
           </tr>
         </thead>
         <tbody *ngIf="employeeObs$ | async">
-          <tr
-            *ngFor="
-              let item of keysToCamel((employeeObs$ | async)?.data);
-              let i = index
-            "
-          >
+          <tr *ngFor="let item of (employeeObs$ | async)?.data; let i = index">
             <th scope="row">{{ i + 1 }}</th>
             <td>{{ item.firstName + " " + item.lastName }}</td>
             <td>{{ item.birthdate }}</td>
