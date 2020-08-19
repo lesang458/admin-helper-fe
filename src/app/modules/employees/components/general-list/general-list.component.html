@@ -23,13 +23,19 @@
         <thead>
           <tr>
             <th scope="col">ID</th>
-            <th scope="col">Họ và tên</th>
-            <th scope="col">Ngày sinh</th>
-            <th scope="col">Ngày vào công ty</th>
+            <th scope="col" class="pointer">
+              Họ và tên <i class="cil-sort-descending"></i>
+            </th>
+            <th scope="col" class="pointer">
+              Ngày sinh <i class="cil-sort-descending"></i>
+            </th>
+            <th scope="col" class="pointer">
+              Ngày vào công ty <i class="cil-sort-descending"></i>
+            </th>
             <th scope="col">Số điện thoại</th>
             <th scope="col">
               <select
-                class="form-select"
+                class="form-select pointer"
                 id="statusSelect"
                 [formControl]="searchStatusFormControl"
               >

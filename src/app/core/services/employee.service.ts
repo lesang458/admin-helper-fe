@@ -37,4 +37,6 @@ export class EmployeeService {
         })
       );
   }
+
+  public sortEmployee(sortStr: string) {}
 }
