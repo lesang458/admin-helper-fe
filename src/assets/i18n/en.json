@@ -1,0 +1,37 @@
+{
+  "SIDEBAR": {
+    "TITLE": "Employee Management",
+    "LINK_1": "General Information",
+    "LINK_2": "Day off",
+    "LINK_3": "Timekeeping"
+  },
+  "HEADER": {
+    "TITLE": "Employees List",
+    "VIETNAMESE": "Vietnamese"
+  },
+  "GENERAL_LIST": {
+    "NAME": "Name",
+    "BIRTHDAY": "Birthday",
+    "JOIN_DATE": "Join date",
+    "PHONE_NUMBER": "Phone number",
+    "STATUS": "Status",
+    "ACTIONS": "Actions",
+    "ACTIVE": "Active",
+    "DELETED": "Deleted",
+    "DETAIL": "Detail",
+    "CREATE_EMPLOYEE_PROFILE": "Create employee profile"
+  },
+  "DAY_OFF_TABLE": {
+    "TYPE_OF_LEAVE": "Type of leave",
+    "SICK_LEAVE": "Sick leave",
+    "ANNUAL_LEAVE": "Annual leave",
+    "NAME": "Name",
+    "BIRTHDAY": "Birthday",
+    "TOTAL_LEAVES": "Total leaves",
+    "NUMBER_OF_LEAVES_REMAINING": "Number of leaves remaining",
+    "SUBMIT_TIME_OFF": "Submit time off"
+  },
+  "PROFILE_CREATE": {
+    "TITLE": "Create Profile"
+  }
+}
