@@ -14,7 +14,10 @@ export class GeneralListComponent implements OnInit {
   public employeeObs$: Observable<any>;
   public searchFormControl = new FormControl();
   public searchStatusFormControl = new FormControl('');
-  // public keysToCamel = CamelCaseHepler.keysToCamel;
+  private sortVariable = {
+    sortName: '',
+    sortType: '',
+  };
 
   constructor(private employeeService: EmployeeService) {}
 
@@ -36,5 +39,14 @@ export class GeneralListComponent implements OnInit {
         val
       );
     });
+  }
+
+  onSort(sortName: string): void {
+    this.sortVariable.sortName !== sortName
+      ? this.sortVariable
+      : {
+          sortName,
+          sortType: 'DESC',
+        };
   }
 }
