@@ -23,26 +23,28 @@
         <thead>
           <tr>
             <th scope="col">ID</th>
-            <th scope="col">{{ 'GENERAL_LIST.NAME' | translate}}</th>
-            <th scope="col">{{ 'GENERAL_LIST.BIRTHDAY' | translate}}</th>
-            <th scope="col">{{ 'GENERAL_LIST.JOIN_DATE' | translate}}</th>
-            <th scope="col">{{ 'GENERAL_LIST.PHONE_NUMBER' | translate}}</th>
+            <th scope="col">{{ "GENERAL_LIST.NAME" | translate }}</th>
+            <th scope="col">{{ "GENERAL_LIST.BIRTHDAY" | translate }}</th>
+            <th scope="col">{{ "GENERAL_LIST.JOIN_DATE" | translate }}</th>
+            <th scope="col">{{ "GENERAL_LIST.PHONE_NUMBER" | translate }}</th>
             <th scope="col">
               <select
                 class="form-select pointer"
                 id="statusSelect"
                 [formControl]="searchStatusFormControl"
               >
-                <option selected value="">{{ 'GENERAL_LIST.STATUS' | translate}}</option>
+                <option selected value="">{{
+                  "GENERAL_LIST.STATUS" | translate
+                }}</option>
                 <option value="ACTIVE">Active</option>
                 <option value="DELETED">Deleted</option>
               </select>
-              </th>
-            <th scope="col">{{ 'GENERAL_LIST.ACTIONS' | translate}}</th>
+            </th>
+            <th scope="col">{{ "GENERAL_LIST.ACTIONS" | translate }}</th>
           </tr>
         </thead>
         <tbody *ngIf="employeeObs$ | async">
-          <tr *ngFor="let item of (employeeObs$ | async)?.data; let i = index">
+          <tr *ngFor="let item of employeeObs$ | async; let i = index">
             <th scope="row">{{ i + 1 }}</th>
             <td>{{ item.firstName + " " + item.lastName }}</td>
             <td>{{ item.birthdate }}</td>
@@ -73,7 +75,7 @@
     </div>
 
     <div
-      *ngIf="(employeeObs$ | async)?.data.length === 0"
+      *ngIf="(employeeObs$ | async)?.length === 0"
       class="alert alert-light"
       role="alert"
     >
@@ -81,8 +83,10 @@
     </div>
 
     <div class="d-flex justify-content-end">
-      <button type="button"
-              class="btn btn-info"><span class="cil-playlist-add btn-icon mr-2"></span>{{ 'GENERAL_LIST.CREATE_EMPLOYEE_PROFILE' | translate}}</button>
+      <button type="button" class="btn btn-info">
+        <span class="cil-playlist-add btn-icon mr-2"></span
+        >{{ "GENERAL_LIST.CREATE_EMPLOYEE_PROFILE" | translate }}
+      </button>
     </div>
   </div>
 </div>
