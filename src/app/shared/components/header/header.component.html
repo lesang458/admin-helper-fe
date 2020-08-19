@@ -52,10 +52,28 @@
         </a>
       </div>
     </li>
+    <li class="c-header-nav-item dropdown"><a
+      data-toggle="dropdown"
+      aria-haspopup="true"
+      aria-expanded="false"
+      role="button">
+      <i class="c-icon ml-2 cil-globe-alt"></i>
+    </a>
+   <div class="dropdown-menu dropdown-menu-right pt-0">
+     <a class="dropdown-item" (click)="switchLanguage('vi')">
+       <i class="c-icon mr-3 cif-vn"></i>
+       {{ 'HEADER.VIETNAMESE' | translate}}
+     </a>
+     <a class="dropdown-item" (click)="switchLanguage('en')">
+      <i class="c-icon mr-3 cif-gb"></i>
+      English
+    </a>
+   </div>
+  </li>
   </ul>
   <div class="c-subheader px-3">
     <div class="h5 breadcrumb text-muted border-0 m-0">
-      Danh sách nhân viên
+      {{ 'HEADER.TITLE' | translate}}
     </div>
   </div>
 </header>
