@@ -16,7 +16,7 @@ export class GeneralListComponent implements OnInit {
   public searchStatusFormControl = new FormControl('');
   // public keysToCamel = CamelCaseHepler.keysToCamel;
 
-  public constructor(private employeeService: EmployeeService) {}
+  constructor(private employeeService: EmployeeService) {}
 
   ngOnInit(): void {
     this.employeeObs$ = this.employeeService.getAllEmployee().pipe(
