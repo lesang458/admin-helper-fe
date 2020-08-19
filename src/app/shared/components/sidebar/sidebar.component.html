@@ -10,14 +10,14 @@
 
 </div>
 <ul class="c-sidebar-nav">
-  <li class="c-sidebar-nav-title">Quản lý nhân viên</li>
+  <li class="c-sidebar-nav-title">{{ 'SIDEBAR.TITLE' | translate}}</li>
 
   <li class="c-sidebar-nav-item"
       type="button">
     <a class="c-sidebar-nav-link"
        (click)="navigateToGeneralListPage()">
       <i class="c-sidebar-nav-icon cil-info"></i>
-      Thông tin chung
+      {{ 'SIDEBAR.LINK_1' | translate}}
     </a>
   </li>
   <li class="c-sidebar-nav-item"
@@ -25,14 +25,14 @@
     <a class="c-sidebar-nav-link"
        (click)="navigateToDayoffPage()">
       <i class="c-sidebar-nav-icon cil-home"></i>
-      Ngày phép
+      {{ 'SIDEBAR.LINK_2' | translate}}
     </a>
   </li>
   <li class="c-sidebar-nav-item"
       type="button">
     <a class="c-sidebar-nav-link">
       <i class="c-sidebar-nav-icon cil-calendar-check"></i>
-      Chấm công
+      {{ 'SIDEBAR.LINK_3' | translate}}
     </a>
   </li>
   <li class="c-sidebar-nav-divider"></li>

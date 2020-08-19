@@ -17,13 +17,12 @@
       <div class="col-5">
         <div class="form-group">
           <label class="d-inline-block mr-3 ml-2"
-                 for="day-off-type">Loại phép</label>
+                 for="day-off-type">{{ 'DAY_OFF_TABLE.TYPE_OF_LEAVE' | translate}}</label>
           <select class="form-control d-inline-block"
                   style="width: auto;"
                   id="day-off-type">
-            <option>Tất cả</option>
-            <option>Phép năm</option>
-            <option>Nghỉ ốm</option>
+            <option>{{ 'DAY_OFF_TABLE.ANNUAL_LEAVE' | translate}}</option>
+            <option>{{ 'DAY_OFF_TABLE.SICK_LEAVE' | translate}}</option>
           </select>
         </div>
       </div>
@@ -33,10 +32,10 @@
         <thead>
           <tr>
             <th scope="col">ID</th>
-            <th scope="col">Họ và tên</th>
-            <th scope="col">Ngày sinh</th>
-            <th scope="col">Tổng phép</th>
-            <th scope="col">Phép còn lại</th>
+            <th scope="col">{{ 'DAY_OFF_TABLE.NAME' | translate}}</th>
+            <th scope="col">{{ 'DAY_OFF_TABLE.BIRTHDAY' | translate}}</th>
+            <th scope="col">{{ 'DAY_OFF_TABLE.TOTAL_LEAVES' | translate}}</th>
+            <th scope="col">{{ 'DAY_OFF_TABLE.NUMBER_OF_LEAVES_REMAINING' | translate}}</th>
           </tr>
         </thead>
         <tbody>
@@ -66,7 +65,7 @@
     </div>
     <div class="d-flex justify-content-end">
       <button type="button"
-              class="btn btn-info"><span class="cil-playlist-add btn-icon mr-2"></span> Nhập ngày phép</button>
+              class="btn btn-info"><span class="cil-playlist-add btn-icon mr-2"></span>{{ 'DAY_OFF_TABLE.SUBMIT_TIME_OFF' | translate}}</button>
     </div>
   </div>
 </div>
