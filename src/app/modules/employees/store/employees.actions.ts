@@ -1,6 +1,5 @@
 import { Action } from '@ngrx/store';
 import { Employee } from 'src/app/shared/models/employees.model';
-import { HttpParams } from '@angular/common/http';
 
 export const GET_EMPLOYEES = '[Employees] Get Employees';
 
@@ -19,5 +18,5 @@ export const SEARCH_EMPLOYEES = '[Employees] Search Employees';
 
 export class SearchEmployees implements Action {
   readonly type = SEARCH_EMPLOYEES;
-  constructor(public payload: HttpParams) {}
+  constructor(public payload: object) {}
 }

@@ -43,21 +43,26 @@ export class GeneralListComponent implements OnInit {
     this.searchFormControl.valueChanges
       .pipe(debounceTime(1000), distinctUntilChanged())
       .subscribe((val) => {
-        let params = new HttpParams().append(
-          'search',
-          this.searchFormControl.value
+        this.store.dispatch(
+          new EmployeeActions.SearchEmployees(this.setParams())
         );
-
-        if (this.searchStatusFormControl.value !== '')
-          params = params.append('status', this.searchStatusFormControl.value);
-        this.store.dispatch(new EmployeeActions.SearchEmployees(params));
       });
     this.searchStatusFormControl.valueChanges.subscribe((val) => {
-      this.dataStorageService.searchEmployee(
-        this.searchFormControl.value ? this.searchFormControl.value : '',
-        val
+      this.store.dispatch(
+        new EmployeeActions.SearchEmployees(this.setParams())
       );
     });
+  }
+
+  setParams(): object {
+    return this.searchStatusFormControl.value !== ''
+      ? {
+          search: this.searchFormControl.value,
+          status: this.searchStatusFormControl.value,
+        }
+      : {
+          search: this.searchFormControl.value,
+        };
   }
 
   onSort(sortName: string): void {

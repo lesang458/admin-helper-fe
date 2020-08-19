@@ -35,17 +35,14 @@ export class EmployeeEffects {
   @Effect({ dispatch: false })
   employeeSearch = this.actions$.pipe(
     ofType(EmployeeActions.SEARCH_EMPLOYEES),
-    switchMap((params: EmployeeActions.SearchEmployees) => {
-      let params1 = new HttpParams().append('search', 'ree');
-      console.log(params1);
-      console.log(params);
-
+    switchMap((action: EmployeeActions.SearchEmployees) => {
+      let params: any = action.payload;
       return this.http
         .get<any>(`${environment.APILink}`, {
           headers: {
             Authorization: localStorage.getItem('token'),
           },
-          params: params1,
+          params,
         })
         .pipe(
           map((val) => {
