@@ -30,7 +30,7 @@ export function HttpLoaderFactory(httpClient: HttpClient) {
         useFactory: HttpLoaderFactory,
         deps: [HttpClient]
       }
-    })
+    }),
     RouterModule.forRoot(APP_ROUTES, { scrollPositionRestoration: 'enabled' }),
     StoreModule.forRoot(fromApp.appReducer),
   ],
