@@ -8,10 +8,12 @@
               <i class="cil-search"></i>
             </div>
           </div>
-          <input type="text"
-                 class="form-control"
-                 id="inlineFormInputGroupUsername"
-                 placeholder="VD: Nguyen, 2020, ...">
+          <input
+            type="text"
+            class="form-control"
+            id="inlineFormInputGroupUsername"
+            placeholder="VD: Nguyen, 2020, ..."
+          />
         </div>
       </div>
     </div>
@@ -35,7 +37,9 @@
             <td>01/01/1990</td>
             <td>01/01/2020</td>
             <td>09098786788</td>
-            <td><span class="badge rounded-pill badge-success p-2">Active</span></td>
+            <td>
+              <span class="badge rounded-pill badge-success p-2">Active</span>
+            </td>
             <td><span class="cil-external-link mr-2"></span> Detail</td>
           </tr>
           <tr>
@@ -44,7 +48,9 @@
             <td>01/01/1990</td>
             <td>01/01/2020</td>
             <td>09098786788</td>
-            <td><span class="badge rounded-pill badge-danger p-2">Deleted</span></td>
+            <td>
+              <span class="badge rounded-pill badge-danger p-2">Deleted</span>
+            </td>
             <td><span class="cil-external-link mr-2"></span> Detail</td>
           </tr>
           <tr>
@@ -53,15 +59,33 @@
             <td>01/01/1990</td>
             <td>01/01/2020</td>
             <td>09098786788</td>
-            <td><span class="badge rounded-pill badge-success p-2">Active</span></td>
+            <td>
+              <span class="badge rounded-pill badge-success p-2">Active</span>
+            </td>
             <td><span class="cil-external-link mr-2"></span> Detail</td>
           </tr>
         </tbody>
       </table>
     </div>
     <div class="d-flex justify-content-end">
-      <button type="button"
-              class="btn btn-info"><span class="cil-playlist-add btn-icon mr-2"></span> Tạo hồ sơ nhân viên</button>
+      <button
+        type="button"
+        data-toggle="modal"
+        data-target="#exampleModalCenter"
+        class="btn btn-info"
+      >
+        <span class="cil-playlist-add btn-icon mr-2"></span> Tạo hồ sơ nhân viên
+      </button>
+      <div
+        class="modal fade"
+        id="exampleModalCenter"
+        tabindex="-1"
+        role="dialog"
+        aria-labelledby="exampleModalCenterTitle"
+        aria-hidden="true"
+      >
+        <profile-create></profile-create>
+      </div>
     </div>
   </div>
 </div>
