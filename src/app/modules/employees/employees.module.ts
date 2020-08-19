@@ -6,8 +6,6 @@ import { EMPLOYEES_ROUTES } from './employees.routes';
 import { GeneralInfoComponent } from './pages/general-info/general-info.component';
 import { DayoffComponent } from './pages/dayoff/dayoff.component';
 import { DayoffTableComponent } from './components/dayoff-table/dayoff-table.component';
-import { StoreModule } from '@ngrx/store';
-import { employeeReducer } from './store/employees.reducer';
 
 @NgModule({
   declarations: [
@@ -16,10 +14,6 @@ import { employeeReducer } from './store/employees.reducer';
     DayoffComponent,
     DayoffTableComponent,
   ],
-  imports: [
-    SharedModule,
-    RouterModule.forChild(EMPLOYEES_ROUTES),
-    StoreModule.forRoot({ employees: employeeReducer }),
-  ],
+  imports: [SharedModule, RouterModule.forChild(EMPLOYEES_ROUTES)],
 })
 export class EmployeesModule {}
