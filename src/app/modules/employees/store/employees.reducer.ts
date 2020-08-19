@@ -10,7 +10,10 @@ export function EmployeesReducer(
 ) {
   switch (action.type) {
     case EmployeesAction.GET_EMPLOYEES:
-      return [...state.employees, action.payload];
+      return {
+        ...state,
+        employees: [...action.payload],
+      };
     default:
       return state;
   }
