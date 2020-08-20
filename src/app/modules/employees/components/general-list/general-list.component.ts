@@ -1,4 +1,3 @@
-import { Employee } from 'src/app/shared/models/employees.model';
 import { Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { Observable } from 'rxjs';
