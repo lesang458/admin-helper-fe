@@ -6,6 +6,7 @@ import { EMPLOYEES_ROUTES } from './employees.routes';
 import { GeneralInfoComponent } from './pages/general-info/general-info.component';
 import { DayoffComponent } from './pages/dayoff/dayoff.component';
 import { DayoffTableComponent } from './components/dayoff-table/dayoff-table.component';
+import { PaginationModule } from 'ngx-bootstrap/pagination';
 
 @NgModule({
   declarations: [
@@ -14,6 +15,10 @@ import { DayoffTableComponent } from './components/dayoff-table/dayoff-table.com
     DayoffComponent,
     DayoffTableComponent,
   ],
-  imports: [SharedModule, RouterModule.forChild(EMPLOYEES_ROUTES)],
+  imports: [
+    SharedModule,
+    RouterModule.forChild(EMPLOYEES_ROUTES),
+    PaginationModule.forRoot(),
+  ]
 })
 export class EmployeesModule {}
