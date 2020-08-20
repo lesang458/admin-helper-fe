@@ -44,33 +44,49 @@ export class GeneralListComponent implements OnInit {
       .pipe(debounceTime(1000), distinctUntilChanged())
       .subscribe((val) => {
         this.store.dispatch(
-          new EmployeeActions.SearchEmployees(this.setParams())
+          new EmployeeActions.SearchEmployees(
+            new HttpParams({ fromObject: this.setParams() })
+          )
         );
       });
     this.searchStatusFormControl.valueChanges.subscribe((val) => {
       this.store.dispatch(
-        new EmployeeActions.SearchEmployees(this.setParams())
+        new EmployeeActions.SearchEmployees(
+          new HttpParams({ fromObject: this.setParams() })
+        )
       );
     });
   }
 
-  setParams(): object {
-    return this.searchStatusFormControl.value !== ''
-      ? {
-          search: this.searchFormControl.value,
-          status: this.searchStatusFormControl.value,
-        }
-      : {
-          search: this.searchFormControl.value,
-        };
+  setParams(): any {
+    let searchValue = this.searchFormControl.value;
+    let statusValue = this.searchStatusFormControl.value;
+    return Object.assign(
+      searchValue !== '' && searchValue ? { search: searchValue } : {},
+      statusValue !== '' ? { status: statusValue } : {},
+      this.sortVariable.sortName !== ''
+        ? {
+            sort: `${this.sortVariable.sortName}:${this.sortVariable.sortType}`,
+          }
+        : {}
+    );
   }
 
   onSort(sortName: string): void {
-    this.sortVariable.sortName !== sortName
-      ? this.sortVariable
-      : {
-          sortName,
-          sortType: 'DESC',
-        };
+    this.sortVariable =
+      this.sortVariable.sortName !== sortName
+        ? {
+            sortName,
+            sortType: 'DESC',
+          }
+        : {
+            sortName,
+            sortType: this.sortVariable.sortType === 'DESC' ? 'ASC' : 'DESC',
+          };
+    this.store.dispatch(
+      new EmployeeActions.SearchEmployees(
+        new HttpParams({ fromObject: this.setParams() })
+      )
+    );
   }
 }

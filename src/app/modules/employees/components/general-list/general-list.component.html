@@ -23,9 +23,18 @@
         <thead>
           <tr>
             <th scope="col">ID</th>
-            <th scope="col">{{ "GENERAL_LIST.NAME" | translate }}</th>
-            <th scope="col">{{ "GENERAL_LIST.BIRTHDAY" | translate }}</th>
-            <th scope="col">{{ "GENERAL_LIST.JOIN_DATE" | translate }}</th>
+            <th scope="col" class="pointer" (click)="onSort('first_name')">
+              {{ "GENERAL_LIST.NAME" | translate }}
+              <i class="cil-sort-ascending"></i>
+            </th>
+            <th scope="col" class="pointer" (click)="onSort('birthdate')">
+              {{ "GENERAL_LIST.BIRTHDAY" | translate }}
+              <i class="cil-sort-ascending"></i>
+            </th>
+            <th scope="col" class="pointer" (click)="onSort('join_date')">
+              {{ "GENERAL_LIST.JOIN_DATE" | translate }}
+              <i class="cil-sort-ascending"></i>
+            </th>
             <th scope="col">{{ "GENERAL_LIST.PHONE_NUMBER" | translate }}</th>
             <th scope="col">
               <select
