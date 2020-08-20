@@ -45,14 +45,18 @@
                 <option selected value="">{{
                   "GENERAL_LIST.STATUS" | translate
                 }}</option>
-                <option value="ACTIVE">Active</option>
-                <option value="DELETED">Deleted</option>
+                <option value="ACTIVE">{{
+                  "GENERAL_LIST.ACTIVE" | translate
+                }}</option>
+                <option value="DELETED">{{
+                  "GENERAL_LIST.DELETED" | translate
+                }}</option>
               </select>
             </th>
             <th scope="col">{{ "GENERAL_LIST.ACTIONS" | translate }}</th>
           </tr>
         </thead>
-        <tbody *ngIf="employeeObs$ | async">
+        <tbody *ngIf="(employeeObs$ | async) && !loading">
           <tr *ngFor="let item of employeeObs$ | async; let i = index">
             <th scope="row">{{ i + 1 }}</th>
             <td>{{ item.firstName + " " + item.lastName }}</td>
@@ -63,12 +67,12 @@
               <span
                 class="badge rounded-pill badge-danger p-2"
                 *ngIf="item.status !== 'ACTIVE'"
-                >Deleted</span
+                >{{ "GENERAL_LIST.DELETED" | translate }}</span
               >
               <span
                 class="badge rounded-pill badge-success p-2"
                 *ngIf="item.status === 'ACTIVE'"
-                >Active</span
+                >{{ "GENERAL_LIST.ACTIVE" | translate }}</span
               >
             </td>
             <td><span class="cil-external-link mr-2"></span> Detail</td>
@@ -77,7 +81,7 @@
       </table>
     </div>
 
-    <div *ngIf="!(employeeObs$ | async)" class="d-flex justify-content-center">
+    <div *ngIf="loading" class="d-flex justify-content-center">
       <div class="spinner-border" role="status">
         <span class="sr-only">Loading...</span>
       </div>

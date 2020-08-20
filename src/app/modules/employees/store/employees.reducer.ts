@@ -11,7 +11,7 @@ export const initialState: State = {
 
 export function employeeReducer(
   state: State = initialState,
-  action: EmployeesAction.GetEmployeesSuccess
+  action: EmployeesAction.EmployeesActions
 ) {
   switch (action.type) {
     case EmployeesAction.GET_EMPLOYEES_SUCCESS:

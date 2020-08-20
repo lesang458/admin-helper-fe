@@ -1,14 +1,10 @@
-import { DataStorageService } from './../../../../shared/data-storage.service';
 import { Employee } from 'src/app/shared/models/employees.model';
-import { CamelCaseHelper } from './../../../../core/helper/camelCase.helper';
-import { EmployeeService } from './../../../../core/services/employee.service';
 import { Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { debounceTime, distinctUntilChanged, map } from 'rxjs/operators';
-import { Store, select } from '@ngrx/store';
+import { Store } from '@ngrx/store';
 import * as fromApp from '../../../../store/app.reducer';
-import * as fromEmployees from '../../store/employees.reducer';
 import * as EmployeeActions from '../../store/employees.actions';
 import { HttpParams } from '@angular/common/http';
 
@@ -19,37 +15,41 @@ import { HttpParams } from '@angular/common/http';
 })
 export class GeneralListComponent implements OnInit {
   public employeeObs$: Observable<any>;
-  public employees: Employee[];
   public searchFormControl = new FormControl();
+  public loading: boolean = true;
   public searchStatusFormControl = new FormControl('');
   private sortVariable = {
     sortName: '',
     sortType: '',
   };
 
-  constructor(
-    private employeeService: EmployeeService,
-    private store: Store<fromApp.AppState>,
-    private dataStorageService: DataStorageService
-  ) {}
+  constructor(private store: Store<fromApp.AppState>) {}
 
   ngOnInit(): void {
     this.employeeObs$ = this.store
       .select('employees')
       .pipe(map((val) => val.employees));
-    // this.dataStorageService.storeEmployees();
-    this.store.dispatch(new EmployeeActions.GetEmployees());
+    this.employeeObs$.subscribe(() => {
+      this.loading = false;
+    });
+    this.store.dispatch(
+      new EmployeeActions.SearchEmployees(
+        new HttpParams({ fromObject: { search: '' } })
+      )
+    );
 
     this.searchFormControl.valueChanges
       .pipe(debounceTime(1000), distinctUntilChanged())
-      .subscribe((val) => {
+      .subscribe(() => {
+        this.loading = true;
         this.store.dispatch(
           new EmployeeActions.SearchEmployees(
             new HttpParams({ fromObject: this.setParams() })
           )
         );
       });
-    this.searchStatusFormControl.valueChanges.subscribe((val) => {
+    this.searchStatusFormControl.valueChanges.subscribe(() => {
+      this.loading = true;
       this.store.dispatch(
         new EmployeeActions.SearchEmployees(
           new HttpParams({ fromObject: this.setParams() })
@@ -58,7 +58,7 @@ export class GeneralListComponent implements OnInit {
     });
   }
 
-  setParams(): any {
+  private setParams(): any {
     let searchValue = this.searchFormControl.value;
     let statusValue = this.searchStatusFormControl.value;
     return Object.assign(
@@ -72,7 +72,8 @@ export class GeneralListComponent implements OnInit {
     );
   }
 
-  onSort(sortName: string): void {
+  public onSort(sortName: string): void {
+    this.loading = true;
     this.sortVariable =
       this.sortVariable.sortName !== sortName
         ? {

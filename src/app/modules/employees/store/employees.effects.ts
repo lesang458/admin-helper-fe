@@ -10,35 +10,13 @@ import { CamelCaseHelper } from 'src/app/core/helper/camelCase.helper';
 
 @Injectable()
 export class EmployeeEffects {
-  @Effect({ dispatch: false })
-  employeeGetAll = this.actions$.pipe(
-    ofType(EmployeeActions.GET_EMPLOYEES),
-    switchMap(() => {
-      return this.http
-        .get<Employee>(environment.APILink, {
-          headers: {
-            Authorization: localStorage.getItem('token'),
-          },
-        })
-        .pipe(
-          map((val) => {
-            let value: any = CamelCaseHelper.keysToCamel(val);
-            return value
-              ? this.store.dispatch(
-                  new EmployeeActions.GetEmployeesSuccess(value.data)
-                )
-              : false;
-          })
-        );
-    })
-  );
-  @Effect({ dispatch: false })
+  @Effect()
   employeeSearch = this.actions$.pipe(
     ofType(EmployeeActions.SEARCH_EMPLOYEES),
     switchMap((action: EmployeeActions.SearchEmployees) => {
       let params: any = action.payload;
       return this.http
-        .get<any>(`${environment.APILink}`, {
+        .get<any>(`${environment.APILink}employees`, {
           headers: {
             Authorization: localStorage.getItem('token'),
           },
@@ -47,11 +25,7 @@ export class EmployeeEffects {
         .pipe(
           map((val) => {
             let value: any = CamelCaseHelper.keysToCamel(val);
-            return value
-              ? this.store.dispatch(
-                  new EmployeeActions.GetEmployeesSuccess(value.data)
-                )
-              : false;
+            return new EmployeeActions.GetEmployeesSuccess(value.data);
           })
         );
     })

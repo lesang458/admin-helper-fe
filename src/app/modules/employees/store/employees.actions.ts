@@ -21,3 +21,5 @@ export class SearchEmployees implements Action {
   readonly type = SEARCH_EMPLOYEES;
   constructor(public payload: HttpParams) {}
 }
+
+export type EmployeesActions = GetEmployeesSuccess | SearchEmployees;

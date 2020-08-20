@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  APILink: 'https://admin-helper-backend.herokuapp.com/api/v1/employees',
+  APILink: 'https://admin-helper-backend.herokuapp.com/api/v1/',
 };
 
 /*
