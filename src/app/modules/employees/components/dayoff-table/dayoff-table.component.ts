@@ -26,4 +26,7 @@ export class DayoffTableComponent implements OnInit {
     this.store.dispatch(new EmployeesActions.FetchDayOff({search: '', page: 1}));
   }
 
+  public onPageChanged(event: any): void {
+    this.store.dispatch(new EmployeesActions.FetchDayOff({search: '', page: event.page}));
+  }
 }

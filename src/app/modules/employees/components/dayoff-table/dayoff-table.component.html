@@ -31,28 +31,31 @@
       <table class="table table-bordered">
         <thead *ngIf="data.pagination.totalCount !== 0">
           <tr>
-            <th scope="col">ID</th>
-            <th scope="col">{{ 'DAY_OFF_TABLE.NAME' | translate}}</th>
-            <th scope="col">{{ 'DAY_OFF_TABLE.BIRTHDAY' | translate}}</th>
-            <th scope="col">{{ 'DAY_OFF_TABLE.TOTAL_LEAVES' | translate}}</th>
-            <th scope="col">{{ 'DAY_OFF_TABLE.NUMBER_OF_LEAVES_REMAINING' | translate}}</th>
+            <th scope="col" style="width:10%">ID</th>
+            <th scope="col" style="width:30%">{{ 'DAY_OFF_TABLE.NAME' | translate}}</th>
+            <th scope="col" style="width:20%">{{ 'DAY_OFF_TABLE.BIRTHDAY' | translate}}</th>
+            <th scope="col" style="width:20%">{{ 'DAY_OFF_TABLE.TOTAL_LEAVES' | translate}}</th>
+            <th scope="col" style="width:20%">{{ 'DAY_OFF_TABLE.NUMBER_OF_LEAVES_REMAINING' | translate}}</th>
           </tr>
         </thead>
         <tbody >
           <tr *ngFor="let item of data.data ; let i = index">
-            <th scope="row">{{ i + 1 }}</th>
+            <th scope="row">{{ i + 1 + (data.pagination.currentPage -1 ) * 20 }}</th>
             <td>{{ item.firstName + " " + item.lastName }}</td>
-            <td>{{ item.birthdate }}</td>
+            <td>{{ item.birthdate | date: 'dd/MM/yyyy' }}</td>
             <td>15</td>
             <td>15</td>
           </tr>
         </tbody>
       </table>
-      <div class="col-12">
-        <pagination [totalItems]="100" [maxSize]="maxSize" [itemsPerPage]="20"
-                    class="pagination-md justify-content-center"
+      <div class="col-12" *ngIf="data.pagination.totalCount !==0">
+        <pagination [totalItems]="data.pagination.totalCount" [maxSize]="maxSize" [itemsPerPage]="20"
+                    [(ngModel)]="data.pagination.currentPage"
+                    (pageChanged)="onPageChanged($event)"
+                    class="pagination-md justify-content-end"
                     previousText="&lsaquo;" nextText="&rsaquo;" firstText="&laquo;" lastText="&raquo;"
-                    [boundaryLinks]="true" [rotate]="false"></pagination>
+                    [boundaryLinks]="true" [rotate]="false">
+        </pagination>
       </div>
     </div>
     <div class="d-flex justify-content-end">
