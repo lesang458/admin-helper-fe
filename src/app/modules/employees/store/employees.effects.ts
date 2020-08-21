@@ -4,7 +4,7 @@ import * as EmployeeActions from './employees.actions';
 import { switchMap, map } from 'rxjs/operators';
 import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment.prod';
-import { CamelCaseHelper } from 'src/app/core/helper/camelCase.helper';
+import * as camelcaseKeys from 'camelcase-keys';
 
 @Injectable()
 export class EmployeeEffects {
@@ -22,7 +22,6 @@ export class EmployeeEffects {
         })
         .pipe(
           map((val) => {
-            const camelcaseKeys = require('camelcase-keys');
             let data: any = camelcaseKeys(val.data);
             return new EmployeeActions.GetEmployeesSuccess(data);
           })
