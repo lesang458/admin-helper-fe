@@ -42,6 +42,15 @@
         "PHONE_NUMBER": "Số điện thoại",
         "DAY_OFF_INFO": "Thông tin ngày nghỉ",
         "HOUR": "Số giờ",
+        "FIRST_NAME_INVALID": "Hãy nhập họ",
+        "LAST_NAME_INVALID": "Hãy nhập tên",
+        "EMAIL_INVALID": "Hãy nhập email",
+        "IS_EMAIL": "Email không hợp lệ",
+        "BIRTHDAY_INVALID": "Hãy nhập ngày sinh",
+        "PASSWORD_INVALID": "Hãy nhập mật khẩu",
+        "PASS_MINLENGTH":"Mật khẩu phải trên 6 ký tự",
+        "JOIN_DATE_INVALID": "Hãy nhập ngày vào công ty",
+        "PHONE_NUMBER_INVALID": "Hãy nhập số điện thoại",
         "CLOSE": "Đóng",
         "SAVE": "Lưu"
     }

@@ -1,5 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl } from '@angular/forms';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { Store } from '@ngrx/store';
+import * as fromApp from '../../../../store/app.reducer';
+import * as EmployeeActions from '../../store/employees.actions';
+import { HttpParams } from '@angular/common/http';
 
 @Component({
   selector: 'profile-create',
@@ -11,16 +15,14 @@ export class ProfileCreateComponent implements OnInit {
   profileForm = new FormGroup({
     firstName: new FormControl(''),
     lastName: new FormControl(''),
-    email: new FormControl(''),
-    password: new FormControl(''),
+    email: new FormControl('', Validators.email),
+    password: new FormControl('', Validators.minLength(6)),
     phoneNumber: new FormControl(''),
     birthdate: new FormControl(''),
     joinDate: new FormControl(''),
-    dayOffCategoryId: new FormControl(''),
-    hours: new FormControl('')
   });
- 
-  constructor() {}
+
+  constructor(private store: Store<fromApp.AppState>) {}
 
   ngOnInit(): void {}
 
@@ -28,9 +30,15 @@ export class ProfileCreateComponent implements OnInit {
     return this.profileForm.controls;
   }
 
-  onSubmit(){
+  onSubmit() {
     this.submitted = true;
-
-    console.log(this.profileForm.value)
+    this.profileForm.valueChanges.subscribe(() => {
+      this.store.dispatch(
+        new EmployeeActions.CreateEmployee(
+          new HttpParams({ fromObject: this.profileForm.value })
+        )
+      );
+    });
+    console.log(this.profileForm.value);
   }
 }
