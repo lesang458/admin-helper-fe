@@ -32,13 +32,7 @@ export class ProfileCreateComponent implements OnInit {
 
   onSubmit() {
     this.submitted = true;
-    this.profileForm.valueChanges.subscribe(() => {
-      this.store.dispatch(
-        new EmployeeActions.CreateEmployee(
-          new HttpParams({ fromObject: this.profileForm.value })
-        )
-      );
-    });
+
     console.log(this.profileForm.value);
   }
 }

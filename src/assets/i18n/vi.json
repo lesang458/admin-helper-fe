@@ -1,58 +1,57 @@
 {
-    "SIDEBAR": {
-        "TITLE": "Quản lý nhân viên",
-        "LINK_1": "Thông tin chung",
-        "LINK_2": "Ngày phép",
-        "LINK_3": "Chấm công"
-    },
-    "HEADER": {
-        "TITLE": "Danh sách nhân viên",
-        "VIETNAMESE": "Tiếng việt"
-    },
-    "GENERAL_LIST": {
-        "NAME": "Họ và tên",
-        "BIRTHDAY": "Ngày sinh",
-        "JOIN_DATE": "Ngày vào công ty",
-        "PHONE_NUMBER": "Số điện thoại",
-        "STATUS": "Trạng Thái",
-        "ACTIONS": "Hành động",
-        "ACTIVE": "Hoạt động",
-        "DELETED": "Đã xóa",
-        "DETAIL": "Chi tiết",
-        "CREATE_EMPLOYEE_PROFILE": "Tạo hồ sơ nhân viên"
-    },
-    "DAY_OFF_TABLE": {
-        "TYPE_OF_LEAVE": "Loại phép",
-        "SICH_LEAVE": "Nghỉ ốm",
-        "ANNUAL_LEAVE": "Phép năm",
-        "NAME": "Họ và tên",
-        "BIRTHDAY": "Ngày sinh",
-        "TOTAL_LEAVES": "Tổng phép",
-        "NUMBER_OF_LEAVES_REMAINING": "Phép còn lại",
-        "SUBMIT_TIME_OFF": "Nhập ngày phép"
-    },
-    "PROFILE_CREATE":{
-        "TITLE": "Tạo hồ sơ nhân viên",
-        "FIRST_NAME": "Họ",
-        "LAST_NAME": "Tên",
-        "EMAIL": "Email",
-        "BIRTHDAY": "Ngày sinh",
-        "PASSWORD": "Mật khẩu",
-        "JOIN_DATE": "Ngày vào công ty",
-        "PHONE_NUMBER": "Số điện thoại",
-        "DAY_OFF_INFO": "Thông tin ngày nghỉ",
-        "HOUR": "Số giờ",
-        "FIRST_NAME_INVALID": "Hãy nhập họ",
-        "LAST_NAME_INVALID": "Hãy nhập tên",
-        "EMAIL_INVALID": "Hãy nhập email",
-        "IS_EMAIL": "Email không hợp lệ",
-        "BIRTHDAY_INVALID": "Hãy nhập ngày sinh",
-        "PASSWORD_INVALID": "Hãy nhập mật khẩu",
-        "PASS_MINLENGTH":"Mật khẩu phải trên 6 ký tự",
-        "JOIN_DATE_INVALID": "Hãy nhập ngày vào công ty",
-        "PHONE_NUMBER_INVALID": "Hãy nhập số điện thoại",
-        "CLOSE": "Đóng",
-        "SAVE": "Lưu"
-    }
+  "SIDEBAR": {
+    "TITLE": "Quản lý nhân viên",
+    "LINK_1": "Thông tin chung",
+    "LINK_2": "Ngày phép",
+    "LINK_3": "Chấm công"
+  },
+  "HEADER": {
+    "TITLE": "Danh sách nhân viên",
+    "VIETNAMESE": "Tiếng việt"
+  },
+  "GENERAL_LIST": {
+    "NAME": "Họ và tên",
+    "BIRTHDAY": "Ngày sinh",
+    "JOIN_DATE": "Ngày vào công ty",
+    "PHONE_NUMBER": "Số điện thoại",
+    "STATUS": "Trạng Thái",
+    "ACTIONS": "Hành động",
+    "ACTIVE": "Hoạt động",
+    "DELETED": "Đã xóa",
+    "DETAIL": "Chi tiết",
+    "CREATE_EMPLOYEE_PROFILE": "Tạo hồ sơ nhân viên"
+  },
+  "DAY_OFF_TABLE": {
+    "TYPE_OF_LEAVE": "Loại phép",
+    "SICH_LEAVE": "Nghỉ ốm",
+    "ANNUAL_LEAVE": "Phép năm",
+    "NAME": "Họ và tên",
+    "BIRTHDAY": "Ngày sinh",
+    "TOTAL_LEAVES": "Tổng phép",
+    "NUMBER_OF_LEAVES_REMAINING": "Phép còn lại",
+    "SUBMIT_TIME_OFF": "Nhập ngày phép"
+  },
+  "PROFILE_CREATE": {
+    "TITLE": "Tạo hồ sơ nhân viên",
+    "FIRST_NAME": "Họ",
+    "LAST_NAME": "Tên",
+    "EMAIL": "Email",
+    "BIRTHDAY": "Ngày sinh",
+    "PASSWORD": "Mật khẩu",
+    "JOIN_DATE": "Ngày vào công ty",
+    "PHONE_NUMBER": "Số điện thoại",
+    "DAY_OFF_INFO": "Thông tin ngày nghỉ",
+    "HOUR": "Số giờ",
+    "FIRST_NAME_INVALID": "Hãy nhập họ",
+    "LAST_NAME_INVALID": "Hãy nhập tên",
+    "EMAIL_INVALID": "Hãy nhập email",
+    "IS_EMAIL": "Email không hợp lệ",
+    "BIRTHDAY_INVALID": "Hãy nhập ngày sinh",
+    "PASSWORD_INVALID": "Hãy nhập mật khẩu",
+    "PASS_MINLENGTH": "Mật khẩu phải trên 6 ký tự",
+    "JOIN_DATE_INVALID": "Hãy nhập ngày vào công ty",
+    "PHONE_NUMBER_INVALID": "Hãy nhập số điện thoại",
+    "CLOSE": "Đóng",
+    "SAVE": "Lưu"
+  }
 }
-

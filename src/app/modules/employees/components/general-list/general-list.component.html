@@ -8,10 +8,12 @@
               <i class="cil-search"></i>
             </div>
           </div>
-          <input type="text"
-                 class="form-control"
-                 id="inlineFormInputGroupUsername"
-                 placeholder="VD: Nguyen, 2020, ...">
+          <input
+            type="text"
+            class="form-control"
+            id="inlineFormInputGroupUsername"
+            placeholder="VD: Nguyen, 2020, ..."
+          />
         </div>
       </div>
     </div>
@@ -20,12 +22,12 @@
         <thead>
           <tr>
             <th scope="col">ID</th>
-            <th scope="col">{{ 'GENERAL_LIST.NAME' | translate}}</th>
-            <th scope="col">{{ 'GENERAL_LIST.BIRTHDAY' | translate}}</th>
-            <th scope="col">{{ 'GENERAL_LIST.JOIN_DATE' | translate}}</th>
-            <th scope="col">{{ 'GENERAL_LIST.PHONE_NUMBER' | translate}}</th>
-            <th scope="col">{{ 'GENERAL_LIST.STATUS' | translate}}</th>
-            <th scope="col">{{ 'GENERAL_LIST.ACTIONS' | translate}}</th>
+            <th scope="col">{{ "GENERAL_LIST.NAME" | translate }}</th>
+            <th scope="col">{{ "GENERAL_LIST.BIRTHDAY" | translate }}</th>
+            <th scope="col">{{ "GENERAL_LIST.JOIN_DATE" | translate }}</th>
+            <th scope="col">{{ "GENERAL_LIST.PHONE_NUMBER" | translate }}</th>
+            <th scope="col">{{ "GENERAL_LIST.STATUS" | translate }}</th>
+            <th scope="col">{{ "GENERAL_LIST.ACTIONS" | translate }}</th>
           </tr>
         </thead>
         <tbody>
@@ -35,7 +37,9 @@
             <td>01/01/1990</td>
             <td>01/01/2020</td>
             <td>09098786788</td>
-            <td><span class="badge rounded-pill badge-success p-2">Active</span></td>
+            <td>
+              <span class="badge rounded-pill badge-success p-2">Active</span>
+            </td>
             <td><span class="cil-external-link mr-2"></span> Detail</td>
           </tr>
           <tr>
@@ -44,7 +48,9 @@
             <td>01/01/1990</td>
             <td>01/01/2020</td>
             <td>09098786788</td>
-            <td><span class="badge rounded-pill badge-danger p-2">Deleted</span></td>
+            <td>
+              <span class="badge rounded-pill badge-danger p-2">Deleted</span>
+            </td>
             <td><span class="cil-external-link mr-2"></span> Detail</td>
           </tr>
           <tr>
@@ -53,7 +59,9 @@
             <td>01/01/1990</td>
             <td>01/01/2020</td>
             <td>09098786788</td>
-            <td><span class="badge rounded-pill badge-success p-2">Active</span></td>
+            <td>
+              <span class="badge rounded-pill badge-success p-2">Active</span>
+            </td>
             <td><span class="cil-external-link mr-2"></span> Detail</td>
           </tr>
         </tbody>
@@ -66,7 +74,8 @@
         data-target="#exampleModalCenter"
         class="btn btn-info"
       >
-        <span class="cil-playlist-add btn-icon mr-2"></span> {{'GENERAL_LIST.CREATE_EMPLOYEE_PROFILE' | translate}}
+        <span class="cil-playlist-add btn-icon mr-2"></span>
+        {{ "GENERAL_LIST.CREATE_EMPLOYEE_PROFILE" | translate }}
       </button>
       <div
         class="modal fade"
