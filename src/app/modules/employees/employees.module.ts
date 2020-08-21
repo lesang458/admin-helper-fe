@@ -24,4 +24,4 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     PaginationModule.forRoot(),
   ],
 })
-export class EmployeesModule {}
+export class EmployeesModule { }

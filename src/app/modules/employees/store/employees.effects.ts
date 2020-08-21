@@ -14,14 +14,9 @@ export class EmployeeEffects {
   fetchDayOff = this.actions$.pipe(
     ofType(EmployeeActions.FETCH_DAY_OFF),
     switchMap((action: EmployeeActions.FetchDayOff) => {
-      let params = new HttpParams()
+      const params = new HttpParams()
         .append('search', action.payload.search)
         .append('page', action.payload.page);
-      if (action.payload.sortType !== 0) {
-        const type = action.payload.sortType === 1 ? 'asc' : 'desc';
-        const sort = `first_name:${type}`;
-        params = params.append('sort', sort);
-      }
       return this.http
         .get<PaginatedData<Employee[]>>(`${environment.APILink}/employees`, {
           observe: 'response',
@@ -40,5 +35,25 @@ export class EmployeeEffects {
     })
   );
 
-  constructor(private actions$: Actions, private http: HttpClient) {}
+  @Effect()
+  employeeSearch = this.actions$.pipe(
+    ofType(EmployeeActions.SEARCH_EMPLOYEES),
+    switchMap((action: EmployeeActions.SearchEmployees) => {
+      const params: any = action.payload;
+      return this.http
+        .get<any>(`${environment.APILink}employees`, {
+          headers: {
+            Authorization: localStorage.getItem('token'),
+          },
+          params,
+        })
+        .pipe(
+          map((val) => {
+            const data: any = camelcaseKeys(val.data);
+            return new EmployeeActions.GetEmployeesSuccess(data);
+          })
+        );
+    })
+  );
+  constructor(private actions$: Actions, private http: HttpClient) { }
 }

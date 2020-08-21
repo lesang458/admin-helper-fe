@@ -27,7 +27,7 @@ export function employeeReducer(
   action: EmployeesActions.EmployeesActions
 ) {
   switch (action.type) {
-    case EmployeesActions.GET_EMPLOYEES:
+    case EmployeesActions.GET_EMPLOYEES_SUCCESS:
       return {
         ...state,
         employees: [...action.payload],
