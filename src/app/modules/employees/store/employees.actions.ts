@@ -13,7 +13,7 @@ export class GetEmployees implements Action {
 
 export class FetchDayOff implements Action {
   readonly type = FETCH_DAY_OFF;
-  constructor(public payload: { search: string; page }) {}
+  constructor(public payload: { search: string; page; sortType }) {}
 }
 
 export class SetDayOff implements Action {

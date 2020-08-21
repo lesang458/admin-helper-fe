@@ -22,6 +22,7 @@ import * as EmployeeActions from '../../store/employees.actions';
 export class DayoffTableComponent implements OnInit, AfterViewInit, OnDestroy {
   @ViewChild('searchInput', { static: true }) searchInput: ElementRef;
   public maxSize = 3;
+  public sortType = 0;
   public data$: Observable<PaginatedData<Employee[]>>;
   private subscription: Subscription;
   constructor(private store: Store<fromApp.AppState>) {}
@@ -33,7 +34,11 @@ export class DayoffTableComponent implements OnInit, AfterViewInit, OnDestroy {
       })
     );
     this.store.dispatch(
-      new EmployeeActions.FetchDayOff({ search: '', page: 1 })
+      new EmployeeActions.FetchDayOff({
+        search: '',
+        page: 1,
+        sortType: this.sortType,
+      })
     );
   }
 
@@ -43,7 +48,11 @@ export class DayoffTableComponent implements OnInit, AfterViewInit, OnDestroy {
       .subscribe(() => {
         const search = this.searchInput.nativeElement.value;
         this.store.dispatch(
-          new EmployeeActions.FetchDayOff({ search, page: 1 })
+          new EmployeeActions.FetchDayOff({
+            search,
+            page: 1,
+            sortType: this.sortType,
+          })
         );
       });
   }
@@ -51,13 +60,20 @@ export class DayoffTableComponent implements OnInit, AfterViewInit, OnDestroy {
   public onPageChanged(event: any): void {
     const search = this.searchInput.nativeElement.value;
     this.store.dispatch(
-      new EmployeeActions.FetchDayOff({ search, page: event.page })
+      new EmployeeActions.FetchDayOff({
+        search,
+        page: event.page,
+        sortType: this.sortType,
+      })
     );
   }
 
-  public onSort(event: any): void {
+  public onSort(page): void {
+    this.sortType = (this.sortType + 1) % 3;
     const search = this.searchInput.nativeElement.value;
-    this.store.dispatch(new EmployeeActions.FetchDayOff({ search, page: 2 }));
+    this.store.dispatch(
+      new EmployeeActions.FetchDayOff({ search, page, sortType: this.sortType })
+    );
   }
 
   ngOnDestroy(): void {
