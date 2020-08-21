@@ -22,8 +22,9 @@ export class EmployeeEffects {
         })
         .pipe(
           map((val) => {
-            let value: any = CamelCaseHelper.keysToCamel(val);
-            return new EmployeeActions.GetEmployeesSuccess(value.data);
+            const camelcaseKeys = require('camelcase-keys');
+            let data: any = camelcaseKeys(val.data);
+            return new EmployeeActions.GetEmployeesSuccess(data);
           })
         );
     })
