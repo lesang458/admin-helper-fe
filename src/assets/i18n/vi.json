@@ -1,34 +1,34 @@
 {
-    "SIDEBAR": {
-        "TITLE": "Quản lý nhân viên",
-        "LINK_1": "Thông tin chung",
-        "LINK_2": "Ngày phép",
-        "LINK_3": "Chấm công"
-    },
-    "HEADER": {
-        "TITLE": "Danh sách nhân viên",
-        "VIETNAMESE": "Tiếng việt"
-    },
-    "GENERAL_LIST": {
-        "NAME": "Họ và tên",
-        "BIRTHDAY": "Ngày sinh",
-        "JOIN_DATE": "Ngày vào công ty",
-        "PHONE_NUMBER": "Số điện thoại",
-        "STATUS": "Trạng Thái",
-        "ACTIONS": "Hành động",
-        "ACTIVE": "Hoạt động",
-        "DELETED": "Đã xóa",
-        "DETAIL": "Chi tiết",
-        "CREATE_EMPLOYEE_PROFILE": "Tạo hồ sơ nhân viên"
-    },
-    "DAY_OFF_TABLE": {
-        "TYPE_OF_LEAVE": "Loại phép",
-        "SICH_LEAVE": "Nghỉ ốm",
-        "ANNUAL_LEAVE": "Phép năm",
-        "NAME": "Họ và tên",
-        "BIRTHDAY": "Ngày sinh",
-        "TOTAL_LEAVES": "Tổng phép",
-        "NUMBER_OF_LEAVES_REMAINING": "Phép còn lại",
-        "SUBMIT_TIME_OFF": "Nhập ngày phép"
-    }
+  "SIDEBAR": {
+    "TITLE": "Quản lý nhân viên",
+    "LINK_1": "Thông tin chung",
+    "LINK_2": "Ngày phép",
+    "LINK_3": "Chấm công"
+  },
+  "HEADER": {
+    "TITLE": "Danh sách nhân viên",
+    "VIETNAMESE": "Tiếng việt"
+  },
+  "GENERAL_LIST": {
+    "NAME": "Họ và tên",
+    "BIRTHDAY": "Ngày sinh",
+    "JOIN_DATE": "Ngày vào công ty",
+    "PHONE_NUMBER": "Số điện thoại",
+    "STATUS": "Trạng Thái",
+    "ACTIONS": "Hành động",
+    "ACTIVE": "Hoạt động",
+    "DELETED": "Đã xóa",
+    "DETAIL": "Chi tiết",
+    "CREATE_EMPLOYEE_PROFILE": "Tạo hồ sơ nhân viên"
+  },
+  "DAY_OFF_TABLE": {
+    "TYPE_OF_LEAVE": "Loại phép",
+    "SICH_LEAVE": "Nghỉ ốm",
+    "ANNUAL_LEAVE": "Phép năm",
+    "NAME": "Họ và tên",
+    "BIRTHDAY": "Ngày sinh",
+    "TOTAL_LEAVES": "Tổng phép",
+    "NUMBER_OF_LEAVES_REMAINING": "Phép còn lại",
+    "SUBMIT_TIME_OFF": "Nhập ngày phép"
+  }
 }

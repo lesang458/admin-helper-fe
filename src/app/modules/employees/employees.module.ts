@@ -7,7 +7,7 @@ import { GeneralInfoComponent } from './pages/general-info/general-info.componen
 import { DayoffComponent } from './pages/dayoff/dayoff.component';
 import { DayoffTableComponent } from './components/dayoff-table/dayoff-table.component';
 import { PaginationModule } from 'ngx-bootstrap/pagination';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -20,7 +20,8 @@ import { FormsModule } from '@angular/forms';
     SharedModule,
     FormsModule,
     RouterModule.forChild(EMPLOYEES_ROUTES),
+    ReactiveFormsModule,
     PaginationModule.forRoot(),
-  ]
+  ],
 })
 export class EmployeesModule {}
