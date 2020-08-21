@@ -19,7 +19,8 @@
     "ACTIVE": "Active",
     "DELETED": "Deleted",
     "DETAIL": "Detail",
-    "CREATE_EMPLOYEE_PROFILE": "Create employee profile"
+    "CREATE_EMPLOYEE_PROFILE": "Create employee profile",
+    "NO_RESULT": "No result."
   },
   "DAY_OFF_TABLE": {
     "TYPE_OF_LEAVE": "Type of leave",

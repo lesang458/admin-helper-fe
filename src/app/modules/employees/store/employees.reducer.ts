@@ -11,10 +11,10 @@ export const initialState: State = {
 
 export function employeeReducer(
   state: State = initialState,
-  action: EmployeesAction.GetEmployees
+  action: EmployeesAction.EmployeesActions
 ) {
   switch (action.type) {
-    case EmployeesAction.GET_EMPLOYEES:
+    case EmployeesAction.GET_EMPLOYEES_SUCCESS:
       return {
         ...state,
         employees: [...action.payload],

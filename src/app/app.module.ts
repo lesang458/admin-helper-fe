@@ -1,3 +1,4 @@
+import { EmployeeEffects } from './modules/employees/store/employees.effects';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule } from '@angular/router';
@@ -11,6 +12,7 @@ import { EmployeesModule } from './modules/employees/employees.module';
 import { SharedModule } from './shared/shared.module';
 import { StoreModule } from '@ngrx/store';
 import * as fromApp from './store/app.reducer';
+import { EffectsModule } from '@ngrx/effects';
 
 export function HttpLoaderFactory(httpClient: HttpClient) {
   return new TranslateHttpLoader(httpClient);
@@ -32,6 +34,7 @@ export function HttpLoaderFactory(httpClient: HttpClient) {
       },
     }),
     RouterModule.forRoot(APP_ROUTES, { scrollPositionRestoration: 'enabled' }),
+    EffectsModule.forRoot([EmployeeEffects]),
     StoreModule.forRoot(fromApp.appReducer),
   ],
   providers: [],

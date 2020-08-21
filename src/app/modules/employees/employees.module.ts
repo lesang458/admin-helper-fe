@@ -17,6 +17,10 @@ import { ProfileCreateComponent } from './components/profile-create/profile-crea
     DayoffTableComponent,
     ProfileCreateComponent,
   ],
-  imports: [SharedModule,ReactiveFormsModule, RouterModule.forChild(EMPLOYEES_ROUTES)],
+  imports: [
+    SharedModule,
+    RouterModule.forChild(EMPLOYEES_ROUTES),
+    ReactiveFormsModule,
+  ],
 })
 export class EmployeesModule {}

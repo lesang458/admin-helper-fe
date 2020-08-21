@@ -19,7 +19,8 @@
     "ACTIVE": "Hoạt động",
     "DELETED": "Đã xóa",
     "DETAIL": "Chi tiết",
-    "CREATE_EMPLOYEE_PROFILE": "Tạo hồ sơ nhân viên"
+    "CREATE_EMPLOYEE_PROFILE": "Tạo hồ sơ nhân viên",
+    "NO_RESULT": "Không có kết quả."
   },
   "DAY_OFF_TABLE": {
     "TYPE_OF_LEAVE": "Loại phép",
