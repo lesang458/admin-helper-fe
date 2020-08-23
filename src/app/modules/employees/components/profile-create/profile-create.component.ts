@@ -3,7 +3,6 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Store } from '@ngrx/store';
 import * as fromApp from '../../../../store/app.reducer';
 import * as EmployeeActions from '../../store/employees.actions';
-import { HttpParams } from '@angular/common/http';
 
 @Component({
   selector: 'profile-create',
@@ -16,7 +15,7 @@ export class ProfileCreateComponent implements OnInit {
     firstName: new FormControl(''),
     lastName: new FormControl(''),
     email: new FormControl('', Validators.email),
-    password: new FormControl('', Validators.minLength(6)),
+    encryptedPassword: new FormControl('', Validators.minLength(6)),
     phoneNumber: new FormControl(''),
     birthdate: new FormControl(''),
     joinDate: new FormControl(''),
@@ -30,9 +29,25 @@ export class ProfileCreateComponent implements OnInit {
     return this.profileForm.controls;
   }
 
+  getToday(): string {
+    return new Date().toISOString().split('T')[0];
+  }
+
   onSubmit() {
     this.submitted = true;
-
-    console.log(this.profileForm.value);
+    const dayOffInfo = [
+      {
+        dayOffCategoryId: 1,
+        hours: 160,
+      },
+      {
+        dayOffCategoryId: 2,
+        hours: 160,
+      },
+    ];
+    this.profileForm.value.dayOffInfo = dayOffInfo;
+    this.store.dispatch(
+      new EmployeeActions.CreateEmployee(this.profileForm.value)
+    );
   }
 }

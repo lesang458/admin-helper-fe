@@ -5,6 +5,7 @@ import { switchMap, map } from 'rxjs/operators';
 import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment.prod';
 import * as camelcaseKeys from 'camelcase-keys';
+import * as snakecaseKeys from 'snakecase-keys';
 
 @Injectable()
 export class EmployeeEffects {
@@ -24,6 +25,26 @@ export class EmployeeEffects {
           map((val) => {
             let data: any = camelcaseKeys(val.data);
             return new EmployeeActions.GetEmployeesSuccess(data);
+          })
+        );
+    })
+  );
+
+  @Effect()
+  createEmployee = this.actions$.pipe(
+    ofType(EmployeeActions.CREATE_EMPLOYEE),
+    switchMap((action: EmployeeActions.CreateEmployee) => {
+      let body: any = snakecaseKeys(action.payload);
+      return this.http
+        .post<any>(`${environment.APILink}employees`, body, {
+          headers: {
+            Authorization: localStorage.getItem('token'),
+          },
+        })
+        .pipe(
+          map((val) => {
+            let data: any = camelcaseKeys(val.data);
+            return new EmployeeActions.CreateEmployee(data);
           })
         );
     })

@@ -1,7 +1,9 @@
 <div class="modal-dialog modal-dialog-centered" role="document">
   <div class="modal-content">
     <div class="modal-header">
-      <h5 class="modal-title" id="exampleModalCenterTitle">{{'PROFILE_CREATE.TITLE' | translate}}</h5>
+      <h5 class="modal-title" id="exampleModalCenterTitle">
+        {{ "PROFILE_CREATE.TITLE" | translate }}
+      </h5>
       <button
         type="button"
         class="close"
@@ -15,116 +17,171 @@
       <div class="modal-body">
         <div class="form-row">
           <div class="form-group col-md-6">
-            <label for="exampleFormControlInput1">{{'PROFILE_CREATE.FIRST_NAME' | translate}}</label>
+            <label for="exampleFormControlInput1">{{
+              "PROFILE_CREATE.FIRST_NAME" | translate
+            }}</label>
             <input
               type="text"
               class="form-control"
               id="exampleFormControlInput1"
               formControlName="firstName"
-              [ngClass]="{ 'is-invalid': submitted &&  f.firstName.errors}"
+              [ngClass]="{ 'is-invalid': submitted && f.firstName.errors }"
               required
             />
-            <div *ngIf="submitted && f.firstName.errors" class="invalid-feedback">
-              <div *ngIf="f.firstName.errors.required">{{'PROFILE_CREATE.LAST_NAME_INVALID' | translate}}</div>
+            <div
+              *ngIf="submitted && f.firstName.errors"
+              class="invalid-feedback"
+            >
+              <div *ngIf="f.firstName.errors.required">
+                {{ "PROFILE_CREATE.LAST_NAME_INVALID" | translate }}
+              </div>
             </div>
-        </div>
+          </div>
           <div class="form-group col-md-6">
-            <label for="exampleFormControlInput2">{{'PROFILE_CREATE.LAST_NAME' | translate}}</label>
+            <label for="exampleFormControlInput2">{{
+              "PROFILE_CREATE.LAST_NAME" | translate
+            }}</label>
             <input
               type="text"
               class="form-control"
               id="exampleFormControlInput2"
               formControlName="lastName"
-              [ngClass]="{ 'is-invalid': submitted &&  f.lastName.errors}"
+              [ngClass]="{ 'is-invalid': submitted && f.lastName.errors }"
               required
             />
-            <div *ngIf="submitted && f.lastName.errors" class="invalid-feedback">
-              <div *ngIf="f.lastName.errors.required">{{'PROFILE_CREATE.LAST_NAME_INVALID' | translate}}</div>
+            <div
+              *ngIf="submitted && f.lastName.errors"
+              class="invalid-feedback"
+            >
+              <div *ngIf="f.lastName.errors.required">
+                {{ "PROFILE_CREATE.LAST_NAME_INVALID" | translate }}
+              </div>
             </div>
           </div>
-        </div>  
-          <div class="form-group">
-            <label for="exampleFormControlInput3">{{'PROFILE_CREATE.EMAIL' | translate}}</label>
-            <input
-              type="email"
-              class="form-control"
-              id="exampleFormControlInput3"
-              formControlName="email"
-              [ngClass]="{ 'is-invalid': submitted &&  f.email.errors}"
-              required
-            />
-            <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
-              <div *ngIf="f.email.errors.required">{{'PROFILE_CREATE.EMAIL_INVALID' | translate}}</div>
-              <div *ngIf="f.email.errors.email">{{'PROFILE_CREATE.IS_EMAIL' | translate}}</div>
+        </div>
+        <div class="form-group">
+          <label for="exampleFormControlInput3">{{
+            "PROFILE_CREATE.EMAIL" | translate
+          }}</label>
+          <input
+            type="email"
+            class="form-control"
+            id="exampleFormControlInput3"
+            formControlName="email"
+            [ngClass]="{ 'is-invalid': submitted && f.email.errors }"
+            required
+          />
+          <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
+            <div *ngIf="f.email.errors.required">
+              {{ "PROFILE_CREATE.EMAIL_INVALID" | translate }}
             </div>
-          </div>
-          <div class="form-row">
-          <div class="form-group col-md-6">
-            <label for="exampleFormControlInput4">{{'PROFILE_CREATE.PASSWORD' | translate}}</label>
-            <input
-              type="password"
-              class="form-control"
-              id="exampleFormControlInput4"
-              formControlName="password"
-              [ngClass]="{ 'is-invalid': submitted &&  f.password.errors}"
-              required
-            />
-            <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
-              <div *ngIf="f.password.errors.required">{{'PROFILE_CREATE.PASSWORD_INVALID' | translate}}</div>
-              <div *ngIf="f.password.errors.minlength">{{'PROFILE_CREATE.PASS_MINLENGTH' | translate}}</div>
-            </div>
-          </div>
-          <div class="form-group col-md-6">
-            <label for="exampleFormControlInput5">{{'PROFILE_CREATE.PHONE_NUMBER' | translate}}</label>
-            <input
-              type="number"
-              class="form-control"
-              id="exampleFormControlInput5"
-              formControlName="phoneNumber"
-              [ngClass]="{ 'is-invalid': submitted &&  f.phoneNumber.errors}"
-              required
-            />
-            <div *ngIf="submitted && f.phoneNumber.errors" class="invalid-feedback">
-              <div *ngIf="f.phoneNumber.errors.required">{{'PROFILE_CREATE.PHONE_NUMBER_INVALID' | translate}}</div>
+            <div *ngIf="f.email.errors.email">
+              {{ "PROFILE_CREATE.IS_EMAIL" | translate }}
             </div>
           </div>
         </div>
         <div class="form-row">
           <div class="form-group col-md-6">
-            <label for="exampleFormControlInput6">{{'PROFILE_CREATE.BIRTHDAY' | translate}}</label>
+            <label for="exampleFormControlInput4">{{
+              "PROFILE_CREATE.PASSWORD" | translate
+            }}</label>
             <input
-              type="date"
+              type="password"
               class="form-control"
-              id="exampleFormControlInput6"
-              formControlName="birthdate"
-              [ngClass]="{ 'is-invalid': submitted &&  f.birthdate.errors}"
+              id="exampleFormControlInput4"
+              formControlName="encryptedPassword"
+              [ngClass]="{
+                'is-invalid': submitted && f.encryptedPassword.errors
+              }"
               required
             />
-            <div *ngIf="submitted && f.birthdate.errors" class="invalid-feedback">
-              <div *ngIf="f.birthdate.errors.required">{{'PROFILE_CREATE.BIRTHDAY_INVALID' | translate}}</div>
+            <div
+              *ngIf="submitted && f.encryptedPassword.errors"
+              class="invalid-feedback"
+            >
+              <div *ngIf="f.encryptedPassword.errors.required">
+                {{ "PROFILE_CREATE.PASSWORD_INVALID" | translate }}
+              </div>
+              <div *ngIf="f.encryptedPassword.errors.minlength">
+                {{ "PROFILE_CREATE.PASS_MINLENGTH" | translate }}
+              </div>
             </div>
           </div>
           <div class="form-group col-md-6">
-            <label for="exampleFormControlInput7">{{'PROFILE_CREATE.JOIN_DATE' | translate}}</label>
+            <label for="exampleFormControlInput5">{{
+              "PROFILE_CREATE.PHONE_NUMBER" | translate
+            }}</label>
+            <input
+              type="number"
+              class="form-control"
+              id="exampleFormControlInput5"
+              formControlName="phoneNumber"
+              [ngClass]="{ 'is-invalid': submitted && f.phoneNumber.errors }"
+              required
+            />
+            <div
+              *ngIf="submitted && f.phoneNumber.errors"
+              class="invalid-feedback"
+            >
+              <div *ngIf="f.phoneNumber.errors.required">
+                {{ "PROFILE_CREATE.PHONE_NUMBER_INVALID" | translate }}
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group col-md-6">
+            <label for="exampleFormControlInput6">{{
+              "PROFILE_CREATE.BIRTHDAY" | translate
+            }}</label>
+            <input
+              type="date"
+              class="form-control"
+              [max]="getToday()"
+              id="exampleFormControlInput6"
+              formControlName="birthdate"
+              [ngClass]="{ 'is-invalid': submitted && f.birthdate.errors }"
+              required
+            />
+            <div
+              *ngIf="submitted && f.birthdate.errors"
+              class="invalid-feedback"
+            >
+              <div *ngIf="f.birthdate.errors.required">
+                {{ "PROFILE_CREATE.BIRTHDAY_INVALID" | translate }}
+              </div>
+            </div>
+          </div>
+          <div class="form-group col-md-6">
+            <label for="exampleFormControlInput7">{{
+              "PROFILE_CREATE.JOIN_DATE" | translate
+            }}</label>
             <input
               type="date"
               class="form-control"
               id="exampleFormControlInput7"
               formControlName="joinDate"
-              [ngClass]="{ 'is-invalid': submitted &&  f.joinDate.errors}"
+              [ngClass]="{ 'is-invalid': submitted && f.joinDate.errors }"
               required
             />
-            <div *ngIf="submitted && f.joinDate.errors" class="invalid-feedback">
-              <div *ngIf="f.joinDate.errors.required">{{'PROFILE_CREATE.JOIN_DATE_INVALID' | translate}}</div>
+            <div
+              *ngIf="submitted && f.joinDate.errors"
+              class="invalid-feedback"
+            >
+              <div *ngIf="f.joinDate.errors.required">
+                {{ "PROFILE_CREATE.JOIN_DATE_INVALID" | translate }}
+              </div>
             </div>
           </div>
         </div>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">
-          {{'PROFILE_CREATE.CLOSE' | translate}}
+          {{ "PROFILE_CREATE.CLOSE" | translate }}
         </button>
-        <button type="submit" class="btn btn-primary">{{'PROFILE_CREATE.SAVE' | translate}}</button>
+        <button type="submit" class="btn btn-primary">
+          {{ "PROFILE_CREATE.SAVE" | translate }}
+        </button>
       </div>
     </form>
   </div>
