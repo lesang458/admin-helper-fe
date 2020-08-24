@@ -41,7 +41,11 @@ export class DayoffTableComponent implements OnInit, AfterViewInit, OnDestroy {
     this.subscription = fromEvent<any>(this.searchInput.nativeElement, 'input')
       .pipe(debounceTime(300), distinctUntilChanged())
       .subscribe(() => {
-        this.onPageChanged(1);
+        if (this.currentPage === 1) {
+          this.onPageChanged(1);
+        } else {
+          this.currentPage = 1;
+        }
       });
   }
 
