@@ -3,10 +3,12 @@ import { Employee } from 'src/app/shared/models/employees.model';
 
 export interface State {
   employees: Employee[];
+  pagination: {};
 }
 
 export const initialState: State = {
   employees: [],
+  pagination: {},
 };
 
 export function employeeReducer(
@@ -17,7 +19,8 @@ export function employeeReducer(
     case EmployeesAction.GET_EMPLOYEES_SUCCESS:
       return {
         ...state,
-        employees: [...action.payload],
+        employees: [...action.payload.data],
+        pagination: action.payload.pagination,
       };
     default:
       return state;

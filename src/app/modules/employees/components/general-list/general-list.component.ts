@@ -16,6 +16,7 @@ export class GeneralListComponent implements OnInit {
   public employeeObs$: Observable<any>;
   public searchFormControl = new FormControl();
   public loading: boolean = true;
+  public currentPage: Number = 1;
   public searchStatusFormControl = new FormControl('');
   private sortVariable = {
     sortName: '',
@@ -25,9 +26,7 @@ export class GeneralListComponent implements OnInit {
   constructor(private store: Store<fromApp.AppState>) {}
 
   ngOnInit(): void {
-    this.employeeObs$ = this.store
-      .select('employees')
-      .pipe(map((val) => val.employees));
+    this.employeeObs$ = this.store.select('employees');
     this.employeeObs$.subscribe(() => {
       this.loading = false;
     });
@@ -58,6 +57,7 @@ export class GeneralListComponent implements OnInit {
   }
 
   private setParams(): any {
+    this.currentPage = 1;
     let searchValue = this.searchFormControl.value;
     let statusValue = this.searchStatusFormControl.value;
     return Object.assign(
@@ -86,6 +86,15 @@ export class GeneralListComponent implements OnInit {
     this.store.dispatch(
       new EmployeeActions.SearchEmployees(
         new HttpParams({ fromObject: this.setParams() })
+      )
+    );
+  }
+
+  public onPageChanged(page: number): void {
+    const search = Object.assign(this.setParams(), { page });
+    this.store.dispatch(
+      new EmployeeActions.SearchEmployees(
+        new HttpParams({ fromObject: search })
       )
     );
   }

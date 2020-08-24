@@ -22,8 +22,11 @@ export class EmployeeEffects {
         })
         .pipe(
           map((val) => {
-            let data: any = camelcaseKeys(val.data);
-            return new EmployeeActions.GetEmployeesSuccess(data);
+            let value: any = {
+              data: camelcaseKeys(val.data),
+              pagination: camelcaseKeys(val.pagination),
+            };
+            return new EmployeeActions.GetEmployeesSuccess(value);
           })
         );
     })

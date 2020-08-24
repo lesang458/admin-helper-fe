@@ -57,7 +57,12 @@
           </tr>
         </thead>
         <tbody *ngIf="(employeeObs$ | async) && !loading">
-          <tr *ngFor="let item of employeeObs$ | async; let i = index">
+          <tr
+            *ngFor="
+              let item of (employeeObs$ | async)?.employees;
+              let i = index
+            "
+          >
             <th scope="row">{{ i + 1 }}</th>
             <td>{{ item.firstName + " " + item.lastName }}</td>
             <td>{{ item.birthdate }}</td>
@@ -82,6 +87,26 @@
           </tr>
         </tbody>
       </table>
+      <div
+        class="col-12"
+        *ngIf="(employeeObs$ | async)?.pagination.totalCount !== 0"
+      >
+        <pagination
+          [totalItems]="(employeeObs$ | async)?.pagination.totalCount"
+          [maxSize]="3"
+          [itemsPerPage]="20"
+          [(ngModel)]="currentPage"
+          (pageChanged)="onPageChanged($event.page)"
+          class="pagination-md justify-content-end"
+          previousText="&lsaquo;"
+          nextText="&rsaquo;"
+          firstText="&laquo;"
+          lastText="&raquo;"
+          [boundaryLinks]="true"
+          [rotate]="true"
+        >
+        </pagination>
+      </div>
     </div>
 
     <div *ngIf="loading" class="d-flex justify-content-center">
@@ -91,7 +116,7 @@
     </div>
 
     <div
-      *ngIf="(employeeObs$ | async)?.length === 0 && !loading"
+      *ngIf="(employeeObs$ | async)?.employees.length === 0 && !loading"
       class="alert alert-light"
       role="alert"
     >
