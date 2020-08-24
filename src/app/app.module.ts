@@ -40,4 +40,4 @@ export function HttpLoaderFactory(httpClient: HttpClient) {
   providers: [],
   bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

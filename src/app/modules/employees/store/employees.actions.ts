@@ -10,21 +10,27 @@ export const SET_DAY_OFF = '[Employees] Set Day Off';
 
 export class GetEmployeesSuccess implements Action {
   readonly type = GET_EMPLOYEES_SUCCESS;
-  constructor(public payload: Employee[]) { }
+  constructor(public payload: Employee[]) {}
 }
 
 export class SearchEmployees implements Action {
   readonly type = SEARCH_EMPLOYEES;
-  constructor(public payload: HttpParams) { }
+  constructor(public payload: HttpParams) {}
 }
 export class FetchDayOff implements Action {
   readonly type = FETCH_DAY_OFF;
-  constructor(public payload: { search: string; page; sort: { sortNameType, sortBirthDateType } }) { }
+  constructor(
+    public payload: {
+      search: string;
+      page;
+      sort: { sortNameType; sortBirthDateType };
+    }
+  ) {}
 }
 
 export class SetDayOff implements Action {
   readonly type = SET_DAY_OFF;
-  constructor(public payload: PaginatedData<Employee[]>) { }
+  constructor(public payload: PaginatedData<Employee[]>) {}
 }
 
 export type EmployeesActions =
