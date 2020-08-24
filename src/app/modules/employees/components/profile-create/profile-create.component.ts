@@ -32,11 +32,11 @@ export class ProfileCreateComponent implements OnInit {
     return this.profileForm.controls;
   }
 
-  getToday(): string {
+  public getToday(): string {
     return new Date().toISOString().split('T')[0];
   }
 
-  onSubmit() {
+  public onSubmit() {
     const dayOffInfo = [
       {
         dayOffCategoryId: 1,
@@ -53,7 +53,7 @@ export class ProfileCreateComponent implements OnInit {
     );
   }
 
-  resetForm() {
+  public resetForm() {
     this.profileForm.reset();
   }
 }
