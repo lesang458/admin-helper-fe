@@ -53,7 +53,8 @@
     "JOIN_DATE_INVALID": "Hãy nhập ngày vào công ty",
     "PHONE_NUMBER_INVALID": "Hãy nhập số điện thoại",
     "PHONE_NUMBER_PATTERN": "Số điện thoại phải là số",
-    "PHONE_NUMBER_MAXLENGTH": "Số điện thoại không vượt quá 10 ký tự",
+    "PHONE_NUMBER_MINLENGTH": "Số điện thoại phải trên 10 ký tự",
+    "PHONE_NUMBER_MAXLENGTH": "Số điện thoại không vượt quá 12 ký tự",
     "CLOSE": "Đóng",
     "SAVE": "Lưu"
   }

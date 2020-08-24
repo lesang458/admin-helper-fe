@@ -141,6 +141,9 @@
               <div *ngIf="f.phoneNumber.errors.required">
                 {{ "PROFILE_CREATE.PHONE_NUMBER_INVALID" | translate }}
               </div>
+              <div *ngIf="f.phoneNumber.errors.minlength">
+                {{ "PROFILE_CREATE.PHONE_NUMBER_MINLENGTH" | translate }}
+              </div>
               <div *ngIf="f.phoneNumber.errors.maxlength">
                 {{ "PROFILE_CREATE.PHONE_NUMBER_MAXLENGTH" | translate }}
               </div>

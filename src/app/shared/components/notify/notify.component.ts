@@ -9,7 +9,7 @@ import { NotifyService } from '../../services/notify.service';
 })
 export class NotifyComponent implements OnInit, OnDestroy {
   private subscription: Subscription;
-  message: any;
+  public message: any;
 
   constructor(private notifyService: NotifyService) {}
 
@@ -28,7 +28,7 @@ export class NotifyComponent implements OnInit, OnDestroy {
     });
   }
 
-  showMess() {
+  public showMess() {
     this.message = null;
   }
 

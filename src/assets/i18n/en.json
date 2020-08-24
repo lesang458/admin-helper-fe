@@ -55,7 +55,8 @@
     "JOIN_DATE_INVALID": "Join date is required",
     "PHONE_NUMBER_INVALID": "Phone number is required",
     "PHONE_NUMBER_PATTERN": "Phone number must be number",
-    "PHONE_NUMBER_MAXLENGTH": "Phone number must not exceed 10 characters",
+    "PHONE_NUMBER_MINLENGTH": "Phone number must be at least 10 characters",
+    "PHONE_NUMBER_MAXLENGTH": "Phone number must not exceed 12 characters",
     "CLOSE": "Close",
     "SAVE": "Save"
   }

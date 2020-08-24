@@ -10,16 +10,15 @@ import * as EmployeeActions from '../../store/employees.actions';
   styleUrls: ['./profile-create.component.scss'],
 })
 export class ProfileCreateComponent implements OnInit {
-  public submitted = false;
-
-  profileForm = new FormGroup({
+  public profileForm = new FormGroup({
     firstName: new FormControl('', Validators.maxLength(100)),
     lastName: new FormControl('', Validators.maxLength(100)),
     email: new FormControl('', Validators.email),
     encryptedPassword: new FormControl('', Validators.minLength(6)),
     phoneNumber: new FormControl('', [
       Validators.pattern('^[0-9]*$'),
-      Validators.maxLength(10),
+      Validators.minLength(10),
+      Validators.maxLength(12),
     ]),
     birthdate: new FormControl(''),
     joinDate: new FormControl(''),
@@ -38,7 +37,6 @@ export class ProfileCreateComponent implements OnInit {
   }
 
   onSubmit() {
-    // this.submitted = true;
     const dayOffInfo = [
       {
         dayOffCategoryId: 1,

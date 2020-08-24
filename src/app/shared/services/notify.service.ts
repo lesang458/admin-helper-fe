@@ -19,21 +19,21 @@ export class NotifyService {
     });
   }
 
-  getAlert(): Observable<any> {
+  public getAlert(): Observable<any> {
     return this.subject.asObservable();
   }
 
-  success(message: string, keepAfterRouteChange = false) {
+  public success(message: string, keepAfterRouteChange = false) {
     this.keepAfterRouteChange = keepAfterRouteChange;
     this.subject.next({ type: 'success', text: message });
   }
 
-  error(message: string, keepAfterRouteChange = false) {
+  public error(message: string, keepAfterRouteChange = false) {
     this.keepAfterRouteChange = keepAfterRouteChange;
     this.subject.next({ type: 'error', text: message });
   }
 
-  clear() {
+  public clear() {
     this.subject.next();
   }
 }
