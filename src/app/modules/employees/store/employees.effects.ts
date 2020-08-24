@@ -5,7 +5,6 @@ import * as EmployeesActions from './employees.actions';
 import { switchMap, map } from 'rxjs/operators';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { environment } from 'src/environments/environment.prod';
-import { CamelCaseHelper } from 'src/app/core/helper/camelCase.helper';
 import { PaginatedData } from 'src/app/shared/models/pagination.model';
 import * as camelcaseKeys from 'camelcase-keys';
 
@@ -34,36 +33,43 @@ export class EmployeeEffects {
         );
     })
   );
-    @Effect()
-    fetchDayOff = this.actions$.pipe(
-        ofType(EmployeesActions.FETCH_DAY_OFF),
-        switchMap((action: EmployeesActions.FetchDayOff) => {
-            const params = new HttpParams()
-                        .append('search', action.payload.search)
-                        .append('page', action.payload.page);
-            return this.http.get<PaginatedData<Employee[]>>(
-                `${environment.APILink}/employees`,
-                {
-                    headers: {
-                        Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxMDIsInJvbGVzIjpbIkVNUExPWUVFIiwiQURNSU4iXSwiZXhwIjoxNTk3OTgwMzIyfQ.bF_vkoWK02C_1n1ilRCEChfEwpwLp_L7-zjSpRjSmPg',
-                    },
-                    observe: 'response',
-                    params
-                }
-            ).pipe(
-                map((response) => {
-                    const value: any = CamelCaseHelper.keysToCamel(response.body);
-                    const dayOff: PaginatedData<Employee[]> = {
-                        data: value.data,
-                        pagination: value.pagination
-                    };
-                    return new EmployeesActions.SetDayOff(dayOff);
-                })
-            );
-        })
-    );
+  @Effect({})
+  fetchDayOff = this.actions$.pipe(
+    ofType(EmployeesActions.FETCH_DAY_OFF),
+    switchMap((action: EmployeesActions.FetchDayOff) => {
+      let sort = ``;
+      if (action.payload.sort.sortNameType) {
+        const sortNameType =
+          action.payload.sort.sortNameType === 1 ? 'asc' : 'desc';
+        sort = `first_name:${sortNameType}`;
+      }
+      if (action.payload.sort.sortBirthDateType) {
+        const sortBirthDateType =
+          action.payload.sort.sortBirthDateType === 1 ? 'asc' : 'desc';
+        sort = `birthdate:${sortBirthDateType}`;
+      }
 
-    constructor(
-        private actions$: Actions,
-        private http: HttpClient) {}
+      const params = new HttpParams()
+        .append('search', action.payload.search)
+        .append('page', action.payload.page)
+        .append('sort', sort);
+
+      return this.http
+        .get<PaginatedData<Employee[]>>(`${environment.APILink}/employees`, {
+          observe: 'response',
+          params,
+        })
+        .pipe(
+          map((response) => {
+            const value: any = camelcaseKeys(response.body, { deep: true });
+            const dayOff: PaginatedData<Employee[]> = {
+              data: value.data,
+              pagination: value.pagination,
+            };
+            return new EmployeesActions.SetDayOff(dayOff);
+          })
+        );
+    })
+  );
+  constructor(private actions$: Actions, private http: HttpClient) {}
 }

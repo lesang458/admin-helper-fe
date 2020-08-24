@@ -1,6 +1,9 @@
 import * as EmployeesActions from './employees.actions';
 import { Employee } from 'src/app/shared/models/employees.model';
-import { PaginatedData, Pagination } from 'src/app/shared/models/pagination.model';
+import {
+  PaginatedData,
+  Pagination,
+} from 'src/app/shared/models/pagination.model';
 
 export interface State {
   employees: Employee[];
@@ -11,13 +14,14 @@ export interface State {
 const initDayOff = new PaginatedData<Employee[]>();
 initDayOff.data = [];
 const pagination: Pagination = {
-  totalCount: 0
+  totalCount: 0,
 };
 initDayOff.pagination = pagination;
+
 export const initialState: State = {
   employees: [],
   pagination: {},
-  dayOff: initDayOff
+  dayOff: initDayOff,
 };
 
 export function employeeReducer(
@@ -34,7 +38,7 @@ export function employeeReducer(
     case EmployeesActions.SET_DAY_OFF:
       return {
         ...state,
-        dayOff: action.payload
+        dayOff: action.payload,
       };
     default:
       return state;

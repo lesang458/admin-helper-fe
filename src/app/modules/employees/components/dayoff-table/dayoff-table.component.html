@@ -8,21 +8,27 @@
               <i class="cil-search"></i>
             </div>
           </div>
-          <input type="text"
-                 class="form-control"
-                 id="inlineFormInputGroupUsername"
-                 placeholder="VD: Nguyen, 2020, ...">
+          <input
+            type="search"
+            class="form-control"
+            #searchInput
+            id="inlineFormInputGroupUsername"
+            placeholder="VD: Nguyen, 2020, ..."
+          />
         </div>
       </div>
       <div class="col-5">
         <div class="form-group">
-          <label class="d-inline-block mr-3 ml-2"
-                 for="day-off-type">{{ 'DAY_OFF_TABLE.TYPE_OF_LEAVE' | translate}}</label>
-          <select class="form-control d-inline-block"
-                  style="width: auto;"
-                  id="day-off-type">
-            <option>{{ 'DAY_OFF_TABLE.ANNUAL_LEAVE' | translate}}</option>
-            <option>{{ 'DAY_OFF_TABLE.SICK_LEAVE' | translate}}</option>
+          <label class="d-inline-block mr-3 ml-2" for="day-off-type">{{
+            "DAY_OFF_TABLE.TYPE_OF_LEAVE" | translate
+          }}</label>
+          <select
+            class="form-control d-inline-block"
+            style="width: auto;"
+            id="day-off-type"
+          >
+            <option>{{ "DAY_OFF_TABLE.ANNUAL_LEAVE" | translate }}</option>
+            <option>{{ "DAY_OFF_TABLE.SICK_LEAVE" | translate }}</option>
           </select>
         </div>
       </div>
@@ -31,35 +37,74 @@
       <table class="table table-bordered">
         <thead *ngIf="data.pagination.totalCount !== 0">
           <tr>
-            <th scope="col">ID</th>
-            <th scope="col">{{ 'DAY_OFF_TABLE.NAME' | translate}}</th>
-            <th scope="col">{{ 'DAY_OFF_TABLE.BIRTHDAY' | translate}}</th>
-            <th scope="col">{{ 'DAY_OFF_TABLE.TOTAL_LEAVES' | translate}}</th>
-            <th scope="col">{{ 'DAY_OFF_TABLE.NUMBER_OF_LEAVES_REMAINING' | translate}}</th>
+            <th scope="col" style="width: 10%;">ID</th>
+            <th
+              scope="col"
+              style="width: 30%;"
+              (click)="onSort(data.pagination.currentPage, 'name')"
+            >
+              {{ "DAY_OFF_TABLE.NAME" | translate }}
+              <i class="cil-arrow-top" *ngIf="sortNameType === 1"></i>
+              <i class="cil-arrow-bottom" *ngIf="sortNameType === 2"></i>
+            </th>
+            <th
+              scope="col"
+              style="width: 20%;"
+              (click)="onSort(data.pagination.currentPage)"
+            >
+              {{ "DAY_OFF_TABLE.BIRTHDAY" | translate }}
+              <i class="cil-arrow-top" *ngIf="sortBirthDateType === 1"></i>
+              <i class="cil-arrow-bottom" *ngIf="sortBirthDateType === 2"></i>
+            </th>
+            <th scope="col" style="width: 20%;">
+              {{ "DAY_OFF_TABLE.TOTAL_LEAVES" | translate }}
+            </th>
+            <th scope="col" style="width: 20%;">
+              {{ "DAY_OFF_TABLE.NUMBER_OF_LEAVES_REMAINING" | translate }}
+            </th>
           </tr>
         </thead>
-        <tbody >
-          <tr *ngFor="let item of data.data ; let i = index">
-            <th scope="row">{{ i + 1 }}</th>
+        <tbody>
+          <tr *ngFor="let item of data.data; let i = index">
+            <th scope="row">
+              {{ i + 1 + (data.pagination.currentPage - 1) * 20 }}
+            </th>
             <td>{{ item.firstName + " " + item.lastName }}</td>
-            <td>{{ item.birthdate }}</td>
+            <td>{{ item.birthdate | date: "dd/MM/yyyy" }}</td>
             <td>15</td>
             <td>15</td>
           </tr>
         </tbody>
       </table>
-      <div class="col-12">
-        <pagination [totalItems]="100" [maxSize]="maxSize" [itemsPerPage]="20"
-                    class="pagination-md justify-content-center"
-                    previousText="&lsaquo;" nextText="&rsaquo;" firstText="&laquo;" lastText="&raquo;"
-                    [boundaryLinks]="true" [rotate]="false"></pagination>
+      <div
+        *ngIf="data.pagination.totalCount === 0"
+        class="alert alert-secondary"
+        role="alert"
+      >
+        {{ "GENERAL_LIST.NO_RESULT" | translate }}
+      </div>
+      <div class="col-12" *ngIf="data.pagination.totalCount !== 0">
+        <pagination
+          [totalItems]="data.pagination.totalCount"
+          [maxSize]="maxSize"
+          [itemsPerPage]="20"
+          [(ngModel)]="currentPage"
+          (pageChanged)="onPageChanged($event.page)"
+          class="pagination-md justify-content-end"
+          previousText="&lsaquo;"
+          nextText="&rsaquo;"
+          firstText="&laquo;"
+          lastText="&raquo;"
+          [boundaryLinks]="true"
+          [rotate]="true"
+        >
+        </pagination>
       </div>
     </div>
     <div class="d-flex justify-content-end">
-      <button type="button"
-              class="btn btn-info">
-              <span class="cil-playlist-add btn-icon mr-2"></span>
-              {{ 'DAY_OFF_TABLE.SUBMIT_TIME_OFF' | translate}}
+      <button type="button" class="btn btn-info">
+        <span class="cil-playlist-add btn-icon mr-2"></span>
+        {{ "DAY_OFF_TABLE.SUBMIT_TIME_OFF" | translate }}
       </button>
     </div>
   </div>
