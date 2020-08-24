@@ -40,6 +40,7 @@ export class GeneralListComponent implements OnInit {
       .pipe(debounceTime(1000), distinctUntilChanged())
       .subscribe(() => {
         this.loading = true;
+        this.currentPage = 1;
         this.store.dispatch(
           new EmployeeActions.SearchEmployees(
             new HttpParams({ fromObject: this.setParams() })
@@ -48,6 +49,7 @@ export class GeneralListComponent implements OnInit {
       });
     this.searchStatusFormControl.valueChanges.subscribe(() => {
       this.loading = true;
+      this.currentPage = 1;
       this.store.dispatch(
         new EmployeeActions.SearchEmployees(
           new HttpParams({ fromObject: this.setParams() })
@@ -57,7 +59,6 @@ export class GeneralListComponent implements OnInit {
   }
 
   private setParams(): any {
-    this.currentPage = 1;
     let searchValue = this.searchFormControl.value;
     let statusValue = this.searchStatusFormControl.value;
     return Object.assign(
@@ -67,7 +68,8 @@ export class GeneralListComponent implements OnInit {
         ? {
             sort: `${this.sortVariable.sortName}:${this.sortVariable.sortType}`,
           }
-        : {}
+        : {},
+      { page: this.currentPage }
     );
   }
 
@@ -91,6 +93,7 @@ export class GeneralListComponent implements OnInit {
   }
 
   public onPageChanged(page: number): void {
+    this.currentPage = page;
     const search = Object.assign(this.setParams(), { page });
     this.store.dispatch(
       new EmployeeActions.SearchEmployees(
