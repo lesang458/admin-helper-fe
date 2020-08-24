@@ -8,6 +8,7 @@ import { GeneralInfoComponent } from './pages/general-info/general-info.componen
 import { DayoffComponent } from './pages/dayoff/dayoff.component';
 import { DayoffTableComponent } from './components/dayoff-table/dayoff-table.component';
 import { ProfileCreateComponent } from './components/profile-create/profile-create.component';
+import { NotifyComponent } from 'src/app/shared/components/notify/notify.component';
 
 @NgModule({
   declarations: [
@@ -16,6 +17,7 @@ import { ProfileCreateComponent } from './components/profile-create/profile-crea
     DayoffComponent,
     DayoffTableComponent,
     ProfileCreateComponent,
+    NotifyComponent,
   ],
   imports: [
     SharedModule,

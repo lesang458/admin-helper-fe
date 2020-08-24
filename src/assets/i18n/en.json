@@ -44,7 +44,9 @@
     "DAY_OFF_INFO": "Day off info",
     "HOUR": "Hours",
     "FIRST_NAME_INVALID": "First Name is required",
+    "FIRST_NAME_MAXLENGTH": "First name must not exceed 100 characters",
     "LAST_NAME_INVALID": "Last name is required",
+    "LAST_NAME_MAXLENGTH": "Last name must not exceed 100 characters",
     "EMAIL_INVALID": "Email is required",
     "IS_EMAIL": "Email must be a valid email address",
     "BIRTHDAY_INVALID": "Birthday is required",
@@ -52,6 +54,8 @@
     "PASS_MINLENGTH": "Password must be at least 6 characters",
     "JOIN_DATE_INVALID": "Join date is required",
     "PHONE_NUMBER_INVALID": "Phone number is required",
+    "PHONE_NUMBER_PATTERN": "Phone number must be number",
+    "PHONE_NUMBER_MAXLENGTH": "Phone number must not exceed 10 characters",
     "CLOSE": "Close",
     "SAVE": "Save"
   }

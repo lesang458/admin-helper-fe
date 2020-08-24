@@ -7,16 +7,20 @@ import * as EmployeeActions from '../../store/employees.actions';
 @Component({
   selector: 'profile-create',
   templateUrl: './profile-create.component.html',
+  styleUrls: ['./profile-create.component.scss'],
 })
 export class ProfileCreateComponent implements OnInit {
   public submitted = false;
 
   profileForm = new FormGroup({
-    firstName: new FormControl(''),
-    lastName: new FormControl(''),
+    firstName: new FormControl('', Validators.maxLength(100)),
+    lastName: new FormControl('', Validators.maxLength(100)),
     email: new FormControl('', Validators.email),
     encryptedPassword: new FormControl('', Validators.minLength(6)),
-    phoneNumber: new FormControl(''),
+    phoneNumber: new FormControl('', [
+      Validators.pattern('^[0-9]*$'),
+      Validators.maxLength(10),
+    ]),
     birthdate: new FormControl(''),
     joinDate: new FormControl(''),
   });
@@ -34,7 +38,7 @@ export class ProfileCreateComponent implements OnInit {
   }
 
   onSubmit() {
-    this.submitted = true;
+    // this.submitted = true;
     const dayOffInfo = [
       {
         dayOffCategoryId: 1,
@@ -49,5 +53,9 @@ export class ProfileCreateComponent implements OnInit {
     this.store.dispatch(
       new EmployeeActions.CreateEmployee(this.profileForm.value)
     );
+  }
+
+  resetForm() {
+    this.profileForm.reset();
   }
 }
