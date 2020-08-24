@@ -27,9 +27,9 @@
         </div>
       </div>
     </div>
-    <div class="table-responsive">
+    <div class="table-responsive" *ngIf="data$ | async as data">
       <table class="table table-bordered">
-        <thead>
+        <thead *ngIf="data.pagination.totalCount !== 0">
           <tr>
             <th scope="col">ID</th>
             <th scope="col">{{ 'DAY_OFF_TABLE.NAME' | translate}}</th>
@@ -38,34 +38,29 @@
             <th scope="col">{{ 'DAY_OFF_TABLE.NUMBER_OF_LEAVES_REMAINING' | translate}}</th>
           </tr>
         </thead>
-        <tbody>
-          <tr>
-            <th scope="row">1</th>
-            <td>Nguyễn Văn A</td>
-            <td>01/01/1990</td>
-            <td>15</td>
-            <td>15</td>
-          </tr>
-          <tr>
-            <th scope="row">2</th>
-            <td>Nguyễn Văn B</td>
-            <td>01/01/1990</td>
-            <td>15</td>
-            <td>15</td>
-          </tr>
-          <tr>
-            <th scope="row">3</th>
-            <td>Nguyễn Văn A</td>
-            <td>01/01/1990</td>
+        <tbody >
+          <tr *ngFor="let item of data.data ; let i = index">
+            <th scope="row">{{ i + 1 }}</th>
+            <td>{{ item.firstName + " " + item.lastName }}</td>
+            <td>{{ item.birthdate }}</td>
             <td>15</td>
             <td>15</td>
           </tr>
         </tbody>
       </table>
+      <div class="col-12">
+        <pagination [totalItems]="100" [maxSize]="maxSize" [itemsPerPage]="20"
+                    class="pagination-md justify-content-center"
+                    previousText="&lsaquo;" nextText="&rsaquo;" firstText="&laquo;" lastText="&raquo;"
+                    [boundaryLinks]="true" [rotate]="false"></pagination>
+      </div>
     </div>
     <div class="d-flex justify-content-end">
       <button type="button"
-              class="btn btn-info"><span class="cil-playlist-add btn-icon mr-2"></span>{{ 'DAY_OFF_TABLE.SUBMIT_TIME_OFF' | translate}}</button>
+              class="btn btn-info">
+              <span class="cil-playlist-add btn-icon mr-2"></span>
+              {{ 'DAY_OFF_TABLE.SUBMIT_TIME_OFF' | translate}}
+      </button>
     </div>
   </div>
 </div>
