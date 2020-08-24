@@ -17,7 +17,7 @@ export class AppComponent {
     translate.use(browserLang.match(/en|vi/) ? browserLang : 'en');
     localStorage.setItem(
       'token',
-      'Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxMDIsInJvbGVzIjpbIkVNUExPWUVFIiwiQURNSU4iXSwiZXhwIjoxNTk4MDY2OTU3fQ.7FLVfMLjQIg0lb2R-wAKRM-g_c6MU0Xem5-DOcmVDas'
+      'Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxMDIsInJvbGVzIjpbIkVNUExPWUVFIiwiQURNSU4iXSwiZXhwIjoxNTk4MzIwMDk2fQ.9-h8KrT-L7gDFCcjo8gtmYDrCJUJk_0AaAB4wmDeoBw'
     );
   }
 }

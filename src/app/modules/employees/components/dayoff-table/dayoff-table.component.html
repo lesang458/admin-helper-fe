@@ -41,14 +41,20 @@
             <th
               scope="col"
               style="width: 30%;"
-              (click)="onSort(data.pagination.currentPage)"
+              (click)="onSort(data.pagination.currentPage, 'name')"
             >
               {{ "DAY_OFF_TABLE.NAME" | translate }}
-              <i class="cil-arrow-top" *ngIf="sortType === 1"></i>
-              <i class="cil-arrow-bottom" *ngIf="sortType === 2"></i>
+              <i class="cil-arrow-top" *ngIf="sortNameType === 1"></i>
+              <i class="cil-arrow-bottom" *ngIf="sortNameType === 2"></i>
             </th>
-            <th scope="col" style="width: 20%;">
+            <th
+              scope="col"
+              style="width: 20%;"
+              (click)="onSort(data.pagination.currentPage)"
+            >
               {{ "DAY_OFF_TABLE.BIRTHDAY" | translate }}
+              <i class="cil-arrow-top" *ngIf="sortBirthDateType === 1"></i>
+              <i class="cil-arrow-bottom" *ngIf="sortBirthDateType === 2"></i>
             </th>
             <th scope="col" style="width: 20%;">
               {{ "DAY_OFF_TABLE.TOTAL_LEAVES" | translate }}
@@ -72,7 +78,7 @@
       </table>
       <div
         *ngIf="data.pagination.totalCount === 0"
-        class="alert alert-danger"
+        class="alert alert-secondary"
         role="alert"
       >
         {{ "GENERAL_LIST.NO_RESULT" | translate }}
@@ -82,15 +88,15 @@
           [totalItems]="data.pagination.totalCount"
           [maxSize]="maxSize"
           [itemsPerPage]="20"
-          [(ngModel)]="data.pagination.currentPage"
-          (pageChanged)="onPageChanged($event)"
+          [(ngModel)]="currentPage"
+          (pageChanged)="onPageChanged($event.page)"
           class="pagination-md justify-content-end"
           previousText="&lsaquo;"
           nextText="&rsaquo;"
           firstText="&laquo;"
           lastText="&raquo;"
           [boundaryLinks]="true"
-          [rotate]="false"
+          [rotate]="true"
         >
         </pagination>
       </div>

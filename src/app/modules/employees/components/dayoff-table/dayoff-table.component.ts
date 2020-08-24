@@ -9,9 +9,9 @@ import {
 import { Store } from '@ngrx/store';
 import { Observable, Subscription, fromEvent } from 'rxjs';
 import { map, distinctUntilChanged, debounceTime } from 'rxjs/operators';
-import * as fromApp from '../../../../store/app.reducer';
 import { PaginatedData } from 'src/app/shared/models/pagination.model';
 import { Employee } from 'src/app/shared/models/employees.model';
+import * as fromApp from '../../../../store/app.reducer';
 import * as EmployeeActions from '../../store/employees.actions';
 
 @Component({
@@ -22,7 +22,9 @@ import * as EmployeeActions from '../../store/employees.actions';
 export class DayoffTableComponent implements OnInit, AfterViewInit, OnDestroy {
   @ViewChild('searchInput', { static: true }) searchInput: ElementRef;
   public maxSize = 3;
-  public sortType = 0;
+  public currentPage = 1;
+  public sortBirthDateType = 0;
+  public sortNameType = 0;
   public data$: Observable<PaginatedData<Employee[]>>;
   private subscription: Subscription;
   constructor(private store: Store<fromApp.AppState>) {}
@@ -33,46 +35,38 @@ export class DayoffTableComponent implements OnInit, AfterViewInit, OnDestroy {
         return employees.dayOff;
       })
     );
-    this.store.dispatch(
-      new EmployeeActions.FetchDayOff({
-        search: '',
-        page: 1,
-        sortType: this.sortType,
-      })
-    );
   }
 
   ngAfterViewInit(): void {
     this.subscription = fromEvent<any>(this.searchInput.nativeElement, 'input')
       .pipe(debounceTime(300), distinctUntilChanged())
       .subscribe(() => {
-        const search = this.searchInput.nativeElement.value;
-        this.store.dispatch(
-          new EmployeeActions.FetchDayOff({
-            search,
-            page: 1,
-            sortType: this.sortType,
-          })
-        );
+        this.onPageChanged(1);
       });
   }
 
-  public onPageChanged(event: any): void {
+  public onSort(page: number, column?: string): void {
+    if (column) {
+      this.sortNameType = (this.sortNameType + 1) % 3;
+      this.sortBirthDateType = 0;
+    } else {
+      this.sortBirthDateType = (this.sortBirthDateType + 1) % 3;
+      this.sortNameType = 0;
+    }
+    this.onPageChanged(page);
+  }
+
+  public onPageChanged(page: number): void {
     const search = this.searchInput.nativeElement.value;
     this.store.dispatch(
       new EmployeeActions.FetchDayOff({
         search,
-        page: event.page,
-        sortType: this.sortType,
+        page,
+        sort: {
+          sortNameType: this.sortNameType,
+          sortBirthDateType: this.sortBirthDateType,
+        },
       })
-    );
-  }
-
-  public onSort(page): void {
-    this.sortType = (this.sortType + 1) % 3;
-    const search = this.searchInput.nativeElement.value;
-    this.store.dispatch(
-      new EmployeeActions.FetchDayOff({ search, page, sortType: this.sortType })
     );
   }
 

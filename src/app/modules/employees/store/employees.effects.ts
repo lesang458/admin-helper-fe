@@ -10,13 +10,27 @@ import * as camelcaseKeys from 'camelcase-keys';
 
 @Injectable()
 export class EmployeeEffects {
-  @Effect()
+  @Effect({})
   fetchDayOff = this.actions$.pipe(
     ofType(EmployeeActions.FETCH_DAY_OFF),
     switchMap((action: EmployeeActions.FetchDayOff) => {
+      let sort = ``;
+      if (action.payload.sort.sortNameType) {
+        const sortNameType =
+          action.payload.sort.sortNameType === 1 ? 'asc' : 'desc';
+        sort = `first_name:${sortNameType}`;
+      }
+      if (action.payload.sort.sortBirthDateType) {
+        const sortBirthDateType =
+          action.payload.sort.sortBirthDateType === 1 ? 'asc' : 'desc';
+        sort = `birthdate:${sortBirthDateType}`;
+      }
+
       const params = new HttpParams()
         .append('search', action.payload.search)
-        .append('page', action.payload.page);
+        .append('page', action.payload.page)
+        .append('sort', sort);
+
       return this.http
         .get<PaginatedData<Employee[]>>(`${environment.APILink}/employees`, {
           observe: 'response',
@@ -41,10 +55,7 @@ export class EmployeeEffects {
     switchMap((action: EmployeeActions.SearchEmployees) => {
       const params: any = action.payload;
       return this.http
-        .get<any>(`${environment.APILink}employees`, {
-          headers: {
-            Authorization: localStorage.getItem('token'),
-          },
+        .get<any>(`${environment.APILink}/employees`, {
           params,
         })
         .pipe(
@@ -55,5 +66,5 @@ export class EmployeeEffects {
         );
     })
   );
-  constructor(private actions$: Actions, private http: HttpClient) { }
+  constructor(private actions$: Actions, private http: HttpClient) {}
 }
