@@ -57,6 +57,8 @@
     "PHONE_NUMBER_PATTERN": "Phone number must be number",
     "PHONE_NUMBER_MINLENGTH": "Phone number must be at least 10 characters",
     "PHONE_NUMBER_MAXLENGTH": "Phone number must not exceed 12 characters",
+    "MESS_EMAIL": "Email has already been taken",
+    "MESS_SUCCESS": "Created successfully!",
     "CLOSE": "Close",
     "SAVE": "Save"
   }

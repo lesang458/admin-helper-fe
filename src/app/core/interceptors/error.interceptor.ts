@@ -22,7 +22,7 @@ export class ErrorInterceptor implements HttpInterceptor {
       tap((evt) => {
         if (evt instanceof HttpResponse) {
           if (evt.status === 201) {
-            this.notifyService.success('Created successfully!');
+            this.notifyService.success('Successfully!');
           }
         }
       }),

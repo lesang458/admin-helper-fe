@@ -1,6 +1,7 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { NotifyService } from '../../services/notify.service';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'ah-notify',
@@ -11,16 +12,25 @@ export class NotifyComponent implements OnInit, OnDestroy {
   private subscription: Subscription;
   public message: any;
 
-  constructor(private notifyService: NotifyService) {}
+  constructor(private notifyService: NotifyService, 
+              private translate: TranslateService) {}
 
   ngOnInit() {
     this.subscription = this.notifyService.getAlert().subscribe((message) => {
-      switch (message && message.type) {
+    console.log("NotifyComponent -> ngOnInit -> message", message)
+      switch (message && message.type && message.text) {
         case 'success':
           message.cssClass = 'alert-success';
           break;
         case 'error':
           message.cssClass = 'alert-danger';
+          break;
+      }
+      switch (message && message.text) {
+        case 'Validation failed: Email has already been taken':
+          message.text = this.translate.instant('PROFILE_CREATE.MESS_EMAIL');
+        case 'Successfully!':
+          message.text = this.translate.instant('PROFILE_CREATE.MESS_SUCCESS');    
           break;
       }
 
