@@ -15,8 +15,7 @@ import { HttpParams } from '@angular/common/http';
 export class GeneralListComponent implements OnInit {
   public employeeObs$: Observable<any>;
   public searchFormControl = new FormControl();
-  public loading: boolean = true;
-  public currentPage: Number = 1;
+  public currentPage = 1;
   public searchStatusFormControl = new FormControl('');
   private sortVariable = {
     sortName: '',
@@ -27,9 +26,6 @@ export class GeneralListComponent implements OnInit {
 
   ngOnInit(): void {
     this.employeeObs$ = this.store.select('employees');
-    this.employeeObs$.subscribe(() => {
-      this.loading = false;
-    });
     this.store.dispatch(
       new EmployeeActions.SearchEmployees(
         new HttpParams({ fromObject: { search: '' } })
@@ -39,7 +35,6 @@ export class GeneralListComponent implements OnInit {
     this.searchFormControl.valueChanges
       .pipe(debounceTime(1000), distinctUntilChanged())
       .subscribe(() => {
-        this.loading = true;
         this.currentPage = 1;
         this.store.dispatch(
           new EmployeeActions.SearchEmployees(
@@ -48,7 +43,6 @@ export class GeneralListComponent implements OnInit {
         );
       });
     this.searchStatusFormControl.valueChanges.subscribe(() => {
-      this.loading = true;
       this.currentPage = 1;
       this.store.dispatch(
         new EmployeeActions.SearchEmployees(
@@ -74,7 +68,6 @@ export class GeneralListComponent implements OnInit {
   }
 
   public onSort(sortName: string): void {
-    this.loading = true;
     this.sortVariable =
       this.sortVariable.sortName !== sortName
         ? {
@@ -93,7 +86,6 @@ export class GeneralListComponent implements OnInit {
   }
 
   public onPageChanged(page: number): void {
-    this.currentPage = page;
     const search = Object.assign(this.setParams(), { page });
     this.store.dispatch(
       new EmployeeActions.SearchEmployees(
