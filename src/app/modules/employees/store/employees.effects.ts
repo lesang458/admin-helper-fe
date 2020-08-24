@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Employee } from 'src/app/shared/models/employees.model';
 import { Actions, ofType, Effect } from '@ngrx/effects';
-import * as EmployeeActions from './employees.actions';
+import * as EmployeesActions from './employees.actions';
 import { switchMap, map } from 'rxjs/operators';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { environment } from 'src/environments/environment.prod';
@@ -12,8 +12,8 @@ import * as camelcaseKeys from 'camelcase-keys';
 export class EmployeeEffects {
   @Effect({})
   fetchDayOff = this.actions$.pipe(
-    ofType(EmployeeActions.FETCH_DAY_OFF),
-    switchMap((action: EmployeeActions.FetchDayOff) => {
+    ofType(EmployeesActions.FETCH_DAY_OFF),
+    switchMap((action: EmployeesActions.FetchDayOff) => {
       let sort = ``;
       if (action.payload.sort.sortNameType) {
         const sortNameType =
@@ -43,7 +43,7 @@ export class EmployeeEffects {
               data: value.data,
               pagination: value.pagination,
             };
-            return new EmployeeActions.SetDayOff(dayOff);
+            return new EmployeesActions.SetDayOff(dayOff);
           })
         );
     })
@@ -51,8 +51,8 @@ export class EmployeeEffects {
 
   @Effect()
   employeeSearch = this.actions$.pipe(
-    ofType(EmployeeActions.SEARCH_EMPLOYEES),
-    switchMap((action: EmployeeActions.SearchEmployees) => {
+    ofType(EmployeesActions.SEARCH_EMPLOYEES),
+    switchMap((action: EmployeesActions.SearchEmployees) => {
       const params: any = action.payload;
       return this.http
         .get<any>(`${environment.APILink}/employees`, {
@@ -61,7 +61,7 @@ export class EmployeeEffects {
         .pipe(
           map((val) => {
             const data: any = camelcaseKeys(val.data);
-            return new EmployeeActions.GetEmployeesSuccess(data);
+            return new EmployeesActions.GetEmployeesSuccess(data);
           })
         );
     })
