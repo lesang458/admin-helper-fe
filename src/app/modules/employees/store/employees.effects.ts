@@ -7,6 +7,7 @@ import { HttpClient, HttpParams } from '@angular/common/http';
 import { environment } from 'src/environments/environment.prod';
 import { PaginatedData } from 'src/app/shared/models/pagination.model';
 import * as camelcaseKeys from 'camelcase-keys';
+import * as snakecaseKeys from 'snakecase-keys';
 
 @Injectable()
 export class EmployeeEffects {
@@ -59,6 +60,26 @@ export class EmployeeEffects {
           map((val) => {
             const data: any = camelcaseKeys(val.data);
             return new EmployeesActions.GetEmployeesSuccess(data);
+          })
+        );
+    })
+  );
+
+  @Effect()
+  createEmployee = this.actions$.pipe(
+    ofType(EmployeeActions.CREATE_EMPLOYEE),
+    switchMap((action: EmployeeActions.CreateEmployee) => {
+      let body: any = snakecaseKeys(action.payload);
+      return this.http
+        .post<any>(`${environment.APILink}employees`, body, {
+          headers: {
+            Authorization: localStorage.getItem('token'),
+          },
+        })
+        .pipe(
+          map((val) => {
+            let data: any = camelcaseKeys(val.data);
+            return new EmployeeActions.CreateEmployee(data);
           })
         );
     })

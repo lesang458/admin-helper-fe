@@ -1,0 +1,6 @@
+<div *ngIf="message">
+  <span [ngClass]="message.cssClass">
+    {{ message.text }}
+    <span style="cursor: pointer;" (click)="showMess()">x</span>
+  </span>
+</div>
