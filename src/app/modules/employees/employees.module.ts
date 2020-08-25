@@ -7,6 +7,7 @@ import { EMPLOYEES_ROUTES } from './employees.routes';
 import { GeneralInfoComponent } from './pages/general-info/general-info.component';
 import { DayoffComponent } from './pages/dayoff/dayoff.component';
 import { DayoffTableComponent } from './components/dayoff-table/dayoff-table.component';
+import { RequestDayOffComponent } from './components/request-day-off/request-day-off.component';
 
 @NgModule({
   declarations: [
@@ -14,6 +15,7 @@ import { DayoffTableComponent } from './components/dayoff-table/dayoff-table.com
     GeneralInfoComponent,
     DayoffComponent,
     DayoffTableComponent,
+    RequestDayOffComponent,
   ],
   imports: [
     SharedModule,

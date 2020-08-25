@@ -1,0 +1,104 @@
+<div>
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Duyệt Phép</h5>
+        <button
+          type="button"
+          class="close"
+          data-dismiss="modal"
+          aria-label="Close"
+        >
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <label class="pointer" for="exampleFormControlInput1">
+          Ho va ten
+        </label>
+        <input
+          type="text"
+          class="form-control"
+          id="exampleFormControlInput1"
+          formControlName="firstName"
+          required
+        />
+      </div>
+      <div class="modal-body">
+        <label class="pointer" for="exampleFormControlInput2">
+          Tu ngay
+        </label>
+        <input
+          type="date"
+          class="form-control"
+          id="exampleFormControlInput2"
+          formControlName="firstName"
+          required
+        />
+        <label class="pointer" id="label3" for="exampleFormControlInput3">
+          Den ngay
+        </label>
+        <input
+          type="date"
+          class="form-control"
+          id="exampleFormControlInput3"
+          formControlName="firstName"
+          required
+        />
+      </div>
+
+      <div class="modal-body">
+        <div class="form-check">
+          <input
+            class="form-check-input"
+            type="checkbox"
+            value=""
+            id="defaultCheck1"
+          />
+          <label class="form-check-label pointer" for="defaultCheck1">
+            Nghỉ nửa ngày
+          </label>
+        </div>
+      </div>
+
+      <div class="modal-body">
+        <label id="label4" class="pointer" for="exampleFormControlSelect1"
+          >Loại Phép</label
+        >
+        <select class="form-control pointer" id="exampleFormControlSelect1">
+          <option selected>Phép năm</option>
+          <option>Phép tháng</option>
+        </select>
+      </div>
+
+      <div class="modal-body-custom">
+        <ul>
+          <li>Phép đang có: 2 ngày</li>
+          <li>Phép còn sau khi duyệt: 1 ngày</li>
+        </ul>
+        <hr />
+      </div>
+
+      <div class="modal-body modal-body-none-padding">
+        <div class="form-check">
+          <input
+            class="form-check-input pointer"
+            type="checkbox"
+            value=""
+            id="defaultCheck2"
+          />
+          <label class="form-check-label pointer" for="defaultCheck2">
+            Cho phép nghỉ không lương
+          </label>
+        </div>
+      </div>
+
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">
+          Cancel
+        </button>
+        <button type="button" class="btn btn-primary">Save</button>
+      </div>
+    </div>
+  </div>
+</div>
