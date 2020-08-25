@@ -11,61 +11,61 @@ import * as snakecaseKeys from 'snakecase-keys';
 
 @Injectable()
 export class EmployeeEffects {
-  @Effect()
-  employeeSearch = this.actions$.pipe(
-    ofType(EmployeesActions.SEARCH_EMPLOYEES),
-    switchMap((action: EmployeesActions.SearchEmployees) => {
-      const params: HttpParams = action.payload;
-      return this.http
-        .get<any>(`${environment.APILink}/employees`, {
-          params,
-        })
-        .pipe(
-          map((val) => {
-            const value: PaginatedData<Employee[]> = {
-              data: camelcaseKeys(val.data),
-              pagination: camelcaseKeys(val.pagination),
-            };
-            return new EmployeesActions.GetEmployeesSuccess(value);
-          })
-        );
-    })
-  );
-
   @Effect({})
-  fetchDayOff = this.actions$.pipe(
-    ofType(EmployeesActions.FETCH_DAY_OFF),
-    switchMap((action: EmployeesActions.FetchDayOff) => {
-      let sort = '';
-      if (action.payload.sort.sortNameType) {
-        const sortNameType =
-          action.payload.sort.sortNameType === 1 ? 'asc' : 'desc';
-        sort = `first_name:${sortNameType}`;
-      }
-      if (action.payload.sort.sortBirthDateType) {
-        const sortBirthDateType =
-          action.payload.sort.sortBirthDateType === 1 ? 'asc' : 'desc';
-        sort = `birthdate:${sortBirthDateType}`;
-      }
+  fetchData = this.actions$.pipe(
+    ofType(EmployeesActions.FETCH_DAY_OFF, EmployeesActions.SEARCH_EMPLOYEES),
+    switchMap(
+      (
+        action: EmployeesActions.FetchDayOff | EmployeesActions.SearchEmployees
+      ) => {
+        let sort = '';
+        if (action.payload.sort.sortNameType) {
+          const sortNameType =
+            action.payload.sort.sortNameType === 1 ? 'asc' : 'desc';
+          sort = `first_name:${sortNameType}`;
+        }
 
-      const params = new HttpParams()
-        .append('search', action.payload.search)
-        .append('page', action.payload.page)
-        .append('sort', sort);
+        if (action.payload.sort.sortBirthDateType) {
+          const sortBirthDateType =
+            action.payload.sort.sortBirthDateType === 1 ? 'asc' : 'desc';
+          sort = `birthdate:${sortBirthDateType}`;
+        }
 
-      return this.http
-        .get<PaginatedData<Employee[]>>(`${environment.APILink}/employees`, {
-          observe: 'response',
-          params,
-        })
-        .pipe(
-          map((response) => {
-            return new EmployeesActions.SetDayOff(
-              camelcaseKeys(response.body, { deep: true })
-            );
+        if (action.payload.sort.sortJoinDateType) {
+          const sortJoinDateType =
+            action.payload.sort.sortJoinDateType === 1 ? 'asc' : 'desc';
+          sort = `join_date:${sortJoinDateType}`;
+        }
+
+        let params = new HttpParams()
+          .append('search', action.payload.search)
+          .append('page', action.payload.page)
+          .append('sort', sort);
+
+        if (action.payload.status) {
+          params = params.append('status', action.payload.status);
+        }
+
+        return this.http
+          .get<PaginatedData<Employee[]>>(`${environment.APILink}/employees`, {
+            observe: 'response',
+            params,
           })
-        );
-    })
+          .pipe(
+            map((response) => {
+              if (action.type === EmployeesActions.FETCH_DAY_OFF) {
+                return new EmployeesActions.SetDayOff(
+                  camelcaseKeys(response.body, { deep: true })
+                );
+              } else {
+                return new EmployeesActions.GetEmployeesSuccess(
+                  camelcaseKeys(response.body, { deep: true })
+                );
+              }
+            })
+          );
+      }
+    )
   );
 
   @Effect()

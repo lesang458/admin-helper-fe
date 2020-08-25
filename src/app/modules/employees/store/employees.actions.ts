@@ -6,7 +6,8 @@ import { PaginatedData } from 'src/app/shared/models/pagination.model';
 export interface SearchParams {
   search: string;
   page;
-  sort: { sortNameType; sortBirthDateType };
+  sort: { sortNameType; sortBirthDateType; sortJoinDateType };
+  status: string;
 }
 
 export const GET_EMPLOYEES_SUCCESS = '[Employees] Get Employees Success';
@@ -22,7 +23,7 @@ export class GetEmployeesSuccess implements Action {
 
 export class SearchEmployees implements Action {
   readonly type = SEARCH_EMPLOYEES;
-  constructor(public payload: HttpParams) {}
+  constructor(public payload: SearchParams) {}
 }
 
 export class FetchDayOff implements Action {

@@ -43,10 +43,12 @@ export class DayoffTableComponent implements OnInit, OnDestroy {
 
   public onSort(page: number, column?: string): void {
     if (column) {
-      this.sortNameType = (this.sortNameType + 1) % 3;
+      this.sortNameType =
+        this.sortNameType === 0 ? 1 : this.sortNameType === 1 ? 2 : 1;
       this.sortBirthDateType = 0;
     } else {
-      this.sortBirthDateType = (this.sortBirthDateType + 1) % 3;
+      this.sortBirthDateType =
+        this.sortBirthDateType === 0 ? 1 : this.sortBirthDateType === 1 ? 2 : 1;
       this.sortNameType = 0;
     }
     this.onPageChanged(page);
@@ -60,7 +62,9 @@ export class DayoffTableComponent implements OnInit, OnDestroy {
       sort: {
         sortNameType: this.sortNameType,
         sortBirthDateType: this.sortBirthDateType,
+        sortJoinDateType: 0,
       },
+      status: 'ACTIVE',
     };
     this.store.dispatch(new EmployeeActions.FetchDayOff(searchParams));
   }

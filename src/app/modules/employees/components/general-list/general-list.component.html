@@ -19,13 +19,17 @@
       </div>
       <div class="col-5">
         <div class="form-group">
+          <label class="d-inline-block mr-3 ml-2" for="status-type">
+            {{ "GENERAL_LIST.STATUS" | translate }}
+          </label>
           <select
-            class="form-select pointer"
-            id="statusSelect"
+            class="form-control d-inline-block"
+            style="width: auto;"
+            id="status-type"
             [formControl]="searchStatusFormControl"
           >
             <option selected value="">
-              {{ "GENERAL_LIST.STATUS" | translate }}
+              {{ "GENERAL_LIST.ALL" | translate }}
             </option>
             <option value="ACTIVE">
               {{ "GENERAL_LIST.ACTIVE" | translate }}
@@ -42,31 +46,53 @@
         <thead>
           <tr>
             <th scope="col">ID</th>
-            <th scope="col" class="pointer" (click)="onSort('first_name')">
+            <th
+              scope="col"
+              class="pointer"
+              style="width: 25%;"
+              (click)="onSort(employeeObs.pagination.currentPage, 'name')"
+            >
               {{ "GENERAL_LIST.NAME" | translate }}
-              <i class="cil-sort-ascending"></i>
+              <i class="cil-arrow-top" *ngIf="sortNameType === 1"></i>
+              <i class="cil-arrow-bottom" *ngIf="sortNameType === 2"></i>
             </th>
-            <th scope="col" class="pointer" (click)="onSort('birthdate')">
+            <th
+              scope="col"
+              class="pointer"
+              style="width: 15%;"
+              (click)="onSort(employeeObs.pagination.currentPage, 'birthdate')"
+            >
               {{ "GENERAL_LIST.BIRTHDAY" | translate }}
-              <i class="cil-sort-ascending"></i>
+              <i class="cil-arrow-top" *ngIf="sortBirthDateType === 1"></i>
+              <i class="cil-arrow-bottom" *ngIf="sortBirthDateType === 2"></i>
             </th>
-            <th scope="col" class="pointer" (click)="onSort('join_date')">
+            <th
+              scope="col"
+              class="pointer"
+              style="width: 15%;"
+              (click)="onSort(employeeObs.pagination.currentPage, 'joinDate')"
+            >
               {{ "GENERAL_LIST.JOIN_DATE" | translate }}
-              <i class="cil-sort-ascending"></i>
+              <i class="cil-arrow-top" *ngIf="sortJoinDateType === 1"></i>
+              <i class="cil-arrow-bottom" *ngIf="sortJoinDateType === 2"></i>
             </th>
-            <th scope="col">{{ "GENERAL_LIST.PHONE_NUMBER" | translate }}</th>
-            <th scope="col">
+            <th scope="col" style="width: 15%;">
+              {{ "GENERAL_LIST.PHONE_NUMBER" | translate }}
+            </th>
+            <th scope="col" style="width: 10%;">
               {{ "GENERAL_LIST.STATUS" | translate }}
             </th>
-            <th scope="col">{{ "GENERAL_LIST.ACTIONS" | translate }}</th>
+            <th scope="col" style="width: 10%;">
+              {{ "GENERAL_LIST.ACTIONS" | translate }}
+            </th>
           </tr>
         </thead>
         <tbody>
           <tr *ngFor="let item of employeeObs.employees; let i = index">
             <th scope="row">{{ i + 1 }}</th>
             <td>{{ item.firstName + " " + item.lastName }}</td>
-            <td>{{ item.birthdate }}</td>
-            <td>{{ item.joinDate }}</td>
+            <td>{{ item.birthdate | date: "dd/MM/yyyy" }}</td>
+            <td>{{ item.joinDate | date: "dd/MM/yyyy" }}</td>
             <td>{{ item.phoneNumber }}</td>
             <td>
               <span
