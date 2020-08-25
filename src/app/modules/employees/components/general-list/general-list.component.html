@@ -17,8 +17,27 @@
           />
         </div>
       </div>
+      <div class="col-5">
+        <div class="form-group">
+          <select
+            class="form-select pointer"
+            id="statusSelect"
+            [formControl]="searchStatusFormControl"
+          >
+            <option selected value="">
+              {{ "GENERAL_LIST.STATUS" | translate }}
+            </option>
+            <option value="ACTIVE">
+              {{ "GENERAL_LIST.ACTIVE" | translate }}
+            </option>
+            <option value="DELETED">
+              {{ "GENERAL_LIST.DELETED" | translate }}
+            </option>
+          </select>
+        </div>
+      </div>
     </div>
-    <div class="table-responsive">
+    <div class="table-responsive" *ngIf="employeeObs$ | async as employeeObs">
       <table class="table table-bordered">
         <thead>
           <tr>
@@ -37,27 +56,13 @@
             </th>
             <th scope="col">{{ "GENERAL_LIST.PHONE_NUMBER" | translate }}</th>
             <th scope="col">
-              <select
-                class="form-select pointer"
-                id="statusSelect"
-                [formControl]="searchStatusFormControl"
-              >
-                <option selected value="">{{
-                  "GENERAL_LIST.STATUS" | translate
-                }}</option>
-                <option value="ACTIVE">{{
-                  "GENERAL_LIST.ACTIVE" | translate
-                }}</option>
-                <option value="DELETED">{{
-                  "GENERAL_LIST.DELETED" | translate
-                }}</option>
-              </select>
+              {{ "GENERAL_LIST.STATUS" | translate }}
             </th>
             <th scope="col">{{ "GENERAL_LIST.ACTIONS" | translate }}</th>
           </tr>
         </thead>
-        <tbody *ngIf="(employeeObs$ | async) && !loading">
-          <tr *ngFor="let item of employeeObs$ | async; let i = index">
+        <tbody>
+          <tr *ngFor="let item of employeeObs.employees; let i = index">
             <th scope="row">{{ i + 1 }}</th>
             <td>{{ item.firstName + " " + item.lastName }}</td>
             <td>{{ item.birthdate }}</td>
@@ -82,27 +87,53 @@
           </tr>
         </tbody>
       </table>
-    </div>
+      <div class="col-12" *ngIf="employeeObs.pagination.totalCount !== 0">
+        <pagination
+          [totalItems]="employeeObs.pagination.totalCount"
+          [maxSize]="3"
+          [itemsPerPage]="20"
+          [(ngModel)]="currentPage"
+          (pageChanged)="onPageChanged($event.page)"
+          class="pagination-md justify-content-end"
+          previousText="&lsaquo;"
+          nextText="&rsaquo;"
+          firstText="&laquo;"
+          lastText="&raquo;"
+          [boundaryLinks]="true"
+          [rotate]="true"
+        >
+        </pagination>
+      </div>
 
-    <div *ngIf="loading" class="d-flex justify-content-center">
-      <div class="spinner-border" role="status">
-        <span class="sr-only">Loading...</span>
+      <div
+        *ngIf="employeeObs.employees.length === 0"
+        class="alert alert-light"
+        role="alert"
+      >
+        {{ "GENERAL_LIST.NO_RESULT" | translate }}
       </div>
     </div>
 
-    <div
-      *ngIf="(employeeObs$ | async)?.length === 0 && !loading"
-      class="alert alert-light"
-      role="alert"
-    >
-      {{ "GENERAL_LIST.NO_RESULT" | translate }}
-    </div>
-
     <div class="d-flex justify-content-end">
-      <button type="button" class="btn btn-info">
-        <span class="cil-playlist-add btn-icon mr-2"></span
-        >{{ "GENERAL_LIST.CREATE_EMPLOYEE_PROFILE" | translate }}
+      <button
+        type="button"
+        data-toggle="modal"
+        data-target="#exampleModalCenter"
+        class="btn btn-info"
+      >
+        <span class="cil-playlist-add btn-icon mr-2"></span>
+        {{ "GENERAL_LIST.CREATE_EMPLOYEE_PROFILE" | translate }}
       </button>
+      <div
+        class="modal fade"
+        id="exampleModalCenter"
+        tabindex="-1"
+        role="dialog"
+        aria-labelledby="exampleModalCenterTitle"
+        aria-hidden="true"
+      >
+        <profile-create></profile-create>
+      </div>
     </div>
   </div>
 </div>

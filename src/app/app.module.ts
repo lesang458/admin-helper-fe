@@ -13,7 +13,6 @@ import { SharedModule } from './shared/shared.module';
 import { StoreModule } from '@ngrx/store';
 import * as fromApp from './store/app.reducer';
 import { EffectsModule } from '@ngrx/effects';
-
 export function HttpLoaderFactory(httpClient: HttpClient) {
   return new TranslateHttpLoader(httpClient);
 }

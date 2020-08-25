@@ -1,4 +1,3 @@
-import { ReactiveFormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { SharedModule } from 'src/app/shared/shared.module';
@@ -8,6 +7,10 @@ import { GeneralInfoComponent } from './pages/general-info/general-info.componen
 import { DayoffComponent } from './pages/dayoff/dayoff.component';
 import { DayoffTableComponent } from './components/dayoff-table/dayoff-table.component';
 import { RequestDayOffComponent } from './components/request-day-off/request-day-off.component';
+import { PaginationModule } from 'ngx-bootstrap/pagination';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ProfileCreateComponent } from './components/profile-create/profile-create.component';
+import { NotifyComponent } from 'src/app/shared/components/notify/notify.component';
 
 @NgModule({
   declarations: [
@@ -16,11 +19,16 @@ import { RequestDayOffComponent } from './components/request-day-off/request-day
     DayoffComponent,
     DayoffTableComponent,
     RequestDayOffComponent,
+    ProfileCreateComponent,
+    NotifyComponent,
   ],
   imports: [
     SharedModule,
+    FormsModule,
     RouterModule.forChild(EMPLOYEES_ROUTES),
     ReactiveFormsModule,
+    PaginationModule.forRoot(),
+    FormsModule,
   ],
 })
 export class EmployeesModule {}
