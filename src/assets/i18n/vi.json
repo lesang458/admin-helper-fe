@@ -24,7 +24,7 @@
   },
   "DAY_OFF_TABLE": {
     "TYPE_OF_LEAVE": "Loại phép",
-    "SICH_LEAVE": "Nghỉ ốm",
+    "SICK_LEAVE": "Nghỉ ốm",
     "ANNUAL_LEAVE": "Phép năm",
     "NAME": "Họ và tên",
     "BIRTHDAY": "Ngày sinh",
