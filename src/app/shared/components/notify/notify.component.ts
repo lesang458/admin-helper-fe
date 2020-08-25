@@ -12,13 +12,14 @@ export class NotifyComponent implements OnInit, OnDestroy {
   private subscription: Subscription;
   public message: any;
 
-  constructor(private notifyService: NotifyService, 
-              private translate: TranslateService) {}
+  constructor(
+    private notifyService: NotifyService,
+    private translate: TranslateService
+  ) {}
 
   ngOnInit() {
     this.subscription = this.notifyService.getAlert().subscribe((message) => {
-    console.log("NotifyComponent -> ngOnInit -> message", message)
-      switch (message && message.type && message.text) {
+      switch (message && message.type) {
         case 'success':
           message.cssClass = 'alert-success';
           break;
@@ -29,8 +30,9 @@ export class NotifyComponent implements OnInit, OnDestroy {
       switch (message && message.text) {
         case 'Validation failed: Email has already been taken':
           message.text = this.translate.instant('PROFILE_CREATE.MESS_EMAIL');
+          break;
         case 'Successfully!':
-          message.text = this.translate.instant('PROFILE_CREATE.MESS_SUCCESS');    
+          message.text = this.translate.instant('PROFILE_CREATE.MESS_SUCCESS');
           break;
       }
 

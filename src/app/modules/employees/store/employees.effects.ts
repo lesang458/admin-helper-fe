@@ -31,6 +31,7 @@ export class EmployeeEffects {
         );
     })
   );
+
   @Effect({})
   fetchDayOff = this.actions$.pipe(
     ofType(EmployeesActions.FETCH_DAY_OFF),
@@ -71,10 +72,10 @@ export class EmployeeEffects {
   createEmployee = this.actions$.pipe(
     ofType(EmployeesActions.CREATE_EMPLOYEE),
     switchMap((action: EmployeesActions.CreateEmployee) => {
-      let body: any = snakecaseKeys(action.payload);
+      const body: Employee = snakecaseKeys(action.payload);
       return this.http.post<any>(`${environment.APILink}/employees`, body).pipe(
         map((val) => {
-          let data: any = camelcaseKeys(val.data);
+          const data: Employee = camelcaseKeys(val.data);
           return new EmployeesActions.CreateEmployee(data);
         })
       );

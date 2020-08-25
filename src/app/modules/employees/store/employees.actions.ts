@@ -17,7 +17,7 @@ export const CREATE_EMPLOYEE = '[Employees] Create Employee';
 
 export class GetEmployeesSuccess implements Action {
   readonly type = GET_EMPLOYEES_SUCCESS;
-  constructor(public payload: any) {}
+  constructor(public payload: PaginatedData<Employee[]>) {}
 }
 
 export class SearchEmployees implements Action {

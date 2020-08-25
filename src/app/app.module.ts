@@ -14,7 +14,7 @@ import { StoreModule } from '@ngrx/store';
 import * as fromApp from './store/app.reducer';
 import { EffectsModule } from '@ngrx/effects';
 export function HttpLoaderFactory(httpClient: HttpClient) {
-  return new TranslateHttpLoader(httpClient);
+  return new TranslateHttpLoader(httpClient, './assets/i18n/', '.json');
 }
 
 @NgModule({
@@ -31,6 +31,7 @@ export function HttpLoaderFactory(httpClient: HttpClient) {
         useFactory: HttpLoaderFactory,
         deps: [HttpClient],
       },
+      isolate: true,
     }),
     RouterModule.forRoot(APP_ROUTES, { scrollPositionRestoration: 'enabled' }),
     EffectsModule.forRoot([EmployeeEffects]),
