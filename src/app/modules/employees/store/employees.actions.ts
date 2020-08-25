@@ -27,13 +27,7 @@ export class SearchEmployees implements Action {
 
 export class FetchDayOff implements Action {
   readonly type = FETCH_DAY_OFF;
-  constructor(
-    public payload: {
-      search: string;
-      page;
-      sort: { sortNameType; sortBirthDateType };
-    }
-  ) {}
+  constructor(public payload: SearchParams) {}
 }
 
 export class SetDayOff implements Action {

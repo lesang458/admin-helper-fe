@@ -72,7 +72,7 @@ export class EmployeeEffects {
     ofType(EmployeesActions.CREATE_EMPLOYEE),
     switchMap((action: EmployeesActions.CreateEmployee) => {
       let body: any = snakecaseKeys(action.payload);
-      return this.http.post<any>(`${environment.APILink}employees`, body).pipe(
+      return this.http.post<any>(`${environment.APILink}/employees`, body).pipe(
         map((val) => {
           let data: any = camelcaseKeys(val.data);
           return new EmployeesActions.CreateEmployee(data);
