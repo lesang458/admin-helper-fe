@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
-import { ReactiveFormsModule } from '@angular/forms';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { GeneralListComponent } from './components/general-list/general-list.component';
 import { EMPLOYEES_ROUTES } from './employees.routes';
@@ -27,6 +26,7 @@ import { NotifyComponent } from 'src/app/shared/components/notify/notify.compone
     RouterModule.forChild(EMPLOYEES_ROUTES),
     ReactiveFormsModule,
     PaginationModule.forRoot(),
+    FormsModule,
   ],
 })
-export class EmployeesModule { }
+export class EmployeesModule {}

@@ -17,13 +17,14 @@ export const CREATE_EMPLOYEE = '[Employees] Create Employee';
 
 export class GetEmployeesSuccess implements Action {
   readonly type = GET_EMPLOYEES_SUCCESS;
-  constructor(public payload: Employee[]) {}
+  constructor(public payload: any) {}
 }
 
 export class SearchEmployees implements Action {
   readonly type = SEARCH_EMPLOYEES;
   constructor(public payload: HttpParams) {}
 }
+
 export class FetchDayOff implements Action {
   readonly type = FETCH_DAY_OFF;
   constructor(public payload: SearchParams) {}

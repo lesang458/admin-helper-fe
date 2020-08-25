@@ -15,7 +15,7 @@ import { HttpParams } from '@angular/common/http';
 export class GeneralListComponent implements OnInit {
   public employeeObs$: Observable<any>;
   public searchFormControl = new FormControl();
-  public loading: boolean = true;
+  public currentPage = 1;
   public searchStatusFormControl = new FormControl('');
   private sortVariable = {
     sortName: '',
@@ -25,12 +25,7 @@ export class GeneralListComponent implements OnInit {
   constructor(private store: Store<fromApp.AppState>) {}
 
   ngOnInit(): void {
-    this.employeeObs$ = this.store
-      .select('employees')
-      .pipe(map((val) => val.employees));
-    this.employeeObs$.subscribe(() => {
-      this.loading = false;
-    });
+    this.employeeObs$ = this.store.select('employees');
     this.store.dispatch(
       new EmployeeActions.SearchEmployees(
         new HttpParams({ fromObject: { search: '' } })
@@ -40,7 +35,7 @@ export class GeneralListComponent implements OnInit {
     this.searchFormControl.valueChanges
       .pipe(debounceTime(1000), distinctUntilChanged())
       .subscribe(() => {
-        this.loading = true;
+        this.currentPage = 1;
         this.store.dispatch(
           new EmployeeActions.SearchEmployees(
             new HttpParams({ fromObject: this.setParams() })
@@ -48,7 +43,7 @@ export class GeneralListComponent implements OnInit {
         );
       });
     this.searchStatusFormControl.valueChanges.subscribe(() => {
-      this.loading = true;
+      this.currentPage = 1;
       this.store.dispatch(
         new EmployeeActions.SearchEmployees(
           new HttpParams({ fromObject: this.setParams() })
@@ -67,12 +62,12 @@ export class GeneralListComponent implements OnInit {
         ? {
             sort: `${this.sortVariable.sortName}:${this.sortVariable.sortType}`,
           }
-        : {}
+        : {},
+      { page: this.currentPage }
     );
   }
 
   public onSort(sortName: string): void {
-    this.loading = true;
     this.sortVariable =
       this.sortVariable.sortName !== sortName
         ? {
@@ -86,6 +81,15 @@ export class GeneralListComponent implements OnInit {
     this.store.dispatch(
       new EmployeeActions.SearchEmployees(
         new HttpParams({ fromObject: this.setParams() })
+      )
+    );
+  }
+
+  public onPageChanged(page: number): void {
+    const search = Object.assign(this.setParams(), { page });
+    this.store.dispatch(
+      new EmployeeActions.SearchEmployees(
+        new HttpParams({ fromObject: search })
       )
     );
   }

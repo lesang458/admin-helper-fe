@@ -11,6 +11,26 @@ import * as snakecaseKeys from 'snakecase-keys';
 
 @Injectable()
 export class EmployeeEffects {
+  @Effect()
+  employeeSearch = this.actions$.pipe(
+    ofType(EmployeesActions.SEARCH_EMPLOYEES),
+    switchMap((action: EmployeesActions.SearchEmployees) => {
+      const params: HttpParams = action.payload;
+      return this.http
+        .get<any>(`${environment.APILink}/employees`, {
+          params,
+        })
+        .pipe(
+          map((val) => {
+            const value: PaginatedData<Employee[]> = {
+              data: camelcaseKeys(val.data),
+              pagination: camelcaseKeys(val.pagination),
+            };
+            return new EmployeesActions.GetEmployeesSuccess(value);
+          })
+        );
+    })
+  );
   @Effect({})
   fetchDayOff = this.actions$.pipe(
     ofType(EmployeesActions.FETCH_DAY_OFF),
@@ -48,40 +68,16 @@ export class EmployeeEffects {
   );
 
   @Effect()
-  employeeSearch = this.actions$.pipe(
-    ofType(EmployeesActions.SEARCH_EMPLOYEES),
-    switchMap((action: EmployeesActions.SearchEmployees) => {
-      const params: any = action.payload;
-      return this.http
-        .get<any>(`${environment.APILink}/employees`, {
-          params,
-        })
-        .pipe(
-          map((val) => {
-            const data: any = camelcaseKeys(val.data);
-            return new EmployeesActions.GetEmployeesSuccess(data);
-          })
-        );
-    })
-  );
-
-  @Effect()
   createEmployee = this.actions$.pipe(
-    ofType(EmployeeActions.CREATE_EMPLOYEE),
-    switchMap((action: EmployeeActions.CreateEmployee) => {
+    ofType(EmployeesActions.CREATE_EMPLOYEE),
+    switchMap((action: EmployeesActions.CreateEmployee) => {
       let body: any = snakecaseKeys(action.payload);
-      return this.http
-        .post<any>(`${environment.APILink}employees`, body, {
-          headers: {
-            Authorization: localStorage.getItem('token'),
-          },
+      return this.http.post<any>(`${environment.APILink}/employees`, body).pipe(
+        map((val) => {
+          let data: any = camelcaseKeys(val.data);
+          return new EmployeesActions.CreateEmployee(data);
         })
-        .pipe(
-          map((val) => {
-            let data: any = camelcaseKeys(val.data);
-            return new EmployeeActions.CreateEmployee(data);
-          })
-        );
+      );
     })
   );
   constructor(private actions$: Actions, private http: HttpClient) {}

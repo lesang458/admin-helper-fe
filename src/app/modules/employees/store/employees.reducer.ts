@@ -7,6 +7,7 @@ import {
 
 export interface State {
   employees: Employee[];
+  pagination: {};
   dayOff: PaginatedData<Employee[]>;
 }
 
@@ -19,6 +20,7 @@ initDayOff.pagination = pagination;
 
 export const initialState: State = {
   employees: [],
+  pagination: {},
   dayOff: initDayOff,
 };
 
@@ -30,7 +32,8 @@ export function employeeReducer(
     case EmployeesActions.GET_EMPLOYEES_SUCCESS:
       return {
         ...state,
-        employees: [...action.payload],
+        employees: [...action.payload.data],
+        pagination: action.payload.pagination,
       };
     case EmployeesActions.SET_DAY_OFF:
       return {
