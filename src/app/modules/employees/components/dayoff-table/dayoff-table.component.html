@@ -11,7 +11,7 @@
           <input
             type="search"
             class="form-control"
-            #searchInput
+            [formControl]="searchInput"
             id="inlineFormInputGroupUsername"
             placeholder="VD: Nguyen, 2020, ..."
           />
@@ -86,7 +86,7 @@
       <div class="col-12" *ngIf="data.pagination.totalCount !== 0">
         <pagination
           [totalItems]="data.pagination.totalCount"
-          [maxSize]="maxSize"
+          [maxSize]="3"
           [itemsPerPage]="20"
           [(ngModel)]="currentPage"
           (pageChanged)="onPageChanged($event.page)"

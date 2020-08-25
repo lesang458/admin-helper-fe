@@ -14,7 +14,7 @@ export class EmployeeEffects {
   fetchDayOff = this.actions$.pipe(
     ofType(EmployeesActions.FETCH_DAY_OFF),
     switchMap((action: EmployeesActions.FetchDayOff) => {
-      let sort = ``;
+      let sort = '';
       if (action.payload.sort.sortNameType) {
         const sortNameType =
           action.payload.sort.sortNameType === 1 ? 'asc' : 'desc';
@@ -38,12 +38,9 @@ export class EmployeeEffects {
         })
         .pipe(
           map((response) => {
-            const value: any = camelcaseKeys(response.body, { deep: true });
-            const dayOff: PaginatedData<Employee[]> = {
-              data: value.data,
-              pagination: value.pagination,
-            };
-            return new EmployeesActions.SetDayOff(dayOff);
+            return new EmployeesActions.SetDayOff(
+              camelcaseKeys(response.body, { deep: true })
+            );
           })
         );
     })

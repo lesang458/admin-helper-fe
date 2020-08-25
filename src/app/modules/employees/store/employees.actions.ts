@@ -3,6 +3,12 @@ import { Action } from '@ngrx/store';
 import { Employee } from 'src/app/shared/models/employees.model';
 import { PaginatedData } from 'src/app/shared/models/pagination.model';
 
+export interface SearchParams {
+  search: string;
+  page;
+  sort: { sortNameType; sortBirthDateType };
+}
+
 export const GET_EMPLOYEES_SUCCESS = '[Employees] Get Employees Success';
 export const SEARCH_EMPLOYEES = '[Employees] Search Employees';
 export const FETCH_DAY_OFF = '[Employees] Fetch Day Off';
@@ -19,13 +25,7 @@ export class SearchEmployees implements Action {
 }
 export class FetchDayOff implements Action {
   readonly type = FETCH_DAY_OFF;
-  constructor(
-    public payload: {
-      search: string;
-      page;
-      sort: { sortNameType; sortBirthDateType };
-    }
-  ) {}
+  constructor(public payload: SearchParams) {}
 }
 
 export class SetDayOff implements Action {
