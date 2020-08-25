@@ -31,5 +31,19 @@
     "TOTAL_LEAVES": "Total leaves",
     "NUMBER_OF_LEAVES_REMAINING": "Number of leaves remaining",
     "SUBMIT_TIME_OFF": "Submit time off"
+  },
+  "REQUEST-DAY-OFF": {
+    "AUTH": "Authorization",
+    "FULL_NAME": "Full name",
+    "FROM_DATE": "From",
+    "TO_DATE": "To",
+    "HAFL_DAY_OFF": "A half day-off",
+    "KIND_OF_LEAVE": "Kind of leave",
+    "ANNUAL_LEAVE": "Annual leave",
+    "DAY_OFF_AVAILABLE": "Days off are available",
+    "DAY_OFF_AFTER": "Day off remaining after processing",
+    "UNPAID_LEAVE": "Allow unpaid leave",
+    "CANCEL": "Cancel",
+    "SAVE": "Save"
   }
 }

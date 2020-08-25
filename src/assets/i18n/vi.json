@@ -31,5 +31,19 @@
     "TOTAL_LEAVES": "Tổng phép",
     "NUMBER_OF_LEAVES_REMAINING": "Phép còn lại",
     "SUBMIT_TIME_OFF": "Nhập ngày phép"
+  },
+  "REQUEST-DAY-OFF": {
+    "AUTH": "Duyệt phép",
+    "FULL_NAME": "Họ và tên",
+    "FROM_DATE": "Từ ngày",
+    "TO_DATE": "Đến ngày",
+    "HAFL_DAY_OFF": "Nghỉ nửa ngày",
+    "KIND_OF_LEAVE": "Loại phép",
+    "ANNUAL_LEAVE": "Phép năm",
+    "DAY_OFF_AVAILABLE": "Số ngày phép đang có",
+    "DAY_OFF_AFTER": "Số ngày phép còn lại sau khi duyệt",
+    "UNPAID_LEAVE": "Cho phép nghỉ không lương",
+    "CANCEL": "Hủy",
+    "SAVE": "Lưu"
   }
 }

@@ -2,7 +2,9 @@
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Duyệt Phép</h5>
+        <h5 class="modal-title" id="exampleModalLabel">
+          {{ "REQUEST-DAY-OFF.AUTH" | translate }}
+        </h5>
         <button
           type="button"
           class="close"
@@ -14,7 +16,7 @@
       </div>
       <div class="modal-body">
         <label class="pointer" for="exampleFormControlInput1">
-          Ho va ten
+          {{ "REQUEST-DAY-OFF.FULL_NAME" | translate }}
         </label>
         <input
           type="text"
@@ -26,7 +28,7 @@
       </div>
       <div class="modal-body">
         <label class="pointer" for="exampleFormControlInput2">
-          Tu ngay
+          {{ "REQUEST-DAY-OFF.FROM_DATE" | translate }}
         </label>
         <input
           type="date"
@@ -36,7 +38,7 @@
           required
         />
         <label class="pointer" id="label3" for="exampleFormControlInput3">
-          Den ngay
+          {{ "REQUEST-DAY-OFF.TO_DATE" | translate }}
         </label>
         <input
           type="date"
@@ -56,25 +58,26 @@
             id="defaultCheck1"
           />
           <label class="form-check-label pointer" for="defaultCheck1">
-            Nghỉ nửa ngày
+            {{ "REQUEST-DAY-OFF.HAFL_DAY_OFF" | translate }}
           </label>
         </div>
       </div>
 
       <div class="modal-body">
-        <label id="label4" class="pointer" for="exampleFormControlSelect1"
-          >Loại Phép</label
-        >
+        <label id="label4" class="pointer" for="exampleFormControlSelect1">
+          {{ "REQUEST-DAY-OFF.KIND_OF_LEAVE" | translate }}
+        </label>
         <select class="form-control pointer" id="exampleFormControlSelect1">
-          <option selected>Phép năm</option>
-          <option>Phép tháng</option>
+          <option selected>
+            {{ "REQUEST-DAY-OFF.ANNUAL_LEAVE" | translate }}
+          </option>
         </select>
       </div>
 
       <div class="modal-body-custom">
         <ul>
-          <li>Phép đang có: 2 ngày</li>
-          <li>Phép còn sau khi duyệt: 1 ngày</li>
+          <li>{{ "REQUEST-DAY-OFF.DAY_OFF_AVAILABLE" | translate }}: 2</li>
+          <li>{{ "REQUEST-DAY-OFF.DAY_OFF_AFTER" | translate }}: 1</li>
         </ul>
         <hr />
       </div>
@@ -88,16 +91,18 @@
             id="defaultCheck2"
           />
           <label class="form-check-label pointer" for="defaultCheck2">
-            Cho phép nghỉ không lương
+            {{ "REQUEST-DAY-OFF.UNPAID_LEAVE" | translate }}
           </label>
         </div>
       </div>
 
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">
-          Cancel
+          {{ "REQUEST-DAY-OFF.CANCEL" | translate }}
         </button>
-        <button type="button" class="btn btn-primary">Save</button>
+        <button type="button" class="btn btn-primary">
+          {{ "REQUEST-DAY-OFF.SAVE" | translate }}
+        </button>
       </div>
     </div>
   </div>
