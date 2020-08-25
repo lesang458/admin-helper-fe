@@ -7,6 +7,7 @@ import { HttpClient, HttpParams } from '@angular/common/http';
 import { environment } from 'src/environments/environment.prod';
 import { PaginatedData } from 'src/app/shared/models/pagination.model';
 import * as camelcaseKeys from 'camelcase-keys';
+import * as snakecaseKeys from 'snakecase-keys';
 
 @Injectable()
 export class EmployeeEffects {
@@ -14,17 +15,14 @@ export class EmployeeEffects {
   employeeSearch = this.actions$.pipe(
     ofType(EmployeesActions.SEARCH_EMPLOYEES),
     switchMap((action: EmployeesActions.SearchEmployees) => {
-      let params: any = action.payload;
+      const params: HttpParams = action.payload;
       return this.http
         .get<any>(`${environment.APILink}/employees`, {
-          headers: {
-            Authorization: localStorage.getItem('token'),
-          },
           params,
         })
         .pipe(
           map((val) => {
-            let value: any = {
+            const value: PaginatedData<Employee[]> = {
               data: camelcaseKeys(val.data),
               pagination: camelcaseKeys(val.pagination),
             };
@@ -37,7 +35,7 @@ export class EmployeeEffects {
   fetchDayOff = this.actions$.pipe(
     ofType(EmployeesActions.FETCH_DAY_OFF),
     switchMap((action: EmployeesActions.FetchDayOff) => {
-      let sort = ``;
+      let sort = '';
       if (action.payload.sort.sortNameType) {
         const sortNameType =
           action.payload.sort.sortNameType === 1 ? 'asc' : 'desc';
@@ -61,14 +59,25 @@ export class EmployeeEffects {
         })
         .pipe(
           map((response) => {
-            const value: any = camelcaseKeys(response.body, { deep: true });
-            const dayOff: PaginatedData<Employee[]> = {
-              data: value.data,
-              pagination: value.pagination,
-            };
-            return new EmployeesActions.SetDayOff(dayOff);
+            return new EmployeesActions.SetDayOff(
+              camelcaseKeys(response.body, { deep: true })
+            );
           })
         );
+    })
+  );
+
+  @Effect()
+  createEmployee = this.actions$.pipe(
+    ofType(EmployeesActions.CREATE_EMPLOYEE),
+    switchMap((action: EmployeesActions.CreateEmployee) => {
+      let body: any = snakecaseKeys(action.payload);
+      return this.http.post<any>(`${environment.APILink}employees`, body).pipe(
+        map((val) => {
+          let data: any = camelcaseKeys(val.data);
+          return new EmployeesActions.CreateEmployee(data);
+        })
+      );
     })
   );
   constructor(private actions$: Actions, private http: HttpClient) {}

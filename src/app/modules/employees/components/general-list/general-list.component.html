@@ -17,6 +17,25 @@
           />
         </div>
       </div>
+      <div class="col-5">
+        <div class="form-group">
+          <select
+            class="form-select pointer"
+            id="statusSelect"
+            [formControl]="searchStatusFormControl"
+          >
+            <option selected value="">{{
+              "GENERAL_LIST.STATUS" | translate
+            }}</option>
+            <option value="ACTIVE">{{
+              "GENERAL_LIST.ACTIVE" | translate
+            }}</option>
+            <option value="DELETED">{{
+              "GENERAL_LIST.DELETED" | translate
+            }}</option>
+          </select>
+        </div>
+      </div>
     </div>
     <div class="table-responsive" *ngIf="employeeObs$ | async as employeeObs">
       <table class="table table-bordered">
@@ -37,21 +56,7 @@
             </th>
             <th scope="col">{{ "GENERAL_LIST.PHONE_NUMBER" | translate }}</th>
             <th scope="col">
-              <select
-                class="form-select pointer"
-                id="statusSelect"
-                [formControl]="searchStatusFormControl"
-              >
-                <option selected value="">{{
-                  "GENERAL_LIST.STATUS" | translate
-                }}</option>
-                <option value="ACTIVE">{{
-                  "GENERAL_LIST.ACTIVE" | translate
-                }}</option>
-                <option value="DELETED">{{
-                  "GENERAL_LIST.DELETED" | translate
-                }}</option>
-              </select>
+              {{ "GENERAL_LIST.STATUS" | translate }}
             </th>
             <th scope="col">{{ "GENERAL_LIST.ACTIONS" | translate }}</th>
           </tr>
@@ -110,10 +115,25 @@
     </div>
 
     <div class="d-flex justify-content-end">
-      <button type="button" class="btn btn-info">
-        <span class="cil-playlist-add btn-icon mr-2"></span
-        >{{ "GENERAL_LIST.CREATE_EMPLOYEE_PROFILE" | translate }}
+      <button
+        type="button"
+        data-toggle="modal"
+        data-target="#exampleModalCenter"
+        class="btn btn-info"
+      >
+        <span class="cil-playlist-add btn-icon mr-2"></span>
+        {{ "GENERAL_LIST.CREATE_EMPLOYEE_PROFILE" | translate }}
       </button>
+      <div
+        class="modal fade"
+        id="exampleModalCenter"
+        tabindex="-1"
+        role="dialog"
+        aria-labelledby="exampleModalCenterTitle"
+        aria-hidden="true"
+      >
+        <profile-create></profile-create>
+      </div>
     </div>
   </div>
 </div>

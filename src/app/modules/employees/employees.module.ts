@@ -8,6 +8,8 @@ import { DayoffComponent } from './pages/dayoff/dayoff.component';
 import { DayoffTableComponent } from './components/dayoff-table/dayoff-table.component';
 import { PaginationModule } from 'ngx-bootstrap/pagination';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ProfileCreateComponent } from './components/profile-create/profile-create.component';
+import { NotifyComponent } from 'src/app/shared/components/notify/notify.component';
 
 @NgModule({
   declarations: [
@@ -15,6 +17,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     GeneralInfoComponent,
     DayoffComponent,
     DayoffTableComponent,
+    ProfileCreateComponent,
+    NotifyComponent,
   ],
   imports: [
     SharedModule,
