@@ -7,7 +7,12 @@
   },
   "HEADER": {
     "TITLE": "Danh sách nhân viên",
-    "VIETNAMESE": "Tiếng việt"
+    "VIETNAMESE": "Tiếng việt",
+    "ACCOUNT": "Tài khoản",
+    "LOGOUT": "Đăng xuất"
+  },
+  "BODY": {
+    "DEVELOPED_BY": "Được phát triển bởi"
   },
   "GENERAL_LIST": {
     "NAME": "Họ và tên",
