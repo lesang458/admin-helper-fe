@@ -113,6 +113,13 @@
           </tr>
         </tbody>
       </table>
+      <div
+        *ngIf="employeeObs.employees.length === 0"
+        class="alert alert-secondary"
+        role="alert"
+      >
+        {{ "GENERAL_LIST.NO_RESULT" | translate }}
+      </div>
       <div class="col-12" *ngIf="employeeObs.pagination.totalCount !== 0">
         <pagination
           [totalItems]="employeeObs.pagination.totalCount"
@@ -129,14 +136,6 @@
           [rotate]="true"
         >
         </pagination>
-      </div>
-
-      <div
-        *ngIf="employeeObs.employees.length === 0"
-        class="alert alert-light"
-        role="alert"
-      >
-        {{ "GENERAL_LIST.NO_RESULT" | translate }}
       </div>
     </div>
 

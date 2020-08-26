@@ -5,16 +5,16 @@ import { RouterModule } from '@angular/router';
 import { APP_ROUTES } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { CoreModule } from './core/core.module';
-import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { HttpClientModule } from '@angular/common/http';
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
-import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { EmployeesModule } from './modules/employees/employees.module';
 import { SharedModule } from './shared/shared.module';
 import { StoreModule } from '@ngrx/store';
 import * as fromApp from './store/app.reducer';
 import { EffectsModule } from '@ngrx/effects';
-export function HttpLoaderFactory(httpClient: HttpClient) {
-  return new TranslateHttpLoader(httpClient, './assets/i18n/', '.json');
+import { CustomTranslateLoader } from './shared/loader/custom-translate.loader';
+export function LoaderFactory() {
+  return new CustomTranslateLoader();
 }
 
 @NgModule({
@@ -28,8 +28,7 @@ export function HttpLoaderFactory(httpClient: HttpClient) {
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,
-        useFactory: HttpLoaderFactory,
-        deps: [HttpClient],
+        useFactory: LoaderFactory,
       },
     }),
     RouterModule.forRoot(APP_ROUTES, { scrollPositionRestoration: 'enabled' }),
