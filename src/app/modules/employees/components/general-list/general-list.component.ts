@@ -5,9 +5,9 @@ import { debounceTime, distinctUntilChanged, map } from 'rxjs/operators';
 import { Store } from '@ngrx/store';
 import * as fromApp from '../../../../store/app.reducer';
 import * as EmployeeActions from '../../store/employees.actions';
-import { HttpParams } from '@angular/common/http';
 import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
 import { ProfileCreateComponent } from '../profile-create/profile-create.component';
+import { SearchParams } from '../../store/employees.actions';
 
 @Component({
   selector: 'ah-general-list',
@@ -17,13 +17,12 @@ import { ProfileCreateComponent } from '../profile-create/profile-create.compone
 export class GeneralListComponent implements OnInit {
   public bsModalRef: BsModalRef;
   public employeeObs$: Observable<any>;
-  public searchFormControl = new FormControl();
+  public searchFormControl = new FormControl('');
   public currentPage = 1;
   public searchStatusFormControl = new FormControl('');
-  private sortVariable = {
-    sortName: '',
-    sortType: '',
-  };
+  public sortBirthDateType = 0;
+  public sortNameType = 0;
+  public sortJoinDateType = 0;
 
   constructor(
     private store: Store<fromApp.AppState>,
@@ -32,72 +31,61 @@ export class GeneralListComponent implements OnInit {
 
   ngOnInit(): void {
     this.employeeObs$ = this.store.select('employees');
-    this.store.dispatch(
-      new EmployeeActions.SearchEmployees(
-        new HttpParams({ fromObject: { search: '' } })
-      )
-    );
+    this.onPageChanged(1);
 
     this.searchFormControl.valueChanges
-      .pipe(debounceTime(1000), distinctUntilChanged())
+      .pipe(debounceTime(300), distinctUntilChanged())
       .subscribe(() => {
-        this.currentPage = 1;
-        this.store.dispatch(
-          new EmployeeActions.SearchEmployees(
-            new HttpParams({ fromObject: this.setParams() })
-          )
-        );
+        if (this.currentPage === 1) {
+          this.onPageChanged(1);
+        } else {
+          this.currentPage = 1;
+        }
       });
+
     this.searchStatusFormControl.valueChanges.subscribe(() => {
-      this.currentPage = 1;
-      this.store.dispatch(
-        new EmployeeActions.SearchEmployees(
-          new HttpParams({ fromObject: this.setParams() })
-        )
-      );
+      if (this.currentPage === 1) {
+        this.onPageChanged(1);
+      } else {
+        this.currentPage = 1;
+      }
     });
   }
 
-  private setParams(): any {
-    let searchValue = this.searchFormControl.value;
-    let statusValue = this.searchStatusFormControl.value;
-    return Object.assign(
-      searchValue !== '' && searchValue ? { search: searchValue } : {},
-      statusValue !== '' ? { status: statusValue } : {},
-      this.sortVariable.sortName !== ''
-        ? {
-            sort: `${this.sortVariable.sortName}:${this.sortVariable.sortType}`,
-          }
-        : {},
-      { page: this.currentPage }
-    );
-  }
-
-  public onSort(sortName: string): void {
-    this.sortVariable =
-      this.sortVariable.sortName !== sortName
-        ? {
-            sortName,
-            sortType: 'DESC',
-          }
-        : {
-            sortName,
-            sortType: this.sortVariable.sortType === 'DESC' ? 'ASC' : 'DESC',
-          };
-    this.store.dispatch(
-      new EmployeeActions.SearchEmployees(
-        new HttpParams({ fromObject: this.setParams() })
-      )
-    );
+  public onSort(page: number, column: string): void {
+    if (column === 'name') {
+      this.sortNameType =
+        this.sortNameType === 0 ? 1 : this.sortNameType === 1 ? 2 : 1;
+      this.sortBirthDateType = 0;
+      this.sortJoinDateType = 0;
+    } else if (column === 'birthdate') {
+      this.sortBirthDateType =
+        this.sortBirthDateType === 0 ? 1 : this.sortBirthDateType === 1 ? 2 : 1;
+      this.sortNameType = 0;
+      this.sortJoinDateType = 0;
+    } else {
+      this.sortJoinDateType =
+        this.sortJoinDateType === 0 ? 1 : this.sortJoinDateType === 1 ? 2 : 1;
+      this.sortNameType = 0;
+      this.sortBirthDateType = 0;
+    }
+    this.onPageChanged(page);
   }
 
   public onPageChanged(page: number): void {
-    const search = Object.assign(this.setParams(), { page });
-    this.store.dispatch(
-      new EmployeeActions.SearchEmployees(
-        new HttpParams({ fromObject: search })
-      )
-    );
+    const search = this.searchFormControl.value;
+    const status = this.searchStatusFormControl.value;
+    const searchParams: SearchParams = {
+      search,
+      page,
+      sort: {
+        sortNameType: this.sortNameType,
+        sortBirthDateType: this.sortBirthDateType,
+        sortJoinDateType: this.sortJoinDateType,
+      },
+      status,
+    };
+    this.store.dispatch(new EmployeeActions.SearchEmployees(searchParams));
   }
 
   public openModalWithComponent(id?: any, type?: string) {
