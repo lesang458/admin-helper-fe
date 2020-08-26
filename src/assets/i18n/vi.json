@@ -41,14 +41,16 @@
     "TO_DATE": "Đến ngày",
     "HAFL_DAY_OFF": "Nghỉ nửa ngày",
     "KIND_OF_LEAVE": "Loại phép",
-    "ANNUAL_LEAVE": "Phép năm",
+    "VACATION": "Phép năm",
+    "ILLNESS": "Phép ốm",
     "DAY_OFF_AVAILABLE": "Số ngày phép đang có",
     "DAY_OFF_AFTER": "Số ngày phép còn lại sau khi duyệt",
     "UNPAID_LEAVE": "Cho phép nghỉ không lương",
     "CANCEL": "Hủy",
     "SAVE": "Lưu",
     "MORNING_BREAK": "Nghỉ buổi sáng",
-    "AFTERNOON_BREAK": "Nghỉ buổi chiều"
+    "AFTERNOON_BREAK": "Nghỉ buổi chiều",
+    "DAYS": "ngày"
   },
   "PROFILE_CREATE": {
     "TITLE": "Tạo hồ sơ nhân viên",

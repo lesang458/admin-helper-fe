@@ -91,8 +91,11 @@
           id="exampleFormControlSelect1"
           formControlName="kindOfLeave"
         >
-          <option value="Annual">
-            {{ "REQUEST-DAY-OFF.ANNUAL_LEAVE" | translate }}
+          <option value="VACATION">
+            {{ "REQUEST-DAY-OFF.VACATION" | translate }}
+          </option>
+          <option value="ILLNESS">
+            {{ "REQUEST-DAY-OFF.ILLNESS" | translate }}
           </option>
         </select>
       </div>
@@ -102,10 +105,12 @@
           <li>
             {{ "REQUEST-DAY-OFF.DAY_OFF_AVAILABLE" | translate }}:
             {{ dayOffAvailable }}
+            {{ "REQUEST-DAY-OFF.DAYS" | translate }}
           </li>
           <li>
             {{ "REQUEST-DAY-OFF.DAY_OFF_AFTER" | translate }}:
             {{ dayOffAvailable > dayOffs ? dayOffAvailable - dayOffs : "0" }}
+            {{ "REQUEST-DAY-OFF.DAYS" | translate }}
           </li>
         </ul>
         <hr />
@@ -125,6 +130,8 @@
           />
           <label class="form-check-label pointer" for="defaultCheck3">
             {{ "REQUEST-DAY-OFF.UNPAID_LEAVE" | translate }}
+            {{ dayOffs - dayOffAvailable }}
+            {{ "REQUEST-DAY-OFF.DAYS" | translate }}
           </label>
         </div>
       </div>
@@ -133,7 +140,13 @@
         <button type="button" class="btn btn-secondary" data-dismiss="modal">
           {{ "REQUEST-DAY-OFF.CANCEL" | translate }}
         </button>
-        <button type="button" class="btn btn-primary">
+        <button
+          [disabled]="dayOffAvailable < dayOffs && !f.get('unpaidLeave').value"
+          (click)="onSave()"
+          type="button"
+          data-dismiss="modal"
+          class="btn btn-primary"
+        >
           {{ "REQUEST-DAY-OFF.SAVE" | translate }}
         </button>
       </div>

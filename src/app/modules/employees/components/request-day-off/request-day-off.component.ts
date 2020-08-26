@@ -1,9 +1,10 @@
+import { RequestDayOffModel } from 'src/app/shared/models/request-day-off.model';
 import { map } from 'rxjs/operators';
 import { Component, OnInit, Input, OnChanges } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
 import * as fromApp from '../../../../store/app.reducer';
+import * as EmployeeActions from '../../store/employees.actions';
 import { Store } from '@ngrx/store';
-import { Observable } from 'rxjs';
 import { Employee } from 'src/app/shared/models/employees.model';
 
 @Component({
@@ -25,6 +26,17 @@ export class RequestDayOffComponent implements OnInit, OnChanges {
   ngOnInit(): void {}
 
   ngOnChanges() {
+    this.f = new FormGroup({
+      fullName: new FormControl(),
+      fromDate: new FormControl(),
+      toDate: new FormControl(),
+      morningBreak: new FormControl(),
+      afternoonBreak: new FormControl(),
+      kindOfLeave: new FormControl(),
+      unpaidLeave: new FormControl(),
+    });
+    this.f.get('fullName').disable();
+
     this.store.select('employees').source.source.source.subscribe((val) => {
       val.employees.dayOff?.data.forEach((element) => {
         if (element.id === this.currentId) {
@@ -35,7 +47,6 @@ export class RequestDayOffComponent implements OnInit, OnChanges {
 
     if (this.currentEmployee) {
       this.currentDateString = this.setDateString();
-      this.dayOffAvailable = this.currentEmployee.hours[0].hours / 8;
       this.f = new FormGroup({
         fullName: new FormControl(
           `${this.currentEmployee.firstName} ${this.currentEmployee.lastName}`
@@ -44,7 +55,7 @@ export class RequestDayOffComponent implements OnInit, OnChanges {
         toDate: new FormControl(this.currentDateString),
         morningBreak: new FormControl('true'),
         afternoonBreak: new FormControl('true'),
-        kindOfLeave: new FormControl('Annual'),
+        kindOfLeave: new FormControl('VACATION'),
         unpaidLeave: new FormControl(),
       });
       this.f.get('fromDate').valueChanges.subscribe((val) => {
@@ -82,19 +93,12 @@ export class RequestDayOffComponent implements OnInit, OnChanges {
           }
         }
       });
+      this.f.get('kindOfLeave').valueChanges.subscribe(() => {
+        this.setHoursAvailable();
+      });
+      this.setHoursAvailable();
       this.maxOfToDate = this.setDateString(14);
       this.setDayOffs();
-    } else {
-      this.f = new FormGroup({
-        fullName: new FormControl(),
-        fromDate: new FormControl(),
-        toDate: new FormControl(),
-        morningBreak: new FormControl(),
-        afternoonBreak: new FormControl(),
-        kindOfLeave: new FormControl(),
-        unpaidLeave: new FormControl(),
-      });
-      this.f.get('fullName').disable();
     }
   }
 
@@ -120,5 +124,26 @@ export class RequestDayOffComponent implements OnInit, OnChanges {
       '0' +
       (date.getDate() + ascDays - 1)
     ).slice(-2)}`;
+  }
+
+  public setHoursAvailable(): void {
+    let hours = this.currentEmployee.hours.filter(
+      (item) => item.category === this.f.get('kindOfLeave').value
+    )[0];
+    this.dayOffAvailable = hours ? hours.availableHours / 8 : 0;
+  }
+
+  public onSave(): void {
+    this.store.dispatch(
+      new EmployeeActions.RequestDayOff({
+        id: this.currentId.toString(),
+        fromDate: this.f.get('fromDate').value,
+        toDate: this.f.get('toDate').value,
+        hoursPerDay: this.dayOffs < 1 ? 4 : 8,
+        dayOffInfoId:
+          this.f.get('kindOfLeave').value === 'VACATION' ? '1' : '2',
+      })
+    );
+    this.ngOnChanges();
   }
 }
