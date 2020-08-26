@@ -30,7 +30,9 @@
     "BIRTHDAY": "Ngày sinh",
     "TOTAL_LEAVES": "Tổng phép",
     "NUMBER_OF_LEAVES_REMAINING": "Phép còn lại",
-    "SUBMIT_TIME_OFF": "Nhập ngày phép"
+    "SUBMIT_TIME_OFF": "Nhập ngày phép",
+    "CREATE_DAY_OFF_REQUEST": "Tạo yêu cầu nghỉ phép",
+    "ACTION": "Hành động"
   },
   "REQUEST-DAY-OFF": {
     "AUTH": "Duyệt phép",
@@ -44,7 +46,9 @@
     "DAY_OFF_AFTER": "Số ngày phép còn lại sau khi duyệt",
     "UNPAID_LEAVE": "Cho phép nghỉ không lương",
     "CANCEL": "Hủy",
-    "SAVE": "Lưu"
+    "SAVE": "Lưu",
+    "MORNING_BREAK": "Nghỉ buổi sáng",
+    "AFTERNOON_BREAK": "Nghỉ buổi chiều"
   },
   "PROFILE_CREATE": {
     "TITLE": "Tạo hồ sơ nhân viên",

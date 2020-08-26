@@ -19,6 +19,7 @@ export class DayoffTableComponent implements OnInit, OnDestroy {
   public currentPage = 1;
   public sortBirthDateType = 0;
   public sortNameType = 0;
+  public currentId: Number = -1;
   public data$: Observable<PaginatedData<Employee[]>>;
   private subscription: Subscription;
   constructor(private store: Store<fromApp.AppState>) {}
