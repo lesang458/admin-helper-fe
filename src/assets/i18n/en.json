@@ -7,7 +7,12 @@
   },
   "HEADER": {
     "TITLE": "Employees List",
-    "VIETNAMESE": "Vietnamese"
+    "VIETNAMESE": "Vietnamese",
+    "ACCOUNT": "Account",
+    "LOGOUT": "Logout"
+  },
+  "BODY": {
+    "DEVELOPED_BY": "Developed by"
   },
   "GENERAL_LIST": {
     "NAME": "Name",
@@ -16,6 +21,7 @@
     "PHONE_NUMBER": "Phone number",
     "STATUS": "Status",
     "ACTIONS": "Actions",
+    "ALL": "All",
     "ACTIVE": "Active",
     "DELETED": "Deleted",
     "DETAIL": "Detail",
