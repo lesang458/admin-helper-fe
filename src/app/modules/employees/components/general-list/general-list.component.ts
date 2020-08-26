@@ -28,7 +28,7 @@ export class GeneralListComponent implements OnInit {
     this.onPageChanged(1);
 
     this.searchFormControl.valueChanges
-      .pipe(debounceTime(1000), distinctUntilChanged())
+      .pipe(debounceTime(300), distinctUntilChanged())
       .subscribe(() => {
         if (this.currentPage === 1) {
           this.onPageChanged(1);

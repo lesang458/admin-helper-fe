@@ -53,15 +53,10 @@ export class EmployeeEffects {
           })
           .pipe(
             map((response) => {
-              if (action.type === EmployeesActions.FETCH_DAY_OFF) {
-                return new EmployeesActions.SetDayOff(
-                  camelcaseKeys(response.body, { deep: true })
-                );
-              } else {
-                return new EmployeesActions.GetEmployeesSuccess(
-                  camelcaseKeys(response.body, { deep: true })
-                );
-              }
+              const data = camelcaseKeys(response.body, { deep: true });
+              return action.type === EmployeesActions.FETCH_DAY_OFF
+                ? new EmployeesActions.SetDayOff(data)
+                : new EmployeesActions.GetEmployeesSuccess(data);
             })
           );
       }
