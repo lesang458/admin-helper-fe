@@ -6,6 +6,8 @@ import { Store } from '@ngrx/store';
 import * as fromApp from '../../../../store/app.reducer';
 import * as EmployeeActions from '../../store/employees.actions';
 import { HttpParams } from '@angular/common/http';
+import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
+import { ProfileCreateComponent } from '../profile-create/profile-create.component';
 
 @Component({
   selector: 'ah-general-list',
@@ -13,6 +15,7 @@ import { HttpParams } from '@angular/common/http';
   styleUrls: ['./general-list.component.scss'],
 })
 export class GeneralListComponent implements OnInit {
+  public bsModalRef: BsModalRef;
   public employeeObs$: Observable<any>;
   public searchFormControl = new FormControl();
   public currentPage = 1;
@@ -22,7 +25,10 @@ export class GeneralListComponent implements OnInit {
     sortType: '',
   };
 
-  constructor(private store: Store<fromApp.AppState>) {}
+  constructor(
+    private store: Store<fromApp.AppState>,
+    private modalService: BsModalService
+  ) {}
 
   ngOnInit(): void {
     this.employeeObs$ = this.store.select('employees');
@@ -92,5 +98,13 @@ export class GeneralListComponent implements OnInit {
         new HttpParams({ fromObject: search })
       )
     );
+  }
+
+  public openModalWithComponent(id?: any, type?: string) {
+    const initialState = { id, type };
+    this.bsModalRef = this.modalService.show(ProfileCreateComponent, {
+      initialState,
+    });
+    this.bsModalRef.content.closeBtnName = 'Close';
   }
 }

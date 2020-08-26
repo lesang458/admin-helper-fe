@@ -71,13 +71,29 @@ export class EmployeeEffects {
   createEmployee = this.actions$.pipe(
     ofType(EmployeesActions.CREATE_EMPLOYEE),
     switchMap((action: EmployeesActions.CreateEmployee) => {
-      let body: any = snakecaseKeys(action.payload);
+      const body: any = snakecaseKeys(action.payload);
       return this.http.post<any>(`${environment.APILink}/employees`, body).pipe(
         map((val) => {
-          let data: any = camelcaseKeys(val.data);
+          const data: any = camelcaseKeys(val.data);
           return new EmployeesActions.CreateEmployee(data);
         })
       );
+    })
+  );
+
+  @Effect()
+  detailEmployee = this.actions$.pipe(
+    ofType(EmployeesActions.DETAIL_EMPLOYEE),
+    switchMap((action: EmployeesActions.DetailEmployee) => {
+      const params = action.payload;
+      return this.http
+        .get<any>(`${environment.APILink}/employees/${params}`)
+        .pipe(
+          map((val) => {
+            const data: any = camelcaseKeys(val.data);
+            return new EmployeesActions.DetailEmployee(data);
+          })
+        );
     })
   );
   constructor(private actions$: Actions, private http: HttpClient) {}

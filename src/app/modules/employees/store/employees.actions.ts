@@ -14,6 +14,7 @@ export const SEARCH_EMPLOYEES = '[Employees] Search Employees';
 export const FETCH_DAY_OFF = '[Employees] Fetch Day Off';
 export const SET_DAY_OFF = '[Employees] Set Day Off';
 export const CREATE_EMPLOYEE = '[Employees] Create Employee';
+export const DETAIL_EMPLOYEE = '[Employees] Detail Employee';
 
 export class GetEmployeesSuccess implements Action {
   readonly type = GET_EMPLOYEES_SUCCESS;
@@ -40,9 +41,15 @@ export class CreateEmployee implements Action {
   constructor(public payload: Employee) {}
 }
 
+export class DetailEmployee implements Action {
+  readonly type = DETAIL_EMPLOYEE;
+  constructor(public payload: number) {}
+}
+
 export type EmployeesActions =
   | GetEmployeesSuccess
   | SearchEmployees
   | FetchDayOff
   | SetDayOff
-  | CreateEmployee;
+  | CreateEmployee
+  | DetailEmployee;

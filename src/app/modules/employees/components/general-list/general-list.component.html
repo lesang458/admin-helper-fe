@@ -81,8 +81,10 @@
               >
             </td>
             <td>
-              <span class="cil-external-link mr-2"></span
-              >{{ "GENERAL_LIST.DETAIL" | translate }}
+              <span (click)="openModalWithComponent(item.id, 'detail')">
+                <span class="cil-external-link mr-2"></span>
+                {{ "GENERAL_LIST.DETAIL" | translate }}
+              </span>
             </td>
           </tr>
         </tbody>
@@ -117,23 +119,12 @@
     <div class="d-flex justify-content-end">
       <button
         type="button"
-        data-toggle="modal"
-        data-target="#exampleModalCenter"
+        (click)="openModalWithComponent(null, 'create')"
         class="btn btn-info"
       >
         <span class="cil-playlist-add btn-icon mr-2"></span>
         {{ "GENERAL_LIST.CREATE_EMPLOYEE_PROFILE" | translate }}
       </button>
-      <div
-        class="modal fade"
-        id="exampleModalCenter"
-        tabindex="-1"
-        role="dialog"
-        aria-labelledby="exampleModalCenterTitle"
-        aria-hidden="true"
-      >
-        <profile-create></profile-create>
-      </div>
     </div>
   </div>
 </div>
