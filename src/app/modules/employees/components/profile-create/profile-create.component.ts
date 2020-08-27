@@ -19,6 +19,7 @@ import { BsModalRef } from 'ngx-bootstrap/modal';
 export class ProfileCreateComponent implements OnInit {
   public id: any;
   public type: string;
+  public hours: any;
   public profileForm = new FormGroup({
     firstName: new FormControl('', Validators.maxLength(100)),
     lastName: new FormControl('', Validators.maxLength(100)),
@@ -31,7 +32,7 @@ export class ProfileCreateComponent implements OnInit {
     ]),
     birthdate: new FormControl(''),
     joinDate: new FormControl(''),
-    dayOffInfo: this.formBuilder.array([
+    dayOffInfos: this.formBuilder.array([
       this.formBuilder.group({
         dayOffCategoryId: 1,
         hours: ['', Validators.pattern('^[0-9]*$')],
@@ -49,15 +50,25 @@ export class ProfileCreateComponent implements OnInit {
     private formBuilder: FormBuilder
   ) {}
 
-  ngOnInit(): void {
-    if(this.type === 'detail'){
+  ngOnInit() {
+    if (this.type !== 'create') {
       this.store.dispatch(new EmployeeActions.DetailEmployee(this.id));
-      console.log("ProfileCreateComponent -> ngOnInit -> this.id", this.id)
+      this.store
+        .select((s) => s.employees.detaiEmployee)
+        .subscribe((data: any) => {
+          if (Object.keys(data).length !== 0) {
+            this.hours = data?.hours
+            this.profileForm.patchValue(data);
+          }
+        });
+    }
+    if(this.type === 'detail'){
+      this.profileForm.disable()
     }
   }
 
-  get dayOffInfo(): FormArray {
-    return this.profileForm.get('dayOffInfo') as FormArray;
+  get dayOffInfos(): FormArray {
+    return this.profileForm.get('dayOffInfos') as FormArray;
   }
 
   get f() {

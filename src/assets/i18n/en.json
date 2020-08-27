@@ -68,9 +68,13 @@
     "VACATION": "Vacation",
     "ILLNESS": "Illness",
     "DAY_OFF_CATE": "Day off category",
+    "AVAILABLE_HOURS": "Available hours",
     "MESS_EMAIL": "Email has already been taken",
     "MESS_SUCCESS": "Created successfully!",
     "CLOSE": "Close",
     "SAVE": "Save"
+  },
+  "PROFILE_DETAIL": {
+    "TITLE": "Detail Employee Profile"
   }
 }

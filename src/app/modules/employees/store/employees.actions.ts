@@ -1,4 +1,3 @@
-import { HttpParams } from '@angular/common/http';
 import { Action } from '@ngrx/store';
 import { Employee } from 'src/app/shared/models/employees.model';
 import { PaginatedData } from 'src/app/shared/models/pagination.model';
@@ -16,6 +15,7 @@ export const FETCH_DAY_OFF = '[Employees] Fetch Day Off';
 export const SET_DAY_OFF = '[Employees] Set Day Off';
 export const CREATE_EMPLOYEE = '[Employees] Create Employee';
 export const DETAIL_EMPLOYEE = '[Employees] Detail Employee';
+export const DETAIL_EMPLOYEE_SUCCESS = '[Employees] Detail Employee Success';
 
 export class GetEmployeesSuccess implements Action {
   readonly type = GET_EMPLOYEES_SUCCESS;
@@ -47,10 +47,16 @@ export class DetailEmployee implements Action {
   constructor(public payload: number) {}
 }
 
+export class DetailEmployeeSuccess implements Action {
+  readonly type = DETAIL_EMPLOYEE_SUCCESS;
+  constructor(public payload: any) {}
+}
+
 export type EmployeesActions =
   | GetEmployeesSuccess
   | SearchEmployees
   | FetchDayOff
   | SetDayOff
   | CreateEmployee
-  | DetailEmployee;
+  | DetailEmployee
+  | DetailEmployeeSuccess;

@@ -106,11 +106,13 @@
                 >{{ "GENERAL_LIST.ACTIVE" | translate }}</span
               >
             </td>
-            <td>
-              <span (click)="openModalWithComponent(item.id, 'detail')">
-                <span class="cil-external-link mr-2"></span>
-                {{ "GENERAL_LIST.DETAIL" | translate }}
-              </span>
+            <td style="display:flex; justify-self: center;">
+              <button class="btn-action" (click)="openModalWithComponent(item.id, 'detail')">
+                <span class="cil-external-link"></span>
+              </button>
+              <button class="btn-action" (click)="openModalWithComponent(item.id, 'edit')">
+                <span class="cil-brush"></span>
+              </button>
             </td>
           </tr>
         </tbody>

@@ -81,15 +81,14 @@ export class EmployeeEffects {
   detailEmployee = this.actions$.pipe(
     ofType(EmployeesActions.DETAIL_EMPLOYEE),
     switchMap((action: EmployeesActions.DetailEmployee) => {
-      const params = action.payload;
-      return this.http
-        .get<any>(`${environment.APILink}/employees/${params}`)
-        .pipe(
-          map((val) => {
-            const data: any = camelcaseKeys(val.data);
-            return new EmployeesActions.DetailEmployee(data);
-          })
-        );
+        return this.http
+          .get<any>(`${environment.APILink}/employees/${action.payload}`)
+          .pipe(
+            map((val) => {
+              const data: any = camelcaseKeys(val.user);
+              return new EmployeesActions.DetailEmployeeSuccess(data);
+            })
+          );
     })
   );
   constructor(private actions$: Actions, private http: HttpClient) {}
