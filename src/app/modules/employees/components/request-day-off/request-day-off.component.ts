@@ -11,8 +11,7 @@ import { Employee } from 'src/app/shared/models/employees.model';
   styleUrls: ['./request-day-off.component.scss'],
 })
 export class RequestDayOffComponent implements OnInit, OnChanges {
-  @Input() currentId: string;
-  public currentEmployee: Employee;
+  @Input() currentEmployee: Employee;
   public currentDateString: string;
   public dayOffAvailable: number;
   public dayOffs: number;
@@ -34,15 +33,6 @@ export class RequestDayOffComponent implements OnInit, OnChanges {
   }
 
   ngOnChanges() {
-    this.store.select('employees').subscribe((val) => {
-      val.dayOff.data.forEach((element) => {
-        if (element.id === this.currentId) {
-          this.currentEmployee = element;
-          this.setHoursAvailable();
-        }
-      });
-    });
-
     if (this.currentEmployee) {
       this.currentDateString = this.setDateString();
       this.f.patchValue({
@@ -132,7 +122,7 @@ export class RequestDayOffComponent implements OnInit, OnChanges {
   public onSave(): void {
     this.store.dispatch(
       new EmployeeActions.RequestDayOff({
-        id: this.currentId.toString(),
+        id: this.currentEmployee.id,
         fromDate: this.f.get('fromDate').value,
         toDate: this.f.get('toDate').value,
         hoursPerDay: this.dayOffs < 1 ? 4 : 8,

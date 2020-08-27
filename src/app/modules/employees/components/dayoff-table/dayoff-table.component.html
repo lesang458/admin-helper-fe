@@ -83,7 +83,7 @@
                   type="button"
                   class="btn btn-info"
                   data-toggle="modal"
-                  (click)="currentId = item.id"
+                  (click)="currentEmployee = item"
                   data-target="#subTimeOff"
                 >
                   <span class="cil-playlist-add btn-icon mr-2"></span>
@@ -137,6 +137,8 @@
     aria-labelledby="exampleModalCenterTitle"
     aria-hidden="true"
   >
-    <ah-request-day-off [currentId]="currentId"></ah-request-day-off>
+    <ah-request-day-off
+      [currentEmployee]="currentEmployee"
+    ></ah-request-day-off>
   </div>
 </div>
