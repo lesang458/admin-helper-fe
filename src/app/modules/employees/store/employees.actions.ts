@@ -16,7 +16,7 @@ export const SEARCH_EMPLOYEES = '[Employees] Search Employees';
 export const FETCH_DAY_OFF = '[Employees] Fetch Day Off';
 export const SET_DAY_OFF = '[Employees] Set Day Off';
 export const CREATE_EMPLOYEE = '[Employees] Create Employee';
-export const REQUEST_DAY_OFF = '[Employees] Request Day-off';
+export const REQUEST_DAY_OFF = '[Employees] Request Day Off';
 
 export class GetEmployeesSuccess implements Action {
   readonly type = GET_EMPLOYEES_SUCCESS;
@@ -45,7 +45,9 @@ export class CreateEmployee implements Action {
 
 export class RequestDayOff implements Action {
   readonly type = REQUEST_DAY_OFF;
-  constructor(public payload: RequestDayOffModel) {}
+  constructor(
+    public payload: { body: RequestDayOffModel; searchParams: SearchParams }
+  ) {}
 }
 
 export type EmployeesActions =

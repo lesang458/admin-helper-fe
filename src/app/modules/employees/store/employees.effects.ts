@@ -81,7 +81,9 @@ export class EmployeeEffects {
   requestDayOff = this.actions$.pipe(
     ofType(EmployeesActions.REQUEST_DAY_OFF),
     switchMap((action: EmployeesActions.RequestDayOff) => {
-      const body: RequestDayOffModel = { ...snakecaseKeys(action.payload) };
+      const body: RequestDayOffModel = {
+        ...snakecaseKeys(action.payload.body),
+      };
       const id = body.id;
       delete body.id;
       return this.http
@@ -91,16 +93,9 @@ export class EmployeeEffects {
         )
         .pipe(
           map(() => {
-            return new EmployeesActions.FetchDayOff({
-              search: '',
-              page: 1,
-              sort: {
-                sortNameType: '',
-                sortBirthDateType: '',
-                sortJoinDateType: '',
-              },
-              status: '',
-            });
+            return new EmployeesActions.FetchDayOff(
+              action.payload.searchParams
+            );
           })
         );
     })

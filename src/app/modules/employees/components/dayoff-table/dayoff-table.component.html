@@ -83,11 +83,11 @@
                   type="button"
                   class="btn btn-info"
                   data-toggle="modal"
-                  (click)="currentEmployee = item"
+                  (click)="selectedEmployee = item"
                   data-target="#subTimeOff"
                 >
                   <span class="cil-playlist-add btn-icon mr-2"></span>
-                  {{ "DAY_OFF_TABLE.CREATE_DAY_OFF_REQUEST" | translate }}
+                  {{ "DAY_OFF_TABLE.SUBMIT_TIME_OFF" | translate }}
                 </button>
               </div>
             </td>
@@ -120,15 +120,6 @@
       </div>
     </div>
   </div>
-  <button
-    type="button"
-    class="btn btn-info"
-    data-toggle="modal"
-    data-target="#subTimeOff"
-  >
-    <span class="cil-playlist-add btn-icon mr-2"></span>
-    {{ "DAY_OFF_TABLE.CREATE_DAY_OFF_REQUEST" | translate }}
-  </button>
   <div
     id="subTimeOff"
     class="modal fade"
@@ -138,7 +129,8 @@
     aria-hidden="true"
   >
     <ah-request-day-off
-      [currentEmployee]="currentEmployee"
+      [searchParams]="searchParams"
+      [selectedEmployee]="selectedEmployee"
     ></ah-request-day-off>
   </div>
 </div>

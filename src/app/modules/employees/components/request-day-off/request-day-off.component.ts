@@ -1,3 +1,4 @@
+import { SearchParams } from './../../store/employees.actions';
 import { Component, OnInit, Input, OnChanges } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
 import * as fromApp from '../../../../store/app.reducer';
@@ -11,7 +12,8 @@ import { Employee } from 'src/app/shared/models/employees.model';
   styleUrls: ['./request-day-off.component.scss'],
 })
 export class RequestDayOffComponent implements OnInit, OnChanges {
-  @Input() currentEmployee: Employee;
+  @Input() selectedEmployee: Employee;
+  @Input() searchParams: SearchParams;
   public currentDateString: string;
   public dayOffAvailable: number;
   public dayOffs: number;
@@ -33,10 +35,10 @@ export class RequestDayOffComponent implements OnInit, OnChanges {
   }
 
   ngOnChanges() {
-    if (this.currentEmployee) {
+    if (this.selectedEmployee) {
       this.currentDateString = this.setDateString();
       this.f.patchValue({
-        fullName: `${this.currentEmployee.firstName} ${this.currentEmployee.lastName}`,
+        fullName: `${this.selectedEmployee.firstName} ${this.selectedEmployee.lastName}`,
         fromDate: this.currentDateString,
         toDate: this.currentDateString,
         morningBreak: true,
@@ -101,32 +103,38 @@ export class RequestDayOffComponent implements OnInit, OnChanges {
   public setDateString(ascDays: number = 1, dateString?: string): string {
     let date;
     if (dateString) {
-      date = new Date(new Date(dateString).getTime() + 1209600000);
+      date = new Date(
+        new Date(dateString).getTime() + 86400000 * (ascDays - 1)
+      );
     } else {
-      date = this.currentDate;
+      date = new Date(this.currentDate.getTime() + 86400000 * (ascDays - 1));
     }
     return `${date.getFullYear()}-${('0' + (date.getMonth() + 1)).slice(-2)}-${(
-      '0' +
-      (date.getDate() + ascDays - 1)
+      '0' + date.getDate()
     ).slice(-2)}`;
   }
 
   public setHoursAvailable(): void {
-    let hours = this.currentEmployee.hours.filter(
-      (item) => item.category === this.f.get('kindOfLeave').value
-    )[0];
-    this.dayOffAvailable =
-      hours?.availableHours > 0 ? hours.availableHours / 8 : 0;
+    console.log(this.selectedEmployee.dayOffInfos);
+
+    // let hours = this.selectedEmployee..filter(
+    //   (item) => item.category === this.f.get('kindOfLeave').value
+    // )[0];
+    // this.dayOffAvailable =
+    //   hours?.availableHours > 0 ? hours.availableHours / 8 : 0;
   }
 
   public onSave(): void {
     this.store.dispatch(
       new EmployeeActions.RequestDayOff({
-        id: this.currentEmployee.id,
-        fromDate: this.f.get('fromDate').value,
-        toDate: this.f.get('toDate').value,
-        hoursPerDay: this.dayOffs < 1 ? 4 : 8,
-        dayOffInfoId: this.f.get('kindOfLeave').value,
+        body: {
+          id: this.selectedEmployee.id,
+          fromDate: this.f.get('fromDate').value,
+          toDate: this.f.get('toDate').value,
+          hoursPerDay: this.dayOffs < 1 ? 4 : 8,
+          dayOffInfoId: this.f.get('kindOfLeave').value,
+        },
+        searchParams: this.searchParams,
       })
     );
   }
