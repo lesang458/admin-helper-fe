@@ -1,3 +1,4 @@
+import { map } from 'rxjs/operators';
 import * as EmployeesActions from './employees.actions';
 import { Employee } from 'src/app/shared/models/employees.model';
 import {
@@ -39,6 +40,50 @@ export function employeeReducer(
       return {
         ...state,
         dayOff: action.payload,
+      };
+    case EmployeesActions.REQUEST_DAY_OFF:
+      let hoursOff;
+      if (action.payload.hoursPerDay === 4) {
+        hoursOff = 4;
+      } else {
+        if (action.payload.fromDate === action.payload.toDate) {
+          hoursOff = 8;
+        } else {
+          hoursOff =
+            8 *
+            ((new Date(action.payload.toDate).getTime() -
+              new Date(action.payload.fromDate).getTime()) /
+              86400000 +
+              1);
+        }
+      }
+      return {
+        ...state,
+        dayOff: {
+          pagination: { ...state.dayOff.pagination },
+          data: state.dayOff.data.map((item) => {
+            return item.id == action.payload.id
+              ? {
+                  ...item,
+                  hours: item.hours.map((i) => {
+                    console.log(i.category === action.payload.dayOffInfoId);
+
+                    if (i.category === action.payload.dayOffInfoId) {
+                      i = {
+                        ...i,
+                        availableHours:
+                          i.availableHours > hoursOff
+                            ? i.availableHours - hoursOff
+                            : 0,
+                      };
+                      console.log(i);
+                    }
+                    return i;
+                  }),
+                }
+              : item;
+          }),
+        },
       };
     default:
       return state;

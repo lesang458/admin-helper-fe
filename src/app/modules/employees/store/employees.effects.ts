@@ -95,7 +95,7 @@ export class EmployeeEffects {
               search: '',
               page: 1,
               sort: {
-                sortNameType: 1,
+                sortNameType: '',
                 sortBirthDateType: '',
                 sortJoinDateType: '',
               },

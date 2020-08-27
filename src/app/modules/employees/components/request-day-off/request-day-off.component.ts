@@ -13,50 +13,47 @@ import { Employee } from 'src/app/shared/models/employees.model';
   styleUrls: ['./request-day-off.component.scss'],
 })
 export class RequestDayOffComponent implements OnInit, OnChanges {
-  @Input() currentId: number;
+  @Input() currentId: string;
   public currentEmployee: Employee;
   public currentDateString: string;
   public dayOffAvailable: number;
   public dayOffs: number;
   public maxOfToDate: string;
-  public f: FormGroup;
+  public f = new FormGroup({
+    fullName: new FormControl(),
+    fromDate: new FormControl(),
+    toDate: new FormControl(),
+    morningBreak: new FormControl(),
+    afternoonBreak: new FormControl(),
+    kindOfLeave: new FormControl(),
+    unpaidLeave: new FormControl(),
+  });
   private currentDate = new Date();
   constructor(private store: Store<fromApp.AppState>) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.f.get('fullName').disable();
+  }
 
   ngOnChanges() {
-    this.f = new FormGroup({
-      fullName: new FormControl(),
-      fromDate: new FormControl(),
-      toDate: new FormControl(),
-      morningBreak: new FormControl(),
-      afternoonBreak: new FormControl(),
-      kindOfLeave: new FormControl(),
-      unpaidLeave: new FormControl(),
-    });
-    this.f.get('fullName').disable();
-
-    this.store.select('employees').source.source.source.subscribe((val) => {
-      val.employees.dayOff?.data.forEach((element) => {
+    this.store.select('employees').subscribe((val) => {
+      val.dayOff.data.forEach((element) => {
         if (element.id === this.currentId) {
           this.currentEmployee = element;
+          this.setHoursAvailable();
         }
       });
     });
 
     if (this.currentEmployee) {
       this.currentDateString = this.setDateString();
-      this.f = new FormGroup({
-        fullName: new FormControl(
-          `${this.currentEmployee.firstName} ${this.currentEmployee.lastName}`
-        ),
-        fromDate: new FormControl(this.currentDateString),
-        toDate: new FormControl(this.currentDateString),
-        morningBreak: new FormControl('true'),
-        afternoonBreak: new FormControl('true'),
-        kindOfLeave: new FormControl('VACATION'),
-        unpaidLeave: new FormControl(),
+      this.f.patchValue({
+        fullName: `${this.currentEmployee.firstName} ${this.currentEmployee.lastName}`,
+        fromDate: this.currentDateString,
+        toDate: this.currentDateString,
+        morningBreak: true,
+        afternoonBreak: true,
+        kindOfLeave: 'VACATION',
       });
       this.f.get('fromDate').valueChanges.subscribe((val) => {
         this.maxOfToDate = this.setDateString(14, val);
@@ -141,10 +138,8 @@ export class RequestDayOffComponent implements OnInit, OnChanges {
         fromDate: this.f.get('fromDate').value,
         toDate: this.f.get('toDate').value,
         hoursPerDay: this.dayOffs < 1 ? 4 : 8,
-        dayOffInfoId:
-          this.f.get('kindOfLeave').value === 'VACATION' ? '1' : '2',
+        dayOffInfoId: this.f.get('kindOfLeave').value,
       })
     );
-    this.ngOnChanges();
   }
 }
