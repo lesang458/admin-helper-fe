@@ -1,43 +1,49 @@
 <div class="c-sidebar-brand d-lg-down-none">
-  <img class="c-sidebar-brand-full"
-       width="100"
-       src="assets/brand/logo.svg"
-       alt="Open Web Logo">
-  <img class="c-sidebar-brand-minimized"
-       width="46"
-       src="assets/brand/logo.svg"
-       alt="Open Web Logo">
-
+  <img
+    class="c-sidebar-brand-full"
+    width="100"
+    src="assets/brand/logo.svg"
+    alt="Open Web Logo"
+  />
+  <img
+    class="c-sidebar-brand-minimized"
+    width="46"
+    src="assets/brand/logo.svg"
+    alt="Open Web Logo"
+  />
 </div>
 <ul class="c-sidebar-nav">
-  <li class="c-sidebar-nav-title">{{ 'SIDEBAR.TITLE' | translate}}</li>
+  <li class="c-sidebar-nav-title">{{ "SIDEBAR.TITLE" | translate }}</li>
 
-  <li class="c-sidebar-nav-item"
-      type="button">
-    <a class="c-sidebar-nav-link"
-       (click)="navigateToGeneralListPage()">
+  <li class="c-sidebar-nav-item" type="button">
+    <a class="c-sidebar-nav-link" (click)="navigateToGeneralListPage()">
       <i class="c-sidebar-nav-icon cil-info"></i>
-      {{ 'SIDEBAR.LINK_1' | translate}}
+      {{ "SIDEBAR.LINK_1" | translate }}
     </a>
   </li>
-  <li class="c-sidebar-nav-item"
-      type="button">
-    <a class="c-sidebar-nav-link"
-       (click)="navigateToDayoffPage()">
+  <li class="c-sidebar-nav-item" type="button">
+    <a class="c-sidebar-nav-link" (click)="navigateToDayoffPage()">
       <i class="c-sidebar-nav-icon cil-home"></i>
-      {{ 'SIDEBAR.LINK_2' | translate}}
+      {{ "SIDEBAR.LINK_2" | translate }}
     </a>
   </li>
-  <li class="c-sidebar-nav-item"
-      type="button">
+  <li class="c-sidebar-nav-item" type="button">
     <a class="c-sidebar-nav-link">
       <i class="c-sidebar-nav-icon cil-calendar-check"></i>
-      {{ 'SIDEBAR.LINK_3' | translate}}
+      {{ "SIDEBAR.LINK_3" | translate }}
+    </a>
+  </li>
+  <li class="c-sidebar-nav-item" type="button">
+    <a class="c-sidebar-nav-link" (click)="navigateToDevicePage()">
+      <i class="c-sidebar-nav-icon cil-devices"></i>
+      {{ "SIDEBAR.LINK_4" | translate }}
     </a>
   </li>
   <li class="c-sidebar-nav-divider"></li>
 </ul>
-<button class="c-sidebar-minimizer c-class-toggler"
-        type="button"
-        data-target="#sidebar"
-        data-class="c-sidebar-minimized"></button>
+<button
+  class="c-sidebar-minimizer c-class-toggler"
+  type="button"
+  data-target="#sidebar"
+  data-class="c-sidebar-minimized"
+></button>

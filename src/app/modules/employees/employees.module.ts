@@ -26,7 +26,6 @@ import { NotifyComponent } from 'src/app/shared/components/notify/notify.compone
     RouterModule.forChild(EMPLOYEES_ROUTES),
     ReactiveFormsModule,
     PaginationModule.forRoot(),
-    FormsModule,
   ],
 })
 export class EmployeesModule {}

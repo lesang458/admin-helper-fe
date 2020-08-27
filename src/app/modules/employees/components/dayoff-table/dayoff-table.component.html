@@ -77,16 +77,16 @@
             <td>{{ item.firstName + " " + item.lastName }}</td>
             <td>{{ item.birthdate | date: "dd/MM/yyyy" }}</td>
             <td *ngIf="selectedType.value === 'VACATION'">
-              {{ getTotalLeaves(item.hours, "VACATION") }}
+              {{ getTotalLeaves(item.dayOffInfos, "VACATION") }}
             </td>
             <td *ngIf="selectedType.value === 'VACATION'">
-              {{ getTotalLeavesRemaining(item.hours, "VACATION") }}
+              {{ getTotalLeavesRemaining(item.dayOffInfos, "VACATION") }}
             </td>
             <td *ngIf="selectedType.value === 'ILLNESS'">
-              {{ getTotalLeaves(item.hours, "ILLNESS") }}
+              {{ getTotalLeaves(item.dayOffInfos, "ILLNESS") }}
             </td>
             <td *ngIf="selectedType.value === 'ILLNESS'">
-              {{ getTotalLeavesRemaining(item.hours, "ILLNESS") }}
+              {{ getTotalLeavesRemaining(item.dayOffInfos, "ILLNESS") }}
             </td>
           </tr>
         </tbody>

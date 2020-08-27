@@ -70,17 +70,17 @@ export class DayoffTableComponent implements OnInit, OnDestroy {
     this.store.dispatch(new EmployeeActions.FetchDayOff(searchParams));
   }
 
-  public getTotalLeaves(hours: any, type: string): number {
-    if (hours) {
-      const item = hours.find((h) => h.category === type);
+  public getTotalLeaves(dayOffInfos: any, type: string): number {
+    if (dayOffInfos) {
+      const item = dayOffInfos.find((t) => t.categoryName === type);
       return item ? item.hours / 8 : 0;
     }
     return 0;
   }
 
-  public getTotalLeavesRemaining(hours: any, type: string): number {
-    if (hours) {
-      const item = hours.find((h) => h.category === type);
+  public getTotalLeavesRemaining(dayOffInfos: any, type: string): number {
+    if (dayOffInfos) {
+      const item = dayOffInfos.find((t) => t.categoryName === type);
       return item ? item.availableHours / 8 : 0;
     }
     return 0;
