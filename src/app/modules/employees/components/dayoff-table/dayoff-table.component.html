@@ -19,12 +19,12 @@
       </div>
       <div class="col-5">
         <div class="form-group">
-          <label class="d-inline-block mr-3 ml-2" for="day-off-type">{{
-            "DAY_OFF_TABLE.TYPE_OF_LEAVE" | translate
-          }}</label>
+          <label class="d-inline-block mr-3 ml-2" for="day-off-type">
+            {{ "DAY_OFF_TABLE.TYPE_OF_LEAVE" | translate }}
+          </label>
           <select
             class="form-control d-inline-block"
-            style="width: auto;"
+            style="width: auto"
             id="day-off-type"
           >
             <option>{{ "DAY_OFF_TABLE.ANNUAL_LEAVE" | translate }}</option>
@@ -37,10 +37,10 @@
       <table class="table table-bordered">
         <thead *ngIf="data.pagination.totalCount !== 0">
           <tr>
-            <th scope="col" style="width: 10%;">ID</th>
+            <th scope="col" style="width: 5%">ID</th>
             <th
               scope="col"
-              style="width: 20%;"
+              style="width: 20%; cursor: pointer"
               (click)="onSort(data.pagination.currentPage, 'name')"
             >
               {{ "DAY_OFF_TABLE.NAME" | translate }}
@@ -49,20 +49,20 @@
             </th>
             <th
               scope="col"
-              style="width: 10%;"
+              style="width: 15%; cursor: pointer"
               (click)="onSort(data.pagination.currentPage)"
             >
               {{ "DAY_OFF_TABLE.BIRTHDAY" | translate }}
               <i class="cil-arrow-top" *ngIf="sortBirthDateType === 1"></i>
               <i class="cil-arrow-bottom" *ngIf="sortBirthDateType === 2"></i>
             </th>
-            <th scope="col" style="width: 20%;">
+            <th scope="col" style="width: 20%">
               {{ "DAY_OFF_TABLE.TOTAL_LEAVES" | translate }}
             </th>
-            <th scope="col" style="width: 20%;">
+            <th scope="col" style="width: 20%">
               {{ "DAY_OFF_TABLE.NUMBER_OF_LEAVES_REMAINING" | translate }}
             </th>
-            <th scope="col" style="width: 20%;">
+            <th scope="col" style="width: 20%">
               {{ "DAY_OFF_TABLE.ACTION" | translate }}
             </th>
           </tr>

@@ -7,7 +7,8 @@ import { RequestDayOffModel } from 'src/app/shared/models/request-day-off.model'
 export interface SearchParams {
   search: string;
   page;
-  sort: { sortNameType; sortBirthDateType };
+  sort: { sortNameType; sortBirthDateType; sortJoinDateType };
+  status: string;
 }
 
 export const GET_EMPLOYEES_SUCCESS = '[Employees] Get Employees Success';
@@ -19,12 +20,12 @@ export const REQUEST_DAY_OFF = '[Employees] Request Day-off';
 
 export class GetEmployeesSuccess implements Action {
   readonly type = GET_EMPLOYEES_SUCCESS;
-  constructor(public payload: any) {}
+  constructor(public payload: PaginatedData<Employee[]>) {}
 }
 
 export class SearchEmployees implements Action {
   readonly type = SEARCH_EMPLOYEES;
-  constructor(public payload: HttpParams) {}
+  constructor(public payload: SearchParams) {}
 }
 
 export class FetchDayOff implements Action {

@@ -4,14 +4,12 @@ import { TranslateService } from '@ngx-translate/core';
 @Component({
   selector: 'ah-header',
   templateUrl: './header.component.html',
-  styleUrls: ['./header.component.scss']
+  styleUrls: ['./header.component.scss'],
 })
 export class HeaderComponent implements OnInit {
+  constructor(public translate: TranslateService) {}
 
-  constructor(private translate: TranslateService) { }
-
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 
   public switchLanguage(language: string): void {
     this.translate.use(language);
