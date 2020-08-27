@@ -16,6 +16,7 @@ import { FormControl } from '@angular/forms';
 })
 export class DayoffTableComponent implements OnInit, OnDestroy {
   public searchInput = new FormControl('');
+  public selectedType = new FormControl('VACATION');
   public currentPage = 1;
   public sortBirthDateType = 0;
   public sortNameType = 0;
@@ -67,6 +68,22 @@ export class DayoffTableComponent implements OnInit, OnDestroy {
       status: 'ACTIVE',
     };
     this.store.dispatch(new EmployeeActions.FetchDayOff(searchParams));
+  }
+
+  public getTotalLeaves(hours: any, type: string): number {
+    if (hours) {
+      const item = hours.find((h) => h.category === type);
+      return item ? item.hours / 8 : 0;
+    }
+    return 0;
+  }
+
+  public getTotalLeavesRemaining(hours: any, type: string): number {
+    if (hours) {
+      const item = hours.find((h) => h.category === type);
+      return item ? item.availableHours / 8 : 0;
+    }
+    return 0;
   }
 
   ngOnDestroy(): void {
