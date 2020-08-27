@@ -1,5 +1,3 @@
-import { RequestDayOffModel } from 'src/app/shared/models/request-day-off.model';
-import { map } from 'rxjs/operators';
 import { Component, OnInit, Input, OnChanges } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
 import * as fromApp from '../../../../store/app.reducer';
