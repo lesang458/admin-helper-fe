@@ -88,8 +88,8 @@ export class RequestDayOffComponent implements OnInit, OnChanges {
   }
 
   private setDayOffs(): boolean {
-    let to = new Date(`${this.f.get('toDate').value}`).getTime();
-    let from = new Date(`${this.f.get('fromDate').value}`).getTime();
+    const to = new Date(`${this.f.get('toDate').value}`).getTime();
+    const from = new Date(`${this.f.get('fromDate').value}`).getTime();
     if (to >= from) {
       this.dayOffs = (to - from) / 86400000 + 1;
       return true;
@@ -99,7 +99,7 @@ export class RequestDayOffComponent implements OnInit, OnChanges {
   }
 
   public setDateString(ascDays: number = 1, dateString?: string): string {
-    let date;
+    let date: Date;
     if (dateString) {
       date = new Date(
         new Date(dateString).getTime() + 86400000 * (ascDays - 1)
