@@ -94,7 +94,12 @@ export class EmployeeEffects {
             return new EmployeesActions.FetchDayOff({
               search: '',
               page: 1,
-              sort: { sortNameType: '', sortBirthDateType: '' },
+              sort: {
+                sortNameType: 1,
+                sortBirthDateType: '',
+                sortJoinDateType: '',
+              },
+              status: '',
             });
           })
         );

@@ -130,7 +130,8 @@ export class RequestDayOffComponent implements OnInit, OnChanges {
     let hours = this.currentEmployee.hours.filter(
       (item) => item.category === this.f.get('kindOfLeave').value
     )[0];
-    this.dayOffAvailable = hours ? hours.availableHours / 8 : 0;
+    this.dayOffAvailable =
+      hours?.availableHours > 0 ? hours.availableHours / 8 : 0;
   }
 
   public onSave(): void {
