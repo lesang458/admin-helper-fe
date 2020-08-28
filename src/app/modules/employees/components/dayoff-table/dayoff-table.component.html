@@ -24,7 +24,7 @@
           </label>
           <select
             class="form-control d-inline-block"
-            style="width: auto;"
+            style="width: auto"
             id="day-off-type"
           >
             <option>{{ "DAY_OFF_TABLE.ANNUAL_LEAVE" | translate }}</option>
@@ -33,14 +33,15 @@
         </div>
       </div>
     </div>
+    <ah-notify></ah-notify>
     <div class="table-responsive" *ngIf="data$ | async as data">
       <table class="table table-bordered">
         <thead *ngIf="data.pagination.totalCount !== 0">
           <tr>
-            <th scope="col" style="width: 10%;">ID</th>
+            <th scope="col" style="width: 5%">ID</th>
             <th
               scope="col"
-              style="width: 30%; cursor: pointer;"
+              style="width: 20%; cursor: pointer"
               (click)="onSort(data.pagination.currentPage, 'name')"
             >
               {{ "DAY_OFF_TABLE.NAME" | translate }}
@@ -49,18 +50,21 @@
             </th>
             <th
               scope="col"
-              style="width: 20%; cursor: pointer;"
+              style="width: 15%; cursor: pointer"
               (click)="onSort(data.pagination.currentPage)"
             >
               {{ "DAY_OFF_TABLE.BIRTHDAY" | translate }}
               <i class="cil-arrow-top" *ngIf="sortBirthDateType === 1"></i>
               <i class="cil-arrow-bottom" *ngIf="sortBirthDateType === 2"></i>
             </th>
-            <th scope="col" style="width: 20%;">
+            <th scope="col" style="width: 20%">
               {{ "DAY_OFF_TABLE.TOTAL_LEAVES" | translate }}
             </th>
-            <th scope="col" style="width: 20%;">
+            <th scope="col" style="width: 20%">
               {{ "DAY_OFF_TABLE.NUMBER_OF_LEAVES_REMAINING" | translate }}
+            </th>
+            <th scope="col" style="width: 20%">
+              {{ "DAY_OFF_TABLE.ACTION" | translate }}
             </th>
           </tr>
         </thead>
@@ -73,6 +77,20 @@
             <td>{{ item.birthdate | date: "dd/MM/yyyy" }}</td>
             <td>15</td>
             <td>15</td>
+            <td>
+              <div class="d-flex justify-content-center">
+                <button
+                  type="button"
+                  class="btn btn-info"
+                  data-toggle="modal"
+                  (click)="selectedEmployee = item"
+                  data-target="#subTimeOff"
+                >
+                  <span class="cil-playlist-add btn-icon mr-2"></span>
+                  {{ "DAY_OFF_TABLE.SUBMIT_TIME_OFF" | translate }}
+                </button>
+              </div>
+            </td>
           </tr>
         </tbody>
       </table>
@@ -101,11 +119,18 @@
         </pagination>
       </div>
     </div>
-    <div class="d-flex justify-content-end">
-      <button type="button" class="btn btn-info">
-        <span class="cil-playlist-add btn-icon mr-2"></span>
-        {{ "DAY_OFF_TABLE.SUBMIT_TIME_OFF" | translate }}
-      </button>
-    </div>
+  </div>
+  <div
+    id="subTimeOff"
+    class="modal fade"
+    tabindex="-1"
+    role="dialog"
+    aria-labelledby="exampleModalCenterTitle"
+    aria-hidden="true"
+  >
+    <ah-request-day-off
+      [searchParams]="searchParams"
+      [selectedEmployee]="selectedEmployee"
+    ></ah-request-day-off>
   </div>
 </div>

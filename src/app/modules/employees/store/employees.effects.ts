@@ -8,6 +8,7 @@ import { environment } from 'src/environments/environment.prod';
 import { PaginatedData } from 'src/app/shared/models/pagination.model';
 import * as camelcaseKeys from 'camelcase-keys';
 import * as snakecaseKeys from 'snakecase-keys';
+import { RequestDayOffModel } from 'src/app/shared/models/request-day-off.model';
 
 @Injectable()
 export class EmployeeEffects {
@@ -76,7 +77,6 @@ export class EmployeeEffects {
       );
     })
   );
-
   @Effect()
   detailEmployee = this.actions$.pipe(
     ofType(EmployeesActions.DETAIL_EMPLOYEE),
@@ -104,6 +104,30 @@ export class EmployeeEffects {
         .pipe(
           map((val) => {
             return new EmployeesActions.SearchEmployees(
+              action.payload.searchParams
+            );
+          })
+        );
+    })
+  );
+
+  @Effect()
+  requestDayOff = this.actions$.pipe(
+    ofType(EmployeesActions.REQUEST_DAY_OFF),
+    switchMap((action: EmployeesActions.RequestDayOff) => {
+      const body: RequestDayOffModel = {
+        ...snakecaseKeys(action.payload.body),
+      };
+      const id = body.id;
+      delete body.id;
+      return this.http
+        .post<any>(
+          `${environment.APILink}/employees/${id}/day-off-requests`,
+          body
+        )
+        .pipe(
+          map(() => {
+            return new EmployeesActions.FetchDayOff(
               action.payload.searchParams
             );
           })
