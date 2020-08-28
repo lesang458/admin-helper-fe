@@ -59,7 +59,7 @@ export class ProfileCreateComponent implements OnInit {
       this.store
         .select((s) => s.employees.detaiEmployee)
         .subscribe((data: Employee) => {
-          if (Object.keys(data).length !== 0) {
+          if (data) {
             this.dataSource = data;
             this.profileForm.patchValue(data);
           }
