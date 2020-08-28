@@ -65,5 +65,16 @@
     "MESS_SUCCESS": "Tạo thành công!",
     "CLOSE": "Đóng",
     "SAVE": "Lưu"
+  },
+  "DAY_OFF_PAGE": {
+    "NAME": "Tên",
+    "DESCRIPTION": "Mô tả",
+    "ACTION": "Hành động",
+    "DELETE": "Xóa",
+    "EDIT": "Sửa",
+    "SAVE": "Lưu",
+    "CANCEL": "Hủy",
+    "CREATE": "Tạo loại ngày nghỉ",
+    "NO_RESULT": "Không có kết quả."
   }
 }

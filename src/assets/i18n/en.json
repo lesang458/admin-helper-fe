@@ -67,5 +67,16 @@
     "MESS_SUCCESS": "Created successfully!",
     "CLOSE": "Close",
     "SAVE": "Save"
+  },
+  "DAY_OFF_PAGE": {
+    "NAME": "Name",
+    "DESCRIPTION": "Description",
+    "ACTION": "Action",
+    "DELETE": "Delete",
+    "EDIT": "Edit",
+    "SAVE": "Save",
+    "CANCEL": "Cancel",
+    "CREATE": "Create day off category",
+    "NO_RESULT": "No result."
   }
 }
