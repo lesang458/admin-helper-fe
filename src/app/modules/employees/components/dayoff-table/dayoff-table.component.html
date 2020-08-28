@@ -72,7 +72,7 @@
         <tbody>
           <tr *ngFor="let item of data.data; let i = index">
             <th scope="row">
-              {{ i + 1 + (data.pagination.currentPage - 1) * 20 }}
+              {{ i + 1 + (data.pagination.currentPage - 1) * 10 }}
             </th>
             <td>{{ item.firstName + " " + item.lastName }}</td>
             <td>{{ item.birthdate | date: "dd/MM/yyyy" }}</td>
@@ -102,7 +102,7 @@
         <pagination
           [totalItems]="data.pagination.totalCount"
           [maxSize]="3"
-          [itemsPerPage]="20"
+          [itemsPerPage]="10"
           [(ngModel)]="currentPage"
           (pageChanged)="onPageChanged($event.page)"
           class="pagination-md justify-content-end"

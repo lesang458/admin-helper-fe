@@ -72,6 +72,7 @@ export class GeneralListComponent implements OnInit {
     const searchParams: SearchParams = {
       search,
       page,
+      perPage: 10,
       sort: {
         sortNameType: this.sortNameType,
         sortBirthDateType: this.sortBirthDateType,

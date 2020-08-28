@@ -40,6 +40,7 @@ export class EmployeeEffects {
         let params = new HttpParams()
           .append('search', action.payload.search)
           .append('page', action.payload.page)
+          .append('per_page', action.payload.perPage)
           .append('sort', sort);
 
         if (action.payload.status) {

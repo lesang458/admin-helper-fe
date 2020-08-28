@@ -1,4 +1,3 @@
-import { HttpParams } from '@angular/common/http';
 import { Action } from '@ngrx/store';
 import { Employee } from 'src/app/shared/models/employees.model';
 import { PaginatedData } from 'src/app/shared/models/pagination.model';
@@ -6,6 +5,7 @@ import { PaginatedData } from 'src/app/shared/models/pagination.model';
 export interface SearchParams {
   search: string;
   page;
+  perPage;
   sort: { sortNameType; sortBirthDateType; sortJoinDateType };
   status: string;
 }

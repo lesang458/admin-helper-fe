@@ -24,7 +24,7 @@
           </label>
           <select
             class="form-control d-inline-block"
-            style="width: auto;"
+            style="width: auto"
             id="status-type"
             [formControl]="searchStatusFormControl"
           >
@@ -49,7 +49,7 @@
             <th
               scope="col"
               class="pointer"
-              style="width: 25%;"
+              style="width: 25%"
               (click)="onSort(employeeObs.pagination.currentPage, 'name')"
             >
               {{ "GENERAL_LIST.NAME" | translate }}
@@ -59,7 +59,7 @@
             <th
               scope="col"
               class="pointer"
-              style="width: 15%;"
+              style="width: 15%"
               (click)="onSort(employeeObs.pagination.currentPage, 'birthdate')"
             >
               {{ "GENERAL_LIST.BIRTHDAY" | translate }}
@@ -69,27 +69,29 @@
             <th
               scope="col"
               class="pointer"
-              style="width: 15%;"
+              style="width: 15%"
               (click)="onSort(employeeObs.pagination.currentPage, 'joinDate')"
             >
               {{ "GENERAL_LIST.JOIN_DATE" | translate }}
               <i class="cil-arrow-top" *ngIf="sortJoinDateType === 1"></i>
               <i class="cil-arrow-bottom" *ngIf="sortJoinDateType === 2"></i>
             </th>
-            <th scope="col" style="width: 15%;">
+            <th scope="col" style="width: 15%">
               {{ "GENERAL_LIST.PHONE_NUMBER" | translate }}
             </th>
-            <th scope="col" style="width: 10%;">
+            <th scope="col" style="width: 10%">
               {{ "GENERAL_LIST.STATUS" | translate }}
             </th>
-            <th scope="col" style="width: 10%;">
+            <th scope="col" style="width: 10%">
               {{ "GENERAL_LIST.ACTIONS" | translate }}
             </th>
           </tr>
         </thead>
         <tbody>
           <tr *ngFor="let item of employeeObs.employees; let i = index">
-            <th scope="row">{{ i + 1 }}</th>
+            <th scope="row">
+              {{ i + 1 + (employeeObs.pagination.currentPage - 1) * 10 }}
+            </th>
             <td>{{ item.firstName + " " + item.lastName }}</td>
             <td>{{ item.birthdate | date: "dd/MM/yyyy" }}</td>
             <td>{{ item.joinDate | date: "dd/MM/yyyy" }}</td>
@@ -124,7 +126,7 @@
         <pagination
           [totalItems]="employeeObs.pagination.totalCount"
           [maxSize]="3"
-          [itemsPerPage]="20"
+          [itemsPerPage]="10"
           [(ngModel)]="currentPage"
           (pageChanged)="onPageChanged($event.page)"
           class="pagination-md justify-content-end"

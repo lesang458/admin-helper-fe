@@ -60,6 +60,7 @@ export class DayoffTableComponent implements OnInit, OnDestroy {
     const searchParams: SearchParams = {
       search,
       page,
+      perPage: 10,
       sort: {
         sortNameType: this.sortNameType,
         sortBirthDateType: this.sortBirthDateType,

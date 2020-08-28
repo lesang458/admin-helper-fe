@@ -13,6 +13,7 @@ import { StoreModule } from '@ngrx/store';
 import * as fromApp from './store/app.reducer';
 import { EffectsModule } from '@ngrx/effects';
 import { CustomTranslateLoader } from './shared/loader/custom-translate.loader';
+import { DeviceEffects } from './modules/devices/store/devices.effects';
 export function LoaderFactory() {
   return new CustomTranslateLoader();
 }
@@ -32,7 +33,7 @@ export function LoaderFactory() {
       },
     }),
     RouterModule.forRoot(APP_ROUTES, { scrollPositionRestoration: 'enabled' }),
-    EffectsModule.forRoot([EmployeeEffects]),
+    EffectsModule.forRoot([EmployeeEffects, DeviceEffects]),
     StoreModule.forRoot(fromApp.appReducer),
   ],
   providers: [],

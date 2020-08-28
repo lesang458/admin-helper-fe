@@ -3,7 +3,8 @@
     "TITLE": "Employee Management",
     "LINK_1": "General Information",
     "LINK_2": "Day off",
-    "LINK_3": "Timekeeping"
+    "LINK_3": "Timekeeping",
+    "LINK_4": "Devices"
   },
   "HEADER": {
     "TITLE": "Employees List",
