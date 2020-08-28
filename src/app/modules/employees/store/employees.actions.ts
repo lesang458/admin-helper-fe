@@ -51,17 +51,17 @@ export class DetailEmployee implements Action {
 
 export class DetailEmployeeSuccess implements Action {
   readonly type = DETAIL_EMPLOYEE_SUCCESS;
-  constructor(public payload: any) {}
+  constructor(public payload: Employee) {}
 }
 
 export class EditEmployee implements Action {
   readonly type = EDIT_EMPLOYEE;
-  constructor(public id: number, public payload: any) {}
+  constructor(public id: number, public payload: Employee) {}
 }
 
 export class EditEmployeeSuccess implements Action {
   readonly type = EDIT_EMPLOYEE_SUCCESS;
-  constructor(public payload: any) {}
+  constructor(public payload: Employee) {}
 }
 
 export type EmployeesActions =
