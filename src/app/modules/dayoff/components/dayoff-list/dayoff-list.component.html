@@ -17,6 +17,16 @@
           />
         </div>
       </div>
+      <div class="col-5" style="text-align: right">
+        <button
+          type="button"
+          class="btn btn-primary"
+          style="padding: 5px 15px; margin: 5px"
+          (click)="openModalWithComponent(null, 'create')"
+        >
+          {{ "DAY_OFF_PAGE.CREATE" | translate }}
+        </button>
+      </div>
     </div>
     <div class="table-responsive" *ngIf="data$ | async as data">
       <table class="table table-bordered">
@@ -39,9 +49,26 @@
             <th scope="row">
               {{ i + 1 }}
             </th>
-            <td>{{ item.name }}</td>
+            <td>{{ item.name[0] + item.name.slice(1).toLowerCase() }}</td>
             <td>{{ item.description }}</td>
-            <td>15</td>
+            <td style="text-align: center">
+              <button
+                type="button"
+                class="btn btn-primary"
+                style="padding: 5px 15px; margin: 5px"
+                (click)="openModalWithComponent(item, 'edit')"
+              >
+                {{ "DAY_OFF_PAGE.EDIT" | translate }}
+              </button>
+              <button
+                type="button"
+                class="btn btn-danger"
+                style="padding: 5px 15px; margin: 5px"
+                (click)="openModalWithComponent(item, 'delete')"
+              >
+                {{ "DAY_OFF_PAGE.DELETE" | translate }}
+              </button>
+            </td>
           </tr>
         </tbody>
       </table>

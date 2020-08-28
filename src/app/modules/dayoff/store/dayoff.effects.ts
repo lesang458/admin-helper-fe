@@ -16,7 +16,13 @@ export class DayOffEffects {
         .get<any>(`${environment.APILink}/day-off-categories`)
         .pipe(
           map((data) => {
-            return new DayOffActions.GetDayOffSuccess(data.day_off_categories);
+            const dayOffCategories = data.day_off_categories.map((i) => {
+              if (!i.description) {
+                i.description = '';
+              }
+              return i;
+            });
+            return new DayOffActions.GetDayOffSuccess(dayOffCategories);
           })
         );
     })
