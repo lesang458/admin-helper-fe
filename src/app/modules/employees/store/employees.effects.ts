@@ -68,7 +68,7 @@ export class EmployeeEffects {
   createEmployee = this.actions$.pipe(
     ofType(EmployeesActions.CREATE_EMPLOYEE),
     switchMap((action: EmployeesActions.CreateEmployee) => {
-      const body: Employee = snakecaseKeys(action.payload);
+      const body = snakecaseKeys(action.payload);
       return this.http.post<any>(`${environment.APILink}/employees`, body).pipe(
         map((val) => {
           const data: Employee = camelcaseKeys(val.data);
@@ -77,6 +77,40 @@ export class EmployeeEffects {
       );
     })
   );
+  @Effect()
+  detailEmployee = this.actions$.pipe(
+    ofType(EmployeesActions.DETAIL_EMPLOYEE),
+    switchMap((action: EmployeesActions.DetailEmployee) => {
+      return this.http
+        .get<any>(`${environment.APILink}/employees/${action.payload}`)
+        .pipe(
+          map((val) => {
+            const data: Employee = camelcaseKeys(val.user);
+            return new EmployeesActions.DetailEmployeeSuccess(data);
+          })
+        );
+    })
+  );
+
+  @Effect()
+  editEmployee = this.actions$.pipe(
+    ofType(EmployeesActions.EDIT_EMPLOYEE),
+    switchMap((action: EmployeesActions.EditEmployee) => {
+      return this.http
+        .put<any>(
+          `${environment.APILink}/employees/${action.payload.id}`,
+          snakecaseKeys(action.payload.employee)
+        )
+        .pipe(
+          map((val) => {
+            return new EmployeesActions.SearchEmployees(
+              action.payload.searchParams
+            );
+          })
+        );
+    })
+  );
+
   @Effect()
   requestDayOff = this.actions$.pipe(
     ofType(EmployeesActions.REQUEST_DAY_OFF),

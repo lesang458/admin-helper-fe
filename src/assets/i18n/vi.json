@@ -80,9 +80,22 @@
     "PHONE_NUMBER_PATTERN": "Số điện thoại phải là số",
     "PHONE_NUMBER_MINLENGTH": "Số điện thoại phải trên 10 ký tự",
     "PHONE_NUMBER_MAXLENGTH": "Số điện thoại không vượt quá 12 ký tự",
+    "HOURS_INVALID": "Hãy nhập số giờ",
+    "HOURS_PATTERN": "Giờ phải là số",
+    "VACATION": "Nghỉ lễ",
+    "ILLNESS": "Nghỉ ốm",
+    "DAY_OFF_CATE": "Loại ngày nghỉ",
+    "AVAILABLE_HOURS": "Số giờ có sẵn",
     "MESS_EMAIL": "Email đã tồn tại",
     "MESS_SUCCESS": "Tạo thành công!",
     "CLOSE": "Đóng",
     "SAVE": "Lưu"
+  },
+  "PROFILE_DETAIL": {
+    "TITLE": "Chi tiết hồ sơ nhân viên",
+    "STATUS": "Trạng thái"
+  },
+  "PROFILE_EDIT": {
+    "TITLE": "Chỉnh sửa hồ sơ nhân viên"
   }
 }

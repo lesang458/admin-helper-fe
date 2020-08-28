@@ -8,6 +8,7 @@ import { DayoffComponent } from './pages/dayoff/dayoff.component';
 import { DayoffTableComponent } from './components/dayoff-table/dayoff-table.component';
 import { RequestDayOffComponent } from './components/request-day-off/request-day-off.component';
 import { PaginationModule } from 'ngx-bootstrap/pagination';
+import { ModalModule, BsModalRef } from 'ngx-bootstrap/modal';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ProfileCreateComponent } from './components/profile-create/profile-create.component';
 import { NotifyComponent } from 'src/app/shared/components/notify/notify.component';
@@ -28,7 +29,9 @@ import { NotifyComponent } from 'src/app/shared/components/notify/notify.compone
     RouterModule.forChild(EMPLOYEES_ROUTES),
     ReactiveFormsModule,
     PaginationModule.forRoot(),
+    ModalModule.forRoot(),
     FormsModule,
   ],
+  providers: [BsModalRef],
 })
 export class EmployeesModule {}

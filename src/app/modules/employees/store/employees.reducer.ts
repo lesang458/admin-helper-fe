@@ -10,6 +10,7 @@ export interface State {
   employees: Employee[];
   pagination: {};
   dayOff: PaginatedData<Employee[]>;
+  detaiEmployee: Employee;
 }
 
 const initDayOff = new PaginatedData<Employee[]>();
@@ -23,6 +24,7 @@ export const initialState: State = {
   employees: [],
   pagination: {},
   dayOff: initDayOff,
+  detaiEmployee: null,
 };
 
 export function employeeReducer(
@@ -40,6 +42,11 @@ export function employeeReducer(
       return {
         ...state,
         dayOff: action.payload,
+      };
+    case EmployeesActions.DETAIL_EMPLOYEE_SUCCESS:
+      return {
+        ...state,
+        detaiEmployee: action.payload,
       };
     default:
       return state;

@@ -66,7 +66,7 @@
     "PASSWORD": "Password",
     "JOIN_DATE": "Join date",
     "PHONE_NUMBER": "Phone number",
-    "DAY_OFF_INFO": "Day off info",
+    "DAY_OFF_INFO": "Day off infomation",
     "HOUR": "Hours",
     "FIRST_NAME_INVALID": "First Name is required",
     "FIRST_NAME_MAXLENGTH": "First name must not exceed 100 characters",
@@ -82,9 +82,22 @@
     "PHONE_NUMBER_PATTERN": "Phone number must be number",
     "PHONE_NUMBER_MINLENGTH": "Phone number must be at least 10 characters",
     "PHONE_NUMBER_MAXLENGTH": "Phone number must not exceed 12 characters",
+    "HOURS_INVALID": "Hours is required",
+    "HOURS_PATTERN": "Hours must be number",
+    "VACATION": "Vacation",
+    "ILLNESS": "Illness",
+    "DAY_OFF_CATE": "Day off category",
+    "AVAILABLE_HOURS": "Available hours",
     "MESS_EMAIL": "Email has already been taken",
     "MESS_SUCCESS": "Created successfully!",
     "CLOSE": "Close",
     "SAVE": "Save"
+  },
+  "PROFILE_DETAIL": {
+    "TITLE": "Detail Employee Profile",
+    "STATUS": "Status"
+  },
+  "PROFILE_EDIT": {
+    "TITLE": "Edit Employee Profile"
   }
 }

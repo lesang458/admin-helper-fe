@@ -14,4 +14,12 @@
   .pointer {
     cursor: pointer;
   }
+
+  .btn-action {
+    cursor: pointer;
+    background: transparent;
+    border: 1px solid gray;
+    border-radius: 4px;
+    margin-right: 5px;
+  }
 }
