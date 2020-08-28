@@ -90,10 +90,10 @@ export class ProfileCreateComponent implements OnInit {
     } else {
       const id = this.id;
       const employee = this.profileForm.value;
-      const params = { id, employee };
+      const searchParams = this.refresh;
+      const params = { id, employee, searchParams };
       this.store.dispatch(new EmployeeActions.EditEmployee(params));
     }
-    this.store.dispatch(new EmployeeActions.SearchEmployees(this.refresh));
     this.bsModalRef.hide();
   }
 }

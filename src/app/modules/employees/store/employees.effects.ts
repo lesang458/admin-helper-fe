@@ -103,7 +103,6 @@ export class EmployeeEffects {
         )
         .pipe(
           map((val) => {
-            const data: Employee = camelcaseKeys(val.user);
             return new EmployeesActions.SearchEmployees(
               action.payload.searchParams
             );
