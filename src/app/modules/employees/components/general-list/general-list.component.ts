@@ -5,6 +5,8 @@ import { debounceTime, distinctUntilChanged, map } from 'rxjs/operators';
 import { Store } from '@ngrx/store';
 import * as fromApp from '../../../../store/app.reducer';
 import * as EmployeeActions from '../../store/employees.actions';
+import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
+import { ProfileCreateComponent } from '../profile-create/profile-create.component';
 import { SearchParams } from '../../store/employees.actions';
 
 @Component({
@@ -13,6 +15,7 @@ import { SearchParams } from '../../store/employees.actions';
   styleUrls: ['./general-list.component.scss'],
 })
 export class GeneralListComponent implements OnInit {
+  public bsModalRef: BsModalRef;
   public employeeObs$: Observable<any>;
   public searchFormControl = new FormControl('');
   public currentPage = 1;
@@ -20,8 +23,11 @@ export class GeneralListComponent implements OnInit {
   public sortBirthDateType = 0;
   public sortNameType = 0;
   public sortJoinDateType = 0;
-
-  constructor(private store: Store<fromApp.AppState>) {}
+  public searchParams: SearchParams;
+  constructor(
+    private store: Store<fromApp.AppState>,
+    private modalService: BsModalService
+  ) {}
 
   ngOnInit(): void {
     this.employeeObs$ = this.store.select('employees');
@@ -69,7 +75,7 @@ export class GeneralListComponent implements OnInit {
   public onPageChanged(page: number): void {
     const search = this.searchFormControl.value;
     const status = this.searchStatusFormControl.value;
-    const searchParams: SearchParams = {
+    this.searchParams = {
       search,
       page,
       perPage: 10,
@@ -80,6 +86,18 @@ export class GeneralListComponent implements OnInit {
       },
       status,
     };
-    this.store.dispatch(new EmployeeActions.SearchEmployees(searchParams));
+    this.store.dispatch(new EmployeeActions.SearchEmployees(this.searchParams));
+  }
+
+  public openModalWithComponent(
+    id?: number,
+    type?: string,
+    refresh?: SearchParams
+  ) {
+    const initialState = { id, type, refresh };
+    this.bsModalRef = this.modalService.show(ProfileCreateComponent, {
+      initialState,
+    });
+    this.bsModalRef.content.closeBtnName = 'Close';
   }
 }
