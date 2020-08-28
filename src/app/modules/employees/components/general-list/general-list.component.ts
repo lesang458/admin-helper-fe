@@ -88,7 +88,7 @@ export class GeneralListComponent implements OnInit {
     this.store.dispatch(new EmployeeActions.SearchEmployees(searchParams));
   }
 
-  public openModalWithComponent(id?: any, type?: string) {
+  public openModalWithComponent(id?: number, type?: string) {
     const initialState = { id, type };
     this.bsModalRef = this.modalService.show(ProfileCreateComponent, {
       initialState,

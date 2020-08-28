@@ -17,7 +17,7 @@ import { BsModalRef } from 'ngx-bootstrap/modal';
   styleUrls: ['./profile-create.component.scss'],
 })
 export class ProfileCreateComponent implements OnInit {
-  public id: any;
+  public id: number;
   public type: string;
   public dataSource: any;
   public profileForm = new FormGroup({
