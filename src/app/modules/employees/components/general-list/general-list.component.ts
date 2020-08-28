@@ -23,7 +23,7 @@ export class GeneralListComponent implements OnInit {
   public sortBirthDateType = 0;
   public sortNameType = 0;
   public sortJoinDateType = 0;
-
+  public searchParams: SearchParams;
   constructor(
     private store: Store<fromApp.AppState>,
     private modalService: BsModalService
@@ -75,7 +75,7 @@ export class GeneralListComponent implements OnInit {
   public onPageChanged(page: number): void {
     const search = this.searchFormControl.value;
     const status = this.searchStatusFormControl.value;
-    const searchParams: SearchParams = {
+    this.searchParams = {
       search,
       page,
       sort: {
@@ -85,11 +85,15 @@ export class GeneralListComponent implements OnInit {
       },
       status,
     };
-    this.store.dispatch(new EmployeeActions.SearchEmployees(searchParams));
+    this.store.dispatch(new EmployeeActions.SearchEmployees(this.searchParams));
   }
 
-  public openModalWithComponent(id?: number, type?: string) {
-    const initialState = { id, type };
+  public openModalWithComponent(
+    id?: number,
+    type?: string,
+    refresh?: SearchParams
+  ) {
+    const initialState = { id, type, refresh };
     this.bsModalRef = this.modalService.show(ProfileCreateComponent, {
       initialState,
     });

@@ -11,6 +11,7 @@ import * as fromApp from '../../../../store/app.reducer';
 import * as EmployeeActions from '../../store/employees.actions';
 import { BsModalRef } from 'ngx-bootstrap/modal';
 import { Employee } from 'src/app/shared/models/employees.model';
+import { SearchParams } from '../../store/employees.actions';
 
 @Component({
   selector: 'profile-create',
@@ -20,6 +21,7 @@ import { Employee } from 'src/app/shared/models/employees.model';
 export class ProfileCreateComponent implements OnInit {
   public id: number;
   public type: string;
+  public refresh: SearchParams;
   public dataSource: Employee;
   public profileForm = new FormGroup({
     firstName: new FormControl('', Validators.maxLength(100)),
@@ -90,6 +92,7 @@ export class ProfileCreateComponent implements OnInit {
         new EmployeeActions.EditEmployee(this.id, this.profileForm.value)
       );
     }
+    this.store.dispatch(new EmployeeActions.SearchEmployees(this.refresh));
     this.bsModalRef.hide();
   }
 }

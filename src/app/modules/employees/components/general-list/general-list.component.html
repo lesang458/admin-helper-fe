@@ -107,10 +107,10 @@
               >
             </td>
             <td style="display:flex; justify-self: center;">
-              <button class="btn-action" (click)="openModalWithComponent(item.id, 'detail')">
+              <button class="btn-action" (click)="openModalWithComponent(item.id, 'detail', null)">
                 <span class="cil-external-link"></span>
               </button>
-              <button class="btn-action" (click)="openModalWithComponent(item.id, 'edit')">
+              <button class="btn-action" (click)="openModalWithComponent(item.id, 'edit', searchParams)">
                 <span class="cil-brush"></span>
               </button>
             </td>
@@ -146,7 +146,7 @@
     <div class="d-flex justify-content-end">
       <button
         type="button"
-        (click)="openModalWithComponent(null, 'create')"
+        (click)="openModalWithComponent(null, 'create', searchParams)"
         class="btn btn-info"
       >
         <span class="cil-playlist-add btn-icon mr-2"></span>
