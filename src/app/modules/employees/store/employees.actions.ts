@@ -2,6 +2,7 @@ import { HttpParams } from '@angular/common/http';
 import { Action } from '@ngrx/store';
 import { Employee } from 'src/app/shared/models/employees.model';
 import { PaginatedData } from 'src/app/shared/models/pagination.model';
+import { RequestDayOffModel } from 'src/app/shared/models/request-day-off.model';
 
 export interface SearchParams {
   search: string;
@@ -15,6 +16,7 @@ export const SEARCH_EMPLOYEES = '[Employees] Search Employees';
 export const FETCH_DAY_OFF = '[Employees] Fetch Day Off';
 export const SET_DAY_OFF = '[Employees] Set Day Off';
 export const CREATE_EMPLOYEE = '[Employees] Create Employee';
+export const REQUEST_DAY_OFF = '[Employees] Request Day Off';
 
 export class GetEmployeesSuccess implements Action {
   readonly type = GET_EMPLOYEES_SUCCESS;
@@ -41,9 +43,17 @@ export class CreateEmployee implements Action {
   constructor(public payload: Employee) {}
 }
 
+export class RequestDayOff implements Action {
+  readonly type = REQUEST_DAY_OFF;
+  constructor(
+    public payload: { body: RequestDayOffModel; searchParams: SearchParams }
+  ) {}
+}
+
 export type EmployeesActions =
   | GetEmployeesSuccess
   | SearchEmployees
   | FetchDayOff
   | SetDayOff
-  | CreateEmployee;
+  | CreateEmployee
+  | RequestDayOff;

@@ -19,6 +19,17 @@ export class DayoffTableComponent implements OnInit, OnDestroy {
   public currentPage = 1;
   public sortBirthDateType = 0;
   public sortNameType = 0;
+  public selectedEmployee: Employee;
+  public searchParams = {
+    search: '',
+    page: 1,
+    sort: {
+      sortNameType: 0,
+      sortBirthDateType: 0,
+      sortJoinDateType: 0,
+    },
+    status: 'ACTIVE',
+  };
   public data$: Observable<PaginatedData<Employee[]>>;
   private subscription: Subscription;
   constructor(private store: Store<fromApp.AppState>) {}
@@ -56,7 +67,7 @@ export class DayoffTableComponent implements OnInit, OnDestroy {
 
   public onPageChanged(page: number): void {
     const search = this.searchInput.value;
-    const searchParams: SearchParams = {
+    this.searchParams = {
       search,
       page,
       sort: {
@@ -66,7 +77,7 @@ export class DayoffTableComponent implements OnInit, OnDestroy {
       },
       status: 'ACTIVE',
     };
-    this.store.dispatch(new EmployeeActions.FetchDayOff(searchParams));
+    this.store.dispatch(new EmployeeActions.FetchDayOff(this.searchParams));
   }
 
   ngOnDestroy(): void {
