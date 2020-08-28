@@ -96,7 +96,6 @@ export class EmployeeEffects {
   editEmployee = this.actions$.pipe(
     ofType(EmployeesActions.EDIT_EMPLOYEE),
     switchMap((action: EmployeesActions.EditEmployee) => {
-      console.log('action', action);
       return this.http
         .put<any>(
           `${environment.APILink}/employees/${action.payload.id}`,
@@ -104,7 +103,6 @@ export class EmployeeEffects {
         )
         .pipe(
           map((val) => {
-            console.log('val', val);
             const data: Employee = camelcaseKeys(val.user);
             return new EmployeesActions.SearchEmployees(
               action.payload.searchParams

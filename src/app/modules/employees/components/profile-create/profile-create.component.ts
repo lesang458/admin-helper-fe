@@ -88,7 +88,6 @@ export class ProfileCreateComponent implements OnInit {
         new EmployeeActions.CreateEmployee(this.profileForm.value)
       );
     } else {
-      console.log('abc');
       const id = this.id;
       const employee = this.profileForm.value;
       const params = { id, employee };
