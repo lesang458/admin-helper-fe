@@ -10,6 +10,7 @@ import { Store } from '@ngrx/store';
 import * as fromApp from '../../../../store/app.reducer';
 import * as EmployeeActions from '../../store/employees.actions';
 import { BsModalRef } from 'ngx-bootstrap/modal';
+import { Employee } from 'src/app/shared/models/employees.model';
 
 @Component({
   selector: 'profile-create',
@@ -19,7 +20,7 @@ import { BsModalRef } from 'ngx-bootstrap/modal';
 export class ProfileCreateComponent implements OnInit {
   public id: number;
   public type: string;
-  public dataSource: any;
+  public dataSource: Employee;
   public profileForm = new FormGroup({
     firstName: new FormControl('', Validators.maxLength(100)),
     lastName: new FormControl('', Validators.maxLength(100)),
@@ -55,7 +56,7 @@ export class ProfileCreateComponent implements OnInit {
       this.store.dispatch(new EmployeeActions.DetailEmployee(this.id));
       this.store
         .select((s) => s.employees.detaiEmployee)
-        .subscribe((data: any) => {
+        .subscribe((data: Employee) => {
           if (Object.keys(data).length !== 0) {
             this.dataSource = data;
             this.profileForm.patchValue(data);
