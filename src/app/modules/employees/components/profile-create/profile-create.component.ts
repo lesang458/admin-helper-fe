@@ -19,7 +19,7 @@ import { BsModalRef } from 'ngx-bootstrap/modal';
 export class ProfileCreateComponent implements OnInit {
   public id: any;
   public type: string;
-  public hours: any;
+  public dataSource: any;
   public profileForm = new FormGroup({
     firstName: new FormControl('', Validators.maxLength(100)),
     lastName: new FormControl('', Validators.maxLength(100)),
@@ -57,13 +57,13 @@ export class ProfileCreateComponent implements OnInit {
         .select((s) => s.employees.detaiEmployee)
         .subscribe((data: any) => {
           if (Object.keys(data).length !== 0) {
-            this.hours = data?.hours
+            this.dataSource = data;
             this.profileForm.patchValue(data);
           }
         });
     }
-    if(this.type === 'detail'){
-      this.profileForm.disable()
+    if (this.type === 'detail') {
+      this.profileForm.disable();
     }
   }
 
@@ -80,8 +80,15 @@ export class ProfileCreateComponent implements OnInit {
   }
 
   public onSubmit() {
-    this.store.dispatch(
-      new EmployeeActions.CreateEmployee(this.profileForm.value)
-    );
+    if (this.type === 'create') {
+      this.store.dispatch(
+        new EmployeeActions.CreateEmployee(this.profileForm.value)
+      );
+    } else {
+      this.store.dispatch(
+        new EmployeeActions.EditEmployee(this.id, this.profileForm.value)
+      );
+    }
+    this.bsModalRef.hide();
   }
 }

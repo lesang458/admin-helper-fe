@@ -75,6 +75,10 @@
     "SAVE": "Save"
   },
   "PROFILE_DETAIL": {
-    "TITLE": "Detail Employee Profile"
+    "TITLE": "Detail Employee Profile",
+    "STATUS": "Status"
+  },
+  "PROFILE_EDIT": {
+    "TITLE": "Edit Employee Profile"
   }
 }

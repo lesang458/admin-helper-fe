@@ -81,14 +81,32 @@ export class EmployeeEffects {
   detailEmployee = this.actions$.pipe(
     ofType(EmployeesActions.DETAIL_EMPLOYEE),
     switchMap((action: EmployeesActions.DetailEmployee) => {
-        return this.http
-          .get<any>(`${environment.APILink}/employees/${action.payload}`)
-          .pipe(
-            map((val) => {
-              const data: any = camelcaseKeys(val.user);
-              return new EmployeesActions.DetailEmployeeSuccess(data);
-            })
-          );
+      return this.http
+        .get<any>(`${environment.APILink}/employees/${action.payload}`)
+        .pipe(
+          map((val) => {
+            const data: any = camelcaseKeys(val.user);
+            return new EmployeesActions.DetailEmployeeSuccess(data);
+          })
+        );
+    })
+  );
+
+  @Effect()
+  editEmployee = this.actions$.pipe(
+    ofType(EmployeesActions.EDIT_EMPLOYEE),
+    switchMap((action: EmployeesActions.EditEmployee) => {
+      return this.http
+        .put<any>(
+          `${environment.APILink}/employees/${action.id}`,
+          snakecaseKeys(action.payload)
+        )
+        .pipe(
+          map((val) => {
+            const data: any = camelcaseKeys(val.user);
+            return new EmployeesActions.EditEmployeeSuccess(data);
+          })
+        );
     })
   );
   constructor(private actions$: Actions, private http: HttpClient) {}

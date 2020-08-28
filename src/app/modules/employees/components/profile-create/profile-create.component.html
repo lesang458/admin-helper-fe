@@ -1,4 +1,3 @@
-<ah-notify></ah-notify>
 <div class="modal-header">
   <h4 *ngIf="type === 'create'" class="modal-title pull-left">
     {{ "PROFILE_CREATE.TITLE" | translate }}
@@ -7,7 +6,7 @@
     {{ "PROFILE_DETAIL.TITLE" | translate }}
   </h4>
   <h4 *ngIf="type === 'edit'" class="modal-title pull-left">
-    {{ "PROFILE_DETAIL.TITLE" | translate }}
+    {{ "PROFILE_EDIT.TITLE" | translate }}
   </h4>
   <button
     type="button"
@@ -188,6 +187,19 @@
         </div>
       </div>
     </div>
+    <h6 *ngIf="type === 'detail'">
+      {{ "PROFILE_DETAIL.STATUS" | translate }}:
+      <span 
+        *ngIf="dataSource?.status === 'ACTIVE'"
+        class="badge rounded-pill badge-success p-2">
+        {{ "GENERAL_LIST.ACTIVE" | translate }}
+      </span>
+      <span 
+        *ngIf="dataSource?.status !== 'ACTIVE'"
+        class="badge rounded-pill badge-danger p-2">
+        {{ "GENERAL_LIST.DELETED" | translate }}
+      </span>
+    </h6>
     <h6>{{ "PROFILE_CREATE.DAY_OFF_INFO" | translate }}</h6>
     <div class="form-row day-info">
       <div *ngIf="type !== 'detail'" class="form-group col-md-4">
@@ -234,9 +246,15 @@
         </div>
       </div>
       <div *ngIf="type === 'detail'">
-      <div *ngFor="let hour of hours">
+      <div *ngFor="let hour of dataSource?.dayOffInfos">
         <div style="font-weight: bold;">
-          {{ "PROFILE_CREATE.DAY_OFF_CATE" | translate }}: {{ hour.category }}
+          {{ "PROFILE_CREATE.DAY_OFF_CATE" | translate }}: 
+          <span *ngIf="hour.category_name === 'VACATION'">
+            {{ "PROFILE_CREATE.VACATION" | translate }}
+          </span>
+          <span *ngIf="hour.category_name === 'ILLNESS'">
+            {{ "PROFILE_CREATE.ILLNESS" | translate }}
+          </span>
         </div>
         <div>{{ "PROFILE_CREATE.AVAILABLE_HOURS" | translate }}: {{ hour.available_hours }}</div>
         <div>{{ "PROFILE_CREATE.HOUR" | translate }}: {{ hour.hours }}</div>
