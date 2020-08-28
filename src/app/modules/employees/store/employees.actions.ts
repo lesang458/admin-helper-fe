@@ -9,6 +9,12 @@ export interface SearchParams {
   status: string;
 }
 
+export interface EmployeesParam {
+  id?: number;
+  employee?: Employee;
+  searchParams?: SearchParams;
+}
+
 export const GET_EMPLOYEES_SUCCESS = '[Employees] Get Employees Success';
 export const SEARCH_EMPLOYEES = '[Employees] Search Employees';
 export const FETCH_DAY_OFF = '[Employees] Fetch Day Off';
@@ -56,12 +62,7 @@ export class DetailEmployeeSuccess implements Action {
 
 export class EditEmployee implements Action {
   readonly type = EDIT_EMPLOYEE;
-  constructor(public id: number, public payload: Employee) {}
-}
-
-export class EditEmployeeSuccess implements Action {
-  readonly type = EDIT_EMPLOYEE_SUCCESS;
-  constructor(public payload: Employee) {}
+  constructor(public payload: EmployeesParam) {}
 }
 
 export type EmployeesActions =
@@ -72,5 +73,4 @@ export type EmployeesActions =
   | CreateEmployee
   | DetailEmployee
   | DetailEmployeeSuccess
-  | EditEmployee
-  | EditEmployeeSuccess;
+  | EditEmployee;

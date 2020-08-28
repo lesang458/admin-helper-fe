@@ -88,9 +88,11 @@ export class ProfileCreateComponent implements OnInit {
         new EmployeeActions.CreateEmployee(this.profileForm.value)
       );
     } else {
-      this.store.dispatch(
-        new EmployeeActions.EditEmployee(this.id, this.profileForm.value)
-      );
+      console.log('abc');
+      const id = this.id;
+      const employee = this.profileForm.value;
+      const params = { id, employee };
+      this.store.dispatch(new EmployeeActions.EditEmployee(params));
     }
     this.store.dispatch(new EmployeeActions.SearchEmployees(this.refresh));
     this.bsModalRef.hide();
