@@ -1,3 +1,4 @@
+import * as DayOffActions from './../../store/dayoff.actions';
 import { Component, OnInit } from '@angular/core';
 import { BsModalRef } from 'ngx-bootstrap/modal';
 import { Store } from '@ngrx/store';
@@ -40,13 +41,26 @@ export class DayoffCreateEditComponent implements OnInit {
 
   public onSubmit() {
     if (this.type === 'create') {
-      console.log('Created');
+      this.store.dispatch(
+        new DayOffActions.CreateDayOff({
+          name: this.f.get('name').value.toUpperCase(),
+          description: this.f.get('description').value,
+        })
+      );
     }
     if (this.type === 'edit') {
-      console.log('Edited');
+      this.store.dispatch(
+        new DayOffActions.UpdateDayOff({
+          id: this.dayoffSelected.id,
+          name: this.f.get('name').value.toUpperCase(),
+          description: this.f.get('description').value,
+        })
+      );
     }
     if (this.type === 'delete') {
-      console.log('Deleted');
+      this.store.dispatch(
+        new DayOffActions.DeleteDayOff(this.dayoffSelected.id)
+      );
     }
 
     this.bsModalRef.hide();
