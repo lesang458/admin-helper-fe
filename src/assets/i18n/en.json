@@ -36,7 +36,26 @@
     "BIRTHDAY": "Birthday",
     "TOTAL_LEAVES": "Total leaves",
     "NUMBER_OF_LEAVES_REMAINING": "Number of leaves remaining",
-    "SUBMIT_TIME_OFF": "Submit time off"
+    "SUBMIT_TIME_OFF": "Submit time off",
+    "ACTION": "Action"
+  },
+  "REQUEST-DAY-OFF": {
+    "AUTH": "Authorization",
+    "FULL_NAME": "Full name",
+    "FROM_DATE": "From",
+    "TO_DATE": "To",
+    "HAFL_DAY_OFF": "A half day-off",
+    "KIND_OF_LEAVE": "Kind of leave",
+    "VACATION": "Vacation",
+    "ILLNESS": "Illness",
+    "DAY_OFF_AVAILABLE": "Days off are available",
+    "DAY_OFF_AFTER": "Day off remaining after processing",
+    "UNPAID_LEAVE": "Allow unpaid leave",
+    "CANCEL": "Cancel",
+    "SAVE": "Save",
+    "MORNING_BREAK": "Morning break",
+    "AFTERNOON_BREAK": "Afternoon break",
+    "DAYS": "day"
   },
   "PROFILE_CREATE": {
     "TITLE": "Create Employee Profile",
@@ -47,7 +66,7 @@
     "PASSWORD": "Password",
     "JOIN_DATE": "Join date",
     "PHONE_NUMBER": "Phone number",
-    "DAY_OFF_INFO": "Day off info",
+    "DAY_OFF_INFO": "Day off infomation",
     "HOUR": "Hours",
     "FIRST_NAME_INVALID": "First Name is required",
     "FIRST_NAME_MAXLENGTH": "First name must not exceed 100 characters",
@@ -63,10 +82,23 @@
     "PHONE_NUMBER_PATTERN": "Phone number must be number",
     "PHONE_NUMBER_MINLENGTH": "Phone number must be at least 10 characters",
     "PHONE_NUMBER_MAXLENGTH": "Phone number must not exceed 12 characters",
+    "HOURS_INVALID": "Hours is required",
+    "HOURS_PATTERN": "Hours must be number",
+    "VACATION": "Vacation",
+    "ILLNESS": "Illness",
+    "DAY_OFF_CATE": "Day off category",
+    "AVAILABLE_HOURS": "Available hours",
     "MESS_EMAIL": "Email has already been taken",
     "MESS_SUCCESS": "Created successfully!",
     "CLOSE": "Close",
     "SAVE": "Save"
+  },
+  "PROFILE_DETAIL": {
+    "TITLE": "Detail Employee Profile",
+    "STATUS": "Status"
+  },
+  "PROFILE_EDIT": {
+    "TITLE": "Edit Employee Profile"
   },
   "DAY_OFF_PAGE": {
     "NAME": "Name",

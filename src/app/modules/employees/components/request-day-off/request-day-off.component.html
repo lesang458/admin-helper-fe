@@ -1,0 +1,155 @@
+<form [formGroup]="f">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">
+          {{ "REQUEST-DAY-OFF.AUTH" | translate }}
+        </h5>
+        <button
+          type="button"
+          class="close"
+          data-dismiss="modal"
+          aria-label="Close"
+        >
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <label class="pointer" for="exampleFormControlInput1">
+          {{ "REQUEST-DAY-OFF.FULL_NAME" | translate }}
+        </label>
+        <input
+          type="text"
+          class="form-control"
+          id="exampleFormControlInput1"
+          formControlName="fullName"
+        />
+      </div>
+      <div class="modal-body">
+        <label class="pointer" for="exampleFormControlInput2">
+          {{ "REQUEST-DAY-OFF.FROM_DATE" | translate }}
+        </label>
+        <input
+          type="date"
+          min="{{ currentDateString | date: 'yyyy-MM-dd' }}"
+          max="{{ setDateString(30) | date: 'yyyy-MM-dd' }}"
+          class="form-control"
+          id="exampleFormControlInput2"
+          formControlName="fromDate"
+        />
+        <label class="pointer" id="label3" for="exampleFormControlInput3">
+          {{ "REQUEST-DAY-OFF.TO_DATE" | translate }}
+        </label>
+        <input
+          type="date"
+          min="{{ f.get('fromDate').value | date: 'yyyy-MM-dd' }}"
+          max="{{ maxOfToDate | date: 'yyyy-MM-dd' }}"
+          class="form-control"
+          id="exampleFormControlInput3"
+          formControlName="toDate"
+        />
+      </div>
+
+      <div *ngIf="dayOffs < 2">
+        <div class="modal-body">
+          <div class="form-check">
+            <input
+              class="form-check-input"
+              type="checkbox"
+              value=""
+              id="defaultCheck1"
+              formControlName="morningBreak"
+            />
+            <label class="form-check-label pointer" for="defaultCheck1">
+              {{ "REQUEST-DAY-OFF.MORNING_BREAK" | translate }}
+            </label>
+          </div>
+        </div>
+
+        <div class="modal-body">
+          <div class="form-check">
+            <input
+              class="form-check-input"
+              type="checkbox"
+              value=""
+              id="defaultCheck2"
+              formControlName="afternoonBreak"
+            />
+            <label class="form-check-label pointer" for="defaultCheck2">
+              {{ "REQUEST-DAY-OFF.AFTERNOON_BREAK" | translate }}
+            </label>
+          </div>
+        </div>
+      </div>
+
+      <div class="modal-body">
+        <label id="label4" class="pointer" for="exampleFormControlSelect1">
+          {{ "REQUEST-DAY-OFF.KIND_OF_LEAVE" | translate }}
+        </label>
+        <select
+          class="form-control pointer"
+          id="exampleFormControlSelect1"
+          formControlName="kindOfLeave"
+        >
+          <option value="VACATION">
+            {{ "REQUEST-DAY-OFF.VACATION" | translate }}
+          </option>
+          <option value="ILLNESS">
+            {{ "REQUEST-DAY-OFF.ILLNESS" | translate }}
+          </option>
+        </select>
+      </div>
+
+      <div class="modal-body-custom">
+        <ul>
+          <li>
+            {{ "REQUEST-DAY-OFF.DAY_OFF_AVAILABLE" | translate }}:
+            {{ dayOffAvailable }}
+            {{ "REQUEST-DAY-OFF.DAYS" | translate }}
+          </li>
+          <li>
+            {{ "REQUEST-DAY-OFF.DAY_OFF_AFTER" | translate }}:
+            {{ dayOffAvailable > dayOffs ? dayOffAvailable - dayOffs : "0" }}
+            {{ "REQUEST-DAY-OFF.DAYS" | translate }}
+          </li>
+        </ul>
+        <hr />
+      </div>
+
+      <div
+        *ngIf="dayOffAvailable < dayOffs"
+        class="modal-body modal-body-none-padding"
+      >
+        <div class="form-check">
+          <input
+            class="form-check-input pointer"
+            type="checkbox"
+            value=""
+            id="defaultCheck3"
+            formControlName="unpaidLeave"
+          />
+          <label class="form-check-label pointer" for="defaultCheck3">
+            {{ "REQUEST-DAY-OFF.UNPAID_LEAVE" | translate }}
+            {{ dayOffs - dayOffAvailable }}
+            {{ "REQUEST-DAY-OFF.DAYS" | translate }}
+          </label>
+        </div>
+      </div>
+
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">
+          {{ "REQUEST-DAY-OFF.CANCEL" | translate }}
+        </button>
+        <button
+          [disabled]="dayOffAvailable < dayOffs && !f.get('unpaidLeave').value"
+          (click)="onSave()"
+          type="button"
+          data-dismiss="modal"
+          class="btn btn-primary"
+        >
+          {{ "REQUEST-DAY-OFF.SAVE" | translate }}
+        </button>
+      </div>
+    </div>
+  </div>
+</form>

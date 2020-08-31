@@ -1,0 +1,58 @@
+div {
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+
+  .modal-body {
+    display: flex;
+    line-height: 28px;
+
+    > label {
+      width: 70px;
+    }
+
+    > input {
+      width: 156px;
+    }
+
+    > select {
+      width: 150px;
+    }
+
+    #label3 {
+      margin-left: 10px;
+    }
+
+    #label4 {
+      line-height: 32px;
+    }
+
+    #exampleFormControlInput1 {
+      width: 391px;
+    }
+
+    .form-check {
+      margin-left: 70px;
+
+      > input {
+        margin-top: 8px;
+      }
+    }
+  }
+
+  .modal-body-custom {
+    width: 300px;
+    padding: 0 !important;
+    margin-left: 80px;
+  }
+
+  .modal-body-none-padding {
+    padding-top: 0;
+  }
+
+  .pointer {
+    cursor: pointer;
+  }
+}
