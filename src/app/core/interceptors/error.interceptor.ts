@@ -44,7 +44,7 @@ export class ErrorInterceptor implements HttpInterceptor {
           error === 'User authentication failed' ||
           error === 'You seem to have an expired token'
         ) {
-          this.router.navigate(['/nghi-phep']);
+          localStorage.clear();
         }
 
         return throwError(error);
