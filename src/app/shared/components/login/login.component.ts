@@ -23,7 +23,7 @@ export class LoginComponent implements OnInit {
     return this.loginForm.controls;
   }
 
-  public onSubmit() {
+  public onSubmit(): void {
     this.store.dispatch(new LoginAction.Login(this.loginForm.value));
   }
 }

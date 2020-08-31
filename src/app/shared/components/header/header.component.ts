@@ -16,7 +16,7 @@ export class HeaderComponent implements OnInit {
     this.translate.use(language);
   }
 
-  public logout() {
+  public logout(): void {
     localStorage.removeItem('token');
     this.router.navigate(['/login']);
   }
