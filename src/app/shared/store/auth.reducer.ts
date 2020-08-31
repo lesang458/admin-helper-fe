@@ -1,4 +1,4 @@
-import * as LoginAction from './auth.actions';
+import * as AuthActions from './auth.actions';
 import { Employee } from 'src/app/shared/models/employees.model';
 
 export interface State {
@@ -11,15 +11,15 @@ export const initialState: State = {
 
 export function authReducer(
   state: State = initialState,
-  action: LoginAction.LoginAction
+  action: AuthActions.AuthActions
 ) {
   switch (action.type) {
-    case LoginAction.LOGIN_SUCCESS:
+    case AuthActions.LOGIN_SUCCESS:
       return {
         ...state,
         user: action.payload,
       };
-    case LoginAction.LOGOUT:
+    case AuthActions.LOGOUT:
       return {
         ...state,
         user: action.payload,

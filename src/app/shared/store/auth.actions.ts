@@ -25,4 +25,4 @@ export class Logout implements Action {
   constructor(public payload = null) {}
 }
 
-export type LoginAction = Login | LoginSuccess | Logout;
+export type AuthActions = Login | LoginSuccess | Logout;

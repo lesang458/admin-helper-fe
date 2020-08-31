@@ -9,7 +9,7 @@ import * as camelcaseKeys from 'camelcase-keys';
 import { Router } from '@angular/router';
 
 @Injectable()
-export class LoginEffect {
+export class AuthEffect {
   @Effect()
   authLogin = this.actions$.pipe(
     ofType(AuthActions.LOGIN),
