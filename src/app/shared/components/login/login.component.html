@@ -1,0 +1,49 @@
+<div class="form-common">
+  <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+    <h2 style="text-align: center">Login</h2>
+    <div class="form-group">
+      <label for="exampleInputEmail1">Email</label>
+      <input
+        type="email"
+        class="form-control"
+        id="exampleInputEmail1"
+        aria-describedby="emailHelp"
+        placeholder="Enter email"
+        formControlName="email"
+      />
+      <div
+        *ngIf="f.email.invalid && (f.email.dirty || f.email.touched)"
+        class="mess-invalid"
+      >
+        <div *ngIf="f.email.errors.required">
+          {{ "PROFILE_CREATE.EMAIL_INVALID" | translate }}
+        </div>
+        <div *ngIf="f.email.errors.email">
+          {{ "PROFILE_CREATE.IS_EMAIL" | translate }}
+        </div>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="exampleInputPassword1">Password</label>
+      <input
+        type="password"
+        class="form-control"
+        id="exampleInputPassword1"
+        placeholder="Password"
+        formControlName="password"
+      />
+      <div
+        *ngIf="f.password.invalid && (f.password.dirty || f.password.touched)"
+        class="mess-invalid"
+      >
+      <div *ngIf="f.password.errors.required">
+        {{ "PROFILE_CREATE.PASSWORD_INVALID" | translate }}
+      </div>
+      <div *ngIf="f.password.errors.minlength">
+        {{ "PROFILE_CREATE.PASS_MINLENGTH" | translate }}
+      </div>
+    </div>
+    </div>
+    <button type="submit" class="btn btn-primary">Login</button>
+  </form>
+</div>
