@@ -6,8 +6,9 @@ export interface EmployeesParam {
   password: string;
 }
 
-export const LOGIN = '[Login] Login';
-export const LOGIN_SUCCESS = '[Login] Login Success';
+export const LOGIN = '[Auth]] Login';
+export const LOGIN_SUCCESS = '[Auth] Login Success';
+export const LOGOUT = '[Auth] Logout';
 
 export class Login implements Action {
   readonly type = LOGIN;
@@ -19,4 +20,9 @@ export class LoginSuccess implements Action {
   constructor(public payload: Employee) {}
 }
 
-export type LoginAction = Login | LoginSuccess;
+export class Logout implements Action {
+  readonly type = LOGOUT;
+  constructor(public payload = null) {}
+}
+
+export type LoginAction = Login | LoginSuccess | Logout;

@@ -13,7 +13,7 @@ import { StoreModule } from '@ngrx/store';
 import * as fromApp from './store/app.reducer';
 import { EffectsModule } from '@ngrx/effects';
 import { CustomTranslateLoader } from './shared/loader/custom-translate.loader';
-import { LoginEffect } from './shared/store/login.effects';
+import { LoginEffect } from './shared/store/auth.effects';
 
 export function LoaderFactory() {
   return new CustomTranslateLoader();

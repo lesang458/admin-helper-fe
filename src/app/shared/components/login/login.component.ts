@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Validators, FormControl, FormGroup } from '@angular/forms';
 import { Store } from '@ngrx/store';
 import * as fromApp from '../../../store/app.reducer';
-import * as LoginAction from '../../store/login.actions';
+import * as LoginAction from '../../store/auth.actions';
 
 @Component({
   selector: 'ah-login',
