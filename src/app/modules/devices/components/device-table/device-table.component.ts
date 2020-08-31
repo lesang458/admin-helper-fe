@@ -7,6 +7,7 @@ import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import * as DevicesActions from '../../store/devices.actions';
 import { TranslateService } from '@ngx-translate/core';
+import { DeviceParams } from '../../store/devices.actions';
 
 @Component({
   selector: 'ah-device-table',
@@ -16,6 +17,7 @@ import { TranslateService } from '@ngx-translate/core';
 export class DeviceTableComponent implements OnInit {
   public data$: Observable<PaginatedData<Device[]>>;
   public currentPage = 1;
+  public deviceParams: DeviceParams;
   constructor(
     private store: Store<fromApp.AppState>,
     private translate: TranslateService
@@ -43,6 +45,11 @@ export class DeviceTableComponent implements OnInit {
   }
 
   public onPageChanged(page: number): void {
-    this.store.dispatch(new DevicesActions.FetchDevices());
+    this.deviceParams = {
+      page,
+      perPage: 5,
+      deviceCategoryId: 0,
+    };
+    this.store.dispatch(new DevicesActions.FetchDevices(this.deviceParams));
   }
 }
