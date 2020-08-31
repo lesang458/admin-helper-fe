@@ -16,8 +16,9 @@ export class LoginEffect {
       const body = action.payload;
       return this.http.post<any>(`${environment.APILink}/login`, body).pipe(
         map((val) => {
+          localStorage.setItem('token', val?.token);
           const data: Employee = camelcaseKeys(val.data);
-          return new LoginAction.Login(data);
+          return new LoginAction.LoginSuccess(data);
         })
       );
     })
