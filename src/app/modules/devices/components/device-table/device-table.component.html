@@ -1,7 +1,72 @@
 <div class="card">
   <div class="card-body">
-    <div class="card">
-      <div class="card-header">Abc</div>
+    <div *ngIf="data$ | async as data">
+      <div
+        class="card"
+        style="margin-bottom: 10px"
+        *ngFor="let item of data.data; let i = index"
+      >
+        <div class="card-header">
+          <div class="row">
+            <div class="col-3">
+              {{ item.name }}
+            </div>
+            <div class="col-3">
+              {{ "DEVICE_TABLE.CATEGORY_NAME" | translate }}
+              {{ item.categoryName }}
+            </div>
+            <div class="col-3">
+              {{ "DEVICE_TABLE.ASSIGNED_TO" | translate }}
+              {{ getUserName(item.user) }}
+            </div>
+            <div class="col-3" style="text-align: right">
+              <button class="btn btn-ghost">
+                <i class="cil-history"></i>
+                {{ "DEVICE_TABLE.HISTORY" | translate }}
+              </button>
+              <button class="btn btn-ghost">
+                <span class="cil-brush"></span>
+                {{ "DEVICE_TABLE.EDIT" | translate }}
+              </button>
+              <i
+                class="c-icon cil-arrow-circle-bottom"
+                style="cursor: pointer"
+                role="button"
+                (click)="onExpand(item.id)"
+              ></i>
+            </div>
+          </div>
+        </div>
+        <div class="card-body" id="{{ item.id }}" style="display: none">
+          <table class="table table-bordered" style="margin: 0px">
+            <tr>
+              <td>{{ "DEVICE_TABLE.PRICE" | translate }}</td>
+              <td>{{ item.price | currency: "VND" }}</td>
+            </tr>
+            <tr>
+              <td>{{ "DEVICE_TABLE.DESCRIPTION" | translate }}</td>
+              <td>{{ item.description }}</td>
+            </tr>
+          </table>
+        </div>
+      </div>
+      <div class="col-12" *ngIf="data.pagination.totalCount !== 0">
+        <pagination
+          [totalItems]="data.pagination.totalCount"
+          [maxSize]="3"
+          [itemsPerPage]="5"
+          [(ngModel)]="currentPage"
+          (pageChanged)="onPageChanged($event.page)"
+          class="pagination-md justify-content-end"
+          previousText="&lsaquo;"
+          nextText="&rsaquo;"
+          firstText="&laquo;"
+          lastText="&raquo;"
+          [boundaryLinks]="true"
+          [rotate]="true"
+        >
+        </pagination>
+      </div>
     </div>
   </div>
 </div>

@@ -6,6 +6,7 @@ import { Device } from 'src/app/shared/models/device.model';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import * as DevicesActions from '../../store/devices.actions';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'ah-device-table',
@@ -14,7 +15,11 @@ import * as DevicesActions from '../../store/devices.actions';
 })
 export class DeviceTableComponent implements OnInit {
   public data$: Observable<PaginatedData<Device[]>>;
-  constructor(private store: Store<fromApp.AppState>) {}
+  public currentPage = 1;
+  constructor(
+    private store: Store<fromApp.AppState>,
+    private translate: TranslateService
+  ) {}
 
   ngOnInit(): void {
     this.data$ = this.store.select('devices').pipe(
@@ -23,6 +28,21 @@ export class DeviceTableComponent implements OnInit {
       })
     );
 
+    this.onPageChanged(1);
+  }
+
+  public onExpand(id): void {
+    const el: HTMLElement = document.getElementById(id);
+    el.style.display = el.style.display === 'none' ? 'block' : 'none';
+  }
+
+  public getUserName(user: any): string {
+    return user
+      ? `${user.firstName} ${user.lastName}`
+      : this.translate.instant('DEVICE_TABLE.EMPTY');
+  }
+
+  public onPageChanged(page: number): void {
     this.store.dispatch(new DevicesActions.FetchDevices());
   }
 }

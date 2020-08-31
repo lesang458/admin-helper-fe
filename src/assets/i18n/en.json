@@ -100,5 +100,14 @@
   },
   "PROFILE_EDIT": {
     "TITLE": "Edit Employee Profile"
+  },
+  "DEVICE_TABLE": {
+    "CATEGORY_NAME": "Category name: ",
+    "ASSIGNED_TO": "Assigned to: ",
+    "EMPTY": "Empty",
+    "HISTORY": "History",
+    "EDIT": "Edit",
+    "PRICE": "Price",
+    "DESCRIPTION": "Description"
   }
 }

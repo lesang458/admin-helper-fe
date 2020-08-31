@@ -66,6 +66,7 @@
         data-toggle="dropdown"
         aria-haspopup="true"
         aria-expanded="false"
+        style="cursor: pointer"
         role="button"
       >
         <i
@@ -78,11 +79,19 @@
         ></i>
       </a>
       <div class="dropdown-menu dropdown-menu-right pt-0">
-        <a class="dropdown-item" (click)="switchLanguage('vi')">
+        <a
+          class="dropdown-item"
+          (click)="switchLanguage('vi')"
+          style="cursor: pointer"
+        >
           <i class="c-icon mr-3 cif-vn"></i>
           {{ "HEADER.VIETNAMESE" | translate }}
         </a>
-        <a class="dropdown-item" (click)="switchLanguage('en')">
+        <a
+          class="dropdown-item"
+          (click)="switchLanguage('en')"
+          style="cursor: pointer"
+        >
           <i class="c-icon mr-3 cif-gb"></i>
           English
         </a>
