@@ -57,7 +57,7 @@ export class DayOffEffects {
           });
           return new DayOffActions.GetDayOffSuccess([
             ...dayoff,
-            { ...val.data, id: dayoff.length },
+            { ...val.data, id: (dayoff.length + 1).toString() },
           ]);
         })
       );
@@ -81,15 +81,13 @@ export class DayOffEffects {
           this.store.select('dayoff').source.source.source.subscribe((data) => {
             dayoff = data.dayoff.dayoff;
           });
-
-          return new DayOffActions.GetDayOffSuccess([
-            ...dayoff.map((item) => {
-              if (item.id === val.data.id) {
-                item = val.data;
-              }
-              return item;
-            }),
-          ]);
+          const array = dayoff.map((item) => {
+            if (item.id == val.data.id) {
+              item = val.data;
+            }
+            return item;
+          });
+          return new DayOffActions.GetDayOffSuccess(array);
         })
       );
     })
@@ -97,10 +95,10 @@ export class DayOffEffects {
 
   @Effect()
   deleteDayoff = this.actions$.pipe(
-    ofType(DayOffActions.UPDATE_DAY_OFF),
+    ofType(DayOffActions.DELETE_DAY_OFF),
     switchMap((action: DayOffActions.DeleteDayOff) => {
       const id: string = action.payload;
-      return of({}).pipe(
+      return of({ id }).pipe(
         map(() => {
           let dayoff;
           this.store.select('dayoff').source.source.source.subscribe((data) => {
@@ -109,9 +107,7 @@ export class DayOffEffects {
 
           return new DayOffActions.GetDayOffSuccess([
             ...dayoff.filter((item) => {
-              if (item.id !== id) {
-                return item;
-              }
+              return item.id != id;
             }),
           ]);
         })

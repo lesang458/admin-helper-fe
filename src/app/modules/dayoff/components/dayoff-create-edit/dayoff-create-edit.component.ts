@@ -33,7 +33,7 @@ export class DayoffCreateEditComponent implements OnInit {
       this.f.patchValue({
         name:
           this.dayoffSelected.name[0] +
-          this.dayoffSelected.name.slice(1).toLowerCase(),
+          this.dayoffSelected.name.slice(1)?.toLowerCase(),
         description: this.dayoffSelected.description,
       });
     }
@@ -59,7 +59,7 @@ export class DayoffCreateEditComponent implements OnInit {
     }
     if (this.type === 'delete') {
       this.store.dispatch(
-        new DayOffActions.DeleteDayOff(this.dayoffSelected.id)
+        new DayOffActions.DeleteDayOff(this.dayoffSelected.id.toString())
       );
     }
 
