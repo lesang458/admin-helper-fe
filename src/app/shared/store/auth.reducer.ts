@@ -22,7 +22,7 @@ export function authReducer(
     case AuthActions.LOGOUT:
       return {
         ...state,
-        user: action.payload,
+        user: null,
       };
 
     default:

@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
-import { Router } from '@angular/router';
+import { Store } from '@ngrx/store';
+import * as fromApp from '../../../store/app.reducer';
+import * as AuthActions from '../../store/auth.actions';
 
 @Component({
   selector: 'ah-header',
@@ -8,7 +10,10 @@ import { Router } from '@angular/router';
   styleUrls: ['./header.component.scss'],
 })
 export class HeaderComponent implements OnInit {
-  constructor(public translate: TranslateService, private router: Router) {}
+  constructor(
+    public translate: TranslateService,
+    private store: Store<fromApp.AppState>
+  ) {}
 
   ngOnInit(): void {}
 
@@ -17,7 +22,6 @@ export class HeaderComponent implements OnInit {
   }
 
   public logout(): void {
-    localStorage.removeItem('token');
-    this.router.navigate(['/login']);
+    this.store.dispatch(new AuthActions.Logout());
   }
 }

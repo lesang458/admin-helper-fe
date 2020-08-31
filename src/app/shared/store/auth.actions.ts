@@ -22,7 +22,6 @@ export class LoginSuccess implements Action {
 
 export class Logout implements Action {
   readonly type = LOGOUT;
-  constructor(public payload = null) {}
 }
 
 export type AuthActions = Login | LoginSuccess | Logout;
