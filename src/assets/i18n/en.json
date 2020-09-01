@@ -112,6 +112,7 @@
     "DESCRIPTION": "Description",
     "ACTION": "Action",
     "SAVE": "Save",
+    "DELETE": "Delete",
     "CANCEL": "Cancel",
     "CREATE": "Create day off category",
     "NO_RESULT": "No result.",
@@ -122,6 +123,7 @@
     "NAME_REQUIRED": "Name is required!",
     "NAME_MINLENGTH": "The name has Minimum length is 6 character",
     "NAME_MAXLENGTH": "The name has Maximum length is 20 character",
-    "NAME_PATTERN": "The name must not contain special characters"
+    "NAME_PATTERN": "The name must not contain special characters",
+    "DAYOFF": "Day off"
   }
 }
