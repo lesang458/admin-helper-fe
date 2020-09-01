@@ -22,9 +22,6 @@ export class ErrorInterceptor implements HttpInterceptor {
     return next.handle(request).pipe(
       tap((evt) => {
         if (evt instanceof HttpResponse) {
-          if (evt.url.includes('/login')) {
-            this.router.navigate(['/thong-tin-chung']);
-          }
           if (evt.status === 201) {
             this.notifyService.success('Successfully!');
           }
