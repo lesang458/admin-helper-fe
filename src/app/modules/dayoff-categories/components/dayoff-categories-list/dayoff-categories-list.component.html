@@ -40,10 +40,10 @@
             <td>{{ item.totalHoursDefault / 8 }}</td>
             <td>{{ item.description }}</td>
             <td style="display:flex; justify-self: center;">
-              <button class="btn-action" (click)="openModalWithComponent(item, 'edit')">
+              <button class="btn btn-outline-primary" (click)="openModalWithComponent(item, 'edit')">
                 <span class="cil-brush"></span>
               </button>
-              <button class="btn-action" (click)="openModalWithComponent(item, 'delete')">
+              <button class="btn btn-outline-danger" (click)="openModalWithComponent(item, 'delete')">
                 <span class="cil-remove"></span>
               </button>
             </td>
