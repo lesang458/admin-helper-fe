@@ -4,7 +4,6 @@ import { GeneralInfoComponent } from './pages/general-info/general-info.componen
 import { DayoffResolver } from 'src/app/core/resolvers/dayoff.resolver';
 import { AuthComponent } from './pages/auth/auth.component';
 import { AuthGuardService } from 'src/app/core/helpers/auth.guard';
-import { GeneralDayOffCategoriesComponent } from '../dayoff-categories/pages/general-dayoff/general-dayoff-categories.component';
 
 export const EMPLOYEES_ROUTES: Routes = [
   { path: '', redirectTo: 'thong-tin-chung', pathMatch: 'full' },
@@ -15,8 +14,8 @@ export const EMPLOYEES_ROUTES: Routes = [
     canActivate: [AuthGuardService],
   },
   {
-    path: 'loai-ngay-phep',
-    component: GeneralDayOffCategoriesComponent,
+    path: 'nghi-phep',
+    component: DayoffComponent,
     canActivate: [AuthGuardService],
     resolve: { dayoff: DayoffResolver },
   },
