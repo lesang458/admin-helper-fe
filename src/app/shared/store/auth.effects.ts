@@ -6,6 +6,7 @@ import { switchMap, map, tap } from 'rxjs/operators';
 import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment.prod';
 import * as camelcaseKeys from 'camelcase-keys';
+import * as snakecaseKeys from 'snakecase-keys';
 import { Router } from '@angular/router';
 
 @Injectable()
@@ -22,6 +23,23 @@ export class AuthEffect {
           return new AuthActions.LoginSuccess(data);
         })
       );
+    })
+  );
+
+  @Effect()
+  authLoginByEmail = this.actions$.pipe(
+    ofType(AuthActions.LOGIN_EMAIL),
+    switchMap((action: AuthActions.LoginByEmail) => {
+      const body = snakecaseKeys(action.payload);
+      return this.http
+        .post<any>(`${environment.APILink}/google_login`, body)
+        .pipe(
+          map((val) => {
+            localStorage.setItem('token', val?.token);
+            const data: Employee = camelcaseKeys(val.data);
+            return new AuthActions.LoginSuccess(data);
+          })
+        );
     })
   );
 

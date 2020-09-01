@@ -99,5 +99,11 @@
   },
   "PROFILE_EDIT": {
     "TITLE": "Edit Employee Profile"
+  },
+  "LOGIN":{
+    "LOGIN": "Login",
+    "EMAIL": "Email",
+    "PASS": "Password",
+    "SIGN_IN_GG": "Sign In With Google"
   }
 }
