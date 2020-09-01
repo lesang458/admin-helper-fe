@@ -3,7 +3,8 @@
     "TITLE": "Employee Management",
     "LINK_1": "General Information",
     "LINK_2": "Day off",
-    "LINK_3": "Timekeeping"
+    "LINK_3": "Timekeeping",
+    "LINK_4": "Day off type"
   },
   "HEADER": {
     "TITLE": "Employees List",
@@ -99,5 +100,30 @@
   },
   "PROFILE_EDIT": {
     "TITLE": "Edit Employee Profile"
+  },
+  "LOGIN":{
+    "LOGIN": "Login",
+    "EMAIL": "Email",
+    "PASS": "Password",
+    "SIGN_IN_GG": "Sign In With Google"
+  },
+  "DAY_OFF_CATEGORIES_PAGE": {
+    "NAME": "Name",
+    "DESCRIPTION": "Description",
+    "ACTION": "Action",
+    "DELETE": "Delete",
+    "EDIT": "Edit",
+    "SAVE": "Save",
+    "CANCEL": "Cancel",
+    "CREATE": "Create day off category",
+    "NO_RESULT": "No result.",
+    "DELETE_TITLE": "Day off deletion",
+    "EDIT_TITLE": "Day off edit",
+    "CREATE_TITLE": "Day off creation",
+    "DELETE_CONFIRM": "This action cannot be undone please confirm again!",
+    "NAME_REQUIRED": "Name is required!",
+    "NAME_MINLENGTH": "The name has Minimum length is 6 character",
+    "NAME_MAXLENGTH": "The name has Maximum length is 20 character",
+    "NAME_PATTERN": "The name must not contain special characters"
   }
 }

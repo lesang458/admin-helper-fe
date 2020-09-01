@@ -3,7 +3,8 @@
     "TITLE": "Quản lý nhân viên",
     "LINK_1": "Thông tin chung",
     "LINK_2": "Ngày phép",
-    "LINK_3": "Chấm công"
+    "LINK_3": "Chấm công",
+    "LINK_4": "Loại ngày phép"
   },
   "HEADER": {
     "TITLE": "Danh sách nhân viên",
@@ -97,5 +98,30 @@
   },
   "PROFILE_EDIT": {
     "TITLE": "Chỉnh sửa hồ sơ nhân viên"
+  },
+  "LOGIN":{
+    "LOGIN": "Đăng nhập",
+    "EMAIL": "Email",
+    "PASS": "Mật khẩu",
+    "SIGN_IN_GG": "Đăng nhập với google"
+  },
+  "DAY_OFF_CATEGORIES_PAGE": {
+    "NAME": "Tên",
+    "DESCRIPTION": "Mô tả",
+    "ACTION": "Hành động",
+    "DELETE": "Xóa",
+    "EDIT": "Sửa",
+    "SAVE": "Lưu",
+    "CANCEL": "Hủy",
+    "CREATE": "Tạo loại ngày nghỉ",
+    "NO_RESULT": "Không có kết quả.",
+    "DELETE_TITLE": "Xóa thể loại ngày nghỉ",
+    "EDIT_TITLE": "Sửa thể loại ngày nghỉ",
+    "CREATE_TITLE": "Tạo thể loại ngày nghỉ",
+    "DELETE_CONFIRM": "Thao tác này không thể hoàn tác vui lòng xác nhận lại!",
+    "NAME_REQUIRED": "Tên không thể rỗng!",
+    "NAME_MINLENGTH": "Tên có độ dài tối thiểu là 6 ký tự",
+    "NAME_MAXLENGTH": "Tên có độ dài tối đa là 20 ký tự",
+    "NAME_PATTERN": "Tên không được chứa ký tự đặc biệt"
   }
 }
