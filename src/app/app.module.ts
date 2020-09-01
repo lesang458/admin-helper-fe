@@ -13,7 +13,7 @@ import { StoreModule } from '@ngrx/store';
 import * as fromApp from './store/app.reducer';
 import { EffectsModule } from '@ngrx/effects';
 import { CustomTranslateLoader } from './shared/loader/custom-translate.loader';
-import { DayOffEffects } from './modules/dayoff-categories/store/dayoff-categories.effects';
+import { DayOffCategoriesEffects } from './modules/dayoff-categories/store/dayoff-categories.effects';
 export function LoaderFactory() {
   return new CustomTranslateLoader();
 }
@@ -33,7 +33,7 @@ export function LoaderFactory() {
       },
     }),
     RouterModule.forRoot(APP_ROUTES, { scrollPositionRestoration: 'enabled' }),
-    EffectsModule.forRoot([EmployeeEffects, DayOffEffects]),
+    EffectsModule.forRoot([EmployeeEffects, DayOffCategoriesEffects]),
     StoreModule.forRoot(fromApp.appReducer),
   ],
   providers: [],

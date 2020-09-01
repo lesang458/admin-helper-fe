@@ -10,5 +10,5 @@ export interface AppState {
 }
 export const appReducer: ActionReducerMap<AppState> = {
   employees: fromEmployee.employeeReducer,
-  dayoff: fromDayoff.dayoffReducer,
+  dayoff: fromDayoff.dayoffCategoriesReducer,
 };

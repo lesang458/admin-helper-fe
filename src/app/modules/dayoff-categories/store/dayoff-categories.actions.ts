@@ -1,39 +1,39 @@
 import { Action } from '@ngrx/store';
-import { DayOff } from 'src/app/shared/models/dayoff.model';
+import { DayOffCategory } from 'src/app/shared/models/dayoff-category.model';
 
 export const GET_DAYOFF_CATEGORIES_SUCCESS =
-  '[Dayoff] Get Day off categories Success';
-export const CREATE_DAY_OFF_CATEGORIES =
-  '[Dayoff categories] Create Day off categories';
-export const UPDATE_DAY_OFF_CATEGORIES =
-  '[Dayoff categories] Update Day off categories';
-export const DELETE_DAY_OFF_CATEGORIES =
-  '[Dayoff categories] Delete Day off categories';
+  '[Dayoff Categories] Get Day off categories Success';
+export const CREATE_DAY_OFF_CATEGORY =
+  '[Dayoff Categories] Create Day off Category';
+export const UPDATE_DAY_OFF_CATEGORY =
+  '[Dayoff Categories] Update Day off Category';
+export const DELETE_DAY_OFF_CATEGORY =
+  '[Dayoff Categories] Delete Day off Category';
 export const FETCH_DAY_OFF_CATEGORIES =
-  '[Dayoff categories] Fetch Day Off categories';
+  '[Dayoff Categories] Fetch Day Off Categories';
 
-export class GetDayOffSuccess implements Action {
+export class GetDayOffCategoriesSuccess implements Action {
   readonly type = GET_DAYOFF_CATEGORIES_SUCCESS;
-  constructor(public payload: DayOff[]) {}
+  constructor(public payload: DayOffCategory[]) {}
 }
-export class CreateDayOff implements Action {
-  readonly type = CREATE_DAY_OFF_CATEGORIES;
-  constructor(public payload: DayOff) {}
+export class CreateDayOffCategory implements Action {
+  readonly type = CREATE_DAY_OFF_CATEGORY;
+  constructor(public payload: DayOffCategory) {}
 }
-export class UpdateDayOff implements Action {
-  readonly type = UPDATE_DAY_OFF_CATEGORIES;
-  constructor(public payload: DayOff) {}
+export class UpdateDayOffCategory implements Action {
+  readonly type = UPDATE_DAY_OFF_CATEGORY;
+  constructor(public payload: DayOffCategory) {}
 }
-export class DeleteDayOff implements Action {
-  readonly type = DELETE_DAY_OFF_CATEGORIES;
+export class DeleteDayOffCategory implements Action {
+  readonly type = DELETE_DAY_OFF_CATEGORY;
   constructor(public payload: string) {}
 }
-export class FetchDayOff implements Action {
+export class FetchDayOffCategories implements Action {
   readonly type = FETCH_DAY_OFF_CATEGORIES;
 }
-export type DayOffActions =
-  | GetDayOffSuccess
-  | FetchDayOff
-  | CreateDayOff
-  | UpdateDayOff
-  | DeleteDayOff;
+export type DayOffCategoriesActions =
+  | GetDayOffCategoriesSuccess
+  | FetchDayOffCategories
+  | CreateDayOffCategory
+  | UpdateDayOffCategory
+  | DeleteDayOffCategory;

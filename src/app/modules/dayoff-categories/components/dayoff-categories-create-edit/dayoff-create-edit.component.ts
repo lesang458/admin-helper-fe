@@ -4,7 +4,7 @@ import { BsModalRef } from 'ngx-bootstrap/modal';
 import { Store } from '@ngrx/store';
 import * as fromApp from '../../../../store/app.reducer';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
-import { DayOff } from 'src/app/shared/models/dayoff.model';
+import { DayOffCategory } from 'src/app/shared/models/dayoff-category.model';
 
 @Component({
   selector: 'ah-dayoff-create-edit',
@@ -13,7 +13,7 @@ import { DayOff } from 'src/app/shared/models/dayoff.model';
 })
 export class DayoffCreateEditCategoriesComponent implements OnInit {
   public type: string;
-  public dayoffSelected: DayOff;
+  public dayoffSelected: DayOffCategory;
   public f = new FormGroup({
     name: new FormControl('', [
       Validators.required,
@@ -42,7 +42,7 @@ export class DayoffCreateEditCategoriesComponent implements OnInit {
   public onSubmit(): void {
     if (this.type === 'create') {
       this.store.dispatch(
-        new DayOffActions.CreateDayOff({
+        new DayOffActions.CreateDayOffCategory({
           name: this.f.get('name').value.toUpperCase(),
           description: this.f.get('description').value,
         })
@@ -50,7 +50,7 @@ export class DayoffCreateEditCategoriesComponent implements OnInit {
     }
     if (this.type === 'edit') {
       this.store.dispatch(
-        new DayOffActions.UpdateDayOff({
+        new DayOffActions.UpdateDayOffCategory({
           id: this.dayoffSelected.id,
           name: this.f.get('name').value.toUpperCase(),
           description: this.f.get('description').value,
@@ -59,7 +59,9 @@ export class DayoffCreateEditCategoriesComponent implements OnInit {
     }
     if (this.type === 'delete') {
       this.store.dispatch(
-        new DayOffActions.DeleteDayOff(this.dayoffSelected.id.toString())
+        new DayOffActions.DeleteDayOffCategory(
+          this.dayoffSelected.id.toString()
+        )
       );
     }
 

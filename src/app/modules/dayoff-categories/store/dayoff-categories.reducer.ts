@@ -1,17 +1,17 @@
 import * as DayOffActions from '../store/dayoff-categories.actions';
-import { DayOff } from 'src/app/shared/models/dayoff.model';
+import { DayOffCategory } from 'src/app/shared/models/dayoff-category.model';
 
 export interface State {
-  dayoff: DayOff[];
+  dayoff: DayOffCategory[];
 }
 
 export const initialState: State = {
   dayoff: [],
 };
 
-export function dayoffReducer(
+export function dayoffCategoriesReducer(
   state: State = initialState,
-  action: DayOffActions.DayOffActions
+  action: DayOffActions.DayOffCategoriesActions
 ) {
   switch (action.type) {
     case DayOffActions.GET_DAYOFF_CATEGORIES_SUCCESS:

@@ -1,4 +1,4 @@
-export interface DayOff {
+export interface DayOffCategory {
   id?: string;
   name: string;
   description: string;

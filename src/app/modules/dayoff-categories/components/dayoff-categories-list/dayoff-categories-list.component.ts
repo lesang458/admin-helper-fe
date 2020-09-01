@@ -6,7 +6,7 @@ import { Store } from '@ngrx/store';
 import { FormControl } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { DayoffCreateEditCategoriesComponent } from '../dayoff-categories-create-edit/dayoff-create-edit.component';
-import { DayOff } from 'src/app/shared/models/dayoff.model';
+import { DayOffCategory } from 'src/app/shared/models/dayoff-category.model';
 
 @Component({
   selector: 'ah-dayoff-list',
@@ -23,11 +23,14 @@ export class DayOffCategoriesListComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.store.dispatch(new DayOffActions.FetchDayOff());
+    this.store.dispatch(new DayOffActions.FetchDayOffCategories());
     this.data$ = this.store.select('dayoff');
   }
 
-  public openModalWithComponent(dayoffSelected?: DayOff, type?: string) {
+  public openModalWithComponent(
+    dayoffSelected?: DayOffCategory,
+    type?: string
+  ): void {
     const initialState = { dayoffSelected, type };
     this.bsModalRef = this.modalService.show(
       DayoffCreateEditCategoriesComponent,
