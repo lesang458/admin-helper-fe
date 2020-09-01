@@ -1,12 +1,12 @@
-import { DAYOFF_ROUTES } from './dayoff.routes';
+import { DAYOFF_ROUTES } from './dayoff-categories.routes';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { RouterModule } from '@angular/router';
 import { NgModule } from '@angular/core';
-import { DayOffListComponent } from './components/dayoff-list/dayoff-list.component';
-import { GeneralDayOffComponent } from './pages/general-dayoff/general-dayoff.component';
+import { GeneralDayOffComponent } from './pages/general-dayoff/general-dayoff-categories.component';
 import { ReactiveFormsModule } from '@angular/forms';
-import { DayoffCreateEditComponent } from './components/dayoff-create-edit/dayoff-create-edit.component';
 import { ModalModule } from 'ngx-bootstrap/modal';
+import { DayoffCreateEditComponent } from './components/dayoff-categories-create-edit/dayoff-create-edit.component';
+import { DayOffListComponent } from './components/dayoff-categories-list/dayoff-list.component';
 
 @NgModule({
   declarations: [

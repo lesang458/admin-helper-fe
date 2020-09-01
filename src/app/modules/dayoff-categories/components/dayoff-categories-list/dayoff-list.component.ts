@@ -1,11 +1,11 @@
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 import * as fromApp from '../../../../store/app.reducer';
-import * as DayOffActions from './../../store/dayoff.actions';
+import * as DayOffActions from '../../store/dayoff-categories.actions';
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { FormControl } from '@angular/forms';
 import { Observable } from 'rxjs';
-import { DayoffCreateEditComponent } from '../dayoff-create-edit/dayoff-create-edit.component';
+import { DayoffCreateEditComponent } from '../../components/dayoff-categories-create-edit/dayoff-create-edit.component';
 import { DayOff } from 'src/app/shared/models/dayoff.model';
 
 @Component({

@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Effect, ofType, Actions } from '@ngrx/effects';
-import * as DayOffActions from './dayoff.actions';
+import * as DayOffActions from './dayoff-categories.actions';
 import { switchMap, map } from 'rxjs/operators';
 import { DayOff } from 'src/app/shared/models/dayoff.model';
 import { environment } from 'src/environments/environment.prod';
@@ -9,13 +9,12 @@ import * as snakecaseKeys from 'snakecase-keys';
 import { of } from 'rxjs';
 import { Store } from '@ngrx/store';
 import * as fromApp from '../../../store/app.reducer';
-import { FetchDayOff } from '../../employees/store/employees.actions';
 
 @Injectable()
 export class DayOffEffects {
   @Effect()
   fetchData = this.actions$.pipe(
-    ofType(DayOffActions.FETCH_DAY_OFF),
+    ofType(DayOffActions.FETCH_DAY_OFF_CATEGORIES),
     switchMap(() => {
       return this.http
         .get<any>(`${environment.APILink}/day-off-categories`)
@@ -35,7 +34,7 @@ export class DayOffEffects {
 
   @Effect()
   createDayoff = this.actions$.pipe(
-    ofType(DayOffActions.CREATE_DAY_OFF),
+    ofType(DayOffActions.CREATE_DAY_OFF_CATEGORIES),
     switchMap((action: DayOffActions.CreateDayOff) => {
       const body: DayOff = snakecaseKeys(action.payload);
       // return this.http.post<any>(`${environment.APILink}/employees`, body).pipe(
@@ -66,7 +65,7 @@ export class DayOffEffects {
 
   @Effect()
   updateDayoff = this.actions$.pipe(
-    ofType(DayOffActions.UPDATE_DAY_OFF),
+    ofType(DayOffActions.UPDATE_DAY_OFF_CATEGORIES),
     switchMap((action: DayOffActions.UpdateDayOff) => {
       const body: DayOff = snakecaseKeys(action.payload);
       return of({
@@ -95,7 +94,7 @@ export class DayOffEffects {
 
   @Effect()
   deleteDayoff = this.actions$.pipe(
-    ofType(DayOffActions.DELETE_DAY_OFF),
+    ofType(DayOffActions.DELETE_DAY_OFF_CATEGORIES),
     switchMap((action: DayOffActions.DeleteDayOff) => {
       const id: string = action.payload;
       return of({ id }).pipe(

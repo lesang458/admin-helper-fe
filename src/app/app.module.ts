@@ -13,7 +13,7 @@ import { StoreModule } from '@ngrx/store';
 import * as fromApp from './store/app.reducer';
 import { EffectsModule } from '@ngrx/effects';
 import { CustomTranslateLoader } from './shared/loader/custom-translate.loader';
-import { DayOffEffects } from './modules/dayoff/store/dayoff.effects';
+import { DayOffEffects } from './modules/dayoff-categories/store/dayoff-categories.effects';
 export function LoaderFactory() {
   return new CustomTranslateLoader();
 }

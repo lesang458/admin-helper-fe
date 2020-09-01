@@ -1,5 +1,5 @@
 import { DayOff } from 'src/app/shared/models/dayoff.model';
-import * as DayOffActions from './dayoff.actions';
+import * as DayOffActions from '../store/dayoff-categories.actions';
 
 export interface State {
   dayoff: DayOff[];
@@ -14,7 +14,7 @@ export function dayoffReducer(
   action: DayOffActions.DayOffActions
 ) {
   switch (action.type) {
-    case DayOffActions.GET_DAYOFF_SUCCESS:
+    case DayOffActions.GET_DAYOFF_CATEGORIES_SUCCESS:
       return {
         ...state,
         dayoff: [...action.payload],

@@ -1,4 +1,4 @@
-import * as DayOffActions from './../../store/dayoff.actions';
+import * as DayOffActions from '../../store/dayoff-categories.actions';
 import { Component, OnInit } from '@angular/core';
 import { BsModalRef } from 'ngx-bootstrap/modal';
 import { Store } from '@ngrx/store';
@@ -39,7 +39,7 @@ export class DayoffCreateEditComponent implements OnInit {
     }
   }
 
-  public onSubmit() {
+  public onSubmit(): void {
     if (this.type === 'create') {
       this.store.dispatch(
         new DayOffActions.CreateDayOff({
