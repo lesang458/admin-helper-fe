@@ -5,15 +5,15 @@ import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { FormControl } from '@angular/forms';
 import { Observable } from 'rxjs';
-import { DayoffCreateEditComponent } from '../../components/dayoff-categories-create-edit/dayoff-create-edit.component';
+import { DayoffCreateEditCategoriesComponent } from '../dayoff-categories-create-edit/dayoff-create-edit.component';
 import { DayOff } from 'src/app/shared/models/dayoff.model';
 
 @Component({
   selector: 'ah-dayoff-list',
-  templateUrl: './dayoff-list.component.html',
-  styleUrls: ['./dayoff-list.component.scss'],
+  templateUrl: './dayoff-categories-list.component.html',
+  styleUrls: ['./dayoff-categories-list.component.scss'],
 })
-export class DayOffListComponent implements OnInit {
+export class DayOffCategoriesListComponent implements OnInit {
   public searchInput = new FormControl('');
   public data$: Observable<any>;
   public bsModalRef: BsModalRef;
@@ -29,9 +29,12 @@ export class DayOffListComponent implements OnInit {
 
   public openModalWithComponent(dayoffSelected?: DayOff, type?: string) {
     const initialState = { dayoffSelected, type };
-    this.bsModalRef = this.modalService.show(DayoffCreateEditComponent, {
-      initialState,
-    });
+    this.bsModalRef = this.modalService.show(
+      DayoffCreateEditCategoriesComponent,
+      {
+        initialState,
+      }
+    );
     this.bsModalRef.content.closeBtnName = 'Close';
   }
 }

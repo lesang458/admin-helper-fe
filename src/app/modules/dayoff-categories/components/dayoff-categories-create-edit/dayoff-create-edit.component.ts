@@ -11,7 +11,7 @@ import { DayOff } from 'src/app/shared/models/dayoff.model';
   templateUrl: './dayoff-create-edit.component.html',
   styleUrls: ['./dayoff-create-edit.component.scss'],
 })
-export class DayoffCreateEditComponent implements OnInit {
+export class DayoffCreateEditCategoriesComponent implements OnInit {
   public type: string;
   public dayoffSelected: DayOff;
   public f = new FormGroup({

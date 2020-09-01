@@ -2,13 +2,13 @@ import { Injectable } from '@angular/core';
 import { Effect, ofType, Actions } from '@ngrx/effects';
 import * as DayOffActions from './dayoff-categories.actions';
 import { switchMap, map } from 'rxjs/operators';
-import { DayOff } from 'src/app/shared/models/dayoff.model';
 import { environment } from 'src/environments/environment.prod';
 import { HttpClient } from '@angular/common/http';
 import * as snakecaseKeys from 'snakecase-keys';
 import { of } from 'rxjs';
 import { Store } from '@ngrx/store';
 import * as fromApp from '../../../store/app.reducer';
+import { DayOff } from 'src/app/shared/models/dayoff.model';
 
 @Injectable()
 export class DayOffEffects {

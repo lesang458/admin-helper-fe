@@ -5,7 +5,7 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './general-dayoff-categories.component.html',
   styleUrls: ['./general-dayoff-categories.component.scss'],
 })
-export class GeneralDayOffComponent implements OnInit {
+export class GeneralDayOffCategoriesComponent implements OnInit {
   constructor() {}
 
   ngOnInit(): void {}

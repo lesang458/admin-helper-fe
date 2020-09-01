@@ -3,7 +3,8 @@
     "TITLE": "Quản lý nhân viên",
     "LINK_1": "Thông tin chung",
     "LINK_2": "Ngày phép",
-    "LINK_3": "Chấm công"
+    "LINK_3": "Chấm công",
+    "LINK_4": "Loại ngày phép"
   },
   "HEADER": {
     "TITLE": "Danh sách nhân viên",

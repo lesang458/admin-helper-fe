@@ -1,5 +1,5 @@
-import { DayOff } from 'src/app/shared/models/dayoff.model';
 import * as DayOffActions from '../store/dayoff-categories.actions';
+import { DayOff } from 'src/app/shared/models/dayoff.model';
 
 export interface State {
   dayoff: DayOff[];

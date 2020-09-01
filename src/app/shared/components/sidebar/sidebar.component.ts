@@ -4,23 +4,22 @@ import { Router } from '@angular/router';
 @Component({
   selector: '[ah-sidebar]',
   templateUrl: './sidebar.component.html',
-  styleUrls: ['./sidebar.component.scss']
+  styleUrls: ['./sidebar.component.scss'],
 })
 export class SidebarComponent implements OnInit {
+  constructor(private router: Router) {}
 
-  constructor(private router: Router) { }
-
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 
   public navigateToGeneralListPage() {
     this.router.navigateByUrl('/thong-tin-chung');
-
   }
 
   public navigateToDayoffPage() {
     this.router.navigateByUrl('/nghi-phep');
-
   }
 
+  public navigateToDayOffCategoriesPage() {
+    this.router.navigateByUrl('ngay-nghi');
+  }
 }
