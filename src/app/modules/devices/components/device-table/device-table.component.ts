@@ -9,6 +9,8 @@ import * as DevicesActions from '../../store/devices.actions';
 import { TranslateService } from '@ngx-translate/core';
 import { DeviceParams } from '../../store/devices.actions';
 import { DeviceCategory } from 'src/app/shared/models/deviceCategory';
+import { FormControl } from '@angular/forms';
+import { State } from '../../store/devices.reducer';
 
 @Component({
   selector: 'ah-device-table',
@@ -16,9 +18,10 @@ import { DeviceCategory } from 'src/app/shared/models/deviceCategory';
   styleUrls: ['./device-table.component.scss'],
 })
 export class DeviceTableComponent implements OnInit {
-  public data$: Observable<PaginatedData<Device[]>>;
+  public data$: Observable<State>;
   public categories$: Observable<DeviceCategory[]>;
   public currentPage = 1;
+  public selectedCategory = new FormControl('');
   public deviceParams: DeviceParams;
   constructor(
     private store: Store<fromApp.AppState>,
@@ -26,19 +29,17 @@ export class DeviceTableComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.data$ = this.store.select('devices').pipe(
-      map((data) => {
-        return data.devices;
-      })
-    );
-
-    this.categories$ = this.store.select('devices').pipe(
-      map((data) => {
-        return data.categories;
-      })
-    );
+    this.data$ = this.store.select('devices');
     this.store.dispatch(new DevicesActions.FetchDeviceCategories());
     this.onPageChanged(1);
+
+    this.selectedCategory.valueChanges.subscribe(() => {
+      if (this.currentPage === 1) {
+        this.onPageChanged(1);
+      } else {
+        this.currentPage = 1;
+      }
+    });
   }
 
   public onExpand(id): void {
@@ -56,7 +57,7 @@ export class DeviceTableComponent implements OnInit {
     this.deviceParams = {
       page,
       perPage: 5,
-      deviceCategoryId: 0,
+      deviceCategoryId: this.selectedCategory.value,
     };
     this.store.dispatch(new DevicesActions.FetchDevices(this.deviceParams));
   }

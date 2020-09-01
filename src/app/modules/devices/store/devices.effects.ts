@@ -15,9 +15,15 @@ export class DeviceEffects {
   fetchDevice = this.actions$.pipe(
     ofType(DevicesActions.FETCH_DEVICES),
     switchMap((action: DevicesActions.FetchDevices) => {
-      const params = new HttpParams()
+      let params = new HttpParams()
         .append('page', action.payload.page)
         .append('per_page', action.payload.perPage);
+      if (action.payload.deviceCategoryId) {
+        params = params.append(
+          'device_category_id',
+          action.payload.deviceCategoryId
+        );
+      }
       return this.http
         .get<PaginatedData<Device[]>>(`${environment.APILink}/devices`, {
           observe: 'response',

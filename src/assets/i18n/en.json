@@ -102,6 +102,8 @@
     "TITLE": "Edit Employee Profile"
   },
   "DEVICE_TABLE": {
+    "TYPE_OF_DEVICE": "Type of device",
+    "ALL": "All",
     "CATEGORY_NAME": "Category name: ",
     "ASSIGNED_TO": "Assigned to: ",
     "EMPTY": "Empty",
