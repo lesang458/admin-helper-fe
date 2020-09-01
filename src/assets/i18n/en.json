@@ -115,8 +115,10 @@
   },
   "LOGIN": {
     "LOGIN": "Login",
+    "SIGN_IN": "Sign In to your account",
     "EMAIL": "Email",
     "PASS": "Password",
+    "FORGOT__PASSWORD": "Forgot Password?",
     "SIGN_IN_GG": "Sign In With Google"
   },
   "DAY_OFF_CATEGORIES_PAGE": {
