@@ -6,8 +6,8 @@ export interface AuthParams {
   password: string;
 }
 
-export const LOGIN = '[Auth]] Login';
-export const LOGIN_EMAIL = '[Auth]] Login By Email';
+export const LOGIN = '[Auth] Login';
+export const LOGIN_EMAIL = '[Auth] Login By Email';
 export const LOGIN_SUCCESS = '[Auth] Login Success';
 export const LOGOUT = '[Auth] Logout';
 

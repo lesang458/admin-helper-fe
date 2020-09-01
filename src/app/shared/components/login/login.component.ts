@@ -12,12 +12,12 @@ import { SocialAuthService, SocialUser } from 'angularx-social-login';
   styleUrls: ['./login.component.scss'],
 })
 export class LoginComponent implements OnInit {
+  public user: SocialUser;
+  public loggedIn: boolean;
   public loginForm = new FormGroup({
     email: new FormControl('', Validators.email),
     password: new FormControl('', Validators.minLength(6)),
   });
-  user: SocialUser;
-  loggedIn: boolean;
 
   constructor(
     private store: Store<fromApp.AppState>,
