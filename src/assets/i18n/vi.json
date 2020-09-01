@@ -109,9 +109,8 @@
     "NAME": "Tên",
     "DESCRIPTION": "Mô tả",
     "ACTION": "Hành động",
-    "DELETE": "Xóa",
-    "EDIT": "Sửa",
     "SAVE": "Lưu",
+    "DELETE": "Xóa",
     "CANCEL": "Hủy",
     "CREATE": "Tạo loại ngày nghỉ",
     "NO_RESULT": "Không có kết quả.",
@@ -122,6 +121,7 @@
     "NAME_REQUIRED": "Tên không thể rỗng!",
     "NAME_MINLENGTH": "Tên có độ dài tối thiểu là 6 ký tự",
     "NAME_MAXLENGTH": "Tên có độ dài tối đa là 20 ký tự",
-    "NAME_PATTERN": "Tên không được chứa ký tự đặc biệt"
+    "NAME_PATTERN": "Tên không được chứa ký tự đặc biệt",
+    "DAYOFF": "Số ngày nghỉ"
   }
 }
