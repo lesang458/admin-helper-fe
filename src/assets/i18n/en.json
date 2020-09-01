@@ -124,6 +124,6 @@
     "NAME_MINLENGTH": "The name has Minimum length is 6 character",
     "NAME_MAXLENGTH": "The name has Maximum length is 20 character",
     "NAME_PATTERN": "The name must not contain special characters",
-    "DAYOFF": "Day off"
+    "DAYOFF": "Number of dayoff"
   }
 }
