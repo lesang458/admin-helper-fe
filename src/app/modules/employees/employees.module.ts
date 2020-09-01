@@ -12,6 +12,8 @@ import { ModalModule, BsModalRef } from 'ngx-bootstrap/modal';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ProfileCreateComponent } from './components/profile-create/profile-create.component';
 import { NotifyComponent } from 'src/app/shared/components/notify/notify.component';
+import { LoginComponent } from 'src/app/shared/components/login/login.component';
+import { AuthComponent } from './pages/auth/auth.component';
 
 @NgModule({
   declarations: [
@@ -22,6 +24,8 @@ import { NotifyComponent } from 'src/app/shared/components/notify/notify.compone
     RequestDayOffComponent,
     ProfileCreateComponent,
     NotifyComponent,
+    LoginComponent,
+    AuthComponent,
   ],
   imports: [
     SharedModule,
