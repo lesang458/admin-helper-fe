@@ -1,3 +1,4 @@
+import { LoadingSpinnerComponent } from 'src/app/shared/components/loading-spinner/loading-spinner.component';
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { BodyComponent } from './components/body/body.component';
@@ -14,7 +15,12 @@ const modules = [
   FormsModule,
   ReactiveFormsModule,
 ];
-const components = [SidebarComponent, HeaderComponent, BodyComponent];
+const components = [
+  SidebarComponent,
+  HeaderComponent,
+  BodyComponent,
+  LoadingSpinnerComponent,
+];
 
 @NgModule({
   declarations: [...components],

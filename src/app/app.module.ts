@@ -1,3 +1,4 @@
+import { LoadingInterceptor } from './shared/interceptors/loading.interceptor';
 import { EmployeeEffects } from './modules/employees/store/employees.effects';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
@@ -17,7 +18,6 @@ import { JwtHelperService, JWT_OPTIONS } from '@auth0/angular-jwt';
 import { AuthEffect } from './shared/store/auth.effects';
 import { DayOffCategoriesEffects } from './modules/dayoff-categories/store/dayoff-categories.effects';
 import { SocialLoginModule } from 'angularx-social-login';
-import { LoadingInterceptor } from './shared/interceptors/loading.interceptor';
 
 export function LoaderFactory() {
   return new CustomTranslateLoader();
