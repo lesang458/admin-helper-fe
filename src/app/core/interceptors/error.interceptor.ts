@@ -33,10 +33,11 @@ export class ErrorInterceptor implements HttpInterceptor {
           error === 'User authentication failed' ||
           error === 'You seem to have an expired token'
         ) {
-          localStorage.clear();
+          localStorage.removeItem('token');
           this.router.navigate(['/login']);
         }
         this.notifyService.error(error);
+
         return throwError(error);
       })
     );

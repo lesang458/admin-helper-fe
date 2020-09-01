@@ -5,10 +5,7 @@ import { HeaderComponent } from './components/header/header.component';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { TranslateModule } from '@ngx-translate/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import {
-  SocialAuthServiceConfig,
-  SocialLoginModule,
-} from 'angularx-social-login';
+import { SocialAuthServiceConfig } from 'angularx-social-login';
 import { GoogleLoginProvider } from 'angularx-social-login';
 
 const modules = [
@@ -16,7 +13,6 @@ const modules = [
   TranslateModule,
   FormsModule,
   ReactiveFormsModule,
-  SocialLoginModule,
 ];
 const components = [SidebarComponent, HeaderComponent, BodyComponent];
 

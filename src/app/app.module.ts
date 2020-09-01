@@ -13,8 +13,10 @@ import { StoreModule } from '@ngrx/store';
 import * as fromApp from './store/app.reducer';
 import { EffectsModule } from '@ngrx/effects';
 import { CustomTranslateLoader } from './shared/loader/custom-translate.loader';
+import { JwtHelperService, JWT_OPTIONS } from '@auth0/angular-jwt';
 import { AuthEffect } from './shared/store/auth.effects';
 import { DayOffCategoriesEffects } from './modules/dayoff-categories/store/dayoff-categories.effects';
+import { SocialLoginModule } from 'angularx-social-login';
 
 export function LoaderFactory() {
   return new CustomTranslateLoader();
@@ -41,8 +43,12 @@ export function LoaderFactory() {
       DayOffCategoriesEffects,
     ]),
     StoreModule.forRoot(fromApp.appReducer),
+    SocialLoginModule,
   ],
-  providers: [],
+  providers: [
+    { provide: JWT_OPTIONS, useValue: JWT_OPTIONS },
+    JwtHelperService,
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
