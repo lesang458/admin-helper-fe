@@ -7,6 +7,7 @@ import * as camelcaseKeys from 'camelcase-keys';
 import { PaginatedData } from 'src/app/shared/models/pagination.model';
 import { Device } from 'src/app/shared/models/device.model';
 import { switchMap, map } from 'rxjs/operators';
+import { DeviceCategory } from 'src/app/shared/models/deviceCategory';
 
 @Injectable()
 export class DeviceEffects {
@@ -30,5 +31,24 @@ export class DeviceEffects {
         );
     })
   );
+
+  @Effect()
+  fetchCategories = this.actions$.pipe(
+    ofType(DevicesActions.FETCH_DEVICE_CATEGORIES),
+    switchMap((action: DevicesActions.FetchDeviceCategories) => {
+      return this.http
+        .get<DeviceCategory[]>(`${environment.APILink}/device_category`, {
+          observe: 'response',
+        })
+        .pipe(
+          map((response) => {
+            return new DevicesActions.SetDeviceCategories(
+              camelcaseKeys(response.body)
+            );
+          })
+        );
+    })
+  );
+
   constructor(private actions$: Actions, private http: HttpClient) {}
 }

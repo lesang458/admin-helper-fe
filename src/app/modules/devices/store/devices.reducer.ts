@@ -4,9 +4,11 @@ import {
   PaginatedData,
   Pagination,
 } from 'src/app/shared/models/pagination.model';
+import { DeviceCategory } from 'src/app/shared/models/deviceCategory';
 
 export interface State {
   devices: PaginatedData<Device[]>;
+  categories: DeviceCategory[];
 }
 
 const initDevices = new PaginatedData<Device[]>();
@@ -18,6 +20,7 @@ initDevices.pagination = pagination;
 
 export const initialState: State = {
   devices: initDevices,
+  categories: [],
 };
 
 export function deviceReducer(
@@ -29,6 +32,11 @@ export function deviceReducer(
       return {
         ...state,
         devices: action.payload,
+      };
+    case DevicesActions.SET_DEVICE_CATEGORIES:
+      return {
+        ...state,
+        categories: [...action.payload],
       };
     default:
       return state;
