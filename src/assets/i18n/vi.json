@@ -99,6 +99,12 @@
   "PROFILE_EDIT": {
     "TITLE": "Chỉnh sửa hồ sơ nhân viên"
   },
+  "LOGIN":{
+    "LOGIN": "Đăng nhập",
+    "EMAIL": "Email",
+    "PASS": "Mật khẩu",
+    "SIGN_IN_GG": "Đăng nhập với google"
+  },
   "DAY_OFF_CATEGORIES_PAGE": {
     "NAME": "Tên",
     "DESCRIPTION": "Mô tả",

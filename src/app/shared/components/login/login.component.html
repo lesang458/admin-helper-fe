@@ -1,0 +1,52 @@
+<div class="form-common">
+  <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+    <h2 style="text-align: center">{{ "LOGIN.LOGIN" | translate }}</h2>
+    <div class="form-group">
+      <label for="exampleInputEmail1">{{ "LOGIN.EMAIL" | translate }}</label>
+      <input
+        type="email"
+        class="form-control"
+        id="exampleInputEmail1"
+        aria-describedby="emailHelp"
+        formControlName="email"
+      />
+      <div
+        *ngIf="f.email.invalid && (f.email.dirty || f.email.touched)"
+        class="mess-invalid"
+      >
+        <div *ngIf="f.email.errors.required">
+          {{ "PROFILE_CREATE.EMAIL_INVALID" | translate }}
+        </div>
+        <div *ngIf="f.email.errors.email">
+          {{ "PROFILE_CREATE.IS_EMAIL" | translate }}
+        </div>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="exampleInputPassword1">{{ "LOGIN.PASS" | translate }}</label>
+      <input
+        type="password"
+        class="form-control"
+        id="exampleInputPassword1"
+        formControlName="password"
+      />
+      <div
+        *ngIf="f.password.invalid && (f.password.dirty || f.password.touched)"
+        class="mess-invalid"
+      >
+      <div *ngIf="f.password.errors.required">
+        {{ "PROFILE_CREATE.PASSWORD_INVALID" | translate }}
+      </div>
+      <div *ngIf="f.password.errors.minlength">
+        {{ "PROFILE_CREATE.PASS_MINLENGTH" | translate }}
+      </div>
+    </div>
+    </div>
+    <button type="submit" class="btn btn-primary ml-2">
+      {{ "LOGIN.LOGIN" | translate }}
+    </button>
+    <button type="button" (click)="signInWithGoogle()" class="btn btn-primary">
+      {{ "LOGIN.SIGN_IN_GG" | translate }}
+    </button>
+  </form>
+</div>

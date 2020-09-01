@@ -101,6 +101,12 @@
   "PROFILE_EDIT": {
     "TITLE": "Edit Employee Profile"
   },
+  "LOGIN":{
+    "LOGIN": "Login",
+    "EMAIL": "Email",
+    "PASS": "Password",
+    "SIGN_IN_GG": "Sign In With Google"
+  },
   "DAY_OFF_CATEGORIES_PAGE": {
     "NAME": "Name",
     "DESCRIPTION": "Description",
