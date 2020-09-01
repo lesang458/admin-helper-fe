@@ -1,23 +1,7 @@
 <div class="card">
   <div class="card-body">
     <div class="row mb-2">
-      <div class="col-7">
-        <div class="input-group">
-          <div class="input-group-prepend">
-            <div class="input-group-text">
-              <i class="cil-search"></i>
-            </div>
-          </div>
-          <input
-            type="search"
-            class="form-control"
-            [formControl]="searchInput"
-            id="inlineFormInputGroupUsername"
-            placeholder="VD: Nguyen, 2020, ..."
-          />
-        </div>
-      </div>
-      <div class="col-5" style="text-align: right">
+      <div class="col-12" style="text-align: right">
         <button
           type="button"
           class="btn btn-primary"
@@ -33,13 +17,16 @@
         <thead>
           <tr>
             <th scope="col" style="width: 10%">ID</th>
-            <th scope="col" style="width: 20%">
+            <th scope="col" style="width: 15%">
               {{ "DAY_OFF_CATEGORIES_PAGE.NAME" | translate }}
+            </th>
+            <th scope="col" style="width: 15%">
+              {{ "DAY_OFF_CATEGORIES_PAGE.DAYOFF" | translate }}
             </th>
             <th scope="col" style="width: 50%">
               {{ "DAY_OFF_CATEGORIES_PAGE.DESCRIPTION" | translate }}
             </th>
-            <th scope="col" style="width: 20%">
+            <th scope="col" style="width: 10%">
               {{ "DAY_OFF_CATEGORIES_PAGE.ACTION" | translate }}
             </th>
           </tr>
@@ -50,23 +37,14 @@
               {{ i + 1 }}
             </th>
             <td>{{ item.name[0] + item.name.slice(1).toLowerCase() }}</td>
+            <td>{{ item.totalHoursDefault / 8 }}</td>
             <td>{{ item.description }}</td>
-            <td style="text-align: center">
-              <button
-                type="button"
-                class="btn btn-primary"
-                style="padding: 5px 15px; margin: 5px"
-                (click)="openModalWithComponent(item, 'edit')"
-              >
-                {{ "DAY_OFF_CATEGORIES_PAGE.EDIT" | translate }}
+            <td style="display:flex; justify-self: center;">
+              <button class="btn-action" (click)="openModalWithComponent(item, 'edit')">
+                <span class="cil-brush"></span>
               </button>
-              <button
-                type="button"
-                class="btn btn-danger"
-                style="padding: 5px 15px; margin: 5px"
-                (click)="openModalWithComponent(item, 'delete')"
-              >
-                {{ "DAY_OFF_CATEGORIES_PAGE.DELETE" | translate }}
+              <button class="btn-action" (click)="openModalWithComponent(item, 'delete')">
+                <span class="cil-remove"></span>
               </button>
             </td>
           </tr>
