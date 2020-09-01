@@ -1,4 +1,4 @@
-import { LoadingInterceptor } from './shared/interceptors/loading.interceptor';
+import { LoadingInterceptor } from './core/interceptors/loading.interceptor';
 import { EmployeeEffects } from './modules/employees/store/employees.effects';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';

@@ -3,10 +3,9 @@ import {
   HttpInterceptor,
   HttpRequest,
   HttpHandler,
-  HttpEvent,
 } from '@angular/common/http';
 import { finalize } from 'rxjs/operators';
-import { LoadingService } from '../services/loading.service';
+import { LoadingService } from '../../shared/services/loading.service';
 
 @Injectable()
 export class LoadingInterceptor implements HttpInterceptor {
@@ -17,6 +16,7 @@ export class LoadingInterceptor implements HttpInterceptor {
   intercept(request: HttpRequest<any>, next: HttpHandler) {
     this.totalRequests++;
     this.loadingService.setLoading(true);
+
     return next.handle(request).pipe(
       finalize(() => {
         this.totalRequests--;
