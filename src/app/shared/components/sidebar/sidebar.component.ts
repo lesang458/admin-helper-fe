@@ -22,4 +22,8 @@ export class SidebarComponent implements OnInit {
   public navigateToDevicePage() {
     this.router.navigateByUrl('/thiet-bi');
   }
+
+  public navigateToDayOffCategoriesPage() {
+    this.router.navigateByUrl('/loai-ngay-phep');
+  }
 }

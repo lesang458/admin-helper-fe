@@ -9,10 +9,11 @@ import {
 import { Observable, throwError } from 'rxjs';
 import { catchError, tap } from 'rxjs/operators';
 import { NotifyService } from 'src/app/shared/services/notify.service';
+import { Router } from '@angular/router';
 
 @Injectable()
 export class ErrorInterceptor implements HttpInterceptor {
-  constructor(private notifyService: NotifyService) {}
+  constructor(private notifyService: NotifyService, private router: Router) {}
 
   intercept(
     request: HttpRequest<any>,
@@ -27,8 +28,16 @@ export class ErrorInterceptor implements HttpInterceptor {
         }
       }),
       catchError((err) => {
-        const error = err.error.message || err.statusText;
+        const error = err?.error?.message || err?.statusText;
+        if (
+          error === 'User authentication failed' ||
+          error === 'You seem to have an expired token'
+        ) {
+          localStorage.removeItem('token');
+          this.router.navigate(['/login']);
+        }
         this.notifyService.error(error);
+
         return throwError(error);
       })
     );

@@ -9,4 +9,5 @@ export interface Employee {
   phoneNumber: string;
   dayOffInfos: any;
   roles?: any;
+  token?: string;
 }

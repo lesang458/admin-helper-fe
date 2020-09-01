@@ -13,4 +13,11 @@ export const APP_ROUTES: Routes = [
     loadChildren: () =>
       import('./modules/devices/devices.module').then((m) => m.DevicesModule),
   },
+  {
+    path: 'loai-ngay-phep',
+    loadChildren: () =>
+      import('./modules/dayoff-categories/dayoff-categories.module').then(
+        (m) => m.DayOffCategoriesModule
+      ),
+  },
 ];
