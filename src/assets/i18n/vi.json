@@ -109,8 +109,6 @@
     "NAME": "Tên",
     "DESCRIPTION": "Mô tả",
     "ACTION": "Hành động",
-    "DELETE": "Xóa",
-    "EDIT": "Sửa",
     "SAVE": "Lưu",
     "CANCEL": "Hủy",
     "CREATE": "Tạo loại ngày nghỉ",
