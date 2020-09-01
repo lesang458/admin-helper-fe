@@ -5,7 +5,7 @@ import { RouterModule } from '@angular/router';
 import { APP_ROUTES } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { CoreModule } from './core/core.module';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { EmployeesModule } from './modules/employees/employees.module';
 import { SharedModule } from './shared/shared.module';
@@ -17,6 +17,7 @@ import { JwtHelperService, JWT_OPTIONS } from '@auth0/angular-jwt';
 import { AuthEffect } from './shared/store/auth.effects';
 import { DayOffCategoriesEffects } from './modules/dayoff-categories/store/dayoff-categories.effects';
 import { SocialLoginModule } from 'angularx-social-login';
+import { LoadingInterceptor } from './shared/interceptors/loading.interceptor';
 
 export function LoaderFactory() {
   return new CustomTranslateLoader();
@@ -48,6 +49,7 @@ export function LoaderFactory() {
   providers: [
     { provide: JWT_OPTIONS, useValue: JWT_OPTIONS },
     JwtHelperService,
+    { provide: HTTP_INTERCEPTORS, useClass: LoadingInterceptor, multi: true },
   ],
   bootstrap: [AppComponent],
 })

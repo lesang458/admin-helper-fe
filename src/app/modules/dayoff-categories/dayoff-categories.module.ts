@@ -7,11 +7,13 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { ModalModule } from 'ngx-bootstrap/modal';
 import { DayOffCategoriesListComponent } from './components/dayoff-categories-list/dayoff-categories-list.component';
 import { DayOffCategoryEditComponent } from './components/dayoff-category-edit/dayoff-category-edit.component';
+import { LoadingSpinnerComponent } from 'src/app/shared/components/loading-spinner/loading-spinner.component';
 @NgModule({
   declarations: [
     DayOffCategoriesListComponent,
     GeneralDayOffCategoriesComponent,
     DayOffCategoryEditComponent,
+    LoadingSpinnerComponent,
   ],
   imports: [
     SharedModule,
