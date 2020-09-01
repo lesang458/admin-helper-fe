@@ -109,7 +109,8 @@
     "HISTORY": "Lịch sử",
     "EDIT": "Chỉnh sửa",
     "PRICE": "Trị giá",
-    "DESCRIPTION": "Mô tả"
+    "DESCRIPTION": "Mô tả",
+    "CREATE_DEVICE": "Tạo thiết bị"
   },
   "LOGIN": {
     "LOGIN": "Đăng nhập",

@@ -8,6 +8,8 @@ import * as fromApp from '../../../../store/app.reducer';
 import * as EmployeeActions from '../../store/employees.actions';
 import { SearchParams } from '../../store/employees.actions';
 import { FormControl } from '@angular/forms';
+import { DayOffCategory } from 'src/app/shared/models/dayoff-category.model';
+import * as DayOffCategoriesActions from 'src/app/modules/dayoff-categories/store/dayoff-categories.actions';
 
 @Component({
   selector: 'ah-dayoff-table',
@@ -21,7 +23,7 @@ export class DayoffTableComponent implements OnInit, OnDestroy {
   public sortBirthDateType = 0;
   public sortNameType = 0;
   public selectedEmployee: Employee;
-  public searchParams = {
+  public searchParams: SearchParams = {
     search: '',
     page: 1,
     perPage: 10,
@@ -33,6 +35,7 @@ export class DayoffTableComponent implements OnInit, OnDestroy {
     status: 'ACTIVE',
   };
   public data$: Observable<PaginatedData<Employee[]>>;
+  public types$: Observable<DayOffCategory[]>;
   private subscription: Subscription;
   constructor(private store: Store<fromApp.AppState>) {}
 
@@ -42,6 +45,12 @@ export class DayoffTableComponent implements OnInit, OnDestroy {
         return employees.dayOff;
       })
     );
+    this.types$ = this.store.select('dayoffCategories').pipe(
+      map((data) => {
+        return data.dayoff;
+      })
+    );
+    this.store.dispatch(new DayOffCategoriesActions.FetchDayOffCategories());
 
     this.subscription = this.searchInput.valueChanges
       .pipe(debounceTime(300), distinctUntilChanged())

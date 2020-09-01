@@ -111,7 +111,8 @@
     "HISTORY": "History",
     "EDIT": "Edit",
     "PRICE": "Price",
-    "DESCRIPTION": "Description"
+    "DESCRIPTION": "Description",
+    "CREATE_DEVICE": "Create Device"
   },
   "LOGIN": {
     "LOGIN": "Login",

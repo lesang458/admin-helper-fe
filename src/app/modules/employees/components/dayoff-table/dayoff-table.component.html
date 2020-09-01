@@ -1,5 +1,5 @@
 <div class="card">
-  <div class="card-body">
+  <div class="card-body" *ngIf="types$ | async as types">
     <div class="row mb-2">
       <div class="col-7">
         <div class="input-group">
@@ -28,11 +28,8 @@
             style="width: auto"
             id="day-off-type"
           >
-            <option value="VACATION">
-              {{ "DAY_OFF_TABLE.ANNUAL_LEAVE" | translate }}
-            </option>
-            <option value="ILLNESS">
-              {{ "DAY_OFF_TABLE.SICK_LEAVE" | translate }}
+            <option *ngFor="let item of types" [value]="item.name">
+              {{ item.name | titlecase }}
             </option>
           </select>
         </div>
@@ -80,23 +77,21 @@
             </th>
             <td>{{ item.firstName + " " + item.lastName }}</td>
             <td>{{ item.birthdate | date: "dd/MM/yyyy" }}</td>
-            <td *ngIf="selectedType.value === 'VACATION'">
-              {{ getTotalLeaves(item.dayOffInfos, "VACATION") }}
-            </td>
-            <td *ngIf="selectedType.value === 'VACATION'">
-              {{ getTotalLeavesRemaining(item.dayOffInfos, "VACATION") }}
-            </td>
-            <td *ngIf="selectedType.value === 'ILLNESS'">
-              {{ getTotalLeaves(item.dayOffInfos, "ILLNESS") }}
-            </td>
-            <td *ngIf="selectedType.value === 'ILLNESS'">
-              {{ getTotalLeavesRemaining(item.dayOffInfos, "ILLNESS") }}
-            </td>
+            <ng-container *ngFor="let type of types">
+              <td *ngIf="selectedType.value === type.name">
+                {{ getTotalLeaves(item.dayOffInfos, type.name) }}
+              </td>
+              <td *ngIf="selectedType.value === type.name">
+                {{ getTotalLeavesRemaining(item.dayOffInfos, type.name) }}
+              </td>
+              <td *ngIf="types.length === 0">0</td>
+              <td *ngIf="types.length === 0">0</td>
+            </ng-container>
             <td>
               <div class="d-flex justify-content-center">
                 <button
                   type="button"
-                  class="btn btn-info"
+                  class="btn btn-outline-primary"
                   data-toggle="modal"
                   (click)="selectedEmployee = item"
                   data-target="#subTimeOff"
