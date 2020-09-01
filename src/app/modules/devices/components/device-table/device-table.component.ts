@@ -8,6 +8,7 @@ import { map } from 'rxjs/operators';
 import * as DevicesActions from '../../store/devices.actions';
 import { TranslateService } from '@ngx-translate/core';
 import { DeviceParams } from '../../store/devices.actions';
+import { DeviceCategory } from 'src/app/shared/models/deviceCategory';
 
 @Component({
   selector: 'ah-device-table',
@@ -16,6 +17,7 @@ import { DeviceParams } from '../../store/devices.actions';
 })
 export class DeviceTableComponent implements OnInit {
   public data$: Observable<PaginatedData<Device[]>>;
+  public categories$: Observable<DeviceCategory[]>;
   public currentPage = 1;
   public deviceParams: DeviceParams;
   constructor(
@@ -30,6 +32,12 @@ export class DeviceTableComponent implements OnInit {
       })
     );
 
+    this.categories$ = this.store.select('devices').pipe(
+      map((data) => {
+        return data.categories;
+      })
+    );
+    this.store.dispatch(new DevicesActions.FetchDeviceCategories());
     this.onPageChanged(1);
   }
 

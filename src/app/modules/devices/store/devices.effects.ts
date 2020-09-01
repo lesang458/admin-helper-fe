@@ -37,14 +37,16 @@ export class DeviceEffects {
     ofType(DevicesActions.FETCH_DEVICE_CATEGORIES),
     switchMap((action: DevicesActions.FetchDeviceCategories) => {
       return this.http
-        .get<DeviceCategory[]>(`${environment.APILink}/device_category`, {
-          observe: 'response',
-        })
+        .get<PaginatedData<DeviceCategory[]>>(
+          `${environment.APILink}/device_categories`,
+          {
+            observe: 'response',
+          }
+        )
         .pipe(
           map((response) => {
-            return new DevicesActions.SetDeviceCategories(
-              camelcaseKeys(response.body)
-            );
+            const data = camelcaseKeys(response.body, { deep: true });
+            return new DevicesActions.SetDeviceCategories(data.data);
           })
         );
     })
