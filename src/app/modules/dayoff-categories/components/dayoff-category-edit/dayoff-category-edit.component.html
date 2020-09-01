@@ -76,7 +76,7 @@
     </button>
     <button
       *ngIf="type !== 'delete'"
-      [disabled]="!f.valid || (dayoffSelected?.name.toLowerCase() === f.get('name').value.toLowerCase() && dayoffSelected?.description?.toLowerCase() === f.get('description').value?.toLowerCase())"
+      [disabled]="checkChange()"
       type="submit"
       class="btn btn-primary"
     >

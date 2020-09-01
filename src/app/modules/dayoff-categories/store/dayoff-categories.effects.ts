@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Effect, ofType, Actions } from '@ngrx/effects';
-import * as DayOffActions from './dayoff-categories.actions';
+import * as DayOffCategoriesActions from './dayoff-categories.actions';
 import { switchMap, map } from 'rxjs/operators';
 import { environment } from 'src/environments/environment.prod';
 import { HttpClient } from '@angular/common/http';
@@ -14,7 +14,7 @@ import { DayOffCategory } from 'src/app/shared/models/dayoff-category.model';
 export class DayOffCategoriesEffects {
   @Effect()
   fetchData = this.actions$.pipe(
-    ofType(DayOffActions.FETCH_DAY_OFF_CATEGORIES),
+    ofType(DayOffCategoriesActions.FETCH_DAY_OFF_CATEGORIES),
     switchMap(() => {
       return this.http
         .get<any>(`${environment.APILink}/day-off-categories`)
@@ -26,7 +26,7 @@ export class DayOffCategoriesEffects {
               }
               return i;
             });
-            return new DayOffActions.GetDayOffCategoriesSuccess(
+            return new DayOffCategoriesActions.GetDayOffCategoriesSuccess(
               dayOffCategories
             );
           })
@@ -35,14 +35,14 @@ export class DayOffCategoriesEffects {
   );
 
   @Effect()
-  createDayoff = this.actions$.pipe(
-    ofType(DayOffActions.CREATE_DAY_OFF_CATEGORY),
-    switchMap((action: DayOffActions.CreateDayOffCategory) => {
+  createDayoffCategory = this.actions$.pipe(
+    ofType(DayOffCategoriesActions.CREATE_DAY_OFF_CATEGORY),
+    switchMap((action: DayOffCategoriesActions.CreateDayOffCategory) => {
       const body: DayOffCategory = snakecaseKeys(action.payload);
       // return this.http.post<any>(`${environment.APILink}/employees`, body).pipe(
       //   map((val) => {
       //     const data: DayOff = camelcaseKeys(val.data);
-      //     return new DayOffActions.CreateDayOff(data);
+      //     return new DayOffCategoriesActions .CreateDayOff(data);
       //   })
       // );
       return of({
@@ -53,10 +53,12 @@ export class DayOffCategoriesEffects {
       }).pipe(
         map((val) => {
           let dayoff;
-          this.store.select('dayoff').source.source.source.subscribe((data) => {
-            dayoff = data.dayoff.dayoff;
-          });
-          return new DayOffActions.GetDayOffCategoriesSuccess([
+          this.store
+            .select('dayoffCategories')
+            .source.source.source.subscribe((data) => {
+              dayoff = data.dayoffCategories.dayoff;
+            });
+          return new DayOffCategoriesActions.GetDayOffCategoriesSuccess([
             ...dayoff,
             { ...val.data, id: (dayoff.length + 1).toString() },
           ]);
@@ -66,9 +68,9 @@ export class DayOffCategoriesEffects {
   );
 
   @Effect()
-  updateDayoff = this.actions$.pipe(
-    ofType(DayOffActions.UPDATE_DAY_OFF_CATEGORY),
-    switchMap((action: DayOffActions.UpdateDayOffCategory) => {
+  updateDayoffCategory = this.actions$.pipe(
+    ofType(DayOffCategoriesActions.UPDATE_DAY_OFF_CATEGORY),
+    switchMap((action: DayOffCategoriesActions.UpdateDayOffCategory) => {
       const body: DayOffCategory = snakecaseKeys(action.payload);
       return of({
         data: {
@@ -79,34 +81,38 @@ export class DayOffCategoriesEffects {
       }).pipe(
         map((val) => {
           let dayoff;
-          this.store.select('dayoff').source.source.source.subscribe((data) => {
-            dayoff = data.dayoff.dayoff;
-          });
+          this.store
+            .select('dayoffCategories')
+            .source.source.source.subscribe((data) => {
+              dayoff = data.dayoffCategories.dayoff;
+            });
           const array = dayoff.map((item) => {
             if (item.id == val.data.id) {
               item = val.data;
             }
             return item;
           });
-          return new DayOffActions.GetDayOffCategoriesSuccess(array);
+          return new DayOffCategoriesActions.GetDayOffCategoriesSuccess(array);
         })
       );
     })
   );
 
   @Effect()
-  deleteDayoff = this.actions$.pipe(
-    ofType(DayOffActions.DELETE_DAY_OFF_CATEGORY),
-    switchMap((action: DayOffActions.DeleteDayOffCategory) => {
+  deleteDayoffCategory = this.actions$.pipe(
+    ofType(DayOffCategoriesActions.DELETE_DAY_OFF_CATEGORY),
+    switchMap((action: DayOffCategoriesActions.DeleteDayOffCategory) => {
       const id: string = action.payload;
       return of({ id }).pipe(
         map(() => {
           let dayoff;
-          this.store.select('dayoff').source.source.source.subscribe((data) => {
-            dayoff = data.dayoff.dayoff;
-          });
+          this.store
+            .select('dayoffCategories')
+            .source.source.source.subscribe((data) => {
+              dayoff = data.dayoffCategories.dayoff;
+            });
 
-          return new DayOffActions.GetDayOffCategoriesSuccess([
+          return new DayOffCategoriesActions.GetDayOffCategoriesSuccess([
             ...dayoff.filter((item) => {
               return item.id != id;
             }),

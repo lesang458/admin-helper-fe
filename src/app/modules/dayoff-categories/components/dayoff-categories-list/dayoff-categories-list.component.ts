@@ -1,3 +1,4 @@
+import { DayOffCategoryEditComponent } from './../dayoff-category-edit/dayoff-category-edit.component';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 import * as fromApp from '../../../../store/app.reducer';
 import * as DayOffActions from '../../store/dayoff-categories.actions';
@@ -5,7 +6,6 @@ import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { FormControl } from '@angular/forms';
 import { Observable } from 'rxjs';
-import { DayoffCreateEditCategoriesComponent } from '../dayoff-categories-create-edit/dayoff-create-edit.component';
 import { DayOffCategory } from 'src/app/shared/models/dayoff-category.model';
 
 @Component({
@@ -24,20 +24,17 @@ export class DayOffCategoriesListComponent implements OnInit {
 
   ngOnInit(): void {
     this.store.dispatch(new DayOffActions.FetchDayOffCategories());
-    this.data$ = this.store.select('dayoff');
+    this.data$ = this.store.select('dayoffCategories');
   }
 
   public openModalWithComponent(
-    dayoffSelected?: DayOffCategory,
+    selectedCategory?: DayOffCategory,
     type?: string
   ): void {
-    const initialState = { dayoffSelected, type };
-    this.bsModalRef = this.modalService.show(
-      DayoffCreateEditCategoriesComponent,
-      {
-        initialState,
-      }
-    );
+    const initialState = { selectedCategory, type };
+    this.bsModalRef = this.modalService.show(DayOffCategoryEditComponent, {
+      initialState,
+    });
     this.bsModalRef.content.closeBtnName = 'Close';
   }
 }

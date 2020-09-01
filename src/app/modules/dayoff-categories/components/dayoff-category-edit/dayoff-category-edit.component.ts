@@ -5,15 +5,16 @@ import { Store } from '@ngrx/store';
 import * as fromApp from '../../../../store/app.reducer';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { DayOffCategory } from 'src/app/shared/models/dayoff-category.model';
+import { log } from 'console';
 
 @Component({
   selector: 'ah-dayoff-create-edit',
-  templateUrl: './dayoff-create-edit.component.html',
-  styleUrls: ['./dayoff-create-edit.component.scss'],
+  templateUrl: './dayoff-category-edit.component.html',
+  styleUrls: ['./dayoff-category-edit.component.scss'],
 })
-export class DayoffCreateEditCategoriesComponent implements OnInit {
+export class DayOffCategoryEditComponent implements OnInit {
   public type: string;
-  public dayoffSelected: DayOffCategory;
+  public selectedCategory: DayOffCategory;
   public f = new FormGroup({
     name: new FormControl('', [
       Validators.required,
@@ -32,9 +33,9 @@ export class DayoffCreateEditCategoriesComponent implements OnInit {
     if (this.type === 'edit') {
       this.f.patchValue({
         name:
-          this.dayoffSelected.name[0] +
-          this.dayoffSelected.name.slice(1)?.toLowerCase(),
-        description: this.dayoffSelected.description,
+          this.selectedCategory.name[0] +
+          this.selectedCategory.name.slice(1)?.toLowerCase(),
+        description: this.selectedCategory.description,
       });
     }
   }
@@ -51,7 +52,7 @@ export class DayoffCreateEditCategoriesComponent implements OnInit {
     if (this.type === 'edit') {
       this.store.dispatch(
         new DayOffActions.UpdateDayOffCategory({
-          id: this.dayoffSelected.id,
+          id: this.selectedCategory.id,
           name: this.f.get('name').value.toUpperCase(),
           description: this.f.get('description').value,
         })
@@ -60,11 +61,21 @@ export class DayoffCreateEditCategoriesComponent implements OnInit {
     if (this.type === 'delete') {
       this.store.dispatch(
         new DayOffActions.DeleteDayOffCategory(
-          this.dayoffSelected.id.toString()
+          this.selectedCategory.id.toString()
         )
       );
     }
 
     this.bsModalRef.hide();
+  }
+
+  public checkChange(): boolean {
+    return (
+      !this.f.valid ||
+      (this.selectedCategory?.name.toLowerCase() ===
+        this.f.get('name').value.toLowerCase() &&
+        this.selectedCategory?.description?.toLowerCase() ===
+          this.f.get('description').value?.toLowerCase())
+    );
   }
 }

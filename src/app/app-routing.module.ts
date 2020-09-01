@@ -9,7 +9,7 @@ export const APP_ROUTES: Routes = [
       ),
   },
   {
-    path: 'ngay-nghi',
+    path: 'loai-ngay-phep',
     loadChildren: () =>
       import('./modules/dayoff-categories/dayoff-categories.module').then(
         (m) => m.DayOffCategoriesModule

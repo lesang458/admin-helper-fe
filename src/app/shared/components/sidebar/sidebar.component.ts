@@ -20,6 +20,6 @@ export class SidebarComponent implements OnInit {
   }
 
   public navigateToDayOffCategoriesPage() {
-    this.router.navigateByUrl('ngay-nghi');
+    this.router.navigateByUrl('loai-ngay-phep');
   }
 }
