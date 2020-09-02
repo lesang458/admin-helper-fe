@@ -1,3 +1,4 @@
+import { NgxLoadingModule } from 'ngx-loading';
 import { LoadingSpinnerComponent } from 'src/app/shared/components/loading-spinner/loading-spinner.component';
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
@@ -24,7 +25,7 @@ const components = [
 
 @NgModule({
   declarations: [...components],
-  imports: [...modules],
+  imports: [...modules, NgxLoadingModule.forRoot({})],
   exports: [...components, ...modules],
   providers: [
     {
