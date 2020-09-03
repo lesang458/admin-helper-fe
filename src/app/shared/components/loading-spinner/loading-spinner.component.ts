@@ -12,7 +12,7 @@ export class LoadingSpinnerComponent implements OnInit {
   constructor(private loadingService: LoadingService) {}
 
   ngOnInit(): void {
-    this.loadingService.loading.subscribe((val) => {
+    this.loadingService.loading.subscribe((val: boolean) => {
       this.loading = val;
     });
   }
