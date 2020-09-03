@@ -40,7 +40,7 @@
     "ACTION": "Action"
   },
   "REQUEST-DAY-OFF": {
-    "AUTH": "Authorization",
+    "AUTH": "Time off",
     "FULL_NAME": "Full name",
     "FROM_DATE": "From",
     "TO_DATE": "To",

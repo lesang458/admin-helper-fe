@@ -11,6 +11,10 @@ div {
 
     > label {
       width: 70px;
+      margin: 0px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
 
     > input {
@@ -27,6 +31,8 @@ div {
 
     #label4 {
       line-height: 32px;
+      width: auto !important;
+      padding: 0 5px;
     }
 
     #exampleFormControlInput1 {
