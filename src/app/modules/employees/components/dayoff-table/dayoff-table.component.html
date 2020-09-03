@@ -38,10 +38,10 @@
       <table class="table table-bordered">
         <thead *ngIf="data.pagination.totalCount !== 0">
           <tr>
-            <th scope="col" style="width: 5%">ID</th>
+            <th scope="col" style="width: 10%">ID</th>
             <th
               scope="col"
-              style="width: 20%; cursor: pointer"
+              style="width: 25%; cursor: pointer"
               (click)="onSort(data.pagination.currentPage, 'name')"
             >
               {{ "DAY_OFF_TABLE.NAME" | translate }}
@@ -63,7 +63,7 @@
             <th scope="col" style="width: 20%">
               {{ "DAY_OFF_TABLE.NUMBER_OF_LEAVES_REMAINING" | translate }}
             </th>
-            <th scope="col" style="width: 20%">
+            <th scope="col" style="width: 10%">
               {{ "DAY_OFF_TABLE.ACTION" | translate }}
             </th>
           </tr>
@@ -86,8 +86,9 @@
                   (click)="selectedEmployee = item"
                   data-target="#subTimeOff"
                 >
-                  <span class="cil-playlist-add btn-icon mr-2"></span>
-                  {{ "DAY_OFF_TABLE.SUBMIT_TIME_OFF" | translate }}
+                  <span class="btn-icon mr-2">
+                    <img src="https://www.svgrepo.com/show/28236/exit.svg" intrinsicsize="512 x 512" width="20" height="20" srcset="https://www.svgrepo.com/show/28236/exit.svg 4x" alt="Exit SVG Vector" title="Exit SVG Vector">
+                  </span>                  
                 </button>
               </div>
             </td>
