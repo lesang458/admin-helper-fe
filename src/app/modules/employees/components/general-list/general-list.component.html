@@ -109,16 +109,16 @@
               >
             </td>
             <td style="display:flex; justify-self: center;">
-              <button class="btn-action" (click)="openModalWithComponent(item.id, 'detail', null)">
+              <button class="btn btn-outline-secondary" (click)="openModalWithComponent(item.id, 'detail', null)">
                 <span class="cil-external-link"></span>
               </button>
-              <button class="btn-action" (click)="openModalWithComponent(item.id, 'edit', searchParams)">
+              <button class="btn btn-outline-primary" (click)="openModalWithComponent(item.id, 'edit', searchParams)">
                 <span class="cil-brush"></span>
               </button>
             </td>
           </tr>
         </tbody>
-      </table>
+      </table>    
       <div
         *ngIf="employeeObs.employees.length === 0"
         class="alert alert-secondary"

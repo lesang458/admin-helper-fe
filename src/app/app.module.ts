@@ -18,6 +18,7 @@ import { JwtHelperService, JWT_OPTIONS } from '@auth0/angular-jwt';
 import { AuthEffect } from './shared/store/auth.effects';
 import { DayOffCategoriesEffects } from './modules/dayoff-categories/store/dayoff-categories.effects';
 import { SocialLoginModule } from 'angularx-social-login';
+import { ModalModule } from 'ngx-bootstrap/modal';
 
 export function LoaderFactory() {
   return new CustomTranslateLoader();
@@ -46,6 +47,7 @@ export function LoaderFactory() {
     ]),
     StoreModule.forRoot(fromApp.appReducer),
     SocialLoginModule,
+    ModalModule.forRoot(),
   ],
   providers: [
     { provide: JWT_OPTIONS, useValue: JWT_OPTIONS },

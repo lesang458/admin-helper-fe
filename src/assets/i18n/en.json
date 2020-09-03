@@ -37,7 +37,6 @@
     "BIRTHDAY": "Birthday",
     "TOTAL_LEAVES": "Total leaves",
     "NUMBER_OF_LEAVES_REMAINING": "Number of leaves remaining",
-    "SUBMIT_TIME_OFF": "Submit time off",
     "ACTION": "Action"
   },
   "REQUEST-DAY-OFF": {
@@ -123,9 +122,8 @@
     "NAME": "Name",
     "DESCRIPTION": "Description",
     "ACTION": "Action",
-    "DELETE": "Delete",
-    "EDIT": "Edit",
     "SAVE": "Save",
+    "DELETE": "Delete",
     "CANCEL": "Cancel",
     "CREATE": "Create day off category",
     "NO_RESULT": "No result.",
@@ -136,6 +134,7 @@
     "NAME_REQUIRED": "Name is required!",
     "NAME_MINLENGTH": "The name has Minimum length is 6 character",
     "NAME_MAXLENGTH": "The name has Maximum length is 20 character",
-    "NAME_PATTERN": "The name must not contain special characters"
+    "NAME_PATTERN": "The name must not contain special characters",
+    "DAYOFF": "Number of dayoff"
   }
 }

@@ -9,6 +9,7 @@ import { of } from 'rxjs';
 import { Store } from '@ngrx/store';
 import * as fromApp from '../../../store/app.reducer';
 import { DayOffCategory } from 'src/app/shared/models/dayoff-category.model';
+import * as camelcaseKeys from 'camelcase-keys';
 
 @Injectable()
 export class DayOffCategoriesEffects {
@@ -20,12 +21,14 @@ export class DayOffCategoriesEffects {
         .get<any>(`${environment.APILink}/day-off-categories`)
         .pipe(
           map((data) => {
-            const dayOffCategories = data.day_off_categories.map((i) => {
-              if (!i.description) {
-                i.description = '';
+            const dayOffCategories = camelcaseKeys(data).dayOffCategories.map(
+              (i) => {
+                if (!i.description) {
+                  i.description = '';
+                }
+                return i;
               }
-              return i;
-            });
+            );
             return new DayOffCategoriesActions.GetDayOffCategoriesSuccess(
               dayOffCategories
             );
