@@ -38,7 +38,6 @@ export function LoaderFactory() {
       },
     }),
     RouterModule.forRoot(APP_ROUTES, { scrollPositionRestoration: 'enabled' }),
-
     EffectsModule.forRoot([
       EmployeeEffects,
       DeviceEffects,
