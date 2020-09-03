@@ -91,20 +91,23 @@
               <div class="d-flex justify-content-center">
                 <button
                   type="button"
-                  class="btn btn-outline-primary"
+                  class="btn btn-outline-dark"
                   data-toggle="modal"
                   (click)="selectedEmployee = item"
                   data-target="#subTimeOff"
                 >
-                  <span class="btn-icon mr-2">
-                    <img src="https://www.svgrepo.com/show/28236/exit.svg" intrinsicsize="512 x 512" width="20" height="20" srcset="https://www.svgrepo.com/show/28236/exit.svg 4x" alt="Exit SVG Vector" title="Exit SVG Vector">
-                  </span>                  
+                  <img
+                    src="assets/img/time-off.jpg"
+                    intrinsicsize="512 x 512"
+                    width="20"
+                    height="20"
+                  />
                 </button>
               </div>
             </td>
           </tr>
         </tbody>
-      </table>    
+      </table>
       <div
         *ngIf="data.pagination.totalCount === 0"
         class="alert alert-secondary"
