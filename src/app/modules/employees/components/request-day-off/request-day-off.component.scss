@@ -1,5 +1,15 @@
-.date {
-  label {
-    margin: 8px 0;
+.modal-content {
+  .date {
+    label {
+      margin: 8px 0;
+    }
+  }
+
+  .break {
+    display: flex;
+
+    >div {
+      margin: 0 10px;
+    }
   }
 }
