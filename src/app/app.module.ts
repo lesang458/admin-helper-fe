@@ -1,4 +1,3 @@
-import { LoadingInterceptor } from './core/interceptors/loading.interceptor';
 import { EmployeeEffects } from './modules/employees/store/employees.effects';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
@@ -6,7 +5,7 @@ import { RouterModule } from '@angular/router';
 import { APP_ROUTES } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { CoreModule } from './core/core.module';
-import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { HttpClientModule } from '@angular/common/http';
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { EmployeesModule } from './modules/employees/employees.module';
 import { SharedModule } from './shared/shared.module';
@@ -49,7 +48,6 @@ export function LoaderFactory() {
   providers: [
     { provide: JWT_OPTIONS, useValue: JWT_OPTIONS },
     JwtHelperService,
-    { provide: HTTP_INTERCEPTORS, useClass: LoadingInterceptor, multi: true },
   ],
   bootstrap: [AppComponent],
 })
