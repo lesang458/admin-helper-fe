@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { LoadingService } from '../../services/loading.service';
 
 @Component({
   selector: 'ah-loading-spinner',
@@ -7,13 +6,7 @@ import { LoadingService } from '../../services/loading.service';
   styleUrls: ['./loading-spinner.component.scss'],
 })
 export class LoadingSpinnerComponent implements OnInit {
-  public loading: boolean;
+  constructor() {}
 
-  constructor(private loadingService: LoadingService) {}
-
-  ngOnInit(): void {
-    this.loadingService.loading.subscribe((val: boolean) => {
-      this.loading = val;
-    });
-  }
+  ngOnInit(): void {}
 }
