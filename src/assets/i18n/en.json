@@ -42,10 +42,10 @@
   "REQUEST-DAY-OFF": {
     "AUTH": "Time off",
     "FULL_NAME": "Full name",
-    "FROM_DATE": "From",
-    "TO_DATE": "To",
+    "FROM_DATE": "From date",
+    "TO_DATE": "To date",
     "HAFL_DAY_OFF": "A half day-off",
-    "KIND_OF_LEAVE": "Kind of leave",
+    "KIND_OF_LEAVE": "Type of leave",
     "VACATION": "Vacation",
     "ILLNESS": "Illness",
     "DAY_OFF_AVAILABLE": "Days off are available",
