@@ -1,10 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import * as fromApp from 'src/app/store/app.reducer';
-import { PaginatedData } from 'src/app/shared/models/pagination.model';
-import { Device } from 'src/app/shared/models/device.model';
 import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
 import * as DevicesActions from '../../store/devices.actions';
 import { TranslateService } from '@ngx-translate/core';
 import { DeviceParams } from '../../store/devices.actions';

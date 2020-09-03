@@ -26,7 +26,6 @@
     "ALL": "All",
     "ACTIVE": "Active",
     "DELETED": "Deleted",
-    "DETAIL": "Detail",
     "CREATE_EMPLOYEE_PROFILE": "Create employee profile",
     "NO_RESULT": "No result."
   },
@@ -108,8 +107,6 @@
     "CATEGORY_NAME": "Category name: ",
     "ASSIGNED_TO": "Assigned to: ",
     "EMPTY": "Empty",
-    "HISTORY": "History",
-    "EDIT": "Edit",
     "PRICE": "Price",
     "DESCRIPTION": "Description",
     "CREATE_DEVICE": "Create Device"

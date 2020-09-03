@@ -29,7 +29,7 @@ const components = [SidebarComponent, HeaderComponent, BodyComponent];
           {
             id: GoogleLoginProvider.PROVIDER_ID,
             provider: new GoogleLoginProvider(
-              '624796833023-clhjgupm0pu6vgga7k5i5bsfp6qp6egh.apps.googleusercontent.com'
+              '644766504476-ajv6joaa9d6pkfec6fg8h7ddlkaptkf5.apps.googleusercontent.com'
             ),
           },
         ],

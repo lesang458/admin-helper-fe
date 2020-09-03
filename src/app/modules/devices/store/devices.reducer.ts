@@ -9,7 +9,6 @@ import { DeviceCategory } from 'src/app/shared/models/deviceCategory';
 export interface State {
   devices: PaginatedData<Device[]>;
   categories: DeviceCategory[];
-  loading: boolean;
 }
 
 const initDevices = new PaginatedData<Device[]>();
@@ -22,7 +21,6 @@ initDevices.pagination = pagination;
 export const initialState: State = {
   devices: initDevices,
   categories: [],
-  loading: false,
 };
 
 export function deviceReducer(
@@ -34,12 +32,6 @@ export function deviceReducer(
       return {
         ...state,
         devices: action.payload,
-        loading: false,
-      };
-    case DevicesActions.FETCH_DEVICES:
-      return {
-        ...state,
-        loading: true,
       };
     case DevicesActions.SET_DEVICE_CATEGORIES:
       return {
