@@ -19,6 +19,7 @@
                     type="email"
                     formControlName="email"
                     placeholder="Email"
+                    required
                   />
                 </div>
                 <div
@@ -43,6 +44,7 @@
                     type="password"
                     formControlName="password"
                     placeholder="Password"
+                    required
                   />
                 </div>
                 <div
@@ -58,7 +60,11 @@
                 </div>
                 <div class="row">
                   <div class="col-6">
-                    <button class="btn btn-primary px-4" type="submit">
+                    <button
+                      class="btn btn-primary px-4"
+                      type="submit"
+                      [disabled]="loginForm.invalid"
+                    >
                       {{ "LOGIN.LOGIN" | translate }}
                     </button>
                   </div>
