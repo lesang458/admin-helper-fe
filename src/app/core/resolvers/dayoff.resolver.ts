@@ -17,6 +17,7 @@ export class DayoffResolver implements Resolve<void> {
     const searchParams: SearchParams = {
       search: '',
       page: 1,
+      perPage: 10,
       sort: {
         sortNameType: 0,
         sortBirthDateType: 0,

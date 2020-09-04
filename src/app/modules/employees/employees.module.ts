@@ -34,7 +34,6 @@ import { AuthComponent } from './pages/auth/auth.component';
     ReactiveFormsModule,
     PaginationModule.forRoot(),
     ModalModule.forRoot(),
-    FormsModule,
   ],
   providers: [BsModalRef],
 })

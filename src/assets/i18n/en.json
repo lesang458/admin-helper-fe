@@ -4,8 +4,9 @@
     "LINK_1": "General Information",
     "LINK_2": "Day off",
     "LINK_3": "Timekeeping",
-    "LINK_4": "Day off type",
-    "LINK_5": "Devices History"
+    "LINK_4": "Devices",
+    "LINK_5": "Devices History",
+    "LINK_6": "Day off type"
   },
   "HEADER": {
     "TITLE": "Employees List",
@@ -26,7 +27,6 @@
     "ALL": "All",
     "ACTIVE": "Active",
     "DELETED": "Deleted",
-    "DETAIL": "Detail",
     "CREATE_EMPLOYEE_PROFILE": "Create employee profile",
     "NO_RESULT": "No result."
   },
@@ -101,10 +101,22 @@
   "PROFILE_EDIT": {
     "TITLE": "Edit Employee Profile"
   },
+  "DEVICE_TABLE": {
+    "TYPE_OF_DEVICE": "Type of device",
+    "ALL": "All",
+    "CATEGORY_NAME": "Category name:",
+    "ASSIGNED_TO": "Assigned to:",
+    "EMPTY": "Empty",
+    "PRICE": "Price",
+    "DESCRIPTION": "Description",
+    "CREATE_DEVICE": "Create Device"
+  },
   "LOGIN": {
     "LOGIN": "Login",
+    "SIGN_IN": "Sign In to your account",
     "EMAIL": "Email",
     "PASS": "Password",
+    "FORGOT_PASSWORD": "Forgot Password?",
     "SIGN_IN_GG": "Sign In With Google"
   },
   "DAY_OFF_CATEGORIES_PAGE": {

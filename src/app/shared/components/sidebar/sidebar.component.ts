@@ -19,6 +19,10 @@ export class SidebarComponent implements OnInit {
     this.router.navigateByUrl('/nghi-phep');
   }
 
+  public navigateToDevicePage() {
+    this.router.navigateByUrl('/thiet-bi');
+  }
+
   public navigateToDayOffCategoriesPage() {
     this.router.navigateByUrl('/loai-ngay-phep');
   }

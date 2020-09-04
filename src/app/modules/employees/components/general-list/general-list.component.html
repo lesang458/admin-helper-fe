@@ -20,22 +20,22 @@
       <div class="col-5">
         <div class="form-group">
           <label class="d-inline-block mr-3 ml-2" for="status-type">
-            {{ "GENERAL_LIST.STATUS" | translate }}
+            {{ 'GENERAL_LIST.STATUS' | translate }}
           </label>
           <select
             class="form-control d-inline-block"
-            style="width: auto;"
+            style="width: auto"
             id="status-type"
             [formControl]="searchStatusFormControl"
           >
             <option selected value="">
-              {{ "GENERAL_LIST.ALL" | translate }}
+              {{ 'GENERAL_LIST.ALL' | translate }}
             </option>
             <option value="ACTIVE">
-              {{ "GENERAL_LIST.ACTIVE" | translate }}
+              {{ 'GENERAL_LIST.ACTIVE' | translate }}
             </option>
             <option value="DELETED">
-              {{ "GENERAL_LIST.DELETED" | translate }}
+              {{ 'GENERAL_LIST.DELETED' | translate }}
             </option>
           </select>
         </div>
@@ -45,90 +45,95 @@
       <table class="table table-bordered">
         <thead>
           <tr>
-            <th scope="col">ID</th>
+            <th scope="col" class="col-id">ID</th>
             <th
               scope="col"
-              class="pointer"
-              style="width: 25%;"
+              class="pointer col-name"
               (click)="onSort(employeeObs.pagination.currentPage, 'name')"
             >
-              {{ "GENERAL_LIST.NAME" | translate }}
+              {{ 'GENERAL_LIST.NAME' | translate }}
               <i class="cil-arrow-top" *ngIf="sortNameType === 1"></i>
               <i class="cil-arrow-bottom" *ngIf="sortNameType === 2"></i>
             </th>
             <th
               scope="col"
-              class="pointer"
-              style="width: 15%;"
+              class="pointer col-date"
               (click)="onSort(employeeObs.pagination.currentPage, 'birthdate')"
             >
-              {{ "GENERAL_LIST.BIRTHDAY" | translate }}
+              {{ 'GENERAL_LIST.BIRTHDAY' | translate }}
               <i class="cil-arrow-top" *ngIf="sortBirthDateType === 1"></i>
               <i class="cil-arrow-bottom" *ngIf="sortBirthDateType === 2"></i>
             </th>
             <th
               scope="col"
-              class="pointer"
-              style="width: 15%;"
+              class="pointer col-date"
               (click)="onSort(employeeObs.pagination.currentPage, 'joinDate')"
             >
-              {{ "GENERAL_LIST.JOIN_DATE" | translate }}
+              {{ 'GENERAL_LIST.JOIN_DATE' | translate }}
               <i class="cil-arrow-top" *ngIf="sortJoinDateType === 1"></i>
               <i class="cil-arrow-bottom" *ngIf="sortJoinDateType === 2"></i>
             </th>
-            <th scope="col" style="width: 15%;">
-              {{ "GENERAL_LIST.PHONE_NUMBER" | translate }}
+            <th scope="col" class="col-date">
+              {{ 'GENERAL_LIST.PHONE_NUMBER' | translate }}
             </th>
-            <th scope="col" style="width: 10%;">
-              {{ "GENERAL_LIST.STATUS" | translate }}
+            <th scope="col" class="col-status">
+              {{ 'GENERAL_LIST.STATUS' | translate }}
             </th>
-            <th scope="col" style="width: 10%;">
-              {{ "GENERAL_LIST.ACTIONS" | translate }}
+            <th scope="col" class="col-status">
+              {{ 'GENERAL_LIST.ACTIONS' | translate }}
             </th>
           </tr>
         </thead>
         <tbody>
           <tr *ngFor="let item of employeeObs.employees; let i = index">
-            <th scope="row">{{ i + 1 }}</th>
-            <td>{{ item.firstName + " " + item.lastName }}</td>
-            <td>{{ item.birthdate | date: "dd/MM/yyyy" }}</td>
-            <td>{{ item.joinDate | date: "dd/MM/yyyy" }}</td>
+            <th scope="row">
+              {{ i + 1 + (employeeObs.pagination.currentPage - 1) * 10 }}
+            </th>
+            <td>{{ item.firstName + ' ' + item.lastName }}</td>
+            <td>{{ item.birthdate | date: 'dd/MM/yyyy' }}</td>
+            <td>{{ item.joinDate | date: 'dd/MM/yyyy' }}</td>
             <td>{{ item.phoneNumber }}</td>
             <td>
               <span
                 class="badge rounded-pill badge-danger p-2"
                 *ngIf="item.status !== 'ACTIVE'"
-                >{{ "GENERAL_LIST.DELETED" | translate }}</span
+                >{{ 'GENERAL_LIST.DELETED' | translate }}</span
               >
               <span
                 class="badge rounded-pill badge-success p-2"
                 *ngIf="item.status === 'ACTIVE'"
-                >{{ "GENERAL_LIST.ACTIVE" | translate }}</span
+                >{{ 'GENERAL_LIST.ACTIVE' | translate }}</span
               >
             </td>
-            <td style="display:flex; justify-self: center;">
-              <button class="btn btn-outline-secondary" (click)="openModalWithComponent(item.id, 'detail', null)">
+            <td class="d-flex justify-content-center">
+              <button
+                class="btn btn-outline-info mr-2"
+                (click)="openModalWithComponent(item.id, 'detail', null)"
+              >
                 <span class="cil-external-link"></span>
               </button>
-              <button class="btn btn-outline-primary" (click)="openModalWithComponent(item.id, 'edit', searchParams)">
+              <button
+                class="btn btn-outline-primary"
+                (click)="openModalWithComponent(item.id, 'edit', searchParams)"
+              >
                 <span class="cil-brush"></span>
               </button>
             </td>
           </tr>
         </tbody>
-      </table>    
+      </table>
       <div
         *ngIf="employeeObs.employees.length === 0"
         class="alert alert-secondary"
         role="alert"
       >
-        {{ "GENERAL_LIST.NO_RESULT" | translate }}
+        {{ 'GENERAL_LIST.NO_RESULT' | translate }}
       </div>
       <div class="col-12" *ngIf="employeeObs.pagination.totalCount !== 0">
         <pagination
           [totalItems]="employeeObs.pagination.totalCount"
           [maxSize]="3"
-          [itemsPerPage]="20"
+          [itemsPerPage]="10"
           [(ngModel)]="currentPage"
           (pageChanged)="onPageChanged($event.page)"
           class="pagination-md justify-content-end"
@@ -150,7 +155,7 @@
         class="btn btn-info"
       >
         <span class="cil-playlist-add btn-icon mr-2"></span>
-        {{ "GENERAL_LIST.CREATE_EMPLOYEE_PROFILE" | translate }}
+        {{ 'GENERAL_LIST.CREATE_EMPLOYEE_PROFILE' | translate }}
       </button>
     </div>
   </div>
