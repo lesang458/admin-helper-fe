@@ -24,7 +24,7 @@
             <th scope="row">
               {{ i + 1 }}
             </th>
-            <td>{{ item.name[0] + item.name.slice(1).toLowerCase() }}</td>
+            <td>{{ item.name | titlecase }}</td>
             <td>{{ item.totalHoursDefault / 8 }}</td>
             <td>{{ item.description }}</td>
             <td style="display: flex; justify-self: center">
