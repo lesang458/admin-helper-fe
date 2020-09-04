@@ -22,7 +22,7 @@
                 </div>
                 <div
                   *ngIf="f.email.invalid && (f.email.dirty || f.email.touched)"
-                  style="color: red"
+                  class="mess-invalid"
                 >
                   <div *ngIf="f.email.errors.required">
                     {{ 'PROFILE_CREATE.EMAIL_INVALID' | translate }}
@@ -45,7 +45,7 @@
                 </div>
                 <div
                   *ngIf="f.password.invalid && (f.password.dirty || f.password.touched)"
-                  style="color: red"
+                  class="mess-invalid"
                 >
                   <div *ngIf="f.password.errors.required">
                     {{ 'PROFILE_CREATE.PASSWORD_INVALID' | translate }}
