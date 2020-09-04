@@ -32,11 +32,11 @@
             </div>
             <div class="col-3">
               {{ 'DEVICE_TABLE.CATEGORY_NAME' | translate }}
-              {{ item.categoryName }}
+              {{ ' ' + item.categoryName }}
             </div>
             <div class="col-3">
               {{ 'DEVICE_TABLE.ASSIGNED_TO' | translate }}
-              {{ getUserName(item.user) }}
+              {{ ' ' + getUserName(item.user) }}
             </div>
             <div class="col-3 d-flex justify-content-end">
               <button class="btn btn-outline-info mr-2">
