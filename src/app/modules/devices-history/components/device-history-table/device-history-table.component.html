@@ -1,0 +1,56 @@
+<div class="card">
+  <div class="card-body">
+    <div class="table-responsive" *ngIf="data$ | async as data">
+      <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th scope="col" style="width: 10%">ID</th>
+            <th scope="col" style="width: 15%">
+              {{ "DAY_OFF_CATEGORIES_PAGE.NAME" | translate }}
+            </th>
+            <th scope="col" style="width: 15%">
+              {{ "DAY_OFF_CATEGORIES_PAGE.DAYOFF" | translate }}
+            </th>
+            <th scope="col" style="width: 50%">
+              {{ "DAY_OFF_CATEGORIES_PAGE.DESCRIPTION" | translate }}
+            </th>
+            <th scope="col" style="width: 10%">
+              {{ "DAY_OFF_CATEGORIES_PAGE.ACTION" | translate }}
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let item of data.dayoff; let i = index">
+            <th scope="row">
+              {{ i + 1 }}
+            </th>
+            <td>{{ item.name[0] + item.name.slice(1).toLowerCase() }}</td>
+            <td>{{ item.totalHoursDefault / 8 }}</td>
+            <td>{{ item.description }}</td>
+            <td style="display: flex; justify-self: center">
+              <button
+                class="btn btn-outline-primary"
+                (click)="openModalWithComponent(item, 'edit')"
+              >
+                <span class="cil-brush"></span>
+              </button>
+              <button
+                class="btn btn-outline-danger"
+                (click)="openModalWithComponent(item, 'delete')"
+              >
+                <span class="cil-remove"></span>
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <div
+        *ngIf="data && data?.dayoff.length === 0"
+        class="alert alert-secondary"
+        role="alert"
+      >
+        {{ "GENERAL_LIST.NO_RESULT" | translate }}
+      </div>
+    </div>
+  </div>
+</div>

@@ -15,4 +15,11 @@ export const APP_ROUTES: Routes = [
         (m) => m.DayOffCategoriesModule
       ),
   },
+  {
+    path: 'lich-su-thiet-bi',
+    loadChildren: () =>
+      import('./modules/devices-history/device-history.module').then(
+        (m) => m.DeviceHistoryModule
+      ),
+  },
 ];

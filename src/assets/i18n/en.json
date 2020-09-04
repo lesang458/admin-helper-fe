@@ -4,7 +4,8 @@
     "LINK_1": "General Information",
     "LINK_2": "Day off",
     "LINK_3": "Timekeeping",
-    "LINK_4": "Day off type"
+    "LINK_4": "Day off type",
+    "LINK_5": "Devices History"
   },
   "HEADER": {
     "TITLE": "Employees List",
@@ -100,7 +101,7 @@
   "PROFILE_EDIT": {
     "TITLE": "Edit Employee Profile"
   },
-  "LOGIN":{
+  "LOGIN": {
     "LOGIN": "Login",
     "EMAIL": "Email",
     "PASS": "Password",

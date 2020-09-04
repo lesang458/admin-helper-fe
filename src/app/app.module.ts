@@ -18,6 +18,7 @@ import { AuthEffect } from './shared/store/auth.effects';
 import { DayOffCategoriesEffects } from './modules/dayoff-categories/store/dayoff-categories.effects';
 import { SocialLoginModule } from 'angularx-social-login';
 import { ModalModule } from 'ngx-bootstrap/modal';
+import { DeviceHistoryEffects } from './modules/devices-history/store/device-history.effects';
 
 export function LoaderFactory() {
   return new CustomTranslateLoader();
@@ -42,6 +43,7 @@ export function LoaderFactory() {
       EmployeeEffects,
       AuthEffect,
       DayOffCategoriesEffects,
+      DeviceHistoryEffects,
     ]),
     StoreModule.forRoot(fromApp.appReducer),
     SocialLoginModule,
