@@ -20,7 +20,7 @@
       <div class="col-5">
         <div class="form-group">
           <label class="d-inline-block mr-3 ml-2" for="day-off-type">
-            {{ "DAY_OFF_TABLE.TYPE_OF_LEAVE" | translate }}
+            {{ 'DAY_OFF_TABLE.TYPE_OF_LEAVE' | translate }}
           </label>
           <select
             [formControl]="selectedType"
@@ -40,33 +40,33 @@
       <table class="table table-bordered">
         <thead *ngIf="data.pagination.totalCount !== 0">
           <tr>
-            <th scope="col" style="width: 5%">ID</th>
+            <th scope="col" class="named-colors-in-expressions-bar-red">ID</th>
             <th
               scope="col"
-              style="width: 25%; cursor: pointer"
+              class="col-name"
               (click)="onSort(data.pagination.currentPage, 'name')"
             >
-              {{ "DAY_OFF_TABLE.NAME" | translate }}
+              {{ 'DAY_OFF_TABLE.NAME' | translate }}
               <i class="cil-arrow-top" *ngIf="sortNameType === 1"></i>
               <i class="cil-arrow-bottom" *ngIf="sortNameType === 2"></i>
             </th>
             <th
               scope="col"
-              style="width: 20%; cursor: pointer"
+              class="col-birthday"
               (click)="onSort(data.pagination.currentPage)"
             >
-              {{ "DAY_OFF_TABLE.BIRTHDAY" | translate }}
+              {{ 'DAY_OFF_TABLE.BIRTHDAY' | translate }}
               <i class="cil-arrow-top" *ngIf="sortBirthDateType === 1"></i>
               <i class="cil-arrow-bottom" *ngIf="sortBirthDateType === 2"></i>
             </th>
-            <th scope="col" style="width: 20%">
-              {{ "DAY_OFF_TABLE.TOTAL_LEAVES" | translate }}
+            <th scope="col" class="col-leaves">
+              {{ 'DAY_OFF_TABLE.TOTAL_LEAVES' | translate }}
             </th>
-            <th scope="col" style="width: 20%">
-              {{ "DAY_OFF_TABLE.NUMBER_OF_LEAVES_REMAINING" | translate }}
+            <th scope="col" class="col-leaves">
+              {{ 'DAY_OFF_TABLE.NUMBER_OF_LEAVES_REMAINING' | translate }}
             </th>
-            <th scope="col" style="width: 10%">
-              {{ "DAY_OFF_TABLE.ACTION" | translate }}
+            <th scope="col" class="col-action">
+              {{ 'DAY_OFF_TABLE.ACTION' | translate }}
             </th>
           </tr>
         </thead>
@@ -75,8 +75,8 @@
             <th scope="row">
               {{ i + 1 + (data.pagination.currentPage - 1) * 10 }}
             </th>
-            <td>{{ item.firstName + " " + item.lastName }}</td>
-            <td>{{ item.birthdate | date: "dd/MM/yyyy" }}</td>
+            <td>{{ item.firstName + ' ' + item.lastName }}</td>
+            <td>{{ item.birthdate | date: 'dd/MM/yyyy' }}</td>
             <ng-container *ngFor="let type of types">
               <td *ngIf="selectedType.value === type.name">
                 {{ getTotalLeaves(item.dayOffInfos, type.name) }}
@@ -113,7 +113,7 @@
         class="alert alert-secondary"
         role="alert"
       >
-        {{ "GENERAL_LIST.NO_RESULT" | translate }}
+        {{ 'GENERAL_LIST.NO_RESULT' | translate }}
       </div>
       <div class="col-12" *ngIf="data.pagination.totalCount !== 0">
         <pagination

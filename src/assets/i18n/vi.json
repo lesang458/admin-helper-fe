@@ -113,7 +113,7 @@
     "SIGN_IN": "Đăng nhập vào tài khoản của bạn",
     "EMAIL": "Email",
     "PASS": "Mật khẩu",
-    "FORGOT__PASSWORD": "Quên mật khẩu?",
+    "FORGOT_PASSWORD": "Quên mật khẩu?",
     "SIGN_IN_GG": "Đăng nhập với google"
   },
   "DAY_OFF_CATEGORIES_PAGE": {

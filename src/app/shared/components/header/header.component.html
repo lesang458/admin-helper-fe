@@ -53,11 +53,11 @@
       </a>
       <div class="dropdown-menu dropdown-menu-right pt-0">
         <div class="dropdown-header bg-light py-2">
-          <strong>{{ "HEADER.ACCOUNT" | translate }}</strong>
+          <strong>{{ 'HEADER.ACCOUNT' | translate }}</strong>
         </div>
-        <a class="dropdown-item" style="cursor: pointer" (click)="logout()">
+        <a class="dropdown-item pointer" role="button" (click)="logout()">
           <i class="c-icon mr-3 cil-account-logout"></i>
-          {{ "HEADER.LOGOUT" | translate }}
+          {{ 'HEADER.LOGOUT' | translate }}
         </a>
       </div>
     </li>
@@ -66,7 +66,7 @@
         data-toggle="dropdown"
         aria-haspopup="true"
         aria-expanded="false"
-        style="cursor: pointer"
+        class="pointer"
         role="button"
       >
         <i
@@ -79,19 +79,11 @@
         ></i>
       </a>
       <div class="dropdown-menu dropdown-menu-right pt-0">
-        <a
-          class="dropdown-item"
-          (click)="switchLanguage('vi')"
-          style="cursor: pointer"
-        >
+        <a class="dropdown-item pointer" (click)="switchLanguage('vi')">
           <i class="c-icon mr-3 cif-vn"></i>
-          {{ "HEADER.VIETNAMESE" | translate }}
+          {{ 'HEADER.VIETNAMESE' | translate }}
         </a>
-        <a
-          class="dropdown-item"
-          (click)="switchLanguage('en')"
-          style="cursor: pointer"
-        >
+        <a class="dropdown-item pointer" (click)="switchLanguage('en')">
           <i class="c-icon mr-3 cif-gb"></i>
           English
         </a>
@@ -100,7 +92,7 @@
   </ul>
   <div class="c-subheader px-3">
     <div class="h5 breadcrumb text-muted border-0 m-0">
-      {{ "HEADER.TITLE" | translate }}
+      {{ 'HEADER.TITLE' | translate }}
     </div>
   </div>
 </header>

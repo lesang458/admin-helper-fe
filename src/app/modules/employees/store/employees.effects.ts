@@ -9,6 +9,7 @@ import { PaginatedData } from 'src/app/shared/models/pagination.model';
 import * as camelcaseKeys from 'camelcase-keys';
 import * as snakecaseKeys from 'snakecase-keys';
 import { RequestDayOffModel } from 'src/app/shared/models/request-day-off.model';
+import { ParamsConstant } from 'src/app/shared/constants/params.constant';
 
 @Injectable()
 export class EmployeeEffects {
@@ -39,13 +40,13 @@ export class EmployeeEffects {
         }
 
         let params = new HttpParams()
-          .append('search', action.payload.search)
-          .append('page', action.payload.page)
-          .append('per_page', action.payload.perPage)
-          .append('sort', sort);
+          .append(ParamsConstant.search, action.payload.search)
+          .append(ParamsConstant.page, action.payload.page)
+          .append(ParamsConstant.perPage, action.payload.perPage)
+          .append(ParamsConstant.sort, sort);
 
         if (action.payload.status) {
-          params = params.append('status', action.payload.status);
+          params = params.append(ParamsConstant.status, action.payload.status);
         }
 
         return this.http
@@ -78,6 +79,7 @@ export class EmployeeEffects {
       );
     })
   );
+
   @Effect()
   detailEmployee = this.actions$.pipe(
     ofType(EmployeesActions.DETAIL_EMPLOYEE),
@@ -103,7 +105,7 @@ export class EmployeeEffects {
           snakecaseKeys(action.payload.employee)
         )
         .pipe(
-          map((val) => {
+          map(() => {
             return new EmployeesActions.SearchEmployees(
               action.payload.searchParams
             );

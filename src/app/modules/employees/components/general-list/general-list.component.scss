@@ -15,11 +15,19 @@
     cursor: pointer;
   }
 
-  .btn-action {
-    cursor: pointer;
-    background: transparent;
-    border: 1px solid gray;
-    border-radius: 4px;
-    margin-right: 5px;
+  .col-id {
+    width: 5%;
+  }
+
+  .col-name {
+    width: 30%;
+  }
+
+  .col-date {
+    width: 15%;
+  }
+
+  .col-status {
+    width: 10%;
   }
 }

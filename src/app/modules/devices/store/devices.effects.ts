@@ -8,6 +8,7 @@ import { PaginatedData } from 'src/app/shared/models/pagination.model';
 import { Device } from 'src/app/shared/models/device.model';
 import { switchMap, map } from 'rxjs/operators';
 import { DeviceCategory } from 'src/app/shared/models/deviceCategory';
+import { ParamsConstant } from 'src/app/shared/constants/params.constant';
 
 @Injectable()
 export class DeviceEffects {
@@ -16,11 +17,11 @@ export class DeviceEffects {
     ofType(DevicesActions.FETCH_DEVICES),
     switchMap((action: DevicesActions.FetchDevices) => {
       let params = new HttpParams()
-        .append('page', action.payload.page)
-        .append('per_page', action.payload.perPage);
+        .append(ParamsConstant.page, action.payload.page)
+        .append(ParamsConstant.perPage, action.payload.perPage);
       if (action.payload.deviceCategoryId) {
         params = params.append(
-          'device_category_id',
+          ParamsConstant.deviceCategoryId,
           action.payload.deviceCategoryId
         );
       }
