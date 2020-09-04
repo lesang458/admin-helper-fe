@@ -38,7 +38,7 @@ export class ProfileCreateComponent implements OnInit {
     dayOffInfos: this.formBuilder.array([
       this.formBuilder.group({
         dayOffCategoryId: 1,
-        hours: ['', Validators.pattern('^[0-9]*$')],
+        hours: ['160', Validators.pattern('^[0-9]*$')],
       }),
       this.formBuilder.group({
         dayOffCategoryId: 2,
@@ -54,6 +54,7 @@ export class ProfileCreateComponent implements OnInit {
   ) {}
 
   ngOnInit() {
+    this.dayOffInfos.disable();
     if (this.type !== 'create') {
       this.store.dispatch(new EmployeeActions.DetailEmployee(this.id));
       this.store

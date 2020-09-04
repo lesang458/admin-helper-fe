@@ -225,12 +225,20 @@
             <label>
               {{ "PROFILE_CREATE.HOUR" | translate }}
             </label>
-            <input
+            <div class="total-hours">
+              <input
               type="number"
               class="form-control day"
               formControlName="hours"
               required
-            />
+              />
+              <button *ngIf="dayOffInfos.at(i).disabled" type="button" class="btn btn-outline-info" (click)="dayOffInfos.at(i).enable()">
+                <span class="cil-brush"></span>
+              </button>
+              <button *ngIf="!dayOffInfos.at(i).disabled" type="button" class="btn btn-outline-info" (click)="dayOffInfos.at(i).disable()">
+                <span class="cib-verizon"></span>
+              </button>
+            </div>
             <div
               *ngIf="dayOffInfos.controls[i].get('hours').invalid && (dayOffInfos.controls[i].get('hours').dirty || dayOffInfos.controls[i].get('hours').touched)"
               class="mess-invalid"
