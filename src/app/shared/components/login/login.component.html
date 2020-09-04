@@ -1,52 +1,92 @@
-<div class="form-common">
-  <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
-    <h2 style="text-align: center">{{ "LOGIN.LOGIN" | translate }}</h2>
-    <div class="form-group">
-      <label for="exampleInputEmail1">{{ "LOGIN.EMAIL" | translate }}</label>
-      <input
-        type="email"
-        class="form-control"
-        id="exampleInputEmail1"
-        aria-describedby="emailHelp"
-        formControlName="email"
-      />
-      <div
-        *ngIf="f.email.invalid && (f.email.dirty || f.email.touched)"
-        class="mess-invalid"
-      >
-        <div *ngIf="f.email.errors.required">
-          {{ "PROFILE_CREATE.EMAIL_INVALID" | translate }}
+<div class="c-app flex-row align-items-center">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-md-6">
+        <div class="card-group">
+          <div class="card p-4">
+            <div class="card-body">
+              <h1>{{ 'LOGIN.LOGIN' | translate }}</h1>
+              <p class="text-muted">{{ 'LOGIN.SIGN_IN' | translate }}</p>
+              <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+                <div class="input-group mb-3">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text"><i class="cib-gmail"></i></span>
+                  </div>
+                  <input
+                    class="form-control"
+                    type="email"
+                    formControlName="email"
+                    placeholder="Email"
+                    required
+                  />
+                </div>
+                <div
+                  *ngIf="f.email.invalid && (f.email.dirty || f.email.touched)"
+                  class="mess-invalid"
+                >
+                  <div *ngIf="f.email.errors.required">
+                    {{ 'PROFILE_CREATE.EMAIL_INVALID' | translate }}
+                  </div>
+                  <div *ngIf="f.email.errors.email">
+                    {{ 'PROFILE_CREATE.IS_EMAIL' | translate }}
+                  </div>
+                </div>
+                <div class="input-group mb-4">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text"><i class="cil-lock-locked"></i></span>
+                  </div>
+                  <input
+                    class="form-control"
+                    type="password"
+                    formControlName="password"
+                    placeholder="Password"
+                    required
+                  />
+                </div>
+                <div
+                  *ngIf="f.password.invalid && (f.password.dirty || f.password.touched)"
+                  class="mess-invalid"
+                >
+                  <div *ngIf="f.password.errors.required">
+                    {{ 'PROFILE_CREATE.PASSWORD_INVALID' | translate }}
+                  </div>
+                  <div *ngIf="f.password.errors.minlength">
+                    {{ 'PROFILE_CREATE.PASS_MINLENGTH' | translate }}
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-6">
+                    <button
+                      class="btn btn-primary px-4"
+                      type="submit"
+                      [disabled]="loginForm.invalid"
+                    >
+                      {{ 'LOGIN.LOGIN' | translate }}
+                    </button>
+                  </div>
+                  <div class="col-6 text-right">
+                    <button class="btn btn-link px-0" type="button">
+                      {{ 'LOGIN.FORGOT_PASSWORD' | translate }}
+                    </button>
+                  </div>
+                </div>
+                <div class="row mt-3">
+                  <div class="col-6">
+                    <button
+                      type="button"
+                      class="btn btn-outline-primary"
+                      (click)="signInWithGoogle()"
+                    >
+                      <i class="cib-google mr-2"></i>
+                      {{ 'LOGIN.SIGN_IN_GG' | translate }}
+                    </button>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
         </div>
-        <div *ngIf="f.email.errors.email">
-          {{ "PROFILE_CREATE.IS_EMAIL" | translate }}
-        </div>
       </div>
     </div>
-    <div class="form-group">
-      <label for="exampleInputPassword1">{{ "LOGIN.PASS" | translate }}</label>
-      <input
-        type="password"
-        class="form-control"
-        id="exampleInputPassword1"
-        formControlName="password"
-      />
-      <div
-        *ngIf="f.password.invalid && (f.password.dirty || f.password.touched)"
-        class="mess-invalid"
-      >
-      <div *ngIf="f.password.errors.required">
-        {{ "PROFILE_CREATE.PASSWORD_INVALID" | translate }}
-      </div>
-      <div *ngIf="f.password.errors.minlength">
-        {{ "PROFILE_CREATE.PASS_MINLENGTH" | translate }}
-      </div>
-    </div>
-    </div>
-    <button type="submit" class="btn btn-primary ml-2">
-      {{ "LOGIN.LOGIN" | translate }}
-    </button>
-    <button type="button" (click)="signInWithGoogle()" class="btn btn-primary">
-      {{ "LOGIN.SIGN_IN_GG" | translate }}
-    </button>
-  </form>
+  </div>
 </div>

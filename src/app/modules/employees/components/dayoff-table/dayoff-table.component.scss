@@ -1,0 +1,23 @@
+.table {
+  .col-id {
+    width: 5%;
+  }
+
+  .col-name {
+    width: 25%;
+    cursor: pointer;
+  }
+
+  .col-birthday {
+    width: 20%;
+    cursor: pointer;
+  }
+
+  .col-leaves {
+    width: 20%;
+  }
+
+  .col-action {
+    width: 10%;
+  }
+}
