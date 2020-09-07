@@ -6,7 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./general-info.component.scss']
 })
 export class GeneralInfoComponent implements OnInit {
-
+  public title = 'GENERAL_LIST.TITLE';
   constructor() { }
 
   ngOnInit(): void {

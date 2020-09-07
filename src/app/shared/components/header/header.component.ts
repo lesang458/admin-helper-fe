@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import { Store } from '@ngrx/store';
 import * as fromApp from '../../../store/app.reducer';
@@ -10,6 +10,7 @@ import * as AuthActions from '../../store/auth.actions';
   styleUrls: ['./header.component.scss'],
 })
 export class HeaderComponent implements OnInit {
+  @Input() title: string;
   constructor(
     public translate: TranslateService,
     private store: Store<fromApp.AppState>

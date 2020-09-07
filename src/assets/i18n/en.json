@@ -9,7 +9,6 @@
     "LINK_6": "Day off type"
   },
   "HEADER": {
-    "TITLE": "Employees List",
     "VIETNAMESE": "Vietnamese",
     "ACCOUNT": "Account",
     "LOGOUT": "Logout"
@@ -18,6 +17,7 @@
     "DEVELOPED_BY": "Developed by"
   },
   "GENERAL_LIST": {
+    "TITLE": "Employees List",
     "NAME": "Name",
     "BIRTHDAY": "Birthday",
     "JOIN_DATE": "Join date",
@@ -31,6 +31,7 @@
     "NO_RESULT": "No result."
   },
   "DAY_OFF_TABLE": {
+    "TITLE": "Day off List",
     "TYPE_OF_LEAVE": "Type of leave",
     "SICK_LEAVE": "Sick leave",
     "ANNUAL_LEAVE": "Annual leave",
@@ -102,6 +103,7 @@
     "TITLE": "Edit Employee Profile"
   },
   "DEVICE_TABLE": {
+    "TITLE": "Devices List",
     "TYPE_OF_DEVICE": "Type of device",
     "ALL": "All",
     "CATEGORY_NAME": "Category name:",
@@ -120,6 +122,7 @@
     "SIGN_IN_GG": "Sign In With Google"
   },
   "DAY_OFF_CATEGORIES_PAGE": {
+    "TITLE": "Day off category List",
     "NAME": "Name",
     "DESCRIPTION": "Description",
     "ACTION": "Action",
@@ -139,6 +142,7 @@
     "DAYOFF": "Number of dayoff"
   },
   "DEVICE_HISTORY": {
+    "TITLE": "Devices history list",
     "FROM_DATE": "From date",
     "TO_DATE": "To date",
     "STATUS": "Status",

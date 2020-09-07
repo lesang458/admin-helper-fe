@@ -9,7 +9,6 @@
     "LINK_6": "Loại ngày phép"
   },
   "HEADER": {
-    "TITLE": "Danh sách nhân viên",
     "VIETNAMESE": "Tiếng việt",
     "ACCOUNT": "Tài khoản",
     "LOGOUT": "Đăng xuất"
@@ -18,6 +17,7 @@
     "DEVELOPED_BY": "Được phát triển bởi"
   },
   "GENERAL_LIST": {
+    "TITLE": "Danh sách nhân viên",
     "NAME": "Họ và tên",
     "BIRTHDAY": "Ngày sinh",
     "JOIN_DATE": "Ngày vào công ty",
@@ -31,6 +31,7 @@
     "NO_RESULT": "Không có kết quả."
   },
   "DAY_OFF_TABLE": {
+    "TITLE": "Danh sách ngày phép",
     "TYPE_OF_LEAVE": "Loại phép",
     "SICK_LEAVE": "Nghỉ ốm",
     "ANNUAL_LEAVE": "Phép năm",
@@ -100,6 +101,7 @@
     "TITLE": "Chỉnh sửa hồ sơ nhân viên"
   },
   "DEVICE_TABLE": {
+    "TITLE": "Danh sách thiết bị",
     "TYPE_OF_DEVICE": "Loại thiết bị",
     "ALL": "Tất cả",
     "CATEGORY_NAME": "Tên danh mục:",
@@ -118,6 +120,7 @@
     "SIGN_IN_GG": "Đăng nhập với google"
   },
   "DAY_OFF_CATEGORIES_PAGE": {
+    "TITLE": "Danh sách loại ngày phép",
     "NAME": "Tên",
     "DESCRIPTION": "Mô tả",
     "ACTION": "Hành động",
@@ -137,6 +140,7 @@
     "DAYOFF": "Số ngày nghỉ"
   },
   "DEVICE_HISTORY": {
+    "TITLE": "Danh sách lịch sử thiết bị",
     "FROM_DATE": "Từ ngày",
     "TO_DATE": "Đến ngày",
     "STATUS": "Trạng thái",
