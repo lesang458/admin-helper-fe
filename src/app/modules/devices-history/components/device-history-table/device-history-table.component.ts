@@ -5,7 +5,6 @@ import * as DevicesActions from '../../../devices/store/devices.actions';
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
-import { DayOffCategory } from 'src/app/shared/models/dayoff-category.model';
 import { DeviceHistory } from 'src/app/shared/models/devices-history.model';
 import { map } from 'rxjs/operators';
 import { PaginatedData } from 'src/app/shared/models/pagination.model';
