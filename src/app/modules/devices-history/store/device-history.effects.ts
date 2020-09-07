@@ -76,7 +76,6 @@ export class DeviceHistoryEffects {
 
   constructor(
     private actions$: Actions,
-    private http: HttpClient,
-    private store: Store<fromApp.AppState>
+    private http: HttpClient
   ) {}
 }

@@ -9,7 +9,6 @@
           <select
             [formControl]="selectedCategory"
             class="form-control d-inline-block"
-            style="width: auto"
             id="device-category"
           >
             <option value="">{{ 'DEVICE_TABLE.ALL' | translate }}</option>
@@ -26,7 +25,6 @@
           </label>
           <select
             class="form-control d-inline-block"
-            style="width: auto"
             id="status-type"
             [formControl]="searchStatusFormControl"
           >
@@ -53,7 +51,6 @@
         <input
           type="date"
           class="form-control d-inline-block"
-          style="width: auto"
           id="from-date"
           [formControl]="selectedFromDate"
         />
@@ -67,7 +64,6 @@
           <input
             type="date"
             class="form-control d-inline-block"
-            style="width: auto"
             id="to-date"
             [formControl]="selectedToDate"
           />
@@ -77,20 +73,20 @@
       <table class="table table-bordered">
         <thead>
           <tr>
-            <th scope="col" style="width: 6%">ID</th>
-            <th scope="col" style="width: 22%">
+            <th scope="col" class="col-id">ID</th>
+            <th scope="col" class="col-name">
               {{ 'DEVICE_HISTORY.DEVICE_NAME' | translate }}
             </th>
-            <th scope="col" style="width: 15%">
+            <th scope="col" class="col-from-date">
               {{ 'DEVICE_HISTORY.FROM_DATE' | translate }}
             </th>
-            <th scope="col" style="width: 15%">
+            <th scope="col" class="col-to-date">
               {{ 'DEVICE_HISTORY.TO_DATE' | translate }}
             </th>
-            <th scope="col" style="width: 20%">
+            <th scope="col" class="col-status">
               {{ 'DEVICE_HISTORY.STATUS' | translate }}
             </th>
-            <th scope="col" style="width: 22%">
+            <th scope="col" class="col-full-name">
               {{ 'DEVICE_HISTORY.FULL_NAME' | translate }}
             </th>
           </tr>
@@ -101,8 +97,8 @@
               {{ i + 1 + (data.pagination.currentPage - 1) * 10 }}
             </th>
             <td>
-              <span 
-                style="cursor: pointer; text-decoration: underline; color:blue" 
+              <span
+                class="device-name" 
                 (click)="openModalWithComponent(item.id)">
                 {{ item.device?.name }}
               </span>
@@ -111,19 +107,16 @@
             <td>{{ item.toDate | date: 'dd/MM/yyyy' }}</td>
             <td>
               <span
-                style="width: 70px;"
                 class="badge rounded-pill badge-danger p-2"
                 *ngIf="item?.status === 'discarded'"
                 >{{ 'DEVICE_HISTORY.DISCARDED' | translate }}
               </span>
               <span
-                style="width: 70px;"
                 class="badge rounded-pill badge-success p-2"
                 *ngIf="item?.status === 'in_inventory'">
                 {{ 'DEVICE_HISTORY.IN_INVENTORY' | translate }}
               </span>
               <span
-                style="width: 70px;"
                 class="badge rounded-pill badge-info p-2"
                 *ngIf="item?.status === 'assigned'">
                 {{ 'DEVICE_HISTORY.ASSIGNED' | translate }}

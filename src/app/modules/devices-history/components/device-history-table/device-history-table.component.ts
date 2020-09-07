@@ -16,6 +16,7 @@ import { DeviceHistoryDetailComponent } from '../device-history-detail/device-hi
 @Component({
   selector: 'ah-device-history-table',
   templateUrl: './device-history-table.component.html',
+  styleUrls: ['./device-history-table.component.scss']
 })
 export class DeviceHistoryTableComponent implements OnInit {
   public data$: Observable<PaginatedData<DeviceHistory[]>>;
@@ -41,37 +42,28 @@ export class DeviceHistoryTableComponent implements OnInit {
     this.categories$ = this.store.select('devices')
     this.store.dispatch(new DevicesActions.FetchDeviceCategories());
     this.selectedCategory.valueChanges.subscribe(() => {
-      if (this.currentPage === 1) {
-        this.onPageChanged(1);
-      } else {
-        this.currentPage = 1;
-      }
+      this.onDataChanged();
     });
 
     this.searchStatusFormControl.valueChanges.subscribe(() => {
-      if (this.currentPage === 1) {
-        this.onPageChanged(1);
-      } else {
-        this.currentPage = 1;
-      }
+      this.onDataChanged();
     });
 
     this.selectedFromDate.valueChanges.subscribe(() => {
-      if (this.currentPage === 1) {
-        this.onPageChanged(1);
-      } else {
-        this.currentPage = 1;
-      }
+      this.onDataChanged();
     });
 
     this.selectedToDate.valueChanges.subscribe(() => {
-      if (this.currentPage === 1) {
-        this.onPageChanged(1);
-      } else {
-        this.currentPage = 1;
-      }
+      this.onDataChanged();
     });
+  }
 
+  public onDataChanged(): void {
+    if (this.currentPage === 1) {
+      this.onPageChanged(1);
+    } else {
+      this.currentPage = 1;
+    }
   }
 
   public onPageChanged(page: number): void { 
