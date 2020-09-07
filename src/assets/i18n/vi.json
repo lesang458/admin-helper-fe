@@ -137,6 +137,7 @@
   },
   "DEVICE_EDIT": {
     "EDIT_TITLE": "Chỉnh sửa thông tin thiết bị",
-    "CREATE_TITLE": "Tạo thiết bị"
+    "CREATE_TITLE": "Tạo thiết bị",
+    "DEVICE_NAME": "Tên thiết bị"
   }
 }

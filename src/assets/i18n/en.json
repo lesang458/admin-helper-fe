@@ -139,6 +139,7 @@
   },
   "DEVICE_EDIT": {
     "EDIT_TITLE": "Edit Device",
-    "CREATE_TITLE": "Create Device"
+    "CREATE_TITLE": "Create Device",
+    "DEVICE_NAME": "Device Name"
   }
 }

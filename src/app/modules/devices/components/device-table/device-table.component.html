@@ -1,72 +1,70 @@
-<div class="card">
-  <div class="card-body" *ngIf="data$ | async as data">
-    <div class="row mb-2">
-      <div class="col-5">
-        <div class="form-group">
-          <label class="d-inline-block mr-3 ml-2" for="device-category">
-            {{ 'DEVICE_TABLE.TYPE_OF_DEVICE' | translate }}
-          </label>
-          <select
-            [formControl]="selectedCategory"
-            class="form-control d-inline-block"
-            style="width: auto"
-            id="device-category"
+<div *ngIf="data$ | async as data">
+  <div class="row mb-2">
+    <div class="col-5">
+      <div class="form-group">
+        <label class="d-inline-block mr-3 ml-2" for="device-category">
+          {{ 'DEVICE_TABLE.TYPE_OF_DEVICE' | translate }}
+        </label>
+        <select
+          [formControl]="selectedCategory"
+          class="form-control d-inline-block"
+          style="width: auto"
+          id="device-category"
+        >
+          <option value="">{{ 'DEVICE_TABLE.ALL' | translate }}</option>
+          <option *ngFor="let item of data.categories" [value]="item.id">
+            {{ item.name }}
+          </option>
+        </select>
+      </div>
+    </div>
+  </div>
+  <div class="card mb-3" *ngFor="let item of data.devices.data; let i = index">
+    <div class="card-header">
+      <div class="row">
+        <div class="col-3">
+          {{ item.name }}
+        </div>
+        <div class="col-3">
+          {{ 'DEVICE_TABLE.CATEGORY_NAME' | translate }}
+          {{ ' ' + item.categoryName }}
+        </div>
+        <div class="col-3">
+          {{ 'DEVICE_TABLE.ASSIGNED_TO' | translate }}
+          {{ ' ' + getUserName(item.user) }}
+        </div>
+        <div class="col-3 d-flex justify-content-end">
+          <button
+            class="btn btn-outline-info mr-2"
+            (click)="openModalWithComponent(item, deviceParams)"
           >
-            <option value="">{{ 'DEVICE_TABLE.ALL' | translate }}</option>
-            <option *ngFor="let item of data.categories" [value]="item.id">
-              {{ item.name }}
-            </option>
-          </select>
+            <span class="cil-brush"></span>
+          </button>
+          <button class="btn btn-outline-danger mr-2">
+            <i class="cil-trash"></i>
+          </button>
+          <button class="btn btn-ghost" (click)="onExpand(item.id, i)">
+            <i class="cil-chevron-right" *ngIf="!state[i]"></i>
+            <i class="cil-chevron-top" *ngIf="state[i]"></i>
+          </button>
         </div>
       </div>
     </div>
+    <div class="card-body" id="{{ item.id }}" style="display: none">
+      <table class="table table-bordered">
+        <tr>
+          <td>{{ 'DEVICE_TABLE.PRICE' | translate }}</td>
+          <td>{{ item.price | currency: 'VND' }}</td>
+        </tr>
+        <tr>
+          <td>{{ 'DEVICE_TABLE.DESCRIPTION' | translate }}</td>
+          <td>{{ item.description }}</td>
+        </tr>
+      </table>
+    </div>
+  </div>
+  <div class="mt-2 mb-2">
     <div>
-      <div
-        class="card mb-3 card-accent-secondary"
-        *ngFor="let item of data.devices.data; let i = index"
-      >
-        <div class="card-header">
-          <div class="row">
-            <div class="col-3">
-              {{ item.name }}
-            </div>
-            <div class="col-3">
-              {{ 'DEVICE_TABLE.CATEGORY_NAME' | translate }}
-              {{ ' ' + item.categoryName }}
-            </div>
-            <div class="col-3">
-              {{ 'DEVICE_TABLE.ASSIGNED_TO' | translate }}
-              {{ ' ' + getUserName(item.user) }}
-            </div>
-            <div class="col-3 d-flex justify-content-end">
-              <button
-                class="btn btn-outline-info mr-2"
-                (click)="openModalWithComponent(item, deviceParams)"
-              >
-                <span class="cil-brush"></span>
-              </button>
-              <button class="btn btn-outline-danger mr-2">
-                <i class="cil-trash"></i>
-              </button>
-              <button class="btn btn-ghost" (click)="onExpand(item.id)">
-                <i class="c-icon cil-arrow-circle-bottom"></i>
-              </button>
-            </div>
-          </div>
-        </div>
-        <div class="card-body" id="{{ item.id }}" style="display: none">
-          <table class="table table-bordered">
-            <tr>
-              <td>{{ 'DEVICE_TABLE.PRICE' | translate }}</td>
-              <td>{{ item.price | currency: 'VND' }}</td>
-            </tr>
-            <tr>
-              <td>{{ 'DEVICE_TABLE.DESCRIPTION' | translate }}</td>
-              <td>{{ item.description }}</td>
-            </tr>
-          </table>
-        </div>
-      </div>
       <div class="col-12" *ngIf="data.devices.pagination.totalCount !== 0">
         <pagination
           [totalItems]="data.devices.pagination.totalCount"

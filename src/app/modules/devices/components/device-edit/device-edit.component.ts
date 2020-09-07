@@ -48,6 +48,12 @@ export class DeviceEditComponent implements OnInit {
     return this.deviceForm.controls;
   }
 
+  public getPriceErrorMessage(): string {
+    if (this.f.price.hasError('require')) {
+      return 'This field is required.';
+    }
+  }
+
   public onSubmit(): void {
     console.log(this.deviceForm.value);
   }

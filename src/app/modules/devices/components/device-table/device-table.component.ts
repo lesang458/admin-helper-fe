@@ -11,6 +11,7 @@ import { State } from '../../store/devices.reducer';
 import { Device } from 'src/app/shared/models/device.model';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 import { DeviceEditComponent } from '../device-edit/device-edit.component';
+import { tap } from 'rxjs/operators';
 
 @Component({
   selector: 'ah-device-table',
@@ -20,6 +21,7 @@ import { DeviceEditComponent } from '../device-edit/device-edit.component';
 export class DeviceTableComponent implements OnInit {
   public data$: Observable<State>;
   public categories$: Observable<DeviceCategory[]>;
+  public state: boolean[];
   public currentPage = 1;
   public selectedCategory = new FormControl('');
   public deviceParams: DeviceParams;
@@ -31,7 +33,12 @@ export class DeviceTableComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.data$ = this.store.select('devices');
+    this.data$ = this.store.select('devices').pipe(
+      tap((data) => {
+        this.state = new Array<boolean>(data.devices.pagination.pageSize);
+        this.state = this.state.map(() => false);
+      })
+    );
     this.store.dispatch(new DevicesActions.FetchDeviceCategories());
     this.onPageChanged(1);
 
@@ -44,9 +51,10 @@ export class DeviceTableComponent implements OnInit {
     });
   }
 
-  public onExpand(id): void {
+  public onExpand(id, index: number): void {
     const el: HTMLElement = document.getElementById(id);
     el.style.display = el.style.display === 'none' ? 'block' : 'none';
+    this.state[index] = !this.state[index];
   }
 
   public getUserName(user: any): string {
