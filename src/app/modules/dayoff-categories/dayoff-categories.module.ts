@@ -7,6 +7,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { ModalModule } from 'ngx-bootstrap/modal';
 import { DayOffCategoriesListComponent } from './components/dayoff-categories-list/dayoff-categories-list.component';
 import { DayOffCategoryEditComponent } from './components/dayoff-category-edit/dayoff-category-edit.component';
+import { TitleCasePipe } from '@angular/common';
 @NgModule({
   declarations: [
     DayOffCategoriesListComponent,
@@ -19,5 +20,6 @@ import { DayOffCategoryEditComponent } from './components/dayoff-category-edit/d
     ReactiveFormsModule,
     ModalModule.forRoot(),
   ],
+  providers: [TitleCasePipe],
 })
 export class DayOffCategoriesModule {}

@@ -55,6 +55,7 @@ export class DayOffCategoriesEffects {
         data: {
           name: body.name,
           description: body.description,
+          hours: body.totalHoursDefault,
         },
       }).pipe(
         map((val) => {
@@ -83,6 +84,7 @@ export class DayOffCategoriesEffects {
           id: body.id,
           name: body.name,
           description: body.description,
+          hours: body.totalHoursDefault,
         },
       }).pipe(
         map((val) => {
