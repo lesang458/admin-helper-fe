@@ -34,8 +34,8 @@
             <option value="ACTIVE">
               {{ 'GENERAL_LIST.ACTIVE' | translate }}
             </option>
-            <option value="DELETED">
-              {{ 'GENERAL_LIST.DELETED' | translate }}
+            <option value="FORMER">
+              {{ 'GENERAL_LIST.FORMER' | translate }}
             </option>
           </select>
         </div>
@@ -97,7 +97,7 @@
               <span
                 class="badge rounded-pill badge-danger p-2"
                 *ngIf="item.status !== 'ACTIVE'"
-                >{{ 'GENERAL_LIST.DELETED' | translate }}</span
+                >{{ 'GENERAL_LIST.FORMER' | translate }}</span
               >
               <span
                 class="badge rounded-pill badge-success p-2"

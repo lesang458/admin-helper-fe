@@ -24,8 +24,8 @@
     "STATUS": "Trạng Thái",
     "ACTIONS": "Hành động",
     "ALL": "Tất cả",
-    "ACTIVE": "Hoạt động",
-    "DELETED": "Đã xóa",
+    "ACTIVE": "Đang hoạt động",
+    "FORMER": "Trước đây",
     "CREATE_EMPLOYEE_PROFILE": "Tạo hồ sơ nhân viên",
     "NO_RESULT": "Không có kết quả."
   },
