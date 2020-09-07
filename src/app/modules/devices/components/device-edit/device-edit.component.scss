@@ -1,0 +1,17 @@
+.modal-body {
+  input[type='number']::-webkit-inner-spin-button,
+  input[type='number']::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+  }
+
+  input[type='number'] {
+    -moz-appearance: textfield;
+  }
+
+  .invalid-message {
+    width: 100%;
+    margin-top: 0.25rem;
+    font-size: 80%;
+    color: red;
+  }
+}

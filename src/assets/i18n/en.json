@@ -140,6 +140,10 @@
   "DEVICE_EDIT": {
     "EDIT_TITLE": "Edit Device",
     "CREATE_TITLE": "Create Device",
-    "DEVICE_NAME": "Device Name"
+    "DEVICE_NAME": "Device Name",
+    "DEVICE_NAME_REQUIRED": "Device name is required.",
+    "DEVICE_NAME_MAX_LENGTH": "Device name must not exceed 100 characters.",
+    "PRICE_REQUIRED": "Price is required.",
+    "PRICE_PATTERN": "Price must be a number"
   }
 }

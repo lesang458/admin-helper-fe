@@ -19,7 +19,10 @@
       </div>
     </div>
   </div>
-  <div class="card mb-3" *ngFor="let item of data.devices.data; let i = index">
+  <div
+    class="card mb-3 card-accent-secondary"
+    *ngFor="let item of data.devices.data; let i = index"
+  >
     <div class="card-header">
       <div class="row">
         <div class="col-3">
@@ -43,10 +46,14 @@
           <button class="btn btn-outline-danger mr-2">
             <i class="cil-trash"></i>
           </button>
-          <button class="btn btn-ghost" (click)="onExpand(item.id, i)">
+          <a
+            role="button"
+            class="ml-2 mt-2 pointer"
+            (click)="onExpand(item.id, i)"
+          >
             <i class="cil-chevron-right" *ngIf="!state[i]"></i>
             <i class="cil-chevron-top" *ngIf="state[i]"></i>
-          </button>
+          </a>
         </div>
       </div>
     </div>

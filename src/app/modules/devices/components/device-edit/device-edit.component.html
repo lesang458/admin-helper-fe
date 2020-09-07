@@ -28,6 +28,12 @@
             formControlName="name"
             required
           />
+          <div
+            *ngIf="f.name.invalid && (f.name.dirty || f.name.touched)"
+            class="invalid-message"
+          >
+            {{ getNameErrorMessage() }}
+          </div>
         </div>
       </div>
     </div>
@@ -42,7 +48,10 @@
             formControlName="price"
             required
           />
-          <div *ngIf="f.price.invalid && (f.price.dirty || f.price.touched)">
+          <div
+            *ngIf="f.price.invalid && (f.price.dirty || f.price.touched)"
+            class="invalid-message"
+          >
             {{ getPriceErrorMessage() }}
           </div>
         </div>
