@@ -98,6 +98,12 @@
   "PROFILE_EDIT": {
     "TITLE": "Chỉnh sửa hồ sơ nhân viên"
   },
+  "PROFILE_DELETE": {
+    "TITLE": "Xác nhận thay đổi trạng thái nhân viên",
+    "PARAMS": "Xác nhận muốn thay đổi trạng thái nhân viên?",
+    "ABORT": "Hủy bỏ",
+    "ACCEPT": "Đồng ý"
+  },
   "DEVICE_TABLE": {
     "TYPE_OF_DEVICE": "Loại thiết bị",
     "ALL": "Tất cả",

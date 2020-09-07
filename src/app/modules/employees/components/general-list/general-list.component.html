@@ -113,10 +113,17 @@
                 <span class="cil-external-link"></span>
               </button>
               <button
-                class="btn btn-outline-primary"
+                class="btn btn-outline-primary mr-2"
                 (click)="openModalWithComponent(item.id, 'edit', searchParams)"
               >
                 <span class="cil-brush"></span>
+              </button>
+              
+              <button 
+                class="btn btn-outline-danger mr-2"
+                (click)="openModalWithComponent(item.id, 'delete', null)"
+              >
+                <i class="cil-trash"></i>
               </button>
             </td>
           </tr>

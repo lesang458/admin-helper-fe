@@ -115,6 +115,24 @@ export class EmployeeEffects {
   );
 
   @Effect()
+  deleteEmployee = this.actions$.pipe(
+    ofType(EmployeesActions.DELETE_EMPLOYEE),
+    switchMap((action: EmployeesActions.DeleteEmployee) => {
+      return this.http
+        .patch(
+          `${environment.APILink}/employees/${action.payload}/status?status=FORMER`,
+          {}
+        )
+        .pipe(
+          map((val: any) => {
+            const employee: Employee = camelcaseKeys(val.user);
+            return new EmployeesActions.DeleteEmployeeSuccess(employee);
+          })
+        );
+    })
+  );
+
+  @Effect()
   requestDayOff = this.actions$.pipe(
     ofType(EmployeesActions.REQUEST_DAY_OFF),
     switchMap((action: EmployeesActions.RequestDayOff) => {
