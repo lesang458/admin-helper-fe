@@ -12,7 +12,7 @@ import { BsModalRef } from 'ngx-bootstrap/modal';
 })
 export class DeviceHistoryDetailComponent implements OnInit {
   public id: number;
-  public data: DeviceHistory
+  public data: DeviceHistory;
   constructor( private store: Store<fromApp.AppState>, public bsModalRef: BsModalRef) {}
 
   ngOnInit(): void {
@@ -20,7 +20,6 @@ export class DeviceHistoryDetailComponent implements OnInit {
     this.store.select((s) => s.deviceHistory.detailDeviceHistory)
       .subscribe((data: DeviceHistory) => {
         if (data) {
-          console.log("DeviceHistoryDetailComponent -> ngOnInit -> data", data)
           this.data = data;
         }
       });
