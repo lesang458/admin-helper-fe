@@ -110,12 +110,12 @@
     "DESCRIPTION": "Description",
     "CREATE_DEVICE": "Create Device"
   },
-  "PROFILE_DELETE": {
+  "PROFILE_STATUS_CHANGE": {
     "TITLE": "Confirm employee status change",
     "PARAMS": "Are you sure you want to change the employee's status?",
     "ABORT": "Abort",
     "ACCEPT": "Accept"
-  },
+  },  
   "LOGIN": {
     "LOGIN": "Login",
     "SIGN_IN": "Sign In to your account",

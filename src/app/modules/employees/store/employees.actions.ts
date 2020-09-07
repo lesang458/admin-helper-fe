@@ -15,6 +15,7 @@ export interface EmployeesParam {
   id?: number;
   employee?: Employee;
   searchParams?: SearchParams;
+  status?: string;
 }
 
 export const GET_EMPLOYEES_SUCCESS = '[Employees] Get Employees Success';
@@ -22,7 +23,7 @@ export const SEARCH_EMPLOYEES = '[Employees] Search Employees';
 export const FETCH_DAY_OFF = '[Employees] Fetch Day Off';
 export const SET_DAY_OFF = '[Employees] Set Day Off';
 export const CREATE_EMPLOYEE = '[Employees] Create Employee';
-export const DELETE_EMPLOYEE = '[Employees] Delete Employee';
+export const CHANGE_STATUS_EMPLOYEE = '[Employees] Change Status Employee';
 export const DETAIL_EMPLOYEE = '[Employees] Detail Employee';
 export const DETAIL_EMPLOYEE_SUCCESS = '[Employees] Detail Employee Success';
 export const EDIT_EMPLOYEE = '[Employees] Edit Employee';
@@ -53,8 +54,8 @@ export class CreateEmployee implements Action {
   constructor(public payload: Employee) {}
 }
 
-export class DeleteEmployee implements Action {
-  readonly type = DELETE_EMPLOYEE;
+export class ChangeStatusEmployee implements Action {
+  readonly type = CHANGE_STATUS_EMPLOYEE;
   constructor(public payload: EmployeesParam) {}
 }
 
@@ -85,7 +86,7 @@ export type EmployeesActions =
   | FetchDayOff
   | SetDayOff
   | CreateEmployee
-  | DeleteEmployee
+  | ChangeStatusEmployee
   | DetailEmployee
   | DetailEmployeeSuccess
   | EditEmployee

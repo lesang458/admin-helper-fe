@@ -116,11 +116,11 @@ export class EmployeeEffects {
 
   @Effect()
   deleteEmployee = this.actions$.pipe(
-    ofType(EmployeesActions.DELETE_EMPLOYEE),
-    switchMap((action: EmployeesActions.DeleteEmployee) => {
+    ofType(EmployeesActions.CHANGE_STATUS_EMPLOYEE),
+    switchMap((action: EmployeesActions.ChangeStatusEmployee) => {
       return this.http
         .patch(
-          `${environment.APILink}/employees/${action.payload.id}/status?status=FORMER`,
+          `${environment.APILink}/employees/${action.payload.id}/status?status=${action.payload.status}`,
           {}
         )
         .pipe(

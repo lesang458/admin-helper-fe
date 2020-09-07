@@ -120,10 +120,24 @@
               </button>
               
               <button 
+                *ngIf="item.status === 'ACTIVE'"
                 class="btn btn-outline-danger mr-2"
                 (click)="openModalWithComponent(item.id, 'delete', searchParams)"
-              >
+              >              
                 <i class="cil-trash"></i>
+              </button>
+
+              <button 
+                *ngIf="item.status !== 'ACTIVE'" 
+                class="btn btn-outline-info mr-2"
+                (click)="openModalWithComponent(item.id, 'active', searchParams)"
+              >   
+                <img
+                    src="assets/img/restore.jpg"
+                    intrinsicsize="512 x 512"
+                    width="20"
+                    height="20"
+                  />           
               </button>
             </td>
           </tr>

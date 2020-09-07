@@ -106,11 +106,12 @@ export class ProfileCreateComponent implements OnInit {
         new EmployeeActions.CreateEmployee(this.profileForm.value)
       );
     } else {
-      if (this.type === 'delete') {
+      if (this.type === 'delete' || this.type === 'active') {
         const id = this.id;
+        const status = this.type === 'delete' ? 'FORMER' : 'ACTIVE';
         const searchParams = this.refresh;
-        const params = { id, searchParams };
-        this.store.dispatch(new EmployeeActions.DeleteEmployee(params));
+        const params = { id, status, searchParams };
+        this.store.dispatch(new EmployeeActions.ChangeStatusEmployee(params));
       } else {
         const id = this.id;
         const employee = this.profileForm.value;

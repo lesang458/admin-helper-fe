@@ -9,7 +9,7 @@
     {{ 'PROFILE_EDIT.TITLE' | translate }}
   </h4>
   <h4 *ngIf="type === 'delete'" class="modal-title pull-left">
-    {{ 'PROFILE_DELETE.TITLE' | translate }}
+    {{ 'PROFILE_STATUS_CHANGE.TITLE' | translate }}
   </h4>
   <button
     type="button"
@@ -21,7 +21,7 @@
   </button>
 </div>
 <form [formGroup]="profileForm" (ngSubmit)="onSubmit()">
-  <div *ngIf="type !== 'delete'">
+  <div *ngIf="type !== 'delete' && type !== 'active'">
     <div class="modal-body">
       <div class="form-row">
         <div class="form-group col-md-6">
@@ -289,19 +289,19 @@
     </div>
   </div>
   
-  <div *ngIf="type === 'delete'">
+  <div *ngIf="type === 'delete' || type === 'active'">
     <div class="modal-body">
-      {{ 'PROFILE_DELETE.PARAMS' | translate }}
+      {{ 'PROFILE_STATUS_CHANGE.PARAMS' | translate }}
     </div>
     <div class="modal-footer">
       <button type="button" class="btn btn-secondary" (click)="bsModalRef.hide()">
-        {{ 'PROFILE_DELETE.ABORT' | translate }}
+        {{ 'PROFILE_STATUS_CHANGE.ABORT' | translate }}
       </button>
       <button
         type="submit"
         class="btn btn-primary"
       >
-        {{ 'PROFILE_DELETE.ACCEPT' | translate }}
+        {{ 'PROFILE_STATUS_CHANGE.ACCEPT' | translate }}
       </button>
     </div>  
   </div>  
