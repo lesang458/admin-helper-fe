@@ -5,7 +5,7 @@ import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ModalModule } from 'ngx-bootstrap/modal';
 import { DeviceHistoryListComponent } from './pages/device-history-list/device-history-list.component';
-import { DeviceHistoryTableComponent } from './components/device-history-table/device-hisyory-table.component';
+import { DeviceHistoryTableComponent } from './components/device-history-table/device-history-table.component';
 import { PaginationModule } from 'ngx-bootstrap/pagination';
 import { DeviceHistoryDetailComponent } from './components/device-history-detail/device-history-detail.component';
 @NgModule({
