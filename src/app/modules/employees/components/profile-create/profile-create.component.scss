@@ -17,6 +17,20 @@
     .form-group{
       margin-bottom: 0;
     }
+    .total-hours {
+      position: relative;
+      input {
+        width: 230px;
+      }
+      button {
+        position: absolute;
+        right: 0;
+        top: 0;
+        span {
+          width: 10px;
+        }
+      }
+    }
   }
 }
 

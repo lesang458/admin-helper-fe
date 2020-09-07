@@ -1,12 +1,12 @@
 <div class="modal-header">
   <h4 *ngIf="type === 'create'" class="modal-title pull-left">
-    {{ "PROFILE_CREATE.TITLE" | translate }}
+    {{ 'PROFILE_CREATE.TITLE' | translate }}
   </h4>
   <h4 *ngIf="type === 'detail'" class="modal-title pull-left">
-    {{ "PROFILE_DETAIL.TITLE" | translate }}
+    {{ 'PROFILE_DETAIL.TITLE' | translate }}
   </h4>
   <h4 *ngIf="type === 'edit'" class="modal-title pull-left">
-    {{ "PROFILE_EDIT.TITLE" | translate }}
+    {{ 'PROFILE_EDIT.TITLE' | translate }}
   </h4>
   <button
     type="button"
@@ -22,7 +22,7 @@
     <div class="form-row">
       <div class="form-group col-md-6">
         <label for="exampleFormControlInput1">
-          {{ "PROFILE_CREATE.FIRST_NAME" | translate }}
+          {{ 'PROFILE_CREATE.FIRST_NAME' | translate }}
         </label>
         <input
           type="text"
@@ -36,16 +36,16 @@
           class="mess-invalid"
         >
           <div *ngIf="f.firstName.errors.required">
-            {{ "PROFILE_CREATE.FIRST_NAME_INVALID" | translate }}
+            {{ 'PROFILE_CREATE.FIRST_NAME_INVALID' | translate }}
           </div>
           <div *ngIf="f.firstName.errors.maxlength">
-            {{ "PROFILE_CREATE.FIRST_NAME_MAXLENGTH" | translate }}
+            {{ 'PROFILE_CREATE.FIRST_NAME_MAXLENGTH' | translate }}
           </div>
         </div>
       </div>
       <div class="form-group col-md-6">
         <label for="exampleFormControlInput2">
-          {{ "PROFILE_CREATE.LAST_NAME" | translate }}
+          {{ 'PROFILE_CREATE.LAST_NAME' | translate }}
         </label>
         <input
           type="text"
@@ -59,10 +59,10 @@
           class="mess-invalid"
         >
           <div *ngIf="f.lastName.errors.required">
-            {{ "PROFILE_CREATE.LAST_NAME_INVALID" | translate }}
+            {{ 'PROFILE_CREATE.LAST_NAME_INVALID' | translate }}
           </div>
           <div *ngIf="f.lastName.errors.maxlength">
-            {{ "PROFILE_CREATE.LAST_NAME_MAXLENGTH" | translate }}
+            {{ 'PROFILE_CREATE.LAST_NAME_MAXLENGTH' | translate }}
           </div>
         </div>
       </div>
@@ -70,7 +70,7 @@
     <div class="form-row">
     <div class="form-group col-md-6">
       <label for="exampleFormControlInput3">
-        {{ "PROFILE_CREATE.EMAIL" | translate }}
+        {{ 'PROFILE_CREATE.EMAIL' | translate }}
       </label>
       <input
         type="email"
@@ -84,16 +84,16 @@
         class="mess-invalid"
       >
         <div *ngIf="f.email.errors.required">
-          {{ "PROFILE_CREATE.EMAIL_INVALID" | translate }}
+          {{ 'PROFILE_CREATE.EMAIL_INVALID' | translate }}
         </div>
         <div *ngIf="f.email.errors.email">
-          {{ "PROFILE_CREATE.IS_EMAIL" | translate }}
+          {{ 'PROFILE_CREATE.IS_EMAIL' | translate }}
         </div>
       </div>
     </div>
     <div class="form-group col-md-6">
       <label for="exampleFormControlInput5">
-        {{ "PROFILE_CREATE.PHONE_NUMBER" | translate }}
+        {{ 'PROFILE_CREATE.PHONE_NUMBER' | translate }}
       </label>
       <input
         type="number"
@@ -107,23 +107,23 @@
         class="mess-invalid"
       >
         <div *ngIf="f.phoneNumber.errors.required">
-          {{ "PROFILE_CREATE.PHONE_NUMBER_INVALID" | translate }}
+          {{ 'PROFILE_CREATE.PHONE_NUMBER_INVALID' | translate }}
         </div>
         <div *ngIf="f.phoneNumber.errors.minlength">
-          {{ "PROFILE_CREATE.PHONE_NUMBER_MINLENGTH" | translate }}
+          {{ 'PROFILE_CREATE.PHONE_NUMBER_MINLENGTH' | translate }}
         </div>
         <div *ngIf="f.phoneNumber.errors.maxlength">
-          {{ "PROFILE_CREATE.PHONE_NUMBER_MAXLENGTH" | translate }}
+          {{ 'PROFILE_CREATE.PHONE_NUMBER_MAXLENGTH' | translate }}
         </div>
         <div *ngIf="f.phoneNumber.errors.pattern">
-          {{ "PROFILE_CREATE.PHONE_NUMBER_PATTERN" | translate }}
+          {{ 'PROFILE_CREATE.PHONE_NUMBER_PATTERN' | translate }}
         </div>
       </div>
     </div>
   </div>
       <div *ngIf="type === 'create'" class="form-group">
         <label for="exampleFormControlInput4">
-          {{ "PROFILE_CREATE.PASSWORD" | translate }}
+          {{ 'PROFILE_CREATE.PASSWORD' | translate }}
         </label>
         <input
           type="password"
@@ -137,17 +137,17 @@
           class="mess-invalid"
         >
           <div *ngIf="f.encryptedPassword.errors.required">
-            {{ "PROFILE_CREATE.PASSWORD_INVALID" | translate }}
+            {{ 'PROFILE_CREATE.PASSWORD_INVALID' | translate }}
           </div>
           <div *ngIf="f.encryptedPassword.errors.minlength">
-            {{ "PROFILE_CREATE.PASS_MINLENGTH" | translate }}
+            {{ 'PROFILE_CREATE.PASS_MINLENGTH' | translate }}
           </div>
         </div>
       </div>
     <div class="form-row">
       <div class="form-group col-md-6">
         <label for="exampleFormControlInput6">
-          {{ "PROFILE_CREATE.BIRTHDAY" | translate }}
+          {{ 'PROFILE_CREATE.BIRTHDAY' | translate }}
         </label>
         <input
           type="date"
@@ -162,13 +162,13 @@
           class="mess-invalid"
         >
           <div *ngIf="f.birthdate.errors.required">
-            {{ "PROFILE_CREATE.BIRTHDAY_INVALID" | translate }}
+            {{ 'PROFILE_CREATE.BIRTHDAY_INVALID' | translate }}
           </div>
         </div>
       </div>
       <div class="form-group col-md-6">
         <label for="exampleFormControlInput7">
-          {{ "PROFILE_CREATE.JOIN_DATE" | translate }}
+          {{ 'PROFILE_CREATE.JOIN_DATE' | translate }}
         </label>
         <input
           type="date"
@@ -182,38 +182,38 @@
           class="mess-invalid"
         >
           <div *ngIf="f.joinDate.errors.required">
-            {{ "PROFILE_CREATE.JOIN_DATE_INVALID" | translate }}
+            {{ 'PROFILE_CREATE.JOIN_DATE_INVALID' | translate }}
           </div>
         </div>
       </div>
     </div>
     <h6 *ngIf="type === 'detail'">
-      {{ "PROFILE_DETAIL.STATUS" | translate }}:
+      {{ 'PROFILE_DETAIL.STATUS' | translate }}:
       <span 
         *ngIf="dataSource?.status === 'ACTIVE'"
         class="badge rounded-pill badge-success p-2">
-        {{ "GENERAL_LIST.ACTIVE" | translate }}
+        {{ 'GENERAL_LIST.ACTIVE' | translate }}
       </span>
       <span 
         *ngIf="dataSource?.status !== 'ACTIVE'"
         class="badge rounded-pill badge-danger p-2">
-        {{ "GENERAL_LIST.DELETED" | translate }}
+        {{ 'GENERAL_LIST.DELETED' | translate }}
       </span>
     </h6>
-    <h6>{{ "PROFILE_CREATE.DAY_OFF_INFO" | translate }}</h6>
+    <h6>{{ 'PROFILE_CREATE.DAY_OFF_INFO' | translate }}</h6>
     <div class="form-row day-info">
       <div *ngIf="type !== 'detail'" class="form-group col-md-4">
         <label>
-          {{ "PROFILE_CREATE.DAY_OFF_CATE" | translate }}
+          {{ 'PROFILE_CREATE.DAY_OFF_CATE' | translate }}
         </label>
         <span class="form-control text-style day">
-          {{ "PROFILE_CREATE.VACATION" | translate }}
+          {{ 'PROFILE_CREATE.VACATION' | translate }}
         </span>
         <label>
-          {{ "PROFILE_CREATE.DAY_OFF_CATE" | translate }}
+          {{ 'PROFILE_CREATE.DAY_OFF_CATE' | translate }}
         </label>
         <span class="form-control text-style day">
-          {{ "PROFILE_CREATE.ILLNESS" | translate }}
+          {{ 'PROFILE_CREATE.ILLNESS' | translate }}
         </span>
       </div>
       <div *ngIf="type !== 'detail'" class="form-group col-md-8">
@@ -223,23 +223,31 @@
         >
           <div [formGroupName]="i">
             <label>
-              {{ "PROFILE_CREATE.HOUR" | translate }}
+              {{ 'PROFILE_CREATE.HOUR' | translate }}
             </label>
-            <input
+            <div class="total-hours">
+              <input
               type="number"
               class="form-control day"
               formControlName="hours"
               required
-            />
+              />
+              <button *ngIf="dayOffInfos.at(i).disabled" type="button" class="btn btn-outline-info" (click)="dayOffInfos.at(i).enable()">
+                <span class="cil-brush"></span>
+              </button>
+              <button *ngIf="!dayOffInfos.at(i).disabled" type="button" class="btn btn-outline-info" (click)="dayOffInfos.at(i).disable()">
+                <span class="cib-verizon"></span>
+              </button>
+            </div>
             <div
               *ngIf="dayOffInfos.controls[i].get('hours').invalid && (dayOffInfos.controls[i].get('hours').dirty || dayOffInfos.controls[i].get('hours').touched)"
               class="mess-invalid"
             >
               <div *ngIf="dayOffInfos.controls[i].get('hours').errors.required">
-                {{ "PROFILE_CREATE.HOURS_INVALID" | translate }}
+                {{ 'PROFILE_CREATE.HOURS_INVALID' | translate }}
               </div>
               <div *ngIf="dayOffInfos.controls[i].get('hours').errors.pattern">
-                {{ "PROFILE_CREATE.HOURS_PATTERN" | translate }}
+                {{ 'PROFILE_CREATE.HOURS_PATTERN' | translate }}
               </div>
             </div>
           </div>
@@ -248,23 +256,23 @@
       <div *ngIf="type === 'detail'">
       <div *ngFor="let hour of dataSource?.dayOffInfos">
         <div style="font-weight: bold;">
-          {{ "PROFILE_CREATE.DAY_OFF_CATE" | translate }}: 
+          {{ 'PROFILE_CREATE.DAY_OFF_CATE' | translate }}: 
           <span *ngIf="hour.category_name === 'VACATION'">
-            {{ "PROFILE_CREATE.VACATION" | translate }}
+            {{ 'PROFILE_CREATE.VACATION' | translate }}
           </span>
           <span *ngIf="hour.category_name === 'ILLNESS'">
-            {{ "PROFILE_CREATE.ILLNESS" | translate }}
+            {{ 'PROFILE_CREATE.ILLNESS' | translate }}
           </span>
         </div>
-        <div>{{ "PROFILE_CREATE.AVAILABLE_HOURS" | translate }}: {{ hour.available_hours }}</div>
-        <div>{{ "PROFILE_CREATE.HOUR" | translate }}: {{ hour.hours }}</div>
+        <div>{{ 'PROFILE_CREATE.AVAILABLE_HOURS' | translate }}: {{ 'our.available_hours' }}</div>
+        <div>{{ 'PROFILE_CREATE.HOUR' | translate }}: {{ 'our.hours' }}</div>
       </div>
     </div>
     </div>
   </div>
   <div class="modal-footer">
     <button type="button" class="btn btn-secondary" (click)="bsModalRef.hide()">
-      {{ "PROFILE_CREATE.CLOSE" | translate }}
+      {{ 'PROFILE_CREATE.CLOSE' | translate }}
     </button>
     <button
       *ngIf="type !== 'detail'"
@@ -272,7 +280,7 @@
       class="btn btn-primary"
       [disabled]="profileForm.invalid"
     >
-      {{ "PROFILE_CREATE.SAVE" | translate }}
+      {{ 'PROFILE_CREATE.SAVE' | translate }}
     </button>
   </div>  
 </form>

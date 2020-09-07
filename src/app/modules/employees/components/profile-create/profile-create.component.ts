@@ -1,3 +1,4 @@
+import { DayOffCategory } from 'src/app/shared/models/dayoff-category.model';
 import { Component, OnInit } from '@angular/core';
 import {
   FormGroup,
@@ -9,6 +10,7 @@ import {
 import { Store } from '@ngrx/store';
 import * as fromApp from '../../../../store/app.reducer';
 import * as EmployeeActions from '../../store/employees.actions';
+import * as DayOffActions from '../../../dayoff-categories/store/dayoff-categories.actions';
 import { BsModalRef } from 'ngx-bootstrap/modal';
 import { Employee } from 'src/app/shared/models/employees.model';
 import { SearchParams } from '../../store/employees.actions';
@@ -54,6 +56,7 @@ export class ProfileCreateComponent implements OnInit {
   ) {}
 
   ngOnInit() {
+    this.dayOffInfos.disable();
     if (this.type !== 'create') {
       this.store.dispatch(new EmployeeActions.DetailEmployee(this.id));
       this.store
@@ -64,6 +67,21 @@ export class ProfileCreateComponent implements OnInit {
             this.profileForm.patchValue(data);
           }
         });
+    } else {
+      this.store.dispatch(new DayOffActions.FetchDayOffCategories());
+      this.store.select('dayoffCategories').subscribe((data: any) => {
+        if (data.dayoff.length > 0) {
+          let employee = {
+            dayOffInfos: data.dayoff.map((i) => {
+              return {
+                id: i.id,
+                hours: i.totalHoursDefault,
+              };
+            }),
+          };
+          this.profileForm.patchValue(employee);
+        }
+      });
     }
     if (this.type === 'detail') {
       this.profileForm.disable();
