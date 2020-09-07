@@ -26,6 +26,9 @@ export class DayOffCategoriesEffects {
                 if (!i.description) {
                   i.description = '';
                 }
+                if (!i.totalHoursDefault) {
+                  i.totalHoursDefault = 160;
+                }
                 return i;
               }
             );
