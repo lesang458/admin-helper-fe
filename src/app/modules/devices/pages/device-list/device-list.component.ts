@@ -6,7 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./device-list.component.scss']
 })
 export class DeviceListComponent implements OnInit {
-
+  public title = 'DEVICE_TABLE.TITLE';
   constructor() { }
 
   ngOnInit(): void {

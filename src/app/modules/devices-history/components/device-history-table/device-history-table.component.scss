@@ -1,0 +1,33 @@
+.card{
+  .form-control{
+    width: auto
+  }
+  .table-responsive{
+    .col-id{
+      width: 6%
+    }
+    .col-name{
+      width: 20%
+    }
+    .col-from-date{
+      width: 15%
+    }
+    .col-to-date{
+      width: 15%
+    }
+    .col-status{
+      width: 20%
+    }
+    .col-full-name{
+      width: 22%
+    }
+    .device-name{
+      cursor: pointer; 
+      text-decoration: underline; 
+      color:blue;
+    }
+    .badge{
+      width: 70px;
+    }
+ }
+}

@@ -1,0 +1,155 @@
+<div class="card">
+  <div class="card-body">
+    <div class="row">
+      <div class="col-3" *ngIf="categories$ | async as categories">
+        <div class="form-group">
+          <label class="d-inline-block mr-3 ml-2" for="day-off-type">
+            {{ 'DEVICE_TABLE.TYPE_OF_DEVICE' | translate }}
+          </label>
+          <select
+            [formControl]="selectedCategory"
+            class="form-control d-inline-block"
+            id="device-category"
+          >
+            <option value="">{{ 'DEVICE_TABLE.ALL' | translate }}</option>
+            <option *ngFor="let item of categories.categories" [value]="item.id">
+              {{ item.name }}
+            </option>
+          </select>
+        </div>
+      </div>
+      <div class="col-3">
+        <div class="form-group">
+          <label class="d-inline-block mr-3 ml-2" for="status-type">
+            {{ 'GENERAL_LIST.STATUS' | translate }}
+          </label>
+          <select
+            class="form-control d-inline-block"
+            id="status-type"
+            [formControl]="searchStatusFormControl"
+          >
+            <option selected value="">
+              {{ 'GENERAL_LIST.ALL' | translate }}
+            </option>
+            <option value="DISCARDED">
+              {{ 'DEVICE_HISTORY.DISCARDED' | translate }}
+            </option>
+            <option value="IN_INVENTORY">
+              {{ 'DEVICE_HISTORY.IN_INVENTORY' | translate }}
+            </option>
+            <option value="ASSIGNED">
+              {{ 'DEVICE_HISTORY.ASSIGNED' | translate }}
+            </option>
+          </select>
+        </div>
+      </div>
+      <div class="col-3">
+        <div class="form-group">
+        <label class="d-inline-block mr-3 ml-2" for="from-date">
+          {{ 'DEVICE_HISTORY.FROM_DATE' | translate }}
+        </label>
+        <input
+          type="date"
+          class="form-control d-inline-block"
+          id="from-date"
+          [formControl]="selectedFromDate"
+        />
+        </div>
+      </div>
+        <div class="col-3">
+          <div class="form-group">
+          <label class="d-inline-block mr-3 ml-2" for="to-date">
+            {{ 'DEVICE_HISTORY.TO_DATE' | translate }}
+          </label>
+          <input
+            type="date"
+            class="form-control d-inline-block"
+            id="to-date"
+            [formControl]="selectedToDate"
+          />
+          </div>
+      </div>
+    <div class="table-responsive" *ngIf="data$ | async as data">
+      <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th scope="col" class="col-id">ID</th>
+            <th scope="col" class="col-name">
+              {{ 'DEVICE_HISTORY.DEVICE_NAME' | translate }}
+            </th>
+            <th scope="col" class="col-from-date">
+              {{ 'DEVICE_HISTORY.FROM_DATE' | translate }}
+            </th>
+            <th scope="col" class="col-to-date">
+              {{ 'DEVICE_HISTORY.TO_DATE' | translate }}
+            </th>
+            <th scope="col" class="col-status">
+              {{ 'DEVICE_HISTORY.STATUS' | translate }}
+            </th>
+            <th scope="col" class="col-full-name">
+              {{ 'DEVICE_HISTORY.FULL_NAME' | translate }}
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let item of data.data; let i = index">
+            <th scope="row">
+              {{ i + 1 + (data.pagination.currentPage - 1) * 10 }}
+            </th>
+            <td>
+              <span
+                class="device-name" 
+                (click)="openModalWithComponent(item.id)">
+                {{ item.device?.name }}
+              </span>
+            </td>
+            <td>{{ item.fromDate | date: 'dd/MM/yyyy' }}</td>
+            <td>{{ item.toDate | date: 'dd/MM/yyyy' }}</td>
+            <td>
+              <span
+                class="badge rounded-pill badge-danger p-2"
+                *ngIf="item?.status === 'discarded'"
+                >{{ 'DEVICE_HISTORY.DISCARDED' | translate }}
+              </span>
+              <span
+                class="badge rounded-pill badge-success p-2"
+                *ngIf="item?.status === 'in_inventory'">
+                {{ 'DEVICE_HISTORY.IN_INVENTORY' | translate }}
+              </span>
+              <span
+                class="badge rounded-pill badge-info p-2"
+                *ngIf="item?.status === 'assigned'">
+                {{ 'DEVICE_HISTORY.ASSIGNED' | translate }}
+            </span>
+            </td>
+            <td>{{ item.user?.fullName }}</td>
+          </tr>
+        </tbody>
+      </table>
+      <div
+        *ngIf="data?.data.length === 0"
+        class="alert alert-secondary"
+        role="alert"
+      >
+        {{ 'GENERAL_LIST.NO_RESULT' | translate }}
+      </div>
+      <div class="col-12" *ngIf="data.pagination.totalCount !== 0">
+        <pagination
+          [totalItems]="data.pagination.totalCount"
+          [maxSize]="3"
+          [itemsPerPage]="10"
+          [(ngModel)]="currentPage"
+          (pageChanged)="onPageChanged($event.page)"
+          class="pagination-md justify-content-end"
+          previousText="&lsaquo;"
+          nextText="&rsaquo;"
+          firstText="&laquo;"
+          lastText="&raquo;"
+          [boundaryLinks]="true"
+          [rotate]="true"
+        >
+        </pagination>
+      </div>
+    </div>
+  </div>
+</div>
