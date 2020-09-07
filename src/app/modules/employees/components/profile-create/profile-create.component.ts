@@ -107,7 +107,10 @@ export class ProfileCreateComponent implements OnInit {
       );
     } else {
       if (this.type === 'delete') {
-        this.store.dispatch(new EmployeeActions.DeleteEmployee(this.id));
+        const id = this.id;
+        const searchParams = this.refresh;
+        const params = { id, searchParams };
+        this.store.dispatch(new EmployeeActions.DeleteEmployee(params));
       } else {
         const id = this.id;
         const employee = this.profileForm.value;

@@ -120,13 +120,14 @@ export class EmployeeEffects {
     switchMap((action: EmployeesActions.DeleteEmployee) => {
       return this.http
         .patch(
-          `${environment.APILink}/employees/${action.payload}/status?status=FORMER`,
+          `${environment.APILink}/employees/${action.payload.id}/status?status=FORMER`,
           {}
         )
         .pipe(
-          map((val: any) => {
-            const employee: Employee = camelcaseKeys(val.user);
-            return new EmployeesActions.DeleteEmployeeSuccess(employee);
+          map(() => {
+            return new EmployeesActions.SearchEmployees(
+              action.payload.searchParams
+            );
           })
         );
     })

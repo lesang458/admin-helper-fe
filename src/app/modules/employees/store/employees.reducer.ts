@@ -48,21 +48,6 @@ export function employeeReducer(
         ...state,
         detaiEmployee: action.payload,
       };
-    case EmployeesActions.DELETE_EMPLOYEE_SUCCESS:
-      return {
-        ...state,
-        employees: [
-          ...state.employees.map((i) => {
-            if (i.id == action.payload.id) {
-              return {
-                ...i,
-                status: action.payload.status,
-              };
-            }
-            return i;
-          }),
-        ],
-      };
     default:
       return state;
   }

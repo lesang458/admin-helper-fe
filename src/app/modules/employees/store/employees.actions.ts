@@ -23,7 +23,6 @@ export const FETCH_DAY_OFF = '[Employees] Fetch Day Off';
 export const SET_DAY_OFF = '[Employees] Set Day Off';
 export const CREATE_EMPLOYEE = '[Employees] Create Employee';
 export const DELETE_EMPLOYEE = '[Employees] Delete Employee';
-export const DELETE_EMPLOYEE_SUCCESS = '[Employees] Delete Employee Success';
 export const DETAIL_EMPLOYEE = '[Employees] Detail Employee';
 export const DETAIL_EMPLOYEE_SUCCESS = '[Employees] Detail Employee Success';
 export const EDIT_EMPLOYEE = '[Employees] Edit Employee';
@@ -56,12 +55,7 @@ export class CreateEmployee implements Action {
 
 export class DeleteEmployee implements Action {
   readonly type = DELETE_EMPLOYEE;
-  constructor(public payload: number) {}
-}
-
-export class DeleteEmployeeSuccess implements Action {
-  readonly type = DELETE_EMPLOYEE_SUCCESS;
-  constructor(public payload: Employee) {}
+  constructor(public payload: EmployeesParam) {}
 }
 
 export class DetailEmployee implements Action {
@@ -92,7 +86,6 @@ export type EmployeesActions =
   | SetDayOff
   | CreateEmployee
   | DeleteEmployee
-  | DeleteEmployeeSuccess
   | DetailEmployee
   | DetailEmployeeSuccess
   | EditEmployee
