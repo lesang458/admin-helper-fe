@@ -115,9 +115,9 @@ export class EmployeeEffects {
   );
 
   @Effect()
-  deleteEmployee = this.actions$.pipe(
-    ofType(EmployeesActions.CHANGE_STATUS_EMPLOYEE),
-    switchMap((action: EmployeesActions.ChangeStatusEmployee) => {
+  updateEmployeeStatus = this.actions$.pipe(
+    ofType(EmployeesActions.UPDATE_EMPLOYEE_STATUS),
+    switchMap((action: EmployeesActions.UpdateEmployeeStatus) => {
       return this.http
         .patch(
           `${environment.APILink}/employees/${action.payload.id}/status?status=${action.payload.status}`,
