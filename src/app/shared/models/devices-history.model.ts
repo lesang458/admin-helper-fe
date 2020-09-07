@@ -1,4 +1,5 @@
 import { Employee } from './employees.model';
+import { Device } from './device.model';
 
 export interface DeviceHistory {
   id?: string;
@@ -6,5 +7,5 @@ export interface DeviceHistory {
   toDate: string;
   status: string;
   user: Employee;
-  device: any;
+  device: Device;
 }

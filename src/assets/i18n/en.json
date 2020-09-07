@@ -137,5 +137,21 @@
     "NAME_MAXLENGTH": "The name has Maximum length is 20 character",
     "NAME_PATTERN": "The name must not contain special characters",
     "DAYOFF": "Number of dayoff"
+  },
+  "DEVICE_HISTORY": {
+    "FROM_DATE": "From date",
+    "TO_DATE": "To date",
+    "STATUS": "Status",
+    "FULL_NAME": "User name",
+    "EMAIL": "Email",
+    "DEVICE_NAME": "Device name",
+    "PRICE": "Price",
+    "DESCRIPTION": "Description",
+    "DISCARDED": "Discarded",
+    "IN_INVENTORY": "In inventory",
+    "ASSIGNED": "Assigned",
+    "TITLE_DETAIL": "Detail device history",
+    "DEVICE_INFO": "Device information",
+    "USER_INFO": "User information"
   }
 }

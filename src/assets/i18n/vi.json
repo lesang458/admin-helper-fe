@@ -135,5 +135,21 @@
     "NAME_MAXLENGTH": "Tên có độ dài tối đa là 20 ký tự",
     "NAME_PATTERN": "Tên không được chứa ký tự đặc biệt",
     "DAYOFF": "Số ngày nghỉ"
+  },
+  "DEVICE_HISTORY": {
+    "FROM_DATE": "Từ ngày",
+    "TO_DATE": "Đến ngày",
+    "STATUS": "Trạng thái",
+    "FULL_NAME": "Tên nhân viên",
+    "EMAIL": "Email",
+    "DEVICE_NAME": "Tên thiết bị",
+    "PRICE": "Giá",
+    "DESCRIPTION": "Mô tả",
+    "DISCARDED": "Bị lỗi",
+    "IN_INVENTORY": "Trong kho",
+    "ASSIGNED": "Đã giao",
+    "TITLE_DETAIL": "Chi tiết lịch sử thiết bị",
+    "DEVICE_INFO": "Thông tin thiết bị",
+    "USER_INFO": "Thông tin người dùng"
   }
 }

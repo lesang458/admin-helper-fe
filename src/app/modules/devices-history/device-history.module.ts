@@ -5,14 +5,17 @@ import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ModalModule } from 'ngx-bootstrap/modal';
 import { DeviceHistoryListComponent } from './pages/device-history-list/device-history-list.component';
-import { DeviceHistoryTableComponet } from './components/device-history-table/device-hisyory-table.component';
+import { DeviceHistoryTableComponent } from './components/device-history-table/device-hisyory-table.component';
+import { PaginationModule } from 'ngx-bootstrap/pagination';
+import { DeviceHistoryDetailComponent } from './components/device-history-detail/device-history-detail.component';
 @NgModule({
-  declarations: [DeviceHistoryListComponent, DeviceHistoryTableComponet],
+  declarations: [DeviceHistoryListComponent, DeviceHistoryTableComponent, DeviceHistoryDetailComponent],
   imports: [
     SharedModule,
     RouterModule.forChild(DEVICE_HISTORY_ROUTES),
     ReactiveFormsModule,
     ModalModule.forRoot(),
+    PaginationModule.forRoot(),
   ],
 })
 export class DeviceHistoryModule {}
