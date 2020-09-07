@@ -6,6 +6,7 @@ import { RequestDayOffModel } from 'src/app/shared/models/request-day-off.model'
 export interface SearchParams {
   search: string;
   page;
+  perPage;
   sort: { sortNameType; sortBirthDateType; sortJoinDateType };
   status: string;
 }

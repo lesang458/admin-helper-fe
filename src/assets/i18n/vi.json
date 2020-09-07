@@ -4,7 +4,8 @@
     "LINK_1": "Thông tin chung",
     "LINK_2": "Ngày phép",
     "LINK_3": "Chấm công",
-    "LINK_4": "Loại ngày phép"
+    "LINK_4": "Thiết bị",
+    "LINK_5": "Loại ngày phép"
   },
   "HEADER": {
     "TITLE": "Danh sách nhân viên",
@@ -25,7 +26,6 @@
     "ALL": "Tất cả",
     "ACTIVE": "Hoạt động",
     "DELETED": "Đã xóa",
-    "DETAIL": "Chi tiết",
     "CREATE_EMPLOYEE_PROFILE": "Tạo hồ sơ nhân viên",
     "NO_RESULT": "Không có kết quả."
   },
@@ -98,10 +98,22 @@
   "PROFILE_EDIT": {
     "TITLE": "Chỉnh sửa hồ sơ nhân viên"
   },
-  "LOGIN":{
+  "DEVICE_TABLE": {
+    "TYPE_OF_DEVICE": "Loại thiết bị",
+    "ALL": "Tất cả",
+    "CATEGORY_NAME": "Tên danh mục:",
+    "ASSIGNED_TO": "Được giao cho:",
+    "EMPTY": "Trống",
+    "PRICE": "Trị giá",
+    "DESCRIPTION": "Mô tả",
+    "CREATE_DEVICE": "Tạo thiết bị"
+  },
+  "LOGIN": {
     "LOGIN": "Đăng nhập",
+    "SIGN_IN": "Đăng nhập vào tài khoản của bạn",
     "EMAIL": "Email",
     "PASS": "Mật khẩu",
+    "FORGOT_PASSWORD": "Quên mật khẩu?",
     "SIGN_IN_GG": "Đăng nhập với google"
   },
   "DAY_OFF_CATEGORIES_PAGE": {
