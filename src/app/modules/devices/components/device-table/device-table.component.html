@@ -3,7 +3,7 @@
     <div class="row mb-2">
       <div class="col-5">
         <div class="form-group">
-          <label class="d-inline-block mr-3 ml-2" for="day-off-type">
+          <label class="d-inline-block mr-3 ml-2" for="device-category">
             {{ 'DEVICE_TABLE.TYPE_OF_DEVICE' | translate }}
           </label>
           <select
@@ -39,7 +39,10 @@
               {{ ' ' + getUserName(item.user) }}
             </div>
             <div class="col-3 d-flex justify-content-end">
-              <button class="btn btn-outline-info mr-2">
+              <button
+                class="btn btn-outline-info mr-2"
+                (click)="openModalWithComponent(item, deviceParams)"
+              >
                 <span class="cil-brush"></span>
               </button>
               <button class="btn btn-outline-danger mr-2">
@@ -92,7 +95,11 @@
       </div>
     </div>
     <div class="d-flex justify-content-end">
-      <button type="button" class="btn btn-info">
+      <button
+        type="button"
+        class="btn btn-info"
+        (click)="openModalWithComponent(null, deviceParams)"
+      >
         <span class="cil-playlist-add btn-icon mr-2"></span>
         {{ 'DEVICE_TABLE.CREATE_DEVICE' | translate }}
       </button>

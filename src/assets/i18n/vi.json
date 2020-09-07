@@ -134,5 +134,9 @@
     "NAME_MAXLENGTH": "Tên có độ dài tối đa là 20 ký tự",
     "NAME_PATTERN": "Tên không được chứa ký tự đặc biệt",
     "DAYOFF": "Số ngày nghỉ"
+  },
+  "DEVICE_EDIT": {
+    "EDIT_TITLE": "Chỉnh sửa thông tin thiết bị",
+    "CREATE_TITLE": "Tạo thiết bị"
   }
 }

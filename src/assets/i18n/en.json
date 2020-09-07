@@ -136,5 +136,9 @@
     "NAME_MAXLENGTH": "The name has Maximum length is 20 character",
     "NAME_PATTERN": "The name must not contain special characters",
     "DAYOFF": "Number of dayoff"
+  },
+  "DEVICE_EDIT": {
+    "EDIT_TITLE": "Edit Device",
+    "CREATE_TITLE": "Create Device"
   }
 }
