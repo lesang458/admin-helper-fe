@@ -3,10 +3,10 @@
     {{ 'PROFILE_CREATE.TITLE' | translate }}
   </h4>
   <h4 *ngIf="type === 'detail'" class="modal-title pull-left">
-    {{ "PROFILE_DETAIL.TITLE' | translate }}
+    {{ 'PROFILE_DETAIL.TITLE' | translate }}
   </h4>
   <h4 *ngIf="type === 'edit'" class="modal-title pull-left">
-    {{ "PROFILE_EDIT.TITLE' | translate }}
+    {{ 'PROFILE_EDIT.TITLE' | translate }}
   </h4>
   <button
     type="button"
@@ -188,16 +188,16 @@
       </div>
     </div>
     <h6 *ngIf="type === 'detail'">
-      {{ "PROFILE_DETAIL.STATUS' | translate }}:
+      {{ 'PROFILE_DETAIL.STATUS' | translate }}:
       <span 
         *ngIf="dataSource?.status === 'ACTIVE'"
         class="badge rounded-pill badge-success p-2">
-        {{ "GENERAL_LIST.ACTIVE' | translate }}
+        {{ 'GENERAL_LIST.ACTIVE' | translate }}
       </span>
       <span 
         *ngIf="dataSource?.status !== 'ACTIVE'"
         class="badge rounded-pill badge-danger p-2">
-        {{ "GENERAL_LIST.DELETED' | translate }}
+        {{ 'GENERAL_LIST.DELETED' | translate }}
       </span>
     </h6>
     <h6>{{ 'PROFILE_CREATE.DAY_OFF_INFO' | translate }}</h6>
@@ -264,8 +264,8 @@
             {{ 'PROFILE_CREATE.ILLNESS' | translate }}
           </span>
         </div>
-        <div>{{ 'PROFILE_CREATE.AVAILABLE_HOURS' | translate }}: {{ hour.available_hours }}</div>
-        <div>{{ 'PROFILE_CREATE.HOUR' | translate }}: {{ hour.hours }}</div>
+        <div>{{ 'PROFILE_CREATE.AVAILABLE_HOURS' | translate }}: {{ 'our.available_hours' }}</div>
+        <div>{{ 'PROFILE_CREATE.HOUR' | translate }}: {{ 'our.hours' }}</div>
       </div>
     </div>
     </div>

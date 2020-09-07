@@ -21,7 +21,7 @@ export class DayOffCategoriesEffects {
         .get<any>(`${environment.APILink}/day-off-categories`)
         .pipe(
           map((data) => {
-            const dayOffCategories = camelcaseKeys(data).dayOffCategories.map(
+            const dayOffCategories = camelcaseKeys(data.day_off_categories).map(
               (i) => {
                 if (!i.description) {
                   i.description = '';

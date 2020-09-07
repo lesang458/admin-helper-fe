@@ -70,7 +70,17 @@ export class ProfileCreateComponent implements OnInit {
     } else {
       this.store.dispatch(new DayOffActions.FetchDayOffCategories());
       this.store.select('dayoffCategories').subscribe((data: any) => {
-        console.log(data);
+        if (data.dayoff.length > 0) {
+          let employee = {
+            dayOffInfos: data.dayoff.map((i) => {
+              return {
+                id: i.id,
+                hours: i.totalHoursDefault,
+              };
+            }),
+          };
+          this.profileForm.patchValue(employee);
+        }
       });
     }
     if (this.type === 'detail') {

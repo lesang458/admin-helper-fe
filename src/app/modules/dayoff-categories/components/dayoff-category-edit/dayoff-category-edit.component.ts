@@ -46,6 +46,7 @@ export class DayOffCategoryEditComponent implements OnInit {
         new DayOffActions.CreateDayOffCategory({
           name: this.f.get('name').value.toUpperCase(),
           description: this.f.get('description').value,
+          totalHoursDefault: null,
         })
       );
     }
@@ -55,6 +56,7 @@ export class DayOffCategoryEditComponent implements OnInit {
           id: this.selectedCategory.id,
           name: this.f.get('name').value.toUpperCase(),
           description: this.f.get('description').value,
+          totalHoursDefault: null,
         })
       );
     }
