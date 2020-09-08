@@ -1,4 +1,3 @@
-import { TitleService } from './../../../../core/services/title.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -8,9 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DayoffComponent implements OnInit {
   public title = 'DAY_OFF_TABLE.TITLE';
-  constructor(private titleService: TitleService) {}
+  constructor() {}
 
-  ngOnInit(): void {
-    this.titleService.setTitle('DAY_OFF_TABLE');
-  }
+  ngOnInit(): void {}
 }

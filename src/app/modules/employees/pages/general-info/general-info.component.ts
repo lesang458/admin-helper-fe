@@ -1,4 +1,3 @@
-import { TitleService } from './../../../../core/services/title.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -8,9 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class GeneralInfoComponent implements OnInit {
   public title = 'GENERAL_LIST.TITLE';
-  constructor(private titleService: TitleService) {}
+  constructor() {}
 
-  ngOnInit(): void {
-    this.titleService.setTitle('GENERAL_LIST');
-  }
+  ngOnInit(): void {}
 }

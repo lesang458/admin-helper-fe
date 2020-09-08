@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { TitleService } from 'src/app/core/services/title.service';
 
 @Component({
   selector: 'ah-general-dayoff',
@@ -8,9 +7,7 @@ import { TitleService } from 'src/app/core/services/title.service';
 })
 export class GeneralDayOffCategoriesComponent implements OnInit {
   public title = 'DAY_OFF_CATEGORIES_PAGE.TITLE';
-  constructor(private titleService: TitleService) {}
+  constructor() {}
 
-  ngOnInit(): void {
-    this.titleService.setTitle('DAY_OFF_CATEGORIES_PAGE');
-  }
+  ngOnInit(): void {}
 }
