@@ -1,3 +1,4 @@
+import { TitleService } from './../../../../core/services/title.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -5,7 +6,9 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './auth.component.html',
 })
 export class AuthComponent implements OnInit {
-  constructor() {}
+  constructor(private titleService: TitleService) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.titleService.changeTitle('TITLE_FOR_PAGES.LOGIN');
+  }
 }
