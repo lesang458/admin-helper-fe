@@ -1,13 +1,13 @@
 <form [formGroup]="f" (ngSubmit)="onSubmit()">
   <div class="modal-header">
     <h4 *ngIf="type === 'create'" class="modal-title pull-left">
-      {{ "DAY_OFF_CATEGORIES_PAGE.CREATE_TITLE" | translate }}
+      {{ 'DAY_OFF_CATEGORIES_PAGE.CREATE_TITLE' | translate }}
     </h4>
     <h4 *ngIf="type === 'delete'" class="modal-title pull-left">
-      {{ "DAY_OFF_CATEGORIES_PAGE.DELETE_TITLE" | translate }}
+      {{ 'DAY_OFF_CATEGORIES_PAGE.DELETE_TITLE' | translate }}
     </h4>
     <h4 *ngIf="type === 'edit'" class="modal-title pull-left">
-      {{ "DAY_OFF_CATEGORIES_PAGE.EDIT_TITLE" | translate }}
+      {{ 'DAY_OFF_CATEGORIES_PAGE.EDIT_TITLE' | translate }}
     </h4>
     <button
       type="button"
@@ -21,65 +21,62 @@
   <div class="modal-body">
     <div class="form-group col-md-12" *ngIf="type !== 'delete'">
       <label for="exampleFormControlInput1">
-        {{ "DAY_OFF_CATEGORIES_PAGE.NAME" | translate }}
+        {{ 'DAY_OFF_CATEGORIES_PAGE.NAME' | translate }}
       </label>
       <input
         type="text"
         class="form-control"
         id="exampleFormControlInput1"
         formControlName="name"
-        required
       />
       <div
         *ngIf="f.get('name').invalid && (f.get('name').dirty || f.get('name').touched)"
         class="mess-invalid"
       >
         <div *ngIf="f.get('name').errors.required">
-          {{ "DAY_OFF_CATEGORIES_PAGE.NAME_REQUIRED" | translate }}
+          {{ 'DAY_OFF_CATEGORIES_PAGE.NAME_REQUIRED' | translate }}
         </div>
         <div *ngIf="f.get('name').errors.maxlength">
-          {{ "DAY_OFF_CATEGORIES_PAGE.NAME_MAXLENGTH" | translate }}
+          {{ 'DAY_OFF_CATEGORIES_PAGE.NAME_MAXLENGTH' | translate }}
         </div>
         <div *ngIf="f.get('name').errors.minlength">
-          {{ "DAY_OFF_CATEGORIES_PAGE.NAME_MINLENGTH" | translate }}
+          {{ 'DAY_OFF_CATEGORIES_PAGE.NAME_MINLENGTH' | translate }}
         </div>
         <div *ngIf="f.get('name').errors.pattern">
-          {{ "DAY_OFF_CATEGORIES_PAGE.NAME_PATTERN" | translate }}
+          {{ 'DAY_OFF_CATEGORIES_PAGE.NAME_PATTERN' | translate }}
         </div>
       </div>
     </div>
     <div class="form-group col-md-12" *ngIf="type !== 'delete'">
       <label for="exampleFormControlInput2">
-        {{ "DAY_OFF_CATEGORIES_PAGE.HOURS" | translate }}
+        {{ 'DAY_OFF_CATEGORIES_PAGE.HOURS' | translate }}
       </label>
       <input
         type="number"
         class="form-control"
         id="exampleFormControlInput2"
         formControlName="hours"
-        required
       />
       <div
         *ngIf="f.get('hours').invalid && (f.get('hours').dirty || f.get('hours').touched)"
         class="mess-invalid"
       >
         <div *ngIf="f.get('hours').errors.required">
-          {{ "DAY_OFF_CATEGORIES_PAGE.HOURS_REQUIRED" | translate }}
+          {{ 'DAY_OFF_CATEGORIES_PAGE.HOURS_REQUIRED' | translate }}
         </div>
         <div *ngIf="f.get('hours').errors.max">
-          {{ "DAY_OFF_CATEGORIES_PAGE.HOURS_MAX" | translate }}
+          {{ 'DAY_OFF_CATEGORIES_PAGE.HOURS_MAX' | translate }}
         </div>
         <div *ngIf="f.get('hours').errors.min">
-          {{ "DAY_OFF_CATEGORIES_PAGE.HOURS_MIN" | translate }}
+          {{ 'DAY_OFF_CATEGORIES_PAGE.HOURS_MIN' | translate }}
         </div>
       </div>
     </div>
     <div class="form-group col-md-12" *ngIf="type !== 'delete'">
       <label for="exampleFormControlInput3">
-        {{ "DAY_OFF_CATEGORIES_PAGE.DESCRIPTION" | translate }}
+        {{ 'DAY_OFF_CATEGORIES_PAGE.DESCRIPTION' | translate }}
       </label>
       <textarea
-        style="max-height: 200px"
         class="form-control"
         id="exampleFormControlInput3"
         formControlName="description"
@@ -87,7 +84,7 @@
     </div>
     <div class="form-group col-md-12" *ngIf="type === 'delete'">
       <p>
-        {{ "DAY_OFF_CATEGORIES_PAGE.DELETE_CONFIRM" | translate }}
+        {{ 'DAY_OFF_CATEGORIES_PAGE.DELETE_CONFIRM' | translate }}
       </p>
     </div>
   </div>
@@ -98,7 +95,7 @@
       aria-label="Close"
       (click)="bsModalRef.hide()"
     >
-      {{ "DAY_OFF_CATEGORIES_PAGE.CANCEL" | translate }}
+      {{ 'DAY_OFF_CATEGORIES_PAGE.CANCEL' | translate }}
     </button>
     <button
       *ngIf="type !== 'delete'"
@@ -106,10 +103,10 @@
       type="submit"
       class="btn btn-primary"
     >
-      {{ "DAY_OFF_CATEGORIES_PAGE.SAVE" | translate }}
+      {{ 'DAY_OFF_CATEGORIES_PAGE.SAVE' | translate }}
     </button>
     <button *ngIf="type === 'delete'" type="submit" class="btn btn-primary">
-      {{ "DAY_OFF_CATEGORIES_PAGE.DELETE" | translate }}
+      {{ 'DAY_OFF_CATEGORIES_PAGE.DELETE' | translate }}
     </button>
   </div>    
 </form>
