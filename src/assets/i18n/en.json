@@ -145,7 +145,11 @@
     "NAME_MINLENGTH": "The name has Minimum length is 6 character",
     "NAME_MAXLENGTH": "The name has Maximum length is 20 character",
     "NAME_PATTERN": "The name must not contain special characters",
-    "DAYOFF": "Number of dayoff"
+    "DAYOFF": "Number of dayoff",
+    "HOURS": "Hours",
+    "HOURS_REQUIRED": "Hours is required!",
+    "HOURS_MIN": "Hours has a Minimum value of 8",
+    "HOURS_MAX": "Hours has a Maximum value of 1440"
   },
   "DEVICE_HISTORY": {
     "TITLE": "Devices history list",

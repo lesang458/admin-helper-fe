@@ -50,12 +50,38 @@
     </div>
     <div class="form-group col-md-12" *ngIf="type !== 'delete'">
       <label for="exampleFormControlInput2">
+        {{ "DAY_OFF_CATEGORIES_PAGE.HOURS" | translate }}
+      </label>
+      <input
+        type="number"
+        class="form-control"
+        id="exampleFormControlInput2"
+        formControlName="hours"
+        required
+      />
+      <div
+        *ngIf="f.get('hours').invalid && (f.get('hours').dirty || f.get('hours').touched)"
+        class="mess-invalid"
+      >
+        <div *ngIf="f.get('hours').errors.required">
+          {{ "DAY_OFF_CATEGORIES_PAGE.HOURS_REQUIRED" | translate }}
+        </div>
+        <div *ngIf="f.get('hours').errors.max">
+          {{ "DAY_OFF_CATEGORIES_PAGE.HOURS_MAX" | translate }}
+        </div>
+        <div *ngIf="f.get('hours').errors.min">
+          {{ "DAY_OFF_CATEGORIES_PAGE.HOURS_MIN" | translate }}
+        </div>
+      </div>
+    </div>
+    <div class="form-group col-md-12" *ngIf="type !== 'delete'">
+      <label for="exampleFormControlInput3">
         {{ "DAY_OFF_CATEGORIES_PAGE.DESCRIPTION" | translate }}
       </label>
       <textarea
         style="max-height: 200px"
         class="form-control"
-        id="exampleFormControlInput2"
+        id="exampleFormControlInput3"
         formControlName="description"
       ></textarea>
     </div>

@@ -6,6 +6,7 @@ import * as fromApp from '../../../../store/app.reducer';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { DayOffCategory } from 'src/app/shared/models/dayoff-category.model';
 import { log } from 'console';
+import { TitleCasePipe } from '@angular/common';
 
 @Component({
   selector: 'ah-dayoff-create-edit',
@@ -22,19 +23,24 @@ export class DayOffCategoryEditComponent implements OnInit {
       Validators.maxLength(20),
       Validators.pattern('^[a-zA-Z]+$'),
     ]),
+    hours: new FormControl('', [
+      Validators.required,
+      Validators.min(8),
+      Validators.max(1440),
+    ]),
     description: new FormControl(),
   });
   constructor(
     private store: Store<fromApp.AppState>,
-    public bsModalRef: BsModalRef
+    public bsModalRef: BsModalRef,
+    private titleCasePipe: TitleCasePipe
   ) {}
 
   ngOnInit() {
     if (this.type === 'edit') {
       this.f.patchValue({
-        name:
-          this.selectedCategory.name[0] +
-          this.selectedCategory.name.slice(1)?.toLowerCase(),
+        name: this.titleCasePipe.transform(this.selectedCategory.name),
+        hours: this.selectedCategory.totalHoursDefault,
         description: this.selectedCategory.description,
       });
     }
@@ -42,11 +48,13 @@ export class DayOffCategoryEditComponent implements OnInit {
 
   public onSubmit(): void {
     if (this.type === 'create') {
+      console.log(this.f.get('hours').value);
+
       this.store.dispatch(
         new DayOffActions.CreateDayOffCategory({
           name: this.f.get('name').value.toUpperCase(),
           description: this.f.get('description').value,
-          totalHoursDefault: null,
+          totalHoursDefault: this.f.get('hours').value,
         })
       );
     }
@@ -56,7 +64,7 @@ export class DayOffCategoryEditComponent implements OnInit {
           id: this.selectedCategory.id,
           name: this.f.get('name').value.toUpperCase(),
           description: this.f.get('description').value,
-          totalHoursDefault: null,
+          totalHoursDefault: this.f.get('hours').value,
         })
       );
     }
@@ -77,7 +85,8 @@ export class DayOffCategoryEditComponent implements OnInit {
       (this.selectedCategory?.name.toLowerCase() ===
         this.f.get('name').value.toLowerCase() &&
         this.selectedCategory?.description?.toLowerCase() ===
-          this.f.get('description').value?.toLowerCase())
+          this.f.get('description').value?.toLowerCase() &&
+        this.selectedCategory.totalHoursDefault === this.f.get('hours').value)
     );
   }
 }
