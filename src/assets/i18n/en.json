@@ -5,10 +5,10 @@
     "LINK_2": "Day off",
     "LINK_3": "Timekeeping",
     "LINK_4": "Devices",
-    "LINK_5": "Day off type"
+    "LINK_5": "Devices History",
+    "LINK_6": "Day off type"
   },
   "HEADER": {
-    "TITLE": "Employees List",
     "VIETNAMESE": "Vietnamese",
     "ACCOUNT": "Account",
     "LOGOUT": "Logout"
@@ -17,6 +17,7 @@
     "DEVELOPED_BY": "Developed by"
   },
   "GENERAL_LIST": {
+    "TITLE": "Employees List",
     "NAME": "Name",
     "BIRTHDAY": "Birthday",
     "JOIN_DATE": "Join date",
@@ -25,11 +26,12 @@
     "ACTIONS": "Actions",
     "ALL": "All",
     "ACTIVE": "Active",
-    "DELETED": "Deleted",
+    "FORMER": "Former",
     "CREATE_EMPLOYEE_PROFILE": "Create employee profile",
     "NO_RESULT": "No result."
   },
   "DAY_OFF_TABLE": {
+    "TITLE": "Day off List",
     "TYPE_OF_LEAVE": "Type of leave",
     "SICK_LEAVE": "Sick leave",
     "ANNUAL_LEAVE": "Annual leave",
@@ -101,6 +103,7 @@
     "TITLE": "Edit Employee Profile"
   },
   "DEVICE_TABLE": {
+    "TITLE": "Devices List",
     "TYPE_OF_DEVICE": "Type of device",
     "ALL": "All",
     "CATEGORY_NAME": "Category name:",
@@ -110,6 +113,12 @@
     "DESCRIPTION": "Description",
     "CREATE_DEVICE": "Create Device"
   },
+  "PROFILE_STATUS_CHANGE": {
+    "TITLE": "Confirm employee status change",
+    "PARAMS": "Are you sure you want to change the employee's status?",
+    "ABORT": "Abort",
+    "ACCEPT": "Accept"
+  },  
   "LOGIN": {
     "LOGIN": "Login",
     "SIGN_IN": "Sign In to your account",
@@ -119,6 +128,7 @@
     "SIGN_IN_GG": "Sign In With Google"
   },
   "DAY_OFF_CATEGORIES_PAGE": {
+    "TITLE": "Day off category List",
     "NAME": "Name",
     "DESCRIPTION": "Description",
     "ACTION": "Action",
@@ -140,5 +150,22 @@
     "HOURS_REQUIRED": "Hours is required!",
     "HOURS_MIN": "Hours has a Minimum value of 8",
     "HOURS_MAX": "Hours has a Maximum value of 1440"
+  },
+  "DEVICE_HISTORY": {
+    "TITLE": "Devices history list",
+    "FROM_DATE": "From date",
+    "TO_DATE": "To date",
+    "STATUS": "Status",
+    "FULL_NAME": "User name",
+    "EMAIL": "Email",
+    "DEVICE_NAME": "Device name",
+    "PRICE": "Price",
+    "DESCRIPTION": "Description",
+    "DISCARDED": "Discarded",
+    "IN_INVENTORY": "In inventory",
+    "ASSIGNED": "Assigned",
+    "TITLE_DETAIL": "Detail device history",
+    "DEVICE_INFO": "Device information",
+    "USER_INFO": "User information"
   }
 }

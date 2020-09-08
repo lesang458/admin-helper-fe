@@ -115,6 +115,25 @@ export class EmployeeEffects {
   );
 
   @Effect()
+  updateEmployeeStatus = this.actions$.pipe(
+    ofType(EmployeesActions.UPDATE_EMPLOYEE_STATUS),
+    switchMap((action: EmployeesActions.UpdateEmployeeStatus) => {
+      return this.http
+        .patch(
+          `${environment.APILink}/employees/${action.payload.id}/status?status=${action.payload.status}`,
+          {}
+        )
+        .pipe(
+          map(() => {
+            return new EmployeesActions.SearchEmployees(
+              action.payload.searchParams
+            );
+          })
+        );
+    })
+  );
+
+  @Effect()
   requestDayOff = this.actions$.pipe(
     ofType(EmployeesActions.REQUEST_DAY_OFF),
     switchMap((action: EmployeesActions.RequestDayOff) => {

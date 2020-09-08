@@ -5,10 +5,10 @@
     "LINK_2": "Ngày phép",
     "LINK_3": "Chấm công",
     "LINK_4": "Thiết bị",
-    "LINK_5": "Loại ngày phép"
+    "LINK_5": "Lịch sử thiết bị",
+    "LINK_6": "Loại ngày phép"
   },
   "HEADER": {
-    "TITLE": "Danh sách nhân viên",
     "VIETNAMESE": "Tiếng việt",
     "ACCOUNT": "Tài khoản",
     "LOGOUT": "Đăng xuất"
@@ -17,6 +17,7 @@
     "DEVELOPED_BY": "Được phát triển bởi"
   },
   "GENERAL_LIST": {
+    "TITLE": "Danh sách nhân viên",
     "NAME": "Họ và tên",
     "BIRTHDAY": "Ngày sinh",
     "JOIN_DATE": "Ngày vào công ty",
@@ -24,12 +25,13 @@
     "STATUS": "Trạng Thái",
     "ACTIONS": "Hành động",
     "ALL": "Tất cả",
-    "ACTIVE": "Hoạt động",
-    "DELETED": "Đã xóa",
+    "ACTIVE": "Đang hoạt động",
+    "FORMER": "Cựu nhân viên",
     "CREATE_EMPLOYEE_PROFILE": "Tạo hồ sơ nhân viên",
     "NO_RESULT": "Không có kết quả."
   },
   "DAY_OFF_TABLE": {
+    "TITLE": "Danh sách ngày phép",
     "TYPE_OF_LEAVE": "Loại phép",
     "SICK_LEAVE": "Nghỉ ốm",
     "ANNUAL_LEAVE": "Phép năm",
@@ -98,7 +100,14 @@
   "PROFILE_EDIT": {
     "TITLE": "Chỉnh sửa hồ sơ nhân viên"
   },
+  "PROFILE_STATUS_CHANGE": {
+    "TITLE": "Xác nhận thay đổi trạng thái nhân viên",
+    "PARAMS": "Xác nhận muốn thay đổi trạng thái nhân viên?",
+    "ABORT": "Hủy bỏ",
+    "ACCEPT": "Đồng ý"
+  },
   "DEVICE_TABLE": {
+    "TITLE": "Danh sách thiết bị",
     "TYPE_OF_DEVICE": "Loại thiết bị",
     "ALL": "Tất cả",
     "CATEGORY_NAME": "Tên danh mục:",
@@ -117,6 +126,7 @@
     "SIGN_IN_GG": "Đăng nhập với google"
   },
   "DAY_OFF_CATEGORIES_PAGE": {
+    "TITLE": "Danh sách loại ngày phép",
     "NAME": "Tên",
     "DESCRIPTION": "Mô tả",
     "ACTION": "Hành động",
@@ -138,5 +148,22 @@
     "HOURS_REQUIRED": "Số giờ là bắt buộc!",
     "HOURS_MIN": "Số giờ ít nhất là 8",
     "HOURS_MAX": "Số giờ nhiều nhất là 1440"
+  },
+  "DEVICE_HISTORY": {
+    "TITLE": "Danh sách lịch sử thiết bị",
+    "FROM_DATE": "Từ ngày",
+    "TO_DATE": "Đến ngày",
+    "STATUS": "Trạng thái",
+    "FULL_NAME": "Tên nhân viên",
+    "EMAIL": "Email",
+    "DEVICE_NAME": "Tên thiết bị",
+    "PRICE": "Giá",
+    "DESCRIPTION": "Mô tả",
+    "DISCARDED": "Bị lỗi",
+    "IN_INVENTORY": "Trong kho",
+    "ASSIGNED": "Đã giao",
+    "TITLE_DETAIL": "Chi tiết lịch sử thiết bị",
+    "DEVICE_INFO": "Thông tin thiết bị",
+    "USER_INFO": "Thông tin người dùng"
   }
 }

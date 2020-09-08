@@ -6,7 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./dayoff.component.scss']
 })
 export class DayoffComponent implements OnInit {
-
+  public title = 'DAY_OFF_TABLE.TITLE';
   constructor() { }
 
   ngOnInit(): void {
