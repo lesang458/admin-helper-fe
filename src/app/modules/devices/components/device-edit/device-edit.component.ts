@@ -2,13 +2,14 @@ import { Component, OnInit } from '@angular/core';
 import { Device } from 'src/app/shared/models/device.model';
 import { BsModalRef } from 'ngx-bootstrap/modal';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
-import { DeviceParams } from '../../store/devices.actions';
+import { DeviceParams, SearchParams } from '../../store/devices.actions';
 import * as fromApp from 'src/app/store/app.reducer';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { DeviceCategory } from 'src/app/shared/models/deviceCategory';
 import { map } from 'rxjs/operators';
 import { TranslateService } from '@ngx-translate/core';
+import * as DevicesActions from '../../store/devices.actions';
 
 @Component({
   selector: 'ah-device-edit',
@@ -17,11 +18,14 @@ import { TranslateService } from '@ngx-translate/core';
 })
 export class DeviceEditComponent implements OnInit {
   public selectedDevice: Device;
-  public params: DeviceParams;
+  public params: SearchParams;
   public categories$: Observable<DeviceCategory[]>;
   public deviceForm = new FormGroup({
-    name: new FormControl('', Validators.maxLength(100)),
-    price: new FormControl('', Validators.pattern('^[0-9]+$')),
+    name: new FormControl('', [Validators.required, Validators.maxLength(100)]),
+    price: new FormControl('', [
+      Validators.required,
+      Validators.pattern('^[0-9]+$'),
+    ]),
     description: new FormControl(''),
     deviceCategoryId: new FormControl(''),
   });
@@ -34,7 +38,9 @@ export class DeviceEditComponent implements OnInit {
   ngOnInit(): void {
     this.categories$ = this.store.select('devices').pipe(
       map((data) => {
-        this.f.deviceCategoryId.patchValue(data.categories[0].id);
+        if (!this.selectedDevice) {
+          this.f.deviceCategoryId.patchValue(data.categories[0].id);
+        }
         return data.categories;
       })
     );
@@ -63,6 +69,24 @@ export class DeviceEditComponent implements OnInit {
   }
 
   public onSubmit(): void {
-    console.log(this.deviceForm.value);
+    const device: Device = {
+      name: this.f.name.value,
+      price: +this.f.price.value,
+      deviceCategoryId: +this.f.deviceCategoryId.value,
+      description: this.f.description.value,
+    };
+    const id = this.selectedDevice ? this.selectedDevice.id : 0;
+    const deviceParams: DeviceParams = {
+      id,
+      device,
+      params: this.params,
+    };
+    if (this.selectedDevice) {
+      console.log(device);
+      this.store.dispatch(new DevicesActions.EditDevice(deviceParams));
+    } else {
+      this.store.dispatch(new DevicesActions.CreateDevice(deviceParams));
+    }
+    this.bsModalRef.hide();
   }
 }

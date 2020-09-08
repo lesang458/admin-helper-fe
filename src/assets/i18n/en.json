@@ -144,6 +144,6 @@
     "DEVICE_NAME_REQUIRED": "Device name is required.",
     "DEVICE_NAME_MAX_LENGTH": "Device name must not exceed 100 characters.",
     "PRICE_REQUIRED": "Price is required.",
-    "PRICE_PATTERN": "Price must be a number"
+    "PRICE_PATTERN": "Price must be a positive number"
   }
 }

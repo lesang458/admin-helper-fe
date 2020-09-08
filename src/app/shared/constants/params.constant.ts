@@ -5,7 +5,4 @@ export class ParamsConstant {
   public static readonly sort = 'sort';
   public static readonly status = 'status';
   public static readonly deviceCategoryId = 'device_category_id';
-  public static getName(): string {
-    return 'name';
-  }
 }

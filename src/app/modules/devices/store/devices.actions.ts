@@ -3,10 +3,16 @@ import { Device } from 'src/app/shared/models/device.model';
 import { PaginatedData } from 'src/app/shared/models/pagination.model';
 import { DeviceCategory } from 'src/app/shared/models/deviceCategory';
 
-export interface DeviceParams {
+export interface SearchParams {
   page;
   perPage;
   deviceCategoryId;
+}
+
+export interface DeviceParams {
+  id;
+  device: Device;
+  params: SearchParams;
 }
 
 export const FETCH_DEVICES = '[Devices] Fetch Devices';
@@ -18,7 +24,7 @@ export const CREATE_DEVICE = '[Devices] Create Device';
 
 export class FetchDevices implements Action {
   public readonly type = FETCH_DEVICES;
-  constructor(public payload: DeviceParams) {}
+  constructor(public payload: SearchParams) {}
 }
 
 export class SetDevices implements Action {
@@ -37,12 +43,12 @@ export class SetDeviceCategories implements Action {
 
 export class EditDevice implements Action {
   public readonly type = EDIT_DEVICE;
-  constructor(public payload: Device) {}
+  constructor(public payload: DeviceParams) {}
 }
 
 export class CreateDevice implements Action {
   public readonly type = CREATE_DEVICE;
-  constructor(public payload: Device) {}
+  constructor(public payload: DeviceParams) {}
 }
 
 export type DevicesActions =

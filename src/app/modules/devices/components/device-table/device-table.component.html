@@ -20,7 +20,7 @@
     </div>
   </div>
   <div
-    class="card mb-3 card-accent-secondary"
+    class="card mb-3 border-dark"
     *ngFor="let item of data.devices.data; let i = index"
   >
     <div class="card-header">
@@ -39,7 +39,7 @@
         <div class="col-3 d-flex justify-content-end">
           <button
             class="btn btn-outline-info mr-2"
-            (click)="openModalWithComponent(item, deviceParams)"
+            (click)="openModalWithComponent(item, searchParams)"
           >
             <span class="cil-brush"></span>
           </button>
@@ -47,27 +47,32 @@
             <i class="cil-trash"></i>
           </button>
           <a
-            role="button"
+            data-toggle="collapse"
+            [attr.data-target]="'#collapse' + item.id"
+            [attr.aria-expanded]="false"
+            [attr.aria-controls]="'collapse' + item.id"
             class="ml-2 mt-2 pointer"
-            (click)="onExpand(item.id, i)"
+            (click)="state[i] = !state[i]"
           >
-            <i class="cil-chevron-right" *ngIf="!state[i]"></i>
+            <i class="cil-chevron-bottom" *ngIf="!state[i]"></i>
             <i class="cil-chevron-top" *ngIf="state[i]"></i>
           </a>
         </div>
       </div>
     </div>
-    <div class="card-body" id="{{ item.id }}" style="display: none">
-      <table class="table table-bordered">
-        <tr>
-          <td>{{ 'DEVICE_TABLE.PRICE' | translate }}</td>
-          <td>{{ item.price | currency: 'VND' }}</td>
-        </tr>
-        <tr>
-          <td>{{ 'DEVICE_TABLE.DESCRIPTION' | translate }}</td>
-          <td>{{ item.description }}</td>
-        </tr>
-      </table>
+    <div [id]="'collapse' + item.id" class="collapse">
+      <div class="card-body">
+        <table class="table table-bordered">
+          <tr>
+            <td>{{ 'DEVICE_TABLE.PRICE' | translate }}</td>
+            <td>{{ item.price | currency: 'VND' }}</td>
+          </tr>
+          <tr>
+            <td>{{ 'DEVICE_TABLE.DESCRIPTION' | translate }}</td>
+            <td>{{ item.description }}</td>
+          </tr>
+        </table>
+      </div>
     </div>
   </div>
   <div class="mt-2 mb-2">
@@ -103,7 +108,7 @@
       <button
         type="button"
         class="btn btn-info"
-        (click)="openModalWithComponent(null, deviceParams)"
+        (click)="openModalWithComponent(null, searchParams)"
       >
         <span class="cil-playlist-add btn-icon mr-2"></span>
         {{ 'DEVICE_TABLE.CREATE_DEVICE' | translate }}

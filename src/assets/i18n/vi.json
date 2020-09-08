@@ -142,6 +142,6 @@
     "DEVICE_NAME_REQUIRED": "Hãy nhập tên thiết bị",
     "DEVICE_NAME_MAX_LENGTH": "Tên thiết bị không được vượt quá 100 ký tự.",
     "PRICE_REQUIRED": "Hãy nhập giá trị của thiết bị.",
-    "PRICE_PATTERN": "Giá trị của thiết bị phải là một con số"
+    "PRICE_PATTERN": "Giá trị của thiết bị phải là một số  dương"
   }
 }
