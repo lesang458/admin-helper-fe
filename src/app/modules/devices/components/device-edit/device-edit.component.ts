@@ -82,7 +82,6 @@ export class DeviceEditComponent implements OnInit {
       params: this.params,
     };
     if (this.selectedDevice) {
-      console.log(device);
       this.store.dispatch(new DevicesActions.EditDevice(deviceParams));
     } else {
       this.store.dispatch(new DevicesActions.CreateDevice(deviceParams));
