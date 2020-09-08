@@ -34,8 +34,8 @@
             <option value="ACTIVE">
               {{ 'GENERAL_LIST.ACTIVE' | translate }}
             </option>
-            <option value="DELETED">
-              {{ 'GENERAL_LIST.DELETED' | translate }}
+            <option value="FORMER">
+              {{ 'GENERAL_LIST.FORMER' | translate }}
             </option>
           </select>
         </div>
@@ -97,7 +97,7 @@
               <span
                 class="badge rounded-pill badge-danger p-2"
                 *ngIf="item.status !== 'ACTIVE'"
-                >{{ 'GENERAL_LIST.DELETED' | translate }}</span
+                >{{ 'GENERAL_LIST.FORMER' | translate }}</span
               >
               <span
                 class="badge rounded-pill badge-success p-2"
@@ -113,10 +113,31 @@
                 <span class="cil-external-link"></span>
               </button>
               <button
-                class="btn btn-outline-primary"
+                class="btn btn-outline-primary mr-2"
                 (click)="openModalWithComponent(item.id, 'edit', searchParams)"
               >
                 <span class="cil-brush"></span>
+              </button>
+              
+              <button 
+                *ngIf="item.status === 'ACTIVE'"
+                class="btn btn-outline-danger mr-2"
+                (click)="openModalWithComponent(item.id, 'delete', searchParams)"
+              >              
+                <i class="cil-trash"></i>
+              </button>
+
+              <button 
+                *ngIf="item.status !== 'ACTIVE'" 
+                class="btn btn-outline-info mr-2"
+                (click)="openModalWithComponent(item.id, 'active', searchParams)"
+              >   
+                <img
+                    src="assets/img/restore.jpg"
+                    intrinsicsize="512 x 512"
+                    width="20"
+                    height="20"
+                  />           
               </button>
             </td>
           </tr>

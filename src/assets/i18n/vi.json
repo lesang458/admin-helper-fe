@@ -25,8 +25,8 @@
     "STATUS": "Trạng Thái",
     "ACTIONS": "Hành động",
     "ALL": "Tất cả",
-    "ACTIVE": "Hoạt động",
-    "DELETED": "Đã xóa",
+    "ACTIVE": "Đang hoạt động",
+    "FORMER": "Cựu nhân viên",
     "CREATE_EMPLOYEE_PROFILE": "Tạo hồ sơ nhân viên",
     "NO_RESULT": "Không có kết quả."
   },
@@ -99,6 +99,12 @@
   },
   "PROFILE_EDIT": {
     "TITLE": "Chỉnh sửa hồ sơ nhân viên"
+  },
+  "PROFILE_STATUS_CHANGE": {
+    "TITLE": "Xác nhận thay đổi trạng thái nhân viên",
+    "PARAMS": "Xác nhận muốn thay đổi trạng thái nhân viên?",
+    "ABORT": "Hủy bỏ",
+    "ACCEPT": "Đồng ý"
   },
   "DEVICE_TABLE": {
     "TITLE": "Danh sách thiết bị",

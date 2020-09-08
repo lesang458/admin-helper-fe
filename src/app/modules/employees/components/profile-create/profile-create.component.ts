@@ -106,11 +106,19 @@ export class ProfileCreateComponent implements OnInit {
         new EmployeeActions.CreateEmployee(this.profileForm.value)
       );
     } else {
-      const id = this.id;
-      const employee = this.profileForm.value;
-      const searchParams = this.refresh;
-      const params = { id, employee, searchParams };
-      this.store.dispatch(new EmployeeActions.EditEmployee(params));
+      if (this.type === 'delete' || this.type === 'active') {
+        const id = this.id;
+        const status = this.type === 'delete' ? 'FORMER' : 'ACTIVE';
+        const searchParams = this.refresh;
+        const params = { id, status, searchParams };
+        this.store.dispatch(new EmployeeActions.UpdateEmployeeStatus(params));
+      } else {
+        const id = this.id;
+        const employee = this.profileForm.value;
+        const searchParams = this.refresh;
+        const params = { id, employee, searchParams };
+        this.store.dispatch(new EmployeeActions.EditEmployee(params));
+      }
     }
     this.bsModalRef.hide();
   }
