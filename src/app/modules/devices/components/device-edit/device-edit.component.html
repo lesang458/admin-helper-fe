@@ -2,7 +2,7 @@
   <h4 *ngIf="selectedDevice" class="modal-title pull-left">
     {{ 'DEVICE_EDIT.EDIT_TITLE' | translate }}
   </h4>
-  <h4 *ngIf="selectedDevice === null" class="modal-title pull-left">
+  <h4 *ngIf="!selectedDevice" class="modal-title pull-left">
     {{ 'DEVICE_EDIT.CREATE_TITLE' | translate }}
   </h4>
   <button
