@@ -9,6 +9,6 @@ export class AuthComponent implements OnInit {
   constructor(private titleService: TitleService) {}
 
   ngOnInit(): void {
-    this.titleService.changeTitle('TITLE_FOR_PAGES.LOGIN');
+    this.titleService.setTitle('LOGIN');
   }
 }

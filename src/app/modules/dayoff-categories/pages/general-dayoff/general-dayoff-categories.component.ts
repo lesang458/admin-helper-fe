@@ -11,6 +11,6 @@ export class GeneralDayOffCategoriesComponent implements OnInit {
   constructor(private titleService: TitleService) {}
 
   ngOnInit(): void {
-    this.titleService.changeTitle('TITLE_FOR_PAGES.DAY_OFF_TYPE');
+    this.titleService.setTitle('DAY_OFF_CATEGORIES_PAGE');
   }
 }

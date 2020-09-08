@@ -120,6 +120,7 @@
     "ACCEPT": "Accept"
   },  
   "LOGIN": {
+    "TITLE": "Login",
     "LOGIN": "Login",
     "SIGN_IN": "Sign In to your account",
     "EMAIL": "Email",
@@ -167,13 +168,5 @@
     "TITLE_DETAIL": "Detail device history",
     "DEVICE_INFO": "Device information",
     "USER_INFO": "User information"
-  },
-  "TITLE_FOR_PAGES": {
-    "DAY_OFF": "AH | Day off",
-    "GENERAL_INFO": "AH | General info",
-    "LOGIN": "AH | Login",
-    "DEVICE_HISTORY": "AH | Device history",
-    "DEVICE_LIST": "AH | Device list",
-    "DAY_OFF_TYPE": "AH | Day off type"
   }
 }

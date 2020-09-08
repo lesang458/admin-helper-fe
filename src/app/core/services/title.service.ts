@@ -1,4 +1,3 @@
-import { BehaviorSubject } from 'rxjs';
 import { Injectable } from '@angular/core';
 import { Title } from '@angular/platform-browser';
 import { TranslateService } from '@ngx-translate/core';
@@ -12,8 +11,8 @@ export class TitleService {
     private translate: TranslateService
   ) {}
 
-  public changeTitle(i18nKey: string): void {
-    this.i18nKey = i18nKey;
-    this.titleService.setTitle(this.translate.instant(i18nKey));
+  public setTitle(i18nKey: string): void {
+    this.i18nKey = `${i18nKey}.TITLE`;
+    this.titleService.setTitle(`AH | ${this.translate.instant(this.i18nKey)}`);
   }
 }

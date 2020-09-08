@@ -118,6 +118,7 @@
     "CREATE_DEVICE": "Tạo thiết bị"
   },
   "LOGIN": {
+    "TITLE": "Đăng nhập",
     "LOGIN": "Đăng nhập",
     "SIGN_IN": "Đăng nhập vào tài khoản của bạn",
     "EMAIL": "Email",
@@ -165,13 +166,5 @@
     "TITLE_DETAIL": "Chi tiết lịch sử thiết bị",
     "DEVICE_INFO": "Thông tin thiết bị",
     "USER_INFO": "Thông tin người dùng"
-  },
-  "TITLE_FOR_PAGES": {
-    "DAY_OFF": "AH | Nghỉ phép",
-    "GENERAL_INFO": "AH | Thông tin chung",
-    "LOGIN": "AH | Đăng nhập",
-    "DEVICE_HISTORY": "AH | Lịch sử thiết bị",
-    "DEVICE_LIST": "AH | Danh sách thiết bị",
-    "DAY_OFF_TYPE": "AH | Loại ngày nghỉ"
   }
 }

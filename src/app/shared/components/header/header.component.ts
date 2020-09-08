@@ -24,7 +24,9 @@ export class HeaderComponent implements OnInit {
 
   public switchLanguage(language: string): void {
     this.translate.use(language);
-    this.titleService.setTitle(this.translate.instant(this.titleSv.i18nKey));
+    this.titleService.setTitle(
+      `AH | ${this.translate.instant(this.titleSv.i18nKey)}`
+    );
   }
 
   public logout(): void {

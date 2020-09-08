@@ -11,6 +11,6 @@ export class GeneralInfoComponent implements OnInit {
   constructor(private titleService: TitleService) {}
 
   ngOnInit(): void {
-    this.titleService.changeTitle('TITLE_FOR_PAGES.GENERAL_INFO');
+    this.titleService.setTitle('GENERAL_LIST');
   }
 }

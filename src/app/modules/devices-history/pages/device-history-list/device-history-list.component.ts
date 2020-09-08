@@ -10,6 +10,6 @@ export class DeviceHistoryListComponent implements OnInit {
   constructor(private titleService: TitleService) {}
 
   ngOnInit(): void {
-    this.titleService.changeTitle('TITLE_FOR_PAGES.DEVICE_HISTORY');
+    this.titleService.setTitle('DEVICE_HISTORY');
   }
 }
