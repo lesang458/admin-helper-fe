@@ -6,6 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./general-dayoff-categories.component.scss'],
 })
 export class GeneralDayOffCategoriesComponent implements OnInit {
+  public title = 'DAY_OFF_CATEGORIES_PAGE.TITLE';
   constructor() {}
 
   ngOnInit(): void {}

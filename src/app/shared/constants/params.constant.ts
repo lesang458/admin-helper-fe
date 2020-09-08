@@ -5,4 +5,6 @@ export class ParamsConstant {
   public static readonly sort = 'sort';
   public static readonly status = 'status';
   public static readonly deviceCategoryId = 'device_category_id';
+  public static readonly historyTo = 'history_to';
+  public static readonly historyFrom = 'history_from';
 }

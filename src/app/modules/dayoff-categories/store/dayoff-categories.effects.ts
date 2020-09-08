@@ -21,10 +21,13 @@ export class DayOffCategoriesEffects {
         .get<any>(`${environment.APILink}/day-off-categories`)
         .pipe(
           map((data) => {
-            const dayOffCategories = camelcaseKeys(data).dayOffCategories.map(
+            const dayOffCategories = camelcaseKeys(data.day_off_categories).map(
               (i) => {
                 if (!i.description) {
                   i.description = '';
+                }
+                if (!i.totalHoursDefault) {
+                  i.totalHoursDefault = 160;
                 }
                 return i;
               }
@@ -41,7 +44,8 @@ export class DayOffCategoriesEffects {
   createDayoffCategory = this.actions$.pipe(
     ofType(DayOffCategoriesActions.CREATE_DAY_OFF_CATEGORY),
     switchMap((action: DayOffCategoriesActions.CreateDayOffCategory) => {
-      const body: DayOffCategory = snakecaseKeys(action.payload);
+      const body: DayOffCategory = camelcaseKeys(action.payload);
+      // const body: DayOffCategory = snakecaseKeys(action.payload);
       // return this.http.post<any>(`${environment.APILink}/employees`, body).pipe(
       //   map((val) => {
       //     const data: DayOff = camelcaseKeys(val.data);
@@ -52,6 +56,7 @@ export class DayOffCategoriesEffects {
         data: {
           name: body.name,
           description: body.description,
+          totalHoursDefault: body.totalHoursDefault,
         },
       }).pipe(
         map((val) => {
@@ -74,12 +79,14 @@ export class DayOffCategoriesEffects {
   updateDayoffCategory = this.actions$.pipe(
     ofType(DayOffCategoriesActions.UPDATE_DAY_OFF_CATEGORY),
     switchMap((action: DayOffCategoriesActions.UpdateDayOffCategory) => {
-      const body: DayOffCategory = snakecaseKeys(action.payload);
+      const body: DayOffCategory = camelcaseKeys(action.payload);
+      // const body: DayOffCategory = snakecaseKeys(action.payload);
       return of({
         data: {
           id: body.id,
           name: body.name,
           description: body.description,
+          totalHoursDefault: body.totalHoursDefault,
         },
       }).pipe(
         map((val) => {

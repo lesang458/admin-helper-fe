@@ -97,19 +97,17 @@
         </select>
       </div>
 
-      <div class="modal-body-custom">
-        <ul>
-          <li>
+      <div class="modal-body-custom ml-3 mr-3">
+          <div class="alert alert-success" role="alert">
             {{ "REQUEST-DAY-OFF.DAY_OFF_AVAILABLE" | translate }}:
             {{ dayOffAvailable }}
             {{ "REQUEST-DAY-OFF.DAYS" | translate }}
-          </li>
-          <li>
+          </div>
+          <div class="alert alert-info" role="alert">
             {{ "REQUEST-DAY-OFF.DAY_OFF_AFTER" | translate }}:
             {{ dayOffAvailable > dayOffs ? dayOffAvailable - dayOffs : "0" }}
             {{ "REQUEST-DAY-OFF.DAYS" | translate }}
-          </li>
-        </ul>
+          </div>
         <hr />
       </div>
 
