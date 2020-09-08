@@ -114,8 +114,8 @@
     "CREATE_DEVICE": "Create Device"
   },
   "PROFILE_STATUS_CHANGE": {
-    "TITLE": "Confirm employee status change",
-    "PARAMS": "Are you sure you want to change the employee's status?",
+    "TITLE": "Confirm remove employee",
+    "PARAMS": "This employee's status will be changed to 'FORMER'. Do you want to continue?",
     "ABORT": "Abort",
     "ACCEPT": "Accept"
   },  

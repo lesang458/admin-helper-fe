@@ -101,8 +101,8 @@
     "TITLE": "Chỉnh sửa hồ sơ nhân viên"
   },
   "PROFILE_STATUS_CHANGE": {
-    "TITLE": "Xác nhận thay đổi trạng thái nhân viên",
-    "PARAMS": "Xác nhận muốn thay đổi trạng thái nhân viên?",
+    "TITLE": "Xác nhận xóa nhân viên",
+    "PARAMS": "Trạng thái của nhân viên này sẽ được thay đổi thành 'CỰU NHÂN VIÊN'. Bạn có muốn tiếp tục?",
     "ABORT": "Hủy bỏ",
     "ACCEPT": "Đồng ý"
   },
