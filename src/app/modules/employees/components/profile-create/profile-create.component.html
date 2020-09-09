@@ -9,7 +9,10 @@
     {{ 'PROFILE_EDIT.TITLE' | translate }}
   </h4>
   <h4 *ngIf="type === 'delete'" class="modal-title pull-left">
-    {{ 'PROFILE_STATUS_CHANGE.TITLE' | translate }}
+    {{ 'PROFILE_STATUS_CHANGE.TITLE_FORMER' | translate }}
+  </h4>
+  <h4 *ngIf="type === 'active'" class="modal-title pull-left">
+    {{ 'PROFILE_STATUS_CHANGE.TITLE_ACTIVE' | translate }}
   </h4>
   <button
     type="button"
@@ -290,8 +293,11 @@
   </div>
   
   <div *ngIf="type === 'delete' || type === 'active'">
-    <div class="modal-body">
-      {{ 'PROFILE_STATUS_CHANGE.PARAMS' | translate }}
+    <div class="modal-body" *ngIf="type === 'delete'">
+      {{ 'PROFILE_STATUS_CHANGE.PARAM_FORMER' | translate }}
+    </div>
+    <div class="modal-body" *ngIf="type === 'active'">
+      {{ 'PROFILE_STATUS_CHANGE.PARAM_ACTIVE' | translate }}
     </div>
     <div class="modal-footer">
       <button type="button" class="btn btn-secondary" (click)="bsModalRef.hide()">

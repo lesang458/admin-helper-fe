@@ -71,10 +71,6 @@
         </tr>
       </tbody>
     </table>
-    <input type="radio" [formControl]="assigned" id="radio" value="">  
-    <label class="form-check-label ml-2" for="radio">
-      {{ 'DEVICE_ASSIGN.NO_ASSIGN' | translate }}
-    </label>             
     <div
       *ngIf="employeeObs.employees.length === 0"
       class="alert alert-secondary"
@@ -105,7 +101,7 @@
    <button type="button" class="btn btn-secondary" (click)="bsModalRef.hide()">
        {{ 'PROFILE_CREATE.CLOSE' | translate }}
    </button>
-   <button type="button" class="btn btn-primary" (click)="onSubmit()">
+   <button type="button" class="btn btn-primary" (click)="onSubmit()" [disabled]="!assigned.value">
        {{ 'PROFILE_CREATE.SAVE' | translate }}
    </button>
 </div>  
