@@ -100,7 +100,7 @@
   },
   "PROFILE_STATUS_CHANGE": {
     "TITLE": "Xác nhận thay đổi trạng thái nhân viên",
-    "PARAMS": "Bạn có chắc chắn muốn thay đổi trạng thái của nhân viên không?",
+    "PARAMS": "Xác nhận muốn thay đổi trạng thái nhân viên?",
     "ABORT": "Hủy bỏ",
     "ACCEPT": "Đồng ý"
   },

@@ -6,6 +6,7 @@ import { DeviceCategory } from 'src/app/shared/models/deviceCategory';
 export interface SearchParams {
   page;
   perPage;
+  status: string;
   deviceCategoryId;
 }
 

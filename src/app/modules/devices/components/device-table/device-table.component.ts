@@ -23,6 +23,7 @@ export class DeviceTableComponent implements OnInit {
   public categories$: Observable<DeviceCategory[]>;
   public state: boolean[];
   public currentPage = 1;
+  public selectedStatus = new FormControl('ASSIGNED');
   public selectedCategory = new FormControl('');
   public searchParams: SearchParams;
   public bsModalRef: BsModalRef;
@@ -43,11 +44,11 @@ export class DeviceTableComponent implements OnInit {
     this.onPageChanged(1);
 
     this.selectedCategory.valueChanges.subscribe(() => {
-      if (this.currentPage === 1) {
-        this.onPageChanged(1);
-      } else {
-        this.currentPage = 1;
-      }
+      this.onDataChanged();
+    });
+
+    this.selectedStatus.valueChanges.subscribe(() => {
+      this.onDataChanged();
     });
   }
 
@@ -61,9 +62,18 @@ export class DeviceTableComponent implements OnInit {
     this.searchParams = {
       page,
       perPage: 5,
+      status: this.selectedStatus.value,
       deviceCategoryId: this.selectedCategory.value,
     };
     this.store.dispatch(new DevicesActions.FetchDevices(this.searchParams));
+  }
+
+  public onDataChanged(): void {
+    if (this.currentPage === 1) {
+      this.onPageChanged(1);
+    } else {
+      this.currentPage = 1;
+    }
   }
 
   public openModalWithComponent(
