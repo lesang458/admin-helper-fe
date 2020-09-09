@@ -1,4 +1,3 @@
-import { log } from 'console';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 import * as fromApp from '../../../../store/app.reducer';
 import * as DevicesHistoryActions from '../../store/devices-history.actions';
@@ -24,7 +23,6 @@ export class DeviceHistoryTableComponent implements OnInit {
   public data$: Observable<PaginatedData<DeviceHistory[]>>;
   public categories$: Observable<State>;
   public searchStatusFormControl = new FormControl('');
-  public selectedCategory = new FormControl('');
   public selectedFromDate = new FormControl('');
   public selectedToDate = new FormControl('');
   public bsModalRef: BsModalRef;
@@ -58,10 +56,6 @@ export class DeviceHistoryTableComponent implements OnInit {
     this.onPageChanged(1);
     this.categories$ = this.store.select('devices')
     this.store.dispatch(new DevicesActions.FetchDeviceCategories());
-    this.selectedCategory.valueChanges.subscribe(() => {
-      this.onDataChanged();
-    });
-
     this.searchStatusFormControl.valueChanges.subscribe(() => {
       this.onDataChanged();
     });
@@ -85,14 +79,12 @@ export class DeviceHistoryTableComponent implements OnInit {
 
   public onPageChanged(page: number): void {
      const status = this.searchStatusFormControl.value;
-     const deviceCategoryId= this.selectedCategory.value;
      const historyFrom= this.selectedFromDate.value;
      const historyTo= this.selectedToDate.value;
      const params = {
        page,
        perPage: 10,
        status,
-       deviceCategoryId,
        historyFrom,
        historyTo
       }
