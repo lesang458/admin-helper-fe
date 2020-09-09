@@ -69,9 +69,8 @@ export class DeviceEffects {
           snakecaseKeys(action.payload.userId)
         )
         .pipe(
-          map((response) => {
-            const data = camelcaseKeys(response.body, { deep: true });
-            return new DevicesActions.SetDevices(data);
+          map(() => {
+            return new DevicesActions.FetchDevices(action.payload.params);
           })
         );
     })

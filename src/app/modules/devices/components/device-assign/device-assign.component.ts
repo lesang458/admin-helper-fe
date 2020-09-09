@@ -6,6 +6,7 @@ import * as fromApp from '../../../../store/app.reducer';
 import * as EmployeeActions from '../../../employees/store/employees.actions';
 import * as DevicesActions from '../../store/devices.actions';
 import { SearchParams } from 'src/app/modules/employees/store/employees.actions';
+import { SearchDevice } from '../../store/devices.actions';
 import { FormControl } from '@angular/forms';
 import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
 
@@ -23,7 +24,8 @@ export class DeviceAssignComponent implements OnInit {
   public sortBirthDateType = 0;
   public sortNameType = 0;
   public sortJoinDateType = 0;
-  public searchParams: SearchParams;
+  public paramEmployee: SearchParams;
+  public params: SearchDevice;
   constructor(
     private store: Store<fromApp.AppState>,
     public bsModalRef: BsModalRef
@@ -60,7 +62,7 @@ export class DeviceAssignComponent implements OnInit {
 
   public onPageChanged(page: number): void {
     const search = this.searchFormControl.value;
-    this.searchParams = {
+    this.paramEmployee = {
       search,
       status: 'ACTIVE',
       page,
@@ -71,7 +73,7 @@ export class DeviceAssignComponent implements OnInit {
         sortJoinDateType: this.sortJoinDateType,
       },
     };
-    this.store.dispatch(new EmployeeActions.SearchEmployees(this.searchParams));
+    this.store.dispatch(new EmployeeActions.SearchEmployees(this.paramEmployee));
   }
 
   public onSubmit(): void {
@@ -79,8 +81,9 @@ export class DeviceAssignComponent implements OnInit {
     const userId = {
       userId: this.assigned.value,
     };
-    const params = { id, userId };
-    this.store.dispatch(new DevicesActions.AssignDevice(params));
+    const params = this.params
+    const data = { id, userId, params };
+    this.store.dispatch(new DevicesActions.AssignDevice(data));
     this.bsModalRef.hide();
   }
 }

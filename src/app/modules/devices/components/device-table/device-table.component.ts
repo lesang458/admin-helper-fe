@@ -4,7 +4,7 @@ import * as fromApp from 'src/app/store/app.reducer';
 import { Observable } from 'rxjs';
 import * as DevicesActions from '../../store/devices.actions';
 import { TranslateService } from '@ngx-translate/core';
-import { SearchParams, DeviceParams } from '../../store/devices.actions';
+import { SearchDevice, DeviceParams } from '../../store/devices.actions';
 import { DeviceCategory } from 'src/app/shared/models/deviceCategory';
 import { FormControl } from '@angular/forms';
 import { State } from '../../store/devices.reducer';
@@ -27,7 +27,7 @@ export class DeviceTableComponent implements OnInit {
   public selectedCategory = new FormControl('');
   public deviceParams: DeviceParams;
   public bsModalRef: BsModalRef;
-  public searchParams: SearchParams;
+  public searchParams: SearchDevice;
 
   constructor(
     private store: Store<fromApp.AppState>,
@@ -71,7 +71,7 @@ export class DeviceTableComponent implements OnInit {
 
   public openEditModal(
     selectedDevice: Device,
-    params: SearchParams
+    params: SearchDevice
   ): void {
     const initialState = { selectedDevice, params };
     this.bsModalRef = this.modalService.show(DeviceEditComponent, {
@@ -80,8 +80,8 @@ export class DeviceTableComponent implements OnInit {
     this.bsModalRef.content.closeBtnName = 'Close';
   }
 
-  public openAssignModal(id: number): void {
-    const initialState = { id };
+  public openAssignModal(id: number,  params: SearchDevice): void {
+    const initialState = { id, params };
     this.bsModalRef = this.modalService.show(DeviceAssignComponent, {
       initialState,
     });
