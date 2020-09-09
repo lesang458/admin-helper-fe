@@ -8,12 +8,15 @@ import { DeviceListComponent } from './pages/device-list/device-list.component';
 import { DEVICES_ROUTES } from './devices.routes';
 import { DeviceTableComponent } from './components/device-table/device-table.component';
 import { DeviceAssignComponent } from './components/device-assign/device-assign.component';
+import { DeviceEditComponent } from './components/device-edit/device-edit.component';
+import { ModalModule, BsModalRef } from 'ngx-bootstrap/modal';
 
 @NgModule({
   declarations: [
     DeviceListComponent,
     DeviceTableComponent,
     DeviceAssignComponent,
+    DeviceEditComponent,
   ],
   imports: [
     CommonModule,
@@ -22,6 +25,8 @@ import { DeviceAssignComponent } from './components/device-assign/device-assign.
     RouterModule.forChild(DEVICES_ROUTES),
     ReactiveFormsModule,
     PaginationModule.forRoot(),
+    ModalModule.forRoot(),
   ],
+  providers: [BsModalRef],
 })
 export class DevicesModule {}

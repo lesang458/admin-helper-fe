@@ -77,5 +77,39 @@ export class DeviceEffects {
     })
   );
 
+  @Effect()          
+  createDevice = this.actions$.pipe(
+    ofType(DevicesActions.CREATE_DEVICE),
+    switchMap((action: DevicesActions.CreateDevice) => {
+      return this.http
+        .post<Device>(
+          `${environment.APILink}/devices`,
+          snakecaseKeys(action.payload.device)
+        )
+        .pipe(
+          map(() => {
+            return new DevicesActions.FetchDevices(action.payload.params);
+          })
+        );
+    })
+  );
+
+  @Effect()
+  editDevice = this.actions$.pipe(
+    ofType(DevicesActions.EDIT_DEVICE),
+    switchMap((action: DevicesActions.EditDevice) => {
+      return this.http
+        .put<Device>(
+          `${environment.APILink}/devices/${action.payload.id}`,
+          snakecaseKeys(action.payload.device)
+        )
+        .pipe(
+          map(() => {
+            return new DevicesActions.FetchDevices(action.payload.params);
+          })
+        );
+    })
+  );
+
   constructor(private actions$: Actions, private http: HttpClient) {}
 }

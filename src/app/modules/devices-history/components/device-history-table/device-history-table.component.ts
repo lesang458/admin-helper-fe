@@ -15,7 +15,7 @@ import { DeviceHistoryDetailComponent } from '../device-history-detail/device-hi
 @Component({
   selector: 'ah-device-history-table',
   templateUrl: './device-history-table.component.html',
-  styleUrls: ['./device-history-table.component.scss']
+  styleUrls: ['./device-history-table.component.scss'],
 })
 export class DeviceHistoryTableComponent implements OnInit {
   public data$: Observable<PaginatedData<DeviceHistory[]>>;
@@ -24,7 +24,7 @@ export class DeviceHistoryTableComponent implements OnInit {
   public selectedCategory = new FormControl('');
   public selectedFromDate = new FormControl('');
   public selectedToDate = new FormControl('');
-  public bsModalRef: BsModalRef;  
+  public bsModalRef: BsModalRef;
   public currentPage = 1;
   constructor(
     private store: Store<fromApp.AppState>,
@@ -38,7 +38,7 @@ export class DeviceHistoryTableComponent implements OnInit {
       })
     );
     this.onPageChanged(1);
-    this.categories$ = this.store.select('devices')
+    this.categories$ = this.store.select('devices');
     this.store.dispatch(new DevicesActions.FetchDeviceCategories());
     this.selectedCategory.valueChanges.subscribe(() => {
       this.onDataChanged();
@@ -65,22 +65,21 @@ export class DeviceHistoryTableComponent implements OnInit {
     }
   }
 
-  public onPageChanged(page: number): void { 
-     const status = this.searchStatusFormControl.value;
-     const deviceCategoryId= this.selectedCategory.value;
-     const historyFrom= this.selectedFromDate.value;
-     const historyTo= this.selectedToDate.value;
-     const params = {
-       page, 
-       perPage: 10, 
-       status, 
-       deviceCategoryId,
-       historyFrom,
-       historyTo
-      }
-     this.store.dispatch(new DevicesHistoryActions.FetchDeviceHistory(params));
-
-}
+  public onPageChanged(page: number): void {
+    const status = this.searchStatusFormControl.value;
+    const deviceCategoryId = this.selectedCategory.value;
+    const historyFrom = this.selectedFromDate.value;
+    const historyTo = this.selectedToDate.value;
+    const params = {
+      page,
+      perPage: 10,
+      status,
+      deviceCategoryId,
+      historyFrom,
+      historyTo,
+    };
+    this.store.dispatch(new DevicesHistoryActions.FetchDeviceHistory(params));
+  }
 
   public openModalWithComponent(id: number): void {
     const initialState = { id };
