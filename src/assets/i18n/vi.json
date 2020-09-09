@@ -150,6 +150,15 @@
     "HOURS_MIN": "Số giờ ít nhất là 8",
     "HOURS_MAX": "Số giờ nhiều nhất là 1440"
   },
+  "DEVICE_EDIT": {
+    "EDIT_TITLE": "Chỉnh sửa thông tin thiết bị.",
+    "CREATE_TITLE": "Tạo thiết bị",
+    "DEVICE_NAME": "Tên thiết bị",
+    "DEVICE_NAME_REQUIRED": "Hãy nhập tên thiết bị",
+    "DEVICE_NAME_MAX_LENGTH": "Tên thiết bị không được vượt quá 100 ký tự.",
+    "PRICE_REQUIRED": "Hãy nhập giá tiền của thiết bị.",
+    "PRICE_PATTERN": "Giá tiền của thiết bị phải là một số  dương"
+  },
   "DEVICE_HISTORY": {
     "TITLE": "Danh sách lịch sử thiết bị",
     "FROM_DATE": "Từ ngày",

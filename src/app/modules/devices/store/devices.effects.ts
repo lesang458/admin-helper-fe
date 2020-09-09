@@ -9,6 +9,7 @@ import { Device } from 'src/app/shared/models/device.model';
 import { switchMap, map } from 'rxjs/operators';
 import { DeviceCategory } from 'src/app/shared/models/deviceCategory';
 import { ParamsConstant } from 'src/app/shared/constants/params.constant';
+import * as snakecaseKeys from 'snakecase-keys';
 
 @Injectable()
 export class DeviceEffects {
@@ -54,6 +55,40 @@ export class DeviceEffects {
           map((response) => {
             const data = camelcaseKeys(response.body, { deep: true });
             return new DevicesActions.SetDeviceCategories(data.data);
+          })
+        );
+    })
+  );
+
+  @Effect()
+  createDevice = this.actions$.pipe(
+    ofType(DevicesActions.CREATE_DEVICE),
+    switchMap((action: DevicesActions.CreateDevice) => {
+      return this.http
+        .post<Device>(
+          `${environment.APILink}/devices`,
+          snakecaseKeys(action.payload.device)
+        )
+        .pipe(
+          map(() => {
+            return new DevicesActions.FetchDevices(action.payload.params);
+          })
+        );
+    })
+  );
+
+  @Effect()
+  editDevice = this.actions$.pipe(
+    ofType(DevicesActions.EDIT_DEVICE),
+    switchMap((action: DevicesActions.EditDevice) => {
+      return this.http
+        .put<Device>(
+          `${environment.APILink}/devices/${action.payload.id}`,
+          snakecaseKeys(action.payload.device)
+        )
+        .pipe(
+          map(() => {
+            return new DevicesActions.FetchDevices(action.payload.params);
           })
         );
     })

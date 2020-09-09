@@ -1,0 +1,109 @@
+<div class="modal-header">
+  <h4 *ngIf="selectedDevice" class="modal-title pull-left">
+    {{ 'DEVICE_EDIT.EDIT_TITLE' | translate }}
+  </h4>
+  <h4 *ngIf="!selectedDevice" class="modal-title pull-left">
+    {{ 'DEVICE_EDIT.CREATE_TITLE' | translate }}
+  </h4>
+  <button
+    type="button"
+    class="pull-right btn btn-outline-danger"
+    aria-label="Close"
+    (click)="bsModalRef.hide()"
+  >
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<hr class="mt-0 mb-0" />
+<form [formGroup]="deviceForm" (ngSubmit)="onSubmit()">
+  <div class="modal-body">
+    <div class="row">
+      <div class="col-12">
+        <div class="form-group">
+          <label for="name">{{ 'DEVICE_EDIT.DEVICE_NAME' | translate }}</label>
+          <input
+            type="text"
+            id="name"
+            class="form-control"
+            formControlName="name"
+          />
+          <div
+            *ngIf="f.name.invalid && (f.name.dirty || f.name.touched)"
+            class="invalid-message"
+          >
+            {{ getNameErrorMessage() }}
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-12">
+        <div class="form-group">
+          <label for="price">{{ 'DEVICE_TABLE.PRICE' | translate }}</label>
+          <input
+            type="text"
+            id="price"
+            class="form-control"
+            formControlName="price"
+          />
+          <div
+            *ngIf="f.price.invalid && (f.price.dirty || f.price.touched)"
+            class="invalid-message"
+          >
+            {{ getPriceErrorMessage() }}
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-6">
+        <div class="form-group">
+          <label class="d-inline-block" for="device-category">
+            {{ 'DEVICE_TABLE.TYPE_OF_DEVICE' | translate }}
+          </label>
+          <select
+            formControlName="deviceCategoryId"
+            class="form-control d-inline-block"
+            id="device-category"
+          >
+            <option
+              *ngFor="let item of categories$ | async; let i = index"
+              [value]="item.id"
+            >
+              {{ item.name }}
+            </option>
+          </select>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-12">
+        <div class="form-group">
+          <label for="description">
+            {{ 'DEVICE_TABLE.DESCRIPTION' | translate }}
+          </label>
+          <textarea
+            type="text"
+            id="description"
+            class="form-control"
+            rows="3"
+            formControlName="description"
+          ></textarea>
+        </div>
+      </div>
+    </div>
+  </div>
+  <hr class="mt-0 mb-0" />
+  <div class="modal-footer">
+    <button type="button" class="btn btn-danger" (click)="bsModalRef.hide()">
+      {{ 'PROFILE_CREATE.CLOSE' | translate }}
+    </button>
+    <button
+      type="submit"
+      class="btn btn-success"
+      [disabled]="deviceForm.invalid"
+    >
+      {{ 'PROFILE_CREATE.SAVE' | translate }}
+    </button>
+  </div>
+</form>

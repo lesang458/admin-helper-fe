@@ -4,10 +4,14 @@ import * as fromApp from 'src/app/store/app.reducer';
 import { Observable } from 'rxjs';
 import * as DevicesActions from '../../store/devices.actions';
 import { TranslateService } from '@ngx-translate/core';
-import { DeviceParams } from '../../store/devices.actions';
+import { SearchParams } from '../../store/devices.actions';
 import { DeviceCategory } from 'src/app/shared/models/deviceCategory';
 import { FormControl } from '@angular/forms';
 import { State } from '../../store/devices.reducer';
+import { Device } from 'src/app/shared/models/device.model';
+import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
+import { DeviceEditComponent } from '../device-edit/device-edit.component';
+import { tap } from 'rxjs/operators';
 
 @Component({
   selector: 'ah-device-table',
@@ -17,16 +21,24 @@ import { State } from '../../store/devices.reducer';
 export class DeviceTableComponent implements OnInit {
   public data$: Observable<State>;
   public categories$: Observable<DeviceCategory[]>;
+  public state: boolean[];
   public currentPage = 1;
   public selectedCategory = new FormControl('');
-  public deviceParams: DeviceParams;
+  public searchParams: SearchParams;
+  public bsModalRef: BsModalRef;
   constructor(
     private store: Store<fromApp.AppState>,
+    private modalService: BsModalService,
     private translate: TranslateService
   ) {}
 
   ngOnInit(): void {
-    this.data$ = this.store.select('devices');
+    this.data$ = this.store.select('devices').pipe(
+      tap((data) => {
+        this.state = new Array<boolean>(data.devices.pagination.pageSize);
+        this.state = this.state.map(() => false);
+      })
+    );
     this.store.dispatch(new DevicesActions.FetchDeviceCategories());
     this.onPageChanged(1);
 
@@ -39,11 +51,6 @@ export class DeviceTableComponent implements OnInit {
     });
   }
 
-  public onExpand(id): void {
-    const el: HTMLElement = document.getElementById(id);
-    el.style.display = el.style.display === 'none' ? 'block' : 'none';
-  }
-
   public getUserName(user: any): string {
     return user
       ? `${user.firstName} ${user.lastName}`
@@ -51,11 +58,22 @@ export class DeviceTableComponent implements OnInit {
   }
 
   public onPageChanged(page: number): void {
-    this.deviceParams = {
+    this.searchParams = {
       page,
       perPage: 5,
       deviceCategoryId: this.selectedCategory.value,
     };
-    this.store.dispatch(new DevicesActions.FetchDevices(this.deviceParams));
+    this.store.dispatch(new DevicesActions.FetchDevices(this.searchParams));
+  }
+
+  public openModalWithComponent(
+    selectedDevice: Device,
+    params: SearchParams
+  ): void {
+    const initialState = { selectedDevice, params };
+    this.bsModalRef = this.modalService.show(DeviceEditComponent, {
+      initialState,
+    });
+    this.bsModalRef.content.closeBtnName = 'Close';
   }
 }
