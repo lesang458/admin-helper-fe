@@ -8,6 +8,8 @@ import { DeviceParams } from '../../store/devices.actions';
 import { DeviceCategory } from 'src/app/shared/models/deviceCategory';
 import { FormControl } from '@angular/forms';
 import { State } from '../../store/devices.reducer';
+import { Router } from '@angular/router';
+import { DevicesHistoryService } from 'src/app/core/services/devices-history.service';
 
 @Component({
   selector: 'ah-device-table',
@@ -22,7 +24,9 @@ export class DeviceTableComponent implements OnInit {
   public deviceParams: DeviceParams;
   constructor(
     private store: Store<fromApp.AppState>,
-    private translate: TranslateService
+    private translate: TranslateService,
+    private router: Router,
+    private devicesHistoryService: DevicesHistoryService
   ) {}
 
   ngOnInit(): void {
@@ -58,4 +62,10 @@ export class DeviceTableComponent implements OnInit {
     };
     this.store.dispatch(new DevicesActions.FetchDevices(this.deviceParams));
   }
+
+  public navigateToDeviceHistory(id: number): void {
+    this.devicesHistoryService.setCurrentId(id);
+    this.router.navigateByUrl('/lich-su-thiet-bi');
+  }
+
 }

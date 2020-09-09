@@ -4,15 +4,15 @@
       <div class="col-5">
         <div class="form-group">
           <label class="d-inline-block mr-3 ml-2" for="day-off-type">
-            {{ 'DEVICE_TABLE.TYPE_OF_DEVICE' | translate }}
+            {{ "DEVICE_TABLE.TYPE_OF_DEVICE" | translate }}
           </label>
           <select
             [formControl]="selectedCategory"
             class="form-control d-inline-block"
-            style="width: auto"
+            style="width: auto;"
             id="device-category"
           >
-            <option value="">{{ 'DEVICE_TABLE.ALL' | translate }}</option>
+            <option value="">{{ "DEVICE_TABLE.ALL" | translate }}</option>
             <option *ngFor="let item of data.categories" [value]="item.id">
               {{ item.name }}
             </option>
@@ -31,12 +31,12 @@
               {{ item.name }}
             </div>
             <div class="col-3">
-              {{ 'DEVICE_TABLE.CATEGORY_NAME' | translate }}
-              {{ ' ' + item.categoryName }}
+              {{ "DEVICE_TABLE.CATEGORY_NAME" | translate }}
+              {{ " " + item.categoryName }}
             </div>
             <div class="col-3">
-              {{ 'DEVICE_TABLE.ASSIGNED_TO' | translate }}
-              {{ ' ' + getUserName(item.user) }}
+              {{ "DEVICE_TABLE.ASSIGNED_TO" | translate }}
+              {{ " " + getUserName(item.user) }}
             </div>
             <div class="col-3 d-flex justify-content-end">
               <button class="btn btn-outline-info mr-2">
@@ -48,17 +48,23 @@
               <button class="btn btn-ghost" (click)="onExpand(item.id)">
                 <i class="c-icon cil-arrow-circle-bottom"></i>
               </button>
+              <button
+                class="btn btn-outline-info mr-2"
+                (click)="navigateToDeviceHistory(item.id)"
+              >
+                <i class="c-icon cil-history"></i>
+              </button>
             </div>
           </div>
         </div>
-        <div class="card-body" id="{{ item.id }}" style="display: none">
+        <div class="card-body" id="{{ item.id }}" style="display: none;">
           <table class="table table-bordered">
             <tr>
-              <td>{{ 'DEVICE_TABLE.PRICE' | translate }}</td>
-              <td>{{ item.price | currency: 'VND' }}</td>
+              <td>{{ "DEVICE_TABLE.PRICE" | translate }}</td>
+              <td>{{ item.price | currency: "VND" }}</td>
             </tr>
             <tr>
-              <td>{{ 'DEVICE_TABLE.DESCRIPTION' | translate }}</td>
+              <td>{{ "DEVICE_TABLE.DESCRIPTION" | translate }}</td>
               <td>{{ item.description }}</td>
             </tr>
           </table>
@@ -88,13 +94,13 @@
         class="alert alert-secondary"
         role="alert"
       >
-        {{ 'GENERAL_LIST.NO_RESULT' | translate }}
+        {{ "GENERAL_LIST.NO_RESULT" | translate }}
       </div>
     </div>
     <div class="d-flex justify-content-end">
       <button type="button" class="btn btn-info">
         <span class="cil-playlist-add btn-icon mr-2"></span>
-        {{ 'DEVICE_TABLE.CREATE_DEVICE' | translate }}
+        {{ "DEVICE_TABLE.CREATE_DEVICE" | translate }}
       </button>
     </div>
   </div>
