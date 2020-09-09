@@ -118,6 +118,7 @@
     "CREATE_DEVICE": "Tạo thiết bị"
   },
   "LOGIN": {
+    "TITLE": "Đăng nhập",
     "LOGIN": "Đăng nhập",
     "SIGN_IN": "Đăng nhập vào tài khoản của bạn",
     "EMAIL": "Email",
