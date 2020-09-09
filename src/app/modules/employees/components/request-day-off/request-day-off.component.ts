@@ -5,6 +5,7 @@ import * as fromApp from '../../../../store/app.reducer';
 import * as EmployeeActions from '../../store/employees.actions';
 import { Store } from '@ngrx/store';
 import { Employee } from 'src/app/shared/models/employees.model';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'ah-request-day-off',
@@ -29,7 +30,10 @@ export class RequestDayOffComponent implements OnInit, OnChanges {
     unpaidLeave: new FormControl(),
   });
   private currentDate = new Date();
-  constructor(private store: Store<fromApp.AppState>) {}
+  constructor(
+    private store: Store<fromApp.AppState>,
+    public translate: TranslateService
+  ) {}
 
   ngOnInit(): void {
     this.f.get('fullName').disable();
@@ -44,7 +48,7 @@ export class RequestDayOffComponent implements OnInit, OnChanges {
         toDate: this.currentDateString,
         morningBreak: true,
         afternoonBreak: true,
-        kindOfLeave: 'VACATION',
+        kindOfLeave: this.selectedEmployee.dayOffInfos[0].categoryName,
       });
       this.f.get('fromDate').valueChanges.subscribe((val) => {
         this.maxOfToDate = this.setDateString(14, val);
@@ -120,6 +124,15 @@ export class RequestDayOffComponent implements OnInit, OnChanges {
       this.dayOffInfos?.availableHours > 0
         ? this.dayOffInfos.availableHours / 8
         : 0;
+  }
+
+  public setDays(): string {
+    const str = this.translate.instant('REQUEST-DAY-OFF.DAY');
+    return this.translate.currentLang === 'en' ? `${str}s` : str;
+  }
+
+  public setDay(): string {
+    return this.translate.instant('REQUEST-DAY-OFF.DAY');
   }
 
   public onSave(): void {

@@ -48,9 +48,9 @@
           </button>
           <a
             data-toggle="collapse"
-            [attr.data-target]="'#collapse' + item.id"
+            [attr.data-target]="'#collapse' + i"
             [attr.aria-expanded]="false"
-            [attr.aria-controls]="'collapse' + item.id"
+            [attr.aria-controls]="'collapse' + i"
             class="ml-2 mt-2 pointer"
             (click)="state[i] = !state[i]"
           >
@@ -60,7 +60,7 @@
         </div>
       </div>
     </div>
-    <div [id]="'collapse' + item.id" class="collapse">
+    <div [id]="'collapse' + i" class="collapse">
       <div class="card-body">
         <table class="table table-bordered">
           <tr>

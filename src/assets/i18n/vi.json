@@ -48,8 +48,6 @@
     "TO_DATE": "Đến ngày",
     "HAFL_DAY_OFF": "Nghỉ nửa ngày",
     "KIND_OF_LEAVE": "Loại phép",
-    "VACATION": "Phép năm",
-    "ILLNESS": "Phép ốm",
     "DAY_OFF_AVAILABLE": "Số ngày phép đang có",
     "DAY_OFF_AFTER": "Số ngày phép còn lại sau khi duyệt",
     "UNPAID_LEAVE": "Cho phép nghỉ không lương",
@@ -57,7 +55,7 @@
     "SAVE": "Lưu",
     "MORNING_BREAK": "Nghỉ buổi sáng",
     "AFTERNOON_BREAK": "Nghỉ buổi chiều",
-    "DAYS": "ngày"
+    "DAY": "ngày"
   },
   "PROFILE_CREATE": {
     "TITLE": "Tạo hồ sơ nhân viên",
@@ -102,7 +100,7 @@
   },
   "PROFILE_STATUS_CHANGE": {
     "TITLE": "Xác nhận thay đổi trạng thái nhân viên",
-    "PARAMS": "Xác nhận muốn thay đổi trạng thái nhân viên?",
+    "PARAMS": "Bạn có chắc chắn muốn thay đổi trạng thái của nhân viên không?",
     "ABORT": "Hủy bỏ",
     "ACCEPT": "Đồng ý"
   },

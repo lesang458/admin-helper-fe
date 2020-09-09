@@ -18,15 +18,16 @@
       <span aria-hidden="true">&times;</span>
     </button>
   </div>
-  <div class="modal-body">
+  <hr class="mt-0 mb-0" />
+  <div class="modal-body pb-0">
     <div class="form-group col-md-12" *ngIf="type !== 'delete'">
-      <label for="exampleFormControlInput1">
+      <label class="font-weight-bold" for="name">
         {{ 'DAY_OFF_CATEGORIES_PAGE.NAME' | translate }}
       </label>
       <input
         type="text"
         class="form-control"
-        id="exampleFormControlInput1"
+        id="name"
         formControlName="name"
       />
       <div
@@ -48,17 +49,17 @@
       </div>
     </div>
     <div class="form-group col-md-12" *ngIf="type !== 'delete'">
-      <label for="exampleFormControlInput2">
+      <label class="font-weight-bold" for="hours">
         {{ 'DAY_OFF_CATEGORIES_PAGE.HOURS' | translate }}
       </label>
       <input
         type="number"
         class="form-control"
-        id="exampleFormControlInput2"
+        id="hours"
         formControlName="hours"
       />
       <div
-        *ngIf="f.get('hours').invalid && (f.get('hours').dirty || f.get('hours').touched)"
+        *ngIf="f.get('hours').invalid &&(f.get('hours').dirty || f.get('hours').touched)"
         class="mess-invalid"
       >
         <div *ngIf="f.get('hours').errors.required">
@@ -73,12 +74,12 @@
       </div>
     </div>
     <div class="form-group col-md-12" *ngIf="type !== 'delete'">
-      <label for="exampleFormControlInput3">
+      <label class="font-weight-bold" for="description">
         {{ 'DAY_OFF_CATEGORIES_PAGE.DESCRIPTION' | translate }}
       </label>
       <textarea
         class="form-control"
-        id="exampleFormControlInput3"
+        id="description"
         formControlName="description"
       ></textarea>
     </div>
@@ -91,7 +92,7 @@
   <div class="modal-footer">
     <button
       type="button"
-      class="btn btn-primary"
+      class="btn btn-secondary"
       aria-label="Close"
       (click)="bsModalRef.hide()"
     >
@@ -101,12 +102,12 @@
       *ngIf="type !== 'delete'"
       [disabled]="checkChange()"
       type="submit"
-      class="btn btn-primary"
+      class="btn btn-success"
     >
       {{ 'DAY_OFF_CATEGORIES_PAGE.SAVE' | translate }}
     </button>
     <button *ngIf="type === 'delete'" type="submit" class="btn btn-primary">
       {{ 'DAY_OFF_CATEGORIES_PAGE.DELETE' | translate }}
     </button>
-  </div>    
+  </div>
 </form>

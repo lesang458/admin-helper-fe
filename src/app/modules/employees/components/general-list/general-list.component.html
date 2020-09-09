@@ -118,26 +118,25 @@
               >
                 <span class="cil-brush"></span>
               </button>
-              
-              <button 
+
+              <button
                 *ngIf="item.status === 'ACTIVE'"
-                class="btn btn-outline-danger mr-2"
-                (click)="openModalWithComponent(item.id, 'delete', searchParams)"
-              >              
+                class="btn btn-outline-danger"
+                (click)="
+                  openModalWithComponent(item.id, 'delete', searchParams)
+                "
+              >
                 <i class="cil-trash"></i>
               </button>
 
-              <button 
-                *ngIf="item.status !== 'ACTIVE'" 
-                class="btn btn-outline-info mr-2"
-                (click)="openModalWithComponent(item.id, 'active', searchParams)"
-              >   
-                <img
-                    src="assets/img/restore.jpg"
-                    intrinsicsize="512 x 512"
-                    width="20"
-                    height="20"
-                  />           
+              <button
+                *ngIf="item.status !== 'ACTIVE'"
+                class="btn btn-outline-success"
+                (click)="
+                  openModalWithComponent(item.id, 'active', searchParams)
+                "
+              >
+                <i class="cil-action-undo"></i>
               </button>
             </td>
           </tr>

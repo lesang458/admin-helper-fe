@@ -8,7 +8,7 @@
   <h4 *ngIf="type === 'edit'" class="modal-title pull-left">
     {{ 'PROFILE_EDIT.TITLE' | translate }}
   </h4>
-  <h4 *ngIf="type === 'delete'" class="modal-title pull-left">
+  <h4 *ngIf="type === 'delete' || type === 'active'" class="modal-title pull-left">
     {{ 'PROFILE_STATUS_CHANGE.TITLE' | translate }}
   </h4>
   <button
@@ -236,10 +236,10 @@
                 formControlName="hours"
                 required
                 />
-                <button *ngIf="dayOffInfos.at(i).disabled" type="button" class="btn btn-outline-info" (click)="dayOffInfos.at(i).enable()">
+                <button *ngIf="dayOffInfos.at(i).disabled" type="button" class="btn btn-info" (click)="dayOffInfos.at(i).enable()">
                   <span class="cil-brush"></span>
                 </button>
-                <button *ngIf="!dayOffInfos.at(i).disabled" type="button" class="btn btn-outline-info" (click)="dayOffInfos.at(i).disable()">
+                <button *ngIf="!dayOffInfos.at(i).disabled" type="button" class="btn btn-success" (click)="dayOffInfos.at(i).disable()">
                   <span class="cib-verizon"></span>
                 </button>
               </div>
@@ -268,8 +268,8 @@
               {{ 'PROFILE_CREATE.ILLNESS' | translate }}
             </span>
           </div>
-          <div>{{ 'PROFILE_CREATE.AVAILABLE_HOURS' | translate }}: {{ 'our.available_hours' }}</div>
-          <div>{{ 'PROFILE_CREATE.HOUR' | translate }}: {{ 'our.hours' }}</div>
+          <div>{{ 'PROFILE_CREATE.AVAILABLE_HOURS' | translate }}: {{ hour.available_hours }}</div>
+          <div>{{ 'PROFILE_CREATE.HOUR' | translate }}: {{ hour.hours }}</div>
         </div>
       </div>
       </div>
@@ -281,7 +281,7 @@
       <button
         *ngIf="type !== 'detail'"
         type="submit"
-        class="btn btn-primary"
+        class="btn btn-success"
         [disabled]="profileForm.invalid"
       >
         {{ 'PROFILE_CREATE.SAVE' | translate }}
@@ -299,7 +299,7 @@
       </button>
       <button
         type="submit"
-        class="btn btn-primary"
+        class="btn btn-success"
       >
         {{ 'PROFILE_STATUS_CHANGE.ACCEPT' | translate }}
       </button>
