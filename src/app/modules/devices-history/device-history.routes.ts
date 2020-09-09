@@ -7,5 +7,8 @@ export const DEVICE_HISTORY_ROUTES: Routes = [
     path: '',
     component: DeviceHistoryListComponent,
     canActivate: [AuthGuardService],
+    data: {
+      i18nKey: 'DEVICE_HISTORY',
+    },
   },
 ];
