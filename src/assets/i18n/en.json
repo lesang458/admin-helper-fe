@@ -167,5 +167,9 @@
     "TITLE_DETAIL": "Detail device history",
     "DEVICE_INFO": "Device information",
     "USER_INFO": "User information"
+  },
+  "DEVICE_ASSIGN": {
+    "TITLE": "Provide device to user",
+    "NO_ASSIGN": "No assign"
   }
 }

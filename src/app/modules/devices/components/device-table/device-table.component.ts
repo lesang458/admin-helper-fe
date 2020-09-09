@@ -8,6 +8,8 @@ import { DeviceParams } from '../../store/devices.actions';
 import { DeviceCategory } from 'src/app/shared/models/deviceCategory';
 import { FormControl } from '@angular/forms';
 import { State } from '../../store/devices.reducer';
+import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
+import { DeviceAssignComponent } from '../device-assign/device-assign.component';
 
 @Component({
   selector: 'ah-device-table',
@@ -20,9 +22,11 @@ export class DeviceTableComponent implements OnInit {
   public currentPage = 1;
   public selectedCategory = new FormControl('');
   public deviceParams: DeviceParams;
+  public bsModalRef: BsModalRef;
   constructor(
     private store: Store<fromApp.AppState>,
-    private translate: TranslateService
+    private translate: TranslateService,
+    private modalService: BsModalService
   ) {}
 
   ngOnInit(): void {
@@ -58,4 +62,13 @@ export class DeviceTableComponent implements OnInit {
     };
     this.store.dispatch(new DevicesActions.FetchDevices(this.deviceParams));
   }
+
+  public openModalWithComponent(id: number): void {
+    const initialState = { id };
+    this.bsModalRef = this.modalService.show(DeviceAssignComponent, {
+      initialState,
+    });
+    this.bsModalRef.content.closeBtnName = 'Close';
+  }
+
 }

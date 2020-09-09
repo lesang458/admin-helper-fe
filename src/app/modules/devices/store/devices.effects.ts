@@ -4,12 +4,12 @@ import { HttpClient, HttpParams } from '@angular/common/http';
 import * as DevicesActions from './devices.actions';
 import { environment } from 'src/environments/environment.prod';
 import * as camelcaseKeys from 'camelcase-keys';
+import * as snakecaseKeys from 'snakecase-keys';
 import { PaginatedData } from 'src/app/shared/models/pagination.model';
 import { Device } from 'src/app/shared/models/device.model';
 import { switchMap, map } from 'rxjs/operators';
 import { DeviceCategory } from 'src/app/shared/models/deviceCategory';
 import { ParamsConstant } from 'src/app/shared/constants/params.constant';
-
 @Injectable()
 export class DeviceEffects {
   @Effect()
@@ -54,6 +54,24 @@ export class DeviceEffects {
           map((response) => {
             const data = camelcaseKeys(response.body, { deep: true });
             return new DevicesActions.SetDeviceCategories(data.data);
+          })
+        );
+    })
+  );
+
+  @Effect()
+  assignDevice = this.actions$.pipe(
+    ofType(DevicesActions.ASSIGNED_DEVICE),
+    switchMap((action: DevicesActions.AssignDevice) => {
+      return this.http
+        .put<any>(
+          `${environment.APILink}/devices/${action.payload.id}/assign`,
+          snakecaseKeys(action.payload.userId)
+        )
+        .pipe(
+          map((response) => {
+            const data = camelcaseKeys(response.body, { deep: true });
+            return new DevicesActions.SetDevices(data);
           })
         );
     })

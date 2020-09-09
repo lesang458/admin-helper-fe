@@ -165,5 +165,9 @@
     "TITLE_DETAIL": "Chi tiết lịch sử thiết bị",
     "DEVICE_INFO": "Thông tin thiết bị",
     "USER_INFO": "Thông tin người dùng"
+  },
+  "DEVICE_ASSIGN": {
+    "TITLE": "Cung cấp thiết bị cho nhân viên",
+    "NO_ASSIGN": "Không bàn giao"
   }
 }

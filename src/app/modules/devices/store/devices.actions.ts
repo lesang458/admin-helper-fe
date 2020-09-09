@@ -13,6 +13,7 @@ export const FETCH_DEVICES = '[Devices] Fetch Devices';
 export const SET_DEVICES = '[Devices] Set Devices';
 export const FETCH_DEVICE_CATEGORIES = '[Devices] Fetch Device Categories';
 export const SET_DEVICE_CATEGORIES = '[Devices] Set Device Categories';
+export const ASSIGNED_DEVICE = '[Devices] Asigned Device';
 
 export class FetchDevices implements Action {
   public readonly type = FETCH_DEVICES;
@@ -33,8 +34,14 @@ export class SetDeviceCategories implements Action {
   constructor(public payload: DeviceCategory[]) {}
 }
 
+export class AssignDevice implements Action {
+  public readonly type = ASSIGNED_DEVICE;
+  constructor(public payload: {id, userId}) {}
+}
+
 export type DevicesActions =
   | FetchDevices
   | SetDevices
   | FetchDeviceCategories
-  | SetDeviceCategories;
+  | SetDeviceCategories
+  | AssignDevice;
