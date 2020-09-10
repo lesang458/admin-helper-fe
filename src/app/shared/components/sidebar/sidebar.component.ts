@@ -38,6 +38,6 @@ export class SidebarComponent implements OnInit {
   }
 
   public navigateToDeviceCategoriesPage() {
-    this.router.navigateByUrl('/loai-thiet-bi');
+    this.router.navigateByUrl('/thiet-bi/the-loai');
   }
 }

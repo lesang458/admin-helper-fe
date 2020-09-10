@@ -18,6 +18,7 @@
       <span aria-hidden="true">&times;</span>
     </button>
   </div>
+  <hr class="mt-0 mb-0" />
   <div class="modal-body">
     <div class="form-group col-md-12" *ngIf="type !== 'delete'">
       <label for="exampleFormControlInput1">
@@ -34,7 +35,7 @@
         class="mess-invalid"
       >
         <div *ngIf="f.get('name').errors.required">
-          {{ 'DEVICE_CATEGORIES_PAGE.NAME_REQUIRED' | translate }}
+          {{ 'DAY_OFF_CATEGORIES_PAGE.NAME_REQUIRED' | translate }}
         </div>
         <div *ngIf="f.get('name').errors.maxlength">
           {{ 'DEVICE_CATEGORIES_PAGE.NAME_MAXLENGTH' | translate }}
@@ -43,7 +44,7 @@
     </div>
     <div class="form-group col-md-12" *ngIf="type !== 'delete'">
       <label for="exampleFormControlInput3">
-        {{ 'DEVICE_CATEGORIES_PAGE.DESCRIPTION' | translate }}
+        {{ 'DAY_OFF_CATEGORIES_PAGE.DESCRIPTION' | translate }}
       </label>
       <textarea
         class="form-control"
@@ -53,29 +54,29 @@
     </div>
     <div class="form-group col-md-12" *ngIf="type === 'delete'">
       <p>
-        {{ 'DEVICE_CATEGORIES_PAGE.DELETE_CONFIRM' | translate }}
+        {{ 'DAY_OFF_CATEGORIES_PAGE.DELETE_CONFIRM' | translate }}
       </p>
     </div>
   </div>
   <div class="modal-footer">
     <button
       type="button"
-      class="btn btn-primary"
+      class="btn btn-secondary"
       aria-label="Close"
       (click)="bsModalRef.hide()"
     >
-      {{ 'DEVICE_CATEGORIES_PAGE.CANCEL' | translate }}
+      {{ 'DAY_OFF_CATEGORIES_PAGE.CANCEL' | translate }}
     </button>
     <button
       *ngIf="type !== 'delete'"
       [disabled]="checkChange()"
       type="submit"
-      class="btn btn-primary"
+      class="btn btn-success"
     >
-      {{ 'DEVICE_CATEGORIES_PAGE.SAVE' | translate }}
+      {{ 'DAY_OFF_CATEGORIES_PAGE.SAVE' | translate }}
     </button>
-    <button *ngIf="type === 'delete'" type="submit" class="btn btn-primary">
-      {{ 'DEVICE_CATEGORIES_PAGE.DELETE' | translate }}
+    <button *ngIf="type === 'delete'" type="submit" class="btn btn-success">
+      {{ 'DAY_OFF_CATEGORIES_PAGE.DELETE' | translate }}
     </button>
   </div>
 </form>

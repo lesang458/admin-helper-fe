@@ -185,18 +185,11 @@
   },
   "DEVICE_CATEGORIES_PAGE": {
     "TITLE": "Loại thiết bị",
-    "NAME": "Tên thiết bị",
-    "DESCRIPTION": "Mô tả",
-    "ACTION":"Hành động",
+    "NAME": "Loại thiết bị",
     "CREATE":"Tạo loại thiết bị",
-    "SAVE": "Lưu",
-    "DELETE": "Xóa",
-    "CANCEL": "Hủy",
     "DELETE_TITLE": "Xóa thể loại thiết bị",
     "EDIT_TITLE": "Sửa thể loại thiết bị",
     "CREATE_TITLE": "Tạo thể loại thiết bị",
-    "DELETE_CONFIRM": "Thao tác này không thể hoàn tác vui lòng xác nhận lại!",
-    "NAME_REQUIRED": "Tên thiết bị không thể rỗng!",
     "NAME_MAXLENGTH": "Tên thiết bị có độ dài tối đa là 100 ký tự"
   }
 }

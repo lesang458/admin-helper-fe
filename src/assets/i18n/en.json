@@ -187,19 +187,11 @@
   },
   "DEVICE_CATEGORIES_PAGE": {
     "TITLE": "Device Categories",
-    "NAME": "Device Name",
-    "DESCRIPTION": "Description",
-    "ACTION": "Action",
+    "NAME": "Category Name",
     "CREATE":"Create device category",
-    "SAVE": "Save",
-    "DELETE": "Delete",
-    "CANCEL": "Cancel",
-    "NO_RESULT": "No result.",
     "DELETE_TITLE": "Device categories deletion",
     "EDIT_TITLE": "Device categories edit",
     "CREATE_TITLE": "Device categories creation",
-    "DELETE_CONFIRM": "This action cannot be undone please confirm again!",
-    "NAME_REQUIRED": "Name is required!",
     "NAME_MAXLENGTH": "The name has Maximum length is 100 character"
   }
 }

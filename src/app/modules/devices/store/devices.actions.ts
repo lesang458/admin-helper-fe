@@ -33,7 +33,6 @@ export const SET_DEVICE_CATEGORIES = '[Devices] Set Device Categories';
 export const ASSIGNED_DEVICE = '[Devices] Asigned Device';
 export const EDIT_DEVICE = '[Devices] Edit Device';
 export const CREATE_DEVICE = '[Devices] Create Device';
-export const GET_DEVICE_CATEGORIES_SUCCESS = '[Device] Get Device categories Success';
 export const CREATE_DEVICE_CATEGORY = '[Device] Create Device Category';
 export const UPDATE_DEVICE_CATEGORY = '[Device] Update Device Category';
 export const DELETE_DEVICE_CATEGORY = '[Device] Delete Device Category';
@@ -71,10 +70,6 @@ export class CreateDevice implements Action {
   constructor(public payload: DeviceParams) {}
 }
 
-export class GetDeviceCategoriesSuccess implements Action {
-  readonly type = GET_DEVICE_CATEGORIES_SUCCESS;
-  constructor(public payload: DeviceCategory[]) {}
-}
 export class CreateDeviceCategory implements Action {
   readonly type = CREATE_DEVICE_CATEGORY;
   constructor(public payload: DeviceCategory) {}
@@ -96,7 +91,6 @@ export type DevicesActions =
   | AssignDevice
   | EditDevice
   | CreateDevice
-  | GetDeviceCategoriesSuccess
   | CreateDeviceCategory
   | UpdateDeviceCategory
   | DeleteDeviceCategory;
