@@ -28,7 +28,6 @@ export class DeviceEditComponent implements OnInit {
     ]),
     description: new FormControl('', Validators.minLength(5)),
     deviceCategoryId: new FormControl(''),
-    status: new FormControl('IN_INVENTORY'),
   });
   constructor(
     public bsModalRef: BsModalRef,
