@@ -37,7 +37,7 @@ export class DeviceHistoryTableComponent implements OnInit {
       if (val.url && val.url !== '/lich-su-thiet-bi') {
         devicesHistoryService.setCurrentId(-1);
       }
-  });
+    });
   }
 
   ngOnInit(): void {
@@ -45,11 +45,12 @@ export class DeviceHistoryTableComponent implements OnInit {
       map((devices) => {
         return {
           data: devices.deviceHistory.data.filter((data) => {
-          if (data.device.id === this.devicesHistoryService.getCurrentId())
-            return data;
+            if (data.device.id === this.devicesHistoryService.getCurrentId()) {
+              return data;
+            }
           }),
-          pagination: devices.deviceHistory.pagination
-        }
+          pagination: devices.deviceHistory.pagination,
+        };
       })
     );
 
@@ -78,19 +79,18 @@ export class DeviceHistoryTableComponent implements OnInit {
   }
 
   public onPageChanged(page: number): void {
-     const status = this.searchStatusFormControl.value;
-     const historyFrom= this.selectedFromDate.value;
-     const historyTo= this.selectedToDate.value;
-     const params = {
-       page,
-       perPage: 10,
-       status,
-       historyFrom,
-       historyTo
-      }
-     this.store.dispatch(new DevicesHistoryActions.FetchDeviceHistory(params));
-
-}
+    const status = this.searchStatusFormControl.value;
+    const historyFrom = this.selectedFromDate.value;
+    const historyTo = this.selectedToDate.value;
+    const params = {
+      page,
+      perPage: 10,
+      status,
+      historyFrom,
+      historyTo,
+    };
+    this.store.dispatch(new DevicesHistoryActions.FetchDeviceHistory(params));
+  }
 
   public openModalWithComponent(id: number): void {
     const initialState = { id };

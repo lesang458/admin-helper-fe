@@ -1,5 +1,27 @@
 <div *ngIf="data$ | async as data">
   <div class="row mb-2">
+    <div class="col-4">
+      <div class="form-group">
+        <label class="d-inline-block mr-3 ml-2" for="device-status">
+          {{ 'DEVICE_HISTORY.STATUS' | translate }}
+        </label>
+        <select
+          [formControl]="selectedStatus"
+          class="form-control w-auto d-inline-block"
+          id="device-status"
+        >
+          <option value="ASSIGNED">
+            {{ 'DEVICE_HISTORY.ASSIGNED' | translate }}
+          </option>
+          <option value="DISCARDED">
+            {{ 'DEVICE_HISTORY.DISCARDED' | translate }}
+          </option>
+          <option value="IN_INVENTORY">
+            {{ 'DEVICE_HISTORY.IN_INVENTORY' | translate }}
+          </option>
+        </select>
+      </div>
+    </div>
     <div class="col-5">
       <div class="form-group">
         <label class="d-inline-block mr-3 ml-2" for="device-category">
@@ -7,8 +29,7 @@
         </label>
         <select
           [formControl]="selectedCategory"
-          class="form-control d-inline-block"
-          style="width: auto"
+          class="form-control w-auto d-inline-block"
           id="device-category"
         >
           <option value="">{{ 'DEVICE_TABLE.ALL' | translate }}</option>
@@ -20,15 +41,15 @@
     </div>
   </div>
   <div
-    class="card mb-3 border-dark"
+    class="card mb-3 border-secondary"
     *ngFor="let item of data.devices.data; let i = index"
   >
     <div class="card-header">
       <div class="row">
-        <div class="col-3 black-text">
+        <div class="col-2 black-text">
           {{ item.name }}
         </div>
-        <div class="col-3 black-text">
+        <div class="col-2 black-text">
           {{ 'DEVICE_TABLE.CATEGORY_NAME' | translate }}
           {{ ' ' + item.categoryName }}
         </div>
@@ -36,9 +57,31 @@
           {{ 'DEVICE_TABLE.ASSIGNED_TO' | translate }}
           {{ ' ' + getUserName(item.user) }}
         </div>
-        <div class="col-3 d-flex justify-content-end">
-          <button class="btn btn-outline-success mr-2" (click)="openAssignModal(item, searchParams)">
+
+        <div class="col-5 d-flex justify-content-end">
+          <button
+            class="btn btn-outline-primary mr-2"
+            *ngIf="item.status !== 'IN_INVENTORY'"
+          >
+            <i class="cil-storage"></i>
+          </button>
+          <button
+            class="btn btn-outline-warning mr-2"
+            *ngIf="item.status !== 'DISCARDED'"
+          >
+            <i class="cil-pen-nib"></i>
+          </button>
+          <button
+            class="btn btn-outline-success mr-2"
+            (click)="openAssignModal(item, searchParams)"
+          >
             <i class="cil-task"></i>
+          </button>
+          <button
+            class="btn btn-outline-dark mr-2"
+            (click)="navigateToDeviceHistory(item.id)"
+          >
+            <i class="c-icon cil-history"></i>
           </button>
           <button
             class="btn btn-outline-info mr-2"
@@ -51,9 +94,9 @@
           </button>
           <a
             data-toggle="collapse"
-            [attr.data-target]="'#collapse' + item.id"
+            [attr.data-target]="'#collapse' + i"
             [attr.aria-expanded]="false"
-            [attr.aria-controls]="'collapse' + item.id"
+            [attr.aria-controls]="'collapse' + i"
             class="ml-2 mt-2 pointer"
             (click)="state[i] = !state[i]"
           >
@@ -63,9 +106,29 @@
         </div>
       </div>
     </div>
-    <div [id]="'collapse' + item.id" class="collapse">
+    <div [id]="'collapse' + i" class="collapse">
       <div class="card-body">
         <table class="table table-bordered">
+          <tr>
+            <td>{{ 'DEVICE_HISTORY.STATUS' | translate }}</td>
+            <td>
+              <span
+                class="badge rounded-pill badge-success p-2 pr-3 pl-3"
+                *ngIf="item.status === 'ASSIGNED'"
+                >{{ 'DEVICE_HISTORY.ASSIGNED' | translate }}</span
+              >
+              <span
+                class="badge rounded-pill badge-primary p-2 pr-3 pl-3"
+                *ngIf="item.status === 'IN_INVENTORY'"
+                >{{ 'DEVICE_HISTORY.IN_INVENTORY' | translate }}</span
+              >
+              <span
+                class="badge rounded-pill badge-danger p-2 pr-3 pl-3"
+                *ngIf="item.status === 'DISCARDED'"
+                >{{ 'DEVICE_HISTORY.DISCARDED' | translate }}</span
+              >
+            </td>
+          </tr>
           <tr>
             <td>{{ 'DEVICE_TABLE.PRICE' | translate }}</td>
             <td>{{ item.price | currency: 'VND' }}</td>

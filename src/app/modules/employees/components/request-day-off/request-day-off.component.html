@@ -3,7 +3,7 @@
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title" id="exampleModalLabel">
-          {{ "REQUEST-DAY-OFF.AUTH" | translate }}
+          {{ 'REQUEST-DAY-OFF.AUTH' | translate }}
         </h5>
         <button
           type="button"
@@ -15,8 +15,8 @@
         </button>
       </div>
       <div class="modal-body">
-        <label class="pointer" for="exampleFormControlInput1">
-          {{ "REQUEST-DAY-OFF.FULL_NAME" | translate }}
+        <label class="font-weight-bold" for="exampleFormControlInput1">
+          {{ 'REQUEST-DAY-OFF.FULL_NAME' | translate }}
         </label>
         <input
           type="text"
@@ -26,8 +26,8 @@
         />
       </div>
       <div class="modal-body date">
-        <label class="pointer" for="exampleFormControlInput2">
-          {{ "REQUEST-DAY-OFF.FROM_DATE" | translate }}
+        <label class="font-weight-bold" for="exampleFormControlInput2">
+          {{ 'REQUEST-DAY-OFF.FROM_DATE' | translate }}
         </label>
         <input
           type="date"
@@ -37,8 +37,12 @@
           id="exampleFormControlInput2"
           formControlName="fromDate"
         />
-        <label class="pointer" id="label3" for="exampleFormControlInput3">
-          {{ "REQUEST-DAY-OFF.TO_DATE" | translate }}
+        <label
+          class="font-weight-bold"
+          id="label3"
+          for="exampleFormControlInput3"
+        >
+          {{ 'REQUEST-DAY-OFF.TO_DATE' | translate }}
         </label>
         <input
           type="date"
@@ -61,7 +65,7 @@
               formControlName="morningBreak"
             />
             <label class="form-check-label pointer" for="defaultCheck1">
-              {{ "REQUEST-DAY-OFF.MORNING_BREAK" | translate }}
+              {{ 'REQUEST-DAY-OFF.MORNING_BREAK' | translate }}
             </label>
           </div>
           <div class="form-check">
@@ -73,41 +77,45 @@
               formControlName="afternoonBreak"
             />
             <label class="form-check-label pointer" for="defaultCheck2">
-              {{ "REQUEST-DAY-OFF.AFTERNOON_BREAK" | translate }}
+              {{ 'REQUEST-DAY-OFF.AFTERNOON_BREAK' | translate }}
             </label>
           </div>
         </div>
       </div>
 
       <div class="modal-body">
-        <label id="label4" class="pointer" for="exampleFormControlSelect1">
-          {{ "REQUEST-DAY-OFF.KIND_OF_LEAVE" | translate }}
+        <label
+          id="label4"
+          class="font-weight-bold"
+          for="exampleFormControlSelect1"
+        >
+          {{ 'REQUEST-DAY-OFF.KIND_OF_LEAVE' | translate }}
         </label>
         <select
           class="form-control pointer"
           id="exampleFormControlSelect1"
           formControlName="kindOfLeave"
         >
-          <option value="VACATION">
-            {{ "REQUEST-DAY-OFF.VACATION" | translate }}
-          </option>
-          <option value="ILLNESS">
-            {{ "REQUEST-DAY-OFF.ILLNESS" | translate }}
+          <option
+            *ngFor="let item of selectedEmployee?.dayOffInfos"
+            [value]="item.categoryName"
+          >
+            {{ item.categoryName | titlecase }}
           </option>
         </select>
       </div>
 
       <div class="modal-body-custom ml-3 mr-3">
-          <div class="alert alert-success" role="alert">
-            {{ "REQUEST-DAY-OFF.DAY_OFF_AVAILABLE" | translate }}:
-            {{ dayOffAvailable }}
-            {{ "REQUEST-DAY-OFF.DAYS" | translate }}
-          </div>
-          <div class="alert alert-info" role="alert">
-            {{ "REQUEST-DAY-OFF.DAY_OFF_AFTER" | translate }}:
-            {{ dayOffAvailable > dayOffs ? dayOffAvailable - dayOffs : "0" }}
-            {{ "REQUEST-DAY-OFF.DAYS" | translate }}
-          </div>
+        <div class="alert alert-success" role="alert">
+          {{ 'REQUEST-DAY-OFF.DAY_OFF_AVAILABLE' | translate }}:
+          {{ dayOffAvailable }}
+          {{ dayOffAvailable > 1 ? setDays() : setDay() }}
+        </div>
+        <div class="alert alert-info" role="alert">
+          {{ 'REQUEST-DAY-OFF.DAY_OFF_AFTER' | translate }}:
+          {{ dayOffAvailable > dayOffs ? dayOffAvailable - dayOffs : '0' }}
+          {{ dayOffAvailable - dayOffs > 1 ? setDays() : setDay() }}
+        </div>
         <hr />
       </div>
 
@@ -124,25 +132,25 @@
             formControlName="unpaidLeave"
           />
           <label class="form-check-label pointer" for="defaultCheck3">
-            {{ "REQUEST-DAY-OFF.UNPAID_LEAVE" | translate }}
+            {{ 'REQUEST-DAY-OFF.UNPAID_LEAVE' | translate }}
             {{ dayOffs - dayOffAvailable }}
-            {{ "REQUEST-DAY-OFF.DAYS" | translate }}
+            {{ 'REQUEST-DAY-OFF.DAYS' | translate }}
           </label>
         </div>
       </div>
 
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">
-          {{ "REQUEST-DAY-OFF.CANCEL" | translate }}
+          {{ 'REQUEST-DAY-OFF.CANCEL' | translate }}
         </button>
         <button
           [disabled]="dayOffAvailable < dayOffs && !f.get('unpaidLeave').value"
           (click)="onSave()"
           type="button"
           data-dismiss="modal"
-          class="btn btn-primary"
+          class="btn btn-success"
         >
-          {{ "REQUEST-DAY-OFF.SAVE" | translate }}
+          {{ 'REQUEST-DAY-OFF.SAVE' | translate }}
         </button>
       </div>
     </div>

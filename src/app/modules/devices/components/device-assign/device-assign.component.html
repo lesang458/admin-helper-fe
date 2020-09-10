@@ -1,15 +1,15 @@
 <div class="modal-header">
   <h4 class="modal-title pull-left">
-   {{ 'DEVICE_ASSIGN.TITLE' | translate }}
- </h4>
+    {{ 'DEVICE_ASSIGN.TITLE' | translate }}
+  </h4>
   <button
-   type="button"
-   class="close pull-right"
-   aria-label="Close"
-   (click)="bsModalRef.hide()"
- >
-   <span aria-hidden="true">&times;</span>
- </button>
+    type="button"
+    class="close pull-right"
+    aria-label="Close"
+    (click)="bsModalRef.hide()"
+  >
+    <span aria-hidden="true">&times;</span>
+  </button>
 </div>
 <div class="modal-body">
   <div class="row mb-4">
@@ -66,7 +66,12 @@
           <td>{{ item.firstName + ' ' + item.lastName }}</td>
           <td>{{ item.birthdate | date: 'dd/MM/yyyy' }}</td>
           <td class="action-style">
-             <input type="radio" [formControl]="assigned" id="{{ item.id }}" value="{{ item.id }}"> 
+            <input
+              type="radio"
+              [formControl]="assigned"
+              id="{{ item.id }}"
+              value="{{ item.id }}"
+            />
           </td>
         </tr>
       </tbody>
@@ -96,12 +101,17 @@
       </pagination>
     </div>
   </div>
-</div>     
- <div class="modal-footer">
-   <button type="button" class="btn btn-secondary" (click)="bsModalRef.hide()">
-       {{ 'PROFILE_CREATE.CLOSE' | translate }}
-   </button>
-   <button type="button" class="btn btn-primary" (click)="onSubmit()" [disabled]="!assigned.value">
-       {{ 'PROFILE_CREATE.SAVE' | translate }}
-   </button>
-</div>  
+</div>
+<div class="modal-footer">
+  <button type="button" class="btn btn-secondary" (click)="bsModalRef.hide()">
+    {{ 'PROFILE_CREATE.CLOSE' | translate }}
+  </button>
+  <button
+    type="button"
+    class="btn btn-success"
+    (click)="onSubmit()"
+    [disabled]="!assigned.value"
+  >
+    {{ 'PROFILE_CREATE.SAVE' | translate }}
+  </button>
+</div>

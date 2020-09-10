@@ -3,6 +3,7 @@ export interface Device {
   name: string;
   price: number;
   description: string;
+  status?: string;
   deviceCategoryId: number;
   categoryName?: string;
   user?: any;

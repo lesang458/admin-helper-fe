@@ -48,8 +48,6 @@
     "TO_DATE": "Đến ngày",
     "HAFL_DAY_OFF": "Nghỉ nửa ngày",
     "KIND_OF_LEAVE": "Loại phép",
-    "VACATION": "Phép năm",
-    "ILLNESS": "Phép ốm",
     "DAY_OFF_AVAILABLE": "Số ngày phép đang có",
     "DAY_OFF_AFTER": "Số ngày phép còn lại sau khi duyệt",
     "UNPAID_LEAVE": "Cho phép nghỉ không lương",
@@ -57,7 +55,7 @@
     "SAVE": "Lưu",
     "MORNING_BREAK": "Nghỉ buổi sáng",
     "AFTERNOON_BREAK": "Nghỉ buổi chiều",
-    "DAYS": "ngày"
+    "DAY": "ngày"
   },
   "PROFILE_CREATE": {
     "TITLE": "Tạo hồ sơ nhân viên",
@@ -159,7 +157,8 @@
     "DEVICE_NAME_REQUIRED": "Hãy nhập tên thiết bị",
     "DEVICE_NAME_MAX_LENGTH": "Tên thiết bị không được vượt quá 100 ký tự.",
     "PRICE_REQUIRED": "Hãy nhập giá tiền của thiết bị.",
-    "PRICE_PATTERN": "Giá tiền của thiết bị phải là một số  dương"
+    "PRICE_PATTERN": "Giá tiền của thiết bị phải là một số  dương",
+    "DESCRIPTION_MIN_LENGTH": "Mô tả phải trên 5 ký tự"
   },
   "DEVICE_HISTORY": {
     "TITLE": "Danh sách lịch sử thiết bị",
