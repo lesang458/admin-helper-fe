@@ -37,6 +37,9 @@
           {{ ' ' + getUserName(item.user) }}
         </div>
         <div class="col-3 d-flex justify-content-end">
+          <button class="btn btn-outline-info mr-2" (click)="navigateToDeviceHistory(item.id)">
+            <i class="c-icon cil-history"></i>
+          </button>
           <button class="btn btn-outline-success mr-2" (click)="openAssignModal(item, searchParams)">
             <i class="cil-task"></i>
           </button>
