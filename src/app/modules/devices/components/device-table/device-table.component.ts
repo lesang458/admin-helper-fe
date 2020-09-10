@@ -13,6 +13,8 @@ import { DeviceAssignComponent } from '../device-assign/device-assign.component'
 import { Device } from 'src/app/shared/models/device.model';
 import { DeviceEditComponent } from '../device-edit/device-edit.component';
 import { tap } from 'rxjs/operators';
+import { Router } from '@angular/router';
+import { DevicesHistoryService } from 'src/app/core/services/devices-history.service';
 
 @Component({
   selector: 'ah-device-table',
