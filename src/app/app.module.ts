@@ -20,7 +20,6 @@ import { DayOffCategoriesEffects } from './modules/dayoff-categories/store/dayof
 import { SocialLoginModule } from 'angularx-social-login';
 import { ModalModule } from 'ngx-bootstrap/modal';
 import { DeviceHistoryEffects } from './modules/devices-history/store/device-history.effects';
-import { DeviceCategoriesEffects } from './modules/device-categories/store/device-categories.effects';
 
 export function LoaderFactory() {
   return new CustomTranslateLoader();
@@ -47,7 +46,6 @@ export function LoaderFactory() {
       AuthEffect,
       DayOffCategoriesEffects,
       DeviceHistoryEffects,
-      DeviceCategoriesEffects,
     ]),
     StoreModule.forRoot(fromApp.appReducer),
     SocialLoginModule,

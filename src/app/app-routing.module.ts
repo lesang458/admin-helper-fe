@@ -26,12 +26,5 @@ export const APP_ROUTES: Routes = [
       import('./modules/devices-history/device-history.module').then(
         (m) => m.DeviceHistoryModule
       ),
-  },
-  {
-    path: 'loai-thiet-bi',
-    loadChildren: () =>
-      import('./modules/device-categories/device-categories.module').then(
-        (m) => m.DeviceCategoriesModule
-      ),
-  },
+  }
 ];

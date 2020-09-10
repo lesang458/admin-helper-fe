@@ -1,8 +1,8 @@
+import * as DevicesActions from './../../store/devices.actions';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { DeviceCategory } from 'src/app/shared/models/deviceCategory';
 import { Store } from '@ngrx/store';
-import * as DeviceCategoriesActions from '../../store/device-categories.actions';
 import * as fromApp from '../../../../store/app.reducer';
 import { BsModalRef } from 'ngx-bootstrap/modal';
 
@@ -35,14 +35,14 @@ export class DeviceCategoriesEditComponent implements OnInit {
   public onSubmit(): void {
     if (this.type === 'create') {
       this.store.dispatch(
-        new DeviceCategoriesActions.CreateDeviceCategory({
+        new DevicesActions.CreateDeviceCategory({
           name: this.f.get('name').value.toUpperCase(),
           description: this.f.get('description').value
         })
       );
     }
     if (this.type === 'edit') {
-      const deviceCategoryParams: DeviceCategoriesActions.DeviceCategoryParams = {
+      const deviceCategoryParams: DevicesActions.DeviceCategoryParams = {
         id: this.selectedCategory.id,
         deviceCategory: {
           name: this.f.get('name').value,
@@ -50,12 +50,12 @@ export class DeviceCategoriesEditComponent implements OnInit {
         }
       };
       this.store.dispatch(
-        new DeviceCategoriesActions.UpdateDeviceCategory(deviceCategoryParams)
+        new DevicesActions.UpdateDeviceCategory(deviceCategoryParams)
       );
     }
     if (this.type === 'delete') {
       this.store.dispatch(
-        new DeviceCategoriesActions.DeleteDeviceCategory(
+        new DevicesActions.DeleteDeviceCategory(
           this.selectedCategory.id.toString()
         )
       );

@@ -17,7 +17,7 @@
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let item of data.deviceCategories; let i = index">
+          <tr *ngFor="let item of data.categories; let i = index">
             <th scope="row">
               {{ i + 1 }}
             </th>
@@ -41,7 +41,7 @@
         </tbody>
       </table>
       <div
-        *ngIf="data && data?.deviceCategories.length === 0"
+        *ngIf="data && data.deviceCategories?.length === 0"
         class="alert alert-secondary"
         role="alert"
       >

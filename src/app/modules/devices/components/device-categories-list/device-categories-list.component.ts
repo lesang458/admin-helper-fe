@@ -1,4 +1,4 @@
-import * as DeviceCategoriesActions from './../../store/device-categories.actions';
+import * as DevicesActions from './../../store/devices.actions';
 import { Component, OnInit } from '@angular/core';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 import { Observable } from 'rxjs';
@@ -21,8 +21,8 @@ export class DeviceCategoriesListComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.store.dispatch(new DeviceCategoriesActions.FetchDeviceCategories());
-    this.data$ = this.store.select('deviceCategories');
+    this.store.dispatch(new DevicesActions.FetchDeviceCategories());
+    this.data$ = this.store.select('devices');
   }
 
   public openModalWithComponent(
