@@ -114,11 +114,13 @@
     "CREATE_DEVICE": "Create Device"
   },
   "PROFILE_STATUS_CHANGE": {
-    "TITLE": "Confirm employee status change",
-    "PARAMS": "Are you sure you want to change the employee's status?",
+    "TITLE_FORMER": "Confirm remove employee",
+    "PARAM_FORMER": "This employee's status will be changed to 'FORMER'. Do you want to continue?",
+    "TITLE_ACTIVE": "Confirm activate employee",
+    "PARAM_ACTIVE": "This employee's status will be changed to 'ACTIVE'. Do you want to continue?",
     "ABORT": "Abort",
     "ACCEPT": "Accept"
-  },  
+  },
   "LOGIN": {
     "TITLE": "Login",
     "LOGIN": "Login",
@@ -152,6 +154,15 @@
     "HOURS_MIN": "Hours has a Minimum value of 8",
     "HOURS_MAX": "Hours has a Maximum value of 1440"
   },
+  "DEVICE_EDIT": {
+    "EDIT_TITLE": "Edit Device",
+    "CREATE_TITLE": "Create Device",
+    "DEVICE_NAME": "Device Name",
+    "DEVICE_NAME_REQUIRED": "Device name is required.",
+    "DEVICE_NAME_MAX_LENGTH": "Device name must not exceed 100 characters.",
+    "PRICE_REQUIRED": "Price is required.",
+    "PRICE_PATTERN": "Price must be a positive number"
+  },
   "DEVICE_HISTORY": {
     "TITLE": "Devices history list",
     "FROM_DATE": "From date",
@@ -168,5 +179,9 @@
     "TITLE_DETAIL": "Detail device history",
     "DEVICE_INFO": "Device information",
     "USER_INFO": "User information"
+  },
+  "DEVICE_ASSIGN": {
+    "TITLE": "Provide device to user",
+    "NO_ASSIGN": "No assign"
   }
 }

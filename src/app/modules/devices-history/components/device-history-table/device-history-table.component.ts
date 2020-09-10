@@ -17,7 +17,7 @@ import { DevicesHistoryService } from 'src/app/core/services/devices-history.ser
 @Component({
   selector: 'ah-device-history-table',
   templateUrl: './device-history-table.component.html',
-  styleUrls: ['./device-history-table.component.scss']
+  styleUrls: ['./device-history-table.component.scss'],
 })
 export class DeviceHistoryTableComponent implements OnInit {
   public data$: Observable<PaginatedData<DeviceHistory[]>>;
@@ -54,7 +54,7 @@ export class DeviceHistoryTableComponent implements OnInit {
     );
 
     this.onPageChanged(1);
-    this.categories$ = this.store.select('devices')
+    this.categories$ = this.store.select('devices');
     this.store.dispatch(new DevicesActions.FetchDeviceCategories());
     this.searchStatusFormControl.valueChanges.subscribe(() => {
       this.onDataChanged();
