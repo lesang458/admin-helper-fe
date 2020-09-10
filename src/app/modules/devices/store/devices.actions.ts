@@ -29,7 +29,6 @@ export interface DeviceAssignParams {
 export const FETCH_DEVICES = '[Devices] Fetch Devices';
 export const SET_DEVICES = '[Devices] Set Devices';
 export const FETCH_DEVICE_CATEGORIES = '[Devices] Fetch Device Categories';
-export const FETCH_DEVICE_CATEGORIES_2 = '[Devices] Fetch Device Categories 2';
 export const SET_DEVICE_CATEGORIES = '[Devices] Set Device Categories';
 export const ASSIGNED_DEVICE = '[Devices] Asigned Device';
 export const EDIT_DEVICE = '[Devices] Edit Device';
@@ -51,10 +50,6 @@ export class SetDevices implements Action {
 
 export class FetchDeviceCategories implements Action {
   public readonly type = FETCH_DEVICE_CATEGORIES;
-}
-
-export class FetchDeviceCategories2 implements Action {
-  public readonly type = FETCH_DEVICE_CATEGORIES_2;
 }
 
 export class SetDeviceCategories implements Action {
@@ -97,7 +92,6 @@ export type DevicesActions =
   | FetchDevices
   | SetDevices
   | FetchDeviceCategories
-  | FetchDeviceCategories2
   | SetDeviceCategories
   | AssignDevice
   | EditDevice
@@ -105,4 +99,4 @@ export type DevicesActions =
   | GetDeviceCategoriesSuccess
   | CreateDeviceCategory
   | UpdateDeviceCategory
-  | DeleteDeviceCategory;;
+  | DeleteDeviceCategory;

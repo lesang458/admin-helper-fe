@@ -36,7 +36,7 @@ export class DeviceCategoriesEditComponent implements OnInit {
     if (this.type === 'create') {
       this.store.dispatch(
         new DevicesActions.CreateDeviceCategory({
-          name: this.f.get('name').value.toUpperCase(),
+          name: this.f.get('name').value,
           description: this.f.get('description').value
         })
       );

@@ -111,30 +111,6 @@ export class DeviceEffects {
   );
 
   @Effect()
-  fetchCategoriesData = this.actions$.pipe(
-    ofType(DevicesActions.FETCH_DEVICE_CATEGORIES_2),
-    switchMap(() => {
-      return this.http
-        .get<any>(`${environment.APILink}/device_categories`)
-        .pipe(
-          map((data) => {
-            const deviceCategories = camelcaseKeys(data.data).map(
-              (i) => {
-                if (!i.description) {
-                  i.description = '';
-                }
-                return i;
-              }
-            );
-            return new DevicesActions.GetDeviceCategoriesSuccess(
-              deviceCategories
-            );
-          })
-        );
-    })
-  );
-
-  @Effect()
   createDeviceCategory = this.actions$.pipe(
     ofType(DevicesActions.CREATE_DEVICE_CATEGORY),
     switchMap((action: DevicesActions.CreateDeviceCategory) => {
