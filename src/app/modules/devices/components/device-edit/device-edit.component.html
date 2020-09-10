@@ -80,6 +80,7 @@
         </div>
       </div>
     </div>
+
     <div class="row">
       <div class="col-12 mb-0">
         <div class="form-group">
@@ -93,6 +94,12 @@
             rows="2"
             formControlName="description"
           ></textarea>
+          <div
+            *ngIf="f.description.invalid && (f.description.dirty || f.descriptionp.touched)"
+            class="invalid-message"
+          >
+            {{ 'DEVICE_EDIT.DESCRIPTION_MIN_LENGTH' | translate }}
+          </div>
         </div>
       </div>
     </div>

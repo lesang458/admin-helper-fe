@@ -1,6 +1,6 @@
 <div *ngIf="data$ | async as data">
   <div class="row mb-2">
-    <div class="col-3">
+    <div class="col-4">
       <div class="form-group">
         <label class="d-inline-block mr-3 ml-2" for="device-status">
           {{ 'DEVICE_HISTORY.STATUS' | translate }}
@@ -41,7 +41,7 @@
     </div>
   </div>
   <div
-    class="card mb-3 border-dark"
+    class="card mb-3 border-secondary"
     *ngFor="let item of data.devices.data; let i = index"
   >
     <div class="card-header">
@@ -49,7 +49,7 @@
         <div class="col-3 black-text">
           {{ item.name }}
         </div>
-        <div class="col-3 black-text">
+        <div class="col-2 black-text">
           {{ 'DEVICE_TABLE.CATEGORY_NAME' | translate }}
           {{ ' ' + item.categoryName }}
         </div>
@@ -57,7 +57,16 @@
           {{ 'DEVICE_TABLE.ASSIGNED_TO' | translate }}
           {{ ' ' + getUserName(item.user) }}
         </div>
-        <div class="col-3 d-flex justify-content-end">
+        <div class="col-4 d-flex justify-content-end">
+          <button class="btn btn-outline-primary mr-2">
+            <i class="cil-storage"></i>
+          </button>
+          <button
+            class="btn btn-outline-warning mr-2"
+            *ngIf="item.status !== 'DISCARDED'"
+          >
+            <i class="cil-pen-nib"></i>
+          </button>
           <button
             class="btn btn-outline-info mr-2"
             (click)="openModalWithComponent(item, searchParams)"
