@@ -122,9 +122,7 @@
               <button
                 *ngIf="item.status === 'ACTIVE'"
                 class="btn btn-outline-danger"
-                (click)="
-                  openModalWithComponent(item.id, 'delete', searchParams)
-                "
+                (click)="openModalWithComponent(item.id, 'delete', searchParams)"
               >
                 <i class="cil-trash"></i>
               </button>
@@ -132,9 +130,7 @@
               <button
                 *ngIf="item.status !== 'ACTIVE'"
                 class="btn btn-outline-success"
-                (click)="
-                  openModalWithComponent(item.id, 'active', searchParams)
-                "
+                (click)="openModalWithComponent(item.id, 'active', searchParams)"
               >
                 <i class="cil-action-undo"></i>
               </button>
