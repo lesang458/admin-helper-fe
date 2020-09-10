@@ -4,12 +4,13 @@ import * as fromApp from 'src/app/store/app.reducer';
 import { Observable } from 'rxjs';
 import * as DevicesActions from '../../store/devices.actions';
 import { TranslateService } from '@ngx-translate/core';
-import { SearchParams } from '../../store/devices.actions';
+import { SearchDevice, DeviceParams } from '../../store/devices.actions';
 import { DeviceCategory } from 'src/app/shared/models/deviceCategory';
 import { FormControl } from '@angular/forms';
 import { State } from '../../store/devices.reducer';
+import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
+import { DeviceAssignComponent } from '../device-assign/device-assign.component';
 import { Device } from 'src/app/shared/models/device.model';
-import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 import { DeviceEditComponent } from '../device-edit/device-edit.component';
 import { tap } from 'rxjs/operators';
 
@@ -24,12 +25,14 @@ export class DeviceTableComponent implements OnInit {
   public state: boolean[];
   public currentPage = 1;
   public selectedCategory = new FormControl('');
-  public searchParams: SearchParams;
+  public deviceParams: DeviceParams;
   public bsModalRef: BsModalRef;
+  public searchParams: SearchDevice;
+
   constructor(
     private store: Store<fromApp.AppState>,
-    private modalService: BsModalService,
-    private translate: TranslateService
+    private translate: TranslateService,
+    private modalService: BsModalService
   ) {}
 
   ngOnInit(): void {
@@ -66,9 +69,9 @@ export class DeviceTableComponent implements OnInit {
     this.store.dispatch(new DevicesActions.FetchDevices(this.searchParams));
   }
 
-  public openModalWithComponent(
+  public openEditModal(
     selectedDevice: Device,
-    params: SearchParams
+    params: SearchDevice
   ): void {
     const initialState = { selectedDevice, params };
     this.bsModalRef = this.modalService.show(DeviceEditComponent, {
@@ -76,4 +79,13 @@ export class DeviceTableComponent implements OnInit {
     });
     this.bsModalRef.content.closeBtnName = 'Close';
   }
+
+  public openAssignModal(device: Device,  params: SearchDevice): void {
+    const initialState = { device, params };
+    this.bsModalRef = this.modalService.show(DeviceAssignComponent, {
+      initialState,
+    });
+    this.bsModalRef.content.closeBtnName = 'Close';
+  }
+
 }

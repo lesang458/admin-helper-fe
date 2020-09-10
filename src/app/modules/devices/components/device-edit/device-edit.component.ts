@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Device } from 'src/app/shared/models/device.model';
 import { BsModalRef } from 'ngx-bootstrap/modal';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
-import { DeviceParams, SearchParams } from '../../store/devices.actions';
+import { DeviceParams, SearchDevice } from '../../store/devices.actions';
 import * as fromApp from 'src/app/store/app.reducer';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
@@ -18,7 +18,7 @@ import * as DevicesActions from '../../store/devices.actions';
 })
 export class DeviceEditComponent implements OnInit {
   public selectedDevice: Device;
-  public params: SearchParams;
+  public params: SearchDevice;
   public categories$: Observable<DeviceCategory[]>;
   public deviceForm = new FormGroup({
     name: new FormControl('', [Validators.required, Validators.maxLength(100)]),

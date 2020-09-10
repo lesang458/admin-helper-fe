@@ -101,8 +101,10 @@
     "TITLE": "Chỉnh sửa hồ sơ nhân viên"
   },
   "PROFILE_STATUS_CHANGE": {
-    "TITLE": "Xác nhận thay đổi trạng thái nhân viên",
-    "PARAMS": "Xác nhận muốn thay đổi trạng thái nhân viên?",
+    "TITLE_FORMER": "Xác nhận xóa nhân viên",
+    "PARAM_FORMER": "Trạng thái của nhân viên này sẽ được thay đổi thành 'CỰU NHÂN VIÊN'. Bạn có muốn tiếp tục?",
+    "TITLE_ACTIVE": "Xác nhận kích hoạt nhân viên",
+    "PARAM_ACTIVE": "Trạng thái của nhân viên này sẽ được thay đổi thành 'ĐANG HOẠT ĐỘNG'. Bạn có muốn tiếp tục?",
     "ABORT": "Hủy bỏ",
     "ACCEPT": "Đồng ý"
   },
@@ -175,5 +177,9 @@
     "TITLE_DETAIL": "Chi tiết lịch sử thiết bị",
     "DEVICE_INFO": "Thông tin thiết bị",
     "USER_INFO": "Thông tin người dùng"
+  },
+  "DEVICE_ASSIGN": {
+    "TITLE": "Cung cấp thiết bị cho nhân viên",
+    "NO_ASSIGN": "Không bàn giao"
   }
 }

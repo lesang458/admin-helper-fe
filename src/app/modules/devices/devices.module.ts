@@ -7,6 +7,7 @@ import { PaginationModule } from 'ngx-bootstrap/pagination';
 import { DeviceListComponent } from './pages/device-list/device-list.component';
 import { DEVICES_ROUTES } from './devices.routes';
 import { DeviceTableComponent } from './components/device-table/device-table.component';
+import { DeviceAssignComponent } from './components/device-assign/device-assign.component';
 import { DeviceEditComponent } from './components/device-edit/device-edit.component';
 import { ModalModule, BsModalRef } from 'ngx-bootstrap/modal';
 
@@ -14,6 +15,7 @@ import { ModalModule, BsModalRef } from 'ngx-bootstrap/modal';
   declarations: [
     DeviceListComponent,
     DeviceTableComponent,
+    DeviceAssignComponent,
     DeviceEditComponent,
   ],
   imports: [

@@ -37,9 +37,12 @@
           {{ ' ' + getUserName(item.user) }}
         </div>
         <div class="col-3 d-flex justify-content-end">
+          <button class="btn btn-outline-success mr-2" (click)="openAssignModal(item, searchParams)">
+            <i class="cil-task"></i>
+          </button>
           <button
             class="btn btn-outline-info mr-2"
-            (click)="openModalWithComponent(item, searchParams)"
+            (click)="openEditModal(item, searchParams)"
           >
             <span class="cil-brush"></span>
           </button>
@@ -108,7 +111,7 @@
       <button
         type="button"
         class="btn btn-info"
-        (click)="openModalWithComponent(null, searchParams)"
+        (click)="openEditModal(null, searchParams)"
       >
         <span class="cil-playlist-add btn-icon mr-2"></span>
         {{ 'DEVICE_TABLE.CREATE_DEVICE' | translate }}
