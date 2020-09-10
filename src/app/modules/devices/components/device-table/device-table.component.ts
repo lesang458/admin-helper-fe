@@ -80,8 +80,8 @@ export class DeviceTableComponent implements OnInit {
     this.bsModalRef.content.closeBtnName = 'Close';
   }
 
-  public openAssignModal(id: number,  params: SearchDevice): void {
-    const initialState = { id, params };
+  public openAssignModal(device: Device,  params: SearchDevice): void {
+    const initialState = { device, params };
     this.bsModalRef = this.modalService.show(DeviceAssignComponent, {
       initialState,
     });

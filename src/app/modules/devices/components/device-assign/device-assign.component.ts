@@ -7,8 +7,9 @@ import * as EmployeeActions from '../../../employees/store/employees.actions';
 import * as DevicesActions from '../../store/devices.actions';
 import { SearchParams } from 'src/app/modules/employees/store/employees.actions';
 import { SearchDevice } from '../../store/devices.actions';
-import { FormControl } from '@angular/forms';
+import { FormControl, FormGroup } from '@angular/forms';
 import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
+import { Device } from 'src/app/shared/models/device.model';
 
 @Component({
   selector: 'ah-device-assign',
@@ -16,10 +17,10 @@ import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
   styleUrls: ['./device-assign.component.scss'],
 })
 export class DeviceAssignComponent implements OnInit {
-  public id: number;
+  public device: Device;
   public employeeObs$: Observable<any>;
   public searchFormControl = new FormControl('');
-  public assigned = new FormControl('');
+  public assigned = new FormControl('1')
   public currentPage = 1;
   public sortBirthDateType = 0;
   public sortNameType = 0;
@@ -43,6 +44,7 @@ export class DeviceAssignComponent implements OnInit {
           this.currentPage = 1;
         }
       });
+      this.assigned = new FormControl(this.device?.user?.id.toString())
   }
 
   public onSort(page: number, column: string): void {
@@ -77,7 +79,7 @@ export class DeviceAssignComponent implements OnInit {
   }
 
   public onSubmit(): void {
-    const id = this.id;
+    const id = this.device.id;
     const userId = {
       userId: this.assigned.value,
     };

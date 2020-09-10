@@ -61,7 +61,7 @@
       <tbody>
         <tr *ngFor="let item of employeeObs.employees; let i = index">
           <th scope="row">
-            {{ i + 1 + (employeeObs.pagination.currentPage - 1) * 10 }}
+            {{ i + 1 + (employeeObs.pagination.currentPage - 1) * 5 }}
           </th>
           <td>{{ item.firstName + ' ' + item.lastName }}</td>
           <td>{{ item.birthdate | date: 'dd/MM/yyyy' }}</td>
