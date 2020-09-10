@@ -44,7 +44,7 @@ export class DeviceAssignComponent implements OnInit {
           this.currentPage = 1;
         }
       });
-      this.assigned = new FormControl(this.device?.user?.id.toString())
+      this.assigned = new FormControl(this.device.user ? this.device?.user?.id.toString(): '')
   }
 
   public onSort(page: number, column: string): void {
