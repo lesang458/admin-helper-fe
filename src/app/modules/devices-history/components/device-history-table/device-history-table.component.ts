@@ -11,6 +11,8 @@ import { PaginatedData } from 'src/app/shared/models/pagination.model';
 import { FormControl } from '@angular/forms';
 import { State } from 'src/app/modules/devices/store/devices.reducer';
 import { DeviceHistoryDetailComponent } from '../device-history-detail/device-history-detail.component';
+import { Router, NavigationEnd } from '@angular/router';
+import { DevicesHistoryService } from 'src/app/core/services/devices-history.service';
 
 @Component({
   selector: 'ah-device-history-table',
@@ -21,29 +23,40 @@ export class DeviceHistoryTableComponent implements OnInit {
   public data$: Observable<PaginatedData<DeviceHistory[]>>;
   public categories$: Observable<State>;
   public searchStatusFormControl = new FormControl('');
-  public selectedCategory = new FormControl('');
   public selectedFromDate = new FormControl('');
   public selectedToDate = new FormControl('');
   public bsModalRef: BsModalRef;
   public currentPage = 1;
   constructor(
     private store: Store<fromApp.AppState>,
-    private modalService: BsModalService
-  ) {}
+    private modalService: BsModalService,
+    private router: Router,
+    private devicesHistoryService: DevicesHistoryService
+  ) {
+    router.events.subscribe((val: NavigationEnd) => {
+      if (val.url && val.url !== '/lich-su-thiet-bi') {
+        devicesHistoryService.setCurrentId(-1);
+      }
+    });
+  }
 
   ngOnInit(): void {
     this.data$ = this.store.select('deviceHistory').pipe(
       map((devices) => {
-        return devices.deviceHistory;
+        return {
+          data: devices.deviceHistory.data.filter((data) => {
+            if (data.device.id === this.devicesHistoryService.getCurrentId()) {
+              return data;
+            }
+          }),
+          pagination: devices.deviceHistory.pagination,
+        };
       })
     );
+
     this.onPageChanged(1);
     this.categories$ = this.store.select('devices');
     this.store.dispatch(new DevicesActions.FetchDeviceCategories());
-    this.selectedCategory.valueChanges.subscribe(() => {
-      this.onDataChanged();
-    });
-
     this.searchStatusFormControl.valueChanges.subscribe(() => {
       this.onDataChanged();
     });
@@ -67,14 +80,12 @@ export class DeviceHistoryTableComponent implements OnInit {
 
   public onPageChanged(page: number): void {
     const status = this.searchStatusFormControl.value;
-    const deviceCategoryId = this.selectedCategory.value;
     const historyFrom = this.selectedFromDate.value;
     const historyTo = this.selectedToDate.value;
     const params = {
       page,
       perPage: 10,
       status,
-      deviceCategoryId,
       historyFrom,
       historyTo,
     };

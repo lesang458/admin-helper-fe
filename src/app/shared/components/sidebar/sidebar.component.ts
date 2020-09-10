@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { DevicesHistoryService } from 'src/app/core/services/devices-history.service';
 
 @Component({
   selector: '[ah-sidebar]',
@@ -7,9 +8,17 @@ import { Router } from '@angular/router';
   styleUrls: ['./sidebar.component.scss'],
 })
 export class SidebarComponent implements OnInit {
-  constructor(private router: Router) {}
+  public deviceHistoryIsSelected: boolean;
+  constructor(
+    private router: Router,
+    private devicesHistoryService: DevicesHistoryService
+  ) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.devicesHistoryService.currentId.subscribe((id) => {
+      this.deviceHistoryIsSelected = id !== -1;
+    });
+  }
 
   public navigateToGeneralListPage() {
     this.router.navigateByUrl('/thong-tin-chung');

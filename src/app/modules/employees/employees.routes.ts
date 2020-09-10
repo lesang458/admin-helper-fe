@@ -7,16 +7,28 @@ import { AuthGuardService } from 'src/app/core/helpers/auth.guard';
 
 export const EMPLOYEES_ROUTES: Routes = [
   { path: '', redirectTo: 'thong-tin-chung', pathMatch: 'full' },
-  { path: 'login', component: AuthComponent },
+  {
+    path: 'login',
+    component: AuthComponent,
+    data: {
+      i18nKey: 'LOGIN',
+    },
+  },
   {
     path: 'thong-tin-chung',
     component: GeneralInfoComponent,
     canActivate: [AuthGuardService],
+    data: {
+      i18nKey: 'GENERAL_LIST',
+    },
   },
   {
     path: 'nghi-phep',
     component: DayoffComponent,
     canActivate: [AuthGuardService],
     resolve: { dayoff: DayoffResolver },
+    data: {
+      i18nKey: 'DAY_OFF_TABLE',
+    },
   },
 ];

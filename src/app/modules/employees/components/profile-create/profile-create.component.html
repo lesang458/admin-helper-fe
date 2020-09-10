@@ -8,8 +8,11 @@
   <h4 *ngIf="type === 'edit'" class="modal-title pull-left">
     {{ 'PROFILE_EDIT.TITLE' | translate }}
   </h4>
-  <h4 *ngIf="type === 'delete' || type === 'active'" class="modal-title pull-left">
-    {{ 'PROFILE_STATUS_CHANGE.TITLE' | translate }}
+  <h4 *ngIf="type === 'delete'" class="modal-title pull-left">
+    {{ 'PROFILE_STATUS_CHANGE.TITLE_FORMER' | translate }}
+  </h4>
+  <h4 *ngIf="type === 'active'" class="modal-title pull-left">
+    {{ 'PROFILE_STATUS_CHANGE.TITLE_ACTIVE' | translate }}
   </h4>
   <button
     type="button"
@@ -26,7 +29,7 @@
     <div class="modal-body">
       <div class="form-row">
         <div class="form-group col-md-6">
-          <label for="exampleFormControlInput1">
+          <label for="exampleFormControlInput1" class="font-weight-bold">
             {{ 'PROFILE_CREATE.FIRST_NAME' | translate }}
           </label>
           <input
@@ -49,7 +52,7 @@
           </div>
         </div>
         <div class="form-group col-md-6">
-          <label for="exampleFormControlInput2">
+          <label for="exampleFormControlInput2" class="font-weight-bold">
             {{ 'PROFILE_CREATE.LAST_NAME' | translate }}
           </label>
           <input
@@ -74,7 +77,7 @@
       </div>
       <div class="form-row">
       <div class="form-group col-md-6">
-        <label for="exampleFormControlInput3">
+        <label for="exampleFormControlInput3" class="font-weight-bold">
           {{ 'PROFILE_CREATE.EMAIL' | translate }}
         </label>
         <input
@@ -97,7 +100,7 @@
         </div>
       </div>
       <div class="form-group col-md-6">
-        <label for="exampleFormControlInput5">
+        <label for="exampleFormControlInput5" class="font-weight-bold">
           {{ 'PROFILE_CREATE.PHONE_NUMBER' | translate }}
         </label>
         <input
@@ -127,7 +130,7 @@
       </div>
     </div>
         <div *ngIf="type === 'create'" class="form-group">
-          <label for="exampleFormControlInput4">
+          <label for="exampleFormControlInput4" class="font-weight-bold">
             {{ 'PROFILE_CREATE.PASSWORD' | translate }}
           </label>
           <input
@@ -151,7 +154,7 @@
         </div>
       <div class="form-row">
         <div class="form-group col-md-6">
-          <label for="exampleFormControlInput6">
+          <label for="exampleFormControlInput6" class="font-weight-bold">
             {{ 'PROFILE_CREATE.BIRTHDAY' | translate }}
           </label>
           <input
@@ -172,7 +175,7 @@
           </div>
         </div>
         <div class="form-group col-md-6">
-          <label for="exampleFormControlInput7">
+          <label for="exampleFormControlInput7" class="font-weight-bold">
             {{ 'PROFILE_CREATE.JOIN_DATE' | translate }}
           </label>
           <input
@@ -205,19 +208,19 @@
           {{ 'GENERAL_LIST.DELETED' | translate }}
         </span>
       </h6>
-      <h6>{{ 'PROFILE_CREATE.DAY_OFF_INFO' | translate }}</h6>
+      <h6 class="font-weight-bold">{{ 'PROFILE_CREATE.DAY_OFF_INFO' | translate }}</h6>
       <div class="form-row day-info">
         <div *ngIf="type !== 'detail'" class="form-group col-md-4">
-          <label>
+          <label class="font-weight-bold">
             {{ 'PROFILE_CREATE.DAY_OFF_CATE' | translate }}
           </label>
-          <span class="form-control text-style day">
+          <span class="form-control text-style day font-weight-bold">
             {{ 'PROFILE_CREATE.VACATION' | translate }}
           </span>
-          <label>
+          <label class="font-weight-bold">
             {{ 'PROFILE_CREATE.DAY_OFF_CATE' | translate }}
           </label>
-          <span class="form-control text-style day">
+          <span class="form-control text-style day font-weight-bold">
             {{ 'PROFILE_CREATE.ILLNESS' | translate }}
           </span>
         </div>
@@ -227,7 +230,7 @@
             *ngFor="let item of dayOffInfos.controls; let i = index"
           >
             <div [formGroupName]="i">
-              <label>
+              <label class="font-weight-bold">
                 {{ 'PROFILE_CREATE.HOUR' | translate }}
               </label>
               <div class="total-hours">
@@ -291,8 +294,11 @@
   </div>
   
   <div *ngIf="type === 'delete' || type === 'active'">
-    <div class="modal-body">
-      {{ 'PROFILE_STATUS_CHANGE.PARAMS' | translate }}
+    <div class="modal-body" *ngIf="type === 'delete'">
+      {{ 'PROFILE_STATUS_CHANGE.PARAM_FORMER' | translate }}
+    </div>
+    <div class="modal-body" *ngIf="type === 'active'">
+      {{ 'PROFILE_STATUS_CHANGE.PARAM_ACTIVE' | translate }}
     </div>
     <div class="modal-footer">
       <button type="button" class="btn btn-secondary" (click)="bsModalRef.hide()">

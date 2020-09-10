@@ -1,24 +1,7 @@
 <div class="card">
   <div class="card-body">
     <div class="row">
-      <div class="col-3" *ngIf="categories$ | async as categories">
-        <div class="form-group">
-          <label class="d-inline-block mr-3 ml-2" for="day-off-type">
-            {{ 'DEVICE_TABLE.TYPE_OF_DEVICE' | translate }}
-          </label>
-          <select
-            [formControl]="selectedCategory"
-            class="form-control d-inline-block"
-            id="device-category"
-          >
-            <option value="">{{ 'DEVICE_TABLE.ALL' | translate }}</option>
-            <option *ngFor="let item of categories.categories" [value]="item.id">
-              {{ item.name }}
-            </option>
-          </select>
-        </div>
-      </div>
-      <div class="col-3">
+      <div class="col-6">
         <div class="form-group">
           <label class="d-inline-block mr-3 ml-2" for="status-type">
             {{ 'GENERAL_LIST.STATUS' | translate }}
@@ -70,13 +53,17 @@
           </div>
       </div>
     <div class="table-responsive" *ngIf="data$ | async as data">
+      <div *ngIf="data?.data.length !== 0" class="alert alert-success" role="alert">
+        {{ 'DEVICE_HISTORY.DEVICE_NAME' | translate }}:
+        {{ data.data[0].device.name }}
+      </div>
+      <div *ngIf="data?.data.length === 0" class="alert alert-secondary" role="alert">
+        {{ 'GENERAL_LIST.NO_RESULT' | translate }}
+      </div>
       <table class="table table-bordered">
         <thead>
           <tr>
             <th scope="col" class="col-id">ID</th>
-            <th scope="col" class="col-name">
-              {{ 'DEVICE_HISTORY.DEVICE_NAME' | translate }}
-            </th>
             <th scope="col" class="col-from-date">
               {{ 'DEVICE_HISTORY.FROM_DATE' | translate }}
             </th>
@@ -92,17 +79,10 @@
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let item of data.data; let i = index">
+          <tr *ngFor="let item of data.data; let i = index" (click)="openModalWithComponent(item.id)">
             <th scope="row">
               {{ i + 1 + (data.pagination.currentPage - 1) * 10 }}
             </th>
-            <td>
-              <span
-                class="device-name" 
-                (click)="openModalWithComponent(item.id)">
-                {{ item.device?.name }}
-              </span>
-            </td>
             <td>{{ item.fromDate | date: 'dd/MM/yyyy' }}</td>
             <td>{{ item.toDate | date: 'dd/MM/yyyy' }}</td>
             <td>
@@ -126,13 +106,6 @@
           </tr>
         </tbody>
       </table>
-      <div
-        *ngIf="data?.data.length === 0"
-        class="alert alert-secondary"
-        role="alert"
-      >
-        {{ 'GENERAL_LIST.NO_RESULT' | translate }}
-      </div>
       <div class="col-12" *ngIf="data.pagination.totalCount !== 0">
         <pagination
           [totalItems]="data.pagination.totalCount"

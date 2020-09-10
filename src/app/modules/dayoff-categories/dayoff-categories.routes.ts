@@ -7,5 +7,8 @@ export const DAYOFF_CATEGORIES_ROUTES: Routes = [
     path: '',
     component: GeneralDayOffCategoriesComponent,
     canActivate: [AuthGuardService],
+    data: {
+      i18nKey: 'DAY_OFF_CATEGORIES_PAGE',
+    },
   },
 ];
