@@ -30,4 +30,8 @@ export class SidebarComponent implements OnInit {
   public navigateToDeviceHistory() {
     this.router.navigateByUrl('/lich-su-thiet-bi');
   }
+
+  public navigateToDeviceCategoriesPage() {
+    this.router.navigateByUrl('/loai-thiet-bi');
+  }
 }

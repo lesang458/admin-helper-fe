@@ -6,7 +6,8 @@
     "LINK_3": "Chấm công",
     "LINK_4": "Thiết bị",
     "LINK_5": "Lịch sử thiết bị",
-    "LINK_6": "Loại ngày phép"
+    "LINK_6": "Loại ngày phép",
+    "LINK_7": "Loại thiết bị"
   },
   "HEADER": {
     "VIETNAMESE": "Tiếng việt",
@@ -181,5 +182,11 @@
   "DEVICE_ASSIGN": {
     "TITLE": "Cung cấp thiết bị cho nhân viên",
     "NO_ASSIGN": "Không bàn giao"
+  },
+  "DEVICE_CATEGORIES_PAGE": {
+    "TITLE": "Loại thiết bị",
+    "NAME": "Tên thiết bị",
+    "DESCRIPTION": "Mô tả",
+    "ACTION":"Hành động"
   }
 }
