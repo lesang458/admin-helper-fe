@@ -34,12 +34,7 @@ export class DeviceTableComponent implements OnInit {
   constructor(
     private store: Store<fromApp.AppState>,
     private translate: TranslateService,
-<<<<<<< HEAD
-    private router: Router,
-    private devicesHistoryService: DevicesHistoryService
-=======
     private modalService: BsModalService
->>>>>>> develop
   ) {}
 
   ngOnInit(): void {
@@ -87,18 +82,12 @@ export class DeviceTableComponent implements OnInit {
     this.bsModalRef.content.closeBtnName = 'Close';
   }
 
-<<<<<<< HEAD
-  public navigateToDeviceHistory(id: number): void {
-    this.devicesHistoryService.setCurrentId(id);
-    this.router.navigateByUrl('/lich-su-thiet-bi');
-=======
   public openAssignModal(device: Device,  params: SearchDevice): void {
     const initialState = { device, params };
     this.bsModalRef = this.modalService.show(DeviceAssignComponent, {
       initialState,
     });
     this.bsModalRef.content.closeBtnName = 'Close';
->>>>>>> develop
   }
 
 }
