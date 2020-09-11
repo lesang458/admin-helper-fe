@@ -45,7 +45,6 @@ export class DeviceTableComponent implements OnInit {
     this.data$ = this.store.select('devices').pipe(
       tap((data) => {
         this.state = new Array<boolean>(data.devices.pagination.pageSize);
-        this.state = this.state.map(() => false);
       })
     );
     this.store.dispatch(new DevicesActions.FetchDeviceCategories());
