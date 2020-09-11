@@ -12,8 +12,8 @@ export interface SearchDevice {
 
 export interface DeviceParams {
   id;
-  device: Device;
   params: SearchDevice;
+  device?: Device;
 }
 
 export interface DeviceAssignParams {
@@ -29,6 +29,9 @@ export const SET_DEVICE_CATEGORIES = '[Devices] Set Device Categories';
 export const ASSIGNED_DEVICE = '[Devices] Asigned Device';
 export const EDIT_DEVICE = '[Devices] Edit Device';
 export const CREATE_DEVICE = '[Devices] Create Device';
+export const DELETE_DEVICE = '[Devices] Delete Device';
+export const DISCARD_DEVICE = '[Devices] Discard Device';
+export const MOVE_DEVICE_TO_INVENTORY = '[Devices] Move Device To Inventory';
 
 export class FetchDevices implements Action {
   public readonly type = FETCH_DEVICES;
@@ -52,7 +55,7 @@ export class SetDeviceCategories implements Action {
 export class AssignDevice implements Action {
   public readonly type = ASSIGNED_DEVICE;
   constructor(public payload: DeviceAssignParams) {}
-} 
+}
 export class EditDevice implements Action {
   public readonly type = EDIT_DEVICE;
   constructor(public payload: DeviceParams) {}
@@ -63,6 +66,21 @@ export class CreateDevice implements Action {
   constructor(public payload: DeviceParams) {}
 }
 
+export class DeleteDevice implements Action {
+  public readonly type = DELETE_DEVICE;
+  constructor(public payload: DeviceParams) {}
+}
+
+export class DiscardDevice implements Action {
+  public readonly type = DISCARD_DEVICE;
+  constructor(public payload: DeviceParams) {}
+}
+
+export class MoveDeviceToInventory implements Action {
+  public readonly type = MOVE_DEVICE_TO_INVENTORY;
+  constructor(public payload: DeviceParams) {}
+}
+
 export type DevicesActions =
   | FetchDevices
   | SetDevices
@@ -70,4 +88,7 @@ export type DevicesActions =
   | SetDeviceCategories
   | AssignDevice
   | EditDevice
-  | CreateDevice;
+  | CreateDevice
+  | DeleteDevice
+  | DiscardDevice
+  | MoveDeviceToInventory;

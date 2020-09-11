@@ -15,6 +15,7 @@ import { DeviceEditComponent } from '../device-edit/device-edit.component';
 import { tap } from 'rxjs/operators';
 import { Router } from '@angular/router';
 import { DevicesHistoryService } from 'src/app/core/services/devices-history.service';
+import { DeviceConfirmComponent } from '../device-confirm/device-confirm.component';
 
 @Component({
   selector: 'ah-device-table',
@@ -99,6 +100,14 @@ export class DeviceTableComponent implements OnInit {
   public openAssignModal(device: Device, params: SearchDevice): void {
     const initialState = { device, params };
     this.bsModalRef = this.modalService.show(DeviceAssignComponent, {
+      initialState,
+    });
+    this.bsModalRef.content.closeBtnName = 'Close';
+  }
+
+  public openConfirmModal(id: number, type: string, params: SearchDevice): void {
+    const initialState = { id, type, params };
+    this.bsModalRef = this.modalService.show(DeviceConfirmComponent, {
       initialState,
     });
     this.bsModalRef.content.closeBtnName = 'Close';

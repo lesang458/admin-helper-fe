@@ -10,6 +10,7 @@ import { DeviceTableComponent } from './components/device-table/device-table.com
 import { DeviceAssignComponent } from './components/device-assign/device-assign.component';
 import { DeviceEditComponent } from './components/device-edit/device-edit.component';
 import { ModalModule, BsModalRef } from 'ngx-bootstrap/modal';
+import { DeviceConfirmComponent } from './components/device-confirm/device-confirm.component';
 
 @NgModule({
   declarations: [
@@ -17,6 +18,7 @@ import { ModalModule, BsModalRef } from 'ngx-bootstrap/modal';
     DeviceTableComponent,
     DeviceAssignComponent,
     DeviceEditComponent,
+    DeviceConfirmComponent,
   ],
   imports: [
     CommonModule,

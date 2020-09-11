@@ -77,7 +77,7 @@ export class DeviceEffects {
     })
   );
 
-  @Effect()          
+  @Effect()
   createDevice = this.actions$.pipe(
     ofType(DevicesActions.CREATE_DEVICE),
     switchMap((action: DevicesActions.CreateDevice) => {
@@ -102,6 +102,51 @@ export class DeviceEffects {
         .put<Device>(
           `${environment.APILink}/devices/${action.payload.id}`,
           snakecaseKeys(action.payload.device)
+        )
+        .pipe(
+          map(() => {
+            return new DevicesActions.FetchDevices(action.payload.params);
+          })
+        );
+    })
+  );
+
+  @Effect()
+  deleteDevice = this.actions$.pipe(
+    ofType(DevicesActions.DELETE_DEVICE),
+    switchMap((action: DevicesActions.DeleteDevice) => {
+      return this.http
+        .delete<void>(`${environment.APILink}/devices/${action.payload.id}`)
+        .pipe(
+          map(() => {
+            return new DevicesActions.FetchDevices(action.payload.params);
+          })
+        );
+    })
+  );
+
+  @Effect()
+  discardDevice = this.actions$.pipe(
+    ofType(DevicesActions.DISCARD_DEVICE),
+    switchMap((action: DevicesActions.DiscardDevice) => {
+      return this.http
+        .put<void>(`${environment.APILink}/devices/${action.payload.id}/discard`, {})
+        .pipe(
+          map(() => {
+            return new DevicesActions.FetchDevices(action.payload.params);
+          })
+        );
+    })
+  );
+
+  @Effect()
+  inventoryDevice = this.actions$.pipe(
+    ofType(DevicesActions.MOVE_DEVICE_TO_INVENTORY),
+    switchMap((action: DevicesActions.MoveDeviceToInventory) => {
+      return this.http
+        .put<void>(
+          `${environment.APILink}/devices/${action.payload.id}/move_to_inventory`,
+          {}
         )
         .pipe(
           map(() => {

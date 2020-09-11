@@ -62,12 +62,14 @@
           <button
             class="btn btn-outline-primary mr-2"
             *ngIf="item.status !== 'IN_INVENTORY'"
+            (click)="openConfirmModal(item.id, 'inventory', searchParams)"
           >
             <i class="cil-storage"></i>
           </button>
           <button
             class="btn btn-outline-warning mr-2"
             *ngIf="item.status !== 'DISCARDED'"
+            (click)="openConfirmModal(item.id, 'discard', searchParams)"
           >
             <i class="cil-pen-nib"></i>
           </button>
@@ -89,7 +91,10 @@
           >
             <span class="cil-brush"></span>
           </button>
-          <button class="btn btn-outline-danger mr-2">
+          <button
+            class="btn btn-outline-danger mr-2"
+            (click)="openConfirmModal(item.id, 'delete', searchParams)"
+          >
             <i class="cil-trash"></i>
           </button>
           <a

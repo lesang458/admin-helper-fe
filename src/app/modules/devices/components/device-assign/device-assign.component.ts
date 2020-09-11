@@ -20,7 +20,7 @@ export class DeviceAssignComponent implements OnInit {
   public device: Device;
   public employeeObs$: Observable<any>;
   public searchFormControl = new FormControl('');
-  public assigned = new FormControl('1')
+  public assigned = new FormControl('1');
   public currentPage = 1;
   public sortBirthDateType = 0;
   public sortNameType = 0;
@@ -44,7 +44,9 @@ export class DeviceAssignComponent implements OnInit {
           this.currentPage = 1;
         }
       });
-      this.assigned = new FormControl(this.device.user ? this.device?.user?.id.toString(): '')
+    this.assigned = new FormControl(
+      this.device.user ? this.device?.user?.id.toString() : ''
+    );
   }
 
   public onSort(page: number, column: string): void {
@@ -83,7 +85,7 @@ export class DeviceAssignComponent implements OnInit {
     const userId = {
       userId: this.assigned.value,
     };
-    const params = this.params
+    const params = this.params;
     const data = { id, userId, params };
     this.store.dispatch(new DevicesActions.AssignDevice(data));
     this.bsModalRef.hide();

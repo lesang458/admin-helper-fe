@@ -5,16 +5,11 @@
         <h5 class="modal-title" id="exampleModalLabel">
           {{ 'REQUEST-DAY-OFF.AUTH' | translate }}
         </h5>
-        <button
-          type="button"
-          class="close"
-          data-dismiss="modal"
-          aria-label="Close"
-        >
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-      <div class="modal-body">
+      <div class="modal-body pt-1 pb-0">
         <label class="font-weight-bold" for="exampleFormControlInput1">
           {{ 'REQUEST-DAY-OFF.FULL_NAME' | translate }}
         </label>
@@ -25,7 +20,7 @@
           formControlName="fullName"
         />
       </div>
-      <div class="modal-body date">
+      <div class="modal-body date pt-1 pb-0">
         <label class="font-weight-bold" for="exampleFormControlInput2">
           {{ 'REQUEST-DAY-OFF.FROM_DATE' | translate }}
         </label>
@@ -37,11 +32,7 @@
           id="exampleFormControlInput2"
           formControlName="fromDate"
         />
-        <label
-          class="font-weight-bold"
-          id="label3"
-          for="exampleFormControlInput3"
-        >
+        <label class="font-weight-bold" id="label3" for="exampleFormControlInput3">
           {{ 'REQUEST-DAY-OFF.TO_DATE' | translate }}
         </label>
         <input
@@ -83,12 +74,8 @@
         </div>
       </div>
 
-      <div class="modal-body">
-        <label
-          id="label4"
-          class="font-weight-bold"
-          for="exampleFormControlSelect1"
-        >
+      <div class="modal-body pt-1">
+        <label id="label4" class="font-weight-bold" for="exampleFormControlSelect1">
           {{ 'REQUEST-DAY-OFF.KIND_OF_LEAVE' | translate }}
         </label>
         <select
@@ -119,10 +106,7 @@
         <hr />
       </div>
 
-      <div
-        *ngIf="dayOffAvailable < dayOffs"
-        class="modal-body modal-body-none-padding"
-      >
+      <div *ngIf="dayOffAvailable < dayOffs" class="modal-body">
         <div class="form-check">
           <input
             class="form-check-input pointer"
