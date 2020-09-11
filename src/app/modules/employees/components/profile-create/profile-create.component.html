@@ -46,8 +46,11 @@
             <div *ngIf="f.firstName.errors.required">
               {{ 'PROFILE_CREATE.FIRST_NAME_INVALID' | translate }}
             </div>
+            <div *ngIf="f.firstName.errors.minlength">
+              {{ 'PROFILE_CREATE.FIRST_NAME_MIN_LENGTH' | translate }}
+            </div>
             <div *ngIf="f.firstName.errors.maxlength">
-              {{ 'PROFILE_CREATE.FIRST_NAME_MAXLENGTH' | translate }}
+              {{ 'PROFILE_CREATE.FIRST_NAME_MAX_LENGTH' | translate }}
             </div>
           </div>
         </div>
@@ -69,8 +72,11 @@
             <div *ngIf="f.lastName.errors.required">
               {{ 'PROFILE_CREATE.LAST_NAME_INVALID' | translate }}
             </div>
+            <div *ngIf="f.lastName.errors.minlength">
+              {{ 'PROFILE_CREATE.LAST_NAME_MIN_LENGTH' | translate }}
+            </div>
             <div *ngIf="f.lastName.errors.maxlength">
-              {{ 'PROFILE_CREATE.LAST_NAME_MAXLENGTH' | translate }}
+              {{ 'PROFILE_CREATE.LAST_NAME_MAX_LENGTH' | translate }}
             </div>
           </div>
         </div>
@@ -104,7 +110,6 @@
           {{ 'PROFILE_CREATE.PHONE_NUMBER' | translate }}
         </label>
         <input
-          type="number"
           class="form-control"
           id="exampleFormControlInput5"
           formControlName="phoneNumber"
@@ -114,18 +119,7 @@
           *ngIf="f.phoneNumber.invalid && (f.phoneNumber.dirty || f.phoneNumber.touched)"
           class="mess-invalid"
         >
-          <div *ngIf="f.phoneNumber.errors.required">
-            {{ 'PROFILE_CREATE.PHONE_NUMBER_INVALID' | translate }}
-          </div>
-          <div *ngIf="f.phoneNumber.errors.minlength">
-            {{ 'PROFILE_CREATE.PHONE_NUMBER_MINLENGTH' | translate }}
-          </div>
-          <div *ngIf="f.phoneNumber.errors.maxlength">
-            {{ 'PROFILE_CREATE.PHONE_NUMBER_MAXLENGTH' | translate }}
-          </div>
-          <div *ngIf="f.phoneNumber.errors.pattern">
-            {{ 'PROFILE_CREATE.PHONE_NUMBER_PATTERN' | translate }}
-          </div>
+        {{ getPhoneErrorMessage() }}
         </div>
       </div>
     </div>
@@ -209,20 +203,23 @@
         </span>
       </h6>
       <h6 class="font-weight-bold">{{ 'PROFILE_CREATE.DAY_OFF_INFO' | translate }}</h6>
-      <div class="form-row day-info">
-        <div *ngIf="type !== 'detail'" class="form-group col-md-4">
+      <form [formGroup]="dayOffForm" class="form-row day-info">
+        <div 
+          *ngIf="type !== 'detail'" 
+          class="form-group col-md-4"
+          >
+          <div 
+            formArrayName="dayOffInfos"
+            *ngFor="let item of dayOffInfos.controls; let i = index">
+          <div [formGroupName]="i">
           <label class="font-weight-bold">
             {{ 'PROFILE_CREATE.DAY_OFF_CATE' | translate }}
           </label>
           <span class="form-control text-style day font-weight-bold">
-            {{ 'PROFILE_CREATE.VACATION' | translate }}
+            {{ dayOffInfos.at(i).get('nameDayOff').value | titlecase }}
           </span>
-          <label class="font-weight-bold">
-            {{ 'PROFILE_CREATE.DAY_OFF_CATE' | translate }}
-          </label>
-          <span class="form-control text-style day font-weight-bold">
-            {{ 'PROFILE_CREATE.ILLNESS' | translate }}
-          </span>
+         </div>
+        </div>
         </div>
         <div *ngIf="type !== 'detail'" class="form-group col-md-8">
           <div
@@ -238,12 +235,13 @@
                 type="number"
                 class="form-control day"
                 formControlName="hours"
+                [readonly] = "!state[i]"
                 required
                 />
-                <button *ngIf="dayOffInfos.at(i).disabled" type="button" class="btn btn-info" (click)="dayOffInfos.at(i).enable()">
+                <button *ngIf="!state[i]" type="button" class="btn btn-info" (click)="state[i] = !state[i]">
                   <span class="cil-brush"></span>
                 </button>
-                <button *ngIf="!dayOffInfos.at(i).disabled" type="button" class="btn btn-success" (click)="dayOffInfos.at(i).disable()">
+                <button *ngIf="state[i]" type="button" class="btn btn-success" (click)="state[i] = !state[i]">
                   <span class="cib-verizon"></span>
                 </button>
               </div>
@@ -265,18 +263,18 @@
         <div *ngFor="let hour of dataSource?.dayOffInfos">
           <div style="font-weight: bold;">
             {{ 'PROFILE_CREATE.DAY_OFF_CATE' | translate }}: 
-            <span *ngIf="hour.category_name === 'VACATION'">
+            <span *ngIf="hour.categoryName === 'VACATION'">
               {{ 'PROFILE_CREATE.VACATION' | translate }}
             </span>
-            <span *ngIf="hour.category_name === 'ILLNESS'">
+            <span *ngIf="hour.categoryName === 'ILLNESS'">
               {{ 'PROFILE_CREATE.ILLNESS' | translate }}
             </span>
           </div>
-          <div>{{ 'PROFILE_CREATE.AVAILABLE_HOURS' | translate }}: {{ hour.available_hours }}</div>
+          <div>{{ 'PROFILE_CREATE.AVAILABLE_HOURS' | translate }}: {{ hour.availableHours }}</div>
           <div>{{ 'PROFILE_CREATE.HOUR' | translate }}: {{ hour.hours }}</div>
         </div>
       </div>
-      </div>
+    </form>
     </div>
     <div class="modal-footer">
       <button type="button" class="btn btn-secondary" (click)="bsModalRef.hide()">
@@ -286,7 +284,7 @@
         *ngIf="type !== 'detail'"
         type="submit"
         class="btn btn-success"
-        [disabled]="profileForm.invalid"
+        [disabled]="profileForm.invalid || dayOffForm.invalid"
       >
         {{ 'PROFILE_CREATE.SAVE' | translate }}
       </button>

@@ -70,10 +70,10 @@ export class EmployeeEffects {
   createEmployee = this.actions$.pipe(
     ofType(EmployeesActions.CREATE_EMPLOYEE),
     switchMap((action: EmployeesActions.CreateEmployee) => {
-      const body = snakecaseKeys(action.payload);
+      const body = snakecaseKeys(action.payload, { deep: true });
       return this.http.post<any>(`${environment.APILink}/employees`, body).pipe(
         map((val) => {
-          const data: Employee = camelcaseKeys(val.data);
+          const data: Employee = camelcaseKeys(val.data, { deep: true });
           return new EmployeesActions.CreateEmployee(data);
         })
       );
@@ -88,7 +88,7 @@ export class EmployeeEffects {
         .get<any>(`${environment.APILink}/employees/${action.payload}`)
         .pipe(
           map((val) => {
-            const data: Employee = camelcaseKeys(val.user);
+            const data: Employee = camelcaseKeys(val.user, { deep: true });
             return new EmployeesActions.DetailEmployeeSuccess(data);
           })
         );
