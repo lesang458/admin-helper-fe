@@ -19,7 +19,7 @@ export class DeviceHistoryEffects {
     switchMap((action: DevicesHistoryActions.FetchDeviceHistory) => {
       let params = new HttpParams()
         .append(ParamsConstant.page, action.payload.page)
-        .append(ParamsConstant.perPage, action.payload.perPage)
+        .append(ParamsConstant.perPage, action.payload.perPage);
 
       if (action.payload.status) {
         params = params.append(ParamsConstant.status, action.payload.status);
@@ -47,7 +47,7 @@ export class DeviceHistoryEffects {
           `${environment.APILink}/device_histories`,
           {
             observe: 'response',
-            params
+            params,
           }
         )
         .pipe(
@@ -67,15 +67,14 @@ export class DeviceHistoryEffects {
         .get<any>(`${environment.APILink}/device_histories/${action.payload}`)
         .pipe(
           map((val) => {
-            const data: DeviceHistory = camelcaseKeys(val.device_history);
+            const data: DeviceHistory = camelcaseKeys(val.device_history, {
+              deep: true,
+            });
             return new DevicesHistoryActions.DetailDeviceHistorySuccess(data);
           })
         );
     })
   );
 
-  constructor(
-    private actions$: Actions,
-    private http: HttpClient
-  ) {}
+  constructor(private actions$: Actions, private http: HttpClient) {}
 }
