@@ -67,10 +67,10 @@ export class DeviceHistoryEffects {
         .get<any>(`${environment.APILink}/device_histories/${action.payload}`)
         .pipe(
           map((val) => {
-            const data: DeviceHistory = camelcaseKeys(val.device_history, {
-              deep: true,
-            });
-            return new DevicesHistoryActions.DetailDeviceHistorySuccess(data);
+            const data = camelcaseKeys(val, { deep: true });
+            return new DevicesHistoryActions.DetailDeviceHistorySuccess(
+              data.deviceHistory
+            );
           })
         );
     })
