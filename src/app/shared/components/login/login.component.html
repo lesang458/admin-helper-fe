@@ -8,7 +8,7 @@
               <h1>{{ 'LOGIN.LOGIN' | translate }}</h1>
               <p class="text-muted">{{ 'LOGIN.SIGN_IN' | translate }}</p>
               <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
-                <div class="input-group mb-3">
+                <div class="input-group">
                   <div class="input-group-prepend">
                     <span class="input-group-text"><i class="cib-gmail"></i></span>
                   </div>
@@ -22,7 +22,7 @@
                 </div>
                 <div
                   *ngIf="f.email.invalid && (f.email.dirty || f.email.touched)"
-                  class="mess-invalid"
+                  class="mess-invalid mt-1"
                 >
                   <div *ngIf="f.email.errors.required">
                     {{ 'PROFILE_CREATE.EMAIL_INVALID' | translate }}
@@ -31,7 +31,7 @@
                     {{ 'PROFILE_CREATE.IS_EMAIL' | translate }}
                   </div>
                 </div>
-                <div class="input-group mb-4">
+                <div class="input-group mt-3">
                   <div class="input-group-prepend">
                     <span class="input-group-text"><i class="cil-lock-locked"></i></span>
                   </div>
@@ -45,7 +45,7 @@
                 </div>
                 <div
                   *ngIf="f.password.invalid && (f.password.dirty || f.password.touched)"
-                  class="mess-invalid"
+                  class="mess-invalid mt-1"
                 >
                   <div *ngIf="f.password.errors.required">
                     {{ 'PROFILE_CREATE.PASSWORD_INVALID' | translate }}
@@ -54,7 +54,7 @@
                     {{ 'PROFILE_CREATE.PASS_MINLENGTH' | translate }}
                   </div>
                 </div>
-                <div class="row">
+                <div class="row mt-3">
                   <div class="col-6">
                     <button
                       class="btn btn-info px-4"
