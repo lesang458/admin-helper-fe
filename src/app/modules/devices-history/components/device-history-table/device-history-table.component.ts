@@ -1,3 +1,4 @@
+import { TranslateService } from '@ngx-translate/core';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 import * as fromApp from '../../../../store/app.reducer';
 import * as DevicesHistoryActions from '../../store/devices-history.actions';
@@ -31,7 +32,8 @@ export class DeviceHistoryTableComponent implements OnInit {
     private store: Store<fromApp.AppState>,
     private modalService: BsModalService,
     private router: Router,
-    private devicesHistoryService: DevicesHistoryService
+    private devicesHistoryService: DevicesHistoryService,
+    private translate: TranslateService,
   ) {
     router.events.subscribe((val: NavigationEnd) => {
       if (val.url && val.url !== '/lich-su-thiet-bi') {
@@ -43,13 +45,7 @@ export class DeviceHistoryTableComponent implements OnInit {
   ngOnInit(): void {
     this.data$ = this.store.select('deviceHistory').pipe(
       map((devices) => {
-        return {
-          data: devices.deviceHistory.data.filter((data) => {
-          if (data.device.id === this.devicesHistoryService.getCurrentId())
-            return data;
-          }),
-          pagination: devices.deviceHistory.pagination
-        }
+        return devices.deviceHistory;
       })
     );
 
@@ -81,12 +77,14 @@ export class DeviceHistoryTableComponent implements OnInit {
      const status = this.searchStatusFormControl.value;
      const historyFrom= this.selectedFromDate.value;
      const historyTo= this.selectedToDate.value;
+     const deviceId = this.devicesHistoryService.getCurrentId().toString();
      const params = {
        page,
        perPage: 10,
        status,
        historyFrom,
-       historyTo
+       historyTo,
+       deviceId,
       }
      this.store.dispatch(new DevicesHistoryActions.FetchDeviceHistory(params));
 
@@ -98,5 +96,11 @@ export class DeviceHistoryTableComponent implements OnInit {
       initialState,
     });
     this.bsModalRef.content.closeBtnName = 'Close';
+  }
+
+  public getUserName(user: any): string {
+    return user
+      ? `${user.firstName} ${user.lastName}`
+      : this.translate.instant('DEVICE_TABLE.EMPTY');
   }
 }

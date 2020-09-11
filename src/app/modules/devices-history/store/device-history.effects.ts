@@ -24,12 +24,6 @@ export class DeviceHistoryEffects {
       if (action.payload.status) {
         params = params.append(ParamsConstant.status, action.payload.status);
       }
-      if (action.payload.deviceCategoryId) {
-        params = params.append(
-          ParamsConstant.deviceCategoryId,
-          action.payload.deviceCategoryId
-        );
-      }
       if (action.payload.historyTo) {
         params = params.append(
           ParamsConstant.historyTo,
@@ -42,11 +36,17 @@ export class DeviceHistoryEffects {
           action.payload.historyFrom
         );
       }
+      if (action.payload.deviceId) {
+        params = params.append(
+          ParamsConstant.deviceId,
+          action.payload.deviceId
+        );
+      }
       return this.http
         .get<PaginatedData<DeviceHistory[]>>(
           `${environment.APILink}/device_histories`,
           {
-            observe: 'response', 
+            observe: 'response',
             params
           }
         )
