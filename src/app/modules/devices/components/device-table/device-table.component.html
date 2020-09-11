@@ -10,6 +10,7 @@
           class="form-control w-auto d-inline-block"
           id="device-status"
         >
+          <option value="">{{ 'DEVICE_TABLE.ALL' | translate }}</option>
           <option value="ASSIGNED">
             {{ 'DEVICE_HISTORY.ASSIGNED' | translate }}
           </option>
@@ -115,7 +116,7 @@
       <div class="card-body">
         <table class="table table-bordered">
           <tr>
-            <td>{{ 'DEVICE_HISTORY.STATUS' | translate }}</td>
+            <td class="col-35">{{ 'DEVICE_HISTORY.STATUS' | translate }}</td>
             <td>
               <span
                 class="badge rounded-pill badge-success p-2 pr-3 pl-3"
@@ -135,12 +136,12 @@
             </td>
           </tr>
           <tr>
-            <td>{{ 'DEVICE_TABLE.PRICE' | translate }}</td>
-            <td>{{ item.price | currency: 'VND' }}</td>
+            <td class="w-40">{{ 'DEVICE_TABLE.PRICE' | translate }}</td>
+            <td class="w-60">{{ item.price | currency: 'VND' }}</td>
           </tr>
           <tr>
-            <td>{{ 'DEVICE_TABLE.DESCRIPTION' | translate }}</td>
-            <td>{{ item.description }}</td>
+            <td class="w-40">{{ 'DEVICE_TABLE.DESCRIPTION' | translate }}</td>
+            <td class="w-60">{{ item.description }}</td>
           </tr>
         </table>
       </div>

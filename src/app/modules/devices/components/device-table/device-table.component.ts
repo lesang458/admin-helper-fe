@@ -27,7 +27,7 @@ export class DeviceTableComponent implements OnInit {
   public categories$: Observable<DeviceCategory[]>;
   public state: boolean[];
   public currentPage = 1;
-  public selectedStatus = new FormControl('ASSIGNED');
+  public selectedStatus = new FormControl('');
   public selectedCategory = new FormControl('');
   public deviceParams: DeviceParams;
   public bsModalRef: BsModalRef;
