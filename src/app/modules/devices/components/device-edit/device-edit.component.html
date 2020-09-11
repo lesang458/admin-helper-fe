@@ -7,7 +7,7 @@
   </h4>
   <button
     type="button"
-    class="pull-right btn btn-outline-danger"
+    class="pull-right close"
     aria-label="Close"
     (click)="bsModalRef.hide()"
   >
@@ -16,11 +16,13 @@
 </div>
 <hr class="mt-0 mb-0" />
 <form [formGroup]="deviceForm" (ngSubmit)="onSubmit()">
-  <div class="modal-body">
+  <div class="modal-body mb-0">
     <div class="row">
       <div class="col-12">
         <div class="form-group">
-          <label for="name">{{ 'DEVICE_EDIT.DEVICE_NAME' | translate }}</label>
+          <label class="font-weight-bold" for="name">
+            {{ 'DEVICE_EDIT.DEVICE_NAME' | translate }}
+          </label>
           <input
             type="text"
             id="name"
@@ -39,7 +41,9 @@
     <div class="row">
       <div class="col-12">
         <div class="form-group">
-          <label for="price">{{ 'DEVICE_TABLE.PRICE' | translate }}</label>
+          <label class="font-weight-bold" for="price">
+            {{ 'DEVICE_TABLE.PRICE' | translate }}
+          </label>
           <input
             type="text"
             id="price"
@@ -58,7 +62,7 @@
     <div class="row">
       <div class="col-6">
         <div class="form-group">
-          <label class="d-inline-block" for="device-category">
+          <label class="d-inline-block font-weight-bold" for="device-category">
             {{ 'DEVICE_TABLE.TYPE_OF_DEVICE' | translate }}
           </label>
           <select
@@ -76,26 +80,32 @@
         </div>
       </div>
     </div>
+
     <div class="row">
-      <div class="col-12">
+      <div class="col-12 mb-0">
         <div class="form-group">
-          <label for="description">
+          <label class="font-weight-bold" for="description">
             {{ 'DEVICE_TABLE.DESCRIPTION' | translate }}
           </label>
           <textarea
             type="text"
             id="description"
             class="form-control"
-            rows="3"
+            rows="2"
             formControlName="description"
           ></textarea>
+          <div
+            *ngIf="f.description.invalid && (f.description.dirty || f.descriptionp.touched)"
+            class="invalid-message"
+          >
+            {{ 'DEVICE_EDIT.DESCRIPTION_MIN_LENGTH' | translate }}
+          </div>
         </div>
       </div>
     </div>
   </div>
-  <hr class="mt-0 mb-0" />
   <div class="modal-footer">
-    <button type="button" class="btn btn-danger" (click)="bsModalRef.hide()">
+    <button type="button" class="btn btn-secondary" (click)="bsModalRef.hide()">
       {{ 'PROFILE_CREATE.CLOSE' | translate }}
     </button>
     <button

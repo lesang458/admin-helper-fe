@@ -18,7 +18,8 @@ export class DeviceEffects {
     switchMap((action: DevicesActions.FetchDevices) => {
       let params = new HttpParams()
         .append(ParamsConstant.page, action.payload.page)
-        .append(ParamsConstant.perPage, action.payload.perPage);
+        .append(ParamsConstant.perPage, action.payload.perPage)
+        .append(ParamsConstant.status, action.payload.status);
       if (action.payload.deviceCategoryId) {
         params = params.append(
           ParamsConstant.deviceCategoryId,

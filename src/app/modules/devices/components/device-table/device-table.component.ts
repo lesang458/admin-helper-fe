@@ -26,6 +26,7 @@ export class DeviceTableComponent implements OnInit {
   public categories$: Observable<DeviceCategory[]>;
   public state: boolean[];
   public currentPage = 1;
+  public selectedStatus = new FormControl('ASSIGNED');
   public selectedCategory = new FormControl('');
   public deviceParams: DeviceParams;
   public bsModalRef: BsModalRef;
@@ -50,11 +51,11 @@ export class DeviceTableComponent implements OnInit {
     this.onPageChanged(1);
 
     this.selectedCategory.valueChanges.subscribe(() => {
-      if (this.currentPage === 1) {
-        this.onPageChanged(1);
-      } else {
-        this.currentPage = 1;
-      }
+      this.onDataChanged();
+    });
+
+    this.selectedStatus.valueChanges.subscribe(() => {
+      this.onDataChanged();
     });
   }
 
@@ -68,28 +69,18 @@ export class DeviceTableComponent implements OnInit {
     this.searchParams = {
       page,
       perPage: 5,
+      status: this.selectedStatus.value,
       deviceCategoryId: this.selectedCategory.value,
     };
     this.store.dispatch(new DevicesActions.FetchDevices(this.searchParams));
   }
 
-  public openEditModal(
-    selectedDevice: Device,
-    params: SearchDevice
-  ): void {
-    const initialState = { selectedDevice, params };
-    this.bsModalRef = this.modalService.show(DeviceEditComponent, {
-      initialState,
-    });
-    this.bsModalRef.content.closeBtnName = 'Close';
-  }
-
-  public openAssignModal(device: Device,  params: SearchDevice): void {
-    const initialState = { device, params };
-    this.bsModalRef = this.modalService.show(DeviceAssignComponent, {
-      initialState,
-    });
-    this.bsModalRef.content.closeBtnName = 'Close';
+  public onDataChanged(): void {
+    if (this.currentPage === 1) {
+      this.onPageChanged(1);
+    } else {
+      this.currentPage = 1;
+    }
   }
 
   public navigateToDeviceHistory(id: number): void {
@@ -97,4 +88,19 @@ export class DeviceTableComponent implements OnInit {
     this.router.navigateByUrl('/lich-su-thiet-bi');
   }
 
+  public openEditModal(selectedDevice: Device, params: SearchDevice): void {
+    const initialState = { selectedDevice, params };
+    this.bsModalRef = this.modalService.show(DeviceEditComponent, {
+      initialState,
+    });
+    this.bsModalRef.content.closeBtnName = 'Close';
+  }
+
+  public openAssignModal(device: Device, params: SearchDevice): void {
+    const initialState = { device, params };
+    this.bsModalRef = this.modalService.show(DeviceAssignComponent, {
+      initialState,
+    });
+    this.bsModalRef.content.closeBtnName = 'Close';
+  }
 }

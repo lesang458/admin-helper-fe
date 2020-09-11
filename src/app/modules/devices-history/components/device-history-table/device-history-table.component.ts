@@ -39,7 +39,7 @@ export class DeviceHistoryTableComponent implements OnInit {
       if (val.url && val.url !== '/lich-su-thiet-bi') {
         devicesHistoryService.setCurrentId(-1);
       }
-  });
+    });
   }
 
   ngOnInit(): void {

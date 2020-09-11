@@ -9,12 +9,15 @@ import { DevicesHistoryService } from 'src/app/core/services/devices-history.ser
 })
 export class SidebarComponent implements OnInit {
   public deviceHistoryIsSelected: boolean;
-  constructor(private router: Router, private devicesHistoryService: DevicesHistoryService) {}
+  constructor(
+    private router: Router,
+    private devicesHistoryService: DevicesHistoryService
+  ) {}
 
   ngOnInit(): void {
     this.devicesHistoryService.currentId.subscribe((id) => {
       this.deviceHistoryIsSelected = id !== -1;
-    })
+    });
   }
 
   public navigateToGeneralListPage() {
