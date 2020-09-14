@@ -2,15 +2,23 @@
   <div class="row">
     <div class="col-md-12">
       <div class="error-template">
-        <h1 *ngIf="currentURL === '/404'">404</h1>
-        <h1 *ngIf="currentURL === '/5xx'">5xx</h1>
-        <h2 *ngIf="currentURL === '/404'">Oops! Not Found</h2>
-        <h2 *ngIf="currentURL === '/5xx'">Houston, we have a problem!</h2>
+        <h1 *ngIf="currentURL === '/404'">
+          {{ "ERROR.TITLE_404" | translate }}
+        </h1>
+        <h1 *ngIf="currentURL === '/5xx'">
+          {{ "ERROR.TITLE_5XX" | translate }}
+        </h1>
+        <h2 *ngIf="currentURL === '/404'">
+          {{ "ERROR.CONTENT_404" | translate }}
+        </h2>
+        <h2 *ngIf="currentURL === '/5xx'">
+          {{ "ERROR.CONTENT_5XX" | translate }}
+        </h2>
         <div class="error-details" *ngIf="currentURL === '/404'">
-          Sorry, an error has occured, Requested page not found!
+          {{ "ERROR.DESC_404" | translate }}
         </div>
         <div class="error-details" *ngIf="currentURL === '/5xx'">
-          The page you are looking for is temporarily unavailable.
+          {{ "ERROR.DESC_5XX" | translate }}
         </div>
         <div class="error-actions">
           <button
@@ -19,7 +27,7 @@
             [routerLink]="['/thong-tin-chung']"
           >
             <i class="cil-home"></i>
-            Go Back Home
+            {{ "ERROR.BUTTON" | translate }}
           </button>
         </div>
       </div>
