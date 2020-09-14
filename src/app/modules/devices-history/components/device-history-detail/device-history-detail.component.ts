@@ -1,3 +1,4 @@
+import { TranslateService } from '@ngx-translate/core';
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import * as fromApp from '../../../../store/app.reducer';
@@ -8,20 +9,31 @@ import { BsModalRef } from 'ngx-bootstrap/modal';
 @Component({
   selector: 'ah-device-history-detail',
   templateUrl: './device-history-detail.component.html',
-  styleUrls: ['./device-history-detail.component.scss']
+  styleUrls: ['./device-history-detail.component.scss'],
 })
 export class DeviceHistoryDetailComponent implements OnInit {
   public id: number;
   public data: DeviceHistory;
-  constructor( private store: Store<fromApp.AppState>, public bsModalRef: BsModalRef) {}
+  constructor(
+    private store: Store<fromApp.AppState>,
+    public bsModalRef: BsModalRef,
+    private translate: TranslateService
+  ) {}
 
   ngOnInit(): void {
     this.store.dispatch(new DevicesHistoryActions.DetailDeviceHistory(this.id));
-    this.store.select((s) => s.deviceHistory.detailDeviceHistory)
+    this.store
+      .select((s) => s.deviceHistory.detailDeviceHistory)
       .subscribe((data: DeviceHistory) => {
         if (data) {
           this.data = data;
         }
       });
+  }
+
+  public getUserName(user: any): string {
+    return user
+      ? `${user.firstName} ${user.lastName}`
+      : this.translate.instant('DEVICE_TABLE.EMPTY');
   }
 }
