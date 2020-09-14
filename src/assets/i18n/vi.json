@@ -181,13 +181,14 @@
     "TITLE": "Cung cấp thiết bị cho nhân viên",
     "NO_ASSIGN": "Không bàn giao"
   },
-  "UPDATE_PASSWORD": {
-    "TITLE": "Update password"
-  },
   "CHANGE_PASSWORD": {
-    "TITLE": "Change password"
+    "TITLE": "Thay đổi mật khẩu",
+    "SUBMIT": "Lưu"
   },
   "RESET_PASSWORD": {
-    "TITLE": "Reset password"
+    "TITLE": "Khôi phục mật khẩu",
+    "PARAMS1": "Hãy nhập địa chỉ email khôi phục",
+    "NAVIGATE_TO_LOGIN": "Trở về trang đăng nhập",
+    "NEXT": "Tiếp tục"
   }
 }

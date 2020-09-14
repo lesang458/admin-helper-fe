@@ -1,3 +1,4 @@
+import { RouterModule } from '@angular/router';
 import { NgxLoadingModule } from 'ngx-loading';
 import { LoadingSpinnerComponent } from 'src/app/shared/components/loading-spinner/loading-spinner.component';
 import { CommonModule } from '@angular/common';
@@ -16,6 +17,7 @@ const modules = [
   TranslateModule,
   FormsModule,
   ReactiveFormsModule,
+  RouterModule,
 ];
 const components = [
   SidebarComponent,

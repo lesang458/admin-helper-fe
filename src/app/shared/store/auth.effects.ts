@@ -60,6 +60,21 @@ export class AuthEffect {
     })
   );
 
+  @Effect()
+  authSendMail = this.actions$.pipe(
+    ofType(AuthActions.SEND_MAIL),
+    switchMap((action: AuthActions.SendMail) => {
+      const body = snakecaseKeys(action.payload);
+      return this.http.post<any>(`${environment.APILink}/password`, body).pipe(
+        map((val) => {
+          localStorage.setItem('token', val?.token);
+          const data: Employee = camelcaseKeys(val.data);
+          return new AuthActions.LoginSuccess(data);
+        })
+      );
+    })
+  );
+
   constructor(
     private actions$: Actions,
     private http: HttpClient,

@@ -183,13 +183,14 @@
     "TITLE": "Provide device to user",
     "NO_ASSIGN": "No assign"
   },
-  "UPDATE_PASSWORD": {
-    "TITLE": "Update password"
-  },
   "CHANGE_PASSWORD": {
-    "TITLE": "Change password"
+    "TITLE": "Change password",
+    "SUBMIT": "Save"
   },
   "RESET_PASSWORD": {
-    "TITLE": "Reset password"
+    "TITLE": "Reset password",
+    "PARAMS1": "Please enter your recovery email",
+    "NAVIGATE_TO_LOGIN": "Do you want to login page?",
+    "NEXT": "Next"
   }
 }

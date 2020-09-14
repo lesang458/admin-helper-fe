@@ -37,7 +37,7 @@ export class UpdatePasswordComponent implements OnInit {
 
   public getBtnName(): string {
     return this.isChangePw || this.verify === 2
-      ? this.translate.instant('UPDATE_PASSWORD.SUBMIT')
-      : this.translate.instant('UPDATE_PASSWORD.NEXT');
+      ? this.translate.instant('CHANGE_PASSWORD.SUBMIT')
+      : this.translate.instant('RESET_PASSWORD.NEXT');
   }
 }

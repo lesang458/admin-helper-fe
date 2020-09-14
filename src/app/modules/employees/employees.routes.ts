@@ -9,7 +9,7 @@ import { UpdatePasswordComponent } from './pages/update-password/update-password
 export const EMPLOYEES_ROUTES: Routes = [
   { path: '', redirectTo: 'thong-tin-chung', pathMatch: 'full' },
   {
-    path: 'login',
+    path: 'dang-nhap',
     component: AuthComponent,
     canActivate: [AuthGuardService],
     data: {
@@ -34,7 +34,7 @@ export const EMPLOYEES_ROUTES: Routes = [
     },
   },
   {
-    path: 'change-password',
+    path: 'doi-mat-khau',
     component: UpdatePasswordComponent,
     canActivate: [AuthGuardService],
     data: {
@@ -42,7 +42,7 @@ export const EMPLOYEES_ROUTES: Routes = [
     },
   },
   {
-    path: 'reset-password',
+    path: 'khoi-phuc-mat-khau',
     component: UpdatePasswordComponent,
     canActivate: [AuthGuardService],
     data: {
