@@ -1,5 +1,4 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
@@ -27,7 +26,6 @@ import { GeneralDeviceCategoriesComponent } from './pages/general-device-categor
     GeneralDeviceCategoriesComponent,
   ],
   imports: [
-    CommonModule,
     SharedModule,
     FormsModule,
     RouterModule.forChild(DEVICES_ROUTES),

@@ -120,7 +120,13 @@
     "EMPTY": "Trống",
     "PRICE": "Trị giá",
     "DESCRIPTION": "Mô tả",
-    "CREATE_DEVICE": "Tạo thiết bị"
+    "CREATE_DEVICE": "Tạo thiết bị",
+    "MOVE_TO_INVENTORY": "Chuyển vào kho",
+    "DISCARD": "Loại bỏ",
+    "ASSIGN": "Giao thiết bị",
+    "HISTORY": "Lịch sử",
+    "EDIT": "Chỉnh sửa",
+    "DELETE": "Xóa"
   },
   "LOGIN": {
     "TITLE": "Đăng nhập",

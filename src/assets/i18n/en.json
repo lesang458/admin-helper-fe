@@ -112,7 +112,13 @@
     "EMPTY": "Empty",
     "PRICE": "Price",
     "DESCRIPTION": "Description",
-    "CREATE_DEVICE": "Create Device"
+    "CREATE_DEVICE": "Create Device",
+    "MOVE_TO_INVENTORY": "Move to inventory",
+    "DISCARD": "Discard",
+    "ASSIGN": "Assign",
+    "HISTORY": "History",
+    "EDIT": "Edit",
+    "DELETE": "Delete"
   },
   "PROFILE_STATUS_CHANGE": {
     "TITLE_FORMER": "Confirm remove employee",

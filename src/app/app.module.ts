@@ -20,6 +20,7 @@ import { DayOffCategoriesEffects } from './modules/dayoff-categories/store/dayof
 import { SocialLoginModule } from 'angularx-social-login';
 import { ModalModule } from 'ngx-bootstrap/modal';
 import { DeviceHistoryEffects } from './modules/devices-history/store/device-history.effects';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 export function LoaderFactory() {
   return new CustomTranslateLoader();
@@ -31,6 +32,7 @@ export function LoaderFactory() {
     CoreModule,
     SharedModule,
     BrowserModule,
+    BrowserAnimationsModule,
     EmployeesModule,
     HttpClientModule,
     TranslateModule.forRoot({
@@ -51,10 +53,7 @@ export function LoaderFactory() {
     SocialLoginModule,
     ModalModule.forRoot(),
   ],
-  providers: [
-    { provide: JWT_OPTIONS, useValue: JWT_OPTIONS },
-    JwtHelperService,
-  ],
+  providers: [{ provide: JWT_OPTIONS, useValue: JWT_OPTIONS }, JwtHelperService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

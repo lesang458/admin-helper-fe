@@ -18,17 +18,12 @@
 <form [formGroup]="deviceForm" (ngSubmit)="onSubmit()">
   <div class="modal-body mb-0 pb-0">
     <div class="row">
-      <div class="col-12 ">
+      <div class="col-12">
         <div class="form-group ml-2 mr-2">
           <label class="font-weight-bold" for="name">
             {{ 'DEVICE_EDIT.DEVICE_NAME' | translate }}
           </label>
-          <input
-            type="text"
-            id="name"
-            class="form-control"
-            formControlName="name"
-          />
+          <input type="text" id="name" class="form-control" formControlName="name" />
           <div
             *ngIf="f.name.invalid && (f.name.dirty || f.name.touched)"
             class="invalid-message"
@@ -39,8 +34,8 @@
       </div>
     </div>
     <div class="row">
-      <div class="col-12">
-        <div class="form-group ml-2 mr-2">
+      <div class="col-6">
+        <div class="form-group ml-2">
           <label class="font-weight-bold" for="price">
             {{ 'DEVICE_TABLE.PRICE' | translate }}
           </label>
@@ -48,6 +43,7 @@
             type="text"
             id="price"
             class="form-control"
+            [value]="this.f.price.value | number"
             formControlName="price"
           />
           <div
@@ -58,10 +54,8 @@
           </div>
         </div>
       </div>
-    </div>
-    <div class="row">
       <div class="col-6">
-        <div class="form-group ml-2 mr-2">
+        <div class="form-group mr-2">
           <label class="d-inline-block font-weight-bold" for="device-category">
             {{ 'DEVICE_TABLE.TYPE_OF_DEVICE' | translate }}
           </label>
@@ -80,7 +74,6 @@
         </div>
       </div>
     </div>
-
     <div class="row">
       <div class="col-12 mb-0">
         <div class="form-group ml-2 mr-2">
@@ -91,11 +84,14 @@
             type="text"
             id="description"
             class="form-control"
-            rows="2"
+            rows="3"
             formControlName="description"
           ></textarea>
           <div
-            *ngIf="f.description.invalid && (f.description.dirty || f.descriptionp.touched)"
+            *ngIf="
+              f.description.invalid &&
+              (f.description.dirty || f.descriptionp.touched)
+            "
             class="invalid-message"
           >
             {{ 'DEVICE_EDIT.DESCRIPTION_MIN_LENGTH' | translate }}
@@ -108,11 +104,7 @@
     <button type="button" class="btn btn-secondary" (click)="bsModalRef.hide()">
       {{ 'PROFILE_CREATE.CLOSE' | translate }}
     </button>
-    <button
-      type="submit"
-      class="btn btn-success"
-      [disabled]="deviceForm.invalid"
-    >
+    <button type="submit" class="btn btn-success" [disabled]="deviceForm.invalid">
       {{ 'PROFILE_CREATE.SAVE' | translate }}
     </button>
   </div>
