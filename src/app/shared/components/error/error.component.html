@@ -1,0 +1,28 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="error-template">
+        <h1 *ngIf="currentURL === '/404'">404</h1>
+        <h1 *ngIf="currentURL === '/5xx'">5xx</h1>
+        <h2 *ngIf="currentURL === '/404'">Oops! Not Found</h2>
+        <h2 *ngIf="currentURL === '/5xx'">Houston, we have a problem!</h2>
+        <div class="error-details" *ngIf="currentURL === '/404'">
+          Sorry, an error has occured, Requested page not found!
+        </div>
+        <div class="error-details" *ngIf="currentURL === '/5xx'">
+          The page you are looking for is temporarily unavailable.
+        </div>
+        <div class="error-actions">
+          <button
+            type="button"
+            class="btn btn-info"
+            [routerLink]="['/thong-tin-chung']"
+          >
+            <i class="cil-home"></i>
+            Go Back Home
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

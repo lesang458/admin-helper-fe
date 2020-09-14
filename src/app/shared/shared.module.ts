@@ -9,18 +9,22 @@ import { TranslateModule } from '@ngx-translate/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SocialAuthServiceConfig } from 'angularx-social-login';
 import { GoogleLoginProvider } from 'angularx-social-login';
+import { ErrorComponent } from './components/error/error.component';
+import { RouterModule } from '@angular/router';
 
 const modules = [
   CommonModule,
   TranslateModule,
   FormsModule,
   ReactiveFormsModule,
+  RouterModule,
 ];
 const components = [
   SidebarComponent,
   HeaderComponent,
   BodyComponent,
   LoadingSpinnerComponent,
+  ErrorComponent,
 ];
 
 @NgModule({
