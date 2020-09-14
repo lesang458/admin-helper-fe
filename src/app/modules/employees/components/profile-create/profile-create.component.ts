@@ -147,7 +147,6 @@ export class ProfileCreateComponent implements OnInit {
   }
 
   public onSubmit() {
-    const dayOff = { ...this.dayOffForm.value.dayOffInfos };
     this.profileForm.value.dayOffInfos = this.dayOffForm.value.dayOffInfos;
     if (this.type === 'create') {
       this.store.dispatch(
