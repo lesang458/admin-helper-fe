@@ -182,5 +182,14 @@
   "DEVICE_ASSIGN": {
     "TITLE": "Provide device to user",
     "NO_ASSIGN": "No assign"
+  },
+  "UPDATE_PASSWORD": {
+    "TITLE": "Update password"
+  },
+  "CHANGE_PASSWORD": {
+    "TITLE": "Change password"
+  },
+  "RESET_PASSWORD": {
+    "TITLE": "Reset password"
   }
 }

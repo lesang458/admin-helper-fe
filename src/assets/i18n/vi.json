@@ -180,5 +180,14 @@
   "DEVICE_ASSIGN": {
     "TITLE": "Cung cấp thiết bị cho nhân viên",
     "NO_ASSIGN": "Không bàn giao"
+  },
+  "UPDATE_PASSWORD": {
+    "TITLE": "Update password"
+  },
+  "CHANGE_PASSWORD": {
+    "TITLE": "Change password"
+  },
+  "RESET_PASSWORD": {
+    "TITLE": "Reset password"
   }
 }

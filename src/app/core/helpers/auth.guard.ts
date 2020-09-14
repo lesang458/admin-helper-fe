@@ -20,6 +20,8 @@ export class AuthGuardService implements CanActivate {
         : route.routeConfig.path === 'reset-password'
         ? this.router.createUrlTree([''])
         : true
+      : route.routeConfig.path === 'login'
+      ? true
       : this.router.createUrlTree(['login']);
   }
 }
