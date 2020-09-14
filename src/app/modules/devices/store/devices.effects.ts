@@ -77,7 +77,7 @@ export class DeviceEffects {
     })
   );
 
-  @Effect()          
+  @Effect()
   createDevice = this.actions$.pipe(
     ofType(DevicesActions.CREATE_DEVICE),
     switchMap((action: DevicesActions.CreateDevice) => {
@@ -111,5 +111,47 @@ export class DeviceEffects {
     })
   );
 
+  @Effect()
+  createDeviceCategory = this.actions$.pipe(
+    ofType(DevicesActions.CREATE_DEVICE_CATEGORY),
+    switchMap((action: DevicesActions.CreateDeviceCategory) => {
+      return this.http.post<any>(`${environment.APILink}/device_categories`, action.payload).pipe(
+        map(() => {
+          return new DevicesActions.FetchDeviceCategories();
+        })
+      );
+    })
+  );
+
+  @Effect()
+  updateDeviceCategory = this.actions$.pipe(
+    ofType(DevicesActions.UPDATE_DEVICE_CATEGORY),
+    switchMap((action: DevicesActions.UpdateDeviceCategory) => {
+      return this.http
+        .put<DeviceCategory>(
+          `${environment.APILink}/device_categories/${action.payload.id}`,
+          action.payload.deviceCategory
+        )
+        .pipe(
+          map(() => {
+            return new DevicesActions.FetchDeviceCategories();
+          })
+        );
+    })
+  );
+
+  @Effect()
+  deleteDeviceCategory = this.actions$.pipe(
+    ofType(DevicesActions.DELETE_DEVICE_CATEGORY),
+    switchMap((action: DevicesActions.DeleteDeviceCategory) => {
+      return this.http
+        .delete(`${environment.APILink}/device_categories/${action.payload}`)
+        .pipe(
+          map(() => {
+            return new DevicesActions.FetchDeviceCategories();
+          })
+        );
+    })
+  );
   constructor(private actions$: Actions, private http: HttpClient) {}
 }

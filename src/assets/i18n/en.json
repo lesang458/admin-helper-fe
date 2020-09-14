@@ -6,7 +6,8 @@
     "LINK_3": "Timekeeping",
     "LINK_4": "Devices",
     "LINK_5": "Devices History",
-    "LINK_6": "Day off type"
+    "LINK_6": "Day off type",
+    "LINK_7": "Device Categories"
   },
   "HEADER": {
     "VIETNAMESE": "Vietnamese",
@@ -182,5 +183,14 @@
   "DEVICE_ASSIGN": {
     "TITLE": "Provide device to user",
     "NO_ASSIGN": "No assign"
+  },
+  "DEVICE_CATEGORIES_PAGE": {
+    "TITLE": "Device Categories",
+    "NAME": "Category Name",
+    "CREATE":"Create device category",
+    "DELETE_TITLE": "Device categories deletion",
+    "EDIT_TITLE": "Device categories edit",
+    "CREATE_TITLE": "Device categories creation",
+    "NAME_MAXLENGTH": "The name has Maximum length is 100 character"
   }
 }
