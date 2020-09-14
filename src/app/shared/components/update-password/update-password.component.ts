@@ -1,6 +1,10 @@
 import { TranslateService } from '@ngx-translate/core';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { Store } from '@ngrx/store';
+import * as fromApp from '../../../store/app.reducer';
+import * as AuthActions from '../../store/auth.actions';
+import { AuthService } from 'src/app/core/services/auth.service';
 
 @Component({
   selector: 'ah-update-password',
@@ -8,9 +12,13 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
   styleUrls: ['./update-password.component.scss'],
 })
 export class UpdatePasswordComponent implements OnInit {
-  public isChangePw: boolean = !!localStorage.getItem('token');
+  public isChangePw: boolean;
   public disabled = true;
   public verify: number = 0;
+  private email: string;
+  private token: string;
+  public hasError: boolean;
+  private newPassword: string;
   public updatePwForm = new FormGroup({
     email: new FormControl('', Validators.email),
     oldPassword: new FormControl('', Validators.minLength(6)),
@@ -19,9 +27,17 @@ export class UpdatePasswordComponent implements OnInit {
     token: new FormControl(),
   });
 
-  constructor(private translate: TranslateService) {}
+  constructor(
+    private translate: TranslateService,
+    private store: Store<fromApp.AppState>,
+    private auth: AuthService
+  ) {}
 
   ngOnInit(): void {
+    this.auth.currentResetPwHasError.subscribe((val) => {
+      this.hasError = val;
+    });
+    this.isChangePw = this.auth.isAuthenticated();
     this.updatePwForm.valueChanges.subscribe(() => {
       this.disabled = this.updatePwForm.invalid;
     });
@@ -32,7 +48,52 @@ export class UpdatePasswordComponent implements OnInit {
   }
 
   public onSubmit(): void {
-    // this.store.dispatch(new AuthActions.Login(this.loginForm.value));
+    if (!this.isChangePw) {
+      this.email = this.updatePwForm.get('email')?.value;
+      this.token = this.updatePwForm.get('token')?.value;
+      this.newPassword = this.updatePwForm.get('newPassword')?.value;
+      switch (this.verify) {
+        case 0:
+          this.store.dispatch(
+            new AuthActions.SendMail({
+              email: this.email,
+            })
+          );
+          this.verify++;
+          break;
+        case 1:
+          this.store.dispatch(
+            new AuthActions.VerifyToken({
+              email: this.email,
+              token: this.token,
+            })
+          );
+          this.auth.currentVerifyStep.subscribe((val) => {
+            val === 1
+              ? this.updatePwForm.setErrors(null)
+              : val === 2
+              ? this.verify++
+              : null;
+          });
+          break;
+        case 2:
+          this.store.dispatch(
+            new AuthActions.VerifyToken({
+              email: this.email,
+              token: this.token,
+              newPassword: this.newPassword,
+            })
+          );
+          break;
+        default:
+          break;
+      }
+    }
+    this.auth.setResetPwHasError(false);
+  }
+
+  public passwordIsIncorrect(): boolean {
+    return this.f.newPassword.value !== this.f.confirmPassword.value;
   }
 
   public getBtnName(): string {

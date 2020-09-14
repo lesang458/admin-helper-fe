@@ -190,7 +190,11 @@
   "RESET_PASSWORD": {
     "TITLE": "Reset password",
     "PARAMS1": "Please enter your recovery email",
+    "PARAMS2": "Please enter the code was sent to your email",
+    "PARAMS3": "Please enter a new password!",
     "NAVIGATE_TO_LOGIN": "Do you want to login page?",
-    "NEXT": "Next"
+    "NEXT": "Next",
+    "INCORRECT": "Password is incorrect!",
+    "TOKEN_INCORRECT": "Token is incorrect!"
   }
 }

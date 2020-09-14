@@ -27,8 +27,4 @@ export const APP_ROUTES: Routes = [
         (m) => m.DeviceHistoryModule
       ),
   },
-  {
-    path: '**',
-    redirectTo: '',
-  },
 ];
