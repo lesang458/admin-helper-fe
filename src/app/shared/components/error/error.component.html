@@ -3,22 +3,22 @@
     <div class="col-md-12">
       <div class="error-template">
         <h1 *ngIf="currentURL === '/404'">
-          {{ "ERROR.TITLE_404" | translate }}
+          {{ 'ERROR.TITLE_404' | translate }}
         </h1>
         <h1 *ngIf="currentURL === '/5xx'">
-          {{ "ERROR.TITLE_5XX" | translate }}
+          {{ 'ERROR.TITLE_5XX' | translate }}
         </h1>
         <h2 *ngIf="currentURL === '/404'">
-          {{ "ERROR.CONTENT_404" | translate }}
+          {{ 'ERROR.CONTENT_404' | translate }}
         </h2>
         <h2 *ngIf="currentURL === '/5xx'">
-          {{ "ERROR.CONTENT_5XX" | translate }}
+          {{ 'ERROR.CONTENT_5XX' | translate }}
         </h2>
         <div class="error-details" *ngIf="currentURL === '/404'">
-          {{ "ERROR.DESC_404" | translate }}
+          {{ 'ERROR.DESC_404' | translate }}
         </div>
         <div class="error-details" *ngIf="currentURL === '/5xx'">
-          {{ "ERROR.DESC_5XX" | translate }}
+          {{ 'ERROR.DESC_5XX' | translate }}
         </div>
         <div class="error-actions">
           <button
@@ -27,7 +27,7 @@
             [routerLink]="['/thong-tin-chung']"
           >
             <i class="cil-home"></i>
-            {{ "ERROR.BUTTON" | translate }}
+            {{ 'ERROR.BUTTON' | translate }}
           </button>
         </div>
       </div>
