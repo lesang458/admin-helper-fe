@@ -189,7 +189,7 @@
           </div>
         </div>
       </div>
-      <h6 *ngIf="type === 'detail'">
+      <h6 *ngIf="type === 'detail'" class="font-weight-bold">
         {{ 'PROFILE_DETAIL.STATUS' | translate }}:
         <span 
           *ngIf="dataSource?.status === 'ACTIVE'"
@@ -263,12 +263,7 @@
         <div *ngFor="let hour of dataSource?.dayOffInfos">
           <div style="font-weight: bold;">
             {{ 'PROFILE_CREATE.DAY_OFF_CATE' | translate }}: 
-            <span *ngIf="hour.categoryName === 'VACATION'">
-              {{ 'PROFILE_CREATE.VACATION' | translate }}
-            </span>
-            <span *ngIf="hour.categoryName === 'ILLNESS'">
-              {{ 'PROFILE_CREATE.ILLNESS' | translate }}
-            </span>
+            {{ hour.categoryName | titlecase }}
           </div>
           <div>{{ 'PROFILE_CREATE.AVAILABLE_HOURS' | translate }}: {{ hour.availableHours }}</div>
           <div>{{ 'PROFILE_CREATE.HOUR' | translate }}: {{ hour.hours }}</div>

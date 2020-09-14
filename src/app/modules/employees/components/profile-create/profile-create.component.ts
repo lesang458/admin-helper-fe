@@ -130,7 +130,7 @@ export class ProfileCreateComponent implements OnInit {
   }
 
   public initState(length: number): void {
-    this.state = new Array<boolean>(length);
+    this.state = new Array<boolean>(length).fill(false);
   }
 
   get dayOffInfos(): FormArray {
