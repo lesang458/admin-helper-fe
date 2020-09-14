@@ -6,7 +6,8 @@
     "LINK_3": "Chấm công",
     "LINK_4": "Thiết bị",
     "LINK_5": "Lịch sử thiết bị",
-    "LINK_6": "Loại ngày phép"
+    "LINK_6": "Loại ngày phép",
+    "LINK_7": "Loại thiết bị"
   },
   "HEADER": {
     "VIETNAMESE": "Tiếng việt",
@@ -184,5 +185,14 @@
   "DEVICE_ASSIGN": {
     "TITLE": "Cung cấp thiết bị cho nhân viên",
     "NO_ASSIGN": "Không bàn giao"
+  },
+  "DEVICE_CATEGORIES_PAGE": {
+    "TITLE": "Loại thiết bị",
+    "NAME": "Loại thiết bị",
+    "CREATE":"Tạo loại thiết bị",
+    "DELETE_TITLE": "Xóa thể loại thiết bị",
+    "EDIT_TITLE": "Sửa thể loại thiết bị",
+    "CREATE_TITLE": "Tạo thể loại thiết bị",
+    "NAME_MAXLENGTH": "Tên thiết bị có độ dài tối đa là 100 ký tự"
   }
 }

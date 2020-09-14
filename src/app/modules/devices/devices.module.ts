@@ -10,6 +10,9 @@ import { DeviceTableComponent } from './components/device-table/device-table.com
 import { DeviceAssignComponent } from './components/device-assign/device-assign.component';
 import { DeviceEditComponent } from './components/device-edit/device-edit.component';
 import { ModalModule, BsModalRef } from 'ngx-bootstrap/modal';
+import { DeviceCategoriesEditComponent } from './components/device-categories-edit/device-categories-edit.component';
+import { DeviceCategoriesListComponent } from './components/device-categories-list/device-categories-list.component';
+import { GeneralDeviceCategoriesComponent } from './pages/general-device-categories/general-device-categories.component';
 
 @NgModule({
   declarations: [
@@ -17,6 +20,9 @@ import { ModalModule, BsModalRef } from 'ngx-bootstrap/modal';
     DeviceTableComponent,
     DeviceAssignComponent,
     DeviceEditComponent,
+    DeviceCategoriesEditComponent,
+    DeviceCategoriesListComponent,
+    GeneralDeviceCategoriesComponent
   ],
   imports: [
     CommonModule,
