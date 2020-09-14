@@ -1,5 +1,4 @@
-import { DayOffCategory } from 'src/app/shared/models/dayoff-category.model';
-import { Component, OnInit, Input, AfterViewInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import {
   FormGroup,
   FormControl,
