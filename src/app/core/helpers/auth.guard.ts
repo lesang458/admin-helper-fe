@@ -15,7 +15,11 @@ export class AuthGuardService implements CanActivate {
     state: RouterStateSnapshot
   ): boolean | UrlTree {
     return this.auth.isAuthenticated()
-      ? true
+      ? route.routeConfig.path === 'login'
+        ? this.router.createUrlTree([''])
+        : route.routeConfig.path === 'reset-password'
+        ? this.router.createUrlTree([''])
+        : true
       : this.router.createUrlTree(['login']);
   }
 }
