@@ -1,4 +1,3 @@
-import { DayOffCategory } from 'src/app/shared/models/dayoff-category.model';
 import { Component, OnInit } from '@angular/core';
 import {
   FormGroup,
@@ -14,6 +13,7 @@ import * as DayOffActions from '../../../dayoff-categories/store/dayoff-categori
 import { BsModalRef } from 'ngx-bootstrap/modal';
 import { Employee } from 'src/app/shared/models/employees.model';
 import { SearchParams } from '../../store/employees.actions';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'profile-create',
@@ -21,13 +21,20 @@ import { SearchParams } from '../../store/employees.actions';
   styleUrls: ['./profile-create.component.scss'],
 })
 export class ProfileCreateComponent implements OnInit {
+  public state: Boolean[];
   public id: number;
   public type: string;
   public refresh: SearchParams;
   public dataSource: Employee;
   public profileForm = new FormGroup({
-    firstName: new FormControl('', Validators.maxLength(100)),
-    lastName: new FormControl('', Validators.maxLength(100)),
+    firstName: new FormControl('', [
+      Validators.minLength(2),
+      Validators.maxLength(100),
+    ]),
+    lastName: new FormControl('', [
+      Validators.minLength(2),
+      Validators.maxLength(100),
+    ]),
     email: new FormControl('', Validators.email),
     encryptedPassword: new FormControl('', Validators.minLength(6)),
     phoneNumber: new FormControl('', [
@@ -37,27 +44,21 @@ export class ProfileCreateComponent implements OnInit {
     ]),
     birthdate: new FormControl(''),
     joinDate: new FormControl(''),
-    dayOffInfos: this.formBuilder.array([
-      this.formBuilder.group({
-        dayOffCategoryId: 1,
-        hours: ['', Validators.pattern('^[0-9]*$')],
-      }),
-      this.formBuilder.group({
-        dayOffCategoryId: 2,
-        hours: ['', Validators.pattern('^[0-9]*$')],
-      }),
-    ]),
+    dayOffInfos: this.formBuilder.array([]),
+  });
+  public dayOffForm = new FormGroup({
+    dayOffInfos: this.formBuilder.array([]),
   });
 
   constructor(
     private store: Store<fromApp.AppState>,
     public bsModalRef: BsModalRef,
-    private formBuilder: FormBuilder
+    private formBuilder: FormBuilder,
+    public translateService: TranslateService
   ) {}
 
   ngOnInit() {
-    this.dayOffInfos.disable();
-    if (this.type !== 'create') {
+    if (this.type === 'detail' || this.type === 'edit') {
       this.store.dispatch(new EmployeeActions.DetailEmployee(this.id));
       this.store
         .select((s) => s.employees.detaiEmployee)
@@ -65,22 +66,39 @@ export class ProfileCreateComponent implements OnInit {
           if (data) {
             this.dataSource = data;
             this.profileForm.patchValue(data);
+            this.initState(data?.dayOffInfos?.length);
+            this.dayOffForm = new FormGroup({
+              dayOffInfos: this.formBuilder.array(
+                data?.dayOffInfos?.map((value) =>
+                  this.formBuilder.group({
+                    nameDayOff: { value: value.categoryName, disabled: true },
+                    dayOffCategoryId: value.id,
+                    hours: [value.hours, Validators.pattern('^[0-9]*$')],
+                  })
+                )
+              ),
+            });
           }
         });
-    } else {
+    }
+    if (this.type === 'create') {
       this.store.dispatch(new DayOffActions.FetchDayOffCategories());
       this.store.select('dayoffCategories').subscribe((data: any) => {
-        if (data.dayoff.length > 0) {
-          let employee = {
-            dayOffInfos: data.dayoff.map((i) => {
-              return {
-                id: i.id,
-                hours: i.totalHoursDefault,
-              };
-            }),
-          };
-          this.profileForm.patchValue(employee);
-        }
+        this.initState(data?.dayoff?.length);
+        this.dayOffForm = new FormGroup({
+          dayOffInfos: this.formBuilder.array(
+            data?.dayoff?.map((value) =>
+              this.formBuilder.group({
+                nameDayOff: { value: value.name, disabled: true },
+                dayOffCategoryId: value.id,
+                hours: [
+                  value.totalHoursDefault,
+                  Validators.pattern('^[0-9]*$'),
+                ],
+              })
+            )
+          ),
+        });
       });
     }
     if (this.type === 'detail') {
@@ -88,8 +106,35 @@ export class ProfileCreateComponent implements OnInit {
     }
   }
 
+  public getPhoneErrorMessage(): string {
+    if (this.f.phoneNumber.errors.required) {
+      return this.translateService.instant(
+        'PROFILE_CREATE.PHONE_NUMBER_INVALID'
+      );
+    }
+    if (this.f.phoneNumber.errors.pattern) {
+      return this.translateService.instant(
+        'PROFILE_CREATE.PHONE_NUMBER_PATTERN'
+      );
+    }
+    if (this.f.phoneNumber.errors.minlength) {
+      return this.translateService.instant(
+        'PROFILE_CREATE.PHONE_NUMBER_MINLENGTH'
+      );
+    }
+    if (this.f.phoneNumber.errors.maxLength) {
+      return this.translateService.instant(
+        'PROFILE_CREATE.PHONE_NUMBER_MAXLENGTH'
+      );
+    }
+  }
+
+  public initState(length: number): void {
+    this.state = new Array<boolean>(length).fill(false);
+  }
+
   get dayOffInfos(): FormArray {
-    return this.profileForm.get('dayOffInfos') as FormArray;
+    return this.dayOffForm.get('dayOffInfos') as FormArray;
   }
 
   get f() {
@@ -101,6 +146,7 @@ export class ProfileCreateComponent implements OnInit {
   }
 
   public onSubmit() {
+    this.profileForm.value.dayOffInfos = this.dayOffForm.value.dayOffInfos;
     if (this.type === 'create') {
       this.store.dispatch(
         new EmployeeActions.CreateEmployee(this.profileForm.value)
