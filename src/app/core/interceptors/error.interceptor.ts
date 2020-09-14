@@ -22,7 +22,6 @@ export class ErrorInterceptor implements HttpInterceptor {
     return next.handle(request).pipe(
       tap((evt) => {
         if (evt instanceof HttpResponse) {
-          console.log('ErrorInterceptor -> constructor -> evt', evt);
           if (evt.status === 201) {
             this.notifyService.success('Successfully!');
           }
