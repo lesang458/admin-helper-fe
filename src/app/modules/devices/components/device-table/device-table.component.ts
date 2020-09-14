@@ -25,9 +25,8 @@ import { DeviceConfirmComponent } from '../device-confirm/device-confirm.compone
 export class DeviceTableComponent implements OnInit {
   public data$: Observable<State>;
   public categories$: Observable<DeviceCategory[]>;
-  public state: boolean[];
   public currentPage = 1;
-  public selectedStatus = new FormControl('');
+  public selectedStatus = new FormControl('ASSIGNED');
   public selectedCategory = new FormControl('');
   public deviceParams: DeviceParams;
   public bsModalRef: BsModalRef;
@@ -42,11 +41,7 @@ export class DeviceTableComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.data$ = this.store.select('devices').pipe(
-      tap((data) => {
-        this.state = new Array<boolean>(data.devices.pagination.pageSize);
-      })
-    );
+    this.data$ = this.store.select('devices');
     this.store.dispatch(new DevicesActions.FetchDeviceCategories());
     this.onPageChanged(1);
 

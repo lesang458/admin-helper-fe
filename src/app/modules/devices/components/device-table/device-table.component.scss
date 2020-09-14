@@ -1,4 +1,17 @@
 .card {
+
+  .card-header {
+    .c-icon {
+      transition: .3s transform ease-in-out;
+    }
+
+    .collapsed {
+      .c-icon {
+        transform: rotate(-90deg);
+      }
+    }
+  }
+
   .table {
     margin: 0px;
   }

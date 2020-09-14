@@ -10,7 +10,6 @@
           class="form-control w-auto d-inline-block"
           id="device-status"
         >
-          <option value="">{{ 'DEVICE_TABLE.ALL' | translate }}</option>
           <option value="ASSIGNED">
             {{ 'DEVICE_HISTORY.ASSIGNED' | translate }}
           </option>
@@ -101,13 +100,10 @@
           <a
             data-toggle="collapse"
             [attr.data-target]="'#collapse' + i"
-            [attr.aria-expanded]="false"
             [attr.aria-controls]="'collapse' + i"
-            class="ml-2 mt-2 pointer"
-            (click)="state[i] = !state[i]"
+            class="ml-2 mt-2 pointer collapsed"
           >
-            <i class="cil-chevron-bottom" *ngIf="!state[i]"></i>
-            <i class="cil-chevron-top" *ngIf="state[i]"></i>
+            <i class="c-icon cil-chevron-bottom"></i>
           </a>
         </div>
       </div>
