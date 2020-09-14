@@ -145,15 +145,15 @@
     "EDIT_TITLE": "Sửa thể loại ngày nghỉ",
     "CREATE_TITLE": "Tạo thể loại ngày nghỉ",
     "DELETE_CONFIRM": "Thao tác này không thể hoàn tác vui lòng xác nhận lại!",
-    "NAME_REQUIRED": "Tên không thể rỗng!",
-    "NAME_MINLENGTH": "Tên có độ dài tối thiểu là 6 ký tự",
-    "NAME_MAXLENGTH": "Tên có độ dài tối đa là 20 ký tự",
+    "NAME_REQUIRED": "Hãy nhập tên!",
+    "NAME_MINLENGTH": "Tên phải trên 6 ký tự",
+    "NAME_MAXLENGTH": "Tên không được phép vượt quá 20 ký tự",
     "NAME_PATTERN": "Tên không được chứa ký tự đặc biệt",
     "DAY_OFF": "Số ngày nghỉ",
     "HOURS": "Số giờ",
-    "HOURS_REQUIRED": "Số giờ là bắt buộc!",
-    "HOURS_MIN": "Số giờ ít nhất là 8",
-    "HOURS_MAX": "Số giờ nhiều nhất là 1440"
+    "HOURS_REQUIRED": "Hãy nhập số giờ!",
+    "HOURS_MIN": "Số giờ tối thiểu là 8",
+    "HOURS_MAX": "Số giờ tối đa là 1440"
   },
   "DEVICE_EDIT": {
     "EDIT_TITLE": "Chỉnh sửa thông tin thiết bị.",
