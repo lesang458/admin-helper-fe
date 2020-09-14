@@ -195,6 +195,7 @@
     "NAVIGATE_TO_LOGIN": "Do you want to login page?",
     "NEXT": "Next",
     "INCORRECT": "Password is incorrect!",
-    "TOKEN_INCORRECT": "Token is incorrect!"
+    "TOKEN_INCORRECT": "Token is incorrect!",
+    "EMAIL_INCORRECT": "This email is not registered"
   }
 }

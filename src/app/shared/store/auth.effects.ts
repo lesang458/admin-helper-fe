@@ -61,14 +61,19 @@ export class AuthEffect {
     })
   );
 
-  @Effect()
+  @Effect({ dispatch: false })
   authSendMail = this.actions$.pipe(
     ofType(AuthActions.SEND_MAIL),
     switchMap((action: AuthActions.SendMail) => {
       const body = snakecaseKeys(action.payload);
       return this.http.post<any>(`${environment.APILink}/password`, body).pipe(
-        map(() => {
-          console.log('ok');
+        catchError((err) => {
+          if (err !== 'OK') {
+            this.auth.setResetPwHasError(true);
+          } else {
+            this.auth.setVerifyStep(1);
+          }
+          return this.auth.resetPwHasError;
         })
       );
     })

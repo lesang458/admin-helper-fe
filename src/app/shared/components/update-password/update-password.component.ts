@@ -5,6 +5,7 @@ import { Store } from '@ngrx/store';
 import * as fromApp from '../../../store/app.reducer';
 import * as AuthActions from '../../store/auth.actions';
 import { AuthService } from 'src/app/core/services/auth.service';
+import { Router, NavigationEnd } from '@angular/router';
 
 @Component({
   selector: 'ah-update-password',
@@ -30,12 +31,22 @@ export class UpdatePasswordComponent implements OnInit {
   constructor(
     private translate: TranslateService,
     private store: Store<fromApp.AppState>,
-    private auth: AuthService
-  ) {}
+    private auth: AuthService,
+    private router: Router
+  ) {
+    router.events.subscribe((val: NavigationEnd) => {
+      if (val.url && val.url !== '/khoi-phuc-mat-khau') {
+        auth.setVerifyStep(0);
+      }
+    });
+  }
 
   ngOnInit(): void {
     this.auth.currentResetPwHasError.subscribe((val) => {
       this.hasError = val;
+    });
+    this.auth.currentVerifyStep.subscribe((val) => {
+      this.verify = val;
     });
     this.isChangePw = this.auth.isAuthenticated();
     this.updatePwForm.valueChanges.subscribe(() => {
@@ -59,7 +70,6 @@ export class UpdatePasswordComponent implements OnInit {
               email: this.email,
             })
           );
-          this.verify++;
           break;
         case 1:
           this.store.dispatch(
@@ -68,13 +78,7 @@ export class UpdatePasswordComponent implements OnInit {
               token: this.token,
             })
           );
-          this.auth.currentVerifyStep.subscribe((val) => {
-            val === 1
-              ? this.updatePwForm.setErrors(null)
-              : val === 2
-              ? this.verify++
-              : null;
-          });
+          this.verify === 1 ? this.updatePwForm.setErrors(null) : null;
           break;
         case 2:
           this.store.dispatch(
@@ -84,6 +88,7 @@ export class UpdatePasswordComponent implements OnInit {
               newPassword: this.newPassword,
             })
           );
+          this.auth.setVerifyStep(0);
           break;
         default:
           break;

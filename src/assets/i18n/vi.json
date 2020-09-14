@@ -193,6 +193,7 @@
     "NAVIGATE_TO_LOGIN": "Trở về trang đăng nhập",
     "NEXT": "Tiếp tục",
     "INCORRECT": "Mật khẩu không đúng!",
-    "TOKEN_INCORRECT": "Token không đúng!"
+    "TOKEN_INCORRECT": "Token không đúng!",
+    "EMAIL_INCORRECT": "Email này chưa được đăng ký!"
   }
 }
