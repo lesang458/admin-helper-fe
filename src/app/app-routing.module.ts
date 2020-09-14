@@ -24,5 +24,5 @@ export const APP_ROUTES: Routes = [
       import('./modules/devices-history/device-history.module').then(
         (m) => m.DeviceHistoryModule
       ),
-  },
+  }
 ];

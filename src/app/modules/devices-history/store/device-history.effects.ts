@@ -19,16 +19,10 @@ export class DeviceHistoryEffects {
     switchMap((action: DevicesHistoryActions.FetchDeviceHistory) => {
       let params = new HttpParams()
         .append(ParamsConstant.page, action.payload.page)
-        .append(ParamsConstant.perPage, action.payload.perPage)
+        .append(ParamsConstant.perPage, action.payload.perPage);
 
       if (action.payload.status) {
         params = params.append(ParamsConstant.status, action.payload.status);
-      }
-      if (action.payload.deviceCategoryId) {
-        params = params.append(
-          ParamsConstant.deviceCategoryId,
-          action.payload.deviceCategoryId
-        );
       }
       if (action.payload.historyTo) {
         params = params.append(
@@ -42,12 +36,18 @@ export class DeviceHistoryEffects {
           action.payload.historyFrom
         );
       }
+      if (action.payload.deviceId) {
+        params = params.append(
+          ParamsConstant.deviceId,
+          action.payload.deviceId
+        );
+      }
       return this.http
         .get<PaginatedData<DeviceHistory[]>>(
           `${environment.APILink}/device_histories`,
           {
-            observe: 'response', 
-            params
+            observe: 'response',
+            params,
           }
         )
         .pipe(
@@ -67,15 +67,14 @@ export class DeviceHistoryEffects {
         .get<any>(`${environment.APILink}/device_histories/${action.payload}`)
         .pipe(
           map((val) => {
-            const data: DeviceHistory = camelcaseKeys(val.device_history);
-            return new DevicesHistoryActions.DetailDeviceHistorySuccess(data);
+            const data = camelcaseKeys(val, { deep: true });
+            return new DevicesHistoryActions.DetailDeviceHistorySuccess(
+              data.deviceHistory
+            );
           })
         );
     })
   );
 
-  constructor(
-    private actions$: Actions,
-    private http: HttpClient
-  ) {}
+  constructor(private actions$: Actions, private http: HttpClient) {}
 }

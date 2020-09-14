@@ -11,6 +11,9 @@ import { DeviceAssignComponent } from './components/device-assign/device-assign.
 import { DeviceEditComponent } from './components/device-edit/device-edit.component';
 import { ModalModule, BsModalRef } from 'ngx-bootstrap/modal';
 import { DeviceConfirmComponent } from './components/device-confirm/device-confirm.component';
+import { DeviceCategoriesEditComponent } from './components/device-categories-edit/device-categories-edit.component';
+import { DeviceCategoriesListComponent } from './components/device-categories-list/device-categories-list.component';
+import { GeneralDeviceCategoriesComponent } from './pages/general-device-categories/general-device-categories.component';
 
 @NgModule({
   declarations: [
@@ -19,6 +22,9 @@ import { DeviceConfirmComponent } from './components/device-confirm/device-confi
     DeviceAssignComponent,
     DeviceEditComponent,
     DeviceConfirmComponent,
+    DeviceCategoriesEditComponent,
+    DeviceCategoriesListComponent,
+    GeneralDeviceCategoriesComponent,
   ],
   imports: [
     CommonModule,

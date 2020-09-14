@@ -6,7 +6,8 @@
     "LINK_3": "Chấm công",
     "LINK_4": "Thiết bị",
     "LINK_5": "Lịch sử thiết bị",
-    "LINK_6": "Loại ngày phép"
+    "LINK_6": "Loại ngày phép",
+    "LINK_7": "Loại thiết bị"
   },
   "HEADER": {
     "VIETNAMESE": "Tiếng việt",
@@ -69,7 +70,11 @@
     "DAY_OFF_INFO": "Thông tin ngày nghỉ",
     "HOUR": "Số giờ",
     "FIRST_NAME_INVALID": "Hãy nhập họ",
+    "FIRST_NAME_MIN_LENGTH": "Họ phải trên 2 ký tự",
+    "FIRST_NAME_MAX_LENGTH": "Họ không vượt quá 100 ký tự",
     "LAST_NAME_INVALID": "Hãy nhập tên",
+    "LAST_NAME_MIN_LENGTH": "Tên phải trên 2 ký tự",
+    "LAST_NAME_MAX_LENGTH": "Tên không vượt quá 100 ký tự",
     "EMAIL_INVALID": "Hãy nhập email",
     "IS_EMAIL": "Email không hợp lệ",
     "BIRTHDAY_INVALID": "Hãy nhập ngày sinh",
@@ -140,15 +145,15 @@
     "EDIT_TITLE": "Sửa thể loại ngày nghỉ",
     "CREATE_TITLE": "Tạo thể loại ngày nghỉ",
     "DELETE_CONFIRM": "Thao tác này không thể hoàn tác vui lòng xác nhận lại!",
-    "NAME_REQUIRED": "Tên không thể rỗng!",
-    "NAME_MINLENGTH": "Tên có độ dài tối thiểu là 6 ký tự",
-    "NAME_MAXLENGTH": "Tên có độ dài tối đa là 20 ký tự",
+    "NAME_REQUIRED": "Hãy nhập tên!",
+    "NAME_MINLENGTH": "Tên phải trên 6 ký tự",
+    "NAME_MAXLENGTH": "Tên không được phép vượt quá 20 ký tự",
     "NAME_PATTERN": "Tên không được chứa ký tự đặc biệt",
     "DAY_OFF": "Số ngày nghỉ",
     "HOURS": "Số giờ",
-    "HOURS_REQUIRED": "Số giờ là bắt buộc!",
-    "HOURS_MIN": "Số giờ ít nhất là 8",
-    "HOURS_MAX": "Số giờ nhiều nhất là 1440"
+    "HOURS_REQUIRED": "Hãy nhập số giờ!",
+    "HOURS_MIN": "Số giờ tối thiểu là 8",
+    "HOURS_MAX": "Số giờ tối đa là 1440"
   },
   "DEVICE_EDIT": {
     "EDIT_TITLE": "Chỉnh sửa thông tin thiết bị.",
@@ -188,5 +193,14 @@
     "DISCARD_PARAM": "Trạng thái của thiết bị này sẽ được thay đổi thành 'BỊ LỖI'. Bạn có muốn tiếp tục?",
     "INVENTORY_TITLE": "Xác nhận di chuyển thiết bị vào kho",
     "INVENTORY_PARAM": "Trạng thái của thiết bị này sẽ được thay đổi thành 'TRONG KHO'. Bạn có muốn tiếp tục?"
+  },
+  "DEVICE_CATEGORIES_PAGE": {
+    "TITLE": "Loại thiết bị",
+    "NAME": "Loại thiết bị",
+    "CREATE": "Tạo loại thiết bị",
+    "DELETE_TITLE": "Xóa thể loại thiết bị",
+    "EDIT_TITLE": "Sửa thể loại thiết bị",
+    "CREATE_TITLE": "Tạo thể loại thiết bị",
+    "NAME_MAXLENGTH": "Tên thiết bị có độ dài tối đa là 100 ký tự"
   }
 }
