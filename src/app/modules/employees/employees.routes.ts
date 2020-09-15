@@ -1,3 +1,4 @@
+import { BrowserSupportGuardService } from './../../core/helpers/browser-support.guard';
 import { Routes } from '@angular/router';
 import { DayoffComponent } from './pages/dayoff/dayoff.component';
 import { GeneralInfoComponent } from './pages/general-info/general-info.component';
@@ -64,6 +65,14 @@ export const EMPLOYEES_ROUTES: Routes = [
     canActivate: [AuthGuardService],
     data: {
       i18nKey: 'RESET_PASSWORD',
+    },
+  },
+  {
+    path: 'not-supported-ie',
+    component: ErrorComponent,
+    canActivate: [BrowserSupportGuardService],
+    data: {
+      i18nKey: 'NOT_SUPPORTED_IE',
     },
   },
 ];
