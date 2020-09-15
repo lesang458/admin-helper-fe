@@ -6,7 +6,8 @@
     "LINK_3": "Timekeeping",
     "LINK_4": "Devices",
     "LINK_5": "Devices History",
-    "LINK_6": "Day off type"
+    "LINK_6": "Day off type",
+    "LINK_7": "Device Categories"
   },
   "HEADER": {
     "VIETNAMESE": "Vietnamese",
@@ -69,9 +70,11 @@
     "DAY_OFF_INFO": "Day off infomation",
     "HOUR": "Hours",
     "FIRST_NAME_INVALID": "First Name is required",
-    "FIRST_NAME_MAXLENGTH": "First name must not exceed 100 characters",
+    "FIRST_NAME_MIN_LENGTH": "First name must be at least 2 characters",
+    "FIRST_NAME_MAX_LENGTH": "First name must not exceed 100 characters",
     "LAST_NAME_INVALID": "Last name is required",
-    "LAST_NAME_MAXLENGTH": "Last name must not exceed 100 characters",
+    "LAST_NAME_MIN_LENGTH": "Last name must be at least 2 characters",
+    "LAST_NAME_MAX_LENGTH": "Last name must not exceed 100 characters",
     "EMAIL_INVALID": "Email is required",
     "IS_EMAIL": "Email must be a valid email address",
     "BIRTHDAY_INVALID": "Birthday is required",
@@ -143,14 +146,14 @@
     "CREATE_TITLE": "Day off creation",
     "DELETE_CONFIRM": "This action cannot be undone please confirm again!",
     "NAME_REQUIRED": "Name is required!",
-    "NAME_MINLENGTH": "The name has Minimum length is 6 character",
-    "NAME_MAXLENGTH": "The name has Maximum length is 20 character",
+    "NAME_MINLENGTH": "The name must be at least 6 characters",
+    "NAME_MAXLENGTH": "The name must not exceed 20 characters",
     "NAME_PATTERN": "The name must not contain special characters",
     "DAY_OFF": "Number of dayoff",
     "HOURS": "Hours",
     "HOURS_REQUIRED": "Hours is required!",
-    "HOURS_MIN": "Hours has a Minimum value of 8",
-    "HOURS_MAX": "Hours has a Maximum value of 1440"
+    "HOURS_MIN": "Hours must be at least 8",
+    "HOURS_MAX": "Hours must not exceed 1440"
   },
   "DEVICE_EDIT": {
     "EDIT_TITLE": "Edit Device",
@@ -182,6 +185,15 @@
   "DEVICE_ASSIGN": {
     "TITLE": "Provide device to user",
     "NO_ASSIGN": "No assign"
+  },
+  "DEVICE_CATEGORIES_PAGE": {
+    "TITLE": "Device Categories",
+    "NAME": "Category Name",
+    "CREATE": "Create device category",
+    "DELETE_TITLE": "Device categories deletion",
+    "EDIT_TITLE": "Device categories edit",
+    "CREATE_TITLE": "Device categories creation",
+    "NAME_MAXLENGTH": "The name has Maximum length is 100 character"
   },
   "CHANGE_PASSWORD": {
     "TITLE": "Change password",

@@ -10,6 +10,7 @@ export interface SearchParams {
   status?: string;
   historyTo?: string;
   historyFrom?: string;
+  deviceId?: string;
 }
 
 export const GET_DEVICE_HISTORY_SUCCESS =

@@ -5,7 +5,6 @@ import { Store } from '@ngrx/store';
 import * as fromApp from '../../../../store/app.reducer';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { DayOffCategory } from 'src/app/shared/models/dayoff-category.model';
-import { log } from 'console';
 import { TitleCasePipe } from '@angular/common';
 
 @Component({
