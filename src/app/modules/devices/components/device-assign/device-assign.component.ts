@@ -77,7 +77,9 @@ export class DeviceAssignComponent implements OnInit {
         sortJoinDateType: this.sortJoinDateType,
       },
     };
-    this.store.dispatch(new EmployeeActions.SearchEmployees(this.paramEmployee));
+    this.store.dispatch(
+      new EmployeeActions.SearchEmployees(this.paramEmployee)
+    );
   }
 
   public onSubmit(): void {
@@ -89,5 +91,13 @@ export class DeviceAssignComponent implements OnInit {
     const data = { id, userId, params };
     this.store.dispatch(new DevicesActions.AssignDevice(data));
     this.bsModalRef.hide();
+  }
+
+  public onSearchSubmit(): void {
+    if (this.currentPage === 1) {
+      this.onPageChanged(1);
+    } else {
+      this.currentPage = 1;
+    }
   }
 }

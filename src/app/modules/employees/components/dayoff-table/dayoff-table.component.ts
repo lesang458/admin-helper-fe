@@ -1,6 +1,6 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { Observable, Subscription } from 'rxjs';
+import { Observable } from 'rxjs';
 import { map, distinctUntilChanged, debounceTime } from 'rxjs/operators';
 import { PaginatedData } from 'src/app/shared/models/pagination.model';
 import { Employee } from 'src/app/shared/models/employees.model';
@@ -16,7 +16,7 @@ import * as DayOffCategoriesActions from 'src/app/modules/dayoff-categories/stor
   templateUrl: './dayoff-table.component.html',
   styleUrls: ['./dayoff-table.component.scss'],
 })
-export class DayoffTableComponent implements OnInit, OnDestroy {
+export class DayoffTableComponent implements OnInit {
   public searchInput = new FormControl('');
   public selectedType = new FormControl('VACATION');
   public currentPage = 1;
@@ -36,7 +36,6 @@ export class DayoffTableComponent implements OnInit, OnDestroy {
   };
   public data$: Observable<PaginatedData<Employee[]>>;
   public types$: Observable<DayOffCategory[]>;
-  private subscription: Subscription;
   constructor(private store: Store<fromApp.AppState>) {}
 
   ngOnInit(): void {
@@ -51,16 +50,6 @@ export class DayoffTableComponent implements OnInit, OnDestroy {
       })
     );
     this.store.dispatch(new DayOffCategoriesActions.FetchDayOffCategories());
-
-    this.subscription = this.searchInput.valueChanges
-      .pipe(debounceTime(300), distinctUntilChanged())
-      .subscribe(() => {
-        if (this.currentPage === 1) {
-          this.onPageChanged(1);
-        } else {
-          this.currentPage = 1;
-        }
-      });
   }
 
   public onSort(page: number, column?: string): void {
@@ -108,7 +97,11 @@ export class DayoffTableComponent implements OnInit, OnDestroy {
     return 0;
   }
 
-  ngOnDestroy(): void {
-    this.subscription.unsubscribe();
+  public onSearchSubmit(): void {
+    if (this.currentPage === 1) {
+      this.onPageChanged(1);
+    } else {
+      this.currentPage = 1;
+    }
   }
 }

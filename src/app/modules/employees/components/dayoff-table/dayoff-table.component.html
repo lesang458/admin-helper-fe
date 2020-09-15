@@ -14,6 +14,8 @@
             [formControl]="searchInput"
             id="inlineFormInputGroupUsername"
             placeholder="VD: Nguyen, 2020, ..."
+            (blur)="onSearchSubmit()"
+            (search)="onSearchSubmit()"
           />
         </div>
       </div>
