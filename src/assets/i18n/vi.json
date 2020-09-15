@@ -1,10 +1,9 @@
 {
   "SIDEBAR": {
     "TITLE": "Quản lý nhân viên",
-    "LINK_1": "Thông tin chung",
-    "LINK_2": "Ngày phép",
-    "LINK_3": "Chấm công",
-    "LINK_4": "Thiết bị",
+    "LINK_1": "Quản lý nhân viên",
+    "LINK_2": "Quản lý ngày phép",
+    "LINK_4": "Quản lý thiết bị",
     "LINK_5": "Lịch sử thiết bị",
     "LINK_6": "Loại ngày phép",
     "LINK_7": "Loại thiết bị"

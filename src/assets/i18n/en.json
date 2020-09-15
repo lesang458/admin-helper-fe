@@ -1,10 +1,9 @@
 {
   "SIDEBAR": {
     "TITLE": "Employee Management",
-    "LINK_1": "General Information",
-    "LINK_2": "Day off",
-    "LINK_3": "Timekeeping",
-    "LINK_4": "Devices",
+    "LINK_1": "Employee Management",
+    "LINK_2": "Day off Management",
+    "LINK_4": "Device Management",
     "LINK_5": "Devices History",
     "LINK_6": "Day off type",
     "LINK_7": "Device Categories"
