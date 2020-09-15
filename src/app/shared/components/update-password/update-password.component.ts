@@ -106,4 +106,14 @@ export class UpdatePasswordComponent implements OnInit {
       ? this.translate.instant('CHANGE_PASSWORD.SUBMIT')
       : this.translate.instant('RESET_PASSWORD.NEXT');
   }
+
+  public getErrorMessage(): string {
+    return this.f.confirmPassword.errors?.required
+      ? this.translate.instant('PROFILE_CREATE.PASSWORD_INVALID')
+      : this.f.confirmPassword.errors?.minlength
+      ? this.translate.instant('PROFILE_CREATE.PASS_MINLENGTH')
+      : this.passwordIsIncorrect()
+      ? this.translate.instant('RESET_PASSWORD.INCORRECT')
+      : '';
+  }
 }
