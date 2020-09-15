@@ -204,6 +204,12 @@
     "DESC_5XX": "The page you are looking for is temporarily unavailable.",
     "BUTTON": "Go Back Home"
   },
+  "PAGE_404": {
+    "TITLE": "404"
+  },
+  "PAGE_5XX": {
+    "TITLE": "5xx"
+  },
   "CHANGE_PASSWORD": {
     "TITLE": "Change password",
     "SUBMIT": "Save",

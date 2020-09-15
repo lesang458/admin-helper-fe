@@ -204,6 +204,12 @@
     "DESC_5XX": "Trang bạn đang tìm tạm thời không có sẵn.",
     "BUTTON": "Trở lại trang chủ"
   },
+  "PAGE_404": {
+    "TITLE": "404"
+  },
+  "PAGE_5XX": {
+    "TITLE": "5xx"
+  },
   "CHANGE_PASSWORD": {
     "TITLE": "Thay đổi mật khẩu",
     "SUBMIT": "Lưu",

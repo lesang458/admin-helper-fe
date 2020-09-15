@@ -38,11 +38,17 @@ export const EMPLOYEES_ROUTES: Routes = [
     path: '404',
     component: ErrorComponent,
     canActivate: [AuthGuardService],
+    data: {
+      i18nKey: 'PAGE_404',
+    },
   },
   {
     path: '5xx',
     component: ErrorComponent,
     canActivate: [AuthGuardService],
+    data: {
+      i18nKey: 'PAGE_5XX',
+    },
   },
   {
     path: 'doi-mat-khau',
