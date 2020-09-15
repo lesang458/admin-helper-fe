@@ -35,15 +35,6 @@ export class DeviceAssignComponent implements OnInit {
   ngOnInit(): void {
     this.employeeObs$ = this.store.select('employees');
     this.onPageChanged(1);
-    this.searchFormControl.valueChanges
-      .pipe(debounceTime(300), distinctUntilChanged())
-      .subscribe(() => {
-        if (this.currentPage === 1) {
-          this.onPageChanged(1);
-        } else {
-          this.currentPage = 1;
-        }
-      });
     this.assigned = new FormControl(
       this.device.user ? this.device?.user?.id.toString() : ''
     );
