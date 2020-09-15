@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthService } from 'src/app/core/services/auth.service';
 
 @Component({
   selector: 'ah-update-password-page',
@@ -6,9 +7,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UpdatePasswordComponent implements OnInit {
   public title = 'CHANGE_PASSWORD.TITLE';
-  public isChangePassword = !!localStorage.getItem('token');
+  public isChangePassword: boolean;
 
-  constructor() {}
+  constructor(private auth: AuthService) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.isChangePassword = this.auth.isAuthenticated();
+  }
 }
