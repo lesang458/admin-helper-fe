@@ -4,12 +4,14 @@ import { GeneralInfoComponent } from './pages/general-info/general-info.componen
 import { DayoffResolver } from 'src/app/core/resolvers/dayoff.resolver';
 import { AuthComponent } from './pages/auth/auth.component';
 import { AuthGuardService } from 'src/app/core/helpers/auth.guard';
+import { UpdatePasswordComponent } from './pages/update-password/update-password.component';
 
 export const EMPLOYEES_ROUTES: Routes = [
   { path: '', redirectTo: 'thong-tin-chung', pathMatch: 'full' },
   {
-    path: 'login',
+    path: 'dang-nhap',
     component: AuthComponent,
+    canActivate: [AuthGuardService],
     data: {
       i18nKey: 'LOGIN',
     },
@@ -29,6 +31,22 @@ export const EMPLOYEES_ROUTES: Routes = [
     resolve: { dayoff: DayoffResolver },
     data: {
       i18nKey: 'DAY_OFF_TABLE',
+    },
+  },
+  {
+    path: 'doi-mat-khau',
+    component: UpdatePasswordComponent,
+    canActivate: [AuthGuardService],
+    data: {
+      i18nKey: 'CHANGE_PASSWORD',
+    },
+  },
+  {
+    path: 'khoi-phuc-mat-khau',
+    component: UpdatePasswordComponent,
+    canActivate: [AuthGuardService],
+    data: {
+      i18nKey: 'RESET_PASSWORD',
     },
   },
 ];

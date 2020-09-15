@@ -189,10 +189,28 @@
   "DEVICE_CATEGORIES_PAGE": {
     "TITLE": "Device Categories",
     "NAME": "Category Name",
-    "CREATE":"Create device category",
+    "CREATE": "Create device category",
     "DELETE_TITLE": "Device categories deletion",
     "EDIT_TITLE": "Device categories edit",
     "CREATE_TITLE": "Device categories creation",
     "NAME_MAXLENGTH": "The name has Maximum length is 100 character"
+  },
+  "CHANGE_PASSWORD": {
+    "TITLE": "Change password",
+    "SUBMIT": "Save",
+    "NEW_PASSWORD": "New password",
+    "CONFIRM_PASSWORD": "Confirm new password",
+    "OLD_PASSWORD": "Old password"
+  },
+  "RESET_PASSWORD": {
+    "TITLE": "Reset password",
+    "PARAMS1": "Please enter your recovery email",
+    "PARAMS2": "Please enter the code was sent to your email",
+    "PARAMS3": "Please enter a new password!",
+    "NAVIGATE_TO_LOGIN": "Do you want to login page?",
+    "NEXT": "Next",
+    "INCORRECT": "Password is incorrect!",
+    "TOKEN_INCORRECT": "Token is incorrect!",
+    "EMAIL_INCORRECT": "This email is not registered"
   }
 }

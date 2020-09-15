@@ -14,6 +14,8 @@ import { ProfileCreateComponent } from './components/profile-create/profile-crea
 import { NotifyComponent } from 'src/app/shared/components/notify/notify.component';
 import { LoginComponent } from 'src/app/shared/components/login/login.component';
 import { AuthComponent } from './pages/auth/auth.component';
+import { UpdatePasswordComponent } from './pages/update-password/update-password.component';
+import { CommonModule } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -26,8 +28,10 @@ import { AuthComponent } from './pages/auth/auth.component';
     NotifyComponent,
     LoginComponent,
     AuthComponent,
+    UpdatePasswordComponent,
   ],
   imports: [
+    CommonModule,
     SharedModule,
     FormsModule,
     RouterModule.forChild(EMPLOYEES_ROUTES),

@@ -10,7 +10,9 @@
               <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
                 <div class="input-group mb-3">
                   <div class="input-group-prepend">
-                    <span class="input-group-text"><i class="cib-gmail"></i></span>
+                    <span class="input-group-text">
+                      <i class="cib-gmail"></i>
+                    </span>
                   </div>
                   <input
                     class="form-control"
@@ -33,13 +35,15 @@
                 </div>
                 <div class="input-group mb-4">
                   <div class="input-group-prepend">
-                    <span class="input-group-text"><i class="cil-lock-locked"></i></span>
+                    <span class="input-group-text">
+                      <i class="cil-lock-locked"></i>
+                    </span>
                   </div>
                   <input
                     class="form-control"
                     type="password"
                     formControlName="password"
-                    placeholder="Password"
+                    placeholder="{{ 'PROFILE_CREATE.PASSWORD_INVALID' | translate }}"
                     required
                   />
                 </div>
@@ -77,7 +81,11 @@
                 </div>
                 <div class="row mt-2">
                   <div class="col-6">
-                    <button class="btn btn-ghost-info px-2" type="button">
+                    <button
+                      class="btn btn-ghost-info px-2"
+                      type="button"
+                      [routerLink]="['/khoi-phuc-mat-khau']"
+                    >
                       {{ 'LOGIN.FORGOT_PASSWORD' | translate }}
                     </button>
                   </div>
