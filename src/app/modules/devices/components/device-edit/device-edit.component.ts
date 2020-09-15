@@ -81,11 +81,9 @@ export class DeviceEditComponent implements OnInit {
       device,
       params: this.params,
     };
-    if (this.selectedDevice) {
-      this.store.dispatch(new DevicesActions.EditDevice(deviceParams));
-    } else {
-      this.store.dispatch(new DevicesActions.CreateDevice(deviceParams));
-    }
+    this.selectedDevice
+      ? this.store.dispatch(new DevicesActions.EditDevice(deviceParams))
+      : this.store.dispatch(new DevicesActions.CreateDevice(deviceParams));
     this.bsModalRef.hide();
   }
 }

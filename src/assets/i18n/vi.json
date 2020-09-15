@@ -118,9 +118,15 @@
     "CATEGORY_NAME": "Tên danh mục:",
     "ASSIGNED_TO": "Được giao cho:",
     "EMPTY": "Trống",
-    "PRICE": "Trị giá",
+    "PRICE": "Giá tiền",
     "DESCRIPTION": "Mô tả",
-    "CREATE_DEVICE": "Tạo thiết bị"
+    "CREATE_DEVICE": "Tạo thiết bị",
+    "MOVE_TO_INVENTORY": "Chuyển vào kho",
+    "DISCARD": "Loại bỏ",
+    "ASSIGN": "Giao thiết bị",
+    "HISTORY": "Lịch sử",
+    "EDIT": "Chỉnh sửa",
+    "DELETE": "Xóa"
   },
   "LOGIN": {
     "TITLE": "Đăng nhập",
@@ -185,6 +191,14 @@
   "DEVICE_ASSIGN": {
     "TITLE": "Cung cấp thiết bị cho nhân viên",
     "NO_ASSIGN": "Không bàn giao"
+  },
+  "DEVICE_CONFIRM": {
+    "DELETE_TITLE": "Xác nhận xóa thiết bị",
+    "DELETE_PARAM": "Thiết bị này sẽ bị xóa. Bạn có muốn tiếp tục?",
+    "DISCARD_TITLE": "Xác nhận loại bỏ thiết bị",
+    "DISCARD_PARAM": "Trạng thái của thiết bị này sẽ được thay đổi thành 'BỊ LỖI'. Bạn có muốn tiếp tục?",
+    "INVENTORY_TITLE": "Xác nhận di chuyển thiết bị vào kho",
+    "INVENTORY_PARAM": "Trạng thái của thiết bị này sẽ được thay đổi thành 'TRONG KHO'. Bạn có muốn tiếp tục?"
   },
   "DEVICE_CATEGORIES_PAGE": {
     "TITLE": "Loại thiết bị",

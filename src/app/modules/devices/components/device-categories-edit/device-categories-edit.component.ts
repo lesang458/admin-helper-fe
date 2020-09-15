@@ -9,7 +9,7 @@ import { BsModalRef } from 'ngx-bootstrap/modal';
 @Component({
   selector: 'ah-device-categories-edit',
   templateUrl: './device-categories-edit.component.html',
-  styleUrls: ['./device-categories-edit.component.scss']
+  styleUrls: ['./device-categories-edit.component.scss'],
 })
 export class DeviceCategoriesEditComponent implements OnInit {
   public type: string;
@@ -25,29 +25,22 @@ export class DeviceCategoriesEditComponent implements OnInit {
 
   ngOnInit() {
     if (this.type === 'edit') {
-      this.f.patchValue({
-        name: this.selectedCategory.name,
-        description: this.selectedCategory.description,
-      });
+      this.f.patchValue(this.selectedCategory);
     }
   }
 
   public onSubmit(): void {
+    const deviceCategory: DeviceCategory = {
+      name: this.f.get('name').value,
+      description: this.f.get('description').value,
+    };
     if (this.type === 'create') {
-      this.store.dispatch(
-        new DevicesActions.CreateDeviceCategory({
-          name: this.f.get('name').value,
-          description: this.f.get('description').value
-        })
-      );
+      this.store.dispatch(new DevicesActions.CreateDeviceCategory(deviceCategory));
     }
     if (this.type === 'edit') {
       const deviceCategoryParams: DevicesActions.DeviceCategoryParams = {
         id: this.selectedCategory.id,
-        deviceCategory: {
-          name: this.f.get('name').value,
-          description: this.f.get('description').value,
-        }
+        deviceCategory,
       };
       this.store.dispatch(
         new DevicesActions.UpdateDeviceCategory(deviceCategoryParams)
@@ -55,9 +48,7 @@ export class DeviceCategoriesEditComponent implements OnInit {
     }
     if (this.type === 'delete') {
       this.store.dispatch(
-        new DevicesActions.DeleteDeviceCategory(
-          this.selectedCategory.id.toString()
-        )
+        new DevicesActions.DeleteDeviceCategory(this.selectedCategory.id.toString())
       );
     }
 

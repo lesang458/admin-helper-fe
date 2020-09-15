@@ -14,7 +14,7 @@
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-      <div class="modal-body">
+      <div class="modal-body pt-1 pb-0">
         <label class="font-weight-bold" for="exampleFormControlInput1">
           {{ 'REQUEST-DAY-OFF.FULL_NAME' | translate }}
         </label>
@@ -25,7 +25,7 @@
           formControlName="fullName"
         />
       </div>
-      <div class="modal-body date">
+      <div class="modal-body date pt-1 pb-0">
         <label class="font-weight-bold" for="exampleFormControlInput2">
           {{ 'REQUEST-DAY-OFF.FROM_DATE' | translate }}
         </label>
@@ -83,7 +83,7 @@
         </div>
       </div>
 
-      <div class="modal-body">
+      <div class="modal-body pt-1">
         <label
           id="label4"
           class="font-weight-bold"
@@ -119,10 +119,7 @@
         <hr />
       </div>
 
-      <div
-        *ngIf="dayOffAvailable < dayOffs"
-        class="modal-body modal-body-none-padding"
-      >
+      <div *ngIf="dayOffAvailable < dayOffs" class="modal-body">
         <div class="form-check">
           <input
             class="form-check-input pointer"

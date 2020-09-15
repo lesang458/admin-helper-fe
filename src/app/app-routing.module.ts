@@ -4,9 +4,7 @@ export const APP_ROUTES: Routes = [
   {
     path: '',
     loadChildren: () =>
-      import('./modules/employees/employees.module').then(
-        (m) => m.EmployeesModule
-      ),
+      import('./modules/employees/employees.module').then((m) => m.EmployeesModule),
   },
   {
     path: 'thiet-bi',

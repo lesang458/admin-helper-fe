@@ -18,8 +18,10 @@ export class DeviceEffects {
     switchMap((action: DevicesActions.FetchDevices) => {
       let params = new HttpParams()
         .append(ParamsConstant.page, action.payload.page)
-        .append(ParamsConstant.perPage, action.payload.perPage)
-        .append(ParamsConstant.status, action.payload.status);
+        .append(ParamsConstant.perPage, action.payload.perPage);
+      if (action.payload.status) {
+        params = params.append(ParamsConstant.status, action.payload.status);
+      }
       if (action.payload.deviceCategoryId) {
         params = params.append(
           ParamsConstant.deviceCategoryId,
@@ -112,14 +114,61 @@ export class DeviceEffects {
   );
 
   @Effect()
+  deleteDevice = this.actions$.pipe(
+    ofType(DevicesActions.DELETE_DEVICE),
+    switchMap((action: DevicesActions.DeleteDevice) => {
+      return this.http
+        .delete<void>(`${environment.APILink}/devices/${action.payload.id}`)
+        .pipe(
+          map(() => {
+            return new DevicesActions.FetchDevices(action.payload.params);
+          })
+        );
+    })
+  );
+
+  @Effect()
+  discardDevice = this.actions$.pipe(
+    ofType(DevicesActions.DISCARD_DEVICE),
+    switchMap((action: DevicesActions.DiscardDevice) => {
+      return this.http
+        .put<void>(`${environment.APILink}/devices/${action.payload.id}/discard`, {})
+        .pipe(
+          map(() => {
+            return new DevicesActions.FetchDevices(action.payload.params);
+          })
+        );
+    })
+  );
+
+  @Effect()
+  inventoryDevice = this.actions$.pipe(
+    ofType(DevicesActions.MOVE_DEVICE_TO_INVENTORY),
+    switchMap((action: DevicesActions.MoveDeviceToInventory) => {
+      return this.http
+        .put<void>(
+          `${environment.APILink}/devices/${action.payload.id}/move_to_inventory`,
+          {}
+        )
+        .pipe(
+          map(() => {
+            return new DevicesActions.FetchDevices(action.payload.params);
+          })
+        );
+    })
+  );
+
+  @Effect()
   createDeviceCategory = this.actions$.pipe(
     ofType(DevicesActions.CREATE_DEVICE_CATEGORY),
     switchMap((action: DevicesActions.CreateDeviceCategory) => {
-      return this.http.post<any>(`${environment.APILink}/device_categories`, action.payload).pipe(
-        map(() => {
-          return new DevicesActions.FetchDeviceCategories();
-        })
-      );
+      return this.http
+        .post<any>(`${environment.APILink}/device_categories`, action.payload)
+        .pipe(
+          map(() => {
+            return new DevicesActions.FetchDeviceCategories();
+          })
+        );
     })
   );
 
@@ -153,5 +202,6 @@ export class DeviceEffects {
         );
     })
   );
+
   constructor(private actions$: Actions, private http: HttpClient) {}
 }

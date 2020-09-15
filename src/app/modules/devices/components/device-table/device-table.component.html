@@ -46,10 +46,10 @@
   >
     <div class="card-header">
       <div class="row">
-        <div class="col-2 black-text">
+        <div class="col-4 black-text">
           {{ item.name }}
         </div>
-        <div class="col-2 black-text">
+        <div class="col-3 black-text">
           {{ 'DEVICE_TABLE.CATEGORY_NAME' | translate }}
           {{ ' ' + item.categoryName }}
         </div>
@@ -58,50 +58,72 @@
           {{ ' ' + getUserName(item.user) }}
         </div>
 
-        <div class="col-5 d-flex justify-content-end">
-          <button
-            class="btn btn-outline-primary mr-2"
-            *ngIf="item.status !== 'IN_INVENTORY'"
-          >
-            <i class="cil-storage"></i>
-          </button>
-          <button
-            class="btn btn-outline-warning mr-2"
-            *ngIf="item.status !== 'DISCARDED'"
-          >
-            <i class="cil-pen-nib"></i>
-          </button>
-          <button
-            class="btn btn-outline-success mr-2"
-            (click)="openAssignModal(item, searchParams)"
-          >
-            <i class="cil-task"></i>
-          </button>
-          <button
-            class="btn btn-outline-dark mr-2"
-            (click)="navigateToDeviceHistory(item.id)"
-          >
-            <i class="c-icon cil-history"></i>
-          </button>
-          <button
-            class="btn btn-outline-info mr-2"
-            (click)="openEditModal(item, searchParams)"
-          >
-            <span class="cil-brush"></span>
-          </button>
-          <button class="btn btn-outline-danger mr-2">
-            <i class="cil-trash"></i>
-          </button>
+        <div class="col-2 d-flex justify-content-end">
+          <div class="dropleft mt-2 mb-2 mr-1">
+            <a
+              [id]="'dropdownBtn' + i"
+              data-toggle="dropdown"
+              role="button"
+              class="pointer"
+              aria-haspopup="true"
+              aria-expanded="false"
+            >
+              <i class="c-icon cil-options"></i>
+            </a>
+            <div
+              [attr.aria-labelledby]="'dropdownBtn' + i"
+              class="dropdown-menu pt-0 pb-0"
+            >
+              <div class="dropdown-header bg-light py-2">
+                <strong>{{ 'GENERAL_LIST.ACTIONS' | translate }}</strong>
+              </div>
+              <a
+                class="dropdown-item pointer text-primary"
+                *ngIf="item.status !== 'IN_INVENTORY'"
+                (click)="openConfirmModal(item.id, 'inventory', searchParams)"
+                ><i class="cil-storage mr-3"></i>
+                {{ 'DEVICE_TABLE.MOVE_TO_INVENTORY' | translate }}
+              </a>
+              <a
+                class="dropdown-item pointer text-warning"
+                *ngIf="item.status !== 'DISCARDED'"
+                (click)="openConfirmModal(item.id, 'discard', searchParams)"
+                ><i class="cil-pen-nib mr-3"></i>
+                {{ 'DEVICE_TABLE.DISCARD' | translate }}
+              </a>
+              <a
+                class="dropdown-item pointer text-success"
+                (click)="openAssignModal(item, searchParams)"
+                ><i class="cil-task mr-3"></i>
+                {{ 'DEVICE_TABLE.ASSIGN' | translate }}
+              </a>
+              <a
+                class="dropdown-item pointer"
+                (click)="navigateToDeviceHistory(item.id)"
+                ><i class="cil-history mr-3"></i>
+                {{ 'DEVICE_TABLE.HISTORY' | translate }}
+              </a>
+              <a
+                class="dropdown-item pointer text-info"
+                (click)="openEditModal(item, searchParams)"
+                ><i class="cil-brush mr-3"></i>
+                {{ 'DEVICE_TABLE.EDIT' | translate }}
+              </a>
+              <a
+                class="dropdown-item pointer text-danger"
+                (click)="openConfirmModal(item.id, 'delete', searchParams)"
+                ><i class="cil-trash mr-3"></i
+                >{{ 'DEVICE_TABLE.DELETE' | translate }}
+              </a>
+            </div>
+          </div>
           <a
             data-toggle="collapse"
             [attr.data-target]="'#collapse' + i"
-            [attr.aria-expanded]="false"
             [attr.aria-controls]="'collapse' + i"
-            class="ml-2 mt-2 pointer"
-            (click)="state[i] = !state[i]"
+            class="ml-2 mt-2 pointer collapsed"
           >
-            <i class="cil-chevron-bottom" *ngIf="!state[i]"></i>
-            <i class="cil-chevron-top" *ngIf="state[i]"></i>
+            <i class="c-icon cil-chevron-bottom"></i>
           </a>
         </div>
       </div>
@@ -110,7 +132,7 @@
       <div class="card-body">
         <table class="table table-bordered">
           <tr>
-            <td>{{ 'DEVICE_HISTORY.STATUS' | translate }}</td>
+            <td class="col-35">{{ 'DEVICE_HISTORY.STATUS' | translate }}</td>
             <td>
               <span
                 class="badge rounded-pill badge-success p-2 pr-3 pl-3"
@@ -130,12 +152,12 @@
             </td>
           </tr>
           <tr>
-            <td>{{ 'DEVICE_TABLE.PRICE' | translate }}</td>
-            <td>{{ item.price | currency: 'VND' }}</td>
+            <td class="w-40">{{ 'DEVICE_TABLE.PRICE' | translate }}</td>
+            <td class="w-60">{{ item.price | currency: 'VND' }}</td>
           </tr>
           <tr>
-            <td>{{ 'DEVICE_TABLE.DESCRIPTION' | translate }}</td>
-            <td>{{ item.description }}</td>
+            <td class="w-40">{{ 'DEVICE_TABLE.DESCRIPTION' | translate }}</td>
+            <td class="w-60">{{ item.description }}</td>
           </tr>
         </table>
       </div>

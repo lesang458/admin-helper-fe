@@ -15,6 +15,7 @@ import { DeviceEditComponent } from '../device-edit/device-edit.component';
 import { tap } from 'rxjs/operators';
 import { Router } from '@angular/router';
 import { DevicesHistoryService } from 'src/app/core/services/devices-history.service';
+import { DeviceConfirmComponent } from '../device-confirm/device-confirm.component';
 
 @Component({
   selector: 'ah-device-table',
@@ -24,7 +25,6 @@ import { DevicesHistoryService } from 'src/app/core/services/devices-history.ser
 export class DeviceTableComponent implements OnInit {
   public data$: Observable<State>;
   public categories$: Observable<DeviceCategory[]>;
-  public state: boolean[];
   public currentPage = 1;
   public selectedStatus = new FormControl('ASSIGNED');
   public selectedCategory = new FormControl('');
@@ -41,12 +41,7 @@ export class DeviceTableComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.data$ = this.store.select('devices').pipe(
-      tap((data) => {
-        this.state = new Array<boolean>(data.devices.pagination.pageSize);
-        this.state = this.state.map(() => false);
-      })
-    );
+    this.data$ = this.store.select('devices');
     this.store.dispatch(new DevicesActions.FetchDeviceCategories());
     this.onPageChanged(1);
 
@@ -99,6 +94,14 @@ export class DeviceTableComponent implements OnInit {
   public openAssignModal(device: Device, params: SearchDevice): void {
     const initialState = { device, params };
     this.bsModalRef = this.modalService.show(DeviceAssignComponent, {
+      initialState,
+    });
+    this.bsModalRef.content.closeBtnName = 'Close';
+  }
+
+  public openConfirmModal(id: number, type: string, params: SearchDevice): void {
+    const initialState = { id, type, params };
+    this.bsModalRef = this.modalService.show(DeviceConfirmComponent, {
       initialState,
     });
     this.bsModalRef.content.closeBtnName = 'Close';

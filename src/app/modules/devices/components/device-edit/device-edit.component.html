@@ -16,10 +16,10 @@
 </div>
 <hr class="mt-0 mb-0" />
 <form [formGroup]="deviceForm" (ngSubmit)="onSubmit()">
-  <div class="modal-body mb-0">
+  <div class="modal-body mb-0 pb-0">
     <div class="row">
       <div class="col-12">
-        <div class="form-group">
+        <div class="form-group ml-2 mr-2">
           <label class="font-weight-bold" for="name">
             {{ 'DEVICE_EDIT.DEVICE_NAME' | translate }}
           </label>
@@ -39,8 +39,8 @@
       </div>
     </div>
     <div class="row">
-      <div class="col-12">
-        <div class="form-group">
+      <div class="col-6">
+        <div class="form-group ml-2">
           <label class="font-weight-bold" for="price">
             {{ 'DEVICE_TABLE.PRICE' | translate }}
           </label>
@@ -58,10 +58,8 @@
           </div>
         </div>
       </div>
-    </div>
-    <div class="row">
       <div class="col-6">
-        <div class="form-group">
+        <div class="form-group mr-2">
           <label class="d-inline-block font-weight-bold" for="device-category">
             {{ 'DEVICE_TABLE.TYPE_OF_DEVICE' | translate }}
           </label>
@@ -80,10 +78,9 @@
         </div>
       </div>
     </div>
-
     <div class="row">
       <div class="col-12 mb-0">
-        <div class="form-group">
+        <div class="form-group ml-2 mr-2">
           <label class="font-weight-bold" for="description">
             {{ 'DEVICE_TABLE.DESCRIPTION' | translate }}
           </label>
@@ -91,7 +88,7 @@
             type="text"
             id="description"
             class="form-control"
-            rows="2"
+            rows="3"
             formControlName="description"
           ></textarea>
           <div

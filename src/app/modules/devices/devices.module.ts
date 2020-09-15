@@ -1,5 +1,4 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
@@ -10,6 +9,7 @@ import { DeviceTableComponent } from './components/device-table/device-table.com
 import { DeviceAssignComponent } from './components/device-assign/device-assign.component';
 import { DeviceEditComponent } from './components/device-edit/device-edit.component';
 import { ModalModule, BsModalRef } from 'ngx-bootstrap/modal';
+import { DeviceConfirmComponent } from './components/device-confirm/device-confirm.component';
 import { DeviceCategoriesEditComponent } from './components/device-categories-edit/device-categories-edit.component';
 import { DeviceCategoriesListComponent } from './components/device-categories-list/device-categories-list.component';
 import { GeneralDeviceCategoriesComponent } from './pages/general-device-categories/general-device-categories.component';
@@ -20,12 +20,12 @@ import { GeneralDeviceCategoriesComponent } from './pages/general-device-categor
     DeviceTableComponent,
     DeviceAssignComponent,
     DeviceEditComponent,
+    DeviceConfirmComponent,
     DeviceCategoriesEditComponent,
     DeviceCategoriesListComponent,
-    GeneralDeviceCategoriesComponent
+    GeneralDeviceCategoriesComponent,
   ],
   imports: [
-    CommonModule,
     SharedModule,
     FormsModule,
     RouterModule.forChild(DEVICES_ROUTES),

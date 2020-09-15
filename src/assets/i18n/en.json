@@ -112,7 +112,13 @@
     "EMPTY": "Empty",
     "PRICE": "Price",
     "DESCRIPTION": "Description",
-    "CREATE_DEVICE": "Create Device"
+    "CREATE_DEVICE": "Create Device",
+    "MOVE_TO_INVENTORY": "Move to inventory",
+    "DISCARD": "Discard",
+    "ASSIGN": "Assign",
+    "HISTORY": "History",
+    "EDIT": "Edit",
+    "DELETE": "Delete"
   },
   "PROFILE_STATUS_CHANGE": {
     "TITLE_FORMER": "Confirm remove employee",
@@ -185,6 +191,14 @@
   "DEVICE_ASSIGN": {
     "TITLE": "Provide device to user",
     "NO_ASSIGN": "No assign"
+  },
+  "DEVICE_CONFIRM": {
+    "DELETE_TITLE": "Confirm delete device",
+    "DELETE_PARAM": "This device will be deleted. Do you want to continue?",
+    "DISCARD_TITLE": "Confirm discard device",
+    "DISCARD_PARAM": "This device's status will be changed to 'DISCARDED'. Do you want to continue?",
+    "INVENTORY_TITLE": "Confirm move device to inventory",
+    "INVENTORY_PARAM": "This device's status will be changed to 'IN INVENTORY'. Do you want to continue?"
   },
   "DEVICE_CATEGORIES_PAGE": {
     "TITLE": "Device Categories",
