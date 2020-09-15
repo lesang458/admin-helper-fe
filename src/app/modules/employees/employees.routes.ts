@@ -68,11 +68,11 @@ export const EMPLOYEES_ROUTES: Routes = [
     },
   },
   {
-    path: 'not-supported-ie',
+    path: 'not-supported',
     component: ErrorComponent,
     canActivate: [BrowserSupportGuardService],
     data: {
-      i18nKey: 'NOT_SUPPORTED_IE',
+      i18nKey: 'NOT_SUPPORTED',
     },
   },
 ];

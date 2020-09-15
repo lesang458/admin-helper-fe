@@ -242,7 +242,7 @@
     "TOKEN_INCORRECT": "Token không đúng!",
     "EMAIL_INCORRECT": "Email này chưa được đăng ký!"
   },
-  "NOT_SUPPORTED_IE": {
+  "NOT_SUPPORTED": {
     "TITLE": "Không hỗ trợ",
     "ERROR_CONTENT": "Trình duyệt của bạn không được hỗ trợ",
     "ERROR_DESC": "Vui lòng dùng trình duyệt khác để truy cập"

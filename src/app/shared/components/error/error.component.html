@@ -24,16 +24,16 @@
             {{ 'ERROR.DESC_5XX' | translate }}
           </div>
         </div>
-        <div *ngIf="currentURL === '/not-supported-ie'" clas>
+        <div *ngIf="currentURL === '/not-supported'">
           <img src="https://image.flaticon.com/icons/png/512/110/110742.png" alt="Not support">
           <h3>
-            {{ 'NOT_SUPPORTED_IE.ERROR_CONTENT' | translate }}
+            {{ 'NOT_SUPPORTED.ERROR_CONTENT' | translate }}
           </h3>
           <div class="error-details">
-            {{ 'NOT_SUPPORTED_IE.ERROR_DESC' | translate }}
+            {{ 'NOT_SUPPORTED.ERROR_DESC' | translate }}
           </div>
         </div>
-        <div class="error-actions" *ngIf="currentURL !== '/not-supported-ie'">
+        <div class="error-actions" *ngIf="currentURL !== '/not-supported'">
           <button
             type="button"
             class="btn btn-info"

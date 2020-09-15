@@ -20,7 +20,7 @@ export class AuthGuardService implements CanActivate {
     state: RouterStateSnapshot
   ): boolean | UrlTree {
     return this.browserSupportService.isIE()
-      ? this.router.createUrlTree(['not-supported-ie'])
+      ? this.router.createUrlTree(['not-supported'])
       : this.auth.isAuthenticated()
       ? route.routeConfig.path === 'dang-nhap'
         ? this.router.createUrlTree([''])
