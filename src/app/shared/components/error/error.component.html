@@ -1,0 +1,40 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="error-template">
+        <div *ngIf="currentURL === '/404'">
+          <h1>
+            {{ 'ERROR.TITLE_404' | translate }}
+          </h1>
+          <h2>
+            {{ 'ERROR.CONTENT_404' | translate }}
+          </h2>
+          <div class="error-details">
+            {{ 'ERROR.DESC_404' | translate }}
+          </div>
+        </div>
+        <div *ngIf="currentURL === '/5xx'">
+          <h1>
+            {{ 'ERROR.TITLE_5XX' | translate }}
+          </h1>
+          <h2>
+            {{ 'ERROR.CONTENT_5XX' | translate }}
+          </h2>
+          <div class="error-details">
+            {{ 'ERROR.DESC_5XX' | translate }}
+          </div>
+        </div>
+        <div class="error-actions">
+          <button
+            type="button"
+            class="btn btn-info"
+            [routerLink]="['/thong-tin-chung']"
+          >
+            <i class="cil-home"></i>
+            {{ 'ERROR.BUTTON' | translate }}
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

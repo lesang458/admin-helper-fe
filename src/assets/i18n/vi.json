@@ -195,6 +195,15 @@
     "CREATE_TITLE": "Tạo thể loại thiết bị",
     "NAME_MAXLENGTH": "Tên thiết bị có độ dài tối đa là 100 ký tự"
   },
+  "ERROR": {
+    "TITLE_404": "404",
+    "CONTENT_404": "Oops! Không tìm thấy",
+    "DESC_404": "Xin lỗi, đã xảy ra lỗi, không tìm thấy trang được yêu cầu!",
+    "TITLE_5XX": "5xx",
+    "CONTENT_5XX": "Houston, Đã có vấn đề xảy ra!",
+    "DESC_5XX": "Trang bạn đang tìm tạm thời không có sẵn.",
+    "BUTTON": "Trở lại trang chủ"
+  },
   "CHANGE_PASSWORD": {
     "TITLE": "Thay đổi mật khẩu",
     "SUBMIT": "Lưu",

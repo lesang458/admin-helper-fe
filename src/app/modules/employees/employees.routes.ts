@@ -4,6 +4,7 @@ import { GeneralInfoComponent } from './pages/general-info/general-info.componen
 import { DayoffResolver } from 'src/app/core/resolvers/dayoff.resolver';
 import { AuthComponent } from './pages/auth/auth.component';
 import { AuthGuardService } from 'src/app/core/helpers/auth.guard';
+import { ErrorComponent } from 'src/app/shared/components/error/error.component';
 import { UpdatePasswordComponent } from './pages/update-password/update-password.component';
 
 export const EMPLOYEES_ROUTES: Routes = [
@@ -32,6 +33,16 @@ export const EMPLOYEES_ROUTES: Routes = [
     data: {
       i18nKey: 'DAY_OFF_TABLE',
     },
+  },
+  {
+    path: '404',
+    component: ErrorComponent,
+    canActivate: [AuthGuardService],
+  },
+  {
+    path: '5xx',
+    component: ErrorComponent,
+    canActivate: [AuthGuardService],
   },
   {
     path: 'doi-mat-khau',

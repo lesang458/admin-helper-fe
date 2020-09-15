@@ -10,6 +10,7 @@ import { TranslateModule } from '@ngx-translate/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SocialAuthServiceConfig } from 'angularx-social-login';
 import { GoogleLoginProvider } from 'angularx-social-login';
+import { ErrorComponent } from './components/error/error.component';
 import { UpdatePasswordComponent } from './components/update-password/update-password.component';
 
 const modules = [
@@ -24,6 +25,7 @@ const components = [
   HeaderComponent,
   BodyComponent,
   LoadingSpinnerComponent,
+  ErrorComponent,
   UpdatePasswordComponent,
 ];
 

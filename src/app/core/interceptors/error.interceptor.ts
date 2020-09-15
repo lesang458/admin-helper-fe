@@ -30,6 +30,9 @@ export class ErrorInterceptor implements HttpInterceptor {
           if (evt.status === 201) {
             this.notifyService.success('Successfully!');
           }
+          if (evt.status >= 500) {
+            this.router.navigate(['/5xx']);
+          }
         }
       }),
       catchError((err) => {

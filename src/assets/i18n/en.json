@@ -195,6 +195,15 @@
     "CREATE_TITLE": "Device categories creation",
     "NAME_MAXLENGTH": "The name has Maximum length is 100 character"
   },
+  "ERROR": {
+    "TITLE_404": "404",
+    "CONTENT_404": "Oops! Not Found",
+    "DESC_404": "Sorry, an error has occured, Requested page not found!",
+    "TITLE_5XX": "5xx",
+    "CONTENT_5XX": "Houston, we have a problem!",
+    "DESC_5XX": "The page you are looking for is temporarily unavailable.",
+    "BUTTON": "Go Back Home"
+  },
   "CHANGE_PASSWORD": {
     "TITLE": "Change password",
     "SUBMIT": "Save",
