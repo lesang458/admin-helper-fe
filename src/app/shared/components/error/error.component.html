@@ -2,23 +2,27 @@
   <div class="row">
     <div class="col-md-12">
       <div class="error-template">
-        <h1 *ngIf="currentURL === '/404'">
-          {{ 'ERROR.TITLE_404' | translate }}
-        </h1>
-        <h1 *ngIf="currentURL === '/5xx'">
-          {{ 'ERROR.TITLE_5XX' | translate }}
-        </h1>
-        <h2 *ngIf="currentURL === '/404'">
-          {{ 'ERROR.CONTENT_404' | translate }}
-        </h2>
-        <h2 *ngIf="currentURL === '/5xx'">
-          {{ 'ERROR.CONTENT_5XX' | translate }}
-        </h2>
-        <div class="error-details" *ngIf="currentURL === '/404'">
-          {{ 'ERROR.DESC_404' | translate }}
+        <div *ngIf="currentURL === '/404'">
+          <h1>
+            {{ 'ERROR.TITLE_404' | translate }}
+          </h1>
+          <h2>
+            {{ 'ERROR.CONTENT_404' | translate }}
+          </h2>
+          <div class="error-details">
+            {{ 'ERROR.DESC_404' | translate }}
+          </div>
         </div>
-        <div class="error-details" *ngIf="currentURL === '/5xx'">
-          {{ 'ERROR.DESC_5XX' | translate }}
+        <div *ngIf="currentURL === '/5xx'">
+          <h1>
+            {{ 'ERROR.TITLE_5XX' | translate }}
+          </h1>
+          <h2>
+            {{ 'ERROR.CONTENT_5XX' | translate }}
+          </h2>
+          <div class="error-details">
+            {{ 'ERROR.DESC_5XX' | translate }}
+          </div>
         </div>
         <div class="error-actions">
           <button
