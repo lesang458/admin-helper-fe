@@ -10,10 +10,15 @@ import { Observable, throwError } from 'rxjs';
 import { catchError, tap } from 'rxjs/operators';
 import { NotifyService } from 'src/app/shared/services/notify.service';
 import { Router } from '@angular/router';
+import { AuthService } from '../services/auth.service';
 
 @Injectable()
 export class ErrorInterceptor implements HttpInterceptor {
-  constructor(private notifyService: NotifyService, private router: Router) {}
+  constructor(
+    private notifyService: NotifyService,
+    private router: Router,
+    private auth: AuthService
+  ) {}
 
   intercept(
     request: HttpRequest<any>,
@@ -25,6 +30,9 @@ export class ErrorInterceptor implements HttpInterceptor {
           if (evt.status === 201) {
             this.notifyService.success('Successfully!');
           }
+          if (evt.status >= 500) {
+            this.router.navigate(['/5xx']);
+          }
         }
       }),
       catchError((err) => {
@@ -34,7 +42,9 @@ export class ErrorInterceptor implements HttpInterceptor {
           error === 'You seem to have an expired token'
         ) {
           localStorage.removeItem('token');
-          this.router.navigate(['/login']);
+          this.auth.getCurrentVerifyStep() !== 1
+            ? this.router.navigate(['/dang-nhap'])
+            : null;
         }
         this.notifyService.error(error);
 

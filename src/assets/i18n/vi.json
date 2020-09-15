@@ -208,5 +208,32 @@
     "EDIT_TITLE": "Sửa thể loại thiết bị",
     "CREATE_TITLE": "Tạo thể loại thiết bị",
     "NAME_MAXLENGTH": "Tên thiết bị có độ dài tối đa là 100 ký tự"
+  },
+  "ERROR": {
+    "TITLE_404": "404",
+    "CONTENT_404": "Oops! Không tìm thấy",
+    "DESC_404": "Xin lỗi, đã xảy ra lỗi, không tìm thấy trang được yêu cầu!",
+    "TITLE_5XX": "5xx",
+    "CONTENT_5XX": "Houston, Đã có vấn đề xảy ra!",
+    "DESC_5XX": "Trang bạn đang tìm tạm thời không có sẵn.",
+    "BUTTON": "Trở lại trang chủ"
+  },
+  "CHANGE_PASSWORD": {
+    "TITLE": "Thay đổi mật khẩu",
+    "SUBMIT": "Lưu",
+    "NEW_PASSWORD": "Mật khẩu mới",
+    "CONFIRM_PASSWORD": "Xác nhận mật khẩu",
+    "OLD_PASSWORD": "Mật khẩu cũ"
+  },
+  "RESET_PASSWORD": {
+    "TITLE": "Khôi phục mật khẩu",
+    "PARAMS1": "Hãy nhập địa chỉ email khôi phục",
+    "PARAMS2": "Hãy nhập mã vừa được gửi đến email của bạn",
+    "PARAMS3": "Hãy nhập mật khẩu mới",
+    "NAVIGATE_TO_LOGIN": "Trở về trang đăng nhập",
+    "NEXT": "Tiếp tục",
+    "INCORRECT": "Mật khẩu không đúng!",
+    "TOKEN_INCORRECT": "Token không đúng!",
+    "EMAIL_INCORRECT": "Email này chưa được đăng ký!"
   }
 }
