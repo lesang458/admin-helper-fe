@@ -23,7 +23,12 @@
           <label class="font-weight-bold" for="name">
             {{ 'DEVICE_EDIT.DEVICE_NAME' | translate }}
           </label>
-          <input type="text" id="name" class="form-control" formControlName="name" />
+          <input
+            type="text"
+            id="name"
+            class="form-control"
+            formControlName="name"
+          />
           <div
             *ngIf="f.name.invalid && (f.name.dirty || f.name.touched)"
             class="invalid-message"
@@ -100,7 +105,11 @@
     <button type="button" class="btn btn-secondary" (click)="bsModalRef.hide()">
       {{ 'PROFILE_CREATE.CLOSE' | translate }}
     </button>
-    <button type="submit" class="btn btn-success" [disabled]="deviceForm.invalid">
+    <button
+      type="submit"
+      class="btn btn-success"
+      [disabled]="deviceForm.invalid"
+    >
       {{ 'PROFILE_CREATE.SAVE' | translate }}
     </button>
   </div>
