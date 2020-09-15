@@ -197,7 +197,10 @@
   },
   "CHANGE_PASSWORD": {
     "TITLE": "Change password",
-    "SUBMIT": "Save"
+    "SUBMIT": "Save",
+    "NEW_PASSWORD": "New password",
+    "CONFIRM_PASSWORD": "Confirm new password",
+    "OLD_PASSWORD": "Old password"
   },
   "RESET_PASSWORD": {
     "TITLE": "Reset password",

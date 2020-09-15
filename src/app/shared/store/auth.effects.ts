@@ -73,7 +73,7 @@ export class AuthEffect {
           } else {
             this.auth.setVerifyStep(1);
           }
-          return this.auth.resetPwHasError;
+          return this.auth.currentResetPwHasError;
         })
       );
     })
@@ -92,7 +92,7 @@ export class AuthEffect {
           }),
           catchError(() => {
             this.auth.setResetPwHasError(true);
-            return this.auth.resetPwHasError;
+            return this.auth.currentResetPwHasError;
           })
         );
     })

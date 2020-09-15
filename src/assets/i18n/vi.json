@@ -197,7 +197,10 @@
   },
   "CHANGE_PASSWORD": {
     "TITLE": "Thay đổi mật khẩu",
-    "SUBMIT": "Lưu"
+    "SUBMIT": "Lưu",
+    "NEW_PASSWORD": "Mật khẩu mới",
+    "CONFIRM_PASSWORD": "Xác nhận mật khẩu",
+    "OLD_PASSWORD": "Mật khẩu cũ"
   },
   "RESET_PASSWORD": {
     "TITLE": "Khôi phục mật khẩu",

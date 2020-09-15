@@ -10,9 +10,9 @@
               <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
                 <div class="input-group mb-3">
                   <div class="input-group-prepend">
-                    <span class="input-group-text"
-                      ><i class="cib-gmail"></i
-                    ></span>
+                    <span class="input-group-text">
+                      <i class="cib-gmail"></i>
+                    </span>
                   </div>
                   <input
                     class="form-control"
@@ -35,23 +35,20 @@
                 </div>
                 <div class="input-group mb-4">
                   <div class="input-group-prepend">
-                    <span class="input-group-text"
-                      ><i class="cil-lock-locked"></i
-                    ></span>
+                    <span class="input-group-text">
+                      <i class="cil-lock-locked"></i>
+                    </span>
                   </div>
                   <input
                     class="form-control"
                     type="password"
                     formControlName="password"
-                    placeholder="Password"
+                    placeholder="{{ 'PROFILE_CREATE.PASSWORD_INVALID' | translate }}"
                     required
                   />
                 </div>
                 <div
-                  *ngIf="
-                    f.password.invalid &&
-                    (f.password.dirty || f.password.touched)
-                  "
+                  *ngIf="f.password.invalid && (f.password.dirty || f.password.touched)"
                   class="mess-invalid"
                 >
                   <div *ngIf="f.password.errors.required">
