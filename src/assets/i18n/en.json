@@ -203,5 +203,23 @@
     "CONTENT_5XX": "Houston, we have a problem!",
     "DESC_5XX": "The page you are looking for is temporarily unavailable.",
     "BUTTON": "Go Back Home"
+  },
+  "CHANGE_PASSWORD": {
+    "TITLE": "Change password",
+    "SUBMIT": "Save",
+    "NEW_PASSWORD": "New password",
+    "CONFIRM_PASSWORD": "Confirm new password",
+    "OLD_PASSWORD": "Old password"
+  },
+  "RESET_PASSWORD": {
+    "TITLE": "Reset password",
+    "PARAMS1": "Please enter your recovery email",
+    "PARAMS2": "Please enter the code was sent to your email",
+    "PARAMS3": "Please enter a new password!",
+    "NAVIGATE_TO_LOGIN": "Do you want to login page?",
+    "NEXT": "Next",
+    "INCORRECT": "Password is incorrect!",
+    "TOKEN_INCORRECT": "Token is incorrect!",
+    "EMAIL_INCORRECT": "This email is not registered"
   }
 }

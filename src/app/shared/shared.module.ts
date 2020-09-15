@@ -1,3 +1,4 @@
+import { RouterModule } from '@angular/router';
 import { NgxLoadingModule } from 'ngx-loading';
 import { LoadingSpinnerComponent } from 'src/app/shared/components/loading-spinner/loading-spinner.component';
 import { CommonModule } from '@angular/common';
@@ -10,7 +11,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SocialAuthServiceConfig } from 'angularx-social-login';
 import { GoogleLoginProvider } from 'angularx-social-login';
 import { ErrorComponent } from './components/error/error.component';
-import { RouterModule } from '@angular/router';
+import { UpdatePasswordComponent } from './components/update-password/update-password.component';
 
 const modules = [
   CommonModule,
@@ -25,6 +26,7 @@ const components = [
   BodyComponent,
   LoadingSpinnerComponent,
   ErrorComponent,
+  UpdatePasswordComponent,
 ];
 
 @NgModule({

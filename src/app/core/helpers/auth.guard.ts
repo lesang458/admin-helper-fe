@@ -15,7 +15,14 @@ export class AuthGuardService implements CanActivate {
     state: RouterStateSnapshot
   ): boolean | UrlTree {
     return this.auth.isAuthenticated()
+      ? route.routeConfig.path === 'dang-nhap'
+        ? this.router.createUrlTree([''])
+        : route.routeConfig.path === 'khoi-phuc-mat-khau'
+        ? this.router.createUrlTree([''])
+        : true
+      : route.routeConfig.path === 'dang-nhap' ||
+        route.routeConfig.path === 'khoi-phuc-mat-khau'
       ? true
-      : this.router.createUrlTree(['login']);
+      : this.router.createUrlTree(['dang-nhap']);
   }
 }
