@@ -20,6 +20,7 @@ export class DayoffTableComponent implements OnInit {
   public searchInput = new FormControl('');
   public selectedType = new FormControl('VACATION');
   public currentPage = 1;
+  public currentSearch = '';
   public sortBirthDateType = 0;
   public sortNameType = 0;
   public selectedEmployee: Employee;
@@ -98,10 +99,13 @@ export class DayoffTableComponent implements OnInit {
   }
 
   public onSearchSubmit(): void {
-    if (this.currentPage === 1) {
-      this.onPageChanged(1);
-    } else {
-      this.currentPage = 1;
+    if (this.currentSearch !== this.searchInput.value.replace(/\s/g, '')) {
+      this.currentSearch = this.searchInput.value.replace(/\s/g, '');
+      if (this.currentPage === 1) {
+        this.onPageChanged(1);
+      } else {
+        this.currentPage = 1;
+      }
     }
   }
 }

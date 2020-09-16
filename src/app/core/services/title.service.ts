@@ -1,4 +1,4 @@
-import { Subject } from 'rxjs';
+import { BehaviorSubject } from 'rxjs';
 import { Injectable } from '@angular/core';
 import { Title } from '@angular/platform-browser';
 import { TranslateService } from '@ngx-translate/core';
@@ -7,7 +7,7 @@ import { TranslateService } from '@ngx-translate/core';
 export class TitleService {
   public i18nKey: string;
 
-  public isShowLoading = new Subject();
+  public isShowLoading = new BehaviorSubject<boolean>(true);
 
   constructor(
     private titleService: Title,

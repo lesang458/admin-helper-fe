@@ -1,5 +1,5 @@
 import { RouterModule } from '@angular/router';
-import { NgxLoadingModule } from 'ngx-loading';
+import { NgxLoadingModule, ngxLoadingAnimationTypes } from 'ngx-loading';
 import { LoadingSpinnerComponent } from 'src/app/shared/components/loading-spinner/loading-spinner.component';
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
@@ -33,7 +33,17 @@ const components = [
 
 @NgModule({
   declarations: [...components],
-  imports: [...modules, NgxLoadingModule.forRoot({})],
+  imports: [
+    ...modules,
+    NgxLoadingModule.forRoot({
+      animationType: ngxLoadingAnimationTypes.circleSwish,
+      backdropBackgroundColour: 'transparent',
+      backdropBorderRadius: '1px',
+      primaryColour: '#000000',
+      secondaryColour: '#ffffff',
+      tertiaryColour: '#ffffff',
+    }),
+  ],
   exports: [...components, ...modules],
   providers: [
     {

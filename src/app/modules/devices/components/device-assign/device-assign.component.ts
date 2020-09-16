@@ -22,6 +22,7 @@ export class DeviceAssignComponent implements OnInit {
   public searchFormControl = new FormControl('');
   public assigned = new FormControl('1');
   public currentPage = 1;
+  private currentSearch = '';
   public sortBirthDateType = 0;
   public sortNameType = 0;
   public sortJoinDateType = 0;
@@ -85,10 +86,15 @@ export class DeviceAssignComponent implements OnInit {
   }
 
   public onSearchSubmit(): void {
-    if (this.currentPage === 1) {
-      this.onPageChanged(1);
-    } else {
-      this.currentPage = 1;
+    if (
+      this.currentSearch !== this.searchFormControl.value.replace(/\s/g, '')
+    ) {
+      this.currentSearch = this.searchFormControl.value.replace(/\s/g, '');
+      if (this.currentPage === 1) {
+        this.onPageChanged(1);
+      } else {
+        this.currentPage = 1;
+      }
     }
   }
 }

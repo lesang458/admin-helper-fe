@@ -67,13 +67,12 @@ export class AuthEffect {
     switchMap((action: AuthActions.SendMail) => {
       const body = snakecaseKeys(action.payload);
       return this.http.post<any>(`${environment.APILink}/password`, body).pipe(
-        catchError((err) => {
-          if (err !== 'OK') {
+        tap((val) => {
+          if (val.message !== 'ok') {
             this.auth.setResetPwHasError(true);
           } else {
             this.auth.setVerifyStep(1);
           }
-          return this.auth.currentResetPwHasError;
         })
       );
     })
