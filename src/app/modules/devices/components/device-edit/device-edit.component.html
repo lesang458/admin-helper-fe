@@ -45,10 +45,11 @@
             {{ 'DEVICE_TABLE.PRICE' | translate }}
           </label>
           <input
-            type="text"
             id="price"
             class="form-control"
             formControlName="price"
+            currencyMask
+            [options]="{ prefix: 'đ ', precision: '0' }"
           />
           <div
             *ngIf="f.price.invalid && (f.price.dirty || f.price.touched)"
