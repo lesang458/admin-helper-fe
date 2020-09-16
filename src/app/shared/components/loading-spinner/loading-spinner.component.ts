@@ -1,3 +1,4 @@
+import { TitleService } from './../../../core/services/title.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -6,7 +7,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./loading-spinner.component.scss'],
 })
 export class LoadingSpinnerComponent implements OnInit {
-  constructor() {}
+  constructor(public titleService: TitleService) {}
 
   ngOnInit(): void {}
 }

@@ -19,6 +19,7 @@ export class GeneralListComponent implements OnInit {
   public employeeObs$: Observable<any>;
   public searchFormControl = new FormControl('');
   public currentPage = 1;
+  private currentSearch = '';
   public searchStatusFormControl = new FormControl('');
   public sortBirthDateType = 0;
   public sortNameType = 0;
@@ -92,10 +93,13 @@ export class GeneralListComponent implements OnInit {
   }
 
   public onSearchSubmit(): void {
-    if (this.currentPage === 1) {
-      this.onPageChanged(1);
-    } else {
-      this.currentPage = 1;
+    if (this.currentSearch !== this.searchFormControl.value.replace(/\s/g, '')) {
+      this.currentSearch = this.searchFormControl.value.replace(/\s/g, '');
+      if (this.currentPage === 1) {
+        this.onPageChanged(1);
+      } else {
+        this.currentPage = 1;
+      }
     }
   }
 }
