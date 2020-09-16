@@ -19,7 +19,6 @@
   "GENERAL_LIST": {
     "TITLE": "Danh sách nhân viên",
     "NAME": "Họ và tên",
-    "EMAIL": "Email",
     "BIRTHDAY": "Ngày sinh",
     "JOIN_DATE": "Ngày vào công ty",
     "PHONE_NUMBER": "Số điện thoại",

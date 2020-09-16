@@ -19,7 +19,6 @@
   "GENERAL_LIST": {
     "TITLE": "Employees List",
     "NAME": "Name",
-    "EMAIL": "Email",
     "BIRTHDAY": "Birthday",
     "JOIN_DATE": "Join date",
     "PHONE_NUMBER": "Phone number",
