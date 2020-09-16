@@ -13,7 +13,7 @@
             class="form-control"
             [formControl]="searchInput"
             id="inlineFormInputGroupUsername"
-            placeholder="VD: Nguyen, 2020, ..."
+            placeholder="{{ 'GENERAL_LIST.PLACEHOLDER' | translate }}"
             (blur)="onSearchSubmit()"
             (search)="onSearchSubmit()"
           />
@@ -67,7 +67,7 @@
             <th scope="col" class="col-leaves">
               {{ 'DAY_OFF_TABLE.NUMBER_OF_LEAVES_REMAINING' | translate }}
             </th>
-            <th scope="col" class="col-action">
+            <th scope="col" class="col-action text-center">
               {{ 'DAY_OFF_TABLE.ACTION' | translate }}
             </th>
           </tr>

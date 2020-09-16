@@ -25,7 +25,6 @@ export class ProfileCreateComponent implements OnInit {
   public id: number;
   public type: string;
   public refresh: SearchParams;
-  public dataSource: Employee;
   public profileForm = new FormGroup({
     firstName: new FormControl('', [
       Validators.minLength(2),
@@ -58,13 +57,12 @@ export class ProfileCreateComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    if (this.type === 'detail' || this.type === 'edit') {
+    if (this.type === 'edit') {
       this.store.dispatch(new EmployeeActions.DetailEmployee(this.id));
       this.store
         .select((s) => s.employees.detaiEmployee)
         .subscribe((data: Employee) => {
           if (data) {
-            this.dataSource = data;
             this.profileForm.patchValue(data);
             this.initState(data?.dayOffInfos?.length);
             this.dayOffForm = new FormGroup({
@@ -100,9 +98,6 @@ export class ProfileCreateComponent implements OnInit {
           ),
         });
       });
-    }
-    if (this.type === 'detail') {
-      this.profileForm.disable();
     }
   }
 
