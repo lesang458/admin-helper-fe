@@ -44,6 +44,7 @@
       </div>
     </div>
     <div class="table-responsive" *ngIf="employeeObs$ | async as employeeObs">
+
       <table class="table table-bordered">
         <thead>
           <tr>
@@ -86,7 +87,10 @@
             </th>
           </tr>
         </thead>
+        <ah-loading-spinner></ah-loading-spinner>
+
         <tbody>
+
           <tr *ngFor="let item of employeeObs.employees; let i = index">
             <th scope="row">
               {{ i + 1 + (employeeObs.pagination.currentPage - 1) * 10 }}

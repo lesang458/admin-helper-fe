@@ -1,1 +1,1 @@
-<ngx-loading [show]="true" [config]="{ backdropBorderRadius: '3px' }"></ngx-loading>
+<ngx-loading [show]="titleService.isShowLoading | async" [config]="{ backdropBorderRadius: '3px' }"></ngx-loading>

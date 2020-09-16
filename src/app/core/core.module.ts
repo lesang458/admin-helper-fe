@@ -7,7 +7,6 @@ import { ErrorInterceptor } from './interceptors/error.interceptor';
 import { LoadingInterceptor } from './interceptors/loading.interceptor';
 
 @NgModule({
-  declarations: [],
   imports: [CommonModule, BrowserModule],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true },

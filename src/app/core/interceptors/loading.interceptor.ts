@@ -1,3 +1,4 @@
+import { TitleService } from './../services/title.service';
 import { Injectable } from '@angular/core';
 import {
   HttpInterceptor,
@@ -13,19 +14,19 @@ export class LoadingInterceptor implements HttpInterceptor {
   public modalRef: BsModalRef;
   private totalRequests = 0;
 
-  constructor(private modalService: BsModalService) {}
+  constructor(
+    private modalService: BsModalService,
+    private titleService: TitleService
+  ) {}
 
   intercept(request: HttpRequest<any>, next: HttpHandler) {
-    if (this.totalRequests === 0) {
-      this.modalRef = this.modalService.show(LoadingSpinnerComponent);
-    }
     this.totalRequests++;
-
+    this.titleService.isShowLoading.next(true);
     return next.handle(request).pipe(
       finalize(() => {
         this.totalRequests--;
         if (this.totalRequests === 0) {
-          this.modalRef.hide();
+          this.titleService.isShowLoading.next(true);
         }
         return 0;
       })

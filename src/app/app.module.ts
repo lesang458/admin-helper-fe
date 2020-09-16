@@ -51,7 +51,10 @@ export function LoaderFactory() {
     SocialLoginModule,
     ModalModule.forRoot(),
   ],
-  providers: [{ provide: JWT_OPTIONS, useValue: JWT_OPTIONS }, JwtHelperService],
+  providers: [
+    { provide: JWT_OPTIONS, useValue: JWT_OPTIONS },
+    JwtHelperService,
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
