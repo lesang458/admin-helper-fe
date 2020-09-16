@@ -26,7 +26,7 @@ export class DeviceTableComponent implements OnInit {
   public data$: Observable<State>;
   public categories$: Observable<DeviceCategory[]>;
   public currentPage = 1;
-  public selectedStatus = new FormControl('ASSIGNED');
+  public selectedStatus = new FormControl('');
   public selectedCategory = new FormControl('');
   public deviceParams: DeviceParams;
   public bsModalRef: BsModalRef;
@@ -99,7 +99,11 @@ export class DeviceTableComponent implements OnInit {
     this.bsModalRef.content.closeBtnName = 'Close';
   }
 
-  public openConfirmModal(id: number, type: string, params: SearchDevice): void {
+  public openConfirmModal(
+    id: number,
+    type: string,
+    params: SearchDevice
+  ): void {
     const initialState = { id, type, params };
     this.bsModalRef = this.modalService.show(DeviceConfirmComponent, {
       initialState,

@@ -23,6 +23,7 @@ export class HeaderComponent implements OnInit {
   ngOnInit(): void {}
 
   public switchLanguage(language: string): void {
+    localStorage.setItem('language', language);
     this.translate.use(language);
     this.titleService.setTitle(
       `AH | ${this.translate.instant(this.titleSv.i18nKey)}`

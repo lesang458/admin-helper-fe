@@ -7,3 +7,10 @@
     position: fixed !important;
   }
 }
+
+body {
+  &::-webkit-scrollbar {
+    display: none;
+  }
+  -ms-overflow-style: none;
+}

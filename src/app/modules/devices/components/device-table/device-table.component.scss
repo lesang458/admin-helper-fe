@@ -1,8 +1,7 @@
 .card {
-
   .card-header {
     .c-icon {
-      transition: .3s transform ease-in-out;
+      transition: 0.3s transform ease-in-out;
     }
 
     .collapsed {
@@ -20,11 +19,25 @@
     width: 35%;
   }
 
+  .col-action {
+    width: 10%;
+  }
+
+  .col-15 {
+    width: 15%;
+  }
+
   .pointer {
     cursor: pointer;
   }
 
   .black-text {
     color: black;
+  }
+}
+
+div {
+  .col-15 {
+    width: 15%;
   }
 }
