@@ -47,7 +47,6 @@
       <table class="table table-bordered">
         <thead>
           <tr>
-            <th scope="col" class="col-id">ID</th>
             <th
               scope="col"
               class="pointer col-name"
@@ -56,6 +55,9 @@
               {{ 'GENERAL_LIST.NAME' | translate }}
               <i class="cil-arrow-top" *ngIf="sortNameType === 1"></i>
               <i class="cil-arrow-bottom" *ngIf="sortNameType === 2"></i>
+            </th>
+            <th scope="col" class="col-email">
+              {{ 'GENERAL_LIST.EMAIL' | translate }}
             </th>
             <th
               scope="col"
@@ -78,24 +80,22 @@
             <th scope="col" class="col-date">
               {{ 'GENERAL_LIST.PHONE_NUMBER' | translate }}
             </th>
-            <th scope="col" class="col-status">
+            <th scope="col" class="col-status text-center">
               {{ 'GENERAL_LIST.STATUS' | translate }}
             </th>
-            <th scope="col" class="col-status">
+            <th scope="col" class="col-status text-center">
               {{ 'GENERAL_LIST.ACTIONS' | translate }}
             </th>
           </tr>
         </thead>
         <tbody>
           <tr *ngFor="let item of employeeObs.employees; let i = index">
-            <th scope="row">
-              {{ i + 1 + (employeeObs.pagination.currentPage - 1) * 10 }}
-            </th>
             <td>{{ item.firstName + ' ' + item.lastName }}</td>
+            <td>{{ item.email }}</td>
             <td>{{ item.birthdate | date: 'dd/MM/yyyy' }}</td>
             <td>{{ item.joinDate | date: 'dd/MM/yyyy' }}</td>
             <td>{{ item.phoneNumber }}</td>
-            <td>
+            <td class="text-center">
               <span
                 class="badge rounded-pill badge-danger p-2"
                 *ngIf="item.status !== 'ACTIVE'"
@@ -108,12 +108,6 @@
               >
             </td>
             <td class="d-flex justify-content-center">
-              <button
-                class="btn btn-outline-info mr-2"
-                (click)="openModalWithComponent(item.id, 'detail', null)"
-              >
-                <span class="cil-external-link"></span>
-              </button>
               <button
                 class="btn btn-outline-primary mr-2"
                 (click)="openModalWithComponent(item.id, 'edit', searchParams)"

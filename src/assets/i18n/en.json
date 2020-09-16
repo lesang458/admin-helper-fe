@@ -19,6 +19,7 @@
   "GENERAL_LIST": {
     "TITLE": "Employees List",
     "NAME": "Name",
+    "EMAIL": "Email",
     "BIRTHDAY": "Birthday",
     "JOIN_DATE": "Join date",
     "PHONE_NUMBER": "Phone number",
@@ -94,10 +95,6 @@
     "MESS_SUCCESS": "Created successfully!",
     "CLOSE": "Close",
     "SAVE": "Save"
-  },
-  "PROFILE_DETAIL": {
-    "TITLE": "Detail Employee Profile",
-    "STATUS": "Status"
   },
   "PROFILE_EDIT": {
     "TITLE": "Edit Employee Profile"

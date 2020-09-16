@@ -15,19 +15,10 @@
     cursor: pointer;
   }
 
-  .col-id {
-    width: 5%;
-  }
-
-  .col-name {
-    width: 30%;
-  }
-
-  .col-date {
-    width: 15%;
-  }
-
+  .col-email,
+  .col-name,
+  .col-date,
   .col-status {
-    width: 10%;
+    width: 15%;
   }
 }
