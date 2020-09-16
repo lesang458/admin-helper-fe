@@ -104,8 +104,8 @@
     "PARAM_FORMER": "Trạng thái của nhân viên này sẽ được thay đổi thành 'CỰU NHÂN VIÊN'. Bạn có muốn tiếp tục?",
     "TITLE_ACTIVE": "Xác nhận kích hoạt nhân viên",
     "PARAM_ACTIVE": "Trạng thái của nhân viên này sẽ được thay đổi thành 'ĐANG HOẠT ĐỘNG'. Bạn có muốn tiếp tục?",
-    "ABORT": "Hủy bỏ",
-    "ACCEPT": "Đồng ý"
+    "ABORT": "Không",
+    "ACCEPT": "Có"
   },
   "DEVICE_TABLE": {
     "TITLE": "Danh sách thiết bị",
