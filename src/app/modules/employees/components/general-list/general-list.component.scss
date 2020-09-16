@@ -15,13 +15,20 @@
     cursor: pointer;
   }
 
+  .col-name {
+    width: 20%;
+  }
+
   .col-email,
-  .col-name,
   .col-date {
     width: 15%;
   }
 
   .col-status {
     width: 10%;
+  }
+
+  .badge{
+    width: 75px;
   }
 }

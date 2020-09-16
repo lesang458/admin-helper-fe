@@ -40,7 +40,8 @@
     "BIRTHDAY": "Ngày sinh",
     "TOTAL_LEAVES": "Tổng phép",
     "NUMBER_OF_LEAVES_REMAINING": "Phép còn lại",
-    "ACTION": "Hành động"
+    "ACTION": "Hành động",
+    "SUBMIT_TIME_OFF": "Nhập ngày phép"
   },
   "REQUEST-DAY-OFF": {
     "AUTH": "Duyệt phép",

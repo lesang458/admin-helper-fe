@@ -39,8 +39,9 @@
     "NAME": "Name",
     "BIRTHDAY": "Birthday",
     "TOTAL_LEAVES": "Total leaves",
-    "NUMBER_OF_LEAVES_REMAINING": "Number of leaves remaining",
-    "ACTION": "Action"
+    "NUMBER_OF_LEAVES_REMAINING": "Leaves remaining",
+    "ACTION": "Action",
+    "SUBMIT_TIME_OFF": "Submit Time Off"
   },
   "REQUEST-DAY-OFF": {
     "AUTH": "Time off",

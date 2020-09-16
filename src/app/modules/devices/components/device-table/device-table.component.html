@@ -56,19 +56,20 @@
   <div
     class="row ml-1 mr-1 mb-2"
     *ngIf="data.devices.pagination.pageSize !== 0"
-  >
-    <div class="w-25 pl-2 font-weight-bold">
+  > 
+    <div class="w-25 pl-2 font-weight-bold border-top pt-2">
       {{ 'DEVICE_EDIT.DEVICE_NAME' | translate }}
     </div>
-    <div class="w-25 pl-2 font-weight-bold">
+    <div class="w-25 pl-2 font-weight-bold border-top pt-2">
       {{ 'DEVICE_TABLE.CATEGORY_NAME' | translate }}
     </div>
-    <div class="w-25 pl-2 font-weight-bold">
+    <div class="w-25 pl-2 font-weight-bold border-top pt-2">
       {{ 'DEVICE_TABLE.ASSIGNED_TO' | translate }}
     </div>
-    <div class="col-15 d-flex justify-content-center font-weight-bold">
+    <div class="col-15 d-flex justify-content-center font-weight-bold border-top pt-2">
       {{ 'DEVICE_HISTORY.STATUS' | translate }}
     </div>
+    <div class="border-top col-action pt-2"></div>
   </div>
   <div
     class="card mb-1 border-secondary"

@@ -91,35 +91,35 @@
               *ngFor="let item of data.data; let i = index"
               (click)="openModalWithComponent(item.id)"
             >
-              <th scope="row">
+              <th scope="row" class="align-middle">
                 {{ i + 1 + (data.pagination.currentPage - 1) * 10 }}
               </th>
-              <td>{{ item.fromDate | date: 'dd/MM/yyyy' }}</td>
-              <td>{{ item.toDate | date: 'dd/MM/yyyy' }}</td>
-              <td class="text-center">
+              <td class="align-middle">{{ item.fromDate | date: 'dd/MM/yyyy' }}</td>
+              <td class="align-middle">{{ item.toDate | date: 'dd/MM/yyyy' }}</td>
+              <td class="text-center align-center">
                 <span
                   class="badge rounded-pill badge-danger p-2"
                   *ngIf="item?.status === 'discarded'"
                   >{{ 'DEVICE_HISTORY.DISCARDED' | translate }}
                 </span>
                 <span
-                  class="badge rounded-pill badge-success p-2"
+                  class="badge rounded-pill badge-info p-2"
                   *ngIf="item?.status === 'in_inventory'"
                 >
                   {{ 'DEVICE_HISTORY.IN_INVENTORY' | translate }}
                 </span>
                 <span
-                  class="badge rounded-pill badge-info p-2"
+                  class="badge rounded-pill badge-success p-2"
                   *ngIf="item?.status === 'assigned'"
                 >
                   {{ 'DEVICE_HISTORY.ASSIGNED' | translate }}
                 </span>
               </td>
-              <td>{{ getUserName(item.user) }}</td>
+              <td class="align-middle">{{ getUserName(item.user) }}</td>
             </tr>
           </tbody>
         </table>
-        <div class="col-12" *ngIf="data.pagination.totalCount !== 0">
+        <div class="col-12 pr-0" *ngIf="data.pagination.totalCount !== 0">
           <pagination
             [totalItems]="data.pagination.totalCount"
             [maxSize]="3"
