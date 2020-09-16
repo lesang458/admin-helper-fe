@@ -10,4 +10,5 @@ export class RouteConstant {
   public static readonly deviceHistory = 'device-history';
   public static readonly devices = 'devices';
   public static readonly dayOffCategories = 'day-off-categories';
+  public static readonly notSupported = 'not-supported';
 }

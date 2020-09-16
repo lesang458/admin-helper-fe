@@ -16,6 +16,7 @@ import { tap } from 'rxjs/operators';
 import { Router } from '@angular/router';
 import { DevicesHistoryService } from 'src/app/core/services/devices-history.service';
 import { DeviceConfirmComponent } from '../device-confirm/device-confirm.component';
+import { RouteConstant } from 'src/app/shared/constants/route.constant';
 
 @Component({
   selector: 'ah-device-table',
@@ -80,7 +81,7 @@ export class DeviceTableComponent implements OnInit {
 
   public navigateToDeviceHistory(id: number): void {
     this.devicesHistoryService.setCurrentId(id);
-    this.router.navigateByUrl('/lich-su-thiet-bi');
+    this.router.navigateByUrl(`/${RouteConstant.deviceHistory}`);
   }
 
   public openEditModal(selectedDevice: Device, params: SearchDevice): void {

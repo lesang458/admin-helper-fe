@@ -84,7 +84,7 @@
                     <button
                       class="btn btn-ghost-info px-2"
                       type="button"
-                      [routerLink]="['/khoi-phuc-mat-khau']"
+                      (click)="onNavigateToResetPage()"
                     >
                       {{ 'LOGIN.FORGOT_PASSWORD' | translate }}
                     </button>

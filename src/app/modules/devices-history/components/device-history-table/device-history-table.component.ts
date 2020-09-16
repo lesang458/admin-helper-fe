@@ -14,6 +14,7 @@ import { State } from 'src/app/modules/devices/store/devices.reducer';
 import { DeviceHistoryDetailComponent } from '../device-history-detail/device-history-detail.component';
 import { Router, NavigationEnd } from '@angular/router';
 import { DevicesHistoryService } from 'src/app/core/services/devices-history.service';
+import { RouteConstant } from 'src/app/shared/constants/route.constant';
 
 @Component({
   selector: 'ah-device-history-table',
@@ -33,10 +34,10 @@ export class DeviceHistoryTableComponent implements OnInit {
     private modalService: BsModalService,
     private router: Router,
     private devicesHistoryService: DevicesHistoryService,
-    private translate: TranslateService,
+    private translate: TranslateService
   ) {
     router.events.subscribe((val: NavigationEnd) => {
-      if (val.url && val.url !== '/lich-su-thiet-bi') {
+      if (val.url && val.url !== `/${RouteConstant.deviceHistory}`) {
         devicesHistoryService.setCurrentId(-1);
       }
     });
@@ -74,21 +75,20 @@ export class DeviceHistoryTableComponent implements OnInit {
   }
 
   public onPageChanged(page: number): void {
-     const status = this.searchStatusFormControl.value;
-     const historyFrom= this.selectedFromDate.value;
-     const historyTo= this.selectedToDate.value;
-     const deviceId = this.devicesHistoryService.getCurrentId().toString();
-     const params = {
-       page,
-       perPage: 10,
-       status,
-       historyFrom,
-       historyTo,
-       deviceId,
-      }
-     this.store.dispatch(new DevicesHistoryActions.FetchDeviceHistory(params));
-
-}
+    const status = this.searchStatusFormControl.value;
+    const historyFrom = this.selectedFromDate.value;
+    const historyTo = this.selectedToDate.value;
+    const deviceId = this.devicesHistoryService.getCurrentId().toString();
+    const params = {
+      page,
+      perPage: 10,
+      status,
+      historyFrom,
+      historyTo,
+      deviceId,
+    };
+    this.store.dispatch(new DevicesHistoryActions.FetchDeviceHistory(params));
+  }
 
   public openModalWithComponent(id: number): void {
     const initialState = { id };

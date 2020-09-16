@@ -78,7 +78,7 @@
               <th scope="col" class="col-to-date">
                 {{ 'DEVICE_HISTORY.TO_DATE' | translate }}
               </th>
-              <th scope="col" class="col-status">
+              <th scope="col" class="col-status text-center">
                 {{ 'DEVICE_HISTORY.STATUS' | translate }}
               </th>
               <th scope="col" class="col-full-name">
@@ -96,7 +96,7 @@
               </th>
               <td>{{ item.fromDate | date: 'dd/MM/yyyy' }}</td>
               <td>{{ item.toDate | date: 'dd/MM/yyyy' }}</td>
-              <td>
+              <td class="text-center">
                 <span
                   class="badge rounded-pill badge-danger p-2"
                   *ngIf="item?.status === 'discarded'"

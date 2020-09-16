@@ -6,6 +6,7 @@ import {
   RouterStateSnapshot,
   UrlTree,
 } from '@angular/router';
+import { RouteConstant } from 'src/app/shared/constants/route.constant';
 import { AuthService } from '../services/auth.service';
 import { BrowserSupportService } from '../services/browser-support.service';
 @Injectable({ providedIn: 'root' })
@@ -20,16 +21,16 @@ export class AuthGuardService implements CanActivate {
     state: RouterStateSnapshot
   ): boolean | UrlTree {
     return this.browserSupportService.isIE()
-      ? this.router.createUrlTree(['not-supported'])
+      ? this.router.createUrlTree([`${RouteConstant.notSupported}`])
       : this.auth.isAuthenticated()
-      ? route.routeConfig.path === 'dang-nhap'
+      ? route.routeConfig.path === `${RouteConstant.login}`
         ? this.router.createUrlTree([''])
-        : route.routeConfig.path === 'khoi-phuc-mat-khau'
+        : route.routeConfig.path === `${RouteConstant.resetPassword}`
         ? this.router.createUrlTree([''])
         : true
-      : route.routeConfig.path === 'dang-nhap' ||
-        route.routeConfig.path === 'khoi-phuc-mat-khau'
+      : route.routeConfig.path === `${RouteConstant.login}` ||
+        route.routeConfig.path === `${RouteConstant.resetPassword}`
       ? true
-      : this.router.createUrlTree(['dang-nhap']);
+      : this.router.createUrlTree([`${RouteConstant.login}`]);
   }
 }

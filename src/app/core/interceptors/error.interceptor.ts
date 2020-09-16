@@ -11,6 +11,7 @@ import { catchError, tap } from 'rxjs/operators';
 import { NotifyService } from 'src/app/shared/services/notify.service';
 import { Router } from '@angular/router';
 import { AuthService } from '../services/auth.service';
+import { RouteConstant } from 'src/app/shared/constants/route.constant';
 
 @Injectable()
 export class ErrorInterceptor implements HttpInterceptor {
@@ -31,7 +32,7 @@ export class ErrorInterceptor implements HttpInterceptor {
             this.notifyService.success('Successfully!');
           }
           if (evt.status >= 500) {
-            this.router.navigate(['/5xx']);
+            this.router.navigate([`/${RouteConstant.page5xx}`]);
           }
         }
       }),
@@ -43,7 +44,7 @@ export class ErrorInterceptor implements HttpInterceptor {
         ) {
           localStorage.removeItem('token');
           this.auth.getCurrentVerifyStep() !== 1
-            ? this.router.navigate(['/dang-nhap'])
+            ? this.router.navigate([`/${RouteConstant.login}`])
             : null;
         }
         this.notifyService.error(error);

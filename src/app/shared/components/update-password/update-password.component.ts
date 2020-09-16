@@ -6,6 +6,7 @@ import * as fromApp from '../../../store/app.reducer';
 import * as AuthActions from '../../store/auth.actions';
 import { AuthService } from 'src/app/core/services/auth.service';
 import { Router, NavigationEnd } from '@angular/router';
+import { RouteConstant } from '../../constants/route.constant';
 
 @Component({
   selector: 'ah-update-password',
@@ -15,7 +16,7 @@ import { Router, NavigationEnd } from '@angular/router';
 export class UpdatePasswordComponent implements OnInit {
   public isChangePw: boolean;
   public disabled = true;
-  public verify: number = 0;
+  public verify = 0;
   private email: string;
   private token: string;
   public hasError: boolean;
@@ -35,7 +36,7 @@ export class UpdatePasswordComponent implements OnInit {
     private router: Router
   ) {
     router.events.subscribe((val: NavigationEnd) => {
-      if (val.url && val.url !== '/khoi-phuc-mat-khau') {
+      if (val.url && val.url !== `/${RouteConstant.resetPassword}`) {
         auth.setVerifyStep(0);
       }
     });

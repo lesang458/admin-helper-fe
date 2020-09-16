@@ -7,11 +7,12 @@ import { AuthComponent } from './pages/auth/auth.component';
 import { AuthGuardService } from 'src/app/core/helpers/auth.guard';
 import { ErrorComponent } from 'src/app/shared/components/error/error.component';
 import { UpdatePasswordComponent } from './pages/update-password/update-password.component';
+import { RouteConstant } from 'src/app/shared/constants/route.constant';
 
 export const EMPLOYEES_ROUTES: Routes = [
-  { path: '', redirectTo: 'thong-tin-chung', pathMatch: 'full' },
+  { path: '', redirectTo: `${RouteConstant.employees}`, pathMatch: 'full' },
   {
-    path: 'dang-nhap',
+    path: `${RouteConstant.login}`,
     component: AuthComponent,
     canActivate: [AuthGuardService],
     data: {
@@ -19,7 +20,7 @@ export const EMPLOYEES_ROUTES: Routes = [
     },
   },
   {
-    path: 'thong-tin-chung',
+    path: `${RouteConstant.employees}`,
     component: GeneralInfoComponent,
     canActivate: [AuthGuardService],
     data: {
@@ -27,7 +28,7 @@ export const EMPLOYEES_ROUTES: Routes = [
     },
   },
   {
-    path: 'nghi-phep',
+    path: `${RouteConstant.dayOff}`,
     component: DayoffComponent,
     canActivate: [AuthGuardService],
     resolve: { dayoff: DayoffResolver },
@@ -36,7 +37,7 @@ export const EMPLOYEES_ROUTES: Routes = [
     },
   },
   {
-    path: '404',
+    path: `${RouteConstant.page404}`,
     component: ErrorComponent,
     canActivate: [AuthGuardService],
     data: {
@@ -44,7 +45,7 @@ export const EMPLOYEES_ROUTES: Routes = [
     },
   },
   {
-    path: '5xx',
+    path: `${RouteConstant.page5xx}`,
     component: ErrorComponent,
     canActivate: [AuthGuardService],
     data: {
@@ -52,7 +53,7 @@ export const EMPLOYEES_ROUTES: Routes = [
     },
   },
   {
-    path: 'doi-mat-khau',
+    path: `${RouteConstant.changePassword}`,
     component: UpdatePasswordComponent,
     canActivate: [AuthGuardService],
     data: {
@@ -60,7 +61,7 @@ export const EMPLOYEES_ROUTES: Routes = [
     },
   },
   {
-    path: 'khoi-phuc-mat-khau',
+    path: `${RouteConstant.resetPassword}`,
     component: UpdatePasswordComponent,
     canActivate: [AuthGuardService],
     data: {
@@ -68,7 +69,7 @@ export const EMPLOYEES_ROUTES: Routes = [
     },
   },
   {
-    path: 'not-supported',
+    path: `${RouteConstant.notSupported}`,
     component: ErrorComponent,
     canActivate: [BrowserSupportGuardService],
     data: {
