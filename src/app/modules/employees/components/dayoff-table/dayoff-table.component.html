@@ -13,7 +13,7 @@
             class="form-control"
             [formControl]="searchInput"
             id="inlineFormInputGroupUsername"
-            placeholder="VD: Nguyen, 2020, ..."
+            placeholder="{{ 'GENERAL_LIST.PLACEHOLDER' | translate }}"
             (blur)="onSearchSubmit()"
             (search)="onSearchSubmit()"
           />
