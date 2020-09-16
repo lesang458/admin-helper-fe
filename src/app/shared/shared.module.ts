@@ -12,7 +12,6 @@ import { SocialAuthServiceConfig } from 'angularx-social-login';
 import { GoogleLoginProvider } from 'angularx-social-login';
 import { ErrorComponent } from './components/error/error.component';
 import { UpdatePasswordComponent } from './components/update-password/update-password.component';
-import { LoadingDirective } from './directives/loading.directive';
 
 const modules = [
   CommonModule,
@@ -28,7 +27,6 @@ const components = [
   LoadingSpinnerComponent,
   ErrorComponent,
   UpdatePasswordComponent,
-  LoadingDirective,
 ];
 
 @NgModule({
