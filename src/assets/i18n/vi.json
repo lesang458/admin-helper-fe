@@ -24,6 +24,7 @@
     "PHONE_NUMBER": "Số điện thoại",
     "STATUS": "Trạng Thái",
     "ACTIONS": "Hành động",
+    "PLACEHOLDER": "VD: Nguyen, 2020, ...",
     "ALL": "Tất cả",
     "ACTIVE": "Đang hoạt động",
     "FORMER": "Cựu nhân viên",
@@ -94,10 +95,6 @@
     "MESS_SUCCESS": "Tạo thành công!",
     "CLOSE": "Đóng",
     "SAVE": "Lưu"
-  },
-  "PROFILE_DETAIL": {
-    "TITLE": "Chi tiết hồ sơ nhân viên",
-    "STATUS": "Trạng thái"
   },
   "PROFILE_EDIT": {
     "TITLE": "Chỉnh sửa hồ sơ nhân viên"
@@ -240,5 +237,10 @@
     "INCORRECT": "Mật khẩu không đúng!",
     "TOKEN_INCORRECT": "Token không đúng!",
     "EMAIL_INCORRECT": "Email này chưa được đăng ký!"
+  },
+  "NOT_SUPPORTED": {
+    "TITLE": "Không hỗ trợ",
+    "ERROR_CONTENT": "Trình duyệt của bạn không được hỗ trợ",
+    "ERROR_DESC": "Vui lòng dùng trình duyệt khác để truy cập"
   }
 }

@@ -1,5 +1,5 @@
 <div class="container">
-  <div class="row">
+  <div class="row justify-content-center">
     <div class="col-md-12">
       <div class="error-template">
         <div *ngIf="currentURL === '/404'">
@@ -24,7 +24,16 @@
             {{ 'ERROR.DESC_5XX' | translate }}
           </div>
         </div>
-        <div class="error-actions">
+        <div *ngIf="currentURL === '/not-supported'">
+          <img src="https://image.flaticon.com/icons/png/512/110/110742.png" alt="Not support">
+          <h3>
+            {{ 'NOT_SUPPORTED.ERROR_CONTENT' | translate }}
+          </h3>
+          <div class="error-details">
+            {{ 'NOT_SUPPORTED.ERROR_DESC' | translate }}
+          </div>
+        </div>
+        <div class="error-actions" *ngIf="currentURL !== '/not-supported'">
           <button
             type="button"
             class="btn btn-info"
