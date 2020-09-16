@@ -240,5 +240,10 @@
     "INCORRECT": "Password is incorrect!",
     "TOKEN_INCORRECT": "Token is incorrect!",
     "EMAIL_INCORRECT": "This email is not registered"
+  },
+  "NOT_SUPPORTED": {
+    "TITLE": "Not supported",
+    "ERROR_CONTENT": "Your browser is not supported",
+    "ERROR_DESC": "Please use another browser to access"
   }
 }
