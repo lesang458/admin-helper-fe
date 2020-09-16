@@ -86,9 +86,7 @@ export class DeviceAssignComponent implements OnInit {
   }
 
   public onSearchSubmit(): void {
-    if (
-      this.currentSearch !== this.searchFormControl.value.replace(/\s/g, '')
-    ) {
+    if (this.currentSearch !== this.searchFormControl.value.replace(/\s/g, '')) {
       this.currentSearch = this.searchFormControl.value.replace(/\s/g, '');
       if (this.currentPage === 1) {
         this.onPageChanged(1);

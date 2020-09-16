@@ -6,18 +6,12 @@ import {
   HttpHandler,
 } from '@angular/common/http';
 import { finalize } from 'rxjs/operators';
-import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
-import { LoadingSpinnerComponent } from 'src/app/shared/components/loading-spinner/loading-spinner.component';
 
 @Injectable()
 export class LoadingInterceptor implements HttpInterceptor {
-  public modalRef: BsModalRef;
   private totalRequests = 0;
 
-  constructor(
-    private modalService: BsModalService,
-    private titleService: TitleService
-  ) {}
+  constructor(private titleService: TitleService) {}
 
   intercept(request: HttpRequest<any>, next: HttpHandler) {
     this.totalRequests++;
