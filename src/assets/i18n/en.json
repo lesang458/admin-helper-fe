@@ -24,6 +24,7 @@
     "PHONE_NUMBER": "Phone number",
     "STATUS": "Status",
     "ACTIONS": "Actions",
+    "PLACEHOLDER": "EX: Nguyen, 2020, ...",
     "ALL": "All",
     "ACTIVE": "Active",
     "FORMER": "Former",
@@ -94,10 +95,6 @@
     "MESS_SUCCESS": "Created successfully!",
     "CLOSE": "Close",
     "SAVE": "Save"
-  },
-  "PROFILE_DETAIL": {
-    "TITLE": "Detail Employee Profile",
-    "STATUS": "Status"
   },
   "PROFILE_EDIT": {
     "TITLE": "Edit Employee Profile"

@@ -2,9 +2,6 @@
   <h4 *ngIf="type === 'create'" class="modal-title pull-left">
     {{ 'PROFILE_CREATE.TITLE' | translate }}
   </h4>
-  <h4 *ngIf="type === 'detail'" class="modal-title pull-left">
-    {{ 'PROFILE_DETAIL.TITLE' | translate }}
-  </h4>
   <h4 *ngIf="type === 'edit'" class="modal-title pull-left">
     {{ 'PROFILE_EDIT.TITLE' | translate }}
   </h4>
@@ -189,25 +186,9 @@
           </div>
         </div>
       </div>
-      <h6 *ngIf="type === 'detail'" class="font-weight-bold">
-        {{ 'PROFILE_DETAIL.STATUS' | translate }}:
-        <span 
-          *ngIf="dataSource?.status === 'ACTIVE'"
-          class="badge rounded-pill badge-success p-2">
-          {{ 'GENERAL_LIST.ACTIVE' | translate }}
-        </span>
-        <span 
-          *ngIf="dataSource?.status !== 'ACTIVE'"
-          class="badge rounded-pill badge-danger p-2">
-          {{ 'GENERAL_LIST.DELETED' | translate }}
-        </span>
-      </h6>
       <h6 class="font-weight-bold">{{ 'PROFILE_CREATE.DAY_OFF_INFO' | translate }}</h6>
       <form [formGroup]="dayOffForm" class="form-row day-info">
-        <div 
-          *ngIf="type !== 'detail'" 
-          class="form-group col-md-4"
-          >
+        <div class="form-group col-md-4">
           <div 
             formArrayName="dayOffInfos"
             *ngFor="let item of dayOffInfos.controls; let i = index">
@@ -221,7 +202,7 @@
          </div>
         </div>
         </div>
-        <div *ngIf="type !== 'detail'" class="form-group col-md-8">
+        <div class="form-group col-md-8">
           <div
             formArrayName="dayOffInfos"
             *ngFor="let item of dayOffInfos.controls; let i = index"
@@ -259,24 +240,13 @@
             </div>
           </div>
         </div>
-        <div *ngIf="type === 'detail'">
-        <div *ngFor="let hour of dataSource?.dayOffInfos">
-          <div style="font-weight: bold;">
-            {{ 'PROFILE_CREATE.DAY_OFF_CATE' | translate }}: 
-            {{ hour.categoryName | titlecase }}
-          </div>
-          <div>{{ 'PROFILE_CREATE.AVAILABLE_HOURS' | translate }}: {{ hour.availableHours }}</div>
-          <div>{{ 'PROFILE_CREATE.HOUR' | translate }}: {{ hour.hours }}</div>
-        </div>
-      </div>
-    </form>
+      </form>
     </div>
     <div class="modal-footer">
       <button type="button" class="btn btn-secondary" (click)="bsModalRef.hide()">
         {{ 'PROFILE_CREATE.CLOSE' | translate }}
       </button>
       <button
-        *ngIf="type !== 'detail'"
         type="submit"
         class="btn btn-success"
         [disabled]="profileForm.invalid || dayOffForm.invalid"
