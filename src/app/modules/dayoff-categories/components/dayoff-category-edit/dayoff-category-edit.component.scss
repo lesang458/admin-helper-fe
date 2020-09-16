@@ -1,24 +1,31 @@
-.modal-body {
-  .mess-invalid {
-    color: red;
-    margin-top: 5px;
+form {
+  .modal-body {
+    .mess-invalid {
+      color: red;
+      margin-top: 5px;
+    }
+    .day-info {
+      border: 1px solid #d6cece;
+      border-radius: 4px;
+      padding: 10px 10px 0px 10px;
+      margin: 1px;
+      .text-style {
+        border: none;
+      }
+      .day {
+        margin-bottom: 10px;
+      }
+      .form-group {
+        margin-bottom: 0;
+      }
+    }
+    textarea {
+      max-height: 200px;
+    }
   }
-  .day-info {
-    border: 1px solid #d6cece;
-    border-radius: 4px;
-    padding: 10px 10px 0px 10px;
-    margin: 1px;
-    .text-style {
-      border: none;
+  .modal-footer {
+    button {
+      width: 75px;
     }
-    .day {
-      margin-bottom: 10px;
-    }
-    .form-group {
-      margin-bottom: 0;
-    }
-  }
-  textarea {
-    max-height: 200px
   }
 }

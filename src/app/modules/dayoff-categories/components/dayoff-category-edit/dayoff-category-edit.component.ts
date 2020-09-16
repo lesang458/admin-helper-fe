@@ -47,8 +47,6 @@ export class DayOffCategoryEditComponent implements OnInit {
 
   public onSubmit(): void {
     if (this.type === 'create') {
-      console.log(this.f.get('hours').value);
-
       this.store.dispatch(
         new DayOffActions.CreateDayOffCategory({
           name: this.f.get('name').value.toUpperCase(),

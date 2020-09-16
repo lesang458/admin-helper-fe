@@ -1,36 +1,44 @@
-.modal-body{
-  .mess-invalid {
-    color: red;
-    margin-top: 5px;
-  }
-  .day-info{
-    border: 1px solid #d6cece;
-    border-radius: 4px;
-    padding: 10px 10px 0px 10px;
-    margin: 1px;;
-    .text-style{
-      border: none;
+form{
+  .modal-body{
+    .mess-invalid {
+      color: red;
+      margin-top: 5px;
     }
-    .day{
-      margin-bottom: 10px;
-    }
-    .form-group{
-      margin-bottom: 0;
-    }
-    .total-hours {
-      position: relative;
-      input {
-        width: 230px;
+    .day-info{
+      border: 1px solid #d6cece;
+      border-radius: 4px;
+      padding: 10px 10px 0px 10px;
+      margin: 1px;;
+      .text-style{
+        border: none;
       }
-      button {
-        position: absolute;
-        right: 0;
-        top: 0;
-        span {
-          width: 10px;
+      .day{
+        margin-bottom: 10px;
+      }
+      .form-group{
+        margin-bottom: 0;
+      }
+      .total-hours {
+        position: relative;
+        input {
+          width: 230px;
+        }
+        button {
+          position: absolute;
+          right: 0;
+          top: 0;
+          span {
+            width: 10px;
+          }
         }
       }
     }
   }
+  .modal-footer{
+    button{
+      width: 75px;
+    }
+  }
 }
+
 
