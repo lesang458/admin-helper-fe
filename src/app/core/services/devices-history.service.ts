@@ -16,6 +16,6 @@ export class DevicesHistoryService {
   }
 
   public getCurrentId(): number {
-    return this.deviceId.value
+    return this.deviceId.value;
   }
 }

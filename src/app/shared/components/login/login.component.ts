@@ -5,6 +5,8 @@ import * as fromApp from '../../../store/app.reducer';
 import * as AuthActions from '../../store/auth.actions';
 import { GoogleLoginProvider } from 'angularx-social-login';
 import { SocialAuthService, SocialUser } from 'angularx-social-login';
+import { Router } from '@angular/router';
+import { RouteConstant } from '../../constants/route.constant';
 
 @Component({
   selector: 'ah-login',
@@ -21,7 +23,8 @@ export class LoginComponent implements OnInit {
 
   constructor(
     private store: Store<fromApp.AppState>,
-    private authService: SocialAuthService
+    private authService: SocialAuthService,
+    private router: Router
   ) {}
 
   ngOnInit(): void {}
@@ -40,5 +43,9 @@ export class LoginComponent implements OnInit {
         new AuthActions.LoginByEmail({ idToken: res?.idToken })
       );
     });
+  }
+
+  public onNavigateToResetPage(): void {
+    this.router.navigateByUrl(`/${RouteConstant.resetPassword}`);
   }
 }

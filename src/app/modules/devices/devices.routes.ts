@@ -2,6 +2,7 @@ import { Routes } from '@angular/router';
 import { DeviceListComponent } from './pages/device-list/device-list.component';
 import { AuthGuardService } from 'src/app/core/helpers/auth.guard';
 import { GeneralDeviceCategoriesComponent } from './pages/general-device-categories/general-device-categories.component';
+import { RouteConstant } from 'src/app/shared/constants/route.constant';
 
 export const DEVICES_ROUTES: Routes = [
   {
@@ -13,7 +14,7 @@ export const DEVICES_ROUTES: Routes = [
     },
   },
   {
-    path: 'the-loai',
+    path: `${RouteConstant.categories}`,
     component: GeneralDeviceCategoriesComponent,
     canActivate: [AuthGuardService],
     data: {

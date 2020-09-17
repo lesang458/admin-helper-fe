@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { DevicesHistoryService } from 'src/app/core/services/devices-history.service';
+import { RouteConstant } from 'src/app/shared/constants/route.constant';
 
 @Component({
   selector: '[ah-sidebar]',
@@ -21,26 +22,28 @@ export class SidebarComponent implements OnInit {
   }
 
   public navigateToGeneralListPage() {
-    this.router.navigateByUrl('/thong-tin-chung');
+    this.router.navigateByUrl(`/${RouteConstant.employees}`);
   }
 
   public navigateToDayoffPage() {
-    this.router.navigateByUrl('/nghi-phep');
+    this.router.navigateByUrl(`/${RouteConstant.dayOff}`);
   }
 
   public navigateToDevicePage() {
-    this.router.navigateByUrl('/thiet-bi');
+    this.router.navigateByUrl(`/${RouteConstant.devices}`);
   }
 
   public navigateToDayOffCategoriesPage() {
-    this.router.navigateByUrl('/loai-ngay-phep');
+    this.router.navigateByUrl(`/${RouteConstant.dayOffCategories}`);
   }
 
   public navigateToDeviceHistory() {
-    this.router.navigateByUrl('/lich-su-thiet-bi');
+    this.router.navigateByUrl(`/${RouteConstant.deviceHistory}`);
   }
 
   public navigateToDeviceCategoriesPage() {
-    this.router.navigateByUrl('/thiet-bi/the-loai');
+    this.router.navigateByUrl(
+      `/${RouteConstant.devices}/${RouteConstant.categories}`
+    );
   }
 }

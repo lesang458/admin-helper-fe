@@ -16,6 +16,7 @@ import { LoginComponent } from 'src/app/shared/components/login/login.component'
 import { AuthComponent } from './pages/auth/auth.component';
 import { UpdatePasswordComponent } from './pages/update-password/update-password.component';
 import { CommonModule } from '@angular/common';
+import { TooltipModule } from 'ngx-bootstrap/tooltip';
 
 @NgModule({
   declarations: [
@@ -38,6 +39,7 @@ import { CommonModule } from '@angular/common';
     ReactiveFormsModule,
     PaginationModule.forRoot(),
     ModalModule.forRoot(),
+    TooltipModule.forRoot(),
   ],
   providers: [BsModalRef],
 })

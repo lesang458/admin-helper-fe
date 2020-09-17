@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { RouteConstant } from '../../constants/route.constant';
 
 @Component({
   selector: 'ah-error',
@@ -7,9 +9,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ErrorComponent implements OnInit {
   public currentURL: string;
-  constructor() {
+  constructor(private router: Router) {
     this.currentURL = window.location.pathname;
   }
 
   ngOnInit(): void {}
+
+  public onNavigateToHomePage(): void {
+    this.router.navigateByUrl(`/${RouteConstant.employees}`);
+  }
 }

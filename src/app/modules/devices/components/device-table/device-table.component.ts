@@ -16,6 +16,7 @@ import { tap } from 'rxjs/operators';
 import { Router } from '@angular/router';
 import { DevicesHistoryService } from 'src/app/core/services/devices-history.service';
 import { DeviceConfirmComponent } from '../device-confirm/device-confirm.component';
+import { RouteConstant } from 'src/app/shared/constants/route.constant';
 
 @Component({
   selector: 'ah-device-table',
@@ -26,7 +27,7 @@ export class DeviceTableComponent implements OnInit {
   public data$: Observable<State>;
   public categories$: Observable<DeviceCategory[]>;
   public currentPage = 1;
-  public selectedStatus = new FormControl('ASSIGNED');
+  public selectedStatus = new FormControl('');
   public selectedCategory = new FormControl('');
   public deviceParams: DeviceParams;
   public bsModalRef: BsModalRef;
@@ -80,7 +81,7 @@ export class DeviceTableComponent implements OnInit {
 
   public navigateToDeviceHistory(id: number): void {
     this.devicesHistoryService.setCurrentId(id);
-    this.router.navigateByUrl('/lich-su-thiet-bi');
+    this.router.navigateByUrl(`/${RouteConstant.deviceHistory}`);
   }
 
   public openEditModal(selectedDevice: Device, params: SearchDevice): void {
@@ -99,7 +100,11 @@ export class DeviceTableComponent implements OnInit {
     this.bsModalRef.content.closeBtnName = 'Close';
   }
 
-  public openConfirmModal(id: number, type: string, params: SearchDevice): void {
+  public openConfirmModal(
+    id: number,
+    type: string,
+    params: SearchDevice
+  ): void {
     const initialState = { id, type, params };
     this.bsModalRef = this.modalService.show(DeviceConfirmComponent, {
       initialState,

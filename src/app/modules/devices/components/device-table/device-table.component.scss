@@ -1,8 +1,7 @@
 .card {
-
   .card-header {
     .c-icon {
-      transition: .3s transform ease-in-out;
+      transition: 0.3s transform ease-in-out;
     }
 
     .collapsed {
@@ -26,5 +25,19 @@
 
   .black-text {
     color: black;
+  }
+
+  .badge{
+    width: 75px;
+  }
+}
+
+div {
+  .col-15 {
+    width: 15%;
+  }
+
+  .col-action {
+    width: 10%
   }
 }

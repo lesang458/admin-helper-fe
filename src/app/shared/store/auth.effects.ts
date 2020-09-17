@@ -9,6 +9,7 @@ import * as camelcaseKeys from 'camelcase-keys';
 import * as snakecaseKeys from 'snakecase-keys';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/core/services/auth.service';
+import { RouteConstant } from '../constants/route.constant';
 
 @Injectable()
 export class AuthEffect {
@@ -57,7 +58,7 @@ export class AuthEffect {
     ofType(AuthActions.LOGOUT),
     tap(() => {
       localStorage.removeItem('token');
-      this.router.navigate(['/dang-nhap']);
+      this.router.navigate([`${RouteConstant.login}`]);
     })
   );
 
@@ -108,7 +109,7 @@ export class AuthEffect {
         .post<any>(`${environment.APILink}/password/check_token`, body)
         .pipe(
           map(() => {
-            this.router.navigate(['/dang-nhap']);
+            this.router.navigate([`${RouteConstant.login}`]);
           })
         );
     })
