@@ -30,6 +30,9 @@ export class NotifyService {
     if (message === 'Invalid User') {
       message = this.translate.instant('MESSAGE.WRONG_ACC');
     }
+    if (message === 'You have not permission') {
+      message = this.translate.instant('MESSAGE.PERMISSION');
+    }
     this.toastr.error(null, message);
   }
 }

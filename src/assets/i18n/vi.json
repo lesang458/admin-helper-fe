@@ -255,6 +255,7 @@
     "DELETE_SUCCESS": "Xóa thành công",
     "DISCARD_DEVICE": "Thay đổi trạng thái Bị lỗi cho thiết bị thành công!",
     "INVENTORY": "Thay đổi trạng thái Trong kho cho thiết bị thành công!",
-    "WRONG_ACC": "Tài khoản không đúng"
+    "WRONG_ACC": "Tài khoản không đúng",
+    "PERMISSION": "Bạn không có quyền"
   }
 }
