@@ -254,6 +254,7 @@
     "ASSIGN_DEVICE": "Assign device successfully!",
     "DELETE_SUCCESS": "Delete successfully!",
     "DISCARD_DEVICE": "Change Discard status device successfully!",
-    "INVENTORY": "Change Inventory status device successfully!"
+    "INVENTORY": "Change Inventory status device successfully!",
+    "WRONG_ACC": "Invalid User"
   }
 }

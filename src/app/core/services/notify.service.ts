@@ -27,6 +27,9 @@ export class NotifyService {
     if (message === 'Invalid email or password') {
       message = this.translate.instant('MESSAGE.NO_ACC');
     }
+    if (message === 'Invalid User') {
+      message = this.translate.instant('MESSAGE.WRONG_ACC');
+    }
     this.toastr.error(null, message);
   }
 }
