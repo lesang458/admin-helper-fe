@@ -90,6 +90,7 @@
             <tr
               *ngFor="let item of data.data; let i = index"
               (click)="openModalWithComponent(item.id)"
+              class="pointer"
             >
               <th scope="row" class="align-middle">
                 {{ i + 1 + (data.pagination.currentPage - 1) * 10 }}

@@ -7,7 +7,7 @@ import { TranslateService } from '@ngx-translate/core';
 export class TitleService {
   public i18nKey: string;
 
-  public isShowLoading = new BehaviorSubject<boolean>(true);
+  public isShowLoading = new BehaviorSubject<boolean>(false);
 
   constructor(
     private titleService: Title,
