@@ -54,9 +54,7 @@ export class DayOffCategoriesEffects {
         },
       }).pipe(
         map((val) => {
-          this.notify.showSuccess(
-            this.translate.instant('PROFILE_CREATE.CREATE_SUCCESS')
-          );
+          this.notify.showSuccess('PROFILE_CREATE.CREATE_SUCCESS');
           let dayoff;
           this.store
             .select('dayoffCategories')
@@ -86,9 +84,7 @@ export class DayOffCategoriesEffects {
         },
       }).pipe(
         map((val) => {
-          this.notify.showSuccess(
-            this.translate.instant('PROFILE_CREATE.EDIT_SUCCESS')
-          );
+          this.notify.showSuccess('PROFILE_CREATE.EDIT_SUCCESS');
           let dayoff;
           this.store
             .select('dayoffCategories')
@@ -114,9 +110,7 @@ export class DayOffCategoriesEffects {
       const id: string = action.payload;
       return of({ id }).pipe(
         map(() => {
-          this.notify.showSuccess(
-            this.translate.instant('MESSAGE.DELETE_SUCCESS')
-          );
+          this.notify.showSuccess('MESSAGE.DELETE_SUCCESS');
           let dayoff;
           this.store
             .select('dayoffCategories')
@@ -137,7 +131,6 @@ export class DayOffCategoriesEffects {
     private actions$: Actions,
     private http: HttpClient,
     private store: Store<fromApp.AppState>,
-    private notify: NotifyService,
-    private translate: TranslateService
+    private notify: NotifyService
   ) {}
 }

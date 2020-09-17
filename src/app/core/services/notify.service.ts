@@ -10,27 +10,29 @@ export class NotifyService {
   ) {}
 
   public showSuccess(message: string): void {
-    this.toastr.success(null, message);
+    this.toastr.success(null, this.translate.instant(message));
   }
 
   public showError(message: string): void {
-    if (message === 'Validation failed: Email has already been taken') {
-      message = this.translate.instant('PROFILE_CREATE.MESS_EMAIL');
-    }
-    if (message === `Couldn't find User`) {
-      message = this.translate.instant('MESSAGE.NO_USER');
-    }
-    if (message === 'You seem to have an expired token') {
-      message = this.translate.instant('MESSAGE.NO_TOKEN');
-    }
-    if (message === 'Invalid email or password') {
-      message = this.translate.instant('MESSAGE.NO_ACC');
-    }
-    if (message === 'Invalid User') {
-      message = this.translate.instant('MESSAGE.WRONG_ACC');
-    }
-    if (message === 'You have not permission') {
-      message = this.translate.instant('MESSAGE.PERMISSION');
+    switch (message) {
+      case 'Validation failed: Email has already been taken':
+        message = this.translate.instant('PROFILE_CREATE.MESS_EMAIL');
+        break;
+      case `Couldn't find User`:
+        message = this.translate.instant('MESSAGE.NO_USER');
+        break;
+      case 'You seem to have an expired token':
+        message = this.translate.instant('MESSAGE.NO_TOKEN');
+        break;
+      case 'Invalid email or password':
+        message = this.translate.instant('MESSAGE.NO_ACC');
+        break;
+      case 'Invalid User':
+        message = this.translate.instant('MESSAGE.WRONG_ACC');
+        break;
+      case 'You have not permission':
+        message = this.translate.instant('MESSAGE.PERMISSION');
+        break;
     }
     this.toastr.error(null, message);
   }

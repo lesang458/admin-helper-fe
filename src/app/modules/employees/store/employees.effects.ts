@@ -75,9 +75,7 @@ export class EmployeeEffects {
       const body = snakecaseKeys(action.payload, { deep: true });
       return this.http.post<any>(`${environment.APILink}/employees`, body).pipe(
         map((val) => {
-          this.notify.showSuccess(
-            this.translate.instant('PROFILE_CREATE.CREATE_SUCCESS')
-          );
+          this.notify.showSuccess('PROFILE_CREATE.CREATE_SUCCESS');
           const data: Employee = camelcaseKeys(val.data, { deep: true });
           return new EmployeesActions.CreateEmployee(data);
         })
@@ -111,9 +109,7 @@ export class EmployeeEffects {
         )
         .pipe(
           map(() => {
-            this.notify.showSuccess(
-              this.translate.instant('PROFILE_CREATE.EDIT_SUCCESS')
-            );
+            this.notify.showSuccess('PROFILE_CREATE.EDIT_SUCCESS');
             return new EmployeesActions.SearchEmployees(
               action.payload.searchParams
             );
@@ -133,9 +129,7 @@ export class EmployeeEffects {
         )
         .pipe(
           map(() => {
-            this.notify.showSuccess(
-              this.translate.instant('MESSAGE.EMPLOYEE_STATUS')
-            );
+            this.notify.showSuccess('MESSAGE.EMPLOYEE_STATUS');
             return new EmployeesActions.SearchEmployees(
               action.payload.searchParams
             );
@@ -160,9 +154,7 @@ export class EmployeeEffects {
         )
         .pipe(
           map(() => {
-            this.notify.showSuccess(
-              this.translate.instant('MESSAGE.REQUEST_DAY_OFF')
-            );
+            this.notify.showSuccess('MESSAGE.REQUEST_DAY_OFF');
             return new EmployeesActions.FetchDayOff(
               action.payload.searchParams
             );
@@ -173,7 +165,6 @@ export class EmployeeEffects {
   constructor(
     private actions$: Actions,
     private http: HttpClient,
-    private notify: NotifyService,
-    private translate: TranslateService
+    private notify: NotifyService
   ) {}
 }
