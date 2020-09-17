@@ -19,7 +19,6 @@ export class UpdatePasswordComponent implements OnInit {
   public verify = 0;
   private email: string;
   private token: string;
-  public hasError: boolean;
   private newPassword: string;
   public updatePwForm = new FormGroup({
     email: new FormControl('', Validators.email),
@@ -43,9 +42,6 @@ export class UpdatePasswordComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.auth.currentResetPwHasError.subscribe((val) => {
-      this.hasError = val;
-    });
     this.auth.currentVerifyStep.subscribe((val) => {
       this.verify = val;
     });
@@ -89,13 +85,11 @@ export class UpdatePasswordComponent implements OnInit {
               newPassword: this.newPassword,
             })
           );
-          this.auth.setVerifyStep(0);
           break;
         default:
           break;
       }
     }
-    this.auth.setResetPwHasError(false);
   }
 
   public passwordIsIncorrect(): boolean {
