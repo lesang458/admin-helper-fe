@@ -4,12 +4,13 @@ import * as DayOffCategoriesActions from './dayoff-categories.actions';
 import { switchMap, map } from 'rxjs/operators';
 import { environment } from 'src/environments/environment.prod';
 import { HttpClient } from '@angular/common/http';
-import * as snakecaseKeys from 'snakecase-keys';
 import { of } from 'rxjs';
 import { Store } from '@ngrx/store';
 import * as fromApp from '../../../store/app.reducer';
 import { DayOffCategory } from 'src/app/shared/models/dayoff-category.model';
 import * as camelcaseKeys from 'camelcase-keys';
+import { NotifyService } from 'src/app/core/services/notify.service';
+import { TranslateService } from '@ngx-translate/core';
 
 @Injectable()
 export class DayOffCategoriesEffects {
@@ -45,13 +46,6 @@ export class DayOffCategoriesEffects {
     ofType(DayOffCategoriesActions.CREATE_DAY_OFF_CATEGORY),
     switchMap((action: DayOffCategoriesActions.CreateDayOffCategory) => {
       const body: DayOffCategory = camelcaseKeys(action.payload);
-      // const body: DayOffCategory = snakecaseKeys(action.payload);
-      // return this.http.post<any>(`${environment.APILink}/employees`, body).pipe(
-      //   map((val) => {
-      //     const data: DayOff = camelcaseKeys(val.data);
-      //     return new DayOffCategoriesActions .CreateDayOff(data);
-      //   })
-      // );
       return of({
         data: {
           name: body.name,
@@ -60,6 +54,9 @@ export class DayOffCategoriesEffects {
         },
       }).pipe(
         map((val) => {
+          this.notify.showSuccess(
+            this.translate.instant('PROFILE_CREATE.CREATE_SUCCESS')
+          );
           let dayoff;
           this.store
             .select('dayoffCategories')
@@ -80,7 +77,6 @@ export class DayOffCategoriesEffects {
     ofType(DayOffCategoriesActions.UPDATE_DAY_OFF_CATEGORY),
     switchMap((action: DayOffCategoriesActions.UpdateDayOffCategory) => {
       const body: DayOffCategory = camelcaseKeys(action.payload);
-      // const body: DayOffCategory = snakecaseKeys(action.payload);
       return of({
         data: {
           id: body.id,
@@ -90,6 +86,9 @@ export class DayOffCategoriesEffects {
         },
       }).pipe(
         map((val) => {
+          this.notify.showSuccess(
+            this.translate.instant('PROFILE_CREATE.EDIT_SUCCESS')
+          );
           let dayoff;
           this.store
             .select('dayoffCategories')
@@ -115,6 +114,9 @@ export class DayOffCategoriesEffects {
       const id: string = action.payload;
       return of({ id }).pipe(
         map(() => {
+          this.notify.showSuccess(
+            this.translate.instant('MESSAGE.DELETE_SUCCESS')
+          );
           let dayoff;
           this.store
             .select('dayoffCategories')
@@ -134,6 +136,8 @@ export class DayOffCategoriesEffects {
   constructor(
     private actions$: Actions,
     private http: HttpClient,
-    private store: Store<fromApp.AppState>
+    private store: Store<fromApp.AppState>,
+    private notify: NotifyService,
+    private translate: TranslateService
   ) {}
 }

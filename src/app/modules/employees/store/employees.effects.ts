@@ -10,6 +10,8 @@ import * as camelcaseKeys from 'camelcase-keys';
 import * as snakecaseKeys from 'snakecase-keys';
 import { RequestDayOffModel } from 'src/app/shared/models/request-day-off.model';
 import { ParamsConstant } from 'src/app/shared/constants/params.constant';
+import { TranslateService } from '@ngx-translate/core';
+import { NotifyService } from 'src/app/core/services/notify.service';
 
 @Injectable()
 export class EmployeeEffects {
@@ -73,6 +75,9 @@ export class EmployeeEffects {
       const body = snakecaseKeys(action.payload, { deep: true });
       return this.http.post<any>(`${environment.APILink}/employees`, body).pipe(
         map((val) => {
+          this.notify.showSuccess(
+            this.translate.instant('PROFILE_CREATE.CREATE_SUCCESS')
+          );
           const data: Employee = camelcaseKeys(val.data, { deep: true });
           return new EmployeesActions.CreateEmployee(data);
         })
@@ -106,6 +111,9 @@ export class EmployeeEffects {
         )
         .pipe(
           map(() => {
+            this.notify.showSuccess(
+              this.translate.instant('PROFILE_CREATE.EDIT_SUCCESS')
+            );
             return new EmployeesActions.SearchEmployees(
               action.payload.searchParams
             );
@@ -125,6 +133,9 @@ export class EmployeeEffects {
         )
         .pipe(
           map(() => {
+            this.notify.showSuccess(
+              this.translate.instant('MESSAGE.EMPLOYEE_STATUS')
+            );
             return new EmployeesActions.SearchEmployees(
               action.payload.searchParams
             );
@@ -149,6 +160,9 @@ export class EmployeeEffects {
         )
         .pipe(
           map(() => {
+            this.notify.showSuccess(
+              this.translate.instant('MESSAGE.REQUEST_DAY_OFF')
+            );
             return new EmployeesActions.FetchDayOff(
               action.payload.searchParams
             );
@@ -156,5 +170,10 @@ export class EmployeeEffects {
         );
     })
   );
-  constructor(private actions$: Actions, private http: HttpClient) {}
+  constructor(
+    private actions$: Actions,
+    private http: HttpClient,
+    private notify: NotifyService,
+    private translate: TranslateService
+  ) {}
 }

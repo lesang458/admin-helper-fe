@@ -14,3 +14,22 @@ body {
   }
   -ms-overflow-style: none;
 }
+
+.toast-container {
+  .toast-success {
+    background-color: #2eb85c !important;
+  }
+  
+  .toast-error {
+    background-color: #e55353 !important;
+  }
+  
+  .toast-close-button {
+    top: 0
+  }
+  
+  .toast-title{
+    margin-top: 5px;
+  }
+}
+
