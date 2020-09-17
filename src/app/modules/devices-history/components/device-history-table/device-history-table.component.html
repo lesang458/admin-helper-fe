@@ -7,7 +7,7 @@
             {{ 'GENERAL_LIST.STATUS' | translate }}
           </label>
           <select
-            class="form-control d-inline-block"
+            class="form-control w-auto d-inline-block"
             id="status-type"
             [formControl]="searchStatusFormControl"
           >
@@ -33,7 +33,7 @@
           </label>
           <input
             type="date"
-            class="form-control d-inline-block"
+            class="form-control w-auto d-inline-block"
             id="from-date"
             [formControl]="selectedFromDate"
           />
@@ -46,13 +46,13 @@
           </label>
           <input
             type="date"
-            class="form-control d-inline-block"
+            class="form-control w-auto d-inline-block"
             id="to-date"
             [formControl]="selectedToDate"
           />
         </div>
       </div>
-      <div class="table-responsive" *ngIf="data$ | async as data">
+      <div class="table-responsive p-2" *ngIf="data$ | async as data">
         <div
           *ngIf="data?.data.length !== 0"
           class="alert alert-success"
@@ -71,17 +71,16 @@
         <table class="table table-bordered">
           <thead>
             <tr>
-              <th scope="col" class="col-id">ID</th>
-              <th scope="col" class="col-from-date">
+              <th scope="col" class="w-25">
                 {{ 'DEVICE_HISTORY.FROM_DATE' | translate }}
               </th>
-              <th scope="col" class="col-to-date">
+              <th scope="col" class="w-25">
                 {{ 'DEVICE_HISTORY.TO_DATE' | translate }}
               </th>
-              <th scope="col" class="col-status text-center">
+              <th scope="col" class="w-25 text-center">
                 {{ 'DEVICE_HISTORY.STATUS' | translate }}
               </th>
-              <th scope="col" class="col-full-name">
+              <th scope="col" class="w-25">
                 {{ 'DEVICE_HISTORY.FULL_NAME' | translate }}
               </th>
             </tr>
@@ -92,9 +91,6 @@
               (click)="openModalWithComponent(item.id)"
               class="pointer"
             >
-              <th scope="row" class="align-middle">
-                {{ i + 1 + (data.pagination.currentPage - 1) * 10 }}
-              </th>
               <td class="align-middle">{{ item.fromDate | date: 'dd/MM/yyyy' }}</td>
               <td class="align-middle">{{ item.toDate | date: 'dd/MM/yyyy' }}</td>
               <td class="text-center align-center">
