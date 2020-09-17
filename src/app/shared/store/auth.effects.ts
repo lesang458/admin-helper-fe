@@ -77,12 +77,8 @@ export class AuthEffect {
     switchMap((action: AuthActions.SendMail) => {
       const body = snakecaseKeys(action.payload);
       return this.http.post<any>(`${environment.APILink}/password`, body).pipe(
-        tap((val) => {
-          if (val.message !== 'ok') {
-            this.auth.setResetPwHasError(true);
-          } else {
-            this.auth.setVerifyStep(1);
-          }
+        tap(() => {
+          this.auth.setVerifyStep(1);
         })
       );
     })
@@ -98,10 +94,6 @@ export class AuthEffect {
         .pipe(
           map(() => {
             this.auth.setVerifyStep(2);
-          }),
-          catchError(() => {
-            this.auth.setResetPwHasError(true);
-            return this.auth.currentResetPwHasError;
           })
         );
     })
@@ -112,13 +104,12 @@ export class AuthEffect {
     ofType(AuthActions.RESET_PASSWORD),
     switchMap((action: AuthActions.ResetPassword) => {
       const body = snakecaseKeys(action.payload);
-      console.log(body);
-
       return this.http
-        .post<any>(`${environment.APILink}/password/check_token`, body)
+        .patch(`${environment.APILink}/password/reset`, body)
         .pipe(
           map(() => {
             this.router.navigate([`${RouteConstant.login}`]);
+            this.auth.setVerifyStep(0);
           })
         );
     })

@@ -5,8 +5,6 @@ import { BehaviorSubject } from 'rxjs';
 export class AuthService {
   private verifyStep = new BehaviorSubject<number>(0);
   public currentVerifyStep = this.verifyStep.asObservable();
-  private resetPwHasError = new BehaviorSubject<boolean>(false);
-  public currentResetPwHasError = this.resetPwHasError.asObservable();
   constructor(public jwtHelper: JwtHelperService) {}
   public isAuthenticated(): boolean {
     const token = localStorage.getItem('token');
@@ -15,10 +13,6 @@ export class AuthService {
 
   public setVerifyStep(isVerify: number): void {
     this.verifyStep.next(isVerify);
-  }
-
-  public setResetPwHasError(hasError: boolean): void {
-    this.resetPwHasError.next(hasError);
   }
 
   public getCurrentVerifyStep(): number {
