@@ -8,15 +8,15 @@ import {
 } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { catchError, tap } from 'rxjs/operators';
-import { NotifyService } from 'src/app/shared/services/notify.service';
 import { Router } from '@angular/router';
 import { AuthService } from '../services/auth.service';
 import { RouteConstant } from 'src/app/shared/constants/route.constant';
+import { NotifyService } from '../services/notify.service';
 
 @Injectable()
 export class ErrorInterceptor implements HttpInterceptor {
   constructor(
-    private notifyService: NotifyService,
+    private notify: NotifyService,
     private router: Router,
     private auth: AuthService
   ) {}
@@ -28,9 +28,6 @@ export class ErrorInterceptor implements HttpInterceptor {
     return next.handle(request).pipe(
       tap((evt) => {
         if (evt instanceof HttpResponse) {
-          if (evt.status === 201) {
-            this.notifyService.success('Successfully!');
-          }
           if (evt.status >= 500) {
             this.router.navigate([`/${RouteConstant.page5xx}`]);
           }
@@ -47,7 +44,7 @@ export class ErrorInterceptor implements HttpInterceptor {
             ? this.router.navigate([`/${RouteConstant.login}`])
             : null;
         }
-        this.notifyService.error(error);
+        this.notify.showError(error);
 
         return throwError(error);
       })

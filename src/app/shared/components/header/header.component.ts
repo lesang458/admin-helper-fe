@@ -15,6 +15,7 @@ import { RouteConstant } from '../../constants/route.constant';
 })
 export class HeaderComponent implements OnInit {
   @Input() title: string;
+  public userName = localStorage.getItem('userName');
   constructor(
     public translate: TranslateService,
     private store: Store<fromApp.AppState>,

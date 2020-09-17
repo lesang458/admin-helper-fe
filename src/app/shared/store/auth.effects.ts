@@ -21,7 +21,11 @@ export class AuthEffect {
       return this.http.post<any>(`${environment.APILink}/login`, body).pipe(
         map((val) => {
           localStorage.setItem('token', val?.token);
-          const data: Employee = camelcaseKeys(val.data);
+          const data: Employee = camelcaseKeys(val, { deep: true });
+          localStorage.setItem(
+            'userName',
+            data?.user?.firstName + ' ' + data?.user?.lastName
+          );
           return new AuthActions.LoginSuccess(data);
         })
       );
@@ -38,7 +42,11 @@ export class AuthEffect {
         .pipe(
           map((val) => {
             localStorage.setItem('token', val?.token);
-            const data: Employee = camelcaseKeys(val.data);
+            const data: Employee = camelcaseKeys(val, { deep: true });
+            localStorage.setItem(
+              'userName',
+              data?.user?.firstName + ' ' + data?.user?.lastName
+            );
             return new AuthActions.LoginSuccess(data);
           })
         );
@@ -58,6 +66,7 @@ export class AuthEffect {
     ofType(AuthActions.LOGOUT),
     tap(() => {
       localStorage.removeItem('token');
+      localStorage.removeItem('userName');
       this.router.navigate([`${RouteConstant.login}`]);
     })
   );

@@ -11,7 +11,6 @@ import { PaginationModule } from 'ngx-bootstrap/pagination';
 import { ModalModule, BsModalRef } from 'ngx-bootstrap/modal';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ProfileCreateComponent } from './components/profile-create/profile-create.component';
-import { NotifyComponent } from 'src/app/shared/components/notify/notify.component';
 import { LoginComponent } from 'src/app/shared/components/login/login.component';
 import { AuthComponent } from './pages/auth/auth.component';
 import { UpdatePasswordComponent } from './pages/update-password/update-password.component';
@@ -26,7 +25,6 @@ import { TooltipModule } from 'ngx-bootstrap/tooltip';
     DayoffTableComponent,
     RequestDayOffComponent,
     ProfileCreateComponent,
-    NotifyComponent,
     LoginComponent,
     AuthComponent,
     UpdatePasswordComponent,
