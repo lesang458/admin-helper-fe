@@ -93,7 +93,8 @@
     "DAY_OFF_CATE": "Day off category",
     "AVAILABLE_HOURS": "Available hours",
     "MESS_EMAIL": "Email has already been taken",
-    "MESS_SUCCESS": "Created successfully!",
+    "CREATE_SUCCESS": "Created successfully!",
+    "EDIT_SUCCESS": "Edited successfully!",
     "CLOSE": "Close",
     "SAVE": "Save"
   },
@@ -166,7 +167,7 @@
     "DEVICE_NAME_MAX_LENGTH": "Device name must not exceed 100 characters.",
     "PRICE_REQUIRED": "Price is required.",
     "PRICE_PATTERN": "Price must be a positive number",
-    "DESCRIPTION_MIN_LENGTH": "Description must be at least 5 characters"
+    "DESCRIPTION_MIN_LENGTH": "Description must be at least 6 characters"
   },
   "DEVICE_HISTORY": {
     "TITLE": "Devices history list",
@@ -243,5 +244,20 @@
     "TITLE": "Not supported",
     "ERROR_CONTENT": "Your browser is not supported",
     "ERROR_DESC": "Please use another browser to access"
+  },
+  "MESSAGE":{
+    "NO_USER": "Couldn't find User",
+    "NO_TOKEN": "You seem to have an expired token",
+    "NO_ACC": "Invalid email or password",
+    "EMPLOYEE_STATUS": "This employee's status will be changed to 'FORMER' successfully!",
+    "REQUEST_DAY_OFF": "Request day off successfully!",
+    "ASSIGN_DEVICE": "Assign device successfully!",
+    "DELETE_SUCCESS": "Delete successfully!",
+    "DISCARD_DEVICE": "Change Discard status device successfully!",
+    "INVENTORY": "Change Inventory status device successfully!",
+    "WRONG_ACC": "Invalid User",
+    "PERMISSION": "You have not permission",
+    "REQUEST_LONG": "Request is too long",
+    "STATUS": "status is not valid"
   }
 }

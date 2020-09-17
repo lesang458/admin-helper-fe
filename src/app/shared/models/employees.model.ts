@@ -10,4 +10,5 @@ export interface Employee {
   dayOffInfos: any;
   roles?: any;
   token?: string;
+  user?: Employee;
 }

@@ -10,6 +10,8 @@ import { Device } from 'src/app/shared/models/device.model';
 import { switchMap, map } from 'rxjs/operators';
 import { DeviceCategory } from 'src/app/shared/models/deviceCategory';
 import { ParamsConstant } from 'src/app/shared/constants/params.constant';
+import { NotifyService } from 'src/app/core/services/notify.service';
+import { TranslateService } from '@ngx-translate/core';
 @Injectable()
 export class DeviceEffects {
   @Effect()
@@ -73,6 +75,7 @@ export class DeviceEffects {
         )
         .pipe(
           map(() => {
+            this.notify.showSuccess('MESSAGE.ASSIGN_DEVICE');
             return new DevicesActions.FetchDevices(action.payload.params);
           })
         );
@@ -90,6 +93,7 @@ export class DeviceEffects {
         )
         .pipe(
           map(() => {
+            this.notify.showSuccess('PROFILE_CREATE.CREATE_SUCCESS');
             return new DevicesActions.FetchDevices(action.payload.params);
           })
         );
@@ -107,6 +111,7 @@ export class DeviceEffects {
         )
         .pipe(
           map(() => {
+            this.notify.showSuccess('PROFILE_CREATE.EDIT_SUCCESS');
             return new DevicesActions.FetchDevices(action.payload.params);
           })
         );
@@ -121,6 +126,7 @@ export class DeviceEffects {
         .delete<void>(`${environment.APILink}/devices/${action.payload.id}`)
         .pipe(
           map(() => {
+            this.notify.showSuccess('MESSAGE.DELETE_SUCCESS');
             return new DevicesActions.FetchDevices(action.payload.params);
           })
         );
@@ -132,9 +138,13 @@ export class DeviceEffects {
     ofType(DevicesActions.DISCARD_DEVICE),
     switchMap((action: DevicesActions.DiscardDevice) => {
       return this.http
-        .put<void>(`${environment.APILink}/devices/${action.payload.id}/discard`, {})
+        .put<void>(
+          `${environment.APILink}/devices/${action.payload.id}/discard`,
+          {}
+        )
         .pipe(
           map(() => {
+            this.notify.showSuccess('MESSAGE.DISCARD_DEVICE');
             return new DevicesActions.FetchDevices(action.payload.params);
           })
         );
@@ -152,6 +162,7 @@ export class DeviceEffects {
         )
         .pipe(
           map(() => {
+            this.notify.showSuccess('MESSAGE.INVENTORY');
             return new DevicesActions.FetchDevices(action.payload.params);
           })
         );
@@ -166,6 +177,7 @@ export class DeviceEffects {
         .post<any>(`${environment.APILink}/device_categories`, action.payload)
         .pipe(
           map(() => {
+            this.notify.showSuccess('PROFILE_CREATE.CREATE_SUCCESS');
             return new DevicesActions.FetchDeviceCategories();
           })
         );
@@ -183,6 +195,7 @@ export class DeviceEffects {
         )
         .pipe(
           map(() => {
+            this.notify.showSuccess('PROFILE_CREATE.EDIT_SUCCESS');
             return new DevicesActions.FetchDeviceCategories();
           })
         );
@@ -197,11 +210,16 @@ export class DeviceEffects {
         .delete(`${environment.APILink}/device_categories/${action.payload}`)
         .pipe(
           map(() => {
+            this.notify.showSuccess('MESSAGE.DELETE_SUCCESS');
             return new DevicesActions.FetchDeviceCategories();
           })
         );
     })
   );
 
-  constructor(private actions$: Actions, private http: HttpClient) {}
+  constructor(
+    private actions$: Actions,
+    private http: HttpClient,
+    private notify: NotifyService
+  ) {}
 }

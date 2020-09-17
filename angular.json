@@ -31,7 +31,8 @@
               "node_modules/@coreui/coreui/dist/css/coreui.min.css",
               "node_modules/@coreui/icons/css/all.min.css",
               "node_modules/font-awesome/css/font-awesome.css",
-              "src/styles.scss"
+              "src/styles.scss",
+              "node_modules/ngx-toastr/toastr.css"
             ],
             "scripts": [
               "node_modules/@coreui/coreui/dist/js/coreui.bundle.min.js"

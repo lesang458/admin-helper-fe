@@ -32,7 +32,7 @@
   </div>
   <ul class="c-header-nav ml-auto mr-4">
     <li class="c-header-nav-item d-md-down-none mx-2">
-      <a class="c-header-nav-link"> Admin </a>
+      <a class="c-header-nav-link"> {{ userName }} </a>
     </li>
     <li class="c-header-nav-item dropdown">
       <a
@@ -46,7 +46,7 @@
         <div class="c-avatar">
           <img
             class="c-avatar-img"
-            src="assets/img/avatars/6.jpg"
+            src="assets/img/avatars/user.png"
             alt="user@email.com"
           />
         </div>
@@ -95,7 +95,7 @@
     </li>
   </ul>
   <div class="c-subheader px-3">
-  <ah-loading-spinner></ah-loading-spinner>
+    <ah-loading-spinner></ah-loading-spinner>
     <div class="h5 breadcrumb text-muted border-0 m-0">
       {{ title | translate }}
     </div>

@@ -93,7 +93,8 @@
     "DAY_OFF_CATE": "Loại ngày nghỉ",
     "AVAILABLE_HOURS": "Số giờ có sẵn",
     "MESS_EMAIL": "Email đã tồn tại",
-    "MESS_SUCCESS": "Tạo thành công!",
+    "CREATE_SUCCESS": "Tạo thành công!",
+    "EDIT_SUCCESS": "Chỉnh sửa thành công!",
     "CLOSE": "Đóng",
     "SAVE": "Lưu"
   },
@@ -149,14 +150,14 @@
     "CREATE_TITLE": "Tạo thể loại ngày nghỉ",
     "DELETE_CONFIRM": "Thao tác này không thể hoàn tác vui lòng xác nhận lại!",
     "NAME_REQUIRED": "Hãy nhập tên!",
-    "NAME_MINLENGTH": "Tên phải trên 6 ký tự",
+    "NAME_MINLENGTH": "Tên phải có ít nhất 6 ký tự",
     "NAME_MAXLENGTH": "Tên không được phép vượt quá 20 ký tự",
     "NAME_PATTERN": "Tên không được chứa ký tự đặc biệt",
     "DAY_OFF": "Số phép mặc định",
     "HOURS": "Số giờ",
     "HOURS_REQUIRED": "Hãy nhập số giờ!",
-    "HOURS_MIN": "Số giờ tối thiểu là 8",
-    "HOURS_MAX": "Số giờ tối đa là 1440"
+    "HOURS_MIN": "Số giờ không được phép nhỏ hơn 8",
+    "HOURS_MAX": "Số giờ không được phép vượt quá 1440"
   },
   "DEVICE_EDIT": {
     "EDIT_TITLE": "Chỉnh sửa thông tin thiết bị.",
@@ -166,7 +167,7 @@
     "DEVICE_NAME_MAX_LENGTH": "Tên thiết bị không được vượt quá 100 ký tự.",
     "PRICE_REQUIRED": "Hãy nhập giá tiền của thiết bị.",
     "PRICE_PATTERN": "Giá tiền của thiết bị phải là một số  dương",
-    "DESCRIPTION_MIN_LENGTH": "Mô tả phải trên 5 ký tự"
+    "DESCRIPTION_MIN_LENGTH": "Mô tả phải có ít nhất 6 ký tự"
   },
   "DEVICE_HISTORY": {
     "TITLE": "Danh sách lịch sử thiết bị",
@@ -204,7 +205,7 @@
     "DELETE_TITLE": "Xóa thể loại thiết bị",
     "EDIT_TITLE": "Sửa thể loại thiết bị",
     "CREATE_TITLE": "Tạo thể loại thiết bị",
-    "NAME_MAXLENGTH": "Tên thiết bị có độ dài tối đa là 100 ký tự"
+    "NAME_MAXLENGTH": "Tên thiết bị không được phép vượt quá 100 ký tự"
   },
   "ERROR": {
     "TITLE_404": "404",
@@ -243,5 +244,20 @@
     "TITLE": "Không hỗ trợ",
     "ERROR_CONTENT": "Trình duyệt của bạn không được hỗ trợ",
     "ERROR_DESC": "Vui lòng dùng trình duyệt khác để truy cập"
+  },
+  "MESSAGE":{
+    "NO_USER": "Không tìm thấy tài khoản",
+    "NO_TOKEN": "Mã đăng nhập không đúng",
+    "NO_ACC": "Email hoặc mật khẩu không đúng",
+    "EMPLOYEE_STATUS": "Trạng thái của nhân viên này sẽ được thay đổi thành 'CỰU NHÂN VIÊN' thành công!",
+    "REQUEST_DAY_OFF": "Duyệt phét thành công!",
+    "ASSIGN_DEVICE": "Bàn giao thiết bị thành công!",
+    "DELETE_SUCCESS": "Xóa thành công",
+    "DISCARD_DEVICE": "Thay đổi trạng thái Bị lỗi cho thiết bị thành công!",
+    "INVENTORY": "Thay đổi trạng thái Trong kho cho thiết bị thành công!",
+    "WRONG_ACC": "Tài khoản không đúng",
+    "PERMISSION": "Bạn không có quyền",
+    "REQUEST_LONG": "Yêu cầu thất bại",
+    "STATUS": "Trạng thái không hợp lệ"
   }
 }
