@@ -131,7 +131,7 @@
           <label class="form-check-label pointer" for="defaultCheck3">
             {{ 'REQUEST-DAY-OFF.UNPAID_LEAVE' | translate }}
             {{ dayOffs - dayOffAvailable }}
-            {{ 'REQUEST-DAY-OFF.DAYS' | translate }}
+            {{ dayOffs - dayOffAvailable > 1 ? setDays() : setDay() }}
           </label>
         </div>
       </div>

@@ -152,7 +152,7 @@
     "NAME_MINLENGTH": "The name must be at least 6 characters",
     "NAME_MAXLENGTH": "The name must not exceed 20 characters",
     "NAME_PATTERN": "The name must not contain special characters",
-    "DAY_OFF": "Number of dayoff",
+    "DAY_OFF": "Total default leaves",
     "HOURS": "Hours",
     "HOURS_REQUIRED": "Hours is required!",
     "HOURS_MIN": "Hours must be at least 8",

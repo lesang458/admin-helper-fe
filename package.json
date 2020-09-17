@@ -30,6 +30,7 @@
     "@popperjs/core": "^2.3.3",
     "angularx-social-login": "^3.2.1",
     "camelcase-keys": "^6.2.2",
+    "font-awesome": "^4.7.0",
     "ngx-bootstrap": "^5.6.1",
     "ngx-currency": "^2.5.1",
     "ngx-loading": "^8.0.0",

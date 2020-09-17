@@ -42,7 +42,6 @@
       <table class="table table-bordered">
         <thead *ngIf="data.pagination.totalCount !== 0">
           <tr>
-            <th scope="col" class="col-id">ID</th>
             <th
               scope="col"
               class="col-name"
@@ -74,9 +73,6 @@
         </thead>
         <tbody>
           <tr *ngFor="let item of data.data; let i = index">
-            <th scope="row" class="align-middle">
-              {{ i + 1 + (data.pagination.currentPage - 1) * 10 }}
-            </th>
             <td class="align-middle">{{ item.firstName + ' ' + item.lastName }}</td>
             <td class="align-middle">{{ item.birthdate | date: 'dd/MM/yyyy' }}</td>
             <ng-container *ngFor="let type of types">
@@ -93,18 +89,13 @@
               <div class="d-flex justify-content-center">
                 <button
                   type="button"
-                  class="btn btn-outline-dark"
+                  class="btn btn-outline-info"
                   data-toggle="modal"
                   (click)="selectedEmployee = item"
                   tooltip="{{ 'DAY_OFF_TABLE.SUBMIT_TIME_OFF' | translate }}"
                   data-target="#subTimeOff"
                 >
-                  <img
-                    src="assets/img/time-off.jpg"
-                    intrinsicsize="512 x 512"
-                    width="20"
-                    height="20"
-                  />
+                  <i class="fa fa-calendar-plus-o"></i>
                 </button>
               </div>
             </td>

@@ -1,15 +1,7 @@
 .table {
-  .col-id {
-    width: 5%;
-  }
-
-  .col-name {
-    width: 25%;
-    cursor: pointer;
-  }
-
+  .col-name,
   .col-birthday {
-    width: 20%;
+    width: 25%;
     cursor: pointer;
   }
 

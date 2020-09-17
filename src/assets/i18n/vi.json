@@ -152,7 +152,7 @@
     "NAME_MINLENGTH": "Tên phải trên 6 ký tự",
     "NAME_MAXLENGTH": "Tên không được phép vượt quá 20 ký tự",
     "NAME_PATTERN": "Tên không được chứa ký tự đặc biệt",
-    "DAY_OFF": "Số ngày nghỉ",
+    "DAY_OFF": "Số phép mặc định",
     "HOURS": "Số giờ",
     "HOURS_REQUIRED": "Hãy nhập số giờ!",
     "HOURS_MIN": "Số giờ tối thiểu là 8",

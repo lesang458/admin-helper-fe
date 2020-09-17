@@ -4,11 +4,11 @@
       <table class="table table-bordered">
         <thead>
           <tr>
-            <th scope="col" class="col-id">ID</th>
+            <th scope="col" class="col-id">No.</th>
             <th scope="col" class="col-name">
               {{ 'DAY_OFF_CATEGORIES_PAGE.NAME' | translate }}
             </th>
-            <th scope="col" class="col-name">
+            <th scope="col" class="col-name text-right">
               {{ 'DAY_OFF_CATEGORIES_PAGE.DAY_OFF' | translate }}
             </th>
             <th scope="col" class="col-description">
@@ -25,7 +25,7 @@
               {{ i + 1 }}
             </th>
             <td class="align-middle">{{ item.name | titlecase }}</td>
-            <td class="align-middle">{{ item.totalHoursDefault / 8 }}</td>
+            <td class="align-middle text-right">{{ item.totalHoursDefault / 8 }}</td>
             <td class="align-middle">{{ item.description }}</td>
             <td class="d-flex justify-content-center align-middle">
               <button
