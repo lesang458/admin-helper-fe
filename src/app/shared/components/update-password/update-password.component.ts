@@ -83,7 +83,7 @@ export class UpdatePasswordComponent implements OnInit {
           break;
         case 2:
           this.store.dispatch(
-            new AuthActions.VerifyToken({
+            new AuthActions.ResetPassword({
               email: this.email,
               token: this.token,
               newPassword: this.newPassword,
