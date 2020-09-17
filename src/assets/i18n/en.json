@@ -256,6 +256,8 @@
     "DISCARD_DEVICE": "Change Discard status device successfully!",
     "INVENTORY": "Change Inventory status device successfully!",
     "WRONG_ACC": "Invalid User",
-    "PERMISSION": "You have not permission"
+    "PERMISSION": "You have not permission",
+    "REQUEST_LONG": "Request is too long",
+    "STATUS": "status is not valid"
   }
 }

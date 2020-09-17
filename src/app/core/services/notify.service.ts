@@ -33,6 +33,12 @@ export class NotifyService {
       case 'You have not permission':
         message = this.translate.instant('MESSAGE.PERMISSION');
         break;
+      case 'Request is too long':
+        message = this.translate.instant('MESSAGE.REQUEST_LONG');
+        break;
+      case 'status is not valid':
+        message = this.translate.instant('MESSAGE.STATUS');
+        break;
     }
     this.toastr.error(null, message);
   }
