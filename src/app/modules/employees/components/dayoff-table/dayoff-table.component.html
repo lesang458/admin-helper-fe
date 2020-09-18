@@ -46,7 +46,7 @@
               class="col-name"
               (click)="onSort(data.pagination.currentPage, 'name')"
             >
-              {{ 'DAY_OFF_TABLE.NAME' | translate }}
+              {{ 'GENERAL_LIST.NAME' | translate }}
               <i class="cil-arrow-top" *ngIf="sortNameType === 1"></i>
               <i class="cil-arrow-bottom" *ngIf="sortNameType === 2"></i>
             </th>
@@ -55,7 +55,7 @@
               class="col-birthday"
               (click)="onSort(data.pagination.currentPage)"
             >
-              {{ 'DAY_OFF_TABLE.BIRTHDAY' | translate }}
+              {{ 'GENERAL_LIST.BIRTHDAY' | translate }}
               <i class="cil-arrow-top" *ngIf="sortBirthDateType === 1"></i>
               <i class="cil-arrow-bottom" *ngIf="sortBirthDateType === 2"></i>
             </th>

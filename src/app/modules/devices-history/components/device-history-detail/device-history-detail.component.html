@@ -13,20 +13,20 @@
 </div>
 <div class="modal-body">
   <div class="mb-3 font-weight-bold">
-    {{ 'DEVICE_HISTORY.STATUS' | translate }}:
+    {{ 'GENERAL_LIST.STATUS' | translate }}:
     <span
       class="badge rounded-pill badge-danger p-2"
       *ngIf="data?.status === 'discarded'"
       >{{ 'DEVICE_HISTORY.DISCARDED' | translate }}
     </span>
     <span
-      class="badge rounded-pill badge-success p-2"
+      class="badge rounded-pill badge-info p-2"
       *ngIf="data?.status === 'in_inventory'"
     >
       {{ 'DEVICE_HISTORY.IN_INVENTORY' | translate }}
     </span>
     <span
-      class="badge rounded-pill badge-info p-2"
+      class="badge rounded-pill badge-success p-2"
       *ngIf="data?.status === 'assigned'"
     >
       {{ 'DEVICE_HISTORY.ASSIGNED' | translate }}
@@ -35,13 +35,13 @@
   <div class="row">
     <div class="col-6">
       <span class="font-weight-bold">
-        {{ 'DEVICE_HISTORY.FROM_DATE' | translate }}:
+        {{ 'REQUEST_DAY_OFF.FROM_DATE' | translate }}:
       </span>
       {{ data?.fromDate | date: 'dd/MM/yyyy' }}
     </div>
     <div class="col-6">
       <span class="font-weight-bold">
-        {{ 'DEVICE_HISTORY.TO_DATE' | translate }}:
+        {{ 'REQUEST_DAY_OFF.TO_DATE' | translate }}:
       </span>
       {{ data?.toDate | date: 'dd/MM/yyyy' }}
     </div>
@@ -54,11 +54,11 @@
       {{ 'DEVICE_HISTORY.DEVICE_NAME' | translate }}: {{ data?.device?.name }}
     </li>
     <li class="list-group-item">
-      {{ 'DEVICE_HISTORY.PRICE' | translate }}:
+      {{ 'DEVICE_TABLE.PRICE' | translate }}:
       {{ data?.device?.price | currency: 'VND' }}
     </li>
     <li class="list-group-item">
-      {{ 'DEVICE_HISTORY.DESCRIPTION' | translate }}:
+      {{ 'DEVICE_TABLE.DESCRIPTION' | translate }}:
       {{ data?.device?.description }}
     </li>
   </ul>
@@ -70,7 +70,7 @@
       {{ 'DEVICE_HISTORY.FULL_NAME' | translate }}: {{ getUserName(data.user) }}
     </li>
     <li class="list-group-item">
-      {{ 'DEVICE_HISTORY.EMAIL' | translate }}:
+      {{ 'LOGIN.EMAIL' | translate }}:
       {{ 'DEVICE_TABLE.EMPTY' | translate }}
     </li>
   </ul>

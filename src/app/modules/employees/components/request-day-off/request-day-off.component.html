@@ -3,7 +3,7 @@
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title" id="exampleModalLabel">
-          {{ 'REQUEST-DAY-OFF.AUTH' | translate }}
+          {{ 'REQUEST_DAY_OFF.AUTH' | translate }}
         </h5>
         <button
           type="button"
@@ -16,7 +16,7 @@
       </div>
       <div class="modal-body pt-1 pb-0">
         <label class="font-weight-bold" for="exampleFormControlInput1">
-          {{ 'REQUEST-DAY-OFF.FULL_NAME' | translate }}
+          {{ 'REQUEST_DAY_OFF.FULL_NAME' | translate }}
         </label>
         <input
           type="text"
@@ -27,7 +27,7 @@
       </div>
       <div class="modal-body date pt-1 pb-0">
         <label class="font-weight-bold" for="exampleFormControlInput2">
-          {{ 'REQUEST-DAY-OFF.FROM_DATE' | translate }}
+          {{ 'REQUEST_DAY_OFF.FROM_DATE' | translate }}
         </label>
         <input
           type="date"
@@ -42,7 +42,7 @@
           id="label3"
           for="exampleFormControlInput3"
         >
-          {{ 'REQUEST-DAY-OFF.TO_DATE' | translate }}
+          {{ 'REQUEST_DAY_OFF.TO_DATE' | translate }}
         </label>
         <input
           type="date"
@@ -65,7 +65,7 @@
               formControlName="morningBreak"
             />
             <label class="form-check-label pointer" for="defaultCheck1">
-              {{ 'REQUEST-DAY-OFF.MORNING_BREAK' | translate }}
+              {{ 'REQUEST_DAY_OFF.MORNING_BREAK' | translate }}
             </label>
           </div>
           <div class="form-check">
@@ -77,7 +77,7 @@
               formControlName="afternoonBreak"
             />
             <label class="form-check-label pointer" for="defaultCheck2">
-              {{ 'REQUEST-DAY-OFF.AFTERNOON_BREAK' | translate }}
+              {{ 'REQUEST_DAY_OFF.AFTERNOON_BREAK' | translate }}
             </label>
           </div>
         </div>
@@ -89,7 +89,7 @@
           class="font-weight-bold"
           for="exampleFormControlSelect1"
         >
-          {{ 'REQUEST-DAY-OFF.KIND_OF_LEAVE' | translate }}
+          {{ 'REQUEST_DAY_OFF.KIND_OF_LEAVE' | translate }}
         </label>
         <select
           class="form-control pointer"
@@ -107,12 +107,12 @@
 
       <div class="modal-body-custom ml-3 mr-3">
         <div class="alert alert-success" role="alert">
-          {{ 'REQUEST-DAY-OFF.DAY_OFF_AVAILABLE' | translate }}:
+          {{ 'REQUEST_DAY_OFF.DAY_OFF_AVAILABLE' | translate }}:
           {{ dayOffAvailable }}
           {{ dayOffAvailable > 1 ? setDays() : setDay() }}
         </div>
         <div class="alert alert-info" role="alert">
-          {{ 'REQUEST-DAY-OFF.DAY_OFF_AFTER' | translate }}:
+          {{ 'REQUEST_DAY_OFF.DAY_OFF_AFTER' | translate }}:
           {{ dayOffAvailable > dayOffs ? dayOffAvailable - dayOffs : '0' }}
           {{ dayOffAvailable - dayOffs > 1 ? setDays() : setDay() }}
         </div>
@@ -129,7 +129,7 @@
             formControlName="unpaidLeave"
           />
           <label class="form-check-label pointer" for="defaultCheck3">
-            {{ 'REQUEST-DAY-OFF.UNPAID_LEAVE' | translate }}
+            {{ 'REQUEST_DAY_OFF.UNPAID_LEAVE' | translate }}
             {{ dayOffs - dayOffAvailable }}
             {{ dayOffs - dayOffAvailable > 1 ? setDays() : setDay() }}
           </label>
@@ -138,7 +138,7 @@
 
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">
-          {{ 'REQUEST-DAY-OFF.CANCEL' | translate }}
+          {{ 'PROFILE_CREATE.CLOSE' | translate }}
         </button>
         <button
           [disabled]="dayOffAvailable < dayOffs && !f.get('unpaidLeave').value"
@@ -147,7 +147,7 @@
           data-dismiss="modal"
           class="btn btn-success"
         >
-          {{ 'REQUEST-DAY-OFF.SAVE' | translate }}
+          {{ 'PROFILE_CREATE.SAVE' | translate }}
         </button>
       </div>
     </div>
