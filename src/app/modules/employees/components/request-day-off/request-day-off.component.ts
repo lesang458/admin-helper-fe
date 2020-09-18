@@ -127,12 +127,12 @@ export class RequestDayOffComponent implements OnInit, OnChanges {
   }
 
   public setDays(): string {
-    const str = this.translate.instant('REQUEST-DAY-OFF.DAY');
+    const str = this.translate.instant('REQUEST_DAY_OFF.DAY');
     return this.translate.currentLang === 'en' ? `${str}s` : str;
   }
 
   public setDay(): string {
-    return this.translate.instant('REQUEST-DAY-OFF.DAY');
+    return this.translate.instant('REQUEST_DAY_OFF.DAY');
   }
 
   public onSave(): void {

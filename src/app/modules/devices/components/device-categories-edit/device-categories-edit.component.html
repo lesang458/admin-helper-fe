@@ -44,7 +44,7 @@
     </div>
     <div class="form-group col-md-12" *ngIf="type !== 'delete'">
       <label for="exampleFormControlInput3">
-        {{ 'DAY_OFF_CATEGORIES_PAGE.DESCRIPTION' | translate }}
+        {{ 'DEVICE_TABLE.DESCRIPTION' | translate }}
       </label>
       <textarea
         class="form-control"
@@ -65,7 +65,7 @@
       aria-label="Close"
       (click)="bsModalRef.hide()"
     >
-      {{ 'DAY_OFF_CATEGORIES_PAGE.CANCEL' | translate }}
+      {{ 'PROFILE_CREATE.CLOSE' | translate }}
     </button>
     <button
       *ngIf="type !== 'delete'"
@@ -73,7 +73,7 @@
       type="submit"
       class="btn btn-success"
     >
-      {{ 'DAY_OFF_CATEGORIES_PAGE.SAVE' | translate }}
+      {{ 'PROFILE_CREATE.SAVE' | translate }}
     </button>
   </div>
   <div class="modal-footer" *ngIf="type === 'delete'">

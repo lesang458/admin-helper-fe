@@ -129,7 +129,11 @@ export class EmployeeEffects {
         )
         .pipe(
           map(() => {
-            this.notify.showSuccess('MESSAGE.EMPLOYEE_STATUS');
+            const key =
+              action.payload.status === 'FORMER'
+                ? 'MESSAGE.EMPLOYEE_FORMER'
+                : 'MESSAGE.EMPLOYEE_ACTIVE';
+            this.notify.showSuccess(key);
             return new EmployeesActions.SearchEmployees(
               action.payload.searchParams
             );
