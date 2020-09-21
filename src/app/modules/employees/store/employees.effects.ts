@@ -10,7 +10,6 @@ import * as camelcaseKeys from 'camelcase-keys';
 import * as snakecaseKeys from 'snakecase-keys';
 import { RequestDayOffModel } from 'src/app/shared/models/request-day-off.model';
 import { ParamsConstant } from 'src/app/shared/constants/params.constant';
-import { TranslateService } from '@ngx-translate/core';
 import { NotifyService } from 'src/app/core/services/notify.service';
 
 @Injectable()
@@ -72,12 +71,14 @@ export class EmployeeEffects {
   createEmployee = this.actions$.pipe(
     ofType(EmployeesActions.CREATE_EMPLOYEE),
     switchMap((action: EmployeesActions.CreateEmployee) => {
-      const body = snakecaseKeys(action.payload, { deep: true });
+      const body = snakecaseKeys(action.payload.employee, { deep: true });
       return this.http.post<any>(`${environment.APILink}/employees`, body).pipe(
         map((val) => {
           this.notify.showSuccess('PROFILE_CREATE.CREATE_SUCCESS');
           const data: Employee = camelcaseKeys(val.data, { deep: true });
-          return new EmployeesActions.CreateEmployee(data);
+          return new EmployeesActions.SearchEmployees(
+            action.payload.searchParams
+          );
         })
       );
     })
