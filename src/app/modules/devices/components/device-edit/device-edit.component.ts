@@ -60,7 +60,6 @@ export class DeviceEditComponent implements OnInit {
   }
 
   public getNameErrorMessage(): string {
-    console.log(this.f.name.errors);
     return this.f.name.errors.required
       ? this.translate.instant('DEVICE_EDIT.DEVICE_NAME_REQUIRED')
       : this.f.name.errors.minlength
