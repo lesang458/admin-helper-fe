@@ -21,7 +21,7 @@ import { TranslateService } from '@ngx-translate/core';
   styleUrls: ['./profile-create.component.scss'],
 })
 export class ProfileCreateComponent implements OnInit {
-  public state: Boolean[];
+  public state: boolean[];
   public id: number;
   public type: string;
   public refresh: SearchParams;

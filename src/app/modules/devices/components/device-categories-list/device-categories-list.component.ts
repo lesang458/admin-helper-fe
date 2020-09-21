@@ -3,14 +3,14 @@ import { Component, OnInit } from '@angular/core';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 import { Observable } from 'rxjs';
 import { Store } from '@ngrx/store';
-import * as fromApp from '../../../../store/app.reducer'
+import * as fromApp from '../../../../store/app.reducer';
 import { DeviceCategory } from 'src/app/shared/models/deviceCategory';
 import { DeviceCategoriesEditComponent } from '../device-categories-edit/device-categories-edit.component';
 
 @Component({
   selector: 'ah-device-categories-list',
   templateUrl: './device-categories-list.component.html',
-  styleUrls: ['./device-categories-list.component.scss']
+  styleUrls: ['./device-categories-list.component.scss'],
 })
 export class DeviceCategoriesListComponent implements OnInit {
   public data$: Observable<any>;

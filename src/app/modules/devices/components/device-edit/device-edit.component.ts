@@ -21,13 +21,17 @@ export class DeviceEditComponent implements OnInit {
   public params: SearchDevice;
   public categories$: Observable<DeviceCategory[]>;
   public deviceForm = new FormGroup({
-    name: new FormControl('', [Validators.required, Validators.maxLength(100)]),
+    name: new FormControl('', [
+      Validators.required,
+      Validators.maxLength(40),
+      Validators.minLength(2),
+    ]),
     price: new FormControl('', [
       Validators.required,
       Validators.pattern('^[0-9]+$'),
       Validators.min(1),
     ]),
-    description: new FormControl('', Validators.minLength(5)),
+    description: new FormControl(null, Validators.minLength(6)),
     deviceCategoryId: new FormControl(''),
   });
   constructor(
@@ -56,10 +60,12 @@ export class DeviceEditComponent implements OnInit {
   }
 
   public getNameErrorMessage(): string {
-    if (this.f.name.errors.required) {
-      return this.translate.instant('DEVICE_EDIT.DEVICE_NAME_REQUIRED');
-    }
-    return this.translate.instant('DEVICE_EDIT.DEVICE_NAME_MAX_LENGTH');
+    console.log(this.f.name.errors);
+    return this.f.name.errors.required
+      ? this.translate.instant('DEVICE_EDIT.DEVICE_NAME_REQUIRED')
+      : this.f.name.errors.minlength
+      ? this.translate.instant('DEVICE_EDIT.DEVICE_NAME_MIN_LENGTH')
+      : this.translate.instant('DEVICE_EDIT.DEVICE_NAME_MAX_LENGTH');
   }
 
   public getPriceErrorMessage(): string {
@@ -77,7 +83,7 @@ export class DeviceEditComponent implements OnInit {
       name: this.f.name.value,
       price: +this.f.price.value,
       deviceCategoryId: +this.f.deviceCategoryId.value,
-      description: this.f.description.value,
+      description: this.f.description.value ? this.f.description.value : null,
     };
     const id = this.selectedDevice ? this.selectedDevice.id : 0;
     const deviceParams: DeviceParams = {
