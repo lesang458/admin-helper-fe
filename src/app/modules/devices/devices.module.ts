@@ -13,7 +13,7 @@ import { DeviceConfirmComponent } from './components/device-confirm/device-confi
 import { DeviceCategoriesEditComponent } from './components/device-categories-edit/device-categories-edit.component';
 import { DeviceCategoriesListComponent } from './components/device-categories-list/device-categories-list.component';
 import { GeneralDeviceCategoriesComponent } from './pages/general-device-categories/general-device-categories.component';
-import { NgxCurrencyModule } from "ngx-currency";
+import { NgxCurrencyModule } from 'ngx-currency';
 
 @NgModule({
   declarations: [

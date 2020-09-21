@@ -144,7 +144,7 @@
     "CREATE_TITLE": "Tạo thiết bị",
     "DEVICE_NAME": "Tên thiết bị",
     "DEVICE_NAME_REQUIRED": "Hãy nhập tên thiết bị",
-    "DEVICE_NAME_MAX_LENGTH": "Tên thiết bị không được vượt quá 100 ký tự.",
+    "DEVICE_NAME_MAX_LENGTH": "Tên thiết bị không được vượt quá 40 ký tự.",
     "PRICE_REQUIRED": "Hãy nhập giá tiền của thiết bị.",
     "PRICE_PATTERN": "Giá tiền của thiết bị phải là một số  dương",
     "DESCRIPTION_MIN_LENGTH": "Mô tả phải có ít nhất 6 ký tự"

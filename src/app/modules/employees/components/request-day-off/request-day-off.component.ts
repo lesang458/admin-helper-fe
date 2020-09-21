@@ -64,21 +64,11 @@ export class RequestDayOffComponent implements OnInit, OnChanges {
       });
 
       this.f.get('morningBreak').valueChanges.subscribe((val) => {
-        if (val && this.f.get('afternoonBreak').value) {
-          this.dayOffs = 1;
-        } else {
-          this.dayOffs = 0.5;
-          !val ? this.f.get('afternoonBreak').setValue(true) : null;
-        }
+        this.onDayOffChanged('afternoonBreak', val);
       });
 
       this.f.get('afternoonBreak').valueChanges.subscribe((val) => {
-        if (val && this.f.get('morningBreak').value) {
-          this.dayOffs = 1;
-        } else {
-          this.dayOffs = 0.5;
-          !val ? this.f.get('morningBreak').setValue(true) : null;
-        }
+        this.onDayOffChanged('morningBreak', val);
       });
 
       this.f.get('kindOfLeave').valueChanges.subscribe(() => {
@@ -124,6 +114,15 @@ export class RequestDayOffComponent implements OnInit, OnChanges {
       this.dayOffInfos?.availableHours > 0
         ? this.dayOffInfos.availableHours / 8
         : 0;
+  }
+
+  public onDayOffChanged(controlName: string, value: boolean): void {
+    if (value && this.f.get(controlName).value) {
+      this.dayOffs = 1;
+    } else {
+      this.dayOffs = 0.5;
+      !value ? this.f.get(controlName).setValue(true) : null;
+    }
   }
 
   public setDays(): string {
