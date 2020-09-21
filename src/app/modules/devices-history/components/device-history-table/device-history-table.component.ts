@@ -46,7 +46,6 @@ export class DeviceHistoryTableComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    console.log(this.selectedFromDate, 'selectedFromDate');
     this.data$ = this.store.select('deviceHistory').pipe(
       map((devices) => {
         return devices.deviceHistory;
