@@ -24,7 +24,6 @@
             {{ 'DEVICE_EDIT.DEVICE_NAME' | translate }}
           </label>
           <input
-            type="text"
             id="name"
             class="form-control"
             formControlName="name"
@@ -49,7 +48,8 @@
             class="form-control"
             formControlName="price"
             currencyMask
-            [options]="{ prefix: 'đ ', precision: '0' }"
+            [options]="{ prefix: 'đ ', precision: '0', nullable: 'true' }"
+            autocomplete="off"
           />
           <div
             *ngIf="f.price.invalid && (f.price.dirty || f.price.touched)"

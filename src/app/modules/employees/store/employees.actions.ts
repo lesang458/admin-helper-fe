@@ -51,7 +51,7 @@ export class SetDayOff implements Action {
 
 export class CreateEmployee implements Action {
   readonly type = CREATE_EMPLOYEE;
-  constructor(public payload: Employee) {}
+  constructor(public payload: EmployeesParam) {}
 }
 
 export class UpdateEmployeeStatus implements Action {

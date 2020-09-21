@@ -34,6 +34,7 @@
           <input
             type="date"
             class="form-control w-auto d-inline-block"
+            [max]="validFromDate"
             id="from-date"
             [formControl]="selectedFromDate"
           />
@@ -47,6 +48,7 @@
           <input
             type="date"
             class="form-control w-auto d-inline-block"
+            [min]="validToDate"
             id="to-date"
             [formControl]="selectedToDate"
           />

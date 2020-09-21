@@ -21,10 +21,15 @@ export class DeviceEditComponent implements OnInit {
   public params: SearchDevice;
   public categories$: Observable<DeviceCategory[]>;
   public deviceForm = new FormGroup({
-    name: new FormControl('', [Validators.required, Validators.maxLength(40)]),
+    name: new FormControl('', [
+      Validators.required,
+      Validators.maxLength(40),
+      Validators.minLength(2),
+    ]),
     price: new FormControl('', [
       Validators.required,
       Validators.pattern('^[0-9]+$'),
+      Validators.min(1),
     ]),
     description: new FormControl(null, Validators.minLength(6)),
     deviceCategoryId: new FormControl(''),
@@ -57,13 +62,19 @@ export class DeviceEditComponent implements OnInit {
   public getNameErrorMessage(): string {
     return this.f.name.errors.required
       ? this.translate.instant('DEVICE_EDIT.DEVICE_NAME_REQUIRED')
-      : this.translate.instant('DEVICE_EDIT.DEVICE_NAME_MAX_LENGTH');
+      : this.f.name.errors.minLength
+      ? this.translate.instant('DEVICE_EDIT.DEVICE_NAME_MAX_LENGTH')
+      : this.translate.instant('DEVICE_EDIT.DEVICE_NAME_MIN_LENGTH');
   }
 
   public getPriceErrorMessage(): string {
-    return this.f.price.errors.required
-      ? this.translate.instant('DEVICE_EDIT.PRICE_REQUIRED')
-      : this.translate.instant('DEVICE_EDIT.PRICE_PATTERN');
+    if (this.f.price.errors.required) {
+      return this.translate.instant('DEVICE_EDIT.PRICE_REQUIRED');
+    }
+    if (this.f.price.errors.min) {
+      return this.translate.instant('DEVICE_EDIT.PRICE_MIN');
+    }
+    return this.translate.instant('DEVICE_EDIT.PRICE_PATTERN');
   }
 
   public onSubmit(): void {

@@ -143,9 +143,10 @@ export class ProfileCreateComponent implements OnInit {
   public onSubmit() {
     this.profileForm.value.dayOffInfos = this.dayOffForm.value.dayOffInfos;
     if (this.type === 'create') {
-      this.store.dispatch(
-        new EmployeeActions.CreateEmployee(this.profileForm.value)
-      );
+      const employee = this.profileForm.value;
+      const searchParams = this.refresh;
+      const params = { employee, searchParams };
+      this.store.dispatch(new EmployeeActions.CreateEmployee(params));
     } else {
       if (this.type === 'delete' || this.type === 'active') {
         const id = this.id;

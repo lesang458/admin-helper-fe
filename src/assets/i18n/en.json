@@ -145,9 +145,11 @@
     "DEVICE_NAME": "Device Name",
     "DEVICE_NAME_REQUIRED": "Device name is required.",
     "DEVICE_NAME_MAX_LENGTH": "Device name must not exceed 40 characters.",
+    "DEVICE_NAME_MIN_LENGTH": "Description must be at least 2 characters",
     "PRICE_REQUIRED": "Price is required.",
     "PRICE_PATTERN": "Price must be a positive number",
-    "DESCRIPTION_MIN_LENGTH": "Description must be at least 6 characters"
+    "DESCRIPTION_MIN_LENGTH": "Description must be at least 6 characters",
+    "PRICE_MIN": "Price must be at least 1d"
   },
   "DEVICE_HISTORY": {
     "TITLE": "Devices history list",
