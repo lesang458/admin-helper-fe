@@ -60,11 +60,12 @@ export class DeviceEditComponent implements OnInit {
   }
 
   public getNameErrorMessage(): string {
+    console.log(this.f.name.errors);
     return this.f.name.errors.required
       ? this.translate.instant('DEVICE_EDIT.DEVICE_NAME_REQUIRED')
-      : this.f.name.errors.minLength
-      ? this.translate.instant('DEVICE_EDIT.DEVICE_NAME_MAX_LENGTH')
-      : this.translate.instant('DEVICE_EDIT.DEVICE_NAME_MIN_LENGTH');
+      : this.f.name.errors.minlength
+      ? this.translate.instant('DEVICE_EDIT.DEVICE_NAME_MIN_LENGTH')
+      : this.translate.instant('DEVICE_EDIT.DEVICE_NAME_MAX_LENGTH');
   }
 
   public getPriceErrorMessage(): string {
