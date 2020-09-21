@@ -29,6 +29,8 @@ export class DeviceHistoryTableComponent implements OnInit {
   public selectedToDate = new FormControl('');
   public bsModalRef: BsModalRef;
   public currentPage = 1;
+  public validToDate: string;
+  public validFromDate: string;
   constructor(
     private store: Store<fromApp.AppState>,
     private modalService: BsModalService,
@@ -44,6 +46,7 @@ export class DeviceHistoryTableComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    console.log(this.selectedFromDate, 'selectedFromDate');
     this.data$ = this.store.select('deviceHistory').pipe(
       map((devices) => {
         return devices.deviceHistory;
@@ -75,9 +78,11 @@ export class DeviceHistoryTableComponent implements OnInit {
   }
 
   public onPageChanged(page: number): void {
+    this.validToDate = this.selectedFromDate.value;
+    this.validFromDate = this.selectedToDate.value;
     const status = this.searchStatusFormControl.value;
-    const historyFrom = this.selectedFromDate.value;
-    const historyTo = this.selectedToDate.value;
+    const historyFrom = this.validToDate;
+    const historyTo = this.validFromDate;
     const deviceId = this.devicesHistoryService.getCurrentId().toString();
     const params = {
       page,

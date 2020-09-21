@@ -25,6 +25,7 @@ export class DeviceEditComponent implements OnInit {
     price: new FormControl('', [
       Validators.required,
       Validators.pattern('^[0-9]+$'),
+      Validators.min(1),
     ]),
     description: new FormControl('', Validators.minLength(5)),
     deviceCategoryId: new FormControl(''),
@@ -64,6 +65,9 @@ export class DeviceEditComponent implements OnInit {
   public getPriceErrorMessage(): string {
     if (this.f.price.errors.required) {
       return this.translate.instant('DEVICE_EDIT.PRICE_REQUIRED');
+    }
+    if (this.f.price.errors.min) {
+      return this.translate.instant('DEVICE_EDIT.PRICE_MIN');
     }
     return this.translate.instant('DEVICE_EDIT.PRICE_PATTERN');
   }
