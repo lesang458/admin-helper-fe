@@ -175,7 +175,7 @@
     "INVENTORY_PARAM": "This device's status will be changed to 'IN INVENTORY'. Do you want to continue?"
   },
   "DEVICE_CATEGORIES_PAGE": {
-    "TITLE": "Device Categories",
+    "TITLE": "Device Category List",
     "NAME": "Category Name",
     "CREATE": "Create device category",
     "DELETE_TITLE": "Delete device category",
