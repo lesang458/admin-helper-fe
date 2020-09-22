@@ -10,7 +10,7 @@ import * as fromApp from '../../../store/app.reducer';
 import { DayOffCategory } from 'src/app/shared/models/dayoff-category.model';
 import * as camelcaseKeys from 'camelcase-keys';
 import { NotifyService } from 'src/app/core/services/notify.service';
-import { TranslateService } from '@ngx-translate/core';
+import * as snakecaseKeys from 'snakecase-keys';
 
 @Injectable()
 export class DayOffCategoriesEffects {
@@ -74,32 +74,14 @@ export class DayOffCategoriesEffects {
   updateDayoffCategory = this.actions$.pipe(
     ofType(DayOffCategoriesActions.UPDATE_DAY_OFF_CATEGORY),
     switchMap((action: DayOffCategoriesActions.UpdateDayOffCategory) => {
-      const body: DayOffCategory = camelcaseKeys(action.payload);
-      return of({
-        data: {
-          id: body.id,
-          name: body.name,
-          description: body.description,
-          totalHoursDefault: body.totalHoursDefault,
-        },
-      }).pipe(
-        map((val) => {
-          this.notify.showSuccess('PROFILE_CREATE.EDIT_SUCCESS');
-          let dayoff;
-          this.store
-            .select('dayoffCategories')
-            .source.source.source.subscribe((data) => {
-              dayoff = data.dayoffCategories.dayoff;
-            });
-          const array = dayoff.map((item) => {
-            if (item.id == val.data.id) {
-              item = val.data;
-            }
-            return item;
-          });
-          return new DayOffCategoriesActions.GetDayOffCategoriesSuccess(array);
-        })
-      );
+      const body: DayOffCategory = snakecaseKeys(action.payload);
+      return this.http
+        .put(`${environment.APILink}/day_off_categories/${body.id}`, body)
+        .pipe(
+          map(() => {
+            return new DayOffCategoriesActions.FetchDayOffCategories();
+          })
+        );
     })
   );
 
@@ -120,7 +102,7 @@ export class DayOffCategoriesEffects {
 
           return new DayOffCategoriesActions.GetDayOffCategoriesSuccess([
             ...dayoff.filter((item) => {
-              return item.id != id;
+              return item.id !== id;
             }),
           ]);
         })
