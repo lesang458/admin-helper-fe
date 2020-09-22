@@ -175,12 +175,11 @@
     "INVENTORY_PARAM": "This device's status will be changed to 'IN INVENTORY'. Do you want to continue?"
   },
   "DEVICE_CATEGORIES_PAGE": {
-    "TITLE": "Device Categories",
+    "TITLE": "Device Category List",
     "NAME": "Category Name",
     "CREATE": "Create device category",
-    "DELETE_TITLE": "Device categories deletion",
-    "EDIT_TITLE": "Device categories edit",
-    "CREATE_TITLE": "Device categories creation",
+    "DELETE_TITLE": "Delete device category",
+    "EDIT_TITLE": "Edit device category",
     "NAME_MAXLENGTH": "The name has Maximum length is 100 character"
   },
   "ERROR": {

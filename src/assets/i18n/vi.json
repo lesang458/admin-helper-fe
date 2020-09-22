@@ -177,9 +177,8 @@
     "TITLE": "Loại thiết bị",
     "NAME": "Loại thiết bị",
     "CREATE": "Tạo loại thiết bị",
-    "DELETE_TITLE": "Xóa thể loại thiết bị",
-    "EDIT_TITLE": "Sửa thể loại thiết bị",
-    "CREATE_TITLE": "Tạo thể loại thiết bị",
+    "DELETE_TITLE": "Xóa loại thiết bị",
+    "EDIT_TITLE": "Sửa loại thiết bị",
     "NAME_MAXLENGTH": "Tên thiết bị không được phép vượt quá 100 ký tự"
   },
   "ERROR": {
