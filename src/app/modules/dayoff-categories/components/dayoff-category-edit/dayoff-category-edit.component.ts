@@ -1,3 +1,4 @@
+import { TranslateService } from '@ngx-translate/core';
 import * as DayOffActions from '../../store/dayoff-categories.actions';
 import { Component, OnInit } from '@angular/core';
 import { BsModalRef } from 'ngx-bootstrap/modal';
@@ -18,7 +19,7 @@ export class DayOffCategoryEditComponent implements OnInit {
   public f = new FormGroup({
     name: new FormControl('', [
       Validators.required,
-      Validators.minLength(6),
+      Validators.minLength(2),
       Validators.maxLength(20),
       Validators.pattern('^[a-zA-Z]+$'),
     ]),
@@ -32,7 +33,8 @@ export class DayOffCategoryEditComponent implements OnInit {
   constructor(
     private store: Store<fromApp.AppState>,
     public bsModalRef: BsModalRef,
-    private titleCasePipe: TitleCasePipe
+    private titleCasePipe: TitleCasePipe,
+    private translate: TranslateService,
   ) {}
 
   ngOnInit() {
@@ -85,5 +87,20 @@ export class DayOffCategoryEditComponent implements OnInit {
           this.f.get('description').value?.toLowerCase() &&
         this.selectedCategory.totalHoursDefault === this.f.get('hours').value)
     );
+  }
+
+  public getNameErrorMessage(): string {
+    if (this.f.get('name').errors.required) {
+      return this.translate.instant('DAY_OFF_CATEGORIES_PAGE.NAME_REQUIRED');
+    }
+    if (this.f.get('name').errors.pattern) {
+      return this.translate.instant('DAY_OFF_CATEGORIES_PAGE.NAME_PATTERN');
+    }
+    if (this.f.get('name').errors.maxlength) {
+      return this.translate.instant('DAY_OFF_CATEGORIES_PAGE.NAME_MAXLENGTH');
+    }
+    if (this.f.get('name').errors.minlength) {
+      return this.translate.instant('DAY_OFF_CATEGORIES_PAGE.NAME_MINLENGTH');
+    }
   }
 }
