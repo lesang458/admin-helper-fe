@@ -69,11 +69,7 @@ export class DeviceHistoryTableComponent implements OnInit {
   }
 
   public onDataChanged(): void {
-    if (this.currentPage === 1) {
-      this.onPageChanged(1);
-    } else {
-      this.currentPage = 1;
-    }
+    this.currentPage === 1 ? this.onPageChanged(1) : (this.currentPage = 1);
   }
 
   public onPageChanged(page: number): void {

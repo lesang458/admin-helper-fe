@@ -1,7 +1,7 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
-import { map, distinctUntilChanged, debounceTime } from 'rxjs/operators';
+import { map, distinctUntilChanged, debounceTime, tap } from 'rxjs/operators';
 import { PaginatedData } from 'src/app/shared/models/pagination.model';
 import { Employee } from 'src/app/shared/models/employees.model';
 import * as fromApp from '../../../../store/app.reducer';
@@ -18,7 +18,7 @@ import * as DayOffCategoriesActions from 'src/app/modules/dayoff-categories/stor
 })
 export class DayoffTableComponent implements OnInit {
   public searchInput = new FormControl('');
-  public selectedType = new FormControl('VACATION');
+  public selectedType = new FormControl('');
   public currentPage = 1;
   public currentSearch = '';
   public sortBirthDateType = 0;
@@ -46,6 +46,11 @@ export class DayoffTableComponent implements OnInit {
       })
     );
     this.types$ = this.store.select('dayoffCategories').pipe(
+      tap((data) => {
+        if (data.dayoff.length) {
+          this.selectedType.patchValue(data.dayoff[0].name);
+        }
+      }),
       map((data) => {
         return data.dayoff;
       })
@@ -101,11 +106,7 @@ export class DayoffTableComponent implements OnInit {
   public onSearchSubmit(): void {
     if (this.currentSearch !== this.searchInput.value.replace(/\s/g, '')) {
       this.currentSearch = this.searchInput.value.replace(/\s/g, '');
-      if (this.currentPage === 1) {
-        this.onPageChanged(1);
-      } else {
-        this.currentPage = 1;
-      }
+      this.currentPage === 1 ? this.onPageChanged(1) : (this.currentPage = 1);
     }
   }
 }
