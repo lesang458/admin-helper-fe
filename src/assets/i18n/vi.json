@@ -130,7 +130,7 @@
     "CREATE_TITLE": "Tạo thể loại ngày nghỉ",
     "DELETE_CONFIRM": "Thao tác này không thể hoàn tác vui lòng xác nhận lại!",
     "NAME_REQUIRED": "Hãy nhập tên!",
-    "NAME_MINLENGTH": "Tên phải có ít nhất 6 ký tự",
+    "NAME_MINLENGTH": "Tên phải có ít nhất 2 ký tự",
     "NAME_MAXLENGTH": "Tên không được phép vượt quá 20 ký tự",
     "NAME_PATTERN": "Tên không được chứa ký tự đặc biệt",
     "DAY_OFF": "Số phép mặc định",

@@ -34,17 +34,8 @@
         *ngIf="f.get('name').invalid && (f.get('name').dirty || f.get('name').touched)"
         class="mess-invalid"
       >
-        <div *ngIf="f.get('name').errors.required">
-          {{ 'DAY_OFF_CATEGORIES_PAGE.NAME_REQUIRED' | translate }}
-        </div>
-        <div *ngIf="f.get('name').errors.maxlength">
-          {{ 'DAY_OFF_CATEGORIES_PAGE.NAME_MAXLENGTH' | translate }}
-        </div>
-        <div *ngIf="f.get('name').errors.minlength">
-          {{ 'DAY_OFF_CATEGORIES_PAGE.NAME_MINLENGTH' | translate }}
-        </div>
-        <div *ngIf="f.get('name').errors.pattern">
-          {{ 'DAY_OFF_CATEGORIES_PAGE.NAME_PATTERN' | translate }}
+        <div *ngIf="f.get('name').errors">
+          {{ getNameErrorMessage() }}
         </div>
       </div>
     </div>
