@@ -178,9 +178,8 @@
     "TITLE": "Device Categories",
     "NAME": "Category Name",
     "CREATE": "Create device category",
-    "DELETE_TITLE": "Device categories deletion",
-    "EDIT_TITLE": "Device categories edit",
-    "CREATE_TITLE": "Device categories creation",
+    "DELETE_TITLE": "Delete device category",
+    "EDIT_TITLE": "Edit device category",
     "NAME_MAXLENGTH": "The name has Maximum length is 100 character"
   },
   "ERROR": {
