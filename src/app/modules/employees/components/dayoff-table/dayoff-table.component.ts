@@ -1,7 +1,7 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
-import { map, distinctUntilChanged, debounceTime, tap } from 'rxjs/operators';
+import { map, tap } from 'rxjs/operators';
 import { PaginatedData } from 'src/app/shared/models/pagination.model';
 import { Employee } from 'src/app/shared/models/employees.model';
 import * as fromApp from '../../../../store/app.reducer';

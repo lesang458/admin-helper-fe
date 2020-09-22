@@ -7,8 +7,7 @@ import * as EmployeeActions from '../../../employees/store/employees.actions';
 import * as DevicesActions from '../../store/devices.actions';
 import { SearchParams } from 'src/app/modules/employees/store/employees.actions';
 import { SearchDevice } from '../../store/devices.actions';
-import { FormControl, FormGroup } from '@angular/forms';
-import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
+import { FormControl } from '@angular/forms';
 import { Device } from 'src/app/shared/models/device.model';
 
 @Component({
@@ -86,7 +85,9 @@ export class DeviceAssignComponent implements OnInit {
   }
 
   public onSearchSubmit(): void {
-    if (this.currentSearch !== this.searchFormControl.value.replace(/\s/g, '')) {
+    if (
+      this.currentSearch !== this.searchFormControl.value.replace(/\s/g, '')
+    ) {
       this.currentSearch = this.searchFormControl.value.replace(/\s/g, '');
       this.currentPage === 1 ? this.onPageChanged(1) : (this.currentPage = 1);
     }

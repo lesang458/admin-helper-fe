@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Employee } from 'src/app/shared/models/employees.model';
 import { Actions, ofType, Effect } from '@ngrx/effects';
 import * as AuthActions from './auth.actions';
-import { switchMap, map, tap, catchError } from 'rxjs/operators';
+import { switchMap, map, tap } from 'rxjs/operators';
 import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment.prod';
 import * as camelcaseKeys from 'camelcase-keys';

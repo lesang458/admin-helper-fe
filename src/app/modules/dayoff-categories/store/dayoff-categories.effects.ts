@@ -56,14 +56,12 @@ export class DayOffCategoriesEffects {
         map((val) => {
           this.notify.showSuccess('PROFILE_CREATE.CREATE_SUCCESS');
           let dayoff;
-          this.store
-            .select('dayoffCategories')
-            .source.source.source.subscribe((data) => {
-              dayoff = data.dayoffCategories.dayoff;
-            });
+          this.store.select('dayoffCategories').subscribe((data) => {
+            dayoff = data.dayoff;
+          });
           return new DayOffCategoriesActions.GetDayOffCategoriesSuccess([
             ...dayoff,
-            { ...val.data, id: (dayoff.length + 1).toString() },
+            { ...val.data, id: dayoff.length + 1 },
           ]);
         })
       );
@@ -89,16 +87,14 @@ export class DayOffCategoriesEffects {
   deleteDayoffCategory = this.actions$.pipe(
     ofType(DayOffCategoriesActions.DELETE_DAY_OFF_CATEGORY),
     switchMap((action: DayOffCategoriesActions.DeleteDayOffCategory) => {
-      const id: string = action.payload;
+      const id = action.payload;
       return of({ id }).pipe(
         map(() => {
           this.notify.showSuccess('MESSAGE.DELETE_SUCCESS');
           let dayoff;
-          this.store
-            .select('dayoffCategories')
-            .source.source.source.subscribe((data) => {
-              dayoff = data.dayoffCategories.dayoff;
-            });
+          this.store.select('dayoffCategories').subscribe((data) => {
+            dayoff = data.dayoff;
+          });
 
           return new DayOffCategoriesActions.GetDayOffCategoriesSuccess([
             ...dayoff.filter((item) => {

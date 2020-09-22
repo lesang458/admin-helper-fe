@@ -26,7 +26,7 @@ export class UpdateDayOffCategory implements Action {
 }
 export class DeleteDayOffCategory implements Action {
   readonly type = DELETE_DAY_OFF_CATEGORY;
-  constructor(public payload: string) {}
+  constructor(public payload: number) {}
 }
 export class FetchDayOffCategories implements Action {
   readonly type = FETCH_DAY_OFF_CATEGORIES;

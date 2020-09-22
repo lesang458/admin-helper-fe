@@ -4,8 +4,6 @@ import * as DevicesHistoryActions from './devices-history.actions';
 import { switchMap, map } from 'rxjs/operators';
 import { environment } from 'src/environments/environment.prod';
 import { HttpClient, HttpParams } from '@angular/common/http';
-import { Store } from '@ngrx/store';
-import * as fromApp from '../../../store/app.reducer';
 import * as camelcaseKeys from 'camelcase-keys';
 import { DeviceHistory } from 'src/app/shared/models/devices-history.model';
 import { PaginatedData } from 'src/app/shared/models/pagination.model';

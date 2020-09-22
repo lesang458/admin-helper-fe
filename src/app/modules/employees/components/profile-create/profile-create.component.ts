@@ -142,22 +142,18 @@ export class ProfileCreateComponent implements OnInit {
 
   public onSubmit() {
     this.profileForm.value.dayOffInfos = this.dayOffForm.value.dayOffInfos;
+    const employee = this.profileForm.value;
+    const searchParams = this.refresh;
     if (this.type === 'create') {
-      const employee = this.profileForm.value;
-      const searchParams = this.refresh;
       const params = { employee, searchParams };
       this.store.dispatch(new EmployeeActions.CreateEmployee(params));
     } else {
+      const id = this.id;
       if (this.type === 'delete' || this.type === 'active') {
-        const id = this.id;
         const status = this.type === 'delete' ? 'FORMER' : 'ACTIVE';
-        const searchParams = this.refresh;
         const params = { id, status, searchParams };
         this.store.dispatch(new EmployeeActions.UpdateEmployeeStatus(params));
       } else {
-        const id = this.id;
-        const employee = this.profileForm.value;
-        const searchParams = this.refresh;
         const params = { id, employee, searchParams };
         this.store.dispatch(new EmployeeActions.EditEmployee(params));
       }

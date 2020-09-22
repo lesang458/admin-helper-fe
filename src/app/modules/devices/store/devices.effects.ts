@@ -11,7 +11,6 @@ import { switchMap, map } from 'rxjs/operators';
 import { DeviceCategory } from 'src/app/shared/models/deviceCategory';
 import { ParamsConstant } from 'src/app/shared/constants/params.constant';
 import { NotifyService } from 'src/app/core/services/notify.service';
-import { TranslateService } from '@ngx-translate/core';
 @Injectable()
 export class DeviceEffects {
   @Effect()

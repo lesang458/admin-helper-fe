@@ -1,5 +1,5 @@
 export interface DayOffCategory {
-  id?: string;
+  id?: number;
   name: string;
   description: string;
   totalHoursDefault: number;
