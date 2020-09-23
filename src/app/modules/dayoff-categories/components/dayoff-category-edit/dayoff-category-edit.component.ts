@@ -48,28 +48,19 @@ export class DayOffCategoryEditComponent implements OnInit {
   }
 
   public onSubmit(): void {
+    const category: DayOffCategory = {
+      name: this.f.get('name').value.toUpperCase(),
+      description: this.f.get('description').value
+        ? this.f.get('description').value
+        : null,
+      totalHoursDefault: this.f.get('hours').value,
+    };
     if (this.type === 'create') {
-      this.store.dispatch(
-        new DayOffActions.CreateDayOffCategory({
-          name: this.f.get('name').value.toUpperCase(),
-          description: this.f.get('description').value
-            ? this.f.get('description').value
-            : null,
-          totalHoursDefault: this.f.get('hours').value,
-        })
-      );
+      this.store.dispatch(new DayOffActions.CreateDayOffCategory(category));
     }
     if (this.type === 'edit') {
-      this.store.dispatch(
-        new DayOffActions.UpdateDayOffCategory({
-          id: this.selectedCategory.id,
-          name: this.f.get('name').value.toUpperCase(),
-          description: this.f.get('description').value
-            ? this.f.get('description').value
-            : null,
-          totalHoursDefault: this.f.get('hours').value,
-        })
-      );
+      category.id = this.selectedCategory.id;
+      this.store.dispatch(new DayOffActions.UpdateDayOffCategory(category));
     }
     if (this.type === 'delete') {
       this.store.dispatch(
