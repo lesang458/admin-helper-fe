@@ -83,12 +83,15 @@ export class DayOffCategoryEditComponent implements OnInit {
   }
 
   public getNameErrorMessage(): string {
-    return this.f.get('name').errors.required
-      ? this.translate.instant('DAY_OFF_CATEGORIES_PAGE.NAME_REQUIRED')
-      : this.f.get('name').errors.pattern
-      ? this.translate.instant('DAY_OFF_CATEGORIES_PAGE.NAME_PATTERN')
-      : this.f.get('name').errors.minlength
-      ? this.translate.instant('DAY_OFF_CATEGORIES_PAGE.NAME_MINLENGTH')
-      : this.translate.instant('DAY_OFF_CATEGORIES_PAGE.NAME_MAXLENGTH');
+    if (this.f.get('name').errors.required) {
+      return this.translate.instant('DAY_OFF_CATEGORIES_PAGE.NAME_REQUIRED');
+    }
+    if (this.f.get('name').errors.pattern) {
+      return this.translate.instant('DAY_OFF_CATEGORIES_PAGE.NAME_PATTERN');
+    }
+    if (this.f.get('name').errors.maxlength) {
+      return this.translate.instant('DAY_OFF_CATEGORIES_PAGE.NAME_MAXLENGTH');
+    }
+    return this.translate.instant('DAY_OFF_CATEGORIES_PAGE.NAME_MINLENGTH');
   }
 }

@@ -24,19 +24,23 @@ export class DeviceConfirmComponent implements OnInit {
   ngOnInit(): void {}
 
   public getTitle(): string {
-    return this.type === 'delete'
-      ? this.translate.instant('DEVICE_CONFIRM.DELETE_TITLE')
-      : this.type === 'discard'
-      ? this.translate.instant('DEVICE_CONFIRM.DISCARD_TITLE')
-      : this.translate.instant('DEVICE_CONFIRM.INVENTORY_TITLE');
+    if (this.type === 'delete') {
+      return this.translate.instant('DEVICE_CONFIRM.DELETE_TITLE');
+    }
+    if (this.type === 'discard') {
+      return this.translate.instant('DEVICE_CONFIRM.DISCARD_TITLE');
+    }
+    return this.translate.instant('DEVICE_CONFIRM.INVENTORY_TITLE');
   }
 
   public getParam(): string {
-    return this.type === 'delete'
-      ? this.translate.instant('DEVICE_CONFIRM.DELETE_PARAM')
-      : this.type === 'discard'
-      ? this.translate.instant('DEVICE_CONFIRM.DISCARD_PARAM')
-      : this.translate.instant('DEVICE_CONFIRM.INVENTORY_PARAM');
+    if (this.type === 'delete') {
+      return this.translate.instant('DEVICE_CONFIRM.DELETE_PARAM');
+    }
+    if (this.type === 'discard') {
+      return this.translate.instant('DEVICE_CONFIRM.DISCARD_PARAM');
+    }
+    return this.translate.instant('DEVICE_CONFIRM.INVENTORY_PARAM');
   }
 
   public onConfirm(): void {
@@ -44,11 +48,15 @@ export class DeviceConfirmComponent implements OnInit {
       id: this.id,
       params: this.params,
     };
-    this.type === 'delete'
-      ? this.store.dispatch(new DevicesActions.DeleteDevice(data))
-      : this.type === 'discard'
-      ? this.store.dispatch(new DevicesActions.DiscardDevice(data))
-      : this.store.dispatch(new DevicesActions.MoveDeviceToInventory(data));
+    if (this.type === 'delete') {
+      this.store.dispatch(new DevicesActions.DeleteDevice(data));
+    }
+    if (this.type === 'discard') {
+      this.store.dispatch(new DevicesActions.DiscardDevice(data));
+    }
+    if (this.type === 'inventory') {
+      this.store.dispatch(new DevicesActions.MoveDeviceToInventory(data));
+    }
     this.bsModalRef.hide();
   }
 }

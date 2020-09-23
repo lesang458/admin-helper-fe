@@ -117,11 +117,9 @@ export class ProfileCreateComponent implements OnInit {
         'PROFILE_CREATE.PHONE_NUMBER_MINLENGTH'
       );
     }
-    if (this.f.phoneNumber.errors.maxLength) {
-      return this.translateService.instant(
-        'PROFILE_CREATE.PHONE_NUMBER_MAXLENGTH'
-      );
-    }
+    return this.translateService.instant(
+      'PROFILE_CREATE.PHONE_NUMBER_MAXLENGTH'
+    );
   }
 
   public initState(length: number): void {
