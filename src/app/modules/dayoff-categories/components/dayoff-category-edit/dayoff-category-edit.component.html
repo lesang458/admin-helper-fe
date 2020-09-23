@@ -73,6 +73,12 @@
         id="description"
         formControlName="description"
       ></textarea>
+      <div
+        *ngIf="f.get('description').invalid && (f.get('description').dirty || f.get('description').touched)"
+        class="mess-invalid"
+      >
+        {{ 'DEVICE_EDIT.DESCRIPTION_MIN_LENGTH' | translate }}
+      </div>
     </div>
     <div class="form-group col-md-12" *ngIf="type === 'delete'">
       <p>

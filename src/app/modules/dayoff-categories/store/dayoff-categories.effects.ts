@@ -77,6 +77,7 @@ export class DayOffCategoriesEffects {
         .put(`${environment.APILink}/day_off_categories/${body.id}`, body)
         .pipe(
           map(() => {
+            this.notify.showSuccess('PROFILE_CREATE.EDIT_SUCCESS');
             return new DayOffCategoriesActions.FetchDayOffCategories();
           })
         );

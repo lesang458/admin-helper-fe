@@ -28,7 +28,7 @@ export class DayOffCategoryEditComponent implements OnInit {
       Validators.min(8),
       Validators.max(1440),
     ]),
-    description: new FormControl(),
+    description: new FormControl(null, Validators.minLength(6)),
   });
   constructor(
     private store: Store<fromApp.AppState>,
@@ -52,7 +52,9 @@ export class DayOffCategoryEditComponent implements OnInit {
       this.store.dispatch(
         new DayOffActions.CreateDayOffCategory({
           name: this.f.get('name').value.toUpperCase(),
-          description: this.f.get('description').value,
+          description: this.f.get('description').value
+            ? this.f.get('description').value
+            : null,
           totalHoursDefault: this.f.get('hours').value,
         })
       );
@@ -62,7 +64,9 @@ export class DayOffCategoryEditComponent implements OnInit {
         new DayOffActions.UpdateDayOffCategory({
           id: this.selectedCategory.id,
           name: this.f.get('name').value.toUpperCase(),
-          description: this.f.get('description').value,
+          description: this.f.get('description').value
+            ? this.f.get('description').value
+            : null,
           totalHoursDefault: this.f.get('hours').value,
         })
       );
