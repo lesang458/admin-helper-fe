@@ -20,17 +20,25 @@ export class AuthGuardService implements CanActivate {
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot
   ): boolean | UrlTree {
-    return this.browserSupportService.isIE()
-      ? this.router.createUrlTree([`${RouteConstant.notSupported}`])
-      : this.auth.isAuthenticated()
-      ? route.routeConfig.path === `${RouteConstant.login}`
-        ? this.router.createUrlTree([''])
-        : route.routeConfig.path === `${RouteConstant.resetPassword}`
-        ? this.router.createUrlTree([''])
-        : true
-      : route.routeConfig.path === `${RouteConstant.login}` ||
+    if (this.browserSupportService.isIE()) {
+      return this.router.createUrlTree([`${RouteConstant.notSupported}`]);
+    }
+    if (
+      this.auth.isAuthenticated() &&
+      (route.routeConfig.path === `${RouteConstant.login}` ||
+        route.routeConfig.path === `${RouteConstant.resetPassword}`)
+    ) {
+      return this.router.createUrlTree(['']);
+    }
+    if (
+      !this.auth.isAuthenticated() &&
+      !(
+        route.routeConfig.path === `${RouteConstant.login}` ||
         route.routeConfig.path === `${RouteConstant.resetPassword}`
-      ? true
-      : this.router.createUrlTree([`${RouteConstant.login}`]);
+      )
+    ) {
+      return this.router.createUrlTree([`${RouteConstant.login}`]);
+    }
+    return true;
   }
 }
