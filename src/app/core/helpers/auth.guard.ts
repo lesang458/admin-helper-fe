@@ -23,9 +23,9 @@ export class AuthGuardService implements CanActivate {
     if (this.browserSupportService.isIE()) {
       return this.router.createUrlTree([`${RouteConstant.notSupported}`]);
     }
-    const checkUrlLogin = route.routeConfig.path === `${RouteConstant.login}`;
+    const checkUrlLogin = route.routeConfig.path === RouteConstant.login;
     const checkUrlReset =
-      route.routeConfig.path === `${RouteConstant.resetPassword}`;
+      route.routeConfig.path === RouteConstant.resetPassword;
     if (this.auth.isAuthenticated() && (checkUrlLogin || checkUrlReset)) {
       return this.router.createUrlTree(['']);
     }
