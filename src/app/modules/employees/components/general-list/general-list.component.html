@@ -100,16 +100,10 @@
         </thead>
         <tbody>
           <tr *ngFor="let item of employeeObs.employees; let i = index">
-            <td class="align-middle">
-              {{ item.firstName + ' ' + item.lastName }}
-            </td>
+            <td class="align-middle">{{ item.firstName + ' ' + item.lastName }}</td>
             <td class="align-middle">{{ item.email }}</td>
-            <td class="align-middle">
-              {{ item.birthdate | date: 'dd/MM/yyyy' }}
-            </td>
-            <td class="align-middle">
-              {{ item.joinDate | date: 'dd/MM/yyyy' }}
-            </td>
+            <td class="align-middle">{{ item.birthdate | date: 'dd/MM/yyyy' }}</td>
+            <td class="align-middle">{{ item.joinDate | date: 'dd/MM/yyyy' }}</td>
             <td class="align-middle">{{ item.phoneNumber }}</td>
             <td class="text-center align-middle">
               <span
@@ -134,9 +128,7 @@
               <button
                 *ngIf="item.status === 'ACTIVE'"
                 class="btn btn-outline-danger"
-                (click)="
-                  openModalWithComponent(item.id, 'delete', searchParams)
-                "
+                (click)="openModalWithComponent(item.id, 'delete', searchParams)"
               >
                 <i class="cil-trash"></i>
               </button>
@@ -144,9 +136,7 @@
               <button
                 *ngIf="item.status !== 'ACTIVE'"
                 class="btn btn-outline-success"
-                (click)="
-                  openModalWithComponent(item.id, 'active', searchParams)
-                "
+                (click)="openModalWithComponent(item.id, 'active', searchParams)"
               >
                 <i class="cil-action-undo"></i>
               </button>
