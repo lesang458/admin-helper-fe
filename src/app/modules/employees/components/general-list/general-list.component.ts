@@ -7,6 +7,7 @@ import * as EmployeeActions from '../../store/employees.actions';
 import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
 import { ProfileCreateComponent } from '../profile-create/profile-create.component';
 import { SearchParams } from '../../store/employees.actions';
+import { RouteConstant } from 'src/app/shared/constants/route.constant';
 
 @Component({
   selector: 'ah-general-list',
@@ -15,6 +16,7 @@ import { SearchParams } from '../../store/employees.actions';
 })
 export class GeneralListComponent implements OnInit {
   public bsModalRef: BsModalRef;
+  public employees = RouteConstant.employees;
   public employeeObs$: Observable<any>;
   public searchFormControl = new FormControl('');
   public currentPage = 1;
@@ -88,7 +90,9 @@ export class GeneralListComponent implements OnInit {
   }
 
   public onSearchSubmit(): void {
-    if (this.currentSearch !== this.searchFormControl.value.replace(/\s/g, '')) {
+    if (
+      this.currentSearch !== this.searchFormControl.value.replace(/\s/g, '')
+    ) {
       this.currentSearch = this.searchFormControl.value.replace(/\s/g, '');
       this.currentPage === 1 ? this.onPageChanged(1) : (this.currentPage = 1);
     }

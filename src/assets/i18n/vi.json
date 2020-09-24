@@ -30,6 +30,11 @@
     "CREATE_EMPLOYEE_PROFILE": "Tạo hồ sơ nhân viên",
     "NO_RESULT": "Không có kết quả."
   },
+  "EMPLOYEE_DETAIL": {
+    "TITLE": "Chi tiết nhân viên",
+    "DURATION": "Thời hạn",
+    "DEVICE": "Thiết bị được giao"
+  },
   "DAY_OFF_TABLE": {
     "TITLE": "Danh sách ngày phép",
     "TYPE_OF_LEAVE": "Loại phép",

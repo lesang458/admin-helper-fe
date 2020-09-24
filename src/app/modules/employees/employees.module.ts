@@ -16,6 +16,8 @@ import { AuthComponent } from './pages/auth/auth.component';
 import { UpdatePasswordComponent } from './pages/update-password/update-password.component';
 import { CommonModule } from '@angular/common';
 import { TooltipModule } from 'ngx-bootstrap/tooltip';
+import { EmployeeDetailComponent } from './components/employee-detail/employee-detail.component';
+import { EmployeeInfoComponent } from './pages/employee-info/employee-info.component';
 
 @NgModule({
   declarations: [
@@ -28,6 +30,8 @@ import { TooltipModule } from 'ngx-bootstrap/tooltip';
     LoginComponent,
     AuthComponent,
     UpdatePasswordComponent,
+    EmployeeDetailComponent,
+    EmployeeInfoComponent,
   ],
   imports: [
     CommonModule,

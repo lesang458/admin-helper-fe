@@ -1,0 +1,108 @@
+<div class="main-container">
+  <div class="row-1">
+    <div class="card">
+      <div class="card-body">
+        <b>Employee Information</b>
+        <div class="info">
+          <table class="table table-bordered emp">
+            <tbody>
+              <tr>
+                <th scope="row">{{ 'GENERAL_LIST.NAME' | translate }}</th>
+                <td>{{ employee.firstName + ' ' + employee.lastName }}</td>
+              </tr>
+              <tr>
+                <th scope="row">{{ 'LOGIN.EMAIL' | translate }}</th>
+                <td>{{ employee.email }}</td>
+              </tr>
+              <tr>
+                <th scope="row">{{ 'GENERAL_LIST.BIRTHDAY' | translate }}</th>
+                <td>{{ employee.birthdate | date: 'dd/MM/yyyy' }}</td>
+              </tr>
+            </tbody>
+          </table>
+          <table class="table table-bordered">
+            <tbody>
+              <tr>
+                <th scope="row">{{ 'GENERAL_LIST.PHONE_NUMBER' | translate }}</th>
+                <td>{{ employee.phoneNumber }}</td>
+              </tr>
+              <tr>
+                <th scope="row">{{ 'GENERAL_LIST.JOIN_DATE' | translate }}</th>
+                <td colspan="2">{{ employee.joinDate | date: 'dd/MM/yyyy' }}</td>
+              </tr>
+              <tr>
+                <th scope="row">{{ 'GENERAL_LIST.STATUS' | translate }}</th>
+                <td>{{ employee.status }}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="abc">
+    <div class="card">
+      <div class="card-body">
+      <b>{{ 'PROFILE_CREATE.DAY_OFF_INFO' | translate }}</b>
+      <div class="infor">
+      <table class="table table-striped table-bordered">
+        <thead>
+          <tr>
+            <th scope="col">{{ 'GENERAL_LIST.NAME' | translate }}</th>
+            <th scope="col">{{ 'PROFILE_CREATE.HOUR' | translate }}</th>
+            <th scope="col">{{ 'PROFILE_CREATE.AVAILABLE_HOURS' | translate }}</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>lllll</td>
+            <td>Mark</td>
+            <td>Mark</td>
+          </tr>
+          <tr>
+            <td>Jacob</td>
+            <td>Jacob</td>
+            <td>Jacob</td>
+          </tr>
+          <tr>
+            <td>Jacob</td>
+            <td>Jacob</td>
+            <td>Larry the Bird</td>
+          </tr>
+        </tbody>
+      </table>
+      </div>
+    </div></div>
+    <div class="card">
+      <div class="card-body">
+      <b>{{ 'EMPLOYEE_DETAIL.DEVICE' | translate }}</b>
+      <div class="infor">
+      <table class="table table-striped table-bordered">
+        <thead>
+          <tr>
+            <th scope="col">{{ 'GENERAL_LIST.NAME' | translate }}</th>
+            <th scope="col">{{ 'EMPLOYEE_DETAIL.DURATION' | translate }}</th>
+            <th scope="col">{{ 'DEVICE_TABLE.TYPE_OF_DEVICE' | translate }}</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Mark</td>
+            <td>Mark</td>
+            <td>Mark</td>
+          </tr>
+          <tr>
+            <td>Mark</td>
+            <td>Jacob</td>
+            <td>Mark</td>
+          </tr>
+          <tr>
+            <td>Mark</td>
+            <td>Mark</td>
+            <td>Mark</td>
+          </tr>
+        </tbody>
+      </table></div>
+    </div></div>
+  </div>
+</div>

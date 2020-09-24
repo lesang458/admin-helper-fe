@@ -1,0 +1,31 @@
+.main-container {
+  b {
+    font-size: 16px;
+  }
+  .abc {
+    display: flex;
+    justify-content: space-between;
+    .card {
+      width: 49.5%;
+      border: 1px solid #c7c8ca;
+      border-radius: 4px;
+      padding: 10px;
+      .table-striped {
+        padding: 10px;
+      }
+      .infor {
+        padding: 10px;
+      }  
+    }
+  }
+  .row-1 {
+    .info {
+      display: flex;
+      padding: 10px;
+      .emp {
+        margin-right: 15px;
+      }
+    }
+  }
+}
+

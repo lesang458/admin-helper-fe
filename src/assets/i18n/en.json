@@ -30,6 +30,11 @@
     "CREATE_EMPLOYEE_PROFILE": "Create employee profile",
     "NO_RESULT": "No result."
   },
+  "EMPLOYEE_DETAIL": {
+    "TITLE": "Employee Detail",
+    "DURATION": "Duration",
+    "DEVICE": "Assigned devices"
+  },
   "DAY_OFF_TABLE": {
     "TITLE": "Day off List",
     "TYPE_OF_LEAVE": "Type of leave",
