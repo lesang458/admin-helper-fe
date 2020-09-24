@@ -40,9 +40,9 @@ export class ErrorInterceptor implements HttpInterceptor {
           error === 'You seem to have an expired token'
         ) {
           localStorage.removeItem('token');
-          this.auth.getCurrentVerifyStep() !== 1
-            ? this.router.navigate([`/${RouteConstant.login}`])
-            : null;
+          if (this.auth.getCurrentVerifyStep() !== 1) {
+            this.router.navigate([`/${RouteConstant.login}`]);
+          }
         }
         this.notify.showError(error);
 

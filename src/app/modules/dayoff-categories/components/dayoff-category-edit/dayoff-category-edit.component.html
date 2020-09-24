@@ -40,27 +40,27 @@
       </div>
     </div>
     <div class="form-group col-md-12" *ngIf="type !== 'delete'">
-      <label class="font-weight-bold" for="hours">
-        {{ 'DAY_OFF_CATEGORIES_PAGE.HOURS' | translate }}
+      <label class="font-weight-bold" for="days">
+        {{ 'DAY_OFF_CATEGORIES_PAGE.DAY_OFF' | translate }}
       </label>
       <input
         type="number"
         class="form-control"
-        id="hours"
-        formControlName="hours"
+        id="days"
+        formControlName="days"
       />
       <div
-        *ngIf="f.get('hours').invalid &&(f.get('hours').dirty || f.get('hours').touched)"
+        *ngIf="f.get('days').invalid &&(f.get('days').dirty || f.get('days').touched)"
         class="mess-invalid"
       >
-        <div *ngIf="f.get('hours').errors.required">
-          {{ 'DAY_OFF_CATEGORIES_PAGE.HOURS_REQUIRED' | translate }}
+        <div *ngIf="f.get('days').errors.required">
+          {{ 'DAY_OFF_CATEGORIES_PAGE.DAYS_REQUIRED' | translate }}
         </div>
-        <div *ngIf="f.get('hours').errors.max">
-          {{ 'DAY_OFF_CATEGORIES_PAGE.HOURS_MAX' | translate }}
+        <div *ngIf="f.get('days').errors.max">
+          {{ 'DAY_OFF_CATEGORIES_PAGE.DAYS_MAX' | translate }}
         </div>
-        <div *ngIf="f.get('hours').errors.min">
-          {{ 'DAY_OFF_CATEGORIES_PAGE.HOURS_MIN' | translate }}
+        <div *ngIf="f.get('days').errors.min">
+          {{ 'DAY_OFF_CATEGORIES_PAGE.DAYS_MIN' | translate }}
         </div>
       </div>
     </div>

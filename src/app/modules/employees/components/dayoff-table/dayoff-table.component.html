@@ -38,7 +38,7 @@
       </div>
     </div>
     <div class="table-responsive" *ngIf="data$ | async as data">
-      <table class="table table-bordered">
+      <table class="table table-bordered table-striped">
         <thead *ngIf="data.pagination.totalCount !== 0">
           <tr>
             <th
@@ -72,18 +72,32 @@
         </thead>
         <tbody>
           <tr *ngFor="let item of data.data; let i = index">
-            <td class="align-middle">{{ item.firstName + ' ' + item.lastName }}</td>
-            <td class="align-middle">{{ item.birthdate | date: 'dd/MM/yyyy' }}</td>
+            <td class="align-middle">
+              {{ item.firstName + ' ' + item.lastName }}
+            </td>
+            <td class="align-middle">
+              {{ item.birthdate | date: 'dd/MM/yyyy' }}
+            </td>
             <ng-container *ngFor="let type of types">
-              <td *ngIf="selectedType.value === type.name" class="align-middle text-right">
+              <td
+                *ngIf="selectedType.value === type.name"
+                class="align-middle text-right"
+              >
                 {{ getTotalLeaves(item.dayOffInfos, type.name) }}
               </td>
-              <td *ngIf="selectedType.value === type.name" class="align-middle text-right">
+              <td
+                *ngIf="selectedType.value === type.name"
+                class="align-middle text-right"
+              >
                 {{ getTotalLeavesRemaining(item.dayOffInfos, type.name) }}
               </td>
             </ng-container>
-            <td *ngIf="types.length === 0" class="align-middle text-right">0</td>
-            <td *ngIf="types.length === 0" class="align-middle text-right">0</td>
+            <td *ngIf="types.length === 0" class="align-middle text-right">
+              0
+            </td>
+            <td *ngIf="types.length === 0" class="align-middle text-right">
+              0
+            </td>
             <td class="align-middle">
               <div class="d-flex justify-content-center">
                 <button

@@ -23,10 +23,10 @@ export class DayOffCategoryEditComponent implements OnInit {
       Validators.maxLength(20),
       Validators.pattern('^[a-zA-Z]+$'),
     ]),
-    hours: new FormControl('', [
+    days: new FormControl('', [
       Validators.required,
-      Validators.min(8),
-      Validators.max(1440),
+      Validators.min(1),
+      Validators.max(20),
     ]),
     description: new FormControl(null, Validators.minLength(6)),
   });
@@ -41,7 +41,7 @@ export class DayOffCategoryEditComponent implements OnInit {
     if (this.type === 'edit') {
       this.f.patchValue({
         name: this.titleCasePipe.transform(this.selectedCategory.name),
-        hours: this.selectedCategory.totalHoursDefault,
+        days: this.selectedCategory.totalHoursDefault / 8,
         description: this.selectedCategory.description,
       });
     }
@@ -53,7 +53,7 @@ export class DayOffCategoryEditComponent implements OnInit {
       description: this.f.get('description').value
         ? this.f.get('description').value
         : null,
-      totalHoursDefault: this.f.get('hours').value,
+      totalHoursDefault: this.f.get('days').value * 8,
     };
     if (this.type === 'create') {
       this.store.dispatch(new DayOffActions.CreateDayOffCategory(category));
@@ -78,7 +78,8 @@ export class DayOffCategoryEditComponent implements OnInit {
         this.f.get('name').value.toLowerCase() &&
         this.selectedCategory?.description?.toLowerCase() ===
           this.f.get('description').value?.toLowerCase() &&
-        this.selectedCategory.totalHoursDefault === this.f.get('hours').value)
+        this.selectedCategory.totalHoursDefault ===
+          this.f.get('days').value * 8)
     );
   }
 
