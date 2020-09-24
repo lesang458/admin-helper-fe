@@ -10,8 +10,14 @@ import { RouteConstant } from 'src/app/shared/constants/route.constant';
 })
 export class SidebarComponent implements OnInit {
   public deviceHistoryIsSelected: boolean;
+  public employeesUrl = `/${RouteConstant.employees}`;
+  public dayOffUrl = `/${RouteConstant.dayOff}`;
+  public devicesUrl = `/${RouteConstant.devices}`;
+  public dayOffCategoriesUrl = `/${RouteConstant.dayOffCategories}`;
+  public deviceCategoriesUrl = `/${RouteConstant.devices}/${RouteConstant.categories}`;
+  public deviceHistoryUrl = `/${RouteConstant.deviceHistory}`;
   constructor(
-    private router: Router,
+    public router: Router,
     private devicesHistoryService: DevicesHistoryService
   ) {}
 
@@ -22,28 +28,26 @@ export class SidebarComponent implements OnInit {
   }
 
   public navigateToGeneralListPage() {
-    this.router.navigateByUrl(`/${RouteConstant.employees}`);
+    this.router.navigateByUrl(this.employeesUrl);
   }
 
   public navigateToDayoffPage() {
-    this.router.navigateByUrl(`/${RouteConstant.dayOff}`);
+    this.router.navigateByUrl(this.dayOffUrl);
   }
 
   public navigateToDevicePage() {
-    this.router.navigateByUrl(`/${RouteConstant.devices}`);
+    this.router.navigateByUrl(this.devicesUrl);
   }
 
   public navigateToDayOffCategoriesPage() {
-    this.router.navigateByUrl(`/${RouteConstant.dayOffCategories}`);
+    this.router.navigateByUrl(this.dayOffCategoriesUrl);
   }
 
   public navigateToDeviceHistory() {
-    this.router.navigateByUrl(`/${RouteConstant.deviceHistory}`);
+    this.router.navigateByUrl(this.deviceHistoryUrl);
   }
 
   public navigateToDeviceCategoriesPage() {
-    this.router.navigateByUrl(
-      `/${RouteConstant.devices}/${RouteConstant.categories}`
-    );
+    this.router.navigateByUrl(this.deviceCategoriesUrl);
   }
 }

@@ -133,11 +133,10 @@
     "NAME_MINLENGTH": "Tên phải có ít nhất 2 ký tự",
     "NAME_MAXLENGTH": "Tên không được phép vượt quá 20 ký tự",
     "NAME_PATTERN": "Tên không được chứa ký tự đặc biệt",
-    "DAY_OFF": "Số phép mặc định",
-    "HOURS": "Số giờ",
-    "HOURS_REQUIRED": "Hãy nhập số giờ!",
-    "HOURS_MIN": "Số giờ không được phép nhỏ hơn 8",
-    "HOURS_MAX": "Số giờ không được phép vượt quá 1440"
+    "DAY_OFF": "Số phép mặc định (ngày)",
+    "HOURS_REQUIRED": "Hãy nhập số phép mặc định!",
+    "HOURS_MIN": "Số phép mặc định không được nhỏ hơn 1",
+    "HOURS_MAX": "Số phép mặc định không được vượt quá 20"
   },
   "DEVICE_EDIT": {
     "EDIT_TITLE": "Chỉnh sửa thông tin thiết bị.",
@@ -219,7 +218,7 @@
     "ERROR_CONTENT": "Trình duyệt của bạn không được hỗ trợ",
     "ERROR_DESC": "Vui lòng dùng trình duyệt khác để truy cập"
   },
-  "MESSAGE":{
+  "MESSAGE": {
     "NO_USER": "Không tìm thấy tài khoản",
     "NO_TOKEN": "Mã đăng nhập không đúng",
     "NO_ACC": "Email hoặc mật khẩu không đúng",
