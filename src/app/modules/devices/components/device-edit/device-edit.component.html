@@ -29,7 +29,7 @@
             formControlName="name"
           />
           <div
-            *ngIf="f.name.invalid && (f.name.dirty || f.name.touched)"
+            *ngIf="f.name.invalid && f.name.touched"
             class="invalid-message"
           >
             {{ getNameErrorMessage() }}
@@ -52,7 +52,7 @@
             autocomplete="off"
           />
           <div
-            *ngIf="f.price.invalid && (f.price.dirty || f.price.touched)"
+            *ngIf="f.price.invalid && f.price.touched"
             class="invalid-message"
           >
             {{ getPriceErrorMessage() }}
@@ -93,7 +93,7 @@
             formControlName="description"
           ></textarea>
           <div
-            *ngIf="f.description.invalid && (f.description.dirty || f.description.touched)"
+            *ngIf="f.description.invalid && f.description.touched"
             class="invalid-message"
           >
             {{ 'DEVICE_EDIT.DESCRIPTION_MIN_LENGTH' | translate }}

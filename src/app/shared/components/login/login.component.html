@@ -23,7 +23,7 @@
                   />
                 </div>
                 <div
-                  *ngIf="f.email.invalid && (f.email.dirty || f.email.touched)"
+                  *ngIf="f.email.invalid && f.email.touched"
                   class="mess-invalid mt-1"
                 >
                   <div *ngIf="f.email.errors.required">
@@ -48,7 +48,7 @@
                   />
                 </div>
                 <div
-                  *ngIf="f.password.invalid && (f.password.dirty || f.password.touched)"
+                  *ngIf="f.password.invalid && f.password.touched"
                   class="mess-invalid mt-1"
                 >
                   <div *ngIf="f.password.errors.required">

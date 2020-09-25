@@ -24,9 +24,6 @@ export class DeviceConfirmComponent implements OnInit {
   ngOnInit(): void {}
 
   public getTitle(): string {
-    if (this.type === 'delete') {
-      return this.translate.instant('DEVICE_CONFIRM.DELETE_TITLE');
-    }
     if (this.type === 'discard') {
       return this.translate.instant('DEVICE_CONFIRM.DISCARD_TITLE');
     }
@@ -34,9 +31,6 @@ export class DeviceConfirmComponent implements OnInit {
   }
 
   public getParam(): string {
-    if (this.type === 'delete') {
-      return this.translate.instant('DEVICE_CONFIRM.DELETE_PARAM');
-    }
     if (this.type === 'discard') {
       return this.translate.instant('DEVICE_CONFIRM.DISCARD_PARAM');
     }
@@ -48,9 +42,6 @@ export class DeviceConfirmComponent implements OnInit {
       id: this.id,
       params: this.params,
     };
-    if (this.type === 'delete') {
-      this.store.dispatch(new DevicesActions.DeleteDevice(data));
-    }
     if (this.type === 'discard') {
       this.store.dispatch(new DevicesActions.DiscardDevice(data));
     }
