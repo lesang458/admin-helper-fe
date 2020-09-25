@@ -167,7 +167,7 @@
   },
   "DEVICE_CONFIRM": {
     "DISCARD_TITLE": "Confirm discard device",
-    "DISCARD_PARAM": "This device's status will be changed to 'DISCARDED'. Do you want to continue?",
+    "DISCARD_PARAM": "This device's status will be changed to 'DISCARDED'. This action cannot be undone. Do you want to continue?",
     "INVENTORY_TITLE": "Confirm move device to inventory",
     "INVENTORY_PARAM": "This device's status will be changed to 'IN INVENTORY'. Do you want to continue?"
   },

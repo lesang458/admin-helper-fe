@@ -118,21 +118,6 @@ export class DeviceEffects {
   );
 
   @Effect()
-  deleteDevice = this.actions$.pipe(
-    ofType(DevicesActions.DELETE_DEVICE),
-    switchMap((action: DevicesActions.DeleteDevice) => {
-      return this.http
-        .delete<void>(`${environment.APILink}/devices/${action.payload.id}`)
-        .pipe(
-          map(() => {
-            this.notify.showSuccess('MESSAGE.DELETE_SUCCESS');
-            return new DevicesActions.FetchDevices(action.payload.params);
-          })
-        );
-    })
-  );
-
-  @Effect()
   discardDevice = this.actions$.pipe(
     ofType(DevicesActions.DISCARD_DEVICE),
     switchMap((action: DevicesActions.DiscardDevice) => {
