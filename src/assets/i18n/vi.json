@@ -210,8 +210,7 @@
     "NAVIGATE_TO_LOGIN": "Trở lại trang đăng nhập",
     "NEXT": "Tiếp tục",
     "INCORRECT": "Mật khẩu không đúng!",
-    "TOKEN_INCORRECT": "Token không đúng!",
-    "EMAIL_INCORRECT": "Email này chưa được đăng ký!"
+    "TOKEN_REQUIRED": "Hãy nhập Token!"
   },
   "NOT_SUPPORTED": {
     "TITLE": "Không hỗ trợ",
