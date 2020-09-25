@@ -117,7 +117,7 @@ export class UpdatePasswordComponent implements OnInit {
 
   public getTokenErrorMessage(): string {
     if (this.f.token.errors?.required) {
-      return this.translate.instant('PROFILE_CREATE.PASSWORD_INVALID');
+      return this.translate.instant('RESET_PASSWORD.TOKEN_REQUIRED');
     }
   }
 

@@ -210,7 +210,8 @@
     "PARAMS3": "Please enter a new password!",
     "NAVIGATE_TO_LOGIN": "Return login page?",
     "NEXT": "Next",
-    "INCORRECT": "Password is incorrect!"
+    "INCORRECT": "Password is incorrect!",
+    "TOKEN_REQUIRED": "Token is required!"
   },
   "NOT_SUPPORTED": {
     "TITLE": "Not supported",

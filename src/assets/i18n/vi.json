@@ -209,7 +209,8 @@
     "PARAMS3": "Hãy nhập mật khẩu mới",
     "NAVIGATE_TO_LOGIN": "Trở lại trang đăng nhập",
     "NEXT": "Tiếp tục",
-    "INCORRECT": "Mật khẩu không đúng!"
+    "INCORRECT": "Mật khẩu không đúng!",
+    "TOKEN_REQUIRED": "Hãy nhập Token!"
   },
   "NOT_SUPPORTED": {
     "TITLE": "Không hỗ trợ",
