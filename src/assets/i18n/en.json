@@ -209,8 +209,7 @@
     "NAVIGATE_TO_LOGIN": "Return login page?",
     "NEXT": "Next",
     "INCORRECT": "Password is incorrect!",
-    "TOKEN_INCORRECT": "Token is incorrect!",
-    "EMAIL_INCORRECT": "This email is not registered"
+    "TOKEN_REQUIRED": "Token is required!"
   },
   "NOT_SUPPORTED": {
     "TITLE": "Not supported",

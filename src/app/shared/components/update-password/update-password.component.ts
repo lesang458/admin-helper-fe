@@ -44,6 +44,7 @@ export class UpdatePasswordComponent implements OnInit {
   ngOnInit(): void {
     this.auth.currentVerifyStep.subscribe((val) => {
       this.verify = val;
+      this.disabled = true;
     });
     this.isChangePw = this.auth.isAuthenticated();
     this.updatePwForm.valueChanges.subscribe(() => {
@@ -111,6 +112,21 @@ export class UpdatePasswordComponent implements OnInit {
     }
     if (this.passwordIsIncorrect()) {
       return this.translate.instant('RESET_PASSWORD.INCORRECT');
+    }
+  }
+
+  public getTokenErrorMessage(): string {
+    if (this.f.token.errors?.required) {
+      return this.translate.instant('RESET_PASSWORD.TOKEN_REQUIRED');
+    }
+  }
+
+  public getEmailErrorMessage(): string {
+    if (this.f.email.errors.required) {
+      return this.translate.instant('PROFILE_CREATE.EMAIL_INVALID');
+    }
+    if (this.f.email.errors.email) {
+      return this.translate.instant('PROFILE_CREATE.IS_EMAIL');
     }
   }
 }
