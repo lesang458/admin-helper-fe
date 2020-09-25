@@ -32,7 +32,12 @@
   },
   "EMPLOYEE_DETAIL": {
     "TITLE": "Chi tiết nhân viên",
-    "DEVICE": "Thiết bị được giao"
+    "DEVICE": "Thiết bị được giao",
+    "EMPLOYEE_INFO": "Thông tin nhân viên"
+  },
+  "EMPLOYEE_EDIT": {
+    "TITLE": "Chỉnh sửa nhân viên",
+    "DETAIL": "Chi tiết"
   },
   "DAY_OFF_TABLE": {
     "TITLE": "Danh sách ngày phép",

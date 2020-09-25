@@ -64,5 +64,9 @@
   .badge{
     width: 95px;
   }
+  .form-control:disabled{
+    background-color: transparent;
+    border: none;
+  }
 }
 

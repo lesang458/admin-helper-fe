@@ -32,10 +32,12 @@
   },
   "EMPLOYEE_DETAIL": {
     "TITLE": "Employee Detail",
-    "DEVICE": "Assigned devices"
+    "DEVICE": "Assigned devices",
+    "EMPLOYEE_INFO": "Employee Information"
   },
   "EMPLOYEE_EDIT": {
-    "TITLE": "Edit Employee"
+    "TITLE": "Edit Employee",
+    "DETAIL": "Detail"
   },
   "DAY_OFF_TABLE": {
     "TITLE": "Day off List",

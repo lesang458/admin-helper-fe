@@ -51,6 +51,7 @@ export class EmployeeDetailComponent implements OnInit {
   public dayOffForm = new FormGroup({
     dayOffInfos: this.formBuilder.array([]),
   });
+  public edit = location.pathname.includes('edit');
 
   constructor(
     private store: Store<fromApp.AppState>,
@@ -75,7 +76,10 @@ export class EmployeeDetailComponent implements OnInit {
                 this.formBuilder.group({
                   availableHours: value.availableHours,
                   categoryName: value.categoryName,
-                  hours: [value.hours, Validators.pattern('^[0-9]*$')],
+                  hours: [
+                    { value: value.hours, disabled: this.edit ? false : true },
+                    Validators.pattern('^[0-9]*$'),
+                  ],
                 })
               )
             ),
@@ -88,10 +92,17 @@ export class EmployeeDetailComponent implements OnInit {
       userId: this.id,
     };
     this.store.dispatch(new DevicesActions.FetchDevices(this.searchParams));
+    if (!this.edit) {
+      this.employeeForm.disable();
+    }
   }
 
   public navigateEdit(): void {
     this.router.navigateByUrl(`/${RouteConstant.employees}/edit/${this.id}`);
+  }
+
+  public navigateDetail(): void {
+    this.router.navigateByUrl(`/${RouteConstant.employees}/${this.id}`);
   }
 
   get dayOffInfos(): FormArray {
@@ -127,5 +138,12 @@ export class EmployeeDetailComponent implements OnInit {
     );
   }
 
-  public onSubmit(): void {}
+  public onSubmit(): void {
+    this.employeeForm.value.dayOffInfos = this.dayOffForm.value.dayOffInfos;
+    const id = this.id;
+    const employee = this.employeeForm.value;
+    const params = { id, employee };
+    this.store.dispatch(new EmployeeActions.EditEmployee(params));
+    this.router.navigateByUrl(`/${RouteConstant.employees}`);
+  }
 }

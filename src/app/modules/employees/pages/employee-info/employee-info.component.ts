@@ -6,8 +6,15 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./employee-info.component.scss'],
 })
 export class EmployeeInfoComponent implements OnInit {
-  public title = 'EMPLOYEE_DETAIL.TITLE';
+  public edit = location.pathname.includes('edit');
+  public title: string;
   constructor() {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    if (this.edit) {
+      this.title = 'EMPLOYEE_EDIT.TITLE';
+    } else {
+      this.title = 'EMPLOYEE_DETAIL.TITLE';
+    }
+  }
 }
