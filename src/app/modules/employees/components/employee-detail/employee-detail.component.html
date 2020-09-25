@@ -21,7 +21,7 @@
             >{{ 'GENERAL_LIST.ACTIVE' | translate }}
           </span>
           <div class="info">
-            <table class="table table-bordered emp">
+            <table class="table table-bordered emp tab">
               <tbody>
                 <tr>
                   <th scope="row">{{ 'PROFILE_CREATE.FIRST_NAME' | translate }}</th>
@@ -158,7 +158,7 @@
       <div class="card">
         <form [formGroup]="dayOffForm">
         <div class="card-body">
-        <b>{{ 'PROFILE_CREATE.DAY_OFF_INFO' | translate }}</b>
+        <b class="ml-2">{{ 'PROFILE_CREATE.DAY_OFF_INFO' | translate }}</b>
         <div class="infor">
         <table class="table table-bordered">
           <thead class="thead-style">
@@ -190,7 +190,7 @@
     </div>
       <div class="card">
         <div class="card-body">
-        <b>{{ 'EMPLOYEE_DETAIL.DEVICE' | translate }}</b>
+        <b class="ml-2">{{ 'EMPLOYEE_DETAIL.DEVICE' | translate }}</b>
         <div class="infor">
         <table class="table table-bordered" *ngIf="device$ | async as data">
           <thead class="thead-style">

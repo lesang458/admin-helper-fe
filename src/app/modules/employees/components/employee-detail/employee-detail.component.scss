@@ -12,7 +12,7 @@
       width: 49.5%;
       border: 1px solid #c7c8ca;
       border-radius: 4px;
-      padding: 10px;
+      padding: 5px;
       .table-striped {
         padding: 10px;
       }
@@ -39,7 +39,7 @@
   .row-1 {
     .info {
       display: flex;
-      padding: 10px;
+      padding-top: 10px;
       tr {
         height: 86px;
       }
@@ -52,7 +52,7 @@
       td {
         width: 80%;
       }
-      .emp {
+      .tab {
         margin-right: 15px;
       }
     }
