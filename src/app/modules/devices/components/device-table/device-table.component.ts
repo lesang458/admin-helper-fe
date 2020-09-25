@@ -12,7 +12,6 @@ import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
 import { DeviceAssignComponent } from '../device-assign/device-assign.component';
 import { Device } from 'src/app/shared/models/device.model';
 import { DeviceEditComponent } from '../device-edit/device-edit.component';
-import { tap } from 'rxjs/operators';
 import { Router } from '@angular/router';
 import { DevicesHistoryService } from 'src/app/core/services/devices-history.service';
 import { DeviceConfirmComponent } from '../device-confirm/device-confirm.component';

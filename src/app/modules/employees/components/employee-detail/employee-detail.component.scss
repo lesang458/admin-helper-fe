@@ -15,17 +15,45 @@
       }
       .infor {
         padding: 10px;
-      }  
+        tr {
+          height: 86px;
+        }
+        th, td {
+          vertical-align: inherit;
+        }
+      } 
+      .card-body {
+        padding: 0.25rem;
+      } 
     }
   }
   .row-1 {
     .info {
       display: flex;
       padding: 10px;
+      tr {
+        height: 86px;
+      }
+      th, td {
+        vertical-align: inherit;
+      }
+      th {
+        width: 20%;
+      }
+      td {
+        width: 80%;
+      }
       .emp {
         margin-right: 15px;
       }
     }
+  }
+  .mess-invalid {
+    color: red;
+    margin-top: 5px;
+  }
+  .badge{
+    width: 70px;
   }
 }
 

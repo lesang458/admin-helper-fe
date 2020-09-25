@@ -4,7 +4,7 @@
     "LINK_2": "Day off Management",
     "LINK_4": "Device Management",
     "LINK_5": "Devices History",
-    "LINK_6": "Day off type",
+    "LINK_6": "Day off Categories",
     "LINK_7": "Device Categories"
   },
   "HEADER": {
@@ -32,8 +32,10 @@
   },
   "EMPLOYEE_DETAIL": {
     "TITLE": "Employee Detail",
-    "DURATION": "Duration",
     "DEVICE": "Assigned devices"
+  },
+  "EMPLOYEE_EDIT": {
+    "TITLE": "Edit Employee"
   },
   "DAY_OFF_TABLE": {
     "TITLE": "Day off List",
@@ -62,7 +64,7 @@
     "FIRST_NAME": "First name",
     "LAST_NAME": "Last name",
     "DAY_OFF_INFO": "Day off infomation",
-    "HOUR": "Hours",
+    "HOUR": "Hours (h)",
     "FIRST_NAME_INVALID": "First Name is required",
     "FIRST_NAME_MIN_LENGTH": "First name must be at least 2 characters",
     "FIRST_NAME_MAX_LENGTH": "First name must not exceed 100 characters",
@@ -82,7 +84,7 @@
     "HOURS_INVALID": "Hours is required",
     "HOURS_PATTERN": "Hours must be number",
     "DAY_OFF_CATE": "Day off category",
-    "AVAILABLE_HOURS": "Available hours",
+    "AVAILABLE_HOURS": "Available hours (h)",
     "MESS_EMAIL": "Email has already been taken",
     "CREATE_SUCCESS": "Created successfully!",
     "EDIT_SUCCESS": "Edited successfully!",
@@ -94,9 +96,8 @@
   },
   "DEVICE_TABLE": {
     "TITLE": "Devices List",
-    "TYPE_OF_DEVICE": "Type of device",
     "ALL": "All",
-    "CATEGORY_NAME": "Category",
+    "CATEGORY_NAME": "Device category",
     "ASSIGNED_TO": "Assigned to",
     "EMPTY": "Empty",
     "PRICE": "Price",

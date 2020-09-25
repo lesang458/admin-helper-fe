@@ -32,7 +32,6 @@
   },
   "EMPLOYEE_DETAIL": {
     "TITLE": "Chi tiết nhân viên",
-    "DURATION": "Thời hạn",
     "DEVICE": "Thiết bị được giao"
   },
   "DAY_OFF_TABLE": {
@@ -62,7 +61,7 @@
     "FIRST_NAME": "Họ",
     "LAST_NAME": "Tên",
     "DAY_OFF_INFO": "Thông tin ngày nghỉ",
-    "HOUR": "Số giờ",
+    "HOUR": "Số giờ (giờ)",
     "FIRST_NAME_INVALID": "Hãy nhập họ",
     "FIRST_NAME_MIN_LENGTH": "Họ phải trên 2 ký tự",
     "FIRST_NAME_MAX_LENGTH": "Họ không vượt quá 100 ký tự",
@@ -82,7 +81,7 @@
     "HOURS_INVALID": "Hãy nhập số giờ",
     "HOURS_PATTERN": "Giờ phải là số",
     "DAY_OFF_CATE": "Loại ngày nghỉ",
-    "AVAILABLE_HOURS": "Số giờ có sẵn",
+    "AVAILABLE_HOURS": "Số giờ có sẵn (giờ)",
     "MESS_EMAIL": "Email đã tồn tại",
     "CREATE_SUCCESS": "Tạo thành công!",
     "EDIT_SUCCESS": "Chỉnh sửa thành công!",
@@ -102,9 +101,8 @@
   },
   "DEVICE_TABLE": {
     "TITLE": "Danh sách thiết bị",
-    "TYPE_OF_DEVICE": "Loại thiết bị",
     "ALL": "Tất cả",
-    "CATEGORY_NAME": "Danh mục",
+    "CATEGORY_NAME": "Loại thiết bị",
     "ASSIGNED_TO": "Được giao cho",
     "EMPTY": "Trống",
     "PRICE": "Giá tiền",

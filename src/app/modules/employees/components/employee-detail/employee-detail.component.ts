@@ -3,7 +3,20 @@ import { Store } from '@ngrx/store';
 import * as fromApp from '../../../../store/app.reducer';
 import * as EmployeeActions from '../../store/employees.actions';
 import { Employee } from 'src/app/shared/models/employees.model';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
+import * as DevicesActions from '../../../devices/store/devices.actions';
+import { SearchDevice } from '../../../devices/store/devices.actions';
+import { Observable } from 'rxjs';
+import { State } from '../../../devices/store/devices.reducer';
+import {
+  FormGroup,
+  FormControl,
+  Validators,
+  FormBuilder,
+  FormArray,
+} from '@angular/forms';
+import { RouteConstant } from 'src/app/shared/constants/route.constant';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'ah-employee-detail',
@@ -12,20 +25,107 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class EmployeeDetailComponent implements OnInit {
   public employee: Employee;
+  public searchParams: SearchDevice;
+  public device$: Observable<State>;
+  public id: number;
+  public employeeForm = new FormGroup({
+    firstName: new FormControl('', [
+      Validators.minLength(2),
+      Validators.maxLength(100),
+    ]),
+    lastName: new FormControl('', [
+      Validators.minLength(2),
+      Validators.maxLength(100),
+    ]),
+    email: new FormControl('', Validators.email),
+    encryptedPassword: new FormControl('', Validators.minLength(6)),
+    phoneNumber: new FormControl('', [
+      Validators.pattern('^[0-9]*$'),
+      Validators.minLength(10),
+      Validators.maxLength(12),
+    ]),
+    birthdate: new FormControl(''),
+    joinDate: new FormControl(''),
+    dayOffInfos: this.formBuilder.array([]),
+  });
+  public dayOffForm = new FormGroup({
+    dayOffInfos: this.formBuilder.array([]),
+  });
+
   constructor(
     private store: Store<fromApp.AppState>,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private formBuilder: FormBuilder,
+    private router: Router,
+    public translateService: TranslateService
   ) {}
 
   ngOnInit(): void {
-    const id = this.route.snapshot.params.id;
-    this.store.dispatch(new EmployeeActions.DetailEmployee(id));
+    this.id = this.route.snapshot.params.id;
+    this.store.dispatch(new EmployeeActions.DetailEmployee(this.id));
     this.store
       .select((s) => s.employees.detaiEmployee)
       .subscribe((data: Employee) => {
         if (data) {
+          this.employeeForm.patchValue(data);
           this.employee = data;
+          this.dayOffForm = new FormGroup({
+            dayOffInfos: this.formBuilder.array(
+              data?.dayOffInfos?.map((value) =>
+                this.formBuilder.group({
+                  availableHours: value.availableHours,
+                  categoryName: value.categoryName,
+                  hours: [value.hours, Validators.pattern('^[0-9]*$')],
+                })
+              )
+            ),
+          });
         }
       });
+    this.device$ = this.store.select('devices');
+    this.searchParams = {
+      status: 'ASSIGNED',
+      userId: this.id,
+    };
+    this.store.dispatch(new DevicesActions.FetchDevices(this.searchParams));
   }
+
+  public navigateEdit(): void {
+    this.router.navigateByUrl(`/${RouteConstant.employees}/edit/${this.id}`);
+  }
+
+  get dayOffInfos(): FormArray {
+    return this.dayOffForm.get('dayOffInfos') as FormArray;
+  }
+
+  get f() {
+    return this.employeeForm.controls;
+  }
+
+  public getToday(): string {
+    return new Date().toISOString().split('T')[0];
+  }
+
+  public getPhoneErrorMessage(): string {
+    if (this.f.phoneNumber.errors.required) {
+      return this.translateService.instant(
+        'PROFILE_CREATE.PHONE_NUMBER_INVALID'
+      );
+    }
+    if (this.f.phoneNumber.errors.pattern) {
+      return this.translateService.instant(
+        'PROFILE_CREATE.PHONE_NUMBER_PATTERN'
+      );
+    }
+    if (this.f.phoneNumber.errors.minlength) {
+      return this.translateService.instant(
+        'PROFILE_CREATE.PHONE_NUMBER_MINLENGTH'
+      );
+    }
+    return this.translateService.instant(
+      'PROFILE_CREATE.PHONE_NUMBER_MAXLENGTH'
+    );
+  }
+
+  public onSubmit(): void {}
 }
