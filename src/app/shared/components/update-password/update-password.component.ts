@@ -94,7 +94,10 @@ export class UpdatePasswordComponent implements OnInit {
   }
 
   public passwordIsIncorrect(): boolean {
-    return this.f.newPassword.value !== this.f.confirmPassword.value;
+    return (
+      this.f.newPassword.value !== this.f.confirmPassword.value &&
+      this.f.confirmPassword.touched
+    );
   }
 
   public getBtnName(): string {
