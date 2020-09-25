@@ -44,6 +44,7 @@ export class UpdatePasswordComponent implements OnInit {
   ngOnInit(): void {
     this.auth.currentVerifyStep.subscribe((val) => {
       this.verify = val;
+      this.disabled = true;
     });
     this.isChangePw = this.auth.isAuthenticated();
     this.updatePwForm.valueChanges.subscribe(() => {
