@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Employee } from 'src/app/shared/models/employees.model';
 import { Actions, ofType, Effect } from '@ngrx/effects';
 import * as EmployeesActions from './employees.actions';
-import { switchMap, map } from 'rxjs/operators';
+import { switchMap, map, tap } from 'rxjs/operators';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { environment } from 'src/environments/environment.prod';
 import { PaginatedData } from 'src/app/shared/models/pagination.model';
@@ -11,6 +11,8 @@ import * as snakecaseKeys from 'snakecase-keys';
 import { RequestDayOffModel } from 'src/app/shared/models/request-day-off.model';
 import { ParamsConstant } from 'src/app/shared/constants/params.constant';
 import { NotifyService } from 'src/app/core/services/notify.service';
+import { RouteConstant } from 'src/app/shared/constants/route.constant';
+import { Router } from '@angular/router';
 
 @Injectable()
 export class EmployeeEffects {
@@ -99,7 +101,7 @@ export class EmployeeEffects {
     })
   );
 
-  @Effect()
+  @Effect({ dispatch: false })
   editEmployee = this.actions$.pipe(
     ofType(EmployeesActions.EDIT_EMPLOYEE),
     switchMap((action: EmployeesActions.EditEmployee) => {
@@ -111,9 +113,7 @@ export class EmployeeEffects {
         .pipe(
           map(() => {
             this.notify.showSuccess('PROFILE_CREATE.EDIT_SUCCESS');
-            return new EmployeesActions.SearchEmployees(
-              action.payload.searchParams
-            );
+            this.router.navigateByUrl(`/${RouteConstant.employees}`);
           })
         );
     })
@@ -170,6 +170,7 @@ export class EmployeeEffects {
   constructor(
     private actions$: Actions,
     private http: HttpClient,
-    private notify: NotifyService
+    private notify: NotifyService,
+    private router: Router
   ) {}
 }

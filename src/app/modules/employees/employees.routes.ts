@@ -37,7 +37,7 @@ export const EMPLOYEES_ROUTES: Routes = [
     },
   },
   {
-    path: `${RouteConstant.employees}/edit/:id`,
+    path: `${RouteConstant.employees}/:id/edit`,
     component: EmployeeInfoComponent,
     canActivate: [AuthGuardService],
     data: {

@@ -86,19 +86,22 @@ export class EmployeeDetailComponent implements OnInit {
           });
         }
       });
-    this.device$ = this.store.select('devices');
-    this.searchParams = {
-      status: 'ASSIGNED',
-      userId: this.id,
-    };
-    this.store.dispatch(new DevicesActions.FetchDevices(this.searchParams));
     if (!this.edit) {
       this.employeeForm.disable();
+      this.device$ = this.store.select('devices');
+      this.searchParams = {
+        status: 'ASSIGNED',
+        userId: this.id,
+      };
+      this.store.dispatch(new DevicesActions.FetchDevices(this.searchParams));
+    } else {
+      document.getElementById('deviceId').classList.add('style');
+      // document.getElementById('hourId').classList.add('display');
     }
   }
 
   public navigateEdit(): void {
-    this.router.navigateByUrl(`/${RouteConstant.employees}/edit/${this.id}`);
+    this.router.navigateByUrl(`/${RouteConstant.employees}/${this.id}/edit`);
   }
 
   public navigateDetail(): void {
@@ -144,6 +147,5 @@ export class EmployeeDetailComponent implements OnInit {
     const employee = this.employeeForm.value;
     const params = { id, employee };
     this.store.dispatch(new EmployeeActions.EditEmployee(params));
-    this.router.navigateByUrl(`/${RouteConstant.employees}`);
   }
 }

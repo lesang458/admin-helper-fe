@@ -211,7 +211,7 @@
                 </div>
               </div>
               </td>
-              <td>{{ dayOffInfos.at(i).get('availableHours').value }}</td>
+              <td class="td-style" id="hourId">{{ dayOffInfos.at(i).get('availableHours').value }}</td>
             </tr>
           </tbody>
         </table>
@@ -219,7 +219,7 @@
       </div>
     </form>
     </div>
-      <div class="card">
+      <div class="card" id="deviceId">
         <div class="card-body">
         <b class="ml-2">{{ 'EMPLOYEE_DETAIL.DEVICE' | translate }}</b>
         <div class="infor">
