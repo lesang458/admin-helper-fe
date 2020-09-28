@@ -234,7 +234,7 @@
         <table class="table table-bordered">
           <thead class="thead-style">
             <tr>
-              <th scope="col">{{ 'PROFILE_CREATE.DAY_OFF_CATE' | translate }}</th>
+              <th scope="col" class="td-cate">{{ 'PROFILE_CREATE.DAY_OFF_CATE' | translate }}</th>
               <th scope="col">{{ 'PROFILE_CREATE.HOUR' | translate }}</th>
               <th scope="col" *ngIf="!edit && !create">{{ 'PROFILE_CREATE.AVAILABLE_HOURS' | translate }}</th>
             </tr>
@@ -277,7 +277,7 @@
         <table class="table table-bordered" *ngIf="data.devices.data?.length > 0">
           <thead class="thead-style">
             <tr>
-              <th scope="col">{{ 'DEVICE_EDIT.DEVICE_NAME' | translate }}</th>
+              <th scope="col" class="td-cate">{{ 'DEVICE_EDIT.DEVICE_NAME' | translate }}</th>
               <th scope="col" class="text-right">{{ 'DEVICE_TABLE.PRICE' | translate }}</th>
               <th scope="col">{{ 'DEVICE_TABLE.CATEGORY_NAME' | translate }}</th>
             </tr>

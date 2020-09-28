@@ -18,6 +18,9 @@
       }
       .infor {
         padding: 10px;
+        .td-cate{
+          width: 20%;
+        }
         tr {
           height: 86px;
         }
@@ -68,5 +71,8 @@
     background-color: transparent;
     border: none;
   }
+  // th {
+  //   width: 20%;
+  // }
 }
 
