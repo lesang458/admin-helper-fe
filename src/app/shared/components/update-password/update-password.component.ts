@@ -44,6 +44,7 @@ export class UpdatePasswordComponent implements OnInit {
   ngOnInit(): void {
     this.auth.currentVerifyStep.subscribe((val) => {
       this.verify = val;
+      this.disabled = true;
     });
     this.isChangePw = this.auth.isAuthenticated();
     this.updatePwForm.valueChanges.subscribe(() => {
@@ -103,12 +104,29 @@ export class UpdatePasswordComponent implements OnInit {
   }
 
   public getErrorMessage(): string {
-    return this.f.confirmPassword.errors?.required
-      ? this.translate.instant('PROFILE_CREATE.PASSWORD_INVALID')
-      : this.f.confirmPassword.errors?.minlength
-      ? this.translate.instant('PROFILE_CREATE.PASS_MINLENGTH')
-      : this.passwordIsIncorrect()
-      ? this.translate.instant('RESET_PASSWORD.INCORRECT')
-      : '';
+    if (this.f.confirmPassword.errors?.required) {
+      return this.translate.instant('PROFILE_CREATE.PASSWORD_INVALID');
+    }
+    if (this.f.confirmPassword.errors?.minlength) {
+      return this.translate.instant('PROFILE_CREATE.PASS_MINLENGTH');
+    }
+    if (this.passwordIsIncorrect()) {
+      return this.translate.instant('RESET_PASSWORD.INCORRECT');
+    }
+  }
+
+  public getTokenErrorMessage(): string {
+    if (this.f.token.errors?.required) {
+      return this.translate.instant('RESET_PASSWORD.TOKEN_REQUIRED');
+    }
+  }
+
+  public getEmailErrorMessage(): string {
+    if (this.f.email.errors.required) {
+      return this.translate.instant('PROFILE_CREATE.EMAIL_INVALID');
+    }
+    if (this.f.email.errors.email) {
+      return this.translate.instant('PROFILE_CREATE.IS_EMAIL');
+    }
   }
 }

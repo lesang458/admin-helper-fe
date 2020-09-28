@@ -13,38 +13,62 @@
   />
 </div>
 <ul class="c-sidebar-nav">
-
-  <li class="c-sidebar-nav-item" type="button">
+  <li
+    class="c-sidebar-nav-item"
+    type="button"
+    [class.active]="router.isActive(employeesUrl, false)"
+  >
     <a class="c-sidebar-nav-link" (click)="navigateToGeneralListPage()">
       <i class="c-sidebar-nav-icon cil-info"></i>
       {{ 'SIDEBAR.LINK_1' | translate }}
     </a>
   </li>
-  <li class="c-sidebar-nav-item" type="button">
+  <li
+    class="c-sidebar-nav-item"
+    type="button"
+    [class.active]="router.isActive(devicesUrl, true)"
+  >
     <a class="c-sidebar-nav-link" (click)="navigateToDevicePage()">
       <i class="c-sidebar-nav-icon cil-devices"></i>
       {{ 'SIDEBAR.LINK_4' | translate }}
     </a>
   </li>
-  <li class="c-sidebar-nav-item" type="button" *ngIf="deviceHistoryIsSelected">
+  <li
+    class="c-sidebar-nav-item"
+    type="button"
+    *ngIf="deviceHistoryIsSelected"
+    [class.active]="router.isActive(deviceHistoryUrl, true)"
+  >
     <a class="c-sidebar-nav-link" (click)="navigateToDeviceHistory()">
       <i class="c-sidebar-nav-icon cil-speedometer"></i>
       {{ 'SIDEBAR.LINK_5' | translate }}
     </a>
   </li>
-  <li class="c-sidebar-nav-item" type="button">
+  <li
+    class="c-sidebar-nav-item"
+    type="button"
+    [class.active]="router.isActive(deviceCategoriesUrl, true)"
+  >
     <a class="c-sidebar-nav-link" (click)="navigateToDeviceCategoriesPage()">
       <i class="c-sidebar-nav-icon cib-azure-artifacts"></i>
       {{ 'SIDEBAR.LINK_7' | translate }}
     </a>
   </li>
-  <li class="c-sidebar-nav-item" type="button">
+  <li
+    class="c-sidebar-nav-item"
+    type="button"
+    [class.active]="router.isActive(dayOffUrl, true)"
+  >
     <a class="c-sidebar-nav-link" (click)="navigateToDayoffPage()">
       <i class="c-sidebar-nav-icon cil-home"></i>
       {{ 'SIDEBAR.LINK_2' | translate }}
     </a>
   </li>
-  <li class="c-sidebar-nav-item" type="button">
+  <li
+    class="c-sidebar-nav-item"
+    type="button"
+    [class.active]="router.isActive(dayOffCategoriesUrl, true)"
+  >
     <a class="c-sidebar-nav-link" (click)="navigateToDayOffCategoriesPage()">
       <i class="c-sidebar-nav-icon cib-libreoffice"></i>
       {{ 'SIDEBAR.LINK_6' | translate }}

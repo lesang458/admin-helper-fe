@@ -142,11 +142,10 @@
     "NAME_MINLENGTH": "The name must be at least 2 characters",
     "NAME_MAXLENGTH": "The name must not exceed 20 characters",
     "NAME_PATTERN": "The name must not contain special characters",
-    "DAY_OFF": "Total default leaves",
-    "HOURS": "Hours",
-    "HOURS_REQUIRED": "Hours is required!",
-    "HOURS_MIN": "Hours must be at least 8",
-    "HOURS_MAX": "Hours must not exceed 1440"
+    "DAY_OFF": "Total default leaves (day)",
+    "DAYS_REQUIRED": "Total default leaves is required!",
+    "DAYS_MIN": "Total default leaves must be at least 1",
+    "DAYS_MAX": "Total default leaves must not exceed 20"
   },
   "DEVICE_EDIT": {
     "EDIT_TITLE": "Edit Device",
@@ -221,15 +220,14 @@
     "NAVIGATE_TO_LOGIN": "Return login page?",
     "NEXT": "Next",
     "INCORRECT": "Password is incorrect!",
-    "TOKEN_INCORRECT": "Token is incorrect!",
-    "EMAIL_INCORRECT": "This email is not registered"
+    "TOKEN_REQUIRED": "Token is required!"
   },
   "NOT_SUPPORTED": {
     "TITLE": "Not supported",
     "ERROR_CONTENT": "Your browser is not supported",
     "ERROR_DESC": "Please use another browser to access"
   },
-  "MESSAGE":{
+  "MESSAGE": {
     "NO_USER": "Couldn't find User",
     "NO_TOKEN": "You seem to have an expired token",
     "NO_ACC": "Invalid email or password",
