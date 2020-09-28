@@ -1,15 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import {
-  FormGroup,
-  FormControl,
-  Validators,
-  FormBuilder,
-  FormArray,
-} from '@angular/forms';
 import { Store } from '@ngrx/store';
 import * as fromApp from '../../../../store/app.reducer';
 import * as EmployeeActions from '../../store/employees.actions';
-import * as DayOffActions from '../../../dayoff-categories/store/dayoff-categories.actions';
 import { BsModalRef } from 'ngx-bootstrap/modal';
 import { SearchParams } from '../../store/employees.actions';
 import { TranslateService } from '@ngx-translate/core';
