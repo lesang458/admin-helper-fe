@@ -40,6 +40,11 @@
     "TITLE": "Edit Employee",
     "DETAIL": "Detail"
   },
+  "EMPLOYEE_CREATE": {
+    "TITLE": "Create Employee",
+    "CONFIRM_PASS": "Confirm password",
+    "PASSWORD_MATCH": "Password must match"
+  },
   "DAY_OFF_TABLE": {
     "TITLE": "Day off List",
     "TYPE_OF_LEAVE": "Type of leave",

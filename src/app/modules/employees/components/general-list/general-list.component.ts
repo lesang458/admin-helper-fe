@@ -95,6 +95,10 @@ export class GeneralListComponent implements OnInit {
     this.router.navigateByUrl(`/${RouteConstant.employees}/${id}/edit`);
   }
 
+  public navigateCreate(): void {
+    this.router.navigateByUrl(`/${RouteConstant.employees}/create`);
+  }
+
   public onSearchSubmit(): void {
     if (
       this.currentSearch !== this.searchFormControl.value.replace(/\s/g, '')
