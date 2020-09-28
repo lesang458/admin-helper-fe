@@ -11,7 +11,6 @@ import * as fromApp from '../../../../store/app.reducer';
 import * as EmployeeActions from '../../store/employees.actions';
 import * as DayOffActions from '../../../dayoff-categories/store/dayoff-categories.actions';
 import { BsModalRef } from 'ngx-bootstrap/modal';
-import { Employee } from 'src/app/shared/models/employees.model';
 import { SearchParams } from '../../store/employees.actions';
 import { TranslateService } from '@ngx-translate/core';
 
