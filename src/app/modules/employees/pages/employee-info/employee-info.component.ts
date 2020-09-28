@@ -7,12 +7,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class EmployeeInfoComponent implements OnInit {
   public edit = location.pathname.includes('edit');
+  public create = location.pathname.includes('create');
   public title: string;
   constructor() {}
 
   ngOnInit(): void {
     if (this.edit) {
       this.title = 'EMPLOYEE_EDIT.TITLE';
+    } else if (this.create) {
+      this.title = 'EMPLOYEE_CREATE.TITLE';
     } else {
       this.title = 'EMPLOYEE_DETAIL.TITLE';
     }
