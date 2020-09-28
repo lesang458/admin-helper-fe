@@ -8,6 +8,7 @@ import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
 import { ProfileCreateComponent } from '../profile-create/profile-create.component';
 import { SearchParams } from '../../store/employees.actions';
 import { RouteConstant } from 'src/app/shared/constants/route.constant';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'ah-general-list',
@@ -28,7 +29,8 @@ export class GeneralListComponent implements OnInit {
   public searchParams: SearchParams;
   constructor(
     private store: Store<fromApp.AppState>,
-    private modalService: BsModalService
+    private modalService: BsModalService,
+    private router: Router
   ) {}
 
   ngOnInit(): void {
@@ -87,6 +89,10 @@ export class GeneralListComponent implements OnInit {
       initialState,
     });
     this.bsModalRef.content.closeBtnName = 'Close';
+  }
+
+  public navigateEdit(id: number): void {
+    this.router.navigateByUrl(`/${RouteConstant.employees}/${id}/edit`);
   }
 
   public onSearchSubmit(): void {

@@ -57,28 +57,6 @@ export class ProfileCreateComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    if (this.type === 'edit') {
-      this.store.dispatch(new EmployeeActions.DetailEmployee(this.id));
-      this.store
-        .select((s) => s.employees.detaiEmployee)
-        .subscribe((data: Employee) => {
-          if (data) {
-            this.profileForm.patchValue(data);
-            this.initState(data?.dayOffInfos?.length);
-            this.dayOffForm = new FormGroup({
-              dayOffInfos: this.formBuilder.array(
-                data?.dayOffInfos?.map((value) =>
-                  this.formBuilder.group({
-                    nameDayOff: { value: value.categoryName, disabled: true },
-                    dayOffCategoryId: value.id,
-                    hours: [value.hours, Validators.pattern('^[0-9]*$')],
-                  })
-                )
-              ),
-            });
-          }
-        });
-    }
     if (this.type === 'create') {
       this.store.dispatch(new DayOffActions.FetchDayOffCategories());
       this.store.select('dayoffCategories').subscribe((data: any) => {
@@ -145,16 +123,12 @@ export class ProfileCreateComponent implements OnInit {
     if (this.type === 'create') {
       const params = { employee, searchParams };
       this.store.dispatch(new EmployeeActions.CreateEmployee(params));
-    } else {
-      const id = this.id;
-      if (this.type === 'delete' || this.type === 'active') {
-        const status = this.type === 'delete' ? 'FORMER' : 'ACTIVE';
-        const params = { id, status, searchParams };
-        this.store.dispatch(new EmployeeActions.UpdateEmployeeStatus(params));
-      } else {
-        const params = { id, employee, searchParams };
-        this.store.dispatch(new EmployeeActions.EditEmployee(params));
-      }
+    }
+    const id = this.id;
+    if (this.type === 'delete' || this.type === 'active') {
+      const status = this.type === 'delete' ? 'FORMER' : 'ACTIVE';
+      const params = { id, status, searchParams };
+      this.store.dispatch(new EmployeeActions.UpdateEmployeeStatus(params));
     }
     this.bsModalRef.hide();
   }
