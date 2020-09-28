@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Employee } from 'src/app/shared/models/employees.model';
 import { Actions, ofType, Effect } from '@ngrx/effects';
 import * as EmployeesActions from './employees.actions';
-import { switchMap, map, tap } from 'rxjs/operators';
+import { switchMap, map } from 'rxjs/operators';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { environment } from 'src/environments/environment.prod';
 import { PaginatedData } from 'src/app/shared/models/pagination.model';
