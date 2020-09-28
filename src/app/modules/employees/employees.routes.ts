@@ -45,6 +45,14 @@ export const EMPLOYEES_ROUTES: Routes = [
     },
   },
   {
+    path: `${RouteConstant.employees}/create`,
+    component: EmployeeInfoComponent,
+    canActivate: [AuthGuardService],
+    data: {
+      i18nKey: 'EMPLOYEE_CREATE',
+    },
+  },
+  {
     path: `${RouteConstant.dayOff}`,
     component: DayoffComponent,
     canActivate: [AuthGuardService],

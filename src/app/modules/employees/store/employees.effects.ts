@@ -69,18 +69,15 @@ export class EmployeeEffects {
     )
   );
 
-  @Effect()
+  @Effect({ dispatch: false })
   createEmployee = this.actions$.pipe(
     ofType(EmployeesActions.CREATE_EMPLOYEE),
     switchMap((action: EmployeesActions.CreateEmployee) => {
-      const body = snakecaseKeys(action.payload.employee, { deep: true });
+      const body = snakecaseKeys(action.payload, { deep: true });
       return this.http.post<any>(`${environment.APILink}/employees`, body).pipe(
-        map((val) => {
+        map(() => {
           this.notify.showSuccess('PROFILE_CREATE.CREATE_SUCCESS');
-          const data: Employee = camelcaseKeys(val.data, { deep: true });
-          return new EmployeesActions.SearchEmployees(
-            action.payload.searchParams
-          );
+          this.router.navigateByUrl(`/${RouteConstant.employees}`);
         })
       );
     })

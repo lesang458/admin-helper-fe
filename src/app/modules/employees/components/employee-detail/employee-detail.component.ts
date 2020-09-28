@@ -5,6 +5,7 @@ import * as EmployeeActions from '../../store/employees.actions';
 import { Employee } from 'src/app/shared/models/employees.model';
 import { ActivatedRoute, Router } from '@angular/router';
 import * as DevicesActions from '../../../devices/store/devices.actions';
+import * as DayOffActions from '../../../dayoff-categories/store/dayoff-categories.actions';
 import { SearchDevice } from '../../../devices/store/devices.actions';
 import { Observable } from 'rxjs';
 import { State } from '../../../devices/store/devices.reducer';
@@ -39,6 +40,7 @@ export class EmployeeDetailComponent implements OnInit {
     ]),
     email: new FormControl('', Validators.email),
     encryptedPassword: new FormControl('', Validators.minLength(6)),
+    confirmPassword: new FormControl(''),
     phoneNumber: new FormControl('', [
       Validators.pattern('^[0-9]*$'),
       Validators.minLength(10),
@@ -52,6 +54,7 @@ export class EmployeeDetailComponent implements OnInit {
     dayOffInfos: this.formBuilder.array([]),
   });
   public edit = location.pathname.includes('edit');
+  public create = location.pathname.includes('create');
 
   constructor(
     private store: Store<fromApp.AppState>,
@@ -62,31 +65,55 @@ export class EmployeeDetailComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.id = this.route.snapshot.params.id;
-    this.store.dispatch(new EmployeeActions.DetailEmployee(this.id));
-    this.store
-      .select((s) => s.employees.detaiEmployee)
-      .subscribe((data: Employee) => {
-        if (data) {
-          this.employeeForm.patchValue(data);
-          this.employee = data;
-          this.dayOffForm = new FormGroup({
-            dayOffInfos: this.formBuilder.array(
-              data?.dayOffInfos?.map((value) =>
-                this.formBuilder.group({
-                  availableHours: value.availableHours,
-                  categoryName: value.categoryName,
-                  hours: [
-                    { value: value.hours, disabled: this.edit ? false : true },
-                    Validators.pattern('^[0-9]*$'),
-                  ],
-                })
-              )
-            ),
-          });
-        }
+    if (!this.create) {
+      this.id = this.route.snapshot.params.id;
+      this.store.dispatch(new EmployeeActions.DetailEmployee(this.id));
+      this.store
+        .select((s) => s.employees.detaiEmployee)
+        .subscribe((data: Employee) => {
+          if (data) {
+            this.employeeForm.patchValue(data);
+            this.employee = data;
+            this.dayOffForm = new FormGroup({
+              dayOffInfos: this.formBuilder.array(
+                data?.dayOffInfos?.map((value) =>
+                  this.formBuilder.group({
+                    availableHours: value.availableHours,
+                    categoryName: value.categoryName,
+                    hours: [
+                      {
+                        value: value.hours,
+                        disabled: this.edit ? false : true,
+                      },
+                      Validators.pattern('^[0-9]*$'),
+                    ],
+                  })
+                )
+              ),
+            });
+          }
+        });
+    }
+    if (this.create) {
+      this.store.dispatch(new DayOffActions.FetchDayOffCategories());
+      this.store.select('dayoffCategories').subscribe((data: any) => {
+        this.dayOffForm = new FormGroup({
+          dayOffInfos: this.formBuilder.array(
+            data?.dayoff?.map((value) =>
+              this.formBuilder.group({
+                categoryName: value.name,
+                dayOffCategoryId: value.id,
+                hours: [
+                  value.totalHoursDefault,
+                  Validators.pattern('^[0-9]*$'),
+                ],
+              })
+            )
+          ),
+        });
       });
-    if (!this.edit) {
+    }
+    if (!this.edit && !this.create) {
       this.employeeForm.disable();
       this.device$ = this.store.select('devices');
       this.searchParams = {
@@ -140,9 +167,14 @@ export class EmployeeDetailComponent implements OnInit {
 
   public onSubmit(): void {
     this.employeeForm.value.dayOffInfos = this.dayOffForm.value.dayOffInfos;
-    const id = this.id;
-    const employee = this.employeeForm.value;
-    const params = { id, employee };
-    this.store.dispatch(new EmployeeActions.EditEmployee(params));
+    const employee = { ...this.employeeForm.value };
+    delete employee.confirmPassword;
+    if (this.create) {
+      this.store.dispatch(new EmployeeActions.CreateEmployee(employee));
+    } else {
+      const id = this.id;
+      const params = { id, employee };
+      this.store.dispatch(new EmployeeActions.EditEmployee(params));
+    }
   }
 }
