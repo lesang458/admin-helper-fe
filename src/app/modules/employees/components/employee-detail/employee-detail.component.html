@@ -49,7 +49,7 @@
                     required
                   />
                   <div
-                  *ngIf="f.firstName.invalid && (f.firstName.dirty || f.firstName.touched)"
+                  *ngIf="f.firstName.invalid && f.firstName.touched"
                   class="mess-invalid"
                 >
                   <div *ngIf="f.firstName.errors.required">
@@ -76,7 +76,7 @@
                     required
                     />
                     <div
-                    *ngIf="f.email.invalid && (f.email.dirty || f.email.touched)"
+                    *ngIf="f.email.invalid && f.email.touched"
                     class="mess-invalid"
                   >
                     <div *ngIf="f.email.errors.required">
@@ -100,7 +100,7 @@
                 required
               />
               <div
-                *ngIf="f.encryptedPassword.invalid && (f.encryptedPassword.dirty || f.encryptedPassword.touched)"
+                *ngIf="f.encryptedPassword.invalid && f.encryptedPassword.touched"
                 class="mess-invalid"
               >
                 <div *ngIf="f.encryptedPassword.errors.required">
@@ -124,7 +124,7 @@
                     required
                   />
                   <div
-                    *ngIf="f.birthdate.invalid && (f.birthdate.dirty || f.birthdate.touched)"
+                    *ngIf="f.birthdate.invalid && f.birthdate.touched"
                     class="mess-invalid"
                     >
                     <div *ngIf="f.birthdate.errors.required">
@@ -148,7 +148,7 @@
                     required
                     />
                     <div
-                    *ngIf="f.lastName.invalid && (f.lastName.dirty || f.lastName.touched)"
+                    *ngIf="f.lastName.invalid && f.lastName.touched"
                     class="mess-invalid"
                   >
                     <div *ngIf="f.lastName.errors.required">
@@ -175,7 +175,7 @@
                     required
                     />
                     <div
-                    *ngIf="f.phoneNumber.invalid && (f.phoneNumber.dirty || f.phoneNumber.touched)"
+                    *ngIf="f.phoneNumber.invalid && f.phoneNumber.touched"
                     class="mess-invalid"
                   >
                   {{ getPhoneErrorMessage() }}
@@ -197,17 +197,6 @@
                   class="mess-invalid">
                   {{ 'EMPLOYEE_CREATE.PASSWORD_MATCH' | translate }}
                 </div>
-                <div
-                  *ngIf="f.confirmPassword.invalid && (f.confirmPassword.dirty || f.confirmPassword.touched)"
-                  class="mess-invalid"
-                >
-                  <div *ngIf="f.confirmPassword.errors.required">
-                    {{ 'PROFILE_CREATE.PASSWORD_INVALID' | translate }}
-                  </div>
-                  <div *ngIf="f.confirmPassword.errors.minlength">
-                    {{ 'PROFILE_CREATE.PASS_MINLENGTH' | translate }}
-                  </div>
-                </div>
               </td>
             </tr>
                 <tr>
@@ -221,7 +210,7 @@
                     required
                     />
                     <div
-                    *ngIf="f.joinDate.invalid && (f.joinDate.dirty || f.joinDate.touched)"
+                    *ngIf="f.joinDate.invalid && f.joinDate.touched"
                     class="mess-invalid"
                   >
                     <div *ngIf="f.joinDate.errors.required">
@@ -262,7 +251,7 @@
                 required
                 />
                <div
-                *ngIf="dayOffInfos.controls[i].get('hours').invalid && (dayOffInfos.controls[i].get('hours').dirty || dayOffInfos.controls[i].get('hours').touched)"
+                *ngIf="dayOffInfos.controls[i].get('hours').invalid && dayOffInfos.controls[i].get('hours').touched"
                 class="mess-invalid"
               >
                 <div *ngIf="dayOffInfos.controls[i].get('hours').errors.required">
