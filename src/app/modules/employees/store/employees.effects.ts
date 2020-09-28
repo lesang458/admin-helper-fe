@@ -14,6 +14,11 @@ import { NotifyService } from 'src/app/core/services/notify.service';
 
 @Injectable()
 export class EmployeeEffects {
+  public sortProperties = {
+    sortNameType: 'first_name',
+    sortBirthDateType: 'birthdate',
+    sortJoinDateType: 'join_date',
+  };
   @Effect({})
   fetchData = this.actions$.pipe(
     ofType(EmployeesActions.FETCH_DAY_OFF, EmployeesActions.SEARCH_EMPLOYEES),
@@ -22,22 +27,9 @@ export class EmployeeEffects {
         action: EmployeesActions.FetchDayOff | EmployeesActions.SearchEmployees
       ) => {
         let sort = '';
-        if (action.payload.sort.sortNameType) {
-          const sortNameType =
-            action.payload.sort.sortNameType === 1 ? 'asc' : 'desc';
-          sort = `first_name:${sortNameType}`;
-        }
-
-        if (action.payload.sort.sortBirthDateType) {
-          const sortBirthDateType =
-            action.payload.sort.sortBirthDateType === 1 ? 'asc' : 'desc';
-          sort = `birthdate:${sortBirthDateType}`;
-        }
-
-        if (action.payload.sort.sortJoinDateType) {
-          const sortJoinDateType =
-            action.payload.sort.sortJoinDateType === 1 ? 'asc' : 'desc';
-          sort = `join_date:${sortJoinDateType}`;
+        for (const property of Object.keys(action.payload.sort)) {
+          const type = action.payload.sort[property];
+          sort = type ? this.sortBy(property, type) : sort;
         }
 
         let params = new HttpParams()
@@ -167,6 +159,13 @@ export class EmployeeEffects {
         );
     })
   );
+
+  public sortBy(property: string, type: number): string {
+    const sortType = type === 1 ? 'asc' : 'desc';
+    const sortProp = this.sortProperties[property];
+    return `${sortProp}:${sortType}`;
+  }
+
   constructor(
     private actions$: Actions,
     private http: HttpClient,

@@ -67,7 +67,6 @@ export class DayOffCategoryEditComponent implements OnInit {
         new DayOffActions.DeleteDayOffCategory(this.selectedCategory.id)
       );
     }
-
     this.bsModalRef.hide();
   }
 
