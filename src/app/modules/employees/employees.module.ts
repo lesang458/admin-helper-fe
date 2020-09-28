@@ -10,7 +10,6 @@ import { RequestDayOffComponent } from './components/request-day-off/request-day
 import { PaginationModule } from 'ngx-bootstrap/pagination';
 import { ModalModule, BsModalRef } from 'ngx-bootstrap/modal';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { ProfileCreateComponent } from './components/profile-create/profile-create.component';
 import { LoginComponent } from 'src/app/shared/components/login/login.component';
 import { AuthComponent } from './pages/auth/auth.component';
 import { UpdatePasswordComponent } from './pages/update-password/update-password.component';
@@ -18,6 +17,7 @@ import { CommonModule } from '@angular/common';
 import { TooltipModule } from 'ngx-bootstrap/tooltip';
 import { EmployeeDetailComponent } from './components/employee-detail/employee-detail.component';
 import { EmployeeInfoComponent } from './pages/employee-info/employee-info.component';
+import { StatusConfirmComponent } from './components/status-confirm/status-confirm.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +26,7 @@ import { EmployeeInfoComponent } from './pages/employee-info/employee-info.compo
     DayoffComponent,
     DayoffTableComponent,
     RequestDayOffComponent,
-    ProfileCreateComponent,
+    StatusConfirmComponent,
     LoginComponent,
     AuthComponent,
     UpdatePasswordComponent,

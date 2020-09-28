@@ -5,10 +5,10 @@ import { Store } from '@ngrx/store';
 import * as fromApp from '../../../../store/app.reducer';
 import * as EmployeeActions from '../../store/employees.actions';
 import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
-import { ProfileCreateComponent } from '../profile-create/profile-create.component';
 import { SearchParams } from '../../store/employees.actions';
 import { RouteConstant } from 'src/app/shared/constants/route.constant';
 import { Router } from '@angular/router';
+import { StatusConfirmComponent } from '../status-confirm/status-confirm.component';
 
 @Component({
   selector: 'ah-general-list',
@@ -85,7 +85,7 @@ export class GeneralListComponent implements OnInit {
     refresh?: SearchParams
   ) {
     const initialState = { id, type, refresh };
-    this.bsModalRef = this.modalService.show(ProfileCreateComponent, {
+    this.bsModalRef = this.modalService.show(StatusConfirmComponent, {
       initialState,
     });
     this.bsModalRef.content.closeBtnName = 'Close';
