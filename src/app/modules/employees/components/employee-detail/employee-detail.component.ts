@@ -94,9 +94,6 @@ export class EmployeeDetailComponent implements OnInit {
         userId: this.id,
       };
       this.store.dispatch(new DevicesActions.FetchDevices(this.searchParams));
-    } else {
-      document.getElementById('deviceId').classList.add('style');
-      // document.getElementById('hourId').classList.add('display');
     }
   }
 

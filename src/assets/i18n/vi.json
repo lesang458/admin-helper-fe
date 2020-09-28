@@ -33,7 +33,8 @@
   "EMPLOYEE_DETAIL": {
     "TITLE": "Chi tiết nhân viên",
     "DEVICE": "Thiết bị được giao",
-    "EMPLOYEE_INFO": "Thông tin nhân viên"
+    "EMPLOYEE_INFO": "Thông tin nhân viên",
+    "NO_RESULT": "Không có thiết bị nào được bàn giao"
   },
   "EMPLOYEE_EDIT": {
     "TITLE": "Chỉnh sửa nhân viên",

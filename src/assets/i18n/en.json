@@ -33,7 +33,8 @@
   "EMPLOYEE_DETAIL": {
     "TITLE": "Employee Detail",
     "DEVICE": "Assigned devices",
-    "EMPLOYEE_INFO": "Employee Information"
+    "EMPLOYEE_INFO": "Employee Information",
+    "NO_RESULT": "No assigned device"
   },
   "EMPLOYEE_EDIT": {
     "TITLE": "Edit Employee",
