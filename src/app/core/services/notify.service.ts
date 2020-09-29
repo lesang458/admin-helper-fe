@@ -39,6 +39,14 @@ export class NotifyService {
       case 'Validation failed: Status is not valid':
         message = this.translate.instant('MESSAGE.STATUS');
         break;
+      case 'Internal Server Error':
+        message = this.translate.instant('MESSAGE.SERVER_ERROR');
+        break;
+    }
+    if (message.includes(`Couldn't find User with`)) {
+      message =
+        this.translate.instant('MESSAGE.NO_USER') +
+        message.split(`Couldn't find User with`)[1];
     }
     this.toastr.error(null, message);
   }

@@ -6,8 +6,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./employee-info.component.scss'],
 })
 export class EmployeeInfoComponent implements OnInit {
-  public edit = location.pathname.includes('edit');
-  public create = location.pathname.includes('create');
+  public edit = location.pathname.split('/')[3] === 'edit';
+  public create = location.pathname.split('/employees/')[1] === 'create';
   public title: string;
   constructor() {}
 

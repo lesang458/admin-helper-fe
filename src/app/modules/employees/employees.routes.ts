@@ -11,7 +11,7 @@ import { RouteConstant } from 'src/app/shared/constants/route.constant';
 import { EmployeeInfoComponent } from './pages/employee-info/employee-info.component';
 
 export const EMPLOYEES_ROUTES: Routes = [
-  { path: '', redirectTo: `${RouteConstant.employees}`, pathMatch: 'full' },
+  { path: '', redirectTo: `/${RouteConstant.employees}`, pathMatch: 'full' },
   {
     path: `${RouteConstant.login}`,
     component: AuthComponent,
@@ -22,35 +22,37 @@ export const EMPLOYEES_ROUTES: Routes = [
   },
   {
     path: `${RouteConstant.employees}`,
-    component: GeneralInfoComponent,
-    canActivate: [AuthGuardService],
-    data: {
-      i18nKey: 'GENERAL_LIST',
-    },
-  },
-  {
-    path: `${RouteConstant.employees}/:id`,
-    component: EmployeeInfoComponent,
-    canActivate: [AuthGuardService],
-    data: {
-      i18nKey: 'EMPLOYEE_DETAIL',
-    },
-  },
-  {
-    path: `${RouteConstant.employees}/:id/edit`,
-    component: EmployeeInfoComponent,
-    canActivate: [AuthGuardService],
-    data: {
-      i18nKey: 'EMPLOYEE_EDIT',
-    },
-  },
-  {
-    path: `${RouteConstant.employees}/create`,
-    component: EmployeeInfoComponent,
-    canActivate: [AuthGuardService],
-    data: {
-      i18nKey: 'EMPLOYEE_CREATE',
-    },
+    canActivateChild: [AuthGuardService],
+    children: [
+      {
+        path: '',
+        component: GeneralInfoComponent,
+        data: {
+          i18nKey: 'GENERAL_LIST',
+        },
+      },
+      {
+        path: `create`,
+        component: EmployeeInfoComponent,
+        data: {
+          i18nKey: 'EMPLOYEE_CREATE',
+        },
+      },
+      {
+        path: `:id`,
+        component: EmployeeInfoComponent,
+        data: {
+          i18nKey: 'EMPLOYEE_DETAIL',
+        },
+      },
+      {
+        path: `:id/edit`,
+        component: EmployeeInfoComponent,
+        data: {
+          i18nKey: 'EMPLOYEE_EDIT',
+        },
+      },
+    ],
   },
   {
     path: `${RouteConstant.dayOff}`,
