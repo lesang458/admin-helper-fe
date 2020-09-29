@@ -8,4 +8,5 @@ export class ParamsConstant {
   public static readonly historyTo = 'history_to';
   public static readonly historyFrom = 'history_from';
   public static readonly deviceId = 'device_id';
+  public static readonly userId = 'user_id';
 }

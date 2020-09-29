@@ -11,6 +11,8 @@ import * as snakecaseKeys from 'snakecase-keys';
 import { RequestDayOffModel } from 'src/app/shared/models/request-day-off.model';
 import { ParamsConstant } from 'src/app/shared/constants/params.constant';
 import { NotifyService } from 'src/app/core/services/notify.service';
+import { RouteConstant } from 'src/app/shared/constants/route.constant';
+import { Router } from '@angular/router';
 
 @Injectable()
 export class EmployeeEffects {
@@ -67,18 +69,15 @@ export class EmployeeEffects {
     )
   );
 
-  @Effect()
+  @Effect({ dispatch: false })
   createEmployee = this.actions$.pipe(
     ofType(EmployeesActions.CREATE_EMPLOYEE),
     switchMap((action: EmployeesActions.CreateEmployee) => {
-      const body = snakecaseKeys(action.payload.employee, { deep: true });
+      const body = snakecaseKeys(action.payload, { deep: true });
       return this.http.post<any>(`${environment.APILink}/employees`, body).pipe(
-        map((val) => {
+        map(() => {
           this.notify.showSuccess('PROFILE_CREATE.CREATE_SUCCESS');
-          const data: Employee = camelcaseKeys(val.data, { deep: true });
-          return new EmployeesActions.SearchEmployees(
-            action.payload.searchParams
-          );
+          this.router.navigateByUrl(`/${RouteConstant.employees}`);
         })
       );
     })
@@ -99,7 +98,7 @@ export class EmployeeEffects {
     })
   );
 
-  @Effect()
+  @Effect({ dispatch: false })
   editEmployee = this.actions$.pipe(
     ofType(EmployeesActions.EDIT_EMPLOYEE),
     switchMap((action: EmployeesActions.EditEmployee) => {
@@ -111,9 +110,7 @@ export class EmployeeEffects {
         .pipe(
           map(() => {
             this.notify.showSuccess('PROFILE_CREATE.EDIT_SUCCESS');
-            return new EmployeesActions.SearchEmployees(
-              action.payload.searchParams
-            );
+            this.router.navigateByUrl(`/${RouteConstant.employees}`);
           })
         );
     })
@@ -170,6 +167,7 @@ export class EmployeeEffects {
   constructor(
     private actions$: Actions,
     private http: HttpClient,
-    private notify: NotifyService
+    private notify: NotifyService,
+    private router: Router
   ) {}
 }

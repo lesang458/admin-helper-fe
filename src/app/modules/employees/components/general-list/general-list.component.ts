@@ -5,8 +5,10 @@ import { Store } from '@ngrx/store';
 import * as fromApp from '../../../../store/app.reducer';
 import * as EmployeeActions from '../../store/employees.actions';
 import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
-import { ProfileCreateComponent } from '../profile-create/profile-create.component';
 import { SearchParams } from '../../store/employees.actions';
+import { RouteConstant } from 'src/app/shared/constants/route.constant';
+import { Router } from '@angular/router';
+import { StatusConfirmComponent } from '../status-confirm/status-confirm.component';
 
 @Component({
   selector: 'ah-general-list',
@@ -26,7 +28,8 @@ export class GeneralListComponent implements OnInit {
   public searchParams: SearchParams;
   constructor(
     private store: Store<fromApp.AppState>,
-    private modalService: BsModalService
+    private modalService: BsModalService,
+    private router: Router
   ) {}
 
   ngOnInit(): void {
@@ -81,14 +84,28 @@ export class GeneralListComponent implements OnInit {
     refresh?: SearchParams
   ) {
     const initialState = { id, type, refresh };
-    this.bsModalRef = this.modalService.show(ProfileCreateComponent, {
+    this.bsModalRef = this.modalService.show(StatusConfirmComponent, {
       initialState,
     });
     this.bsModalRef.content.closeBtnName = 'Close';
   }
 
+  public navigateDetail(id: number): void {
+    this.router.navigateByUrl(`/${RouteConstant.employees}/${id}`);
+  }
+
+  public navigateEdit(id: number): void {
+    this.router.navigateByUrl(`/${RouteConstant.employees}/${id}/edit`);
+  }
+
+  public navigateCreate(): void {
+    this.router.navigateByUrl(`/${RouteConstant.employees}/create`);
+  }
+
   public onSearchSubmit(): void {
-    if (this.currentSearch !== this.searchFormControl.value.replace(/\s/g, '')) {
+    if (
+      this.currentSearch !== this.searchFormControl.value.replace(/\s/g, '')
+    ) {
       this.currentSearch = this.searchFormControl.value.replace(/\s/g, '');
       this.currentPage === 1 ? this.onPageChanged(1) : (this.currentPage = 1);
     }

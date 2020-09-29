@@ -30,6 +30,21 @@
     "CREATE_EMPLOYEE_PROFILE": "Tạo hồ sơ nhân viên",
     "NO_RESULT": "Không có kết quả."
   },
+  "EMPLOYEE_DETAIL": {
+    "TITLE": "Chi tiết nhân viên",
+    "DEVICE": "Thiết bị được giao",
+    "EMPLOYEE_INFO": "Thông tin nhân viên",
+    "NO_RESULT": "Không có thiết bị nào được bàn giao"
+  },
+  "EMPLOYEE_EDIT": {
+    "TITLE": "Chỉnh sửa nhân viên",
+    "DETAIL": "Chi tiết"
+  },
+  "EMPLOYEE_CREATE": {
+    "TITLE": "Tạo mới nhân viên",
+    "CONFIRM_PASS": "Nhận lại mật khẩu",
+    "PASSWORD_MATCH": "Mật khẩu phải trùng khớp"
+  },
   "DAY_OFF_TABLE": {
     "TITLE": "Danh sách ngày phép",
     "TYPE_OF_LEAVE": "Loại phép",
@@ -57,13 +72,13 @@
     "FIRST_NAME": "Họ",
     "LAST_NAME": "Tên",
     "DAY_OFF_INFO": "Thông tin ngày nghỉ",
-    "HOUR": "Số giờ",
+    "HOUR": "Số giờ (giờ)",
     "FIRST_NAME_INVALID": "Hãy nhập họ",
     "FIRST_NAME_MIN_LENGTH": "Họ phải trên 2 ký tự",
-    "FIRST_NAME_MAX_LENGTH": "Họ không vượt quá 100 ký tự",
+    "FIRST_NAME_MAX_LENGTH": "Họ không vượt quá 20 ký tự",
     "LAST_NAME_INVALID": "Hãy nhập tên",
     "LAST_NAME_MIN_LENGTH": "Tên phải trên 2 ký tự",
-    "LAST_NAME_MAX_LENGTH": "Tên không vượt quá 100 ký tự",
+    "LAST_NAME_MAX_LENGTH": "Tên không vượt quá 20 ký tự",
     "EMAIL_INVALID": "Hãy nhập email",
     "IS_EMAIL": "Email không hợp lệ",
     "BIRTHDAY_INVALID": "Hãy nhập ngày sinh",
@@ -77,7 +92,7 @@
     "HOURS_INVALID": "Hãy nhập số giờ",
     "HOURS_PATTERN": "Giờ phải là số",
     "DAY_OFF_CATE": "Loại ngày nghỉ",
-    "AVAILABLE_HOURS": "Số giờ có sẵn",
+    "AVAILABLE_HOURS": "Số giờ có sẵn (giờ)",
     "MESS_EMAIL": "Email đã tồn tại",
     "CREATE_SUCCESS": "Tạo thành công!",
     "EDIT_SUCCESS": "Chỉnh sửa thành công!",
@@ -97,9 +112,8 @@
   },
   "DEVICE_TABLE": {
     "TITLE": "Danh sách thiết bị",
-    "TYPE_OF_DEVICE": "Loại thiết bị",
     "ALL": "Tất cả",
-    "CATEGORY_NAME": "Danh mục",
+    "CATEGORY_NAME": "Loại thiết bị",
     "ASSIGNED_TO": "Được giao cho",
     "EMPTY": "Trống",
     "PRICE": "Giá tiền",
@@ -132,7 +146,6 @@
     "NAME_REQUIRED": "Hãy nhập tên!",
     "NAME_MINLENGTH": "Tên phải có ít nhất 2 ký tự",
     "NAME_MAXLENGTH": "Tên không được phép vượt quá 20 ký tự",
-    "NAME_PATTERN": "Tên không được chứa ký tự đặc biệt",
     "DAY_OFF": "Số phép mặc định (ngày)",
     "HOURS_REQUIRED": "Hãy nhập số phép mặc định!",
     "HOURS_MIN": "Số phép mặc định không được nhỏ hơn 1",
@@ -231,6 +244,7 @@
     "WRONG_ACC": "Tài khoản không đúng",
     "PERMISSION": "Bạn không có quyền",
     "REQUEST_LONG": "Yêu cầu thất bại",
-    "STATUS": "Trạng thái không hợp lệ"
+    "STATUS": "Trạng thái không hợp lệ",
+    "SERVER_ERROR": "Lỗi nội bộ máy chủ"
   }
 }
