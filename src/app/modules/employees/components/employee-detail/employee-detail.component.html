@@ -235,8 +235,8 @@
           <thead class="thead-style">
             <tr>
               <th scope="col" class="td-cate">{{ 'PROFILE_CREATE.DAY_OFF_CATE' | translate }}</th>
-              <th scope="col">{{ 'PROFILE_CREATE.HOUR' | translate }}</th>
-              <th scope="col" *ngIf="!edit && !create">{{ 'PROFILE_CREATE.AVAILABLE_HOURS' | translate }}</th>
+              <th scope="col" class="text-right">{{ 'PROFILE_CREATE.HOUR' | translate }}</th>
+              <th scope="col" class="text-right" *ngIf="!edit && !create">{{ 'PROFILE_CREATE.AVAILABLE_HOURS' | translate }}</th>
             </tr>
           </thead>
           <tbody formArrayName="dayOffInfos">
@@ -245,7 +245,7 @@
               <td>
                 <input
                 type="number"
-                class="form-control"
+                class="form-control text-right"
                 formControlName="hours"
                 tabindex="{{8 + i}}"
                 required
@@ -262,7 +262,7 @@
                 </div>
               </div>
               </td>
-              <td class="td-style" *ngIf="!edit && !create">{{ dayOffInfos.at(i).get('availableHours').value }}</td>
+              <td class="td-style text-right" *ngIf="!edit && !create">{{ dayOffInfos.at(i).get('availableHours').value }}</td>
             </tr>
           </tbody>
         </table>
