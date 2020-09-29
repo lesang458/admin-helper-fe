@@ -141,7 +141,7 @@ export class RequestDayOffComponent implements OnInit, OnChanges {
       fromDate: this.f.get('fromDate').value,
       toDate: this.f.get('toDate').value,
       hoursPerDay: this.dayOffs < 1 ? 4 : 8,
-      dayOffInfoId: this.dayOffInfos.id,
+      dayOffCategoryId: this.dayOffInfos.dayOffCategoryId,
     };
     this.store.dispatch(
       new EmployeeActions.RequestDayOff({
