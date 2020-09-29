@@ -17,7 +17,6 @@ import { StatusConfirmComponent } from '../status-confirm/status-confirm.compone
 })
 export class GeneralListComponent implements OnInit {
   public bsModalRef: BsModalRef;
-  public employees = RouteConstant.employees;
   public employeeObs$: Observable<any>;
   public searchFormControl = new FormControl('');
   public currentPage = 1;
@@ -89,6 +88,10 @@ export class GeneralListComponent implements OnInit {
       initialState,
     });
     this.bsModalRef.content.closeBtnName = 'Close';
+  }
+
+  public navigateDetail(id: number): void {
+    this.router.navigateByUrl(`/${RouteConstant.employees}/${id}`);
   }
 
   public navigateEdit(id: number): void {
