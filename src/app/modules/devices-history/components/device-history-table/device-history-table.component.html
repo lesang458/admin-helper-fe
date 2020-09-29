@@ -94,7 +94,7 @@
               class="pointer"
             >
               <td class="align-middle">{{ item.fromDate | date: 'dd/MM/yyyy' }}</td>
-              <td class="align-middle">{{ item.toDate | date: 'dd/MM/yyyy' }}</td>
+              <td class="align-middle">{{ getToDate(item.toDate) }}</td>
               <td class="text-center align-center">
                 <span
                   class="badge rounded-pill badge-danger p-2"

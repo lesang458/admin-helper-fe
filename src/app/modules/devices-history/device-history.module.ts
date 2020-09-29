@@ -8,8 +8,13 @@ import { DeviceHistoryListComponent } from './pages/device-history-list/device-h
 import { DeviceHistoryTableComponent } from './components/device-history-table/device-history-table.component';
 import { PaginationModule } from 'ngx-bootstrap/pagination';
 import { DeviceHistoryDetailComponent } from './components/device-history-detail/device-history-detail.component';
+import { DatePipe } from '@angular/common';
 @NgModule({
-  declarations: [DeviceHistoryListComponent, DeviceHistoryTableComponent, DeviceHistoryDetailComponent],
+  declarations: [
+    DeviceHistoryListComponent,
+    DeviceHistoryTableComponent,
+    DeviceHistoryDetailComponent,
+  ],
   imports: [
     SharedModule,
     RouterModule.forChild(DEVICE_HISTORY_ROUTES),
@@ -17,5 +22,6 @@ import { DeviceHistoryDetailComponent } from './components/device-history-detail
     ModalModule.forRoot(),
     PaginationModule.forRoot(),
   ],
+  providers: [DatePipe],
 })
 export class DeviceHistoryModule {}

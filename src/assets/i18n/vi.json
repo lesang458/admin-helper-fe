@@ -135,8 +135,8 @@
     "NAME_PATTERN": "Tên không được chứa ký tự đặc biệt",
     "DAY_OFF": "Số phép mặc định (ngày)",
     "HOURS_REQUIRED": "Hãy nhập số phép mặc định!",
-    "HOURS_MIN": "Số phép mặc định không được nhỏ hơn 1",
-    "HOURS_MAX": "Số phép mặc định không được vượt quá 20"
+    "DAYS_MIN": "Số phép mặc định không được nhỏ hơn 1",
+    "DAYS_MAX": "Số phép mặc định không được vượt quá 20"
   },
   "DEVICE_EDIT": {
     "EDIT_TITLE": "Chỉnh sửa thông tin thiết bị.",
@@ -158,7 +158,8 @@
     "ASSIGNED": "Đã giao",
     "TITLE_DETAIL": "Chi tiết lịch sử thiết bị",
     "DEVICE_INFO": "Thông tin thiết bị",
-    "USER_INFO": "Thông tin người dùng"
+    "USER_INFO": "Thông tin người dùng",
+    "PRESENT": "Hiện tại"
   },
   "DEVICE_ASSIGN": {
     "TITLE": "Cung cấp thiết bị cho nhân viên",

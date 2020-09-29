@@ -15,6 +15,7 @@ import { DeviceHistoryDetailComponent } from '../device-history-detail/device-hi
 import { Router, NavigationEnd } from '@angular/router';
 import { DevicesHistoryService } from 'src/app/core/services/devices-history.service';
 import { RouteConstant } from 'src/app/shared/constants/route.constant';
+import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'ah-device-history-table',
@@ -36,7 +37,8 @@ export class DeviceHistoryTableComponent implements OnInit {
     private modalService: BsModalService,
     private router: Router,
     private devicesHistoryService: DevicesHistoryService,
-    private translate: TranslateService
+    private translate: TranslateService,
+    private datePipe: DatePipe
   ) {
     router.events.subscribe((val: NavigationEnd) => {
       if (val.url && val.url !== `/${RouteConstant.deviceHistory}`) {
@@ -102,5 +104,11 @@ export class DeviceHistoryTableComponent implements OnInit {
     return user
       ? `${user.firstName} ${user.lastName}`
       : this.translate.instant('DEVICE_TABLE.EMPTY');
+  }
+
+  public getToDate(date: Date): string {
+    return date
+      ? this.datePipe.transform(date, 'dd/MM/yyyy')
+      : this.translate.instant('DEVICE_HISTORY.PRESENT');
   }
 }

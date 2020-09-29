@@ -159,7 +159,8 @@
     "ASSIGNED": "Assigned",
     "TITLE_DETAIL": "Detail device history",
     "DEVICE_INFO": "Device information",
-    "USER_INFO": "User information"
+    "USER_INFO": "User information",
+    "PRESENT": "Present"
   },
   "DEVICE_ASSIGN": {
     "TITLE": "Provide device to user",
