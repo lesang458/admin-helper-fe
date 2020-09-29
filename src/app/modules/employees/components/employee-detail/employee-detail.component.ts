@@ -54,7 +54,7 @@ export class EmployeeDetailComponent implements OnInit {
     dayOffInfos: this.formBuilder.array([]),
   });
   public edit = location.pathname.split('/')[3] === 'edit';
-  public create = location.pathname.split('/employees/')[1] === 'create';
+  public create = location.pathname.split('/')[2] === 'create';
 
   constructor(
     private store: Store<fromApp.AppState>,

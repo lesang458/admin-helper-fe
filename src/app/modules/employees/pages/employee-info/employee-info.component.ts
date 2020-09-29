@@ -7,7 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class EmployeeInfoComponent implements OnInit {
   public edit = location.pathname.split('/')[3] === 'edit';
-  public create = location.pathname.split('/employees/')[1] === 'create';
+  public create = location.pathname.split('/')[2] === 'create';
   public title: string;
   constructor() {}
 
