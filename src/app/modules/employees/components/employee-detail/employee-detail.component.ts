@@ -32,11 +32,11 @@ export class EmployeeDetailComponent implements OnInit {
   public employeeForm = new FormGroup({
     firstName: new FormControl('', [
       Validators.minLength(2),
-      Validators.maxLength(100),
+      Validators.maxLength(20),
     ]),
     lastName: new FormControl('', [
       Validators.minLength(2),
-      Validators.maxLength(100),
+      Validators.maxLength(20),
     ]),
     email: new FormControl('', Validators.email),
     password: new FormControl('', Validators.minLength(6)),

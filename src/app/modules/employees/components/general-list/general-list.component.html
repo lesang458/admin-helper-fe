@@ -110,14 +110,14 @@
             <td class="text-center align-middle">
               <span
                 class="badge rounded-pill badge-danger p-2"
-                *ngIf="item.status !== 'ACTIVE'"
-                >{{ 'GENERAL_LIST.FORMER' | translate }}</span
-              >
+                *ngIf="item.status !== 'ACTIVE'">
+                {{ 'GENERAL_LIST.FORMER' | translate }}
+              </span>
               <span
                 class="badge rounded-pill badge-success p-2"
-                *ngIf="item.status === 'ACTIVE'"
-                >{{ 'GENERAL_LIST.ACTIVE' | translate }}</span
-              >
+                *ngIf="item.status === 'ACTIVE'">
+                {{ 'GENERAL_LIST.ACTIVE' | translate }}
+              </span>
             </td>
             <td class="d-flex justify-content-center align-middle">
               <button
@@ -126,7 +126,6 @@
               >
                 <span class="cil-brush"></span>
               </button>
-
               <button
                 *ngIf="item.status === 'ACTIVE'"
                 class="btn btn-outline-danger"
@@ -134,7 +133,6 @@
               >
                 <i class="cil-trash"></i>
               </button>
-
               <button
                 *ngIf="item.status !== 'ACTIVE'"
                 class="btn btn-outline-success"

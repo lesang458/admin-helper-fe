@@ -40,11 +40,9 @@ export class StatusConfirmComponent implements OnInit {
   public onConfirm() {
     const searchParams = this.refresh;
     const id = this.id;
-    if (this.type === 'delete' || this.type === 'active') {
-      const status = this.type === 'delete' ? 'FORMER' : 'ACTIVE';
-      const params = { id, status, searchParams };
-      this.store.dispatch(new EmployeeActions.UpdateEmployeeStatus(params));
-    }
+    const status = this.type === 'delete' ? 'FORMER' : 'ACTIVE';
+    const params = { id, status, searchParams };
+    this.store.dispatch(new EmployeeActions.UpdateEmployeeStatus(params));
     this.bsModalRef.hide();
   }
 }
