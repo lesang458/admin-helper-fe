@@ -39,7 +39,7 @@ export class EmployeeDetailComponent implements OnInit {
       Validators.maxLength(100),
     ]),
     email: new FormControl('', Validators.email),
-    encryptedPassword: new FormControl('', Validators.minLength(6)),
+    password: new FormControl('', Validators.minLength(6)),
     confirmPassword: new FormControl(''),
     phoneNumber: new FormControl('', [
       Validators.pattern('^[0-9]*$'),

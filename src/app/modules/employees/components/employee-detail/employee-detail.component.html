@@ -4,7 +4,7 @@
     *ngIf="edit || create" 
     type="submit" 
     class="btn btn-success mb-3 mr-2"
-    [disabled]="employeeForm.invalid || dayOffForm.invalid || (employeeForm.value.encryptedPassword !== employeeForm.value.confirmPassword)"
+    [disabled]="employeeForm.invalid || dayOffForm.invalid || (employeeForm.value.password !== employeeForm.value.confirmPassword)"
     >
     <span class="cil-save mr-1"></span>
     {{ 'PROFILE_CREATE.SAVE' | translate }}
@@ -95,18 +95,18 @@
                 type="password"
                 class="form-control"
                 id="exampleFormControlInput4"
-                formControlName="encryptedPassword"
+                formControlName="password"
                 tabindex="5"
                 required
               />
               <div
-                *ngIf="f.encryptedPassword.invalid && f.encryptedPassword.touched"
+                *ngIf="f.password.invalid && f.password.touched"
                 class="mess-invalid"
               >
-                <div *ngIf="f.encryptedPassword.errors.required">
+                <div *ngIf="f.password.errors.required">
                   {{ 'PROFILE_CREATE.PASSWORD_INVALID' | translate }}
                 </div>
-                <div *ngIf="f.encryptedPassword.errors.minlength">
+                <div *ngIf="f.password.errors.minlength">
                   {{ 'PROFILE_CREATE.PASS_MINLENGTH' | translate }}
                 </div>
               </div>
@@ -193,7 +193,7 @@
                   tabindex="6"
                 />
                 <div 
-                  *ngIf="employeeForm.value.encryptedPassword !== employeeForm.value.confirmPassword"
+                  *ngIf="employeeForm.value.password !== employeeForm.value.confirmPassword"
                   class="mess-invalid">
                   {{ 'EMPLOYEE_CREATE.PASSWORD_MATCH' | translate }}
                 </div>
