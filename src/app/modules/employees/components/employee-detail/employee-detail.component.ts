@@ -80,6 +80,7 @@ export class EmployeeDetailComponent implements OnInit {
                   this.formBuilder.group({
                     availableHours: value.availableHours,
                     categoryName: value.categoryName,
+                    dayOffCategoryId: value.id,
                     hours: [
                       {
                         value: value.hours,
@@ -166,12 +167,20 @@ export class EmployeeDetailComponent implements OnInit {
   }
 
   public onSubmit(): void {
-    this.employeeForm.value.dayOffInfos = this.dayOffForm.value.dayOffInfos;
+    this.employeeForm.value.dayOffInfosAttributes = this.dayOffForm.value.dayOffInfos;
     const employee = { ...this.employeeForm.value };
     delete employee.confirmPassword;
+    delete employee.dayOffInfos;
+    employee.dayOffInfosAttributes.forEach((element) => {
+      delete element.categoryName;
+    });
     if (this.create) {
       this.store.dispatch(new EmployeeActions.CreateEmployee(employee));
     } else {
+      delete employee.password;
+      employee.dayOffInfosAttributes.forEach((element) => {
+        delete element.availableHours;
+      });
       const id = this.id;
       const params = { id, employee };
       this.store.dispatch(new EmployeeActions.EditEmployee(params));
