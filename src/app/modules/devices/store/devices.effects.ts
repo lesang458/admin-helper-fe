@@ -17,9 +17,12 @@ export class DeviceEffects {
   fetchDevice = this.actions$.pipe(
     ofType(DevicesActions.FETCH_DEVICES),
     switchMap((action: DevicesActions.FetchDevices) => {
-      let params = new HttpParams()
-        .append(ParamsConstant.page, action.payload.page)
-        .append(ParamsConstant.perPage, action.payload.perPage);
+      let params = new HttpParams();
+      if (action.payload.page && action.payload.perPage) {
+        params = params
+          .append(ParamsConstant.page, action.payload.page)
+          .append(ParamsConstant.perPage, action.payload.perPage);
+      }
       if (action.payload.status) {
         params = params.append(ParamsConstant.status, action.payload.status);
       }
@@ -28,6 +31,9 @@ export class DeviceEffects {
           ParamsConstant.deviceCategoryId,
           action.payload.deviceCategoryId
         );
+      }
+      if (action.payload.userId) {
+        params = params.append(ParamsConstant.userId, action.payload.userId);
       }
       return this.http
         .get<PaginatedData<Device[]>>(`${environment.APILink}/devices`, {

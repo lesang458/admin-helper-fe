@@ -5,17 +5,24 @@ import {
   ActivatedRouteSnapshot,
   RouterStateSnapshot,
   UrlTree,
+  CanActivateChild,
 } from '@angular/router';
 import { RouteConstant } from 'src/app/shared/constants/route.constant';
 import { AuthService } from '../services/auth.service';
 import { BrowserSupportService } from '../services/browser-support.service';
 @Injectable({ providedIn: 'root' })
-export class AuthGuardService implements CanActivate {
+export class AuthGuardService implements CanActivate, CanActivateChild {
   constructor(
     public auth: AuthService,
     public router: Router,
     private browserSupportService: BrowserSupportService
   ) {}
+  canActivateChild(
+    childRoute: ActivatedRouteSnapshot,
+    state: RouterStateSnapshot
+  ): boolean | UrlTree {
+    return this.canActivate(childRoute, state);
+  }
   canActivate(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot

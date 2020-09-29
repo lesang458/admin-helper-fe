@@ -1,0 +1,75 @@
+.main-container {
+  b {
+    font-size: 16px;
+  }
+  .emp{
+    width: 50%
+  }
+  .day-off {
+    display: flex;
+    justify-content: space-between;
+    .card {
+      width: 49.5%;
+      border: 1px solid #c7c8ca;
+      border-radius: 4px;
+      padding: 5px;
+      .table-striped {
+        padding: 10px;
+      }
+      .infor {
+        padding: 10px;
+        .td-cate{
+          width: 20%;
+        }
+        tr {
+          height: 86px;
+        }
+        th, td {
+          vertical-align: inherit;
+        }
+      } 
+      .card-body {
+        padding: 0.25rem;
+      } 
+    }
+    .thead-style {
+      background-color: rgba(0,0,21,.075);
+      tr {
+        height: auto !important;
+      }
+    }
+  }
+  .row-1 {
+    .info {
+      display: flex;
+      padding-top: 10px;
+      tr {
+        height: 86px;
+      }
+      th, td {
+        vertical-align: inherit;
+      }
+      th {
+        width: 20%;
+      }
+      td {
+        width: 80%;
+      }
+      .tab {
+        margin-right: 15px;
+      }
+    }
+  }
+  .mess-invalid {
+    color: red;
+    margin-top: 5px;
+  }
+  .badge{
+    width: 95px;
+  }
+  .form-control:disabled{
+    background-color: transparent;
+    border: none;
+  }
+}
+

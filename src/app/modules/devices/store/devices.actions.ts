@@ -4,10 +4,11 @@ import { PaginatedData } from 'src/app/shared/models/pagination.model';
 import { DeviceCategory } from 'src/app/shared/models/deviceCategory';
 
 export interface SearchDevice {
-  page;
-  perPage;
   status: string;
-  deviceCategoryId;
+  page?;
+  perPage?;
+  deviceCategoryId?;
+  userId?;
 }
 
 export interface DeviceParams {

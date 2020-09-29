@@ -13,8 +13,7 @@ export interface SearchParams {
   deviceId?: string;
 }
 
-export const GET_DEVICE_HISTORY_SUCCESS =
-  '[Device History] Get Device History Success';
+export const GET_DEVICE_HISTORY_SUCCESS = '[Device History] Get Device History Success';
 export const FETCH_DEVICE_HISTORY = '[Device History] Fetch Device History';
 export const DETAIL_DEVICE_HISTORY = '[Device History] Detail Device History';
 export const DETAIL_DEVICE_HISTORY_SUCCESS = '[Device History] Detail Device History Success';

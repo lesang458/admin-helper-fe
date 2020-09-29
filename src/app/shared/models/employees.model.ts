@@ -7,7 +7,8 @@ export interface Employee {
   joinDate?: string;
   status: string;
   phoneNumber: string;
-  dayOffInfos: any;
+  dayOffInfos?: any;
+  dayOffInfosAttributes?: any;
   roles?: any;
   token?: string;
   user?: Employee;

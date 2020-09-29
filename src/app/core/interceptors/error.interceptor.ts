@@ -4,10 +4,9 @@ import {
   HttpHandler,
   HttpEvent,
   HttpInterceptor,
-  HttpResponse,
 } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
-import { catchError, tap } from 'rxjs/operators';
+import { catchError } from 'rxjs/operators';
 import { Router } from '@angular/router';
 import { AuthService } from '../services/auth.service';
 import { RouteConstant } from 'src/app/shared/constants/route.constant';
@@ -26,14 +25,13 @@ export class ErrorInterceptor implements HttpInterceptor {
     next: HttpHandler
   ): Observable<HttpEvent<any>> {
     return next.handle(request).pipe(
-      tap((evt) => {
-        if (evt instanceof HttpResponse) {
-          if (evt.status >= 500) {
-            this.router.navigate([`/${RouteConstant.page5xx}`]);
-          }
-        }
-      }),
       catchError((err) => {
+        if (err.status === 404) {
+          this.router.navigate([`/${RouteConstant.page404}`]);
+        }
+        if (err.status >= 500) {
+          this.router.navigate([`/${RouteConstant.page5xx}`]);
+        }
         const error = err?.error?.message || err?.statusText;
         if (
           error === 'User authentication failed' ||

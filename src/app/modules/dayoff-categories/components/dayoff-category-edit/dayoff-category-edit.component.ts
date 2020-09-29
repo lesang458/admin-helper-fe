@@ -21,7 +21,6 @@ export class DayOffCategoryEditComponent implements OnInit {
       Validators.required,
       Validators.minLength(2),
       Validators.maxLength(20),
-      Validators.pattern('^[a-zA-Z]+$'),
     ]),
     days: new FormControl('', [
       Validators.required,
@@ -85,9 +84,6 @@ export class DayOffCategoryEditComponent implements OnInit {
   public getNameErrorMessage(): string {
     if (this.f.get('name').errors.required) {
       return this.translate.instant('DAY_OFF_CATEGORIES_PAGE.NAME_REQUIRED');
-    }
-    if (this.f.get('name').errors.pattern) {
-      return this.translate.instant('DAY_OFF_CATEGORIES_PAGE.NAME_PATTERN');
     }
     if (this.f.get('name').errors.maxlength) {
       return this.translate.instant('DAY_OFF_CATEGORIES_PAGE.NAME_MAXLENGTH');

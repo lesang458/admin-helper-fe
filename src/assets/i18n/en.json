@@ -4,7 +4,7 @@
     "LINK_2": "Day off Management",
     "LINK_4": "Device Management",
     "LINK_5": "Devices History",
-    "LINK_6": "Day off type",
+    "LINK_6": "Day off Categories",
     "LINK_7": "Device Categories"
   },
   "HEADER": {
@@ -29,6 +29,21 @@
     "FORMER": "Former",
     "CREATE_EMPLOYEE_PROFILE": "Create employee profile",
     "NO_RESULT": "No result."
+  },
+  "EMPLOYEE_DETAIL": {
+    "TITLE": "Employee Detail",
+    "DEVICE": "Assigned devices",
+    "EMPLOYEE_INFO": "Employee Information",
+    "NO_RESULT": "No assigned device"
+  },
+  "EMPLOYEE_EDIT": {
+    "TITLE": "Edit Employee",
+    "DETAIL": "Detail"
+  },
+  "EMPLOYEE_CREATE": {
+    "TITLE": "Create Employee",
+    "CONFIRM_PASS": "Confirm password",
+    "PASSWORD_MATCH": "Password must match"
   },
   "DAY_OFF_TABLE": {
     "TITLE": "Day off List",
@@ -57,13 +72,13 @@
     "FIRST_NAME": "First name",
     "LAST_NAME": "Last name",
     "DAY_OFF_INFO": "Day off infomation",
-    "HOUR": "Hours",
+    "HOUR": "Hours (h)",
     "FIRST_NAME_INVALID": "First Name is required",
     "FIRST_NAME_MIN_LENGTH": "First name must be at least 2 characters",
-    "FIRST_NAME_MAX_LENGTH": "First name must not exceed 100 characters",
+    "FIRST_NAME_MAX_LENGTH": "First name must not exceed 20 characters",
     "LAST_NAME_INVALID": "Last name is required",
     "LAST_NAME_MIN_LENGTH": "Last name must be at least 2 characters",
-    "LAST_NAME_MAX_LENGTH": "Last name must not exceed 100 characters",
+    "LAST_NAME_MAX_LENGTH": "Last name must not exceed 20 characters",
     "EMAIL_INVALID": "Email is required",
     "IS_EMAIL": "Email must be a valid email address",
     "BIRTHDAY_INVALID": "Birthday is required",
@@ -77,7 +92,7 @@
     "HOURS_INVALID": "Hours is required",
     "HOURS_PATTERN": "Hours must be number",
     "DAY_OFF_CATE": "Day off category",
-    "AVAILABLE_HOURS": "Available hours",
+    "AVAILABLE_HOURS": "Available hours (h)",
     "MESS_EMAIL": "Email has already been taken",
     "CREATE_SUCCESS": "Created successfully!",
     "EDIT_SUCCESS": "Edited successfully!",
@@ -89,9 +104,8 @@
   },
   "DEVICE_TABLE": {
     "TITLE": "Devices List",
-    "TYPE_OF_DEVICE": "Type of device",
     "ALL": "All",
-    "CATEGORY_NAME": "Category",
+    "CATEGORY_NAME": "Device category",
     "ASSIGNED_TO": "Assigned to",
     "EMPTY": "Empty",
     "PRICE": "Price",
@@ -132,7 +146,6 @@
     "NAME_REQUIRED": "Name is required!",
     "NAME_MINLENGTH": "The name must be at least 2 characters",
     "NAME_MAXLENGTH": "The name must not exceed 20 characters",
-    "NAME_PATTERN": "The name must not contain special characters",
     "DAY_OFF": "Total default leaves (day)",
     "DAYS_REQUIRED": "Total default leaves is required!",
     "DAYS_MIN": "Total default leaves must be at least 1",
@@ -232,6 +245,7 @@
     "PERMISSION": "You have not permission",
     "REQUEST_LONG": "Request is too long",
     "STATUS": "Status is not valid",
-    "RESET_SUCCESSFULLY": "Reset password successfully"
+    "RESET_SUCCESSFULLY": "Reset password successfully",
+    "SERVER_ERROR": "Internal Server Error"
   }
 }
