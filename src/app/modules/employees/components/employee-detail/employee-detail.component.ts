@@ -80,7 +80,7 @@ export class EmployeeDetailComponent implements OnInit {
                   this.formBuilder.group({
                     availableHours: value.availableHours,
                     categoryName: value.categoryName,
-                    dayOffCategoryId: value.id,
+                    dayOffCategoryId: value.dayOffCategoryId,
                     hours: [
                       {
                         value: value.hours,
