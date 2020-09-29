@@ -146,7 +146,6 @@
     "NAME_REQUIRED": "Name is required!",
     "NAME_MINLENGTH": "The name must be at least 2 characters",
     "NAME_MAXLENGTH": "The name must not exceed 20 characters",
-    "NAME_PATTERN": "The name must not contain special characters",
     "DAY_OFF": "Total default leaves (day)",
     "DAYS_REQUIRED": "Total default leaves is required!",
     "DAYS_MIN": "Total default leaves must be at least 1",

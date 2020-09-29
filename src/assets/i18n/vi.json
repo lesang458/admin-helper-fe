@@ -146,7 +146,6 @@
     "NAME_REQUIRED": "Hãy nhập tên!",
     "NAME_MINLENGTH": "Tên phải có ít nhất 2 ký tự",
     "NAME_MAXLENGTH": "Tên không được phép vượt quá 20 ký tự",
-    "NAME_PATTERN": "Tên không được chứa ký tự đặc biệt",
     "DAY_OFF": "Số phép mặc định (ngày)",
     "HOURS_REQUIRED": "Hãy nhập số phép mặc định!",
     "HOURS_MIN": "Số phép mặc định không được nhỏ hơn 1",
