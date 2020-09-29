@@ -231,6 +231,7 @@
     "WRONG_ACC": "Invalid User",
     "PERMISSION": "You have not permission",
     "REQUEST_LONG": "Request is too long",
-    "STATUS": "Status is not valid"
+    "STATUS": "Status is not valid",
+    "RESET_SUCCESSFULLY": "Reset password successfully"
   }
 }

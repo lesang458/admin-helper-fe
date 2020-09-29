@@ -10,6 +10,7 @@ import * as snakecaseKeys from 'snakecase-keys';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/core/services/auth.service';
 import { RouteConstant } from '../constants/route.constant';
+import { NotifyService } from 'src/app/core/services/notify.service';
 
 @Injectable()
 export class AuthEffect {
@@ -108,6 +109,7 @@ export class AuthEffect {
         .patch(`${environment.APILink}/password/reset`, body)
         .pipe(
           map(() => {
+            this.notify.showSuccess('MESSAGE.RESET_SUCCESSFULLY');
             this.router.navigate([`${RouteConstant.login}`]);
             this.auth.setVerifyStep(0);
           })
@@ -119,6 +121,7 @@ export class AuthEffect {
     private actions$: Actions,
     private http: HttpClient,
     private router: Router,
-    private auth: AuthService
+    private auth: AuthService,
+    private notify: NotifyService
   ) {}
 }
