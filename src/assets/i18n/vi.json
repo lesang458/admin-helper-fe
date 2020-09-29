@@ -148,8 +148,8 @@
     "NAME_MAXLENGTH": "Tên không được phép vượt quá 20 ký tự",
     "DAY_OFF": "Số phép mặc định (ngày)",
     "HOURS_REQUIRED": "Hãy nhập số phép mặc định!",
-    "HOURS_MIN": "Số phép mặc định không được nhỏ hơn 1",
-    "HOURS_MAX": "Số phép mặc định không được vượt quá 20"
+    "DAYS_MIN": "Số phép mặc định không được nhỏ hơn 1",
+    "DAYS_MAX": "Số phép mặc định không được vượt quá 20"
   },
   "DEVICE_EDIT": {
     "EDIT_TITLE": "Chỉnh sửa thông tin thiết bị.",
@@ -166,22 +166,21 @@
   "DEVICE_HISTORY": {
     "TITLE": "Danh sách lịch sử thiết bị",
     "DEVICE_NAME": "Tên thiết bị",
-    "DISCARDED": "Bị lỗi",
+    "DISCARDED": "Đã loại bỏ",
     "IN_INVENTORY": "Trong kho",
     "ASSIGNED": "Đã giao",
     "TITLE_DETAIL": "Chi tiết lịch sử thiết bị",
     "DEVICE_INFO": "Thông tin thiết bị",
-    "USER_INFO": "Thông tin người dùng"
+    "USER_INFO": "Thông tin người dùng",
+    "PRESENT": "Hiện tại"
   },
   "DEVICE_ASSIGN": {
     "TITLE": "Cung cấp thiết bị cho nhân viên",
     "NO_ASSIGN": "Không bàn giao"
   },
   "DEVICE_CONFIRM": {
-    "DELETE_TITLE": "Xác nhận xóa thiết bị",
-    "DELETE_PARAM": "Thiết bị này sẽ bị xóa. Bạn có muốn tiếp tục?",
     "DISCARD_TITLE": "Xác nhận loại bỏ thiết bị",
-    "DISCARD_PARAM": "Trạng thái của thiết bị này sẽ được thay đổi thành 'BỊ LỖI'. Bạn có muốn tiếp tục?",
+    "DISCARD_PARAM": "Trạng thái của thiết bị này sẽ được thay đổi thành 'ĐÃ LOẠI BỎ'. Thao tác này không thể hoàn tác. Bạn có muốn tiếp tục?",
     "INVENTORY_TITLE": "Xác nhận di chuyển thiết bị vào kho",
     "INVENTORY_PARAM": "Trạng thái của thiết bị này sẽ được thay đổi thành 'TRONG KHO'. Bạn có muốn tiếp tục?"
   },
@@ -245,6 +244,7 @@
     "PERMISSION": "Bạn không có quyền",
     "REQUEST_LONG": "Yêu cầu thất bại",
     "STATUS": "Trạng thái không hợp lệ",
-    "SERVER_ERROR": "Lỗi nội bộ máy chủ"
+    "RESET_SUCCESSFULLY": "Khôi phục mật khẩu thành công",
+    "SERVER_ERROR": "Lỗi máy chủ nội bộ"
   }
 }

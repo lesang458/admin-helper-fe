@@ -6,6 +6,7 @@ import * as EmployeeActions from '../../store/employees.actions';
 import { Store } from '@ngrx/store';
 import { Employee } from 'src/app/shared/models/employees.model';
 import { TranslateService } from '@ngx-translate/core';
+import { RequestDayOffModel } from 'src/app/shared/models/request-day-off.model';
 
 @Component({
   selector: 'ah-request-day-off',
@@ -135,15 +136,16 @@ export class RequestDayOffComponent implements OnInit, OnChanges {
   }
 
   public onSave(): void {
+    const body: RequestDayOffModel = {
+      id: this.selectedEmployee.id,
+      fromDate: this.f.get('fromDate').value,
+      toDate: this.f.get('toDate').value,
+      hoursPerDay: this.dayOffs < 1 ? 4 : 8,
+      dayOffCategoryId: this.dayOffInfos.dayOffCategoryId,
+    };
     this.store.dispatch(
       new EmployeeActions.RequestDayOff({
-        body: {
-          id: this.selectedEmployee.id,
-          fromDate: this.f.get('fromDate').value,
-          toDate: this.f.get('toDate').value,
-          hoursPerDay: this.dayOffs < 1 ? 4 : 8,
-          dayOffInfoId: this.dayOffInfos.id,
-        },
+        body,
         searchParams: this.searchParams,
       })
     );

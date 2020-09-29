@@ -11,7 +11,7 @@
       </button>
     </div>
     <div class="table-responsive" *ngIf="data$ | async as data">
-      <table class="table table-bordered">
+      <table class="table table-bordered table-striped">
         <thead>
           <tr>
             <th scope="col" class="col-id">No.</th>
@@ -35,7 +35,9 @@
               {{ i + 1 }}
             </th>
             <td class="align-middle">{{ item.name | titlecase }}</td>
-            <td class="align-middle text-right">{{ item.totalHoursDefault / 8 }}</td>
+            <td class="align-middle text-right">
+              {{ item.totalHoursDefault / 8 }}
+            </td>
             <td class="align-middle">{{ item.description }}</td>
             <td class="d-flex justify-content-center align-middle">
               <button

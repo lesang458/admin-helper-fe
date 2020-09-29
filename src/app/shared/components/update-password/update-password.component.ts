@@ -73,7 +73,7 @@ export class UpdatePasswordComponent implements OnInit {
           this.store.dispatch(
             new AuthActions.VerifyToken({
               email: this.email,
-              token: this.token,
+              token: this.token.toString(),
             })
           );
           this.verify === 1 ? this.updatePwForm.setErrors(null) : null;
@@ -82,7 +82,7 @@ export class UpdatePasswordComponent implements OnInit {
           this.store.dispatch(
             new AuthActions.ResetPassword({
               email: this.email,
-              token: this.token,
+              token: this.token.toString(),
               newPassword: this.newPassword,
             })
           );
@@ -94,7 +94,10 @@ export class UpdatePasswordComponent implements OnInit {
   }
 
   public passwordIsIncorrect(): boolean {
-    return this.f.newPassword.value !== this.f.confirmPassword.value;
+    return (
+      this.f.newPassword.value !== this.f.confirmPassword.value &&
+      this.f.confirmPassword.touched
+    );
   }
 
   public getBtnName(): string {

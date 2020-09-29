@@ -172,17 +172,16 @@
     "ASSIGNED": "Assigned",
     "TITLE_DETAIL": "Detail device history",
     "DEVICE_INFO": "Device information",
-    "USER_INFO": "User information"
+    "USER_INFO": "User information",
+    "PRESENT": "Present"
   },
   "DEVICE_ASSIGN": {
     "TITLE": "Provide device to user",
     "NO_ASSIGN": "No assign"
   },
   "DEVICE_CONFIRM": {
-    "DELETE_TITLE": "Confirm delete device",
-    "DELETE_PARAM": "This device will be deleted. Do you want to continue?",
     "DISCARD_TITLE": "Confirm discard device",
-    "DISCARD_PARAM": "This device's status will be changed to 'DISCARDED'. Do you want to continue?",
+    "DISCARD_PARAM": "This device's status will be changed to 'DISCARDED'. This action cannot be undone. Do you want to continue?",
     "INVENTORY_TITLE": "Confirm move device to inventory",
     "INVENTORY_PARAM": "This device's status will be changed to 'IN INVENTORY'. Do you want to continue?"
   },
@@ -246,6 +245,7 @@
     "PERMISSION": "You have not permission",
     "REQUEST_LONG": "Request is too long",
     "STATUS": "Status is not valid",
+    "RESET_SUCCESSFULLY": "Reset password successfully",
     "SERVER_ERROR": "Internal Server Error"
   }
 }

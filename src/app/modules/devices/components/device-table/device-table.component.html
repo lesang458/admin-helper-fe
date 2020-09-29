@@ -125,20 +125,14 @@
               </div>
               <a
                 class="dropdown-item pointer text-primary"
-                *ngIf="item.status !== 'IN_INVENTORY'"
+                *ngIf="item.status === 'ASSIGNED'"
                 (click)="openConfirmModal(item.id, 'inventory', searchParams)"
                 ><i class="cil-storage mr-3"></i>
                 {{ 'DEVICE_TABLE.MOVE_TO_INVENTORY' | translate }}
               </a>
               <a
-                class="dropdown-item pointer text-warning"
-                *ngIf="item.status !== 'DISCARDED'"
-                (click)="openConfirmModal(item.id, 'discard', searchParams)"
-                ><i class="cil-pen-nib mr-3"></i>
-                {{ 'DEVICE_TABLE.DISCARD' | translate }}
-              </a>
-              <a
                 class="dropdown-item pointer text-success"
+                *ngIf="item.status !== 'DISCARDED'"
                 (click)="openAssignModal(item, searchParams)"
                 ><i class="cil-task mr-3"></i>
                 {{ 'DEVICE_TABLE.ASSIGN' | translate }}
@@ -157,9 +151,10 @@
               </a>
               <a
                 class="dropdown-item pointer text-danger"
-                (click)="openConfirmModal(item.id, 'delete', searchParams)"
-                ><i class="cil-trash mr-3"></i
-                >{{ 'DEVICE_TABLE.DELETE' | translate }}
+                *ngIf="item.status !== 'DISCARDED'"
+                (click)="openConfirmModal(item.id, 'discard', searchParams)"
+                ><i class="cil-trash mr-3"></i>
+                {{ 'DEVICE_TABLE.DISCARD' | translate }}
               </a>
             </div>
           </div>
