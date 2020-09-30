@@ -5,7 +5,7 @@
         <div class="card-group">
           <div class="card p-4">
             <div class="card-body">
-              <h1>{{ 'LOGIN.TILTE' | translate }}</h1>
+              <h1>{{ 'LOGIN.TITLE' | translate }}</h1>
               <p class="text-muted">{{ 'LOGIN.SIGN_IN' | translate }}</p>
               <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
                 <div class="input-group">
@@ -43,7 +43,9 @@
                     class="form-control"
                     type="password"
                     formControlName="password"
-                    placeholder="{{ 'PROFILE_CREATE.PASSWORD_INVALID' | translate }}"
+                    placeholder="{{
+                      'PROFILE_CREATE.PASSWORD_INVALID' | translate
+                    }}"
                     required
                   />
                 </div>
