@@ -37,11 +37,12 @@
     "NO_RESULT": "Không có thiết bị nào được bàn giao"
   },
   "EMPLOYEE_EDIT": {
-    "TITLE": "Chỉnh sửa nhân viên",
+    "TITLE": "Chỉnh sửa hồ sơ nhân viên",
+    "EDIT": "Chỉnh sửa",
     "DETAIL": "Chi tiết"
   },
   "EMPLOYEE_CREATE": {
-    "TITLE": "Tạo mới nhân viên",
+    "TITLE": "Tạo hồ sơ nhân viên",
     "CONFIRM_PASS": "Nhập lại mật khẩu",
     "PASSWORD_MATCH": "Mật khẩu phải trùng khớp"
   },
@@ -68,7 +69,6 @@
     "DAY": "ngày"
   },
   "PROFILE_CREATE": {
-    "TITLE": "Tạo hồ sơ nhân viên",
     "FIRST_NAME": "Họ",
     "LAST_NAME": "Tên",
     "DAY_OFF_INFO": "Thông tin ngày nghỉ",
@@ -98,9 +98,6 @@
     "EDIT_SUCCESS": "Chỉnh sửa thành công!",
     "CLOSE": "Đóng",
     "SAVE": "Lưu"
-  },
-  "PROFILE_EDIT": {
-    "TITLE": "Chỉnh sửa hồ sơ nhân viên"
   },
   "PROFILE_STATUS_CHANGE": {
     "TITLE_FORMER": "Xác nhận xóa nhân viên",

@@ -11,7 +11,7 @@
     </button>
     <button *ngIf="!edit && !create" type="button" class="btn btn-info mb-3" (click)="navigateEdit()">
       <span class="cil-brush mr-1"></span>
-      {{ 'EMPLOYEE_EDIT.TITLE' | translate }}
+      {{ 'EMPLOYEE_EDIT.EDIT' | translate }}
     </button>
     <button *ngIf="edit" type="button" class="btn btn-info mb-3" (click)="navigateDetail()">
       <span class="cil-address-book mr-1"></span>
@@ -69,15 +69,15 @@
                     <th scope="row">{{ 'LOGIN.EMAIL' | translate }}</th>
                     <td colspan="3">
                       <input
-                      type="text"
-                      class="form-control"
-                      formControlName="email"
-                      tabindex="3"
-                      required
+                        type="text"
+                        class="form-control"
+                        formControlName="email"
+                        tabindex="3"
+                        required
                       />
                       <div
-                      *ngIf="f.email.invalid && f.email.touched"
-                      class="mess-invalid"
+                        *ngIf="f.email.invalid && f.email.touched"
+                        class="mess-invalid"
                       >
                         <div *ngIf="f.email.errors.required">
                           {{ 'PROFILE_CREATE.EMAIL_INVALID' | translate }}
@@ -92,12 +92,12 @@
                     <th scope="row">{{ 'LOGIN.PASS' | translate }}</th>
                     <td colspan="3">
                     <input
-                    type="password"
-                    class="form-control"
-                    id="exampleFormControlInput4"
-                    formControlName="password"
-                    tabindex="5"
-                    required
+                      type="password"
+                      class="form-control"
+                      id="exampleFormControlInput4"
+                      formControlName="password"
+                      tabindex="5"
+                      required
                   />
                     <div
                       *ngIf="f.password.invalid && f.password.touched"
@@ -167,15 +167,15 @@
                     <th scope="row">{{ 'GENERAL_LIST.PHONE_NUMBER' | translate }}</th>
                     <td>
                       <input
-                      type="text"
-                      class="form-control"
-                      formControlName="phoneNumber"
-                      tabindex="4"
-                      required
+                        type="text"
+                        class="form-control"
+                        formControlName="phoneNumber"
+                        tabindex="4"
+                        required
                       />
                       <div
-                      *ngIf="f.phoneNumber.invalid && f.phoneNumber.touched"
-                      class="mess-invalid"
+                        *ngIf="f.phoneNumber.invalid && f.phoneNumber.touched"
+                        class="mess-invalid"
                       >
                       {{ getPhoneErrorMessage() }}
                       </div>
@@ -185,11 +185,11 @@
                     <th scope="row">{{ 'EMPLOYEE_CREATE.CONFIRM_PASS' | translate }}</th>
                     <td colspan="3">
                       <input
-                      type="password"
-                      class="form-control"
-                      id="exampleFormControlInput11"
-                      formControlName="confirmPassword"
-                      tabindex="6"
+                        type="password"
+                        class="form-control"
+                        id="exampleFormControlInput11"
+                        formControlName="confirmPassword"
+                        tabindex="6"
                       />
                       <div 
                         *ngIf="employeeForm.value.password !== employeeForm.value.confirmPassword"
@@ -202,15 +202,15 @@
                     <th scope="row">{{ 'GENERAL_LIST.JOIN_DATE' | translate }}</th>
                     <td>
                       <input
-                      type="date"
-                      class="form-control"
-                      formControlName="joinDate"
-                      tabindex="8"
-                      required
+                        type="date"
+                        class="form-control"
+                        formControlName="joinDate"
+                        tabindex="8"
+                        required
                       />
                         <div
-                        *ngIf="f.joinDate.invalid && f.joinDate.touched"
-                        class="mess-invalid"
+                          *ngIf="f.joinDate.invalid && f.joinDate.touched"
+                          class="mess-invalid"
                       >
                           <div *ngIf="f.joinDate.errors.required">
                             {{ 'PROFILE_CREATE.JOIN_DATE_INVALID' | translate }}
@@ -243,11 +243,11 @@
                     <td>{{ dayOffInfos.at(i).get('categoryName').value | titlecase }}</td>
                     <td>
                       <input
-                      type="number"
-                      class="form-control text-right"
-                      formControlName="hours"
-                      tabindex="{{8 + i}}"
-                      required
+                        type="number"
+                        class="form-control text-right"
+                        formControlName="hours"
+                        tabindex="{{8 + i}}"
+                        required
                       />
                     <div
                       *ngIf="dayOffInfos.controls[i].get('hours').invalid && dayOffInfos.controls[i].get('hours').touched"
