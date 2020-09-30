@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { TitleService } from 'src/app/core/services/title.service';
 
 @Component({
   selector: 'ah-employee-info',
@@ -9,7 +10,7 @@ export class EmployeeInfoComponent implements OnInit {
   public edit = location.pathname.split('/')[3] === 'edit';
   public create = location.pathname.split('/')[2] === 'create';
   public title: string;
-  constructor() {}
+  constructor(public titleService: TitleService) {}
 
   ngOnInit(): void {
     if (this.edit) {

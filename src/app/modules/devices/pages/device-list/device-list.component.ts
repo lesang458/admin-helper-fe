@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { TitleService } from 'src/app/core/services/title.service';
 
 @Component({
   selector: 'ah-device-list',
@@ -7,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DeviceListComponent implements OnInit {
   public title = 'DEVICE_TABLE.TITLE';
-  constructor() {}
+  constructor(public titleService: TitleService) {}
 
   ngOnInit(): void {}
 }

@@ -8,6 +8,7 @@ export class TitleService {
   public i18nKey: string;
 
   public isShowLoading = new BehaviorSubject<boolean>(false);
+  public isMinimized = new BehaviorSubject<boolean>(false);
 
   constructor(
     private titleService: Title,

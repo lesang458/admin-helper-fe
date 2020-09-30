@@ -96,7 +96,7 @@ export class UpdatePasswordComponent implements OnInit {
   public passwordIsIncorrect(): boolean {
     return (
       this.f.newPassword.value !== this.f.confirmPassword.value &&
-      this.f.confirmPassword.touched
+      (this.f.confirmPassword.touched || this.f.confirmPassword.dirty)
     );
   }
 
@@ -107,14 +107,14 @@ export class UpdatePasswordComponent implements OnInit {
   }
 
   public getErrorMessage(): string {
+    if (this.passwordIsIncorrect()) {
+      return this.translate.instant('RESET_PASSWORD.INCORRECT');
+    }
     if (this.f.confirmPassword.errors?.required) {
       return this.translate.instant('PROFILE_CREATE.PASSWORD_INVALID');
     }
     if (this.f.confirmPassword.errors?.minlength) {
       return this.translate.instant('PROFILE_CREATE.PASS_MINLENGTH');
-    }
-    if (this.passwordIsIncorrect()) {
-      return this.translate.instant('RESET_PASSWORD.INCORRECT');
     }
   }
 

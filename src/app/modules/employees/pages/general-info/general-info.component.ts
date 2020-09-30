@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { TitleService } from 'src/app/core/services/title.service';
 
 @Component({
   selector: 'ah-general-info',
@@ -7,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class GeneralInfoComponent implements OnInit {
   public title = 'GENERAL_LIST.TITLE';
-  constructor() {}
+  constructor(public titleService: TitleService) {}
 
   ngOnInit(): void {}
 }
