@@ -128,7 +128,6 @@
   },
   "LOGIN": {
     "TITLE": "Đăng nhập",
-    "LOGIN": "Đăng nhập",
     "SIGN_IN": "Đăng nhập vào tài khoản của bạn",
     "EMAIL": "Email",
     "PASS": "Mật khẩu",
@@ -138,10 +137,10 @@
   "DAY_OFF_CATEGORIES_PAGE": {
     "TITLE": "Danh sách loại ngày phép",
     "NAME": "Tên",
-    "CREATE": "Tạo loại ngày nghỉ",
-    "DELETE_TITLE": "Xóa thể loại ngày nghỉ",
-    "EDIT_TITLE": "Sửa thể loại ngày nghỉ",
-    "CREATE_TITLE": "Tạo thể loại ngày nghỉ",
+    "CREATE": "Tạo loại ngày phép",
+    "DELETE_TITLE": "Xóa loại ngày phép",
+    "EDIT_TITLE": "Chỉnh sửa loại ngày phép",
+    "CREATE_TITLE": "Tạo loại ngày phép",
     "DELETE_CONFIRM": "Thao tác này không thể hoàn tác vui lòng xác nhận lại!",
     "NAME_REQUIRED": "Hãy nhập tên!",
     "NAME_MINLENGTH": "Tên phải có ít nhất 2 ký tự",

@@ -128,7 +128,6 @@
   },
   "LOGIN": {
     "TITLE": "Login",
-    "LOGIN": "Login",
     "SIGN_IN": "Sign In to your account",
     "EMAIL": "Email",
     "PASS": "Password",
