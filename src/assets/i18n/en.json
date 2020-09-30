@@ -37,11 +37,12 @@
     "NO_RESULT": "No assigned device"
   },
   "EMPLOYEE_EDIT": {
-    "TITLE": "Edit Employee",
+    "TITLE": "Edit Employee Profile",
+    "EDIT": "Edit",
     "DETAIL": "Detail"
   },
   "EMPLOYEE_CREATE": {
-    "TITLE": "Create Employee",
+    "TITLE": "Create Employee Profile",
     "CONFIRM_PASS": "Confirm password",
     "PASSWORD_MATCH": "Password must match"
   },
@@ -68,7 +69,6 @@
     "DAY": "day"
   },
   "PROFILE_CREATE": {
-    "TITLE": "Create Employee Profile",
     "FIRST_NAME": "First name",
     "LAST_NAME": "Last name",
     "DAY_OFF_INFO": "Day off infomation",
@@ -98,9 +98,6 @@
     "EDIT_SUCCESS": "Edited successfully!",
     "CLOSE": "Close",
     "SAVE": "Save"
-  },
-  "PROFILE_EDIT": {
-    "TITLE": "Edit Employee Profile"
   },
   "DEVICE_TABLE": {
     "TITLE": "Devices List",
