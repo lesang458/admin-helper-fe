@@ -42,7 +42,7 @@
   },
   "EMPLOYEE_CREATE": {
     "TITLE": "Tạo mới nhân viên",
-    "CONFIRM_PASS": "Nhận lại mật khẩu",
+    "CONFIRM_PASS": "Nhập lại mật khẩu",
     "PASSWORD_MATCH": "Mật khẩu phải trùng khớp"
   },
   "DAY_OFF_TABLE": {

@@ -7,5 +7,10 @@ header {
   .c-subheader {
     position: relative;
   }
+  .c-header-toggler {
+    &:focus {
+      outline: none;
+    }
+  }
 }
 
