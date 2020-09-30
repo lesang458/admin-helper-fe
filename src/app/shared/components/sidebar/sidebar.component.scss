@@ -1,11 +1,14 @@
 .c-sidebar-nav {
   .active {
-    background: #321fdb;
+    background: #1a01f9;
   }
-  a {
+  a.c-sidebar-nav-link {
     i {
       color: white;
     }
     color: white;
+    &:hover {
+      background: #39f !important;
+    }
   }
 }
