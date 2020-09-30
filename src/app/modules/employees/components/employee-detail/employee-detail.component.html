@@ -3,17 +3,17 @@
     <button 
       *ngIf="edit || create" 
       type="submit" 
-      class="btn btn-success mb-3 mr-2"
+      class="btn btn-success mb-3"
       [disabled]="employeeForm.invalid || dayOffForm.invalid || (employeeForm.value.password !== employeeForm.value.confirmPassword)"
       >
       <span class="cil-save mr-1"></span>
       {{ 'PROFILE_CREATE.SAVE' | translate }}
     </button>
-    <button *ngIf="!edit && !create" type="button" class="btn btn-info mb-3" (click)="navigateEdit()">
+    <button *ngIf="!edit && !create" type="button" class="btn btn-info mb-3 ml-2" (click)="navigateEdit()">
       <span class="cil-brush mr-1"></span>
       {{ 'EMPLOYEE_EDIT.EDIT' | translate }}
     </button>
-    <button *ngIf="edit" type="button" class="btn btn-info mb-3" (click)="navigateDetail()">
+    <button *ngIf="edit" type="button" class="btn btn-info mb-3 ml-2" (click)="navigateDetail()">
       <span class="cil-address-book mr-1"></span>
       {{ 'EMPLOYEE_EDIT.DETAIL' | translate }}
     </button>
