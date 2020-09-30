@@ -6,6 +6,12 @@
   .spinner-three-bounce {
     position: fixed !important;
   }
+
+  .close {
+    &:focus {
+      outline: none;
+    }
+  }
 }
 
 body {
