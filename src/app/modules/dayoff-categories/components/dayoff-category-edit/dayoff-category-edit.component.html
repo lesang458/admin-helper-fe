@@ -95,11 +95,7 @@
     >
       {{ 'PROFILE_CREATE.CLOSE' | translate }}
     </button>
-    <button
-      [disabled]="checkChange()"
-      type="submit"
-      class="btn btn-success"
-    >
+    <button [disabled]="checkChange()" type="submit" class="btn btn-success">
       {{ 'PROFILE_CREATE.SAVE' | translate }}
     </button>
   </div>
@@ -110,7 +106,7 @@
       aria-label="Close"
       (click)="bsModalRef.hide()"
     >
-    {{ 'PROFILE_STATUS_CHANGE.ABORT' | translate }}
+      {{ 'PROFILE_STATUS_CHANGE.ABORT' | translate }}
     </button>
     <button *ngIf="type === 'delete'" type="submit" class="btn btn-danger">
       {{ 'PROFILE_STATUS_CHANGE.ACCEPT' | translate }}

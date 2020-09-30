@@ -147,7 +147,7 @@
     "NAME_MINLENGTH": "Tên phải có ít nhất 2 ký tự",
     "NAME_MAXLENGTH": "Tên không được phép vượt quá 20 ký tự",
     "DAY_OFF": "Số phép mặc định (ngày)",
-    "HOURS_REQUIRED": "Hãy nhập số phép mặc định!",
+    "DAYS_REQUIRED": "Hãy nhập số phép mặc định!",
     "DAYS_MIN": "Số phép mặc định không được nhỏ hơn 1",
     "DAYS_MAX": "Số phép mặc định không được vượt quá 20"
   },
