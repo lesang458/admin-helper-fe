@@ -65,7 +65,7 @@ export class EmployeeDetailComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    if (!this.create) {
+    if ((!this.create && !this.edit) || this.edit) {
       this.id = this.route.snapshot.params.id;
       this.store.dispatch(new EmployeeActions.DetailEmployee(this.id));
       this.store
@@ -94,8 +94,7 @@ export class EmployeeDetailComponent implements OnInit {
             });
           }
         });
-    }
-    if (this.create) {
+    } else if (this.create) {
       this.store.dispatch(new DayOffActions.FetchDayOffCategories());
       this.store.select('dayoffCategories').subscribe((data: any) => {
         this.dayOffForm = new FormGroup({

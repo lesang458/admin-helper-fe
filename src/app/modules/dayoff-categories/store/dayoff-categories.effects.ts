@@ -24,13 +24,10 @@ export class DayOffCategoriesEffects {
           map((data) => {
             const dayOffCategories = camelcaseKeys(data.day_off_categories).map(
               (i) => {
-                if (!i.description) {
-                  i.description = '';
-                }
-                if (!i.totalHoursDefault) {
-                  i.totalHoursDefault = 160;
-                }
-                return i;
+                return {
+                  ...i,
+                  description: i.description ? i.description : '',
+                };
               }
             );
             return new DayOffCategoriesActions.GetDayOffCategoriesSuccess(
@@ -45,26 +42,15 @@ export class DayOffCategoriesEffects {
   createDayoffCategory = this.actions$.pipe(
     ofType(DayOffCategoriesActions.CREATE_DAY_OFF_CATEGORY),
     switchMap((action: DayOffCategoriesActions.CreateDayOffCategory) => {
-      const body: DayOffCategory = camelcaseKeys(action.payload);
-      return of({
-        data: {
-          name: body.name,
-          description: body.description,
-          totalHoursDefault: body.totalHoursDefault,
-        },
-      }).pipe(
-        map((val) => {
-          this.notify.showSuccess('PROFILE_CREATE.CREATE_SUCCESS');
-          let dayoff;
-          this.store.select('dayoffCategories').subscribe((data) => {
-            dayoff = data.dayoff;
-          });
-          return new DayOffCategoriesActions.GetDayOffCategoriesSuccess([
-            ...dayoff,
-            { ...val.data, id: dayoff.length + 1 },
-          ]);
-        })
-      );
+      const body: DayOffCategory = snakecaseKeys(action.payload);
+      return this.http
+        .post(`${environment.APILink}/day_off_categories`, body)
+        .pipe(
+          map(() => {
+            this.notify.showSuccess('PROFILE_CREATE.CREATE_SUCCESS');
+            return new DayOffCategoriesActions.FetchDayOffCategories();
+          })
+        );
     })
   );
 

@@ -16,7 +16,7 @@
   >
     <i class="c-icon c-icon-lg cil-menu"></i>
   </button>
-  <a class="c-header-brand d-lg-none" href="#">
+  <a class="c-header-brand d-lg-none pointer" (click)="navigateToHome()">
     <img
       class="c-sidebar-brand-full"
       width="80"
@@ -27,7 +27,9 @@
   </a>
   <div class="c-header-nav d-md-down-none">
     <li class="c-header-nav-item px-3 h4">
-      <a class="c-header-nav-link" href="#">Admin Helper</a>
+      <a class="c-header-nav-link pointer" (click)="navigateToHome()">
+        Admin Helper</a
+      >
     </li>
   </div>
   <ul class="c-header-nav ml-auto mr-4">
@@ -55,7 +57,11 @@
         <div class="dropdown-header bg-light py-2">
           <strong>{{ 'HEADER.ACCOUNT' | translate }}</strong>
         </div>
-        <a class="dropdown-item pointer" role="button" (click)="changePassword()">
+        <a
+          class="dropdown-item pointer"
+          role="button"
+          (click)="changePassword()"
+        >
           <i class="c-icon mr-3 fa fa-unlock-alt"></i>
           {{ 'CHANGE_PASSWORD.TITLE' | translate }}
         </a>

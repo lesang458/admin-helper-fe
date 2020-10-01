@@ -88,9 +88,8 @@ export class RequestDayOffComponent implements OnInit, OnChanges {
     if (to >= from) {
       this.dayOffs = (to - from) / 86400000 + 1;
       return true;
-    } else {
-      return false;
     }
+    return false;
   }
 
   public setDateString(ascDays: number = 1, dateString?: string): string {

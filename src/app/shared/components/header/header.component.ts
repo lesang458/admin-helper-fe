@@ -41,4 +41,8 @@ export class HeaderComponent implements OnInit {
   public changePassword(): void {
     this.router.navigateByUrl(`/${RouteConstant.changePassword}`);
   }
+
+  public navigateToHome(): void {
+    this.router.navigateByUrl(`/${RouteConstant.employees}`);
+  }
 }
