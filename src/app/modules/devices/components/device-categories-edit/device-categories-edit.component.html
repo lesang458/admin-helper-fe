@@ -21,13 +21,13 @@
   <hr class="mt-0 mb-0" />
   <div class="modal-body">
     <div class="form-group col-md-12" *ngIf="type !== 'delete'">
-      <label for="exampleFormControlInput1">
+      <label for="name">
         {{ 'DEVICE_CATEGORIES_PAGE.NAME' | translate }}
       </label>
       <input
         type="text"
         class="form-control"
-        id="exampleFormControlInput1"
+        id="name"
         formControlName="name"
       />
       <div
@@ -43,12 +43,12 @@
       </div>
     </div>
     <div class="form-group col-md-12" *ngIf="type !== 'delete'">
-      <label for="exampleFormControlInput3">
+      <label for="description">
         {{ 'DEVICE_TABLE.DESCRIPTION' | translate }}
       </label>
       <textarea
         class="form-control"
-        id="exampleFormControlInput3"
+        id="description"
         formControlName="description"
       ></textarea>
     </div>
@@ -83,7 +83,7 @@
       aria-label="Close"
       (click)="bsModalRef.hide()"
     >
-    {{ 'PROFILE_STATUS_CHANGE.ABORT' | translate }}
+      {{ 'PROFILE_STATUS_CHANGE.ABORT' | translate }}
     </button>
     <button *ngIf="type === 'delete'" type="submit" class="btn btn-danger">
       {{ 'PROFILE_STATUS_CHANGE.ACCEPT' | translate }}

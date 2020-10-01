@@ -19,7 +19,7 @@ export class DeviceAssignComponent implements OnInit {
   public device: Device;
   public employeeObs$: Observable<any>;
   public searchFormControl = new FormControl('');
-  public assigned = new FormControl('1');
+  public assigned = new FormControl('');
   public currentPage = 1;
   private currentSearch = '';
   public sortBirthDateType = 0;

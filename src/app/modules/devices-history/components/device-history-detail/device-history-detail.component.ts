@@ -5,6 +5,7 @@ import * as fromApp from '../../../../store/app.reducer';
 import * as DevicesHistoryActions from '../../store/devices-history.actions';
 import { DeviceHistory } from 'src/app/shared/models/devices-history.model';
 import { BsModalRef } from 'ngx-bootstrap/modal';
+import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'ah-device-history-detail',
@@ -17,7 +18,8 @@ export class DeviceHistoryDetailComponent implements OnInit {
   constructor(
     private store: Store<fromApp.AppState>,
     public bsModalRef: BsModalRef,
-    private translate: TranslateService
+    private translate: TranslateService,
+    private datePipe: DatePipe
   ) {}
 
   ngOnInit(): void {
@@ -35,5 +37,11 @@ export class DeviceHistoryDetailComponent implements OnInit {
     return user
       ? `${user.firstName} ${user.lastName}`
       : this.translate.instant('DEVICE_TABLE.EMPTY');
+  }
+
+  public getToDate(date: Date): string {
+    return date
+      ? this.datePipe.transform(date, 'dd/MM/yyyy')
+      : this.translate.instant('DEVICE_HISTORY.PRESENT');
   }
 }

@@ -84,7 +84,7 @@ export class EmployeeDetailComponent implements OnInit {
                     hours: [
                       {
                         value: value.hours,
-                        disabled: this.edit ? false : true,
+                        disabled: !this.edit,
                       },
                       Validators.pattern('^[0-9]*$'),
                     ],
