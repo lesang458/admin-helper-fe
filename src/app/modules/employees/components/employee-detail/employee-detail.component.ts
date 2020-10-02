@@ -184,14 +184,11 @@ export class EmployeeDetailComponent implements OnInit {
       delete element.categoryName;
       delete element?.availableHours;
     });
-    this.hourChecked.map((value) => {
-      if (value) {
-        const dayOffInfosAttributes = employee.dayOffInfosAttributes.filter(
-          (elem) => elem.dayOffCategoryId !== value
-        );
-        employee.dayOffInfosAttributes = dayOffInfosAttributes;
+    employee.dayOffInfosAttributes = employee.dayOffInfosAttributes.filter(
+      (element) => {
+        return this.hourChecked.indexOf(element.dayOffCategoryId) === -1;
       }
-    });
+    );
     if (this.create) {
       this.store.dispatch(new EmployeeActions.CreateEmployee(employee));
     } else {
