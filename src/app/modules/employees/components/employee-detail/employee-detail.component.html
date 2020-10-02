@@ -18,11 +18,11 @@
       {{ 'EMPLOYEE_EDIT.DETAIL' | translate }}
     </button>
   </div>
-  <div class="main-container">
-      <div class="row-1">
+  <div class="main-container row">
+      <div class="row-1 col-6">
         <div class="card">
           <div class="card-body">
-            <b class="mr-2">{{ 'EMPLOYEE_DETAIL.EMPLOYEE_INFO' | translate }}</b>
+            <b class="mr-2 ml-2">{{ 'EMPLOYEE_DETAIL.EMPLOYEE_INFO' | translate }}</b>
             <span *ngIf="!create">
               <span
                 class="badge rounded-pill badge-danger p-2"
@@ -36,11 +36,11 @@
               </span>
             </span>
             <div class="info">
-              <table class="table table-bordered emp tab">
+              <table class="table tab">
                 <tbody>
                   <tr>
-                    <th scope="row">{{ 'PROFILE_CREATE.FIRST_NAME' | translate }}</th>
-                    <td> 
+                    <th scope="row" class="border-style">{{ 'PROFILE_CREATE.FIRST_NAME' | translate }}</th>
+                    <td class="border-style"> 
                       <input
                       type="text"
                       class="form-control"
@@ -62,8 +62,33 @@
                         {{ 'PROFILE_CREATE.FIRST_NAME_MAX_LENGTH' | translate }}
                       </div>
                     </div>
-                  </td>
-                  
+                  </td>                  
+                  </tr>
+                  <tr>
+                    <th scope="row">{{ 'PROFILE_CREATE.LAST_NAME' | translate }}</th>
+                    <td>
+                      <input
+                      type="text"
+                      class="form-control"
+                      formControlName="lastName"
+                      tabindex="2"
+                      required
+                      />
+                    <div
+                      *ngIf="f.lastName.invalid && f.lastName.touched"
+                      class="mess-invalid"
+                    >
+                      <div *ngIf="f.lastName.errors.required">
+                        {{ 'PROFILE_CREATE.LAST_NAME_INVALID' | translate }}
+                      </div>
+                      <div *ngIf="f.lastName.errors.minlength">
+                        {{ 'PROFILE_CREATE.LAST_NAME_MIN_LENGTH' | translate }}
+                      </div>
+                      <div *ngIf="f.lastName.errors.maxlength">
+                        {{ 'PROFILE_CREATE.LAST_NAME_MAX_LENGTH' | translate }}
+                      </div>
+                    </div>
+                    </td>
                   </tr>
                   <tr>
                     <th scope="row">{{ 'LOGIN.EMAIL' | translate }}</th>
@@ -112,6 +137,23 @@
                     </div>
                   </td>
                 </tr>
+                <tr *ngIf="create">
+                  <th scope="row">{{ 'EMPLOYEE_CREATE.CONFIRM_PASS' | translate }}</th>
+                  <td colspan="3">
+                    <input
+                      type="password"
+                      class="form-control"
+                      id="exampleFormControlInput11"
+                      formControlName="confirmPassword"
+                      tabindex="6"
+                    />
+                    <div 
+                      *ngIf="employeeForm.value.password !== employeeForm.value.confirmPassword"
+                      class="mess-invalid">
+                      {{ 'EMPLOYEE_CREATE.PASSWORD_MATCH' | translate }}
+                    </div>
+                  </td>
+                </tr>
                 <tr>
                   <th scope="row">{{ 'GENERAL_LIST.BIRTHDAY' | translate }}</th>
                   <td colspan="3">
@@ -133,99 +175,52 @@
                     </div>
                   </td>
                 </tr>
-              </tbody>
-              </table>
-              <table class="table table-bordered emp">
-                <tbody>
-                  <tr>
-                    <th scope="row">{{ 'PROFILE_CREATE.LAST_NAME' | translate }}</th>
-                    <td>
-                      <input
+                <tr>
+                  <th scope="row">{{ 'GENERAL_LIST.PHONE_NUMBER' | translate }}</th>
+                  <td>
+                    <input
                       type="text"
                       class="form-control"
-                      formControlName="lastName"
-                      tabindex="2"
+                      formControlName="phoneNumber"
+                      tabindex="4"
                       required
-                      />
+                    />
                     <div
-                      *ngIf="f.lastName.invalid && f.lastName.touched"
+                      *ngIf="f.phoneNumber.invalid && f.phoneNumber.touched"
                       class="mess-invalid"
                     >
-                      <div *ngIf="f.lastName.errors.required">
-                        {{ 'PROFILE_CREATE.LAST_NAME_INVALID' | translate }}
-                      </div>
-                      <div *ngIf="f.lastName.errors.minlength">
-                        {{ 'PROFILE_CREATE.LAST_NAME_MIN_LENGTH' | translate }}
-                      </div>
-                      <div *ngIf="f.lastName.errors.maxlength">
-                        {{ 'PROFILE_CREATE.LAST_NAME_MAX_LENGTH' | translate }}
-                      </div>
+                    {{ getPhoneErrorMessage() }}
                     </div>
-                    </td>
-                  </tr>
-                  <tr>
-                    <th scope="row">{{ 'GENERAL_LIST.PHONE_NUMBER' | translate }}</th>
-                    <td>
-                      <input
-                        type="text"
-                        class="form-control"
-                        formControlName="phoneNumber"
-                        tabindex="4"
-                        required
-                      />
+                  </td>
+                </tr>
+                <tr>
+                  <th scope="row">{{ 'GENERAL_LIST.JOIN_DATE' | translate }}</th>
+                  <td>
+                    <input
+                      type="date"
+                      class="form-control"
+                      formControlName="joinDate"
+                      tabindex="8"
+                      required
+                    />
                       <div
-                        *ngIf="f.phoneNumber.invalid && f.phoneNumber.touched"
+                        *ngIf="f.joinDate.invalid && f.joinDate.touched"
                         class="mess-invalid"
-                      >
-                      {{ getPhoneErrorMessage() }}
-                      </div>
-                    </td>
-                  </tr>
-                  <tr *ngIf="create">
-                    <th scope="row">{{ 'EMPLOYEE_CREATE.CONFIRM_PASS' | translate }}</th>
-                    <td colspan="3">
-                      <input
-                        type="password"
-                        class="form-control"
-                        id="exampleFormControlInput11"
-                        formControlName="confirmPassword"
-                        tabindex="6"
-                      />
-                      <div 
-                        *ngIf="employeeForm.value.password !== employeeForm.value.confirmPassword"
-                        class="mess-invalid">
-                        {{ 'EMPLOYEE_CREATE.PASSWORD_MATCH' | translate }}
-                      </div>
-                    </td>
-                  </tr>
-                  <tr>
-                    <th scope="row">{{ 'GENERAL_LIST.JOIN_DATE' | translate }}</th>
-                    <td>
-                      <input
-                        type="date"
-                        class="form-control"
-                        formControlName="joinDate"
-                        tabindex="8"
-                        required
-                      />
-                        <div
-                          *ngIf="f.joinDate.invalid && f.joinDate.touched"
-                          class="mess-invalid"
-                      >
-                          <div *ngIf="f.joinDate.errors.required">
-                            {{ 'PROFILE_CREATE.JOIN_DATE_INVALID' | translate }}
-                          </div>
-                      </div>
-                    </td>
-                  </tr>
-                </tbody>
+                    >
+                        <div *ngIf="f.joinDate.errors.required">
+                          {{ 'PROFILE_CREATE.JOIN_DATE_INVALID' | translate }}
+                        </div>
+                    </div>
+                  </td>
+                </tr>
+              </tbody>
               </table>
             </div>
           </div>
         </div>
       </div>
-      <div class="day-off">
-        <div class="card" [ngStyle]="{'left': edit || create ? '25%' : '0%'}">
+      <div class="day-off col-6">
+        <div class="card">
           <form [formGroup]="dayOffForm">
           <div class="card-body">
             <b class="ml-2">{{ 'PROFILE_CREATE.DAY_OFF_INFO' | translate }}</b>
