@@ -10,6 +10,8 @@ import { SearchParams } from '../../store/employees.actions';
 import { FormControl } from '@angular/forms';
 import { DayOffCategory } from 'src/app/shared/models/dayoff-category.model';
 import * as DayOffCategoriesActions from 'src/app/modules/dayoff-categories/store/dayoff-categories.actions';
+import { Router } from '@angular/router';
+import { RouteConstant } from 'src/app/shared/constants/route.constant';
 
 @Component({
   selector: 'ah-dayoff-table',
@@ -37,7 +39,7 @@ export class DayoffTableComponent implements OnInit {
   };
   public data$: Observable<PaginatedData<Employee[]>>;
   public types$: Observable<DayOffCategory[]>;
-  constructor(private store: Store<fromApp.AppState>) {}
+  constructor(private store: Store<fromApp.AppState>, private router: Router) {}
 
   ngOnInit(): void {
     this.data$ = this.store.select('employees').pipe(
@@ -101,6 +103,10 @@ export class DayoffTableComponent implements OnInit {
       return item ? item.availableHours / 8 : 0;
     }
     return 0;
+  }
+
+  public navigateEmployeeDetail(id): void {
+    this.router.navigateByUrl(`/${RouteConstant.employees}/${id}`);
   }
 
   public onSearchSubmit(): void {

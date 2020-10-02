@@ -29,6 +29,7 @@ export class EmployeeDetailComponent implements OnInit {
   public searchParams: SearchDevice;
   public device$: Observable<State>;
   public id: number;
+  public hourChecked = [];
   public employeeForm = new FormGroup({
     firstName: new FormControl('', [
       Validators.minLength(2),
@@ -165,6 +166,15 @@ export class EmployeeDetailComponent implements OnInit {
     );
   }
 
+  public checkCheckBoxvalue(event, id: number): void {
+    if (!event.target.checked) {
+      this.hourChecked.push(id);
+    } else {
+      const index = this.hourChecked.indexOf(id);
+      this.hourChecked.splice(index, 1);
+    }
+  }
+
   public onSubmit(): void {
     this.employeeForm.value.dayOffInfosAttributes = this.dayOffForm.value.dayOffInfos;
     const employee = { ...this.employeeForm.value };
@@ -172,14 +182,20 @@ export class EmployeeDetailComponent implements OnInit {
     delete employee.dayOffInfos;
     employee.dayOffInfosAttributes.forEach((element) => {
       delete element.categoryName;
+      delete element?.availableHours;
+    });
+    this.hourChecked.map((value) => {
+      if (value) {
+        const dayOffInfosAttributes = employee.dayOffInfosAttributes.filter(
+          (elem) => elem.dayOffCategoryId !== value
+        );
+        employee.dayOffInfosAttributes = dayOffInfosAttributes;
+      }
     });
     if (this.create) {
       this.store.dispatch(new EmployeeActions.CreateEmployee(employee));
     } else {
       delete employee.password;
-      employee.dayOffInfosAttributes.forEach((element) => {
-        delete element.availableHours;
-      });
       const id = this.id;
       const params = { id, employee };
       this.store.dispatch(new EmployeeActions.EditEmployee(params));
