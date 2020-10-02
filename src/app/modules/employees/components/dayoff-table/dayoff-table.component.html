@@ -73,7 +73,7 @@
         <tbody>
           <tr *ngFor="let item of data.data; let i = index">
             <td class="align-middle">
-              <a (click)="navigateEmployeeDetail(item.id)">
+              <a class="link-a" (click)="navigateEmployeeDetail(item.id)">
                 {{ item.firstName + ' ' + item.lastName }}
               </a>
             </td>
