@@ -12,4 +12,13 @@
   .col-action {
     width: 10%;
   }
+  .align-middle {
+    a {
+      cursor: pointer;
+      color: #321fdb;
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
 }
