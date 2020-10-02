@@ -242,13 +242,25 @@
                   <tr *ngFor="let item of dayOffInfos.controls; let i = index" [formGroupName]="i">
                     <td>{{ dayOffInfos.at(i).get('categoryName').value | titlecase }}</td>
                     <td>
-                      <input
-                        type="number"
-                        class="form-control text-right"
-                        formControlName="hours"
-                        tabindex="{{8 + i}}"
-                        required
-                      />
+                      <div class="input-group">
+                        <div class="input-group-prepend" *ngIf="create">
+                          <div class="input-group-text">
+                            <input 
+                            *ngIf="create"
+                              type="checkbox" 
+                              aria-label="Checkbox for following text input" 
+                              (change)="checkCheckBoxvalue($event, dayOffInfos.at(i).get('dayOffCategoryId').value)"
+                              checked>
+                          </div>
+                        </div>
+                        <input
+                          type="number"
+                          class="form-control text-right"
+                          formControlName="hours"
+                          tabindex="{{8 + i}}"
+                          required
+                        />
+                      </div>
                     <div
                       *ngIf="dayOffInfos.controls[i].get('hours').invalid && dayOffInfos.controls[i].get('hours').touched"
                       class="mess-invalid"
