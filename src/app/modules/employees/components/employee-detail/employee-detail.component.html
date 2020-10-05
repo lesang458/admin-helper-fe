@@ -21,7 +21,7 @@
         </button>
       </div>
       <div class="main-container row">
-        <div class="row-1 col-6">
+        <div class="row-1 col-lg-6 col-md-12">
           <div class="card">
             <div class="card-body">
             <b class="mr-2 ml-2">{{ 'EMPLOYEE_DETAIL.EMPLOYEE_INFO' | translate }}</b>
@@ -229,7 +229,7 @@
             </div>
           </div>
         </div>
-        <div class="day-off col-6">
+        <div class="day-off col-lg-6 col-md-12">
           <div [ngClass]="(create || edit) ? 'card day' : 'card'">
             <form [formGroup]="dayOffForm">
               <div class="card-body">
@@ -253,7 +253,7 @@
                                 <input 
                                   type="checkbox" 
                                   aria-label="Checkbox for following text input" 
-                                  (change)="checkCheckBoxvalue($event, dayOffInfos.at(i).get('dayOffCategoryId').value)"
+                                  (change)="checkCheckBoxValue($event, dayOffInfos.at(i).get('dayOffCategoryId').value)"
                                   checked>
                               </div>
                             </div>
