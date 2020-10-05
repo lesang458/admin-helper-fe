@@ -166,7 +166,7 @@ export class EmployeeDetailComponent implements OnInit {
     );
   }
 
-  public checkCheckBoxvalue(event, id: number): void {
+  public checkCheckBoxValue(event, id: number): void {
     if (!event.target.checked) {
       this.hourChecked.push(id);
     } else {

@@ -34,7 +34,9 @@
     "TITLE": "Employee Detail",
     "DEVICE": "Assigned devices",
     "EMPLOYEE_INFO": "Employee Information",
-    "NO_RESULT": "No assigned device"
+    "NO_RESULT": "No assigned device",
+    "TITLE_EMP": "Title",
+    "CONTENT": "Content"
   },
   "EMPLOYEE_EDIT": {
     "TITLE": "Edit Employee Profile",

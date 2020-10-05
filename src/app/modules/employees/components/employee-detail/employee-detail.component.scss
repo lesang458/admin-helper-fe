@@ -1,80 +1,104 @@
-.main-container {
-  b {
-    font-size: 16px;
-  }
-  .emp{
-    width: 50%
-  }
-  .day-off {
-    display: flex;
-    justify-content: space-between;
-    .card {
-      width: 49.5%;
-      border: 1px solid #c7c8ca;
-      border-radius: 4px;
-      padding: 5px;
-      .table-striped {
-        padding: 10px;
-      }
-      .infor {
-        padding: 10px;
-        .td-cate{
-          width: 20%;
-        }
-        tr {
-          height: 86px;
-        }
-        th, td {
-          vertical-align: inherit;
-        }
-      } 
-      .card-body {
-        padding: 0.25rem;
-      } 
+.card {
+  .style {
+    th, td {
+      border-top: none;
     }
+  }
+  .main-container {
+    .border-style {
+      border-top: none;
+    }
+
+    b {
+      font-size: 16px;
+    }
+    .day-off {
+      .card {
+        border: 1px solid #c7c8ca;
+        border-radius: 4px;
+        .table-striped {
+          padding: 10px;
+        }
+        .infor {
+          padding: 10px;
+          .td-cate {
+            width: 28%;
+          }
+          .td-hour {
+            width: 36%;
+          }
+          tr {
+            height: 86px;
+          }
+          th, td {
+            vertical-align: inherit;
+          }
+        } 
+      }
+    }
+
     .thead-style {
       background-color: rgba(0,0,21,.075);
       tr {
         height: auto !important;
       }
     }
-  }
-  .row-1 {
-    .info {
-      display: flex;
-      padding-top: 10px;
-      tr {
-        height: 86px;
+  
+    .card-body {
+      padding: 0.25rem;
+    } 
+    .card {
+      padding: 5px;
+      border: none !important;
+    }
+  
+    .row-1 {
+      .info {
+        padding: 8px;
+        tr {
+          height: 86px;
+        }
+        th, td {
+          vertical-align: inherit;
+        }
+        th {
+          width: 28%;
+        }
+        td {
+          width: 72%;
+        }
+        .tab {
+          margin-right: 15px;
+        }
       }
-      th, td {
-        vertical-align: inherit;
-      }
-      th {
-        width: 20%;
-      }
-      td {
-        width: 80%;
-      }
-      .tab {
-        margin-right: 15px;
+      .padd {
+        input {
+          padding: 0;
+        }
       }
     }
+    .mess-invalid {
+      color: red;
+      margin-top: 5px;
+    }
+    .badge{
+      width: 95px;
+    }
+    .form-control:disabled{
+      background-color: transparent;
+      border: none;
+    }
   }
-  .mess-invalid {
-    color: red;
-    margin-top: 5px;
+  
+  .text-right {
+    button {
+      width: 115px;
+    }
   }
-  .badge{
-    width: 95px;
-  }
-  .form-control:disabled{
-    background-color: transparent;
-    border: none;
-  }
-}
 
-.text-right {
-  button {
-    width: 115px;
+  .day {
+    .table td {
+      border: none;
+    }
   }
 }
