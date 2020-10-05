@@ -1,3 +1,5 @@
+<div class="card">
+<div class="card-body">
 <form [formGroup]="employeeForm" (ngSubmit)="onSubmit()">
   <div class="text-right">
     <button 
@@ -21,8 +23,8 @@
   <div class="main-container row">
       <div class="row-1 col-6">
         <div class="card">
-          <div class="card-body">
-            <b class="mr-2 ml-2">{{ 'EMPLOYEE_DETAIL.EMPLOYEE_INFO' | translate }}</b>
+        <div class="card-body">
+        <b class="mr-2 ml-2">{{ 'EMPLOYEE_DETAIL.EMPLOYEE_INFO' | translate }}</b>
             <span *ngIf="!create">
               <span
                 class="badge rounded-pill badge-danger p-2"
@@ -35,7 +37,7 @@
                 >{{ 'GENERAL_LIST.ACTIVE' | translate }}
               </span>
             </span>
-            <div class="info">
+            <div [ngClass]="(edit || create) ? 'info style' : 'info'">
               <table class="table tab">
                 <tbody>
                   <tr>
@@ -216,9 +218,9 @@
               </tbody>
               </table>
             </div>
+            </div>
           </div>
         </div>
-      </div>
       <div class="day-off col-6">
         <div class="card">
           <form [formGroup]="dayOffForm">
@@ -229,8 +231,8 @@
                 <thead class="thead-style">
                   <tr>
                     <th scope="col" class="td-cate">{{ 'PROFILE_CREATE.DAY_OFF_CATE' | translate }}</th>
-                    <th scope="col" class="text-right">{{ 'PROFILE_CREATE.HOUR' | translate }}</th>
-                    <th scope="col" class="text-right" *ngIf="!edit && !create">{{ 'PROFILE_CREATE.AVAILABLE_HOURS' | translate }}</th>
+                    <th scope="col" class="text-right td-hour">{{ 'PROFILE_CREATE.HOUR' | translate }}</th>
+                    <th scope="col" class="text-right td-hour" *ngIf="!edit && !create">{{ 'PROFILE_CREATE.AVAILABLE_HOURS' | translate }}</th>
                   </tr>
                 </thead>
                 <tbody formArrayName="dayOffInfos">
@@ -283,8 +285,8 @@
                 <thead class="thead-style">
                   <tr>
                     <th scope="col" class="td-cate">{{ 'DEVICE_EDIT.DEVICE_NAME' | translate }}</th>
-                    <th scope="col" class="text-right">{{ 'DEVICE_TABLE.PRICE' | translate }}</th>
-                    <th scope="col">{{ 'DEVICE_TABLE.CATEGORY_NAME' | translate }}</th>
+                    <th scope="col" class="text-right td-hour">{{ 'DEVICE_TABLE.PRICE' | translate }}</th>
+                    <th scope="col" class="td-hour">{{ 'DEVICE_TABLE.CATEGORY_NAME' | translate }}</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -307,3 +309,5 @@
       </div>
     </div>
 </form>
+</div>
+</div>
