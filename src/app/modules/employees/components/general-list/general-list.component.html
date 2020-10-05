@@ -12,7 +12,6 @@
             type="search"
             class="form-control sticky-top"
             [formControl]="searchFormControl"
-            id="inlineFormInputGroupUsername"
             placeholder="{{ 'GENERAL_LIST.PLACEHOLDER' | translate }}"
             (blur)="onSearchSubmit()"
             (search)="onSearchSubmit()"
@@ -131,7 +130,7 @@
                 class="btn btn-outline-danger"
                 (click)="openModalWithComponent(item.id, 'delete', searchParams)"
               >
-                <i class="cil-trash"></i>
+                <i class="cil-user-unfollow"></i>
               </button>
               <button
                 *ngIf="item.status !== 'ACTIVE'"

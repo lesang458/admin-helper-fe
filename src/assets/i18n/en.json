@@ -118,9 +118,9 @@
     "DELETE": "Delete"
   },
   "PROFILE_STATUS_CHANGE": {
-    "TITLE_FORMER": "Confirm remove employee",
+    "TITLE_FORMER": "Confirm deactivate employee",
     "PARAM_FORMER": "This employee's status will be changed to 'FORMER'. Do you want to continue?",
-    "TITLE_ACTIVE": "Confirm activate employee",
+    "TITLE_ACTIVE": "Confirm reactivate employee",
     "PARAM_ACTIVE": "This employee's status will be changed to 'ACTIVE'. Do you want to continue?",
     "ABORT": "No",
     "ACCEPT": "Yes"

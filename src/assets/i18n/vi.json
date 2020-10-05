@@ -102,9 +102,9 @@
     "SAVE": "Lưu"
   },
   "PROFILE_STATUS_CHANGE": {
-    "TITLE_FORMER": "Xác nhận xóa nhân viên",
+    "TITLE_FORMER": "Xác nhận vô hiệu hóa nhân viên",
     "PARAM_FORMER": "Trạng thái của nhân viên này sẽ được thay đổi thành 'CỰU NHÂN VIÊN'. Bạn có muốn tiếp tục?",
-    "TITLE_ACTIVE": "Xác nhận kích hoạt nhân viên",
+    "TITLE_ACTIVE": "Xác nhận tái kích hoạt nhân viên",
     "PARAM_ACTIVE": "Trạng thái của nhân viên này sẽ được thay đổi thành 'ĐANG HOẠT ĐỘNG'. Bạn có muốn tiếp tục?",
     "ABORT": "Không",
     "ACCEPT": "Có"

@@ -59,8 +59,8 @@
                             required
                         />
                           <div
-                          *ngIf="f.firstName.invalid && f.firstName.touched"
-                          class="mess-invalid"
+                            *ngIf="f.firstName.invalid && f.firstName.touched"
+                            class="mess-invalid"
                           >
                             <div *ngIf="f.firstName.errors.required">
                               {{ 'PROFILE_CREATE.FIRST_NAME_INVALID' | translate }}
