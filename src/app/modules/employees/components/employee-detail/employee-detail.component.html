@@ -243,7 +243,7 @@
                 </thead>
                 <tbody formArrayName="dayOffInfos">
                   <tr *ngFor="let item of dayOffInfos.controls; let i = index" [formGroupName]="i">
-                    <td>{{ dayOffInfos.at(i).get('categoryName').value | titlecase }}</td>
+                    <td class="font-weight-bold">{{ dayOffInfos.at(i).get('categoryName').value | titlecase }}</td>
                     <td>
                       <div class="input-group">
                         <div class="input-group-prepend" *ngIf="create">
