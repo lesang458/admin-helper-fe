@@ -136,6 +136,7 @@
   "DAY_OFF_CATEGORIES_PAGE": {
     "TITLE": "Day off category List",
     "NAME": "Name",
+    "INACTIVE": "Inactive",
     "CREATE": "Create day off category",
     "DELETE_TITLE": "Delete day off",
     "EDIT_TITLE": "Edit day off",

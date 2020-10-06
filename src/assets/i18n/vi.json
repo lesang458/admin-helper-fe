@@ -136,6 +136,7 @@
   "DAY_OFF_CATEGORIES_PAGE": {
     "TITLE": "Danh sách loại ngày phép",
     "NAME": "Tên",
+    "INACTIVE": "Không hoạt động",
     "CREATE": "Tạo loại ngày phép",
     "DELETE_TITLE": "Xóa loại ngày phép",
     "EDIT_TITLE": "Chỉnh sửa loại ngày phép",

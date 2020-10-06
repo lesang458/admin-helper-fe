@@ -14,7 +14,7 @@ export function dayoffCategoriesReducer(
   action: DayOffActions.DayOffCategoriesActions
 ) {
   switch (action.type) {
-    case DayOffActions.GET_DAYOFF_CATEGORIES_SUCCESS:
+    case DayOffActions.SET_CATEGORIES:
       return {
         ...state,
         dayoff: [...action.payload],
