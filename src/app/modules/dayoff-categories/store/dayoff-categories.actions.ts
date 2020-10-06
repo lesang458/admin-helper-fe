@@ -25,11 +25,12 @@ export class FetchDayOffCategories implements Action {
 }
 export class DeactivateDayOffCategory implements Action {
   readonly type = DEACTIVATE_CATEGORY;
-  constructor(public payload: { status: string }) {}
+  constructor(public payload: { id: string }) {}
 }
 
 export type DayOffCategoriesActions =
   | SetDayOffCategories
   | FetchDayOffCategories
   | CreateDayOffCategory
-  | UpdateDayOffCategory;
+  | UpdateDayOffCategory
+  | DeactivateDayOffCategory;
