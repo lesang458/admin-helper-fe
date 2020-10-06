@@ -7,6 +7,7 @@ import { Store } from '@ngrx/store';
 import { FormControl } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { DayOffCategory } from 'src/app/shared/models/dayoff-category.model';
+import { ConfirmNotifyComponent } from 'src/app/shared/components/confirm-notify/confirm-notify.component';
 
 @Component({
   selector: 'ah-dayoff-list',
@@ -34,9 +35,13 @@ export class DayOffCategoriesListComponent implements OnInit {
     type?: string
   ): void {
     const initialState = { selectedCategory, type };
-    this.bsModalRef = this.modalService.show(DayOffCategoryEditComponent, {
-      initialState,
-    });
+    type === 'day-off-category-deactive'
+      ? (this.bsModalRef = this.modalService.show(ConfirmNotifyComponent, {
+          initialState,
+        }))
+      : (this.bsModalRef = this.modalService.show(DayOffCategoryEditComponent, {
+          initialState,
+        }));
     this.bsModalRef.content.closeBtnName = 'Close';
   }
 }
