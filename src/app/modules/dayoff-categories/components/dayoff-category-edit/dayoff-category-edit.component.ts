@@ -61,11 +61,6 @@ export class DayOffCategoryEditComponent implements OnInit {
       category.id = this.selectedCategory.id;
       this.store.dispatch(new DayOffActions.UpdateDayOffCategory(category));
     }
-    if (this.type === 'delete') {
-      this.store.dispatch(
-        new DayOffActions.DeleteDayOffCategory(this.selectedCategory.id)
-      );
-    }
     this.bsModalRef.hide();
   }
 

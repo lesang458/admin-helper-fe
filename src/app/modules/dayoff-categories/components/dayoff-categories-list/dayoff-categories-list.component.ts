@@ -23,7 +23,9 @@ export class DayOffCategoriesListComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.store.dispatch(new DayOffActions.FetchDayOffCategories());
+    this.store.dispatch(
+      new DayOffActions.FetchDayOffCategories({ status: '' })
+    );
     this.data$ = this.store.select('dayoffCategories');
   }
 

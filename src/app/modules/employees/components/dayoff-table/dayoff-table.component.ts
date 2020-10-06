@@ -57,7 +57,9 @@ export class DayoffTableComponent implements OnInit {
         return data.dayoff;
       })
     );
-    this.store.dispatch(new DayOffCategoriesActions.FetchDayOffCategories());
+    this.store.dispatch(
+      new DayOffCategoriesActions.FetchDayOffCategories({ status: '' })
+    );
   }
 
   public onSort(page: number, column?: string): void {

@@ -14,12 +14,14 @@
       <table class="table table-bordered table-striped">
         <thead>
           <tr>
-            <th scope="col" class="col-id">No.</th>
             <th scope="col" class="col-name">
               {{ 'DAY_OFF_CATEGORIES_PAGE.NAME' | translate }}
             </th>
             <th scope="col" class="col-name text-right">
               {{ 'DAY_OFF_CATEGORIES_PAGE.DAY_OFF' | translate }}
+            </th>
+            <th scope="col" class="text-center">
+              {{ 'GENERAL_LIST.STATUS' | translate }}
             </th>
             <th scope="col" class="col-description">
               {{ 'DEVICE_TABLE.DESCRIPTION' | translate }}
@@ -31,12 +33,23 @@
         </thead>
         <tbody>
           <tr *ngFor="let item of data.dayoff; let i = index">
-            <th scope="row" class="align-middle">
-              {{ i + 1 }}
-            </th>
             <td class="align-middle">{{ item.name | titlecase }}</td>
             <td class="align-middle text-right">
               {{ item.totalHoursDefault / 8 }}
+            </td>
+            <td class="align-middle text-center">
+              <span
+                class="badge rounded-pill badge-success p-2"
+                *ngIf="item.status === 'active'"
+              >
+                {{ 'GENERAL_LIST.ACTIVE' | translate }}
+              </span>
+              <span
+                class="badge rounded-pill badge-danger p-2 pl-2 pr-2"
+                *ngIf="item.status === 'inactive'"
+              >
+                {{ 'DAY_OFF_CATEGORIES_PAGE.INACTIVE' | translate }}
+              </span>
             </td>
             <td class="align-middle">{{ item.description }}</td>
             <td class="d-flex justify-content-center align-middle">

@@ -3,9 +3,6 @@
     <h4 *ngIf="type === 'create'" class="modal-title pull-left">
       {{ 'DAY_OFF_CATEGORIES_PAGE.CREATE_TITLE' | translate }}
     </h4>
-    <h4 *ngIf="type === 'delete'" class="modal-title pull-left">
-      {{ 'DAY_OFF_CATEGORIES_PAGE.DELETE_TITLE' | translate }}
-    </h4>
     <h4 *ngIf="type === 'edit'" class="modal-title pull-left">
       {{ 'DAY_OFF_CATEGORIES_PAGE.EDIT_TITLE' | translate }}
     </h4>
@@ -20,7 +17,7 @@
   </div>
   <hr class="mt-0 mb-0" />
   <div class="modal-body pb-0">
-    <div class="form-group col-md-12" *ngIf="type !== 'delete'">
+    <div class="form-group col-md-12">
       <label class="font-weight-bold" for="name">
         {{ 'DAY_OFF_CATEGORIES_PAGE.NAME' | translate }}
       </label>
@@ -39,7 +36,7 @@
         </div>
       </div>
     </div>
-    <div class="form-group col-md-12" *ngIf="type !== 'delete'">
+    <div class="form-group col-md-12">
       <label class="font-weight-bold" for="days">
         {{ 'DAY_OFF_CATEGORIES_PAGE.DAY_OFF' | translate }}
       </label>
@@ -64,7 +61,7 @@
         </div>
       </div>
     </div>
-    <div class="form-group col-md-12" *ngIf="type !== 'delete'">
+    <div class="form-group col-md-12">
       <label class="font-weight-bold" for="description">
         {{ 'DEVICE_TABLE.DESCRIPTION' | translate }}
       </label>
@@ -80,13 +77,8 @@
         {{ 'DEVICE_EDIT.DESCRIPTION_MIN_LENGTH' | translate }}
       </div>
     </div>
-    <div class="form-group col-md-12" *ngIf="type === 'delete'">
-      <p>
-        {{ 'DAY_OFF_CATEGORIES_PAGE.DELETE_CONFIRM' | translate }}
-      </p>
-    </div>
   </div>
-  <div class="modal-footer" *ngIf="type !== 'delete'">
+  <div class="modal-footer">
     <button
       type="button"
       class="btn btn-secondary"
@@ -97,19 +89,6 @@
     </button>
     <button [disabled]="checkChange()" type="submit" class="btn btn-success">
       {{ 'PROFILE_CREATE.SAVE' | translate }}
-    </button>
-  </div>
-  <div class="modal-footer" *ngIf="type === 'delete'">
-    <button
-      type="button"
-      class="btn btn-secondary"
-      aria-label="Close"
-      (click)="bsModalRef.hide()"
-    >
-      {{ 'PROFILE_STATUS_CHANGE.ABORT' | translate }}
-    </button>
-    <button *ngIf="type === 'delete'" type="submit" class="btn btn-danger">
-      {{ 'PROFILE_STATUS_CHANGE.ACCEPT' | translate }}
     </button>
   </div>
 </form>

@@ -96,7 +96,9 @@ export class EmployeeDetailComponent implements OnInit {
           }
         });
     } else if (this.create) {
-      this.store.dispatch(new DayOffActions.FetchDayOffCategories());
+      this.store.dispatch(
+        new DayOffActions.FetchDayOffCategories({ status: 'active' })
+      );
       this.store.select('dayoffCategories').subscribe((data: any) => {
         this.dayOffForm = new FormGroup({
           dayOffInfos: this.formBuilder.array(
