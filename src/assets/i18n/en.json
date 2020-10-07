@@ -249,7 +249,7 @@
   },
   "CONFIRM_NOTIFY": {
     "DAY_OFF_DEACTIVE": "Deactive this day off category?",
-    "CANCEL": "Cancel",
+    "CANCEL": "No",
     "YES": "Yes"
   }
 }

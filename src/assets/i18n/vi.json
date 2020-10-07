@@ -248,7 +248,7 @@
   },
   "CONFIRM_NOTIFY": {
     "DAY_OFF_DEACTIVE": "Ngưng sử dụng loại ngày phép này?",
-    "CANCEL": "Hủy",
+    "CANCEL": "Không",
     "YES": "Có"
   }
 }
