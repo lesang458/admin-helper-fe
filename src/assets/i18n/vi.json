@@ -247,8 +247,6 @@
     "SERVER_ERROR": "Lỗi máy chủ nội bộ"
   },
   "CONFIRM_NOTIFY": {
-    "DAY_OFF_DEACTIVE": "Ngưng sử dụng loại ngày phép này?",
-    "CANCEL": "Không",
-    "YES": "Có"
+    "DAY_OFF_DEACTIVE": "Ngưng sử dụng loại ngày phép này?"
   }
 }
