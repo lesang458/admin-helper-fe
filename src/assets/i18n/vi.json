@@ -247,12 +247,6 @@
     "SERVER_ERROR": "Lỗi máy chủ nội bộ"
   },
   "CONFIRM_NOTIFY": {
-<<<<<<< HEAD
-    "DAY_OFF_DEACTIVE": "Vô hiệu hóa loại ngày phép này?",
-    "CANCEL": "Không",
-    "YES": "Có"
-=======
-    "DAY_OFF_DEACTIVE": "Ngưng sử dụng loại ngày phép này?"
->>>>>>> fe188436f55adbbe3eb8f796ec0eb16270e5b0ac
+    "DAY_OFF_DEACTIVE": "Vô hiệu hóa loại ngày phép này?"
   }
 }
