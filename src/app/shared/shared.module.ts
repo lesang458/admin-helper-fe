@@ -12,6 +12,7 @@ import { SocialAuthServiceConfig } from 'angularx-social-login';
 import { GoogleLoginProvider } from 'angularx-social-login';
 import { ErrorComponent } from './components/error/error.component';
 import { UpdatePasswordComponent } from './components/update-password/update-password.component';
+import { ConfirmNotifyComponent } from './components/confirm-notify/confirm-notify.component';
 
 const modules = [
   CommonModule,
@@ -30,7 +31,7 @@ const components = [
 ];
 
 @NgModule({
-  declarations: [...components],
+  declarations: [...components, ConfirmNotifyComponent],
   imports: [
     ...modules,
     NgxLoadingModule.forRoot({

@@ -1,0 +1,32 @@
+<form (ngSubmit)="onSubmit()">
+  <div class="modal-header">
+    <h4 *ngIf="type === 'day-off-category-deactive'" class="modal-title pull-left">
+      {{ 'CONFIRM_NOTIFY.DAY_OFF_DEACTIVE' | translate }}
+    </h4>
+    <button
+      type="button"
+      class="close pull-right"
+      aria-label="Close"
+      (click)="bsModalRef.hide()"
+    >
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <hr class="mt-0 mb-0" />
+  <div class="modal-body pb-0">
+    {{ 'DAY_OFF_CATEGORIES_PAGE.DELETE_CONFIRM' | translate }}
+  </div>
+  <div class="modal-footer">
+    <button
+      type="button"
+      class="btn btn-secondary"
+      aria-label="Close"
+      (click)="bsModalRef.hide()"
+    >
+      {{ 'CONFIRM_NOTIFY.CANCEL' | translate }}
+    </button>
+    <button type="submit" class="btn btn-success">
+      {{ 'CONFIRM_NOTIFY.YES' | translate }}
+    </button>
+  </div>
+</form>

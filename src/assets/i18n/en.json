@@ -246,5 +246,10 @@
     "STATUS": "Status is not valid",
     "RESET_SUCCESSFULLY": "Reset password successfully",
     "SERVER_ERROR": "Internal Server Error"
+  },
+  "CONFIRM_NOTIFY": {
+    "DAY_OFF_DEACTIVE": "Deactive this day off category?",
+    "CANCEL": "Cancel",
+    "YES": "Yes"
   }
 }
