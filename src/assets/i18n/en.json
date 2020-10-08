@@ -36,7 +36,9 @@
     "EMPLOYEE_INFO": "Employee Information",
     "NO_RESULT": "No assigned device",
     "TITLE_EMP": "Title",
-    "CONTENT": "Content"
+    "CONTENT": "Content",
+    "NO_SELECT": "No select",
+    "DAY_OFF_INFO": "Add day off information"
   },
   "EMPLOYEE_EDIT": {
     "TITLE": "Edit Employee Profile",

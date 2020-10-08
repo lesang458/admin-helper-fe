@@ -6,6 +6,7 @@ import { Employee } from 'src/app/shared/models/employees.model';
 import { ActivatedRoute, Router } from '@angular/router';
 import * as DevicesActions from '../../../devices/store/devices.actions';
 import * as DayOffActions from '../../../dayoff-categories/store/dayoff-categories.actions';
+import * as DayOffCategoriesActions from 'src/app/modules/dayoff-categories/store/dayoff-categories.actions';
 import { SearchDevice } from '../../../devices/store/devices.actions';
 import { Observable } from 'rxjs';
 import { State } from '../../../devices/store/devices.reducer';
@@ -18,6 +19,7 @@ import {
 } from '@angular/forms';
 import { RouteConstant } from 'src/app/shared/constants/route.constant';
 import { TranslateService } from '@ngx-translate/core';
+import { DayOffCategory } from 'src/app/shared/models/dayoff-category.model';
 
 @Component({
   selector: 'ah-employee-detail',
@@ -25,11 +27,14 @@ import { TranslateService } from '@ngx-translate/core';
   styleUrls: ['./employee-detail.component.scss'],
 })
 export class EmployeeDetailComponent implements OnInit {
+  private arr = [];
   public employee: Employee;
   public searchParams: SearchDevice;
   public device$: Observable<State>;
+  public types: DayOffCategory[];
   public id: number;
   public hourChecked = [];
+  public selectedType = new FormControl('');
   public employeeForm = new FormGroup({
     firstName: new FormControl('', [
       Validators.minLength(2),
@@ -73,6 +78,20 @@ export class EmployeeDetailComponent implements OnInit {
         .select((s) => s.employees.detaiEmployee)
         .subscribe((data: Employee) => {
           if (data) {
+            if (this.edit) {
+              this.store.select('dayoffCategories').subscribe((arr) => {
+                arr.dayoff.map((val) => {
+                  this.arr.push(val.id);
+                });
+                this.selectedType.patchValue('No select');
+                data?.dayOffInfos?.map((value) => {
+                  const filterData = arr.dayoff.filter(
+                    (elem) => elem.id !== value.dayOffCategoryId
+                  );
+                  this.types = filterData;
+                });
+              });
+            }
             this.employeeForm.patchValue(data);
             this.employee = data;
             this.dayOffForm = new FormGroup({
@@ -125,6 +144,13 @@ export class EmployeeDetailComponent implements OnInit {
       };
       this.store.dispatch(new DevicesActions.FetchDevices(this.searchParams));
     }
+    if (this.edit) {
+      this.store.dispatch(
+        new DayOffCategoriesActions.FetchDayOffCategories({
+          status: 'ACTIVE',
+        })
+      );
+    }
   }
 
   public navigateEdit(): void {
@@ -174,6 +200,38 @@ export class EmployeeDetailComponent implements OnInit {
     } else {
       const index = this.hourChecked.indexOf(id);
       this.hourChecked.splice(index, 1);
+    }
+  }
+
+  public addDayoffCatetory(types: DayOffCategory[]): void {
+    if (this.selectedType.value !== 'No select') {
+      const filter = types.filter(
+        (e) => e.id.toString() === this.selectedType.value
+      );
+      const dayOffForm = this.formBuilder.group({
+        categoryName: filter[0]?.name,
+        dayOffCategoryId: filter[0]?.id,
+        hours: filter[0].totalHoursDefault,
+      });
+      this.dayOffInfos.push(dayOffForm);
+      this.types = types.filter((e) => e.id !== filter[0]?.id);
+      this.selectedType.patchValue('No select');
+    }
+  }
+
+  public removeDayoffCategory(types, dayOff): void {
+    const index = this.dayOffForm.value.dayOffInfos.findIndex(
+      (e) => e.dayOffCategoryId === dayOff.controls.dayOffCategoryId.value
+    );
+    this.dayOffInfos.removeAt(index);
+    if (this.arr.indexOf(dayOff.controls.dayOffCategoryId.value) !== -1) {
+      const param = {
+        id: dayOff.controls.dayOffCategoryId.value,
+        name: dayOff.controls.categoryName.value,
+        totalHoursDefault: dayOff.controls.hours.value,
+      };
+      types.push(param);
+      this.selectedType.patchValue('No select');
     }
   }
 
