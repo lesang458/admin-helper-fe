@@ -27,6 +27,7 @@ export class AuthEffect {
             'userName',
             data?.user?.firstName + ' ' + data?.user?.lastName
           );
+          localStorage.setItem('id', data?.user?.id);
           return new AuthActions.LoginSuccess(data);
         })
       );
@@ -48,6 +49,7 @@ export class AuthEffect {
               'userName',
               data?.user?.firstName + ' ' + data?.user?.lastName
             );
+            localStorage.setItem('id', data?.user?.id);
             return new AuthActions.LoginSuccess(data);
           })
         );
@@ -112,6 +114,25 @@ export class AuthEffect {
             this.notify.showSuccess('MESSAGE.RESET_SUCCESSFULLY');
             this.router.navigate([`${RouteConstant.login}`]);
             this.auth.setVerifyStep(0);
+          })
+        );
+    })
+  );
+
+  @Effect({ dispatch: false })
+  authChangePassword = this.actions$.pipe(
+    ofType(AuthActions.CHANGE_PASSWORD),
+    switchMap((action: AuthActions.ChangePassword) => {
+      const body = snakecaseKeys(action.payload);
+      return this.http
+        .patch(
+          `${environment.APILink}/${localStorage.getItem('id')}/password`,
+          body
+        )
+        .pipe(
+          map(() => {
+            this.notify.showSuccess('MESSAGE.RESET_SUCCESSFULLY');
+            this.router.navigate([``]);
           })
         );
     })
