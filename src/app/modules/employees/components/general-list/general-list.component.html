@@ -118,27 +118,29 @@
                 {{ 'GENERAL_LIST.ACTIVE' | translate }}
               </span>
             </td>
-            <td class="d-flex justify-content-center align-middle">
-              <button
-                class="btn btn-outline-primary mr-2"
-                (click)="navigateEdit(item.id)"
-              >
-                <span class="cil-brush"></span>
-              </button>
-              <button
-                *ngIf="item.status === 'ACTIVE'"
-                class="btn btn-outline-danger"
-                (click)="openModalWithComponent(item.id, 'delete', searchParams)"
-              >
-                <i class="cil-user-unfollow"></i>
-              </button>
-              <button
-                *ngIf="item.status !== 'ACTIVE'"
-                class="btn btn-outline-success"
-                (click)="openModalWithComponent(item.id, 'active', searchParams)"
-              >
-                <i class="cil-action-undo"></i>
-              </button>
+            <td>
+              <div class="d-flex justify-content-center align-middle">
+                <button
+                  class="btn btn-outline-primary mr-2"
+                  (click)="navigateEdit(item.id)"
+                >
+                  <span class="cil-brush"></span>
+                </button>
+                <button
+                  *ngIf="item.status === 'ACTIVE'"
+                  class="btn btn-outline-danger"
+                  (click)="openModalWithComponent(item.id, 'delete', searchParams)"
+                >
+                  <i class="cil-user-unfollow"></i>
+                </button>
+                <button
+                  *ngIf="item.status !== 'ACTIVE'"
+                  class="btn btn-outline-success"
+                  (click)="openModalWithComponent(item.id, 'active', searchParams)"
+                >
+                  <i class="cil-action-undo"></i>
+                </button>
+              </div>
             </td>
           </tr>
         </tbody>
