@@ -131,7 +131,7 @@
                           class="form-control"
                           id="exampleFormControlInput4"
                           formControlName="password"
-                          tabindex="5"
+                          tabindex="4"
                           required
                       />
                         <div
@@ -155,7 +155,7 @@
                           class="form-control"
                           id="exampleFormControlInput11"
                           formControlName="confirmPassword"
-                          tabindex="6"
+                          tabindex="5"
                         />
                         <div 
                           *ngIf="employeeForm.value.password !== employeeForm.value.confirmPassword"
@@ -172,7 +172,7 @@
                           class="form-control"
                           [max]="getToday()"
                           formControlName="birthdate"
-                          tabindex="7"
+                          tabindex="6"
                           required
                         />
                         <div
@@ -192,7 +192,7 @@
                           type="text"
                           class="form-control"
                           formControlName="phoneNumber"
-                          tabindex="4"
+                          tabindex="7"
                           required
                         />
                         <div
@@ -261,7 +261,7 @@
                               type="number"
                               class="form-control text-right"
                               formControlName="hours"
-                              tabindex="{{8 + i}}"
+                              tabindex="{{9 + i}}"
                               required
                             />
                           </div>
@@ -278,6 +278,7 @@
                         </div>
                         </td>
                         <td class="td-style text-right" *ngIf="!edit && !create">{{ dayOffInfos.at(i).get('availableHours').value }}</td>
+                        <td *ngIf="edit || create">{{ 'EMPLOYEE_DETAIL.DAY' | translate }}</td>
                         <td *ngIf="edit">
                           <button 
                             class="btn btn-outline-danger" 

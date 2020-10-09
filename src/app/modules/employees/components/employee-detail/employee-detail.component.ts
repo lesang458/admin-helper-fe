@@ -6,7 +6,6 @@ import { Employee } from 'src/app/shared/models/employees.model';
 import { ActivatedRoute, Router } from '@angular/router';
 import * as DevicesActions from '../../../devices/store/devices.actions';
 import * as DayOffActions from '../../../dayoff-categories/store/dayoff-categories.actions';
-import * as DayOffCategoriesActions from 'src/app/modules/dayoff-categories/store/dayoff-categories.actions';
 import { SearchDevice } from '../../../devices/store/devices.actions';
 import { Observable } from 'rxjs';
 import { State } from '../../../devices/store/devices.reducer';
@@ -98,12 +97,12 @@ export class EmployeeDetailComponent implements OnInit {
               dayOffInfos: this.formBuilder.array(
                 data?.dayOffInfos?.map((value) =>
                   this.formBuilder.group({
-                    availableHours: value.availableHours,
+                    availableHours: value.availableHours / 8,
                     categoryName: value.categoryName,
                     dayOffCategoryId: value.dayOffCategoryId,
                     hours: [
                       {
-                        value: value.hours,
+                        value: value.hours / 8,
                         disabled: !this.edit,
                       },
                       Validators.pattern('^[0-9]*$'),
@@ -126,7 +125,7 @@ export class EmployeeDetailComponent implements OnInit {
                 categoryName: value.name,
                 dayOffCategoryId: value.id,
                 hours: [
-                  value.totalHoursDefault,
+                  value.totalHoursDefault / 8,
                   Validators.pattern('^[0-9]*$'),
                 ],
               })
@@ -146,9 +145,7 @@ export class EmployeeDetailComponent implements OnInit {
     }
     if (this.edit) {
       this.store.dispatch(
-        new DayOffCategoriesActions.FetchDayOffCategories({
-          status: 'ACTIVE',
-        })
+        new DayOffActions.FetchDayOffCategories({ status: 'active' })
       );
     }
   }
@@ -211,7 +208,7 @@ export class EmployeeDetailComponent implements OnInit {
       const dayOffForm = this.formBuilder.group({
         categoryName: filter[0]?.name,
         dayOffCategoryId: filter[0]?.id,
-        hours: filter[0].totalHoursDefault,
+        hours: filter[0].totalHoursDefault / 8,
       });
       this.dayOffInfos.push(dayOffForm);
       this.types = types.filter((e) => e.id !== filter[0]?.id);
@@ -228,7 +225,7 @@ export class EmployeeDetailComponent implements OnInit {
       const param = {
         id: dayOff.controls.dayOffCategoryId.value,
         name: dayOff.controls.categoryName.value,
-        totalHoursDefault: dayOff.controls.hours.value,
+        totalHoursDefault: dayOff.controls.hours.value * 8,
       };
       types.push(param);
       this.selectedType.patchValue('No select');
@@ -240,7 +237,10 @@ export class EmployeeDetailComponent implements OnInit {
     const employee = { ...this.employeeForm.value };
     delete employee.confirmPassword;
     delete employee.dayOffInfos;
-    employee.dayOffInfosAttributes.forEach((element) => {
+    employee.dayOffInfosAttributes.forEach((element, index) => {
+      if (this.dayOffInfos.at(index).get('hours').value === element.hours) {
+        element.hours = element.hours * 8;
+      }
       delete element.categoryName;
       delete element?.availableHours;
     });

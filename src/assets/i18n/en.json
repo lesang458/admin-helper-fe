@@ -38,7 +38,8 @@
     "TITLE_EMP": "Title",
     "CONTENT": "Content",
     "NO_SELECT": "No select",
-    "DAY_OFF_INFO": "Add day off information"
+    "DAY_OFF_INFO": "Add day off information",
+    "DAY": "(Day)"
   },
   "EMPLOYEE_EDIT": {
     "TITLE": "Edit Employee Profile",
@@ -76,7 +77,7 @@
     "FIRST_NAME": "First name",
     "LAST_NAME": "Last name",
     "DAY_OFF_INFO": "Day off infomation",
-    "HOUR": "Hours (h)",
+    "HOUR": "Hours (day)",
     "FIRST_NAME_INVALID": "First Name is required",
     "FIRST_NAME_MIN_LENGTH": "First name must be at least 2 characters",
     "FIRST_NAME_MAX_LENGTH": "First name must not exceed 20 characters",
@@ -96,7 +97,7 @@
     "HOURS_INVALID": "Hours is required",
     "HOURS_PATTERN": "Hours must be number",
     "DAY_OFF_CATE": "Day off category",
-    "AVAILABLE_HOURS": "Available hours (h)",
+    "AVAILABLE_HOURS": "Available hours (day)",
     "MESS_EMAIL": "Email has already been taken",
     "CREATE_SUCCESS": "Created successfully!",
     "EDIT_SUCCESS": "Edited successfully!",
