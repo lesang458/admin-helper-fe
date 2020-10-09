@@ -33,19 +33,21 @@
             </th>
             <td class="align-middle">{{ item.name | titlecase }}</td>
             <td class="align-middle">{{ item.description }}</td>
-            <td class="d-flex justify-content-center align-middle">
-              <button
-                class="btn btn-outline-primary mr-2"
-                (click)="openModalWithComponent(item, 'edit')"
-              >
-                <span class="cil-brush"></span>
-              </button>
-              <button
-                class="btn btn-outline-danger"
-                (click)="openModalWithComponent(item, 'delete')"
-              >
-                <span class="cil-trash"></span>
-              </button>
+            <td>
+              <div class="d-flex justify-content-center align-middle">
+                <button
+                  class="btn btn-outline-primary mr-2"
+                  (click)="openModalWithComponent(item, 'edit')"
+                >
+                  <span class="cil-brush"></span>
+                </button>
+                <button
+                  class="btn btn-outline-danger"
+                  (click)="openModalWithComponent(item, 'delete')"
+                >
+                  <span class="cil-trash"></span>
+                </button>
+              </div>
             </td>
           </tr>
         </tbody>
