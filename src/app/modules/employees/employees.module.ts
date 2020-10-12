@@ -18,6 +18,8 @@ import { TooltipModule } from 'ngx-bootstrap/tooltip';
 import { EmployeeDetailComponent } from './components/employee-detail/employee-detail.component';
 import { EmployeeInfoComponent } from './pages/employee-info/employee-info.component';
 import { StatusConfirmComponent } from './components/status-confirm/status-confirm.component';
+import { DayOffRequestComponent } from './pages/dayoff-request/dayoff-request.component';
+import { DayOffRequestListComponent } from './components/dayoff-request-list/dayoff-request-list.component';
 
 @NgModule({
   declarations: [
@@ -32,6 +34,8 @@ import { StatusConfirmComponent } from './components/status-confirm/status-confi
     UpdatePasswordComponent,
     EmployeeDetailComponent,
     EmployeeInfoComponent,
+    DayOffRequestComponent,
+    DayOffRequestListComponent,
   ],
   imports: [
     CommonModule,

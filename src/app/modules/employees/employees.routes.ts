@@ -9,6 +9,7 @@ import { ErrorComponent } from 'src/app/shared/components/error/error.component'
 import { UpdatePasswordComponent } from './pages/update-password/update-password.component';
 import { RouteConstant } from 'src/app/shared/constants/route.constant';
 import { EmployeeInfoComponent } from './pages/employee-info/employee-info.component';
+import { DayOffRequestComponent } from './pages/dayoff-request/dayoff-request.component';
 
 export const EMPLOYEES_ROUTES: Routes = [
   { path: '', redirectTo: `/${RouteConstant.employees}`, pathMatch: 'full' },
@@ -101,6 +102,14 @@ export const EMPLOYEES_ROUTES: Routes = [
     canActivate: [BrowserSupportGuardService],
     data: {
       i18nKey: 'NOT_SUPPORTED',
+    },
+  },
+  {
+    path: `${RouteConstant.dayOffRequest}`,
+    component: DayOffRequestComponent,
+    canActivate: [AuthGuardService],
+    data: {
+      i18nKey: 'DAY_OFF_REQUEST_PAGE',
     },
   },
 ];
