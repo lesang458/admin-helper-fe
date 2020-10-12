@@ -5,7 +5,8 @@
     "LINK_4": "Device Management",
     "LINK_5": "Devices History",
     "LINK_6": "Day off Categories",
-    "LINK_7": "Device Categories"
+    "LINK_7": "Device Categories",
+    "LINK_8": "Day off Request"
   },
   "HEADER": {
     "VIETNAMESE": "Vietnamese",
@@ -152,6 +153,9 @@
     "DAYS_REQUIRED": "Total default leaves is required!",
     "DAYS_MIN": "Total default leaves must be at least 1",
     "DAYS_MAX": "Total default leaves must not exceed 20"
+  },
+  "DAY_OFF_REQUEST_PAGE": {
+    "TITLE": "Day off request List"
   },
   "DEVICE_EDIT": {
     "EDIT_TITLE": "Edit Device",

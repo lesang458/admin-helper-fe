@@ -22,6 +22,13 @@ export const APP_ROUTES: Routes = [
       ),
   },
   {
+    path: `${RouteConstant.dayOffRequest}`,
+    loadChildren: () =>
+      import('./modules/dayoff-categories/dayoff-categories.module').then(
+        (m) => m.DayOffCategoriesModule
+      ),
+  },
+  {
     path: `${RouteConstant.deviceHistory}`,
     loadChildren: () =>
       import('./modules/devices-history/device-history.module').then(
