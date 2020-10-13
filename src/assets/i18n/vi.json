@@ -6,7 +6,7 @@
     "LINK_5": "Lịch sử thiết bị",
     "LINK_6": "Loại ngày phép",
     "LINK_7": "Loại thiết bị",
-    "LINK_8": "Yêu cầu ngày nghỉ"
+    "LINK_8": "Lịch sử yêu cầu ngày nghỉ"
   },
   "HEADER": {
     "VIETNAMESE": "Tiếng việt",
@@ -157,7 +157,7 @@
     "DAYS_MAX": "Số phép mặc định không được vượt quá 20"
   },
   "DAY_OFF_REQUEST_PAGE": {
-    "TITLE": "Danh sách yêu cầu ngày nghỉ"
+    "TITLE": "Danh sách lịch sử yêu cầu ngày nghỉ"
   },
   "DEVICE_EDIT": {
     "EDIT_TITLE": "Chỉnh sửa thông tin thiết bị.",
