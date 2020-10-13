@@ -9,4 +9,7 @@ export class ParamsConstant {
   public static readonly historyFrom = 'history_from';
   public static readonly deviceId = 'device_id';
   public static readonly userId = 'user_id';
+  public static readonly dayOffCategoryId = 'day_off_category_id';
+  public static readonly fromDate = 'from_date';
+  public static readonly toDate = 'to_date';
 }

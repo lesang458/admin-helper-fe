@@ -1,5 +1,55 @@
 <div class="card">
   <div class="card-body">
+    <div class="row">
+      <div class="col-4" *ngIf="types$ | async as types">
+        <div class="form-group">
+          <label class="d-inline-block mr-3 ml-2" for="day-off-type">
+            {{ 'PROFILE_CREATE.DAY_OFF_CATE' | translate }}
+          </label>
+          <select
+            [formControl]="selectedType"
+            class="form-control d-inline-block"
+            style="width: auto"
+            id="day-off-type"
+          >
+            <option value="">
+              {{ 'GENERAL_LIST.ALL' | translate }}
+            </option>
+            <option *ngFor="let item of types" [value]="item.id">
+              {{ item.name | titlecase }}
+            </option>
+          </select>
+        </div>
+      </div>
+      <div class="col-4">
+        <div class="form-group">
+          <label class="d-inline-block mr-3 ml-2" for="from-date">
+            {{ 'REQUEST_DAY_OFF.FROM_DATE' | translate }}
+          </label>
+          <input
+            type="date"
+            class="form-control w-auto d-inline-block"
+            [max]="validFromDate"
+            id="from-date"
+            [formControl]="selectedFromDate"
+          />
+        </div>
+      </div>
+      <div class="col-4">
+        <div class="form-group">
+          <label class="d-inline-block mr-3 ml-2" for="to-date">
+            {{ 'REQUEST_DAY_OFF.TO_DATE' | translate }}
+          </label>
+          <input
+            type="date"
+            class="form-control w-auto d-inline-block"
+            [min]="validToDate"
+            id="to-date"
+            [formControl]="selectedToDate"
+          />
+        </div>
+      </div>
+    </div>  
     <div class="table-responsive" *ngIf="data$ | async as data">
       <table class="table table-bordered table-striped">
         <thead>
@@ -7,34 +57,38 @@
             <th scope="col" class="col-name">
               {{ 'DAY_OFF_CATEGORIES_PAGE.NAME' | translate }}
             </th>
-            <th scope="col" class="col-name text-right">
+            <th scope="col" class="col-name">
+              {{ 'LOGIN.EMAIL' | translate }}
+            </th>
+            <th scope="col" class="col-name">
               {{ 'REQUEST_DAY_OFF.FROM_DATE' | translate }}
             </th>
-            <th scope="col" class="text-center">
+            <th scope="col">
               {{ 'REQUEST_DAY_OFF.TO_DATE' | translate }}
             </th>
-            <th scope="col" class="col-description">
+            <th scope="col" class="col-hour text-right">
               {{ 'REQUEST_DAY_OFF.HOURS_PER_DAY' | translate }}
             </th>
-            <th scope="col" class="col-description">
+            <th scope="col" class="col-description text-center">
               {{ 'DEVICE_CATEGORIES_PAGE.NAME' | translate }}
             </th>
             <th scope="col" class="col-action text-center">
-              {{ 'GENERAL_LIST.ACTIONS' | translate }}
+              {{ 'DAY_OFF_TABLE.ACTION' | translate }}
             </th>
           </tr>
         </thead>
         <tbody>
           <tr *ngFor="let item of data.dayOffRequest.data; let i = index">
-            <td class="align-middle">{{ item.firstName + ' ' + item.lastName }}</td>
-            <td class="align-middle text-right">
-              {{ item.fromDate }}
+            <td class="align-middle">
+              <a class="link-a" (click)="navigateEmployeeDetail(item.id)">
+                {{ item.firstName + ' ' + item.lastName }}
+              </a>
             </td>
-            <td class="align-middle text-center">
-                {{ item.toDate }}
-            </td>
-            <td class="align-middle">{{ item.hoursPerDay }}</td>
-            <td class="align-middle">{{ item.dayOffCategory.name }}</td>
+            <td class="align-middle">{{ item.email }}</td>
+            <td class="align-middle">{{ item.fromDate | date: 'dd/MM/yyyy' }}</td>
+            <td class="align-middle">{{ item.toDate| date: 'dd/MM/yyyy' }}</td>
+            <td class="align-middle text-right">{{ item.hoursPerDay }}</td>
+            <td class="align-middle text-center">{{ item.dayOffCategory.name | titlecase }}</td>
             <td>
               <div class="d-flex justify-content-center align-middle">
                 <button
@@ -56,6 +110,23 @@
         role="alert"
       >
         {{ 'GENERAL_LIST.NO_RESULT' | translate }}
+      </div>
+      <div class="col-12 pr-0" *ngIf="data.dayOffRequest.pagination.totalCount !== 0">
+        <pagination
+          [totalItems]="data.dayOffRequest.pagination.totalCount"
+          [maxSize]="3"
+          [itemsPerPage]="10"
+          [(ngModel)]="currentPage"
+          (pageChanged)="onPageChanged($event.page)"
+          class="pagination-md justify-content-end"
+          previousText="&lsaquo;"
+          nextText="&rsaquo;"
+          firstText="&laquo;"
+          lastText="&raquo;"
+          [boundaryLinks]="true"
+          [rotate]="true"
+        >
+        </pagination>
       </div>
     </div>
   </div>

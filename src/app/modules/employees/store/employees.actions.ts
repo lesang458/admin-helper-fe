@@ -8,8 +8,11 @@ export interface SearchParams {
   search?: string;
   page?;
   perPage?;
+  dayOffCategoryId?;
   sort?: { sortNameType; sortBirthDateType; sortJoinDateType };
   status?: string;
+  fromDate?: string;
+  toDate?: string;
 }
 
 export interface EmployeesParam {
