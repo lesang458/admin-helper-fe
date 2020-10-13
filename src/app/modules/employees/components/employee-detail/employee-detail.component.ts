@@ -148,6 +148,10 @@ export class EmployeeDetailComponent implements OnInit {
         new DayOffActions.FetchDayOffCategories({ status: 'active' })
       );
     }
+    console.log(
+      'EmployeeDetailComponent -> ngOnInit -> this.f.birthdate.errors.max',
+      this.f.birthdate
+    );
   }
 
   public navigateEdit(): void {
@@ -168,6 +172,15 @@ export class EmployeeDetailComponent implements OnInit {
 
   public getToday(): string {
     return new Date().toISOString().split('T')[0];
+  }
+
+  public changeValueDate(): boolean {
+    let d = new Date(this.f.birthdate.value);
+    const toDay = new Date(this.getToday());
+    if (d > toDay) {
+      return true;
+    }
+    return false;
   }
 
   public getPhoneErrorMessage(): string {

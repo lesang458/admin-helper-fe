@@ -101,6 +101,7 @@
     "DAY_OFF_CATE": "Loại ngày nghỉ",
     "AVAILABLE_HOURS": "Số ngày có sẵn (ngày)",
     "MESS_EMAIL": "Email đã tồn tại",
+    "BIRTHDAY_MAX": "Ngày sinh không thể là ngày tương lai",
     "CREATE_SUCCESS": "Tạo thành công!",
     "EDIT_SUCCESS": "Chỉnh sửa thành công!",
     "CLOSE": "Đóng",

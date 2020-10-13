@@ -101,6 +101,7 @@
     "DAY_OFF_CATE": "Day off category",
     "AVAILABLE_HOURS": "Available hours (day)",
     "MESS_EMAIL": "Email has already been taken",
+    "BIRTHDAY_MAX": "Birthday cannot be a future date",
     "CREATE_SUCCESS": "Created successfully!",
     "EDIT_SUCCESS": "Edited successfully!",
     "CLOSE": "Close",
