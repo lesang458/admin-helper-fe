@@ -174,6 +174,21 @@ export class EmployeeEffects {
           .append(ParamsConstant.page, action.payload.page)
           .append(ParamsConstant.perPage, action.payload.perPage);
       }
+      if (action.payload.dayOffCategoryId) {
+        params = params.append(
+          ParamsConstant.dayOffCategoryId,
+          action.payload.dayOffCategoryId
+        );
+      }
+      if (action.payload.fromDate) {
+        params = params.append(
+          ParamsConstant.fromDate,
+          action.payload.fromDate
+        );
+      }
+      if (action.payload.toDate) {
+        params = params.append(ParamsConstant.toDate, action.payload.toDate);
+      }
       return this.http
         .get<PaginatedData<DayOffRequest[]>>(
           `${environment.APILink}/day_off_request`,

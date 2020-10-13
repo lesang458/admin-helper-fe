@@ -5,9 +5,13 @@ import { Store } from '@ngrx/store';
 import { FormControl } from '@angular/forms';
 import { Observable } from 'rxjs';
 import * as EmployeeActions from '../../store/employees.actions';
+import * as DayOffCategoriesActions from 'src/app/modules/dayoff-categories/store/dayoff-categories.actions';
 import { DayOffCategory } from 'src/app/shared/models/dayoff-category.model';
 import { ConfirmNotifyComponent } from 'src/app/shared/components/confirm-notify/confirm-notify.component';
-import { SearchParams } from 'src/app/modules/devices-history/store/devices-history.actions';
+import { RouteConstant } from 'src/app/shared/constants/route.constant';
+import { Router } from '@angular/router';
+import { tap, map } from 'rxjs/operators';
+import { SearchParams } from 'src/app/modules/employees/store/employees.actions';
 
 @Component({
   selector: 'ah-dayoff-request-list',
@@ -16,39 +20,73 @@ import { SearchParams } from 'src/app/modules/devices-history/store/devices-hist
 })
 export class DayOffRequestListComponent implements OnInit {
   public searchInput = new FormControl('');
+  public selectedType = new FormControl('');
+  public selectedFromDate = new FormControl('');
+  public selectedToDate = new FormControl('');
+  public validToDate: string;
+  public validFromDate: string;
+  public currentPage = 1;
   public data$: Observable<any>;
+  public types$: Observable<DayOffCategory[]>;
   public bsModalRef: BsModalRef;
   public searchParams: SearchParams;
   constructor(
     private store: Store<fromApp.AppState>,
+    private router: Router,
     private modalService: BsModalService
   ) {}
 
   ngOnInit(): void {
     this.data$ = this.store.select('employees');
-    console.log(
-      'DayOffRequestListComponent -> ngOnInit -> this.data$',
-      this.data$
+    this.types$ = this.store.select('dayoffCategories').pipe(
+      tap((data) => {
+        if (data.dayoff.length) {
+          this.selectedType.patchValue('');
+        }
+      }),
+      map((data) => {
+        return data.dayoff;
+      })
     );
-    this.onPageChanged(1);
+    this.store.dispatch(
+      new DayOffCategoriesActions.FetchDayOffCategories({ status: '' })
+    );
+    this.selectedType.valueChanges.subscribe(() => {
+      this.onDataChanged();
+    });
+    this.selectedFromDate.valueChanges.subscribe(() => {
+      this.onDataChanged();
+    });
+
+    this.selectedToDate.valueChanges.subscribe(() => {
+      this.onDataChanged();
+    });
+  }
+
+  public onDataChanged(): void {
+    this.currentPage === 1 ? this.onPageChanged(1) : (this.currentPage = 1);
   }
 
   public onPageChanged(page: number): void {
-    // const search = this.searchFormControl.value;
-    // const status = this.searchStatusFormControl.value;
+    const dayOffCategoryId = this.selectedType.value;
+    this.validToDate = this.selectedFromDate.value;
+    this.validFromDate = this.selectedToDate.value;
+    const fromDate = this.validToDate;
+    const toDate = this.validFromDate;
     this.searchParams = {
       page,
       perPage: 10,
-      // sort: {
-      //   sortNameType: this.sortNameType,
-      //   sortBirthDateType: this.sortBirthDateType,
-      //   sortJoinDateType: this.sortJoinDateType,
-      // },
-      // status,
+      dayOffCategoryId,
+      fromDate,
+      toDate,
     };
     this.store.dispatch(
       new EmployeeActions.FetchDayOffRequest(this.searchParams)
     );
+  }
+
+  public navigateEmployeeDetail(id): void {
+    this.router.navigateByUrl(`/${RouteConstant.employees}/${id}`);
   }
 
   public openModalWithComponent(): void {}
