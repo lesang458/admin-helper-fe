@@ -14,7 +14,7 @@
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-      <div class="modal-body pt-1 pb-0">
+      <div *ngIf="selectedEmployee" class="modal-body pt-1 pb-0">
         <label class="font-weight-bold" for="exampleFormControlInput1">
           {{ 'REQUEST_DAY_OFF.FULL_NAME' | translate }}
         </label>

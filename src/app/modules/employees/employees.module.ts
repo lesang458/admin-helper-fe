@@ -13,7 +13,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { LoginComponent } from 'src/app/shared/components/login/login.component';
 import { AuthComponent } from './pages/auth/auth.component';
 import { UpdatePasswordComponent } from './pages/update-password/update-password.component';
-import { CommonModule } from '@angular/common';
+import { CommonModule, DatePipe } from '@angular/common';
 import { TooltipModule } from 'ngx-bootstrap/tooltip';
 import { EmployeeDetailComponent } from './components/employee-detail/employee-detail.component';
 import { EmployeeInfoComponent } from './pages/employee-info/employee-info.component';
@@ -47,6 +47,6 @@ import { DayOffRequestListComponent } from './components/dayoff-request-list/day
     ModalModule.forRoot(),
     TooltipModule.forRoot(),
   ],
-  providers: [BsModalRef],
+  providers: [BsModalRef, DatePipe],
 })
 export class EmployeesModule {}

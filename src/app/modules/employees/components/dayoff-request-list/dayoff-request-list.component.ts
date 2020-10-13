@@ -8,6 +8,7 @@ import * as EmployeeActions from '../../store/employees.actions';
 import { DayOffCategory } from 'src/app/shared/models/dayoff-category.model';
 import { ConfirmNotifyComponent } from 'src/app/shared/components/confirm-notify/confirm-notify.component';
 import { SearchParams } from 'src/app/modules/devices-history/store/devices-history.actions';
+import { RequestDayOffComponent } from '../request-day-off/request-day-off.component';
 
 @Component({
   selector: 'ah-dayoff-request-list',
@@ -19,6 +20,7 @@ export class DayOffRequestListComponent implements OnInit {
   public data$: Observable<any>;
   public bsModalRef: BsModalRef;
   public searchParams: SearchParams;
+  public editData: any;
   constructor(
     private store: Store<fromApp.AppState>,
     private modalService: BsModalService
@@ -51,5 +53,13 @@ export class DayOffRequestListComponent implements OnInit {
     );
   }
 
-  public openModalWithComponent(): void {}
+  public openModalWithComponent(data: any): void {
+    const initialState = {
+      data,
+    };
+    this.bsModalRef = this.modalService.show(RequestDayOffComponent, {
+      initialState,
+    });
+    this.bsModalRef.content.closeBtnName = 'Close';
+  }
 }
