@@ -170,6 +170,15 @@ export class EmployeeDetailComponent implements OnInit {
     return new Date().toISOString().split('T')[0];
   }
 
+  public changeValueDate(): boolean {
+    let d = new Date(this.f.birthdate.value);
+    const toDay = new Date(this.getToday());
+    if (d > toDay) {
+      return true;
+    }
+    return false;
+  }
+
   public getPhoneErrorMessage(): string {
     if (this.f.phoneNumber.errors.required) {
       return this.translateService.instant(

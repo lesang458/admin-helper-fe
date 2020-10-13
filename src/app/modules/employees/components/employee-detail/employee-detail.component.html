@@ -6,7 +6,7 @@
           *ngIf="edit || create" 
           type="submit" 
           class="btn btn-success mb-3"
-          [disabled]="employeeForm.invalid || dayOffForm.invalid || (employeeForm.value.password !== employeeForm.value.confirmPassword)"
+          [disabled]="employeeForm.invalid || dayOffForm.invalid || (employeeForm.value.password !== employeeForm.value.confirmPassword) || changeValueDate()"
           >
           <span class="cil-save mr-1"></span>
           {{ 'PROFILE_CREATE.SAVE' | translate }}
@@ -172,9 +172,13 @@
                           class="form-control"
                           [max]="getToday()"
                           formControlName="birthdate"
+                          (change)="changeValueDate()"
                           tabindex="6"
                           required
                         />
+                        <div *ngIf="changeValueDate()" class="mess-invalid">
+                          {{ 'PROFILE_CREATE.BIRTHDAY_MAX' | translate }}
+                        </div>
                         <div
                           *ngIf="f.birthdate.invalid && f.birthdate.touched"
                           class="mess-invalid"
