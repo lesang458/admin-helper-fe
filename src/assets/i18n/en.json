@@ -72,7 +72,8 @@
     "UNPAID_LEAVE": "Allow unpaid leave",
     "MORNING_BREAK": "Morning break",
     "AFTERNOON_BREAK": "Afternoon break",
-    "DAY": "day"
+    "DAY": "day",
+    "HOURS_PER_DAY": "Hours per day (h)"
   },
   "PROFILE_CREATE": {
     "FIRST_NAME": "First name",

@@ -1,1 +1,60 @@
-<p>ok</p>
+<div class="card">
+  <div class="card-body">
+    <div class="table-responsive" *ngIf="data$ | async as data">
+      <table class="table table-bordered table-striped">
+        <thead>
+          <tr>
+            <th scope="col" class="col-name">
+              {{ 'DAY_OFF_CATEGORIES_PAGE.NAME' | translate }}
+            </th>
+            <th scope="col" class="col-name text-right">
+              {{ 'REQUEST_DAY_OFF.FROM_DATE' | translate }}
+            </th>
+            <th scope="col" class="text-center">
+              {{ 'REQUEST_DAY_OFF.TO_DATE' | translate }}
+            </th>
+            <th scope="col" class="col-description">
+              {{ 'REQUEST_DAY_OFF.HOURS_PER_DAY' | translate }}
+            </th>
+            <th scope="col" class="col-description">
+              {{ 'DEVICE_CATEGORIES_PAGE.NAME' | translate }}
+            </th>
+            <th scope="col" class="col-action text-center">
+              {{ 'GENERAL_LIST.ACTIONS' | translate }}
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let item of data.dayOffRequest.data; let i = index">
+            <td class="align-middle">{{ item.firstName + ' ' + item.lastName }}</td>
+            <td class="align-middle text-right">
+              {{ item.fromDate }}
+            </td>
+            <td class="align-middle text-center">
+                {{ item.toDate }}
+            </td>
+            <td class="align-middle">{{ item.hoursPerDay }}</td>
+            <td class="align-middle">{{ item.dayOffCategory.name }}</td>
+            <td>
+              <div class="d-flex justify-content-center align-middle">
+                <button
+                  class="btn btn-outline-primary mr-2"
+                  (click)="openModalWithComponent()"
+                >
+                  <span class="cil-brush"></span>
+                </button>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <div
+        *ngIf="data && data?.dayOffRequest?.data?.length === 0"
+        class="alert alert-warning text-center"
+        role="alert"
+      >
+        {{ 'GENERAL_LIST.NO_RESULT' | translate }}
+      </div>
+    </div>
+  </div>
+</div>

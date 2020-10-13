@@ -72,7 +72,8 @@
     "UNPAID_LEAVE": "Cho phép nghỉ không lương",
     "MORNING_BREAK": "Nghỉ buổi sáng",
     "AFTERNOON_BREAK": "Nghỉ buổi chiều",
-    "DAY": "ngày"
+    "DAY": "ngày",
+    "HOURS_PER_DAY": "Số giờ/ ngày"
   },
   "PROFILE_CREATE": {
     "FIRST_NAME": "Họ",

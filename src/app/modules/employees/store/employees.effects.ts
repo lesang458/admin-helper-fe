@@ -13,6 +13,7 @@ import { ParamsConstant } from 'src/app/shared/constants/params.constant';
 import { NotifyService } from 'src/app/core/services/notify.service';
 import { RouteConstant } from 'src/app/shared/constants/route.constant';
 import { Router } from '@angular/router';
+import { DayOffRequest } from 'src/app/shared/models/dayoff-request.model';
 
 @Injectable()
 export class EmployeeEffects {
@@ -162,6 +163,33 @@ export class EmployeeEffects {
     const sortProp = this.sortProperties[property];
     return `${sortProp}:${sortType}`;
   }
+
+  @Effect()
+  fetchDayOffRequest = this.actions$.pipe(
+    ofType(EmployeesActions.FETCH_DAY_OFF_REQUEST),
+    switchMap((action: EmployeesActions.FetchDayOffRequest) => {
+      let params = new HttpParams();
+      if (action.payload.page && action.payload.perPage) {
+        params = params
+          .append(ParamsConstant.page, action.payload.page)
+          .append(ParamsConstant.perPage, action.payload.perPage);
+      }
+      return this.http
+        .get<PaginatedData<DayOffRequest[]>>(
+          `${environment.APILink}/day_off_request`,
+          {
+            observe: 'response',
+            params,
+          }
+        )
+        .pipe(
+          map((response) => {
+            const data = camelcaseKeys(response.body, { deep: true });
+            return new EmployeesActions.SetDayOffRequest(data);
+          })
+        );
+    })
+  );
 
   constructor(
     private actions$: Actions,
