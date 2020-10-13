@@ -148,10 +148,6 @@ export class EmployeeDetailComponent implements OnInit {
         new DayOffActions.FetchDayOffCategories({ status: 'active' })
       );
     }
-    console.log(
-      'EmployeeDetailComponent -> ngOnInit -> this.f.birthdate.errors.max',
-      this.f.birthdate
-    );
   }
 
   public navigateEdit(): void {
