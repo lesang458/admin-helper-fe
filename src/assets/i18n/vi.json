@@ -5,7 +5,8 @@
     "LINK_4": "Quản lý thiết bị",
     "LINK_5": "Lịch sử thiết bị",
     "LINK_6": "Loại ngày phép",
-    "LINK_7": "Loại thiết bị"
+    "LINK_7": "Loại thiết bị",
+    "LINK_8": "Yêu cầu ngày nghỉ"
   },
   "HEADER": {
     "VIETNAMESE": "Tiếng việt",
@@ -36,7 +37,10 @@
     "EMPLOYEE_INFO": "Thông tin nhân viên",
     "NO_RESULT": "Không có thiết bị nào được bàn giao",
     "TITLE_EMP": "Chủ đề",
-    "CONTENT": "Nội dung"
+    "CONTENT": "Nội dung",
+    "NO_SELECT": "Không chọn",
+    "DAY_OFF_INFO": "Thêm thông tin ngày phép",
+    "DAY": "(Ngày)"
   },
   "EMPLOYEE_EDIT": {
     "TITLE": "Chỉnh sửa hồ sơ nhân viên",
@@ -68,13 +72,14 @@
     "UNPAID_LEAVE": "Cho phép nghỉ không lương",
     "MORNING_BREAK": "Nghỉ buổi sáng",
     "AFTERNOON_BREAK": "Nghỉ buổi chiều",
-    "DAY": "ngày"
+    "DAY": "ngày",
+    "HOURS_PER_DAY": "Số giờ/ ngày"
   },
   "PROFILE_CREATE": {
     "FIRST_NAME": "Họ",
     "LAST_NAME": "Tên",
     "DAY_OFF_INFO": "Thông tin ngày nghỉ",
-    "HOUR": "Số giờ (giờ)",
+    "HOUR": "Số ngày (ngày)",
     "FIRST_NAME_INVALID": "Hãy nhập họ",
     "FIRST_NAME_MIN_LENGTH": "Họ phải trên 2 ký tự",
     "FIRST_NAME_MAX_LENGTH": "Họ không vượt quá 20 ký tự",
@@ -94,7 +99,7 @@
     "HOURS_INVALID": "Hãy nhập số giờ",
     "HOURS_PATTERN": "Giờ phải là số",
     "DAY_OFF_CATE": "Loại ngày nghỉ",
-    "AVAILABLE_HOURS": "Số giờ có sẵn (giờ)",
+    "AVAILABLE_HOURS": "Số ngày có sẵn (ngày)",
     "MESS_EMAIL": "Email đã tồn tại",
     "CREATE_SUCCESS": "Tạo thành công!",
     "EDIT_SUCCESS": "Chỉnh sửa thành công!",
@@ -149,6 +154,9 @@
     "DAYS_REQUIRED": "Hãy nhập số phép mặc định!",
     "DAYS_MIN": "Số phép mặc định không được nhỏ hơn 1",
     "DAYS_MAX": "Số phép mặc định không được vượt quá 20"
+  },
+  "DAY_OFF_REQUEST_PAGE": {
+    "TITLE": "Danh sách yêu cầu ngày nghỉ"
   },
   "DEVICE_EDIT": {
     "EDIT_TITLE": "Chỉnh sửa thông tin thiết bị.",

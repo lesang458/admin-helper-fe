@@ -2,13 +2,14 @@ import { Action } from '@ngrx/store';
 import { Employee } from 'src/app/shared/models/employees.model';
 import { PaginatedData } from 'src/app/shared/models/pagination.model';
 import { RequestDayOffModel } from 'src/app/shared/models/request-day-off.model';
+import { DayOffRequest } from 'src/app/shared/models/dayoff-request.model';
 
 export interface SearchParams {
-  search: string;
-  page;
-  perPage;
-  sort: { sortNameType; sortBirthDateType; sortJoinDateType };
-  status: string;
+  search?: string;
+  page?;
+  perPage?;
+  sort?: { sortNameType; sortBirthDateType; sortJoinDateType };
+  status?: string;
 }
 
 export interface EmployeesParam {
@@ -28,6 +29,8 @@ export const DETAIL_EMPLOYEE = '[Employees] Detail Employee';
 export const DETAIL_EMPLOYEE_SUCCESS = '[Employees] Detail Employee Success';
 export const EDIT_EMPLOYEE = '[Employees] Edit Employee';
 export const REQUEST_DAY_OFF = '[Employees] Request Day Off';
+export const FETCH_DAY_OFF_REQUEST = '[Employees] Fetch Day Off Request';
+export const SET_DAY_OFF_REQUEST = '[Employees] Set Day Off Request';
 
 export class GetEmployeesSuccess implements Action {
   readonly type = GET_EMPLOYEES_SUCCESS;
@@ -79,6 +82,14 @@ export class RequestDayOff implements Action {
     public payload: { body: RequestDayOffModel; searchParams: SearchParams }
   ) {}
 }
+export class FetchDayOffRequest implements Action {
+  readonly type = FETCH_DAY_OFF_REQUEST;
+  constructor(public payload: SearchParams) {}
+}
+export class SetDayOffRequest implements Action {
+  readonly type = SET_DAY_OFF_REQUEST;
+  constructor(public payload: PaginatedData<DayOffRequest[]>) {}
+}
 
 export type EmployeesActions =
   | GetEmployeesSuccess
@@ -90,4 +101,6 @@ export type EmployeesActions =
   | DetailEmployee
   | DetailEmployeeSuccess
   | EditEmployee
-  | RequestDayOff;
+  | RequestDayOff
+  | FetchDayOffRequest
+  | SetDayOffRequest;

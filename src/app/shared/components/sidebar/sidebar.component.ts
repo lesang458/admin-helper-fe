@@ -16,6 +16,7 @@ export class SidebarComponent implements OnInit, OnDestroy {
   public dayOffUrl = `/${RouteConstant.dayOff}`;
   public devicesUrl = `/${RouteConstant.devices}`;
   public dayOffCategoriesUrl = `/${RouteConstant.dayOffCategories}`;
+  public dayOffRequestUrl = `/${RouteConstant.dayOffRequest}`;
   public deviceCategoriesUrl = `/${RouteConstant.devices}/${RouteConstant.categories}`;
   public deviceHistoryUrl = `/${RouteConstant.deviceHistory}`;
   public isMinimized: boolean;
@@ -59,6 +60,10 @@ export class SidebarComponent implements OnInit, OnDestroy {
 
   public navigateToDeviceCategoriesPage() {
     this.router.navigateByUrl(this.deviceCategoriesUrl);
+  }
+
+  public navigateToDayOffRequestPage() {
+    this.router.navigateByUrl(this.dayOffRequestUrl);
   }
 
   public onMinimized(): void {
