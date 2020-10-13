@@ -67,20 +67,6 @@ export class RequestDayOffComponent implements OnInit, OnChanges {
           kindOfLeave: this.editData.dayOffCategory.name,
         });
       }
-      this.f.get('fromDate').valueChanges.subscribe((val) => {
-        this.maxOfToDate = this.setDateString(14, val);
-        this.setDayOffs()
-          ? this.dayOffs > 14
-            ? this.f.get('toDate').setValue(this.maxOfToDate)
-            : null
-          : this.f.get('toDate').setValue(val);
-      });
-
-      this.f.get('toDate').valueChanges.subscribe(() => {
-        console.log('ok');
-
-        this.setDayOffs();
-      });
 
       this.f.get('morningBreak').valueChanges.subscribe((val) => {
         this.onDayOffChanged('afternoonBreak', val);
@@ -103,6 +89,20 @@ export class RequestDayOffComponent implements OnInit, OnChanges {
   private setDayOffs(): boolean {
     const to = new Date(`${this.f.get('toDate').value}`).getTime();
     const from = new Date(`${this.f.get('fromDate').value}`).getTime();
+    if ((to - from) / 86400000 > 13) {
+      this.f.get('toDate').setValue(this.maxOfToDate);
+      this.dayOffs = 14;
+      return true;
+    }
+    if (to - from < 0) {
+      this.f.get('toDate').setValue(this.f.get('fromDate').value);
+      this.dayOffs = 1;
+    }
+    if (this.dayOffs === 1) {
+      this.f.get('morningBreak').setValue(true);
+      this.f.get('afternoonBreak').setValue(true);
+      return true;
+    }
     if (to >= from) {
       this.dayOffs = (to - from) / 86400000 + 1;
       return true;
@@ -178,5 +178,18 @@ export class RequestDayOffComponent implements OnInit, OnChanges {
         searchParams: this.searchParams,
       })
     );
+  }
+
+  public onToDateBlur(): void {
+    this.setDayOffs();
+  }
+
+  public onFromDateBlur(): void {
+    this.maxOfToDate = this.setDateString(14, this.f.get('fromDate').value);
+    this.setDayOffs()
+      ? this.dayOffs > 14
+        ? this.f.get('toDate').setValue(this.maxOfToDate)
+        : null
+      : this.f.get('toDate').setValue(this.f.get('fromDate').value);
   }
 }
