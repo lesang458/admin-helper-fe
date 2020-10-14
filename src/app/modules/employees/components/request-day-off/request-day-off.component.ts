@@ -125,7 +125,8 @@ export class RequestDayOffComponent implements OnInit {
       return item.categoryName === this.f.get('kindOfLeave').value;
     })[0];
     const dayOffReturn =
-      this.editData && this.dayOffInfos?.id === this.editData.dayOffCategory.id
+      this.editData &&
+      this.dayOffInfos?.dayOffCategoryId === this.editData.dayOffCategory.id
         ? this.editData.hoursPerDay === 4
           ? 4
           : (+new Date(this.editData.toDate) -
@@ -133,10 +134,9 @@ export class RequestDayOffComponent implements OnInit {
               86400000 +
             1
         : 0;
-    this.dayOffAvailable =
-      this.dayOffInfos?.availableHours > 0
-        ? this.dayOffInfos.availableHours / 8 + dayOffReturn
-        : 0;
+
+    this.dayOffAvailable = this.dayOffInfos?.availableHours / 8 + dayOffReturn;
+    this.dayOffAvailable < 0 ? (this.dayOffAvailable = 0) : null;
   }
 
   public onDayOffChanged(controlName: string, value: boolean): void {
