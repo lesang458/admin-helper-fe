@@ -1,10 +1,9 @@
 import { DayOffCategory } from './dayoff-category.model';
+import { Employee } from './employees.model';
 
 export interface DayOffRequest {
   id?: number;
-  email: string;
-  firstName: string;
-  lastName: string;
+  user: Employee;
   fromDate: string;
   toDate: string;
   notes: string;
