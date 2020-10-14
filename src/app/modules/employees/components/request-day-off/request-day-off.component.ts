@@ -8,21 +8,21 @@ import { Employee } from 'src/app/shared/models/employees.model';
 import { TranslateService } from '@ngx-translate/core';
 import { RequestDayOffModel } from 'src/app/shared/models/request-day-off.model';
 import { DatePipe } from '@angular/common';
+import { BsModalRef } from 'ngx-bootstrap/modal';
 
 @Component({
   selector: 'ah-request-day-off',
   templateUrl: './request-day-off.component.html',
   styleUrls: ['./request-day-off.component.scss'],
 })
-export class RequestDayOffComponent implements OnInit, OnChanges {
-  @Input() selectedEmployee: Employee;
-  @Input() searchParams: SearchParams;
-  @Input() editData: any;
+export class RequestDayOffComponent implements OnInit {
+  public selectedEmployee: Employee;
+  public searchParams: SearchParams;
+  public editData: any;
   public currentDateString: string;
   public dayOffAvailable: number;
   public dayOffs: number;
   public dayOffInfos: any;
-  public maxOfToDate: string;
   public f = new FormGroup({
     fullName: new FormControl(),
     fromDate: new FormControl(),
@@ -36,38 +36,38 @@ export class RequestDayOffComponent implements OnInit, OnChanges {
   constructor(
     private store: Store<fromApp.AppState>,
     public translate: TranslateService,
-    private datePipe: DatePipe
+    private datePipe: DatePipe,
+    public bsModalRef: BsModalRef
   ) {}
 
   ngOnInit(): void {
     this.f.get('fullName').disable();
-  }
-
-  ngOnChanges() {
-    if (this.selectedEmployee || this.editData) {
-      if (this.selectedEmployee) {
-        this.currentDateString = this.setDateString();
-        this.f.patchValue({
-          fullName: `${this.selectedEmployee.firstName} ${this.selectedEmployee.lastName}`,
-          fromDate: this.currentDateString,
-          toDate: this.currentDateString,
-          morningBreak: true,
-          afternoonBreak: true,
-          kindOfLeave: this.selectedEmployee.dayOffInfos[0].categoryName,
-        });
-      } else {
-        this.f.patchValue({
-          fromDate: this.datePipe.transform(
-            this.editData.fromDate,
-            'yyyy-MM-dd'
-          ),
-          toDate: this.datePipe.transform(this.editData.toDate, 'yyyy-MM-dd'),
-          morningBreak: true,
-          afternoonBreak: true,
-          kindOfLeave: this.editData.dayOffCategory.name,
-        });
+    if (this.selectedEmployee) {
+      this.currentDateString = this.setDateString();
+      this.f.patchValue({
+        fullName: `${this.selectedEmployee.firstName} ${this.selectedEmployee.lastName}`,
+        fromDate: this.currentDateString,
+        toDate: this.currentDateString,
+        morningBreak: true,
+        afternoonBreak: true,
+        kindOfLeave: this.selectedEmployee.dayOffInfos[0].categoryName,
+      });
+    }
+    if (this.editData) {
+      this.f.patchValue({
+        fromDate: this.datePipe.transform(this.editData.fromDate, 'yyyy-MM-dd'),
+        toDate: this.datePipe.transform(this.editData.toDate, 'yyyy-MM-dd'),
+        morningBreak: true,
+        afternoonBreak: true,
+        kindOfLeave: this.editData.dayOffCategory.name,
+      });
+      if (this.selectedEmployee?.id !== this.editData.user.id) {
+        this.store.dispatch(
+          new EmployeeActions.DetailEmployee(this.editData.user.id)
+        );
       }
-
+    }
+    if (this.selectedEmployee || this.editData) {
       this.f.get('morningBreak').valueChanges.subscribe((val) => {
         this.onDayOffChanged('afternoonBreak', val);
       });
@@ -79,31 +79,27 @@ export class RequestDayOffComponent implements OnInit, OnChanges {
       this.f.get('kindOfLeave').valueChanges.subscribe(() => {
         this.setHoursAvailable();
       });
-
-      this.setHoursAvailable();
-      this.maxOfToDate = this.setDateString(14);
-      this.setDayOffs();
     }
+    if (this.editData) {
+      this.store
+        .select((s) => s.employees.detaiEmployee)
+        .subscribe((data: Employee) => {
+          this.selectedEmployee = data;
+          this.setDayOffs();
+          this.setHoursAvailable();
+        });
+    }
+    this.setHoursAvailable();
+    this.setDayOffs();
   }
 
   private setDayOffs(): boolean {
     const to = new Date(`${this.f.get('toDate').value}`).getTime();
     const from = new Date(`${this.f.get('fromDate').value}`).getTime();
-    if ((to - from) / 86400000 > 13) {
-      this.f.get('toDate').setValue(this.maxOfToDate);
-      this.dayOffs = 14;
-      return true;
-    }
     if (to - from < 0) {
       this.f.get('toDate').setValue(this.f.get('fromDate').value);
       this.dayOffs = 1;
-    }
-    if (this.dayOffs === 1) {
-      this.f.get('morningBreak').setValue(true);
-      this.f.get('afternoonBreak').setValue(true);
-      return true;
-    }
-    if (to >= from) {
+    } else {
       this.dayOffs = (to - from) / 86400000 + 1;
       return true;
     }
@@ -125,14 +121,11 @@ export class RequestDayOffComponent implements OnInit, OnChanges {
   }
 
   public setHoursAvailable(): void {
-    this.dayOffInfos = this.selectedEmployee
-      ? this.selectedEmployee.dayOffInfos.filter((item) => {
-          return item.categoryName === this.f.get('kindOfLeave').value;
-        })[0]
-      : this.editData.dayOffCategory;
-
+    this.dayOffInfos = this.selectedEmployee?.dayOffInfos.filter((item) => {
+      return item.categoryName === this.f.get('kindOfLeave').value;
+    })[0];
     const dayOffReturn =
-      this.editData && this.dayOffInfos.id === this.editData.dayOffCategory.id
+      this.editData && this.dayOffInfos?.id === this.editData.dayOffCategory.id
         ? this.editData.hoursPerDay === 4
           ? 4
           : (+new Date(this.editData.toDate) -
@@ -147,11 +140,11 @@ export class RequestDayOffComponent implements OnInit, OnChanges {
   }
 
   public onDayOffChanged(controlName: string, value: boolean): void {
-    if (value && this.f.get(controlName).value) {
-      this.dayOffs = 1;
+    if (!value) {
+      this.f.get(controlName).setValue(true);
+      this.dayOffs === 1 ? (this.dayOffs = 0.5) : null;
     } else {
-      this.dayOffs = 0.5;
-      !value ? this.f.get(controlName).setValue(true) : null;
+      this.dayOffs === 0.5 ? (this.dayOffs = 1) : null;
     }
   }
 
@@ -175,9 +168,19 @@ export class RequestDayOffComponent implements OnInit, OnChanges {
     this.store.dispatch(
       new EmployeeActions.RequestDayOff({
         body,
-        searchParams: this.searchParams,
+        searchParams: {
+          search: '',
+          perPage: 10,
+          page: 1,
+          sort: {
+            sortNameType: true,
+            sortBirthDateType: true,
+            sortJoinDateType: true,
+          },
+        },
       })
     );
+    this.bsModalRef.hide();
   }
 
   public onToDateBlur(): void {
@@ -185,11 +188,6 @@ export class RequestDayOffComponent implements OnInit, OnChanges {
   }
 
   public onFromDateBlur(): void {
-    this.maxOfToDate = this.setDateString(14, this.f.get('fromDate').value);
-    this.setDayOffs()
-      ? this.dayOffs > 14
-        ? this.f.get('toDate').setValue(this.maxOfToDate)
-        : null
-      : this.f.get('toDate').setValue(this.f.get('fromDate').value);
+    this.setDayOffs();
   }
 }

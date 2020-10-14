@@ -8,13 +8,13 @@
         <button
           type="button"
           class="close"
-          data-dismiss="modal"
           aria-label="Close"
+          (click)="bsModalRef.hide()"
         >
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-      <div *ngIf="selectedEmployee" class="modal-body pt-1 pb-0">
+      <div *ngIf="!editData" class="modal-body pt-1 pb-0">
         <label class="font-weight-bold" for="exampleFormControlInput1">
           {{ 'REQUEST_DAY_OFF.FULL_NAME' | translate }}
         </label>
@@ -46,7 +46,6 @@
         <input
           type="date"
           min="{{ f.get('fromDate').value | date: 'yyyy-MM-dd' }}"
-          max="{{ maxOfToDate | date: 'yyyy-MM-dd' }}"
           (blur)="onToDateBlur()"
           class="form-control"
           id="exampleFormControlInput3"
@@ -137,14 +136,13 @@
       </div>
 
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">
+        <button type="button" class="btn btn-secondary" (click)="bsModalRef.hide()">
           {{ 'PROFILE_CREATE.CLOSE' | translate }}
         </button>
         <button
           [disabled]="dayOffAvailable < dayOffs && !f.get('unpaidLeave').value"
           (click)="onSave()"
           type="button"
-          data-dismiss="modal"
           class="btn btn-success"
         >
           {{ 'PROFILE_CREATE.SAVE' | translate }}

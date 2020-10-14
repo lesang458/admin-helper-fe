@@ -22,11 +22,7 @@ export class DayOffCategoryEditComponent implements OnInit {
       Validators.minLength(2),
       Validators.maxLength(20),
     ]),
-    days: new FormControl('', [
-      Validators.required,
-      Validators.min(1),
-      Validators.max(20),
-    ]),
+    days: new FormControl('', [Validators.required, Validators.min(1)]),
     description: new FormControl(null, Validators.minLength(6)),
   });
   constructor(

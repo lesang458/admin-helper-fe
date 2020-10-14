@@ -93,10 +93,8 @@
                 <button
                   type="button"
                   class="btn btn-outline-info"
-                  data-toggle="modal"
-                  (click)="selectedEmployee = item"
+                  (click)="openModalWithComponent(item,searchParams)"
                   tooltip="{{ 'DAY_OFF_TABLE.SUBMIT_TIME_OFF' | translate }}"
-                  data-target="#subTimeOff"
                 >
                   <i class="fa fa-calendar-plus-o"></i>
                 </button>
@@ -130,18 +128,5 @@
         </pagination>
       </div>
     </div>
-  </div>
-  <div
-    id="subTimeOff"
-    class="modal fade"
-    tabindex="-1"
-    role="dialog"
-    aria-labelledby="exampleModalCenterTitle"
-    aria-hidden="true"
-  >
-    <ah-request-day-off
-      [searchParams]="searchParams"
-      [selectedEmployee]="selectedEmployee"
-    ></ah-request-day-off>
   </div>
 </div>

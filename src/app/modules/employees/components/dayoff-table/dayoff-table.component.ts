@@ -12,6 +12,8 @@ import { DayOffCategory } from 'src/app/shared/models/dayoff-category.model';
 import * as DayOffCategoriesActions from 'src/app/modules/dayoff-categories/store/dayoff-categories.actions';
 import { Router } from '@angular/router';
 import { RouteConstant } from 'src/app/shared/constants/route.constant';
+import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
+import { RequestDayOffComponent } from '../request-day-off/request-day-off.component';
 
 @Component({
   selector: 'ah-dayoff-table',
@@ -19,6 +21,7 @@ import { RouteConstant } from 'src/app/shared/constants/route.constant';
   styleUrls: ['./dayoff-table.component.scss'],
 })
 export class DayoffTableComponent implements OnInit {
+  public bsModalRef: BsModalRef;
   public searchInput = new FormControl('');
   public selectedType = new FormControl('');
   public currentPage = 1;
@@ -39,7 +42,11 @@ export class DayoffTableComponent implements OnInit {
   };
   public data$: Observable<PaginatedData<Employee[]>>;
   public types$: Observable<DayOffCategory[]>;
-  constructor(private store: Store<fromApp.AppState>, private router: Router) {}
+  constructor(
+    private store: Store<fromApp.AppState>,
+    private router: Router,
+    private modalService: BsModalService
+  ) {}
 
   ngOnInit(): void {
     this.data$ = this.store.select('employees').pipe(
@@ -116,5 +123,13 @@ export class DayoffTableComponent implements OnInit {
       this.currentSearch = this.searchInput.value.replace(/\s/g, '');
       this.currentPage === 1 ? this.onPageChanged(1) : (this.currentPage = 1);
     }
+  }
+
+  public openModalWithComponent(selectedEmployee, searchParams): void {
+    const initialState = { selectedEmployee, searchParams };
+    this.bsModalRef = this.modalService.show(RequestDayOffComponent, {
+      initialState,
+    });
+    this.bsModalRef.content.closeBtnName = 'Close';
   }
 }
