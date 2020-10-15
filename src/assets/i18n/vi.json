@@ -261,6 +261,8 @@
     "SERVER_ERROR": "Lỗi máy chủ nội bộ"
   },
   "CONFIRM_NOTIFY": {
-    "DAY_OFF_DEACTIVE": "Vô hiệu hóa loại ngày phép này?"
+    "DAY_OFF_DEACTIVE": "Vô hiệu hóa loại ngày phép này?",
+    "DAY_OFF_ACTIVE": "Kích hoạt loại ngày phép này?",
+    "CONTENT_CONFIRM": "Trạng thái của loại ngày phép sẽ được thay đổi. Bạn có muốn tiếp tục?"
   }
 }

@@ -3,6 +3,9 @@
     <h4 *ngIf="type === 'day-off-category-deactive'" class="modal-title pull-left">
       {{ 'CONFIRM_NOTIFY.DAY_OFF_DEACTIVE' | translate }}
     </h4>
+    <h4 *ngIf="type === 'day-off-category-active'" class="modal-title pull-left">
+      {{ 'CONFIRM_NOTIFY.DAY_OFF_ACTIVE' | translate }}
+    </h4>
     <button
       type="button"
       class="close pull-right"
@@ -14,7 +17,7 @@
   </div>
   <hr class="mt-0 mb-0" />
   <div class="modal-body pb-0">
-    {{ 'DAY_OFF_CATEGORIES_PAGE.DELETE_CONFIRM' | translate }}
+    {{ 'CONFIRM_NOTIFY.CONTENT_CONFIRM' | translate }}
   </div>
   <div class="modal-footer">
     <button

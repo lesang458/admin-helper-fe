@@ -262,6 +262,8 @@
     "SERVER_ERROR": "Internal Server Error"
   },
   "CONFIRM_NOTIFY": {
-    "DAY_OFF_DEACTIVE": "Deactive this day off category?"
+    "DAY_OFF_DEACTIVE": "Deactive this day off category?",
+    "DAY_OFF_ACTIVE": "Active this day off category?",
+    "CONTENT_CONFIRM": "This category's status will be changed. Do you want to continue?"
   }
 }

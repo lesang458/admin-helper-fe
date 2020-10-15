@@ -35,13 +35,15 @@ export class DayOffCategoriesListComponent implements OnInit {
     type?: string
   ): void {
     const initialState = { selectedCategory, type };
-    type === 'day-off-category-deactive'
-      ? (this.bsModalRef = this.modalService.show(ConfirmNotifyComponent, {
-          initialState,
-        }))
-      : (this.bsModalRef = this.modalService.show(DayOffCategoryEditComponent, {
-          initialState,
-        }));
+    if (type === 'edit') {
+      this.bsModalRef = this.modalService.show(DayOffCategoryEditComponent, {
+        initialState,
+      });
+    } else {
+      this.bsModalRef = this.modalService.show(ConfirmNotifyComponent, {
+        initialState,
+      });
+    }
     this.bsModalRef.content.closeBtnName = 'Close';
   }
 }
