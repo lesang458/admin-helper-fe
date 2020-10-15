@@ -34,7 +34,7 @@
           class="form-control"
           id="exampleFormControlInput2"
           formControlName="fromDate"
-          (blur)="onFromDateBlur()"
+          (change)="setDayOffs()"
         />
         <label
           class="font-weight-bold"
@@ -46,11 +46,13 @@
         <input
           type="date"
           min="{{ f.get('fromDate').value | date: 'yyyy-MM-dd' }}"
-          (blur)="onToDateBlur()"
           class="form-control"
           id="exampleFormControlInput3"
           formControlName="toDate"
         />
+        <div *ngIf="toDateError" class="mess-invalid">
+          {{ 'REQUEST_DAY_OFF.TO_DATE_ERROR' | translate }}
+        </div>
       </div>
 
       <div *ngIf="dayOffs < 2">

@@ -9,6 +9,7 @@ import { TranslateService } from '@ngx-translate/core';
 import { RequestDayOffModel } from 'src/app/shared/models/request-day-off.model';
 import { DatePipe } from '@angular/common';
 import { BsModalRef } from 'ngx-bootstrap/modal';
+import { debounceTime } from 'rxjs/operators';
 
 @Component({
   selector: 'ah-request-day-off',
@@ -23,6 +24,7 @@ export class RequestDayOffComponent implements OnInit {
   public dayOffAvailable: number;
   public dayOffs: number;
   public dayOffInfos: any;
+  public toDateError = false;
   public f = new FormGroup({
     fullName: new FormControl(),
     fromDate: new FormControl(),
@@ -79,6 +81,13 @@ export class RequestDayOffComponent implements OnInit {
       this.f.get('kindOfLeave').valueChanges.subscribe(() => {
         this.setHoursAvailable();
       });
+
+      this.f
+        .get('toDate')
+        .valueChanges.pipe(debounceTime(300))
+        .subscribe(() => {
+          this.setDayOffs();
+        });
     }
     if (this.editData) {
       this.store
@@ -93,17 +102,22 @@ export class RequestDayOffComponent implements OnInit {
     this.setDayOffs();
   }
 
-  private setDayOffs(): boolean {
+  public setDayOffs(): void {
     const to = new Date(`${this.f.get('toDate').value}`).getTime();
     const from = new Date(`${this.f.get('fromDate').value}`).getTime();
     if (to < from) {
       this.f.get('toDate').setValue(this.f.get('fromDate').value);
       this.dayOffs = 1;
+      setTimeout(() => {
+        this.toDateError = true;
+      }, 300);
+      setTimeout(() => {
+        this.toDateError = false;
+      }, 4000);
+      this.toDateError = true;
     } else {
       this.dayOffs = (to - from) / 86400000 + 1;
-      return true;
     }
-    return false;
   }
 
   public setDateString(ascDays: number = 1, dateString?: string): string {
@@ -162,53 +176,37 @@ export class RequestDayOffComponent implements OnInit {
 
   public onSave(): void {
     const body: RequestDayOffModel = {
-      id: this.selectedEmployee.id,
+      id: this.editData ? this.editData.id : this.selectedEmployee.id,
       fromDate: this.f.get('fromDate').value,
       toDate: this.f.get('toDate').value,
       hoursPerDay: this.dayOffs < 1 ? 4 : 8,
       dayOffCategoryId: this.dayOffInfos.dayOffCategoryId,
     };
+    const searchParams = {
+      search: '',
+      perPage: 10,
+      page: 1,
+      sort: {
+        sortNameType: true,
+        sortBirthDateType: true,
+        sortJoinDateType: true,
+      },
+    };
     if (this.editData) {
       this.store.dispatch(
         new EmployeeActions.UpdateRequestDayOff({
           body,
-          searchParams: {
-            search: '',
-            perPage: 10,
-            page: 1,
-            sort: {
-              sortNameType: true,
-              sortBirthDateType: true,
-              sortJoinDateType: true,
-            },
-          },
+          searchParams,
         })
       );
     } else {
       this.store.dispatch(
         new EmployeeActions.RequestDayOff({
           body,
-          searchParams: {
-            search: '',
-            perPage: 10,
-            page: 1,
-            sort: {
-              sortNameType: true,
-              sortBirthDateType: true,
-              sortJoinDateType: true,
-            },
-          },
+          searchParams,
         })
       );
     }
     this.bsModalRef.hide();
-  }
-
-  public onToDateBlur(): void {
-    this.setDayOffs();
-  }
-
-  public onFromDateBlur(): void {
-    this.setDayOffs();
   }
 }
