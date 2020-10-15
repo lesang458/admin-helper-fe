@@ -65,6 +65,7 @@
     "FULL_NAME": "Họ và tên",
     "FROM_DATE": "Từ ngày",
     "TO_DATE": "Đến ngày",
+    "TO_DATE_ERROR": "Ngày bắt đầu phải lớn hơn ngày kết thúc!",
     "HAFL_DAY_OFF": "Nghỉ nửa ngày",
     "KIND_OF_LEAVE": "Loại phép",
     "DAY_OFF_AVAILABLE": "Số ngày phép đang có",
