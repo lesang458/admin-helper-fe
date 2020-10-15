@@ -162,42 +162,34 @@ export class RequestDayOffComponent implements OnInit {
 
   public onSave(): void {
     const body: RequestDayOffModel = {
-      id: this.selectedEmployee.id,
+      id: this.editData ? this.editData.id : this.selectedEmployee.id,
       fromDate: this.f.get('fromDate').value,
       toDate: this.f.get('toDate').value,
       hoursPerDay: this.dayOffs < 1 ? 4 : 8,
       dayOffCategoryId: this.dayOffInfos.dayOffCategoryId,
     };
+    const searchParams = {
+      search: '',
+      perPage: 10,
+      page: 1,
+      sort: {
+        sortNameType: true,
+        sortBirthDateType: true,
+        sortJoinDateType: true,
+      },
+    };
     if (this.editData) {
       this.store.dispatch(
         new EmployeeActions.UpdateRequestDayOff({
           body,
-          searchParams: {
-            search: '',
-            perPage: 10,
-            page: 1,
-            sort: {
-              sortNameType: true,
-              sortBirthDateType: true,
-              sortJoinDateType: true,
-            },
-          },
+          searchParams,
         })
       );
     } else {
       this.store.dispatch(
         new EmployeeActions.RequestDayOff({
           body,
-          searchParams: {
-            search: '',
-            perPage: 10,
-            page: 1,
-            sort: {
-              sortNameType: true,
-              sortBirthDateType: true,
-              sortJoinDateType: true,
-            },
-          },
+          searchParams,
         })
       );
     }
