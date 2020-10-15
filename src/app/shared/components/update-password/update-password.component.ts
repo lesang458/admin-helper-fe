@@ -57,7 +57,14 @@ export class UpdatePasswordComponent implements OnInit {
   }
 
   public onSubmit(): void {
-    if (!this.isChangePw) {
+    if (this.isChangePw) {
+      this.store.dispatch(
+        new AuthActions.ChangePassword({
+          oldPassword: this.updatePwForm.get('oldPassword')?.value,
+          newPassword: this.updatePwForm.get('newPassword')?.value,
+        })
+      );
+    } else {
       this.email = this.updatePwForm.get('email')?.value;
       this.token = this.updatePwForm.get('token')?.value;
       this.newPassword = this.updatePwForm.get('newPassword')?.value;

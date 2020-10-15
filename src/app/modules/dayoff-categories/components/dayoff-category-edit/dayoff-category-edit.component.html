@@ -53,9 +53,6 @@
         <div *ngIf="f.get('days').errors.required">
           {{ 'DAY_OFF_CATEGORIES_PAGE.DAYS_REQUIRED' | translate }}
         </div>
-        <div *ngIf="f.get('days').errors.max">
-          {{ 'DAY_OFF_CATEGORIES_PAGE.DAYS_MAX' | translate }}
-        </div>
         <div *ngIf="f.get('days').errors.min">
           {{ 'DAY_OFF_CATEGORIES_PAGE.DAYS_MIN' | translate }}
         </div>

@@ -32,6 +32,7 @@ export const DETAIL_EMPLOYEE = '[Employees] Detail Employee';
 export const DETAIL_EMPLOYEE_SUCCESS = '[Employees] Detail Employee Success';
 export const EDIT_EMPLOYEE = '[Employees] Edit Employee';
 export const REQUEST_DAY_OFF = '[Employees] Request Day Off';
+export const UPDATE_REQUEST_DAY_OFF = '[Employees] Update Request Day Off';
 export const FETCH_DAY_OFF_REQUEST = '[Employees] Fetch Day Off Request';
 export const SET_DAY_OFF_REQUEST = '[Employees] Set Day Off Request';
 
@@ -81,6 +82,12 @@ export class EditEmployee implements Action {
 }
 export class RequestDayOff implements Action {
   readonly type = REQUEST_DAY_OFF;
+  constructor(
+    public payload: { body: RequestDayOffModel; searchParams: SearchParams }
+  ) {}
+}
+export class UpdateRequestDayOff implements Action {
+  readonly type = UPDATE_REQUEST_DAY_OFF;
   constructor(
     public payload: { body: RequestDayOffModel; searchParams: SearchParams }
   ) {}
