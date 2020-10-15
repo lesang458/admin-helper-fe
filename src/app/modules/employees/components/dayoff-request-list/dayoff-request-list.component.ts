@@ -12,6 +12,7 @@ import { Router } from '@angular/router';
 import { tap, map } from 'rxjs/operators';
 import { SearchParams } from 'src/app/modules/employees/store/employees.actions';
 import { RequestDayOffComponent } from '../request-day-off/request-day-off.component';
+import { DayOffRequest } from 'src/app/shared/models/dayoff-request.model';
 
 @Component({
   selector: 'ah-dayoff-request-list',
@@ -90,7 +91,7 @@ export class DayOffRequestListComponent implements OnInit {
     this.router.navigateByUrl(`/${RouteConstant.employees}/${id}`);
   }
 
-  public openModalWithComponent(editData): void {
+  public openModalWithComponent(editData: DayOffRequest): void {
     const initialState = { editData };
     this.bsModalRef = this.modalService.show(RequestDayOffComponent, {
       initialState,

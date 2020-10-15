@@ -158,6 +158,28 @@ export class EmployeeEffects {
     })
   );
 
+  @Effect()
+  updateRequestDayOff = this.actions$.pipe(
+    ofType(EmployeesActions.UPDATE_REQUEST_DAY_OFF),
+    switchMap((action: EmployeesActions.UpdateRequestDayOff) => {
+      const body: RequestDayOffModel = {
+        ...snakecaseKeys(action.payload.body),
+      };
+      const id = body.id;
+      delete body.id;
+      return this.http
+        .put(`${environment.APILink}/day_off_request/${id}`, body)
+        .pipe(
+          map(() => {
+            this.notify.showSuccess('MESSAGE.REQUEST_DAY_OFF');
+            return new EmployeesActions.FetchDayOffRequest(
+              action.payload.searchParams
+            );
+          })
+        );
+    })
+  );
+
   public sortBy(property: string, type: number): string {
     const sortType = type === 1 ? 'asc' : 'desc';
     const sortProp = this.sortProperties[property];

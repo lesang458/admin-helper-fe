@@ -96,7 +96,7 @@ export class RequestDayOffComponent implements OnInit {
   private setDayOffs(): boolean {
     const to = new Date(`${this.f.get('toDate').value}`).getTime();
     const from = new Date(`${this.f.get('fromDate').value}`).getTime();
-    if (to - from < 0) {
+    if (to < from) {
       this.f.get('toDate').setValue(this.f.get('fromDate').value);
       this.dayOffs = 1;
     } else {
@@ -124,16 +124,19 @@ export class RequestDayOffComponent implements OnInit {
     this.dayOffInfos = this.selectedEmployee?.dayOffInfos.filter((item) => {
       return item.categoryName === this.f.get('kindOfLeave').value;
     })[0];
-    const dayOffReturn =
+    let dayOffReturn = 0;
+    if (
       this.editData &&
       this.dayOffInfos?.dayOffCategoryId === this.editData.dayOffCategory.id
-        ? this.editData.hoursPerDay === 4
+    ) {
+      dayOffReturn =
+        this.editData.hoursPerDay === 4
           ? 4
           : (+new Date(this.editData.toDate) -
               +new Date(this.editData.fromDate)) /
               86400000 +
-            1
-        : 0;
+            1;
+    }
 
     this.dayOffAvailable = this.dayOffInfos?.availableHours / 8 + dayOffReturn;
     this.dayOffAvailable < 0 ? (this.dayOffAvailable = 0) : null;
@@ -165,21 +168,39 @@ export class RequestDayOffComponent implements OnInit {
       hoursPerDay: this.dayOffs < 1 ? 4 : 8,
       dayOffCategoryId: this.dayOffInfos.dayOffCategoryId,
     };
-    this.store.dispatch(
-      new EmployeeActions.RequestDayOff({
-        body,
-        searchParams: {
-          search: '',
-          perPage: 10,
-          page: 1,
-          sort: {
-            sortNameType: true,
-            sortBirthDateType: true,
-            sortJoinDateType: true,
+    if (this.editData) {
+      this.store.dispatch(
+        new EmployeeActions.UpdateRequestDayOff({
+          body,
+          searchParams: {
+            search: '',
+            perPage: 10,
+            page: 1,
+            sort: {
+              sortNameType: true,
+              sortBirthDateType: true,
+              sortJoinDateType: true,
+            },
           },
-        },
-      })
-    );
+        })
+      );
+    } else {
+      this.store.dispatch(
+        new EmployeeActions.RequestDayOff({
+          body,
+          searchParams: {
+            search: '',
+            perPage: 10,
+            page: 1,
+            sort: {
+              sortNameType: true,
+              sortBirthDateType: true,
+              sortJoinDateType: true,
+            },
+          },
+        })
+      );
+    }
     this.bsModalRef.hide();
   }
 

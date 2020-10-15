@@ -4,4 +4,5 @@ export interface RequestDayOffModel {
   hoursPerDay: number;
   id?: string;
   dayOffCategoryId: number;
+  notes?: string;
 }
