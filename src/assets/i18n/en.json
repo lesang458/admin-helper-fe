@@ -254,6 +254,8 @@
     "REQUEST_LONG": "Request is too long",
     "STATUS": "Status is not valid",
     "RESET_SUCCESSFULLY": "Reset password successfully",
+    "CHANGE_SUCCESSFULLY": "Change password successfully",
+    "PASSWORD_INCORRECT": "Your password was incorrect!",
     "SERVER_ERROR": "Internal Server Error"
   },
   "CONFIRM_NOTIFY": {

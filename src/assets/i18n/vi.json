@@ -253,6 +253,8 @@
     "REQUEST_LONG": "Yêu cầu thất bại",
     "STATUS": "Trạng thái không hợp lệ",
     "RESET_SUCCESSFULLY": "Khôi phục mật khẩu thành công",
+    "CHANGE_SUCCESSFULLY": "Thay đổi mật khẩu thành công",
+    "PASSWORD_INCORRECT": "Mật khẩu của bạn không đúng!",
     "SERVER_ERROR": "Lỗi máy chủ nội bộ"
   },
   "CONFIRM_NOTIFY": {
