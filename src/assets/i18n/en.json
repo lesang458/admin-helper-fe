@@ -154,7 +154,11 @@
     "DAY_OFF": "Total default leaves (day)",
     "DAYS_REQUIRED": "Total default leaves is required!",
     "DAYS_MIN": "Total default leaves must be at least 1",
-    "DAYS_MAX": "Total default leaves must not exceed 20"
+    "DAYS_MAX": "Total default leaves must not exceed 20",
+    "ALL_EMPLOYEES": "All employees",
+    "CHOOSE_EMPLOYEE": "Choose employee",
+    "UNCHOOSE": "Unchoose",
+    "CATEGORY_NAME": "Category name"
   },
   "DAY_OFF_REQUEST_PAGE": {
     "TITLE": "Day off request history List"

@@ -61,9 +61,9 @@
         </div>
       </div>
     </div>
-    <div class="form-group col-md-12 radio-st">
+    <div class="form-group col-md-12 radio-st" *ngIf="type === 'create'">
       <div class="form-check form-check-inline">
-        <label class="form-check-label mr-2" for="inlineRadio1">All employees</label>
+        <label class="form-check-label mr-2" for="inlineRadio1">{{ 'DAY_OFF_CATEGORIES_PAGE.ALL_EMPLOYEES' | translate }}</label>
         <input 
           class="form-check-input" 
           type="radio" 
@@ -72,7 +72,7 @@
           value="true">
       </div>
       <div class="form-check form-check-inline">
-        <label class="form-check-label mr-2" for="inlineRadio2">Choose employee</label>
+        <label class="form-check-label mr-2" for="inlineRadio2">{{ 'DAY_OFF_CATEGORIES_PAGE.CHOOSE_EMPLOYEE' | translate }}</label>
         <input 
           class="form-check-input" 
           type="radio" 
@@ -80,6 +80,16 @@
           (change)="changeOption()"
           id="inlineRadio2" 
           value="false">
+      </div>
+      <div class="form-check form-check-inline">
+        <label class="form-check-label mr-2" for="inlineRadio2">{{ 'DAY_OFF_CATEGORIES_PAGE.UNCHOOSE' | translate }}</label>
+        <input 
+          class="form-check-input" 
+          type="radio" 
+          formControlName="applyForAllEmployees"
+          id="inlineRadio3" 
+          value=""
+          checked>
       </div>
     </div>
     <div class="form-group col-md-12 emp-style" *ngIf="f.get('applyForAllEmployees').value === 'false'">
@@ -199,7 +209,7 @@
     >
       {{ 'PROFILE_CREATE.CLOSE' | translate }}
     </button>
-    <button [disabled]="checkChange()" type="submit" class="btn btn-success">
+    <button [disabled]="checkChange()" type="button" class="btn btn-success" (click)="onSubmit()">
       {{ 'PROFILE_CREATE.SAVE' | translate }}
     </button>
   </div>

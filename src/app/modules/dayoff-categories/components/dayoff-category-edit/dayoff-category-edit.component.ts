@@ -138,31 +138,20 @@ export class DayOffCategoryEditComponent implements OnInit {
   }
 
   public onSubmit(): void {
-    console.log(
-      'DayOffCategoryEditComponent -> onSubmit -> this.f.value.applyForAllEmployees',
-      this.f.value.applyForAllEmployees
-    );
-    console.log('mot hai ba bon nam sau bay tam');
     const category = { ...this.f.value };
     category.totalHoursDefault = this.f.value.days * 8;
     category.name = this.f.value.name.toUpperCase();
     if (this.f.value.applyForAllEmployees === 'true') {
-      category.applyForAllEmployees =
-        this.f.value.applyForAllEmployees === 'true';
+      category.applyForAllEmployees = true;
     } else {
       category.employeeIds = this.arrEmpId;
       delete category.applyForAllEmployees;
     }
     delete category.days;
-
-    if (!this.f.value.applyForAllEmployees || this.arrEmpId.length === 0) {
+    if (!this.f.value.applyForAllEmployees && this.arrEmpId.length === 0) {
       delete category.applyForAllEmployees;
       delete category.employeeIds;
     }
-    console.log(
-      'DayOffCategoryEditComponent -> onSubmit -> category',
-      category
-    );
     if (this.type === 'create') {
       this.store.dispatch(new DayOffActions.CreateDayOffCategory(category));
     }

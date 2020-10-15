@@ -154,7 +154,11 @@
     "DAY_OFF": "Số phép mặc định (ngày)",
     "DAYS_REQUIRED": "Hãy nhập số phép mặc định!",
     "DAYS_MIN": "Số phép mặc định không được nhỏ hơn 1",
-    "DAYS_MAX": "Số phép mặc định không được vượt quá 20"
+    "DAYS_MAX": "Số phép mặc định không được vượt quá 20",
+    "ALL_EMPLOYEES": "Tất cả nhân viên",
+    "CHOOSE_EMPLOYEE": "Chọn từng nhân viên",
+    "UNCHOOSE": "Không chọn",
+    "CATEGORY_NAME": "Loại ngày nghỉ"
   },
   "DAY_OFF_REQUEST_PAGE": {
     "TITLE": "Danh sách lịch sử yêu cầu ngày nghỉ"
