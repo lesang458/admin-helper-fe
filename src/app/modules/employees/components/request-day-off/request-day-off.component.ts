@@ -24,6 +24,7 @@ export class RequestDayOffComponent implements OnInit {
   public dayOffAvailable: number;
   public dayOffs: number;
   public dayOffInfos: any;
+  public toDateError = false;
   public f = new FormGroup({
     fullName: new FormControl(),
     fromDate: new FormControl(),
@@ -34,7 +35,6 @@ export class RequestDayOffComponent implements OnInit {
     unpaidLeave: new FormControl(),
   });
   private currentDate = new Date();
-  private toDateError = false;
   constructor(
     private store: Store<fromApp.AppState>,
     public translate: TranslateService,
@@ -102,7 +102,7 @@ export class RequestDayOffComponent implements OnInit {
     this.setDayOffs();
   }
 
-  private setDayOffs(): void {
+  public setDayOffs(): void {
     const to = new Date(`${this.f.get('toDate').value}`).getTime();
     const from = new Date(`${this.f.get('fromDate').value}`).getTime();
     if (to < from) {
