@@ -9,6 +9,7 @@ export interface AuthParams {
 export interface ResetPasswordParams {
   email?: string;
   token?: string;
+  oldPassword?: string;
   newPassword?: string;
 }
 
@@ -19,6 +20,7 @@ export const LOGOUT = '[Auth] Logout';
 export const SEND_MAIL = '[Auth] Send Mail';
 export const VERIFY_TOKEN = '[Auth] Verify Token';
 export const RESET_PASSWORD = '[Auth] Reset Password';
+export const CHANGE_PASSWORD = '[Auth] Change Password';
 
 export class Login implements Action {
   readonly type = LOGIN;
@@ -54,10 +56,16 @@ export class ResetPassword implements Action {
   constructor(public payload: ResetPasswordParams) {}
 }
 
+export class ChangePassword implements Action {
+  readonly type = CHANGE_PASSWORD;
+  constructor(public payload: ResetPasswordParams) {}
+}
+
 export type AuthActions =
   | Login
   | LoginSuccess
   | Logout
   | SendMail
   | VerifyToken
-  | ResetPassword;
+  | ResetPassword
+  | ChangePassword;

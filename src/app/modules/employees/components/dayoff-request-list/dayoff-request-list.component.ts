@@ -7,11 +7,12 @@ import { Observable } from 'rxjs';
 import * as EmployeeActions from '../../store/employees.actions';
 import * as DayOffCategoriesActions from 'src/app/modules/dayoff-categories/store/dayoff-categories.actions';
 import { DayOffCategory } from 'src/app/shared/models/dayoff-category.model';
-import { ConfirmNotifyComponent } from 'src/app/shared/components/confirm-notify/confirm-notify.component';
 import { RouteConstant } from 'src/app/shared/constants/route.constant';
 import { Router } from '@angular/router';
 import { tap, map } from 'rxjs/operators';
 import { SearchParams } from 'src/app/modules/employees/store/employees.actions';
+import { RequestDayOffComponent } from '../request-day-off/request-day-off.component';
+import { DayOffRequest } from 'src/app/shared/models/dayoff-request.model';
 
 @Component({
   selector: 'ah-dayoff-request-list',
@@ -30,6 +31,7 @@ export class DayOffRequestListComponent implements OnInit {
   public types$: Observable<DayOffCategory[]>;
   public bsModalRef: BsModalRef;
   public searchParams: SearchParams;
+  public editData: any;
   constructor(
     private store: Store<fromApp.AppState>,
     private router: Router,
@@ -89,5 +91,11 @@ export class DayOffRequestListComponent implements OnInit {
     this.router.navigateByUrl(`/${RouteConstant.employees}/${id}`);
   }
 
-  public openModalWithComponent(): void {}
+  public openModalWithComponent(editData: DayOffRequest): void {
+    const initialState = { editData };
+    this.bsModalRef = this.modalService.show(RequestDayOffComponent, {
+      initialState,
+    });
+    this.bsModalRef.content.closeBtnName = 'Close';
+  }
 }

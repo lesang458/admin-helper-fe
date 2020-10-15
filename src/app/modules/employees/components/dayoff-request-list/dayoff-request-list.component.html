@@ -49,7 +49,7 @@
           />
         </div>
       </div>
-    </div>  
+    </div>
     <div class="table-responsive" *ngIf="data$ | async as data">
       <table class="table table-bordered table-striped">
         <thead>
@@ -93,7 +93,7 @@
               <div class="d-flex justify-content-center align-middle">
                 <button
                   class="btn btn-outline-primary mr-2"
-                  (click)="openModalWithComponent()"
+                  (click)="openModalWithComponent(item)"
                 >
                   <span class="cil-brush"></span>
                 </button>
