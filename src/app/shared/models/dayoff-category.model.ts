@@ -4,4 +4,6 @@ export interface DayOffCategory {
   status?: string;
   description: string;
   totalHoursDefault: number;
+  applyForAllEmployees?: boolean;
+  employeeIds?: Array<number>;
 }
