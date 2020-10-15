@@ -157,8 +157,9 @@
     "DAYS_MIN": "Số phép mặc định không được nhỏ hơn 1",
     "ALL_EMPLOYEES": "Tất cả nhân viên",
     "CHOOSE_EMPLOYEE": "Chọn từng nhân viên",
-    "UNCHOOSE": "Không chọn",
-    "CATEGORY_NAME": "Loại ngày nghỉ"
+    "UNCHOOSE": "Mặc định",
+    "CATEGORY_NAME": "Loại ngày nghỉ",
+    "APPLY_EMP": "Áp dụng cho nhân viên"
   },
   "DAY_OFF_REQUEST_PAGE": {
     "TITLE": "Danh sách lịch sử yêu cầu ngày nghỉ"
