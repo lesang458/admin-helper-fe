@@ -9,7 +9,13 @@ import { DayOffCategoriesListComponent } from './components/dayoff-categories-li
 import { DayOffCategoryEditComponent } from './components/dayoff-category-edit/dayoff-category-edit.component';
 import { TitleCasePipe } from '@angular/common';
 import { PaginationModule } from 'ngx-bootstrap/pagination';
+import { NgxSelectModule, INgxSelectOptions } from 'ngx-select-ex';
 
+const CustomSelectOptions: INgxSelectOptions = {
+  optionValueField: 'id',
+  optionTextField: 'name',
+  keepSelectedItems: false,
+};
 @NgModule({
   declarations: [
     DayOffCategoriesListComponent,
@@ -19,6 +25,7 @@ import { PaginationModule } from 'ngx-bootstrap/pagination';
   imports: [
     SharedModule,
     FormsModule,
+    NgxSelectModule.forRoot(CustomSelectOptions),
     RouterModule.forChild(DAYOFF_CATEGORIES_ROUTES),
     ReactiveFormsModule,
     ModalModule.forRoot(),
