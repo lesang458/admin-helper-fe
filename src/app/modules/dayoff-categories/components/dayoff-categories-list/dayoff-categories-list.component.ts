@@ -35,7 +35,7 @@ export class DayOffCategoriesListComponent implements OnInit {
     type?: string
   ): void {
     const initialState = { selectedCategory, type };
-    if (type === 'edit') {
+    if (type === 'edit' || type === 'create') {
       this.bsModalRef = this.modalService.show(DayOffCategoryEditComponent, {
         initialState,
       });
