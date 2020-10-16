@@ -81,4 +81,8 @@ export class DayOffCategoryEditComponent implements OnInit {
     }
     return this.translate.instant('DAY_OFF_CATEGORIES_PAGE.NAME_MINLENGTH');
   }
+
+  public isDefined(x: any): boolean {
+    return x ? true : false;
+  }
 }

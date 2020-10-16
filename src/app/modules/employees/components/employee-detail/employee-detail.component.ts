@@ -267,4 +267,12 @@ export class EmployeeDetailComponent implements OnInit {
       this.store.dispatch(new EmployeeActions.EditEmployee(params));
     }
   }
+
+  public disableSaveBtn(): boolean {
+    return (
+      this.f.firstName.value.trim().length === 0 ||
+      this.f.lastName.value.trim().length === 0 ||
+      this.f.email.value.trim().length === 0
+    );
+  }
 }

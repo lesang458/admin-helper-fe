@@ -29,15 +29,16 @@
         class="form-control"
         id="name"
         formControlName="name"
+        inputFormatter
       />
       <div
-        *ngIf="f.get('name').invalid && f.get('name').touched"
+        *ngIf="(f.get('name').invalid || f.value.name.trim().length === 0 || f.value.name.trim().length > 100) && f.get('name').touched"
         class="mess-invalid"
       >
-        <div *ngIf="f.get('name').errors.required">
+        <div *ngIf="f.get('name').errors?.required || f.value.name.trim().length === 0">
           {{ 'DAY_OFF_CATEGORIES_PAGE.NAME_REQUIRED' | translate }}
         </div>
-        <div *ngIf="f.get('name').errors.maxlength">
+        <div *ngIf="f.get('name').errors?.maxlength || f.value.name.trim().length > 100">
           {{ 'DEVICE_CATEGORIES_PAGE.NAME_MAXLENGTH' | translate }}
         </div>
       </div>
@@ -50,6 +51,7 @@
         class="form-control"
         id="description"
         formControlName="description"
+        inputFormatter
       ></textarea>
     </div>
     <div class="form-group col-md-12" *ngIf="type === 'delete'">

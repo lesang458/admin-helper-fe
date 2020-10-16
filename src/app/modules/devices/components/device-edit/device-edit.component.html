@@ -27,12 +27,24 @@
             id="name"
             class="form-control"
             formControlName="name"
+            inputFormatter
           />
           <div
-            *ngIf="f.name.invalid && f.name.touched"
+            *ngIf="(f.name.invalid || f.name.value.trim().length < 2 || f.name.value.trim().length > 40) && f.name.touched"
             class="invalid-message"
           >
-            {{ getNameErrorMessage() }}
+            <div *ngIf="f.name.value.trim().length > 1 && f.name.value.trim().length < 41">
+              {{ getNameErrorMessage() }}
+            </div>
+            <div *ngIf="f.name.value.trim().length===0">
+              {{ 'DEVICE_EDIT.DEVICE_NAME_REQUIRED' | translate }}
+            </div>
+            <div *ngIf="f.name.value.trim().length===1">
+              {{ 'DEVICE_EDIT.DEVICE_NAME_MIN_LENGTH' | translate }}
+            </div>
+            <div *ngIf="f.name.value.trim().length>40">
+              {{ 'DEVICE_EDIT.DEVICE_NAME_MAX_LENGTH' | translate }}
+            </div>
           </div>
         </div>
       </div>
@@ -91,6 +103,7 @@
             class="form-control"
             rows="3"
             formControlName="description"
+            inputFormatter
           ></textarea>
           <div
             *ngIf="f.description.invalid && f.description.touched"
