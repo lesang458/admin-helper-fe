@@ -154,7 +154,12 @@
     "NAME_MAXLENGTH": "The name must not exceed 20 characters",
     "DAY_OFF": "Total default leaves (day)",
     "DAYS_REQUIRED": "Total default leaves is required!",
-    "DAYS_MIN": "Total default leaves must be at least 1"
+    "DAYS_MIN": "Total default leaves must be at least 1",
+    "ALL_EMPLOYEES": "All employees",
+    "CHOOSE_EMPLOYEE": "Choose employee",
+    "UNCHOOSE": "Default",
+    "CATEGORY_NAME": "Category name",
+    "APPLY_EMP": "Apply for employee"
   },
   "DAY_OFF_REQUEST_PAGE": {
     "TITLE": "Day off request history List"
@@ -254,9 +259,15 @@
     "REQUEST_LONG": "Request is too long",
     "STATUS": "Status is not valid",
     "RESET_SUCCESSFULLY": "Reset password successfully",
+    "CHANGE_SUCCESSFULLY": "Change password successfully",
+    "PASSWORD_INCORRECT": "Your password was incorrect!",
     "SERVER_ERROR": "Internal Server Error"
   },
   "CONFIRM_NOTIFY": {
-    "DAY_OFF_DEACTIVE": "Deactive this day off category?"
+    "DAY_OFF_DEACTIVE": "Deactive this day off category?",
+    "DAY_OFF_ACTIVE": "Active this day off category?",
+    "CONTENT_CONFIRM": "This category's status will be changed. Do you want to continue?",
+    "DEACTIVE_SUCCESS": "This category's status has been changed to 'DEACTIVE' successfully!",
+    "ACTIVE_SUCCESS": "This category's status has been changed to 'ACTIVE' successfully!"
   }
 }

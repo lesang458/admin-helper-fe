@@ -126,12 +126,14 @@ export class AuthEffect {
       const body = snakecaseKeys(action.payload);
       return this.http
         .patch(
-          `${environment.APILink}/${localStorage.getItem('id')}/password`,
+          `${environment.APILink}/employees/${localStorage.getItem(
+            'id'
+          )}/password`,
           body
         )
         .pipe(
           map(() => {
-            this.notify.showSuccess('MESSAGE.RESET_SUCCESSFULLY');
+            this.notify.showSuccess('MESSAGE.CHANGE_SUCCESSFULLY');
             this.router.navigate([``]);
           })
         );

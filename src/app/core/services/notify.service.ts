@@ -42,6 +42,9 @@ export class NotifyService {
       case 'Internal Server Error':
         message = this.translate.instant('MESSAGE.SERVER_ERROR');
         break;
+      case 'Your password was incorrect.':
+        message = this.translate.instant('MESSAGE.PASSWORD_INCORRECT');
+        break;
     }
     if (message.includes(`Couldn't find User with`)) {
       message =

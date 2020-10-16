@@ -61,10 +61,18 @@
                   <span class="cil-brush"></span>
                 </button>
                 <button
+                  *ngIf="item.status === 'active'"
                   class="btn btn-outline-danger"
                   (click)="openModalWithComponent(item, 'day-off-category-deactive')"
                 >
                   <i class="fa fa-power-off"></i>
+                </button>
+                <button
+                  *ngIf="item.status === 'inactive'"
+                  class="btn btn-outline-success"
+                  (click)="openModalWithComponent(item, 'day-off-category-active')"
+                >
+                  <i class="cil-check"></i>
                 </button>
               </div>
             </td>

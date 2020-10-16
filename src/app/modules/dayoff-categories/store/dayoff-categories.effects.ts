@@ -79,6 +79,26 @@ export class DayOffCategoriesEffects {
         )
         .pipe(
           map(() => {
+            this.notify.showSuccess('CONFIRM_NOTIFY.DEACTIVE_SUCCESS');
+            const param = { status: '' };
+            return new DayOffCategoriesActions.FetchDayOffCategories(param);
+          })
+        );
+    })
+  );
+
+  @Effect()
+  activateCategory = this.actions$.pipe(
+    ofType(DayOffCategoriesActions.ACTIVATE_CATEGORY),
+    switchMap((action: DayOffCategoriesActions.ActivateDayOffCategory) => {
+      return this.http
+        .patch(
+          `${environment.APILink}/day_off_categories/${action.payload.id}/activate`,
+          {}
+        )
+        .pipe(
+          map(() => {
+            this.notify.showSuccess('CONFIRM_NOTIFY.ACTIVE_SUCCESS');
             const param = { status: '' };
             return new DayOffCategoriesActions.FetchDayOffCategories(param);
           })

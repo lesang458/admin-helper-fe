@@ -6,6 +6,7 @@ export const CREATE_CATEGORY = '[Day Off Categories] Create Category';
 export const UPDATE_CATEGORY = '[Day Off Categories] Update Category';
 export const FETCH_CATEGORIES = '[Day Off Categories] Fetch Categories';
 export const DEACTIVATE_CATEGORY = '[Day Off Categories] Deactivate Category';
+export const ACTIVATE_CATEGORY = '[Day Off Categories] Activate Category';
 
 export class SetDayOffCategories implements Action {
   readonly type = SET_CATEGORIES;
@@ -28,9 +29,15 @@ export class DeactivateDayOffCategory implements Action {
   constructor(public payload: { id: string }) {}
 }
 
+export class ActivateDayOffCategory implements Action {
+  readonly type = ACTIVATE_CATEGORY;
+  constructor(public payload: { id: string }) {}
+}
+
 export type DayOffCategoriesActions =
   | SetDayOffCategories
   | FetchDayOffCategories
   | CreateDayOffCategory
   | UpdateDayOffCategory
-  | DeactivateDayOffCategory;
+  | DeactivateDayOffCategory
+  | ActivateDayOffCategory;

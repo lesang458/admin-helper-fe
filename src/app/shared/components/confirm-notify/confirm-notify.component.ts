@@ -28,6 +28,13 @@ export class ConfirmNotifyComponent implements OnInit {
         })
       );
     }
+    if (this.type === 'day-off-category-active') {
+      this.store.dispatch(
+        new DayOffActions.ActivateDayOffCategory({
+          id: this.selectedCategory.id.toString(),
+        })
+      );
+    }
     this.bsModalRef.hide();
   }
 }
