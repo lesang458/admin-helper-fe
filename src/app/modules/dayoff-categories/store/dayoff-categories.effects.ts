@@ -79,6 +79,7 @@ export class DayOffCategoriesEffects {
         )
         .pipe(
           map(() => {
+            this.notify.showSuccess('CONFIRM_NOTIFY.DEACTIVE_SUCCESS');
             const param = { status: '' };
             return new DayOffCategoriesActions.FetchDayOffCategories(param);
           })
@@ -97,6 +98,7 @@ export class DayOffCategoriesEffects {
         )
         .pipe(
           map(() => {
+            this.notify.showSuccess('CONFIRM_NOTIFY.ACTIVE_SUCCESS');
             const param = { status: '' };
             return new DayOffCategoriesActions.FetchDayOffCategories(param);
           })

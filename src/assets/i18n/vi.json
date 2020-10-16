@@ -265,6 +265,8 @@
   "CONFIRM_NOTIFY": {
     "DAY_OFF_DEACTIVE": "Vô hiệu hóa loại ngày phép này?",
     "DAY_OFF_ACTIVE": "Kích hoạt loại ngày phép này?",
-    "CONTENT_CONFIRM": "Trạng thái của loại ngày phép sẽ được thay đổi. Bạn có muốn tiếp tục?"
+    "CONTENT_CONFIRM": "Trạng thái của loại ngày phép sẽ được thay đổi. Bạn có muốn tiếp tục?",
+    "DEACTIVE_SUCCESS": "Trạng thái của loại ngày phép đã được thay đổi thành 'KHÔNG HOẠT ĐỘNG' thành công!",
+    "ACTIVE_SUCCESS": "Trạng thái của loại ngày phép đã được thay đổi thành 'HOẠT ĐỘNG' thành công!"
   }
 }

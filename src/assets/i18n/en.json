@@ -266,6 +266,8 @@
   "CONFIRM_NOTIFY": {
     "DAY_OFF_DEACTIVE": "Deactive this day off category?",
     "DAY_OFF_ACTIVE": "Active this day off category?",
-    "CONTENT_CONFIRM": "This category's status will be changed. Do you want to continue?"
+    "CONTENT_CONFIRM": "This category's status will be changed. Do you want to continue?",
+    "DEACTIVE_SUCCESS": "This category's status has been changed to 'DEACTIVE' successfully!",
+    "ACTIVE_SUCCESS": "This category's status has been changed to 'ACTIVE' successfully!"
   }
 }
