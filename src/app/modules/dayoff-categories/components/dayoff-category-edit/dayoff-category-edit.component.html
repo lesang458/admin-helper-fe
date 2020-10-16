@@ -58,7 +58,7 @@
         </div>
       </div>
     </div>
-    <label class="font-weight-bold ml-3" for="name">
+    <label class="font-weight-bold ml-3" for="name" *ngIf="type === 'create'">
       {{ 'DAY_OFF_CATEGORIES_PAGE.APPLY_EMP' | translate }}
     </label>
     <div class="form-group col-md-12 radio-st" *ngIf="type === 'create'">
