@@ -117,15 +117,17 @@ export class DayOffCategoryEditComponent implements OnInit {
     category.name = this.f.value.name.toUpperCase();
     if (this.f.value.applyForAllEmployees === 'true') {
       category.applyForAllEmployees = true;
-    } else {
+    } else if (
+      this.f.value.applyForAllEmployees === 'false' &&
+      this.arrEmpId.length > 0
+    ) {
       category.employeeIds = this.arrEmpId;
       delete category.applyForAllEmployees;
-    }
-    delete category.days;
-    if (!this.f.value.applyForAllEmployees && this.arrEmpId.length === 0) {
+    } else {
       delete category.applyForAllEmployees;
       delete category.employeeIds;
     }
+    delete category.days;
     if (this.type === 'create') {
       this.store.dispatch(new DayOffActions.CreateDayOffCategory(category));
     }
