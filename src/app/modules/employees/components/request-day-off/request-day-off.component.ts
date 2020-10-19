@@ -1,5 +1,5 @@
 import { SearchParams } from './../../store/employees.actions';
-import { Component, OnInit, Input, OnChanges } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
 import * as fromApp from '../../../../store/app.reducer';
 import * as EmployeeActions from '../../store/employees.actions';
@@ -59,10 +59,17 @@ export class RequestDayOffComponent implements OnInit {
       this.f.patchValue({
         fromDate: this.datePipe.transform(this.editData.fromDate, 'yyyy-MM-dd'),
         toDate: this.datePipe.transform(this.editData.toDate, 'yyyy-MM-dd'),
-        morningBreak: this.editData.notes === 'Morning',
-        afternoonBreak: this.editData.notes === 'Afternoon',
+        morningBreak:
+          this.editData.notes === 'Morning' ||
+          (this.editData.hoursPerDay === 8 &&
+            this.editData.fromDate === this.editData.toDate),
+        afternoonBreak:
+          this.editData.notes === 'Afternoon' ||
+          (this.editData.hoursPerDay === 8 &&
+            this.editData.fromDate === this.editData.toDate),
         kindOfLeave: this.editData.dayOffCategory.name,
       });
+
       if (this.selectedEmployee?.id !== this.editData.user.id) {
         this.store.dispatch(
           new EmployeeActions.DetailEmployee(this.editData.user.id)
@@ -116,7 +123,8 @@ export class RequestDayOffComponent implements OnInit {
       }, 4000);
       this.toDateError = true;
     } else {
-      this.dayOffs = (to - from) / 86400000 + 1;
+      this.dayOffs =
+        this.editData?.hoursPerDay === 4 ? 0.5 : (to - from) / 86400000 + 1;
     }
   }
 
