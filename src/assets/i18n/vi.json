@@ -6,7 +6,7 @@
     "LINK_5": "Lịch sử thiết bị",
     "LINK_6": "Loại ngày phép",
     "LINK_7": "Loại thiết bị",
-    "LINK_8": "Lịch sử yêu cầu ngày nghỉ"
+    "LINK_8": "Lịch sử nghỉ phép"
   },
   "HEADER": {
     "VIETNAMESE": "Tiếng việt",
@@ -164,7 +164,7 @@
     "NO_RESULT": "Không có nhân viên nào"
   },
   "DAY_OFF_REQUEST_PAGE": {
-    "TITLE": "Danh sách lịch sử yêu cầu ngày nghỉ"
+    "TITLE": "Danh sách lịch sử nghỉ phép"
   },
   "DEVICE_EDIT": {
     "EDIT_TITLE": "Chỉnh sửa thông tin thiết bị.",
