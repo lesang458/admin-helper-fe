@@ -8,8 +8,8 @@ import * as EmployeeActions from '../../../employees/store/employees.actions';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { DayOffCategory } from 'src/app/shared/models/dayoff-category.model';
 import { TitleCasePipe } from '@angular/common';
-import { Observable } from 'rxjs';
 import { SearchParams } from 'src/app/modules/employees/store/employees.actions';
+import { INgxSelectOption } from 'ngx-select-ex';
 
 @Component({
   selector: 'ah-dayoff-create-edit',
@@ -17,17 +17,15 @@ import { SearchParams } from 'src/app/modules/employees/store/employees.actions'
   styleUrls: ['./dayoff-category-edit.component.scss'],
 })
 export class DayOffCategoryEditComponent implements OnInit {
+  public items = [{ id: 1, name: 'abc' }];
   public type: string;
   public selectedCategory: DayOffCategory;
-  public employeeObs$: Observable<any>;
-  public searchFormControl = new FormControl('');
+  public employeeObs = [];
   public arrEmpId = [];
-  public currentPage = 1;
-  private currentSearch = '';
-  public sortBirthDateType = 0;
-  public sortNameType = 0;
-  public sortJoinDateType = 0;
   public paramEmployee: SearchParams;
+  public textSearch = this.translate.instant(
+    'DAY_OFF_CATEGORIES_PAGE.NO_RESULT'
+  );
   public f = new FormGroup({
     name: new FormControl('', [
       Validators.required,
@@ -55,51 +53,40 @@ export class DayOffCategoryEditComponent implements OnInit {
     }
   }
 
-  public onSort(page: number, column: string): void {
-    if (column === 'name') {
-      this.sortNameType =
-        this.sortNameType === 0 ? 1 : this.sortNameType === 1 ? 2 : 1;
-      this.sortBirthDateType = 0;
-      this.sortJoinDateType = 0;
-    } else {
-      this.sortBirthDateType =
-        this.sortBirthDateType === 0 ? 1 : this.sortBirthDateType === 1 ? 2 : 1;
-      this.sortNameType = 0;
-      this.sortJoinDateType = 0;
-    }
-    this.onPageChanged(page);
-  }
-
-  public onPageChanged(page: number): void {
-    const search = this.searchFormControl.value;
-    this.paramEmployee = {
-      search,
-      status: 'ACTIVE',
-      page,
-      perPage: 5,
-      sort: {
-        sortNameType: this.sortNameType,
-        sortBirthDateType: this.sortBirthDateType,
-        sortJoinDateType: this.sortJoinDateType,
-      },
-    };
+  public changeOption(): void {
+    this.store
+      .select((s) => s.employees)
+      .subscribe((data) => {
+        data.employees.map((value) => {
+          this.employeeObs.push({
+            id: value.id,
+            name: value.lastName + ' ' + value.firstName,
+          });
+        });
+        this.paramEmployee = {
+          search: '',
+          status: 'ACTIVE',
+          page: 1,
+          perPage: 300,
+          sort: {
+            sortNameType: 0,
+            sortBirthDateType: 0,
+            sortJoinDateType: 0,
+          },
+        };
+      });
     this.store.dispatch(
       new EmployeeActions.SearchEmployees(this.paramEmployee)
     );
   }
 
-  public changeOption(): void {
-    this.employeeObs$ = this.store.select('employees');
-    this.onPageChanged(1);
-  }
-
-  public changeApplyEmp(event, id: number): void {
-    if (event.target.checked) {
-      this.arrEmpId.push(id);
-    } else {
-      const index = this.arrEmpId.indexOf(id);
-      this.arrEmpId.splice(index, 1);
-    }
+  public doSelectOptions(options: INgxSelectOption[]): void {
+    options.length < this.arrEmpId.length ? (this.arrEmpId = []) : null;
+    options.map((data) => {
+      if (this.arrEmpId.indexOf(data.value) === -1) {
+        this.arrEmpId.push(data.value);
+      }
+    });
   }
 
   public checkChange(): boolean {
@@ -122,15 +109,6 @@ export class DayOffCategoryEditComponent implements OnInit {
       return this.translate.instant('DAY_OFF_CATEGORIES_PAGE.NAME_MAXLENGTH');
     }
     return this.translate.instant('DAY_OFF_CATEGORIES_PAGE.NAME_MINLENGTH');
-  }
-
-  public onSearchSubmit(): void {
-    if (
-      this.currentSearch !== this.searchFormControl.value.replace(/\s/g, '')
-    ) {
-      this.currentSearch = this.searchFormControl.value.replace(/\s/g, '');
-      this.currentPage === 1 ? this.onPageChanged(1) : (this.currentPage = 1);
-    }
   }
 
   public onSubmit(): void {
