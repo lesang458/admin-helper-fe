@@ -45,6 +45,8 @@ export class NotifyService {
       case 'Your password was incorrect.':
         message = this.translate.instant('MESSAGE.PASSWORD_INCORRECT');
         break;
+      case 'Validation failed: Day off category inactivated':
+        message = this.translate.instant('MESSAGE.DAY_OFF_CATEGORY_IS_INACTIVED');
     }
     if (message.includes(`Couldn't find User with`)) {
       message =

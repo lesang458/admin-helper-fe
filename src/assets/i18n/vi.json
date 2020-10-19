@@ -6,7 +6,7 @@
     "LINK_5": "Lịch sử thiết bị",
     "LINK_6": "Loại ngày phép",
     "LINK_7": "Loại thiết bị",
-    "LINK_8": "Lịch sử yêu cầu ngày nghỉ"
+    "LINK_8": "Lịch sử nghỉ phép"
   },
   "HEADER": {
     "VIETNAMESE": "Tiếng việt",
@@ -164,7 +164,7 @@
     "NO_RESULT": "Không có nhân viên nào"
   },
   "DAY_OFF_REQUEST_PAGE": {
-    "TITLE": "Danh sách lịch sử yêu cầu ngày nghỉ"
+    "TITLE": "Danh sách lịch sử nghỉ phép"
   },
   "DEVICE_EDIT": {
     "EDIT_TITLE": "Chỉnh sửa thông tin thiết bị.",
@@ -262,7 +262,8 @@
     "RESET_SUCCESSFULLY": "Khôi phục mật khẩu thành công",
     "CHANGE_SUCCESSFULLY": "Thay đổi mật khẩu thành công",
     "PASSWORD_INCORRECT": "Mật khẩu của bạn không đúng!",
-    "SERVER_ERROR": "Lỗi máy chủ nội bộ"
+    "SERVER_ERROR": "Lỗi máy chủ nội bộ",
+    "DAY_OFF_CATEGORY_IS_INACTIVED": "Loại ngày nghỉ này đã bị vô hiệu hóa!"
   },
   "CONFIRM_NOTIFY": {
     "DAY_OFF_DEACTIVE": "Vô hiệu hóa loại ngày phép này?",

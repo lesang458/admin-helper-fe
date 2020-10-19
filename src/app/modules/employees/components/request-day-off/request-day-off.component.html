@@ -1,10 +1,10 @@
 <form [formGroup]="f">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
+  <div role="document">
+    <div>
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">
+        <h4 class="modal-title" id="exampleModalLabel">
           {{ 'REQUEST_DAY_OFF.AUTH' | translate }}
-        </h5>
+        </h4>
         <button
           type="button"
           class="close"
@@ -14,6 +14,7 @@
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
+      <hr class="mt-0 mb-0" />
       <div *ngIf="!editData" class="modal-body pt-1 pb-0">
         <label class="font-weight-bold" for="exampleFormControlInput1">
           {{ 'REQUEST_DAY_OFF.FULL_NAME' | translate }}
@@ -64,6 +65,7 @@
               value=""
               id="defaultCheck1"
               formControlName="morningBreak"
+              checked
             />
             <label class="form-check-label pointer" for="defaultCheck1">
               {{ 'REQUEST_DAY_OFF.MORNING_BREAK' | translate }}
@@ -100,6 +102,7 @@
           <option
             *ngFor="let item of selectedEmployee?.dayOffInfos"
             [value]="item.categoryName"
+            [selected]="item.dayOffCategoryId === this.editData?.dayOffCategory.id"
           >
             {{ item.categoryName | titlecase }}
           </option>

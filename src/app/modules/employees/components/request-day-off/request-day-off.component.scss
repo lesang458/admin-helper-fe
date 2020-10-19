@@ -1,25 +1,23 @@
-.modal-content {
-  .date {
-    label {
-      margin: 8px 0;
-    }
-    .mess-invalid {
-      color: red;
-      margin-top: 5px;
-    }
+.date {
+  label {
+    margin: 8px 0;
   }
-
-  .break {
-    display: flex;
-
-    >div {
-      margin: 0 10px;
-    }
+  .mess-invalid {
+    color: red;
+    margin-top: 5px;
   }
+}
 
-  .modal-footer {
-    button {
-      width: 75px;
-    }
+.break {
+  display: flex;
+
+  >div {
+    margin: 0 10px;
+  }
+}
+
+.modal-footer {
+  button {
+    width: 75px;
   }
 }
