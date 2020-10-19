@@ -309,7 +309,7 @@
                       style="width: auto;"
                       (change)="addDayoffCatetory(types)"
                     >
-                      <option selected>
+                      <option value="No select">
                         {{ 'EMPLOYEE_DETAIL.NO_SELECT' | translate }}
                       </option>
                       <option *ngFor="let item of types" [value]="item?.id">
