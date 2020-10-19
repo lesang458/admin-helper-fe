@@ -47,7 +47,7 @@ export class RequestDayOffComponent implements OnInit {
     if (this.selectedEmployee) {
       this.currentDateString = this.setDateString();
       this.f.patchValue({
-        fullName: `${this.selectedEmployee.firstName} ${this.selectedEmployee.lastName}`,
+        fullName: `${this.selectedEmployee.lastName} ${this.selectedEmployee.firstName}`,
         fromDate: this.currentDateString,
         toDate: this.currentDateString,
         morningBreak: true,
