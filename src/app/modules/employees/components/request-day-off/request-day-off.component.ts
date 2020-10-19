@@ -59,8 +59,8 @@ export class RequestDayOffComponent implements OnInit {
       this.f.patchValue({
         fromDate: this.datePipe.transform(this.editData.fromDate, 'yyyy-MM-dd'),
         toDate: this.datePipe.transform(this.editData.toDate, 'yyyy-MM-dd'),
-        morningBreak: true,
-        afternoonBreak: true,
+        morningBreak: this.editData.notes === 'Morning',
+        afternoonBreak: this.editData.notes === 'Afternoon',
         kindOfLeave: this.editData.dayOffCategory.name,
       });
       if (this.selectedEmployee?.id !== this.editData.user.id) {
@@ -94,6 +94,8 @@ export class RequestDayOffComponent implements OnInit {
         .select((s) => s.employees.detaiEmployee)
         .subscribe((data: Employee) => {
           this.selectedEmployee = data;
+          console.log(this.selectedEmployee);
+
           this.setDayOffs();
           this.setHoursAvailable();
         });
@@ -145,7 +147,7 @@ export class RequestDayOffComponent implements OnInit {
     ) {
       dayOffReturn =
         this.editData.hoursPerDay === 4
-          ? 4
+          ? 0.5
           : (+new Date(this.editData.toDate) -
               +new Date(this.editData.fromDate)) /
               86400000 +
@@ -175,12 +177,17 @@ export class RequestDayOffComponent implements OnInit {
   }
 
   public onSave(): void {
+    let notes = '';
+    if (this.dayOffs < 1) {
+      notes = this.f.get('morningBreak').value ? 'Morning' : 'Afternoon';
+    }
     const body: RequestDayOffModel = {
       id: this.editData ? this.editData.id : this.selectedEmployee.id,
       fromDate: this.f.get('fromDate').value,
       toDate: this.f.get('toDate').value,
       hoursPerDay: this.dayOffs < 1 ? 4 : 8,
       dayOffCategoryId: this.dayOffInfos.dayOffCategoryId,
+      notes: notes,
     };
     const searchParams = {
       search: '',

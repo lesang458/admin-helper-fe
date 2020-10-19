@@ -263,7 +263,8 @@
     "RESET_SUCCESSFULLY": "Reset password successfully",
     "CHANGE_SUCCESSFULLY": "Change password successfully",
     "PASSWORD_INCORRECT": "Your password was incorrect!",
-    "SERVER_ERROR": "Internal Server Error"
+    "SERVER_ERROR": "Internal Server Error",
+    "DAY_OFF_CATEGORY_IS_INACTIVED": "Day off category inactivated!"
   },
   "CONFIRM_NOTIFY": {
     "DAY_OFF_DEACTIVE": "Deactive this day off category?",

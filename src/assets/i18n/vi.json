@@ -262,7 +262,8 @@
     "RESET_SUCCESSFULLY": "Khôi phục mật khẩu thành công",
     "CHANGE_SUCCESSFULLY": "Thay đổi mật khẩu thành công",
     "PASSWORD_INCORRECT": "Mật khẩu của bạn không đúng!",
-    "SERVER_ERROR": "Lỗi máy chủ nội bộ"
+    "SERVER_ERROR": "Lỗi máy chủ nội bộ",
+    "DAY_OFF_CATEGORY_IS_INACTIVED": "Loại ngày nghỉ này đã bị vô hiệu hóa!"
   },
   "CONFIRM_NOTIFY": {
     "DAY_OFF_DEACTIVE": "Vô hiệu hóa loại ngày phép này?",
