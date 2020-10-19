@@ -2,11 +2,11 @@
   <div class="card-body">
     <form [formGroup]="employeeForm" (ngSubmit)="onSubmit()">
       <div class="text-right">
-        <button 
-          *ngIf="edit || create" 
-          type="submit" 
+        <button
+          *ngIf="edit || create"
+          type="submit"
           class="btn btn-success mb-3"
-          [disabled]="employeeForm.invalid || dayOffForm.invalid || (employeeForm.value.password !== employeeForm.value.confirmPassword) || changeValueDate()"
+          [disabled]="employeeForm.invalid || dayOffForm.invalid || (employeeForm.value.password !== employeeForm.value.confirmPassword) || changeValueDate() || disableSaveBtn()"
           >
           <span class="cil-save mr-1"></span>
           {{ 'PROFILE_CREATE.SAVE' | translate }}
@@ -50,29 +50,30 @@
                     <tbody>
                       <tr>
                         <th scope="row" class="border-style">{{ 'PROFILE_CREATE.FIRST_NAME' | translate }}</th>
-                        <td class="border-style"> 
+                        <td class="border-style">
                           <input
                             type="text"
                             class="form-control"
                             formControlName="firstName"
                             tabindex="1"
                             required
+                            inputFormatter
                         />
                           <div
-                            *ngIf="f.firstName.invalid && f.firstName.touched"
+                            *ngIf="(f.firstName.invalid || f.firstName.value.trim().length < 2 || f.firstName.value.trim().length > 20) && f.firstName.touched"
                             class="mess-invalid"
                           >
-                            <div *ngIf="f.firstName.errors.required">
+                            <div *ngIf="f.firstName.errors?.required || f.firstName.value.trim().length === 0">
                               {{ 'PROFILE_CREATE.FIRST_NAME_INVALID' | translate }}
                             </div>
-                            <div *ngIf="f.firstName.errors.minlength">
+                            <div *ngIf="(f.firstName.errors?.minlength || f.firstName.value.trim().length===1) && f.firstName.value.trim().length !== 0">
                               {{ 'PROFILE_CREATE.FIRST_NAME_MIN_LENGTH' | translate }}
                             </div>
-                            <div *ngIf="f.firstName.errors.maxlength">
+                            <div *ngIf="(f.firstName.errors?.maxlength || f.firstName.value.trim().length>20) && f.firstName.value.trim().length !== 0">
                               {{ 'PROFILE_CREATE.FIRST_NAME_MAX_LENGTH' | translate }}
                             </div>
                         </div>
-                      </td>                  
+                      </td>
                     </tr>
                     <tr>
                       <th scope="row">{{ 'PROFILE_CREATE.LAST_NAME' | translate }}</th>
@@ -83,18 +84,19 @@
                           formControlName="lastName"
                           tabindex="2"
                           required
+                          inputFormatter
                         />
                         <div
-                          *ngIf="f.lastName.invalid && f.lastName.touched"
+                          *ngIf="(f.lastName.invalid || f.lastName.value.trim().length < 2 || f.lastName.value.trim().length > 20) && f.lastName.touched"
                           class="mess-invalid"
                         >
-                          <div *ngIf="f.lastName.errors.required">
+                          <div *ngIf="f.lastName.errors?.required || f.lastName.value.trim().length === 0">
                             {{ 'PROFILE_CREATE.LAST_NAME_INVALID' | translate }}
                           </div>
-                          <div *ngIf="f.lastName.errors.minlength">
+                          <div *ngIf="(f.lastName.errors?.minlength || f.lastName.value.trim().length === 1) && f.lastName.value.trim().length !== 0">
                             {{ 'PROFILE_CREATE.LAST_NAME_MIN_LENGTH' | translate }}
                           </div>
-                          <div *ngIf="f.lastName.errors.maxlength">
+                          <div *ngIf="(f.lastName.errors?.maxlength ||  f.lastName.value.trim().length > 20) && f.lastName.value.trim().length !== 0">
                             {{ 'PROFILE_CREATE.LAST_NAME_MAX_LENGTH' | translate }}
                           </div>
                         </div>
@@ -109,16 +111,19 @@
                             formControlName="email"
                             tabindex="3"
                             required
+                            inputFormatter
                           />
                           <div
-                            *ngIf="f.email.invalid && f.email.touched"
+                            *ngIf="(f.email.invalid || f.email.value.trim().length === 0) && f.email.touched"
                             class="mess-invalid"
                           >
-                            <div *ngIf="f.email.errors.required">
-                              {{ 'PROFILE_CREATE.EMAIL_INVALID' | translate }}
-                            </div>
-                            <div *ngIf="f.email.errors.email">
-                              {{ 'PROFILE_CREATE.IS_EMAIL' | translate }}
+                            <div [ngSwitch]="f.email.errors?.required || f.email.value.trim().length === 0">
+                              <div *ngSwitchCase="true">
+                                {{ 'PROFILE_CREATE.EMAIL_INVALID' | translate }}
+                              </div>
+                              <div *ngSwitchDefault>
+                                {{ 'PROFILE_CREATE.IS_EMAIL' | translate }}
+                              </div>
                             </div>
                           </div>
                         </td>
@@ -157,7 +162,7 @@
                           formControlName="confirmPassword"
                           tabindex="5"
                         />
-                        <div 
+                        <div
                           *ngIf="employeeForm.value.password !== employeeForm.value.confirmPassword"
                           class="mess-invalid">
                           {{ 'EMPLOYEE_CREATE.PASSWORD_MATCH' | translate }}
@@ -254,9 +259,9 @@
                           <div class="input-group">
                             <div class="input-group-prepend" *ngIf="create">
                               <div class="input-group-text">
-                                <input 
-                                  type="checkbox" 
-                                  aria-label="Checkbox for following text input" 
+                                <input
+                                  type="checkbox"
+                                  aria-label="Checkbox for following text input"
                                   (change)="checkCheckBoxValue($event, dayOffInfos.at(i).get('dayOffCategoryId').value)"
                                   checked>
                               </div>
@@ -284,8 +289,8 @@
                         <td class="td-style text-right" *ngIf="!edit && !create">{{ dayOffInfos.at(i).get('availableHours').value }}</td>
                         <td *ngIf="edit || create">{{ 'EMPLOYEE_DETAIL.DAY' | translate }}</td>
                         <td *ngIf="edit">
-                          <button 
-                            class="btn btn-outline-danger" 
+                          <button
+                            class="btn btn-outline-danger"
                             (click)="removeDayoffCategory(types, dayOffInfos.at(i))">
                             <i class="cil-minus"></i>
                           </button>
@@ -336,7 +341,7 @@
                       </tr>
                     </tbody>
                   </table>
-                  <div 
+                  <div
                     *ngIf="data.devices.data?.length === 0"
                     class="alert alert-warning text-center"
                     role="alert">
