@@ -94,8 +94,6 @@ export class RequestDayOffComponent implements OnInit {
         .select((s) => s.employees.detaiEmployee)
         .subscribe((data: Employee) => {
           this.selectedEmployee = data;
-          console.log(this.selectedEmployee);
-
           this.setDayOffs();
           this.setHoursAvailable();
         });
