@@ -25,7 +25,7 @@ export class AuthEffect {
           const data: Employee = camelcaseKeys(val, { deep: true });
           localStorage.setItem(
             'userName',
-            data?.user?.firstName + ' ' + data?.user?.lastName
+            data?.user?.lastName + ' ' + data?.user?.firstName
           );
           localStorage.setItem('id', data?.user?.id);
           return new AuthActions.LoginSuccess(data);
@@ -47,7 +47,7 @@ export class AuthEffect {
             const data: Employee = camelcaseKeys(val, { deep: true });
             localStorage.setItem(
               'userName',
-              data?.user?.firstName + ' ' + data?.user?.lastName
+              data?.user?.lastName + ' ' + data?.user?.firstName
             );
             localStorage.setItem('id', data?.user?.id);
             return new AuthActions.LoginSuccess(data);

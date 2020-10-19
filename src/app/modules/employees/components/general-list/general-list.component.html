@@ -100,7 +100,7 @@
         <tbody>
           <tr *ngFor="let item of employeeObs.employees; let i = index">
             <td class="align-middle">
-              <a (click)="navigateDetail(item.id)">{{ item.firstName + ' ' + item.lastName }}</a>
+              <a (click)="navigateDetail(item.id)">{{ item.lastName + ' ' + item.firstName }}</a>
             </td>
             <td class="align-middle">{{ item.email }}</td>
             <td class="align-middle">{{ item.birthdate | date: 'dd/MM/yyyy' }}</td>

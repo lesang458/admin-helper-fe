@@ -61,7 +61,7 @@
       </thead>
       <tbody>
         <tr *ngFor="let item of employeeObs.employees; let i = index">
-          <td>{{ item.firstName + ' ' + item.lastName }}</td>
+          <td>{{ item.lastName + ' ' + item.firstName }}</td>
           <td>{{ item.birthdate | date: 'dd/MM/yyyy' }}</td>
           <td class="text-center">
             <input

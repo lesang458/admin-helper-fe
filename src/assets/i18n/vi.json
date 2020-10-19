@@ -77,8 +77,8 @@
     "HOURS_PER_DAY": "Số giờ/ ngày"
   },
   "PROFILE_CREATE": {
-    "FIRST_NAME": "Họ",
-    "LAST_NAME": "Tên",
+    "FIRST_NAME": "Tên",
+    "LAST_NAME": "Họ",
     "DAY_OFF_INFO": "Thông tin ngày nghỉ",
     "HOUR": "Số ngày (ngày)",
     "FIRST_NAME_INVALID": "Hãy nhập họ",
