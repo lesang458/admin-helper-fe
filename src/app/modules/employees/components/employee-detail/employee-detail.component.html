@@ -244,7 +244,7 @@
               <div class="card-body">
                 <b class="ml-2">{{ 'PROFILE_CREATE.DAY_OFF_INFO' | translate }}</b>
                 <div class="infor">
-                  <table class="table">
+                  <table class="table" *ngIf="dayOffInfos.controls.length > 0">
                     <thead class="thead-style" *ngIf="!edit && !create">
                       <tr>
                         <th scope="col" class="td-cate">{{ 'PROFILE_CREATE.DAY_OFF_CATE' | translate }}</th>
@@ -318,6 +318,12 @@
                     </select>
                   </div>
                 </div>
+                <div
+                  *ngIf="dayOffInfos.controls.length === 0 && !edit && !create"
+                  class="alert alert-warning text-center mt-2 ml-2 mr-2"
+                  role="alert">
+                  {{ 'DAY_OFF_TABLE.NO_RESULT' | translate }}
+              </div>
             </div>
           </form>
           </div>
