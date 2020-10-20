@@ -109,7 +109,7 @@
             <ngx-select [multiple]="true"
                         [items]="employeeObs"
                         [autoClearSearch]="true"
-                        [noResultsFound]="textSearch"
+                        [noResultsFound]="'DAY_OFF_CATEGORIES_PAGE.NO_RESULT' | translate"
                         placeholder="{{ 'DAY_OFF_CATEGORIES_PAGE.ENTER_EMP' | translate }}"
                         (selectionChanges)="doSelectOptions($event)">
             </ngx-select>

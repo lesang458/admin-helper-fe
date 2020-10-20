@@ -23,9 +23,6 @@ export class DayOffCategoryEditComponent implements OnInit {
   public employeeObs = [];
   public arrEmpId = [];
   public paramEmployee: SearchParams;
-  public textSearch = this.translate.instant(
-    'DAY_OFF_CATEGORIES_PAGE.NO_RESULT'
-  );
   public f = new FormGroup({
     name: new FormControl('', [
       Validators.required,
@@ -57,12 +54,14 @@ export class DayOffCategoryEditComponent implements OnInit {
     this.store
       .select((s) => s.employees)
       .subscribe((data) => {
-        data.employees.map((value) => {
-          this.employeeObs.push({
-            id: value.id,
-            name: value.lastName + ' ' + value.firstName,
+        if (this.employeeObs.length === 0) {
+          data.employees.map((value) => {
+            this.employeeObs.push({
+              id: value.id,
+              name: value.lastName + ' ' + value.firstName,
+            });
           });
-        });
+        }
         this.paramEmployee = {
           search: '',
           status: 'ACTIVE',
@@ -128,6 +127,7 @@ export class DayOffCategoryEditComponent implements OnInit {
       delete category.employeeIds;
     }
     delete category.days;
+
     if (this.type === 'create') {
       this.store.dispatch(new DayOffActions.CreateDayOffCategory(category));
     }
