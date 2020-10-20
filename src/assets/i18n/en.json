@@ -102,6 +102,7 @@
     "BIRTHDAY_MAX": "Birthday cannot be a future date",
     "CREATE_SUCCESS": "Created successfully!",
     "EDIT_SUCCESS": "Edited successfully!",
+    "DAY_OFF_CATE": "Day off category",
     "CLOSE": "Close",
     "SAVE": "Save"
   },

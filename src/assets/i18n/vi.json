@@ -54,7 +54,6 @@
   },
   "DAY_OFF_TABLE": {
     "TITLE": "Danh sách ngày phép",
-    "TYPE_OF_LEAVE": "Loại phép",
     "TOTAL_LEAVES": "Tổng phép",
     "NUMBER_OF_LEAVES_REMAINING": "Phép còn lại",
     "ACTION": "Hành động",
@@ -103,6 +102,7 @@
     "BIRTHDAY_MAX": "Ngày sinh không thể là ngày tương lai",
     "CREATE_SUCCESS": "Tạo thành công!",
     "EDIT_SUCCESS": "Chỉnh sửa thành công!",
+    "DAY_OFF_CATE": "Loại ngày phép",
     "CLOSE": "Đóng",
     "SAVE": "Lưu"
   },
