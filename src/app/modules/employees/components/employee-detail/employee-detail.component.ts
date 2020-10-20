@@ -83,12 +83,17 @@ export class EmployeeDetailComponent implements OnInit {
                   this.arr.push(val.id);
                 });
                 this.selectedType.patchValue('No select');
-                data?.dayOffInfos?.map((value) => {
-                  const filterData = arr.dayoff.filter(
-                    (elem) => elem.id !== value.dayOffCategoryId
-                  );
-                  this.types = filterData;
+                const uniqueResultOne = arr.dayoff.filter((obj) => {
+                  return !data?.dayOffInfos.some((obj2) => {
+                    return obj.id == obj2.dayOffCategoryId;
+                  });
                 });
+                const uniqueResultTwo = data?.dayOffInfos.filter((obj) => {
+                  return !arr.dayoff.some(function (obj2) {
+                    return obj.dayOffCategoryId == obj2.id;
+                  });
+                });
+                this.types = uniqueResultOne.concat(uniqueResultTwo);
               });
             }
             this.employeeForm.patchValue(data);
