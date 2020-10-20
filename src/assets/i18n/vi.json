@@ -58,7 +58,8 @@
     "TOTAL_LEAVES": "Tổng phép",
     "NUMBER_OF_LEAVES_REMAINING": "Phép còn lại",
     "ACTION": "Hành động",
-    "SUBMIT_TIME_OFF": "Nhập ngày phép"
+    "SUBMIT_TIME_OFF": "Nhập ngày phép",
+    "NO_RESULT": "Không có thông tin ngày phép nào"
   },
   "REQUEST_DAY_OFF": {
     "AUTH": "Duyệt phép",

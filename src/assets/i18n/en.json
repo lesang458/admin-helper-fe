@@ -57,7 +57,8 @@
     "TOTAL_LEAVES": "Total leaves",
     "NUMBER_OF_LEAVES_REMAINING": "Leaves remaining",
     "ACTION": "Action",
-    "SUBMIT_TIME_OFF": "Submit Time Off"
+    "SUBMIT_TIME_OFF": "Submit Time Off",
+    "NO_RESULT": "No day off information"
   },
   "REQUEST_DAY_OFF": {
     "AUTH": "Time off",
