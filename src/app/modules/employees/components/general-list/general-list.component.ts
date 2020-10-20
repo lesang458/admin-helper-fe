@@ -35,7 +35,6 @@ export class GeneralListComponent implements OnInit {
   ngOnInit(): void {
     this.employeeObs$ = this.store.select('employees');
     this.onPageChanged(1);
-
     this.searchStatusFormControl.valueChanges.subscribe(() => {
       this.currentPage === 1 ? this.onPageChanged(1) : (this.currentPage = 1);
     });

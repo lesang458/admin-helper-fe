@@ -109,9 +109,9 @@
       >
         {{ 'GENERAL_LIST.NO_RESULT' | translate }}
       </div>
-      <div class="col-12 pr-0" *ngIf="data.dayOffRequest.pagination?.totalCount !== 0">
+      <div class="col-12 pr-0" *ngIf="data.dayOffRequest.meta?.totalCount !== 0">
         <pagination
-          [totalItems]="data.dayOffRequest.pagination?.totalCount"
+          [totalItems]="data.dayOffRequest.meta?.totalCount"
           [maxSize]="3"
           [itemsPerPage]="10"
           [(ngModel)]="currentPage"

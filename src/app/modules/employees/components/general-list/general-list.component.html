@@ -54,12 +54,12 @@
     </div>
     <div class="table-responsive" *ngIf="employeeObs$ | async as employeeObs">
       <table class="table table-bordered table-striped">
-        <thead *ngIf="employeeObs.pagination.totalCount !== 0">
+        <thead *ngIf="employeeObs.meta.totalCount !== 0">
           <tr>
             <th
               scope="col"
               class="pointer col-name"
-              (click)="onSort(employeeObs.pagination.currentPage, 'name')"
+              (click)="onSort(employeeObs.meta.currentPage, 'name')"
             >
               {{ 'GENERAL_LIST.NAME' | translate }}
               <i class="cil-arrow-top" *ngIf="sortNameType === 1"></i>
@@ -71,7 +71,7 @@
             <th
               scope="col"
               class="pointer col-date"
-              (click)="onSort(employeeObs.pagination.currentPage, 'birthdate')"
+              (click)="onSort(employeeObs.meta.currentPage, 'birthdate')"
             >
               {{ 'GENERAL_LIST.BIRTHDAY' | translate }}
               <i class="cil-arrow-top" *ngIf="sortBirthDateType === 1"></i>
@@ -80,7 +80,7 @@
             <th
               scope="col"
               class="pointer col-date"
-              (click)="onSort(employeeObs.pagination.currentPage, 'joinDate')"
+              (click)="onSort(employeeObs.meta.currentPage, 'joinDate')"
             >
               {{ 'GENERAL_LIST.JOIN_DATE' | translate }}
               <i class="cil-arrow-top" *ngIf="sortJoinDateType === 1"></i>
@@ -152,9 +152,9 @@
       >
         {{ 'GENERAL_LIST.NO_RESULT' | translate }}
       </div>
-      <div class="col-12 pr-0" *ngIf="employeeObs.pagination.totalCount !== 0">
+      <div class="col-12 pr-0" *ngIf="employeeObs.meta.totalCount !== 0">
         <pagination
-          [totalItems]="employeeObs.pagination.totalCount"
+          [totalItems]="employeeObs.meta.totalCount"
           [maxSize]="3"
           [itemsPerPage]="10"
           [(ngModel)]="currentPage"
