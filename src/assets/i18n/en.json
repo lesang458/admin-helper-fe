@@ -54,7 +54,6 @@
   },
   "DAY_OFF_TABLE": {
     "TITLE": "Day off List",
-    "TYPE_OF_LEAVE": "Type of leave",
     "TOTAL_LEAVES": "Total leaves",
     "NUMBER_OF_LEAVES_REMAINING": "Leaves remaining",
     "ACTION": "Action",
@@ -67,7 +66,6 @@
     "TO_DATE": "To date",
     "TO_DATE_ERROR": "The To date must be greater than the From date!",
     "HAFL_DAY_OFF": "A half day-off",
-    "KIND_OF_LEAVE": "Type of leave",
     "DAY_OFF_AVAILABLE": "Days off are available",
     "DAY_OFF_AFTER": "Day off remaining after processing",
     "UNPAID_LEAVE": "Allow unpaid leave",
@@ -99,7 +97,6 @@
     "PHONE_NUMBER_MAXLENGTH": "Phone number must not exceed 12 characters",
     "HOURS_INVALID": "Hours is required",
     "HOURS_PATTERN": "Hours must be number",
-    "DAY_OFF_CATE": "Day off category",
     "AVAILABLE_HOURS": "Available hours (day)",
     "MESS_EMAIL": "Email has already been taken",
     "BIRTHDAY_MAX": "Birthday cannot be a future date",
