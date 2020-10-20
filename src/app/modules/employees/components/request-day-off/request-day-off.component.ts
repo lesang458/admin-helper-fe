@@ -123,8 +123,12 @@ export class RequestDayOffComponent implements OnInit {
       }, 4000);
       this.toDateError = true;
     } else {
-      this.dayOffs =
-        this.editData?.hoursPerDay === 4 ? 0.5 : (to - from) / 86400000 + 1;
+      if (this.dayOffs) {
+        this.dayOffs = (to - from) / 86400000 + 1;
+      } else {
+        this.dayOffs =
+          this.editData?.hoursPerDay === 4 ? 0.5 : (to - from) / 86400000 + 1;
+      }
     }
   }
 
