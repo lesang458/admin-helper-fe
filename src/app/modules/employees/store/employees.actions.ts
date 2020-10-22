@@ -13,6 +13,7 @@ export interface SearchParams {
   status?: string;
   fromDate?: string;
   toDate?: string;
+  userId?: string;
 }
 
 export interface EmployeesParam {
