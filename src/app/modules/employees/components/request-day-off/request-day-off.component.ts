@@ -125,6 +125,12 @@ export class RequestDayOffComponent implements OnInit {
     } else {
       if (this.dayOffs) {
         this.dayOffs = (to - from) / 86400000 + 1;
+        if (this.dayOffs === 1) {
+          this.f.patchValue({
+            morningBreak: true,
+            afternoonBreak: true,
+          });
+        }
       } else {
         this.dayOffs =
           this.editData?.hoursPerDay === 4 ? 0.5 : (to - from) / 86400000 + 1;
