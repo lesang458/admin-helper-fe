@@ -35,7 +35,9 @@ export class DeviceCategoriesEditComponent implements OnInit {
       description: this.f.get('description').value,
     };
     if (this.type === 'create') {
-      this.store.dispatch(new DevicesActions.CreateDeviceCategory(deviceCategory));
+      this.store.dispatch(
+        new DevicesActions.CreateDeviceCategory(deviceCategory)
+      );
     }
     if (this.type === 'edit') {
       const deviceCategoryParams: DevicesActions.DeviceCategoryParams = {
@@ -46,12 +48,6 @@ export class DeviceCategoriesEditComponent implements OnInit {
         new DevicesActions.UpdateDeviceCategory(deviceCategoryParams)
       );
     }
-    if (this.type === 'delete') {
-      this.store.dispatch(
-        new DevicesActions.DeleteDeviceCategory(this.selectedCategory.id.toString())
-      );
-    }
-
     this.bsModalRef.hide();
   }
 

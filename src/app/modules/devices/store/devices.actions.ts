@@ -91,10 +91,6 @@ export class UpdateDeviceCategory implements Action {
   readonly type = UPDATE_DEVICE_CATEGORY;
   constructor(public payload: DeviceCategoryParams) {}
 }
-export class DeleteDeviceCategory implements Action {
-  readonly type = DELETE_DEVICE_CATEGORY;
-  constructor(public payload: string) {}
-}
 
 export type DevicesActions =
   | FetchDevices
@@ -107,5 +103,4 @@ export type DevicesActions =
   | DiscardDevice
   | MoveDeviceToInventory
   | CreateDeviceCategory
-  | UpdateDeviceCategory
-  | DeleteDeviceCategory;
+  | UpdateDeviceCategory;

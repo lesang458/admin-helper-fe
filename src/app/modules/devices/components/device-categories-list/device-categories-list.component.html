@@ -22,7 +22,7 @@
               {{ 'DEVICE_TABLE.DESCRIPTION' | translate }}
             </th>
             <th scope="col" class="col-action text-center">
-              {{ 'GENERAL_LIST.ACTIONS' | translate }}
+              {{ 'DAY_OFF_TABLE.ACTION' | translate }}
             </th>
           </tr>
         </thead>
@@ -40,12 +40,6 @@
                   (click)="openModalWithComponent(item, 'edit')"
                 >
                   <span class="cil-brush"></span>
-                </button>
-                <button
-                  class="btn btn-outline-danger"
-                  (click)="openModalWithComponent(item, 'delete')"
-                >
-                  <span class="cil-trash"></span>
                 </button>
               </div>
             </td>
