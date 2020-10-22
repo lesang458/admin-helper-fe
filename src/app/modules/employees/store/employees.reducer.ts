@@ -8,7 +8,7 @@ import { DayOffRequest } from 'src/app/shared/models/dayoff-request.model';
 
 export interface State {
   employees: Employee[];
-  pagination: {};
+  meta: {};
   dayOff: PaginatedData<Employee[]>;
   detaiEmployee: Employee;
   dayOffRequest: PaginatedData<DayOffRequest[]>;
@@ -21,11 +21,11 @@ initDayOffRequest.data = [];
 const pagination: Pagination = {
   totalCount: 0,
 };
-initDayOff.pagination = pagination;
+initDayOff.meta = pagination;
 
 export const initialState: State = {
   employees: [],
-  pagination: {},
+  meta: {},
   dayOff: initDayOff,
   detaiEmployee: null,
   dayOffRequest: initDayOffRequest,
@@ -40,7 +40,7 @@ export function employeeReducer(
       return {
         ...state,
         employees: [...action.payload.data],
-        pagination: action.payload.pagination,
+        meta: action.payload.meta,
       };
     case EmployeesActions.SET_DAY_OFF:
       return {

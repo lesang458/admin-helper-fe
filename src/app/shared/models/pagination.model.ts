@@ -7,5 +7,5 @@ export interface Pagination {
 
 export class PaginatedData<T> {
   public data: T;
-  public pagination: Pagination;
+  public meta: Pagination;
 }

@@ -55,7 +55,7 @@
   </div>
   <div
     class="row ml-1 mr-1 mb-2 mt-2"
-    *ngIf="data.devices.pagination.pageSize !== 0"
+    *ngIf="data.devices.meta.pageSize !== 0"
   >
     <div class="w-25 pl-2 font-weight-bold border-top pt-2">
       {{ 'DEVICE_EDIT.DEVICE_NAME' | translate }}
@@ -186,9 +186,9 @@
   </div>
   <div class="mt-3 mb-2">
     <div>
-      <div class="col-12 pr-0" *ngIf="data.devices.pagination.totalCount !== 0">
+      <div class="col-12 pr-0" *ngIf="data.devices.meta.totalCount !== 0">
         <pagination
-          [totalItems]="data.devices.pagination.totalCount"
+          [totalItems]="data.devices.meta.totalCount"
           [maxSize]="3"
           [itemsPerPage]="5"
           [(ngModel)]="currentPage"
@@ -204,7 +204,7 @@
         </pagination>
       </div>
     </div>
-    <div *ngIf="data.devices.pagination.totalCount === 0" class="card">
+    <div *ngIf="data.devices.meta.totalCount === 0" class="card">
       <div class="card-body pb-0">
         <div class="alert alert-warning text-center" role="alert">
           {{ 'GENERAL_LIST.NO_RESULT' | translate }}

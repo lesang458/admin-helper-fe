@@ -39,7 +39,7 @@
           <th
             scope="col"
             class="pointer"
-            (click)="onSort(employeeObs.pagination.currentPage, 'name')"
+            (click)="onSort(employeeObs.meta.currentPage, 'name')"
           >
             {{ 'GENERAL_LIST.NAME' | translate }}
             <i class="cil-arrow-top" *ngIf="sortNameType === 1"></i>
@@ -48,7 +48,7 @@
           <th
             scope="col"
             class="pointer"
-            (click)="onSort(employeeObs.pagination.currentPage, 'birthdate')"
+            (click)="onSort(employeeObs.meta.currentPage, 'birthdate')"
           >
             {{ 'GENERAL_LIST.BIRTHDAY' | translate }}
             <i class="cil-arrow-top" *ngIf="sortBirthDateType === 1"></i>
@@ -82,9 +82,9 @@
     >
       {{ 'GENERAL_LIST.NO_RESULT' | translate }}
     </div>
-    <div class="col-12 pr-0" *ngIf="employeeObs.pagination.totalCount !== 0">
+    <div class="col-12 pr-0" *ngIf="employeeObs.meta.totalCount !== 0">
       <pagination
-        [totalItems]="employeeObs.pagination.totalCount"
+        [totalItems]="employeeObs.meta.totalCount"
         [maxSize]="3"
         [itemsPerPage]="5"
         [(ngModel)]="currentPage"

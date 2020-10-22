@@ -16,7 +16,7 @@ initDevices.data = [];
 const pagination: Pagination = {
   totalCount: 0,
 };
-initDevices.pagination = pagination;
+initDevices.meta = pagination;
 
 export const initialState: State = {
   devices: initDevices,

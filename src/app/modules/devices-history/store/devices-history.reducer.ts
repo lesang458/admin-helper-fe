@@ -1,6 +1,9 @@
 import * as DevicesHistoryActions from '../store/devices-history.actions';
 import { DeviceHistory } from 'src/app/shared/models/devices-history.model';
-import { PaginatedData, Pagination } from 'src/app/shared/models/pagination.model';
+import {
+  PaginatedData,
+  Pagination,
+} from 'src/app/shared/models/pagination.model';
 
 export interface State {
   deviceHistory: PaginatedData<DeviceHistory[]>;
@@ -12,11 +15,11 @@ initDevices.data = [];
 const pagination: Pagination = {
   totalCount: 0,
 };
-initDevices.pagination = pagination;
+initDevices.meta = pagination;
 
 export const initialState: State = {
   deviceHistory: initDevices,
-  detailDeviceHistory: null
+  detailDeviceHistory: null,
 };
 
 export function devicesHistoryReducer(
