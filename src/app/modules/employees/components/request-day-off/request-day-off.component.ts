@@ -11,6 +11,7 @@ import { DatePipe } from '@angular/common';
 import { BsModalRef } from 'ngx-bootstrap/modal';
 import { debounceTime } from 'rxjs/operators';
 
+const milisecondOfADay = 86400000;
 @Component({
   selector: 'ah-request-day-off',
   templateUrl: './request-day-off.component.html',
@@ -124,7 +125,7 @@ export class RequestDayOffComponent implements OnInit {
       this.toDateError = true;
     } else {
       if (this.dayOffs) {
-        this.dayOffs = (to - from) / 86400000 + 1;
+        this.dayOffs = (to - from) / milisecondOfADay + 1;
         if (this.dayOffs === 1) {
           this.f.patchValue({
             morningBreak: true,
@@ -133,7 +134,9 @@ export class RequestDayOffComponent implements OnInit {
         }
       } else {
         this.dayOffs =
-          this.editData?.hoursPerDay === 4 ? 0.5 : (to - from) / 86400000 + 1;
+          this.editData?.hoursPerDay === 4
+            ? 0.5
+            : (to - from) / milisecondOfADay + 1;
       }
     }
   }
@@ -142,10 +145,12 @@ export class RequestDayOffComponent implements OnInit {
     let date: Date;
     if (dateString) {
       date = new Date(
-        new Date(dateString).getTime() + 86400000 * (ascDays - 1)
+        new Date(dateString).getTime() + milisecondOfADay * (ascDays - 1)
       );
     } else {
-      date = new Date(this.currentDate.getTime() + 86400000 * (ascDays - 1));
+      date = new Date(
+        this.currentDate.getTime() + milisecondOfADay * (ascDays - 1)
+      );
     }
     return `${date.getFullYear()}-${('0' + (date.getMonth() + 1)).slice(-2)}-${(
       '0' + date.getDate()
@@ -166,7 +171,7 @@ export class RequestDayOffComponent implements OnInit {
           ? 0.5
           : (+new Date(this.editData.toDate) -
               +new Date(this.editData.fromDate)) /
-              86400000 +
+              milisecondOfADay +
             1;
     }
 
