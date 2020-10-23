@@ -1,17 +1,17 @@
 import { Directive, ElementRef, HostListener } from '@angular/core';
+import { NgControl } from '@angular/forms';
 
 @Directive({
-  selector: '[inputFormatter]',
+  selector: '[ahInputFormatter]',
 })
 export class InputFormatDirective {
-  private el: HTMLInputElement;
 
-  constructor(private ele: ElementRef) {
-    this.el = ele.nativeElement;
+  constructor(private ele: ElementRef, private control?: NgControl) {
   }
 
   @HostListener('blur')
   onBlur() {
-    this.el.value = this.el.value.trim();
+    const value = this.ele.nativeElement.value.trim();
+    this.control.control.patchValue(value);
   }
 }

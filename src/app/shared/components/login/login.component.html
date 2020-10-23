@@ -5,9 +5,12 @@
         <div class="card-group">
           <div class="card p-4">
             <div class="card-body">
+              <div class="d-flex justify-content-center mb-2">
+                <img src="assets/brand/logo-black.svg" alt="Logo" width="55%">
+              </div>
               <h1>{{ 'LOGIN.TITLE' | translate }}</h1>
               <p class="text-muted">{{ 'LOGIN.SIGN_IN' | translate }}</p>
-              <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+              <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="auto-validated">
                 <div class="input-group">
                   <div class="input-group-prepend">
                     <span class="input-group-text">
@@ -21,16 +24,16 @@
                     placeholder="Email"
                     required
                   />
-                </div>
-                <div
-                  *ngIf="f.email.invalid && f.email.touched"
-                  class="mess-invalid mt-1"
-                >
-                  <div *ngIf="f.email.errors.required">
-                    {{ 'PROFILE_CREATE.EMAIL_INVALID' | translate }}
-                  </div>
-                  <div *ngIf="f.email.errors.email">
-                    {{ 'PROFILE_CREATE.IS_EMAIL' | translate }}
+                  <div
+                    *ngIf="f.email.invalid && f.email.touched"
+                    class="invalid-feedback"
+                   >
+                    <div *ngIf="f.email.errors.required">
+                      {{ 'PROFILE_CREATE.EMAIL_INVALID' | translate }}
+                    </div>
+                    <div *ngIf="f.email.errors.email">
+                      {{ 'PROFILE_CREATE.IS_EMAIL' | translate }}
+                    </div>
                   </div>
                 </div>
                 <div class="input-group mt-3">
@@ -48,20 +51,20 @@
                     }}"
                     required
                   />
-                </div>
-                <div
-                  *ngIf="f.password.invalid && f.password.touched"
-                  class="mess-invalid mt-1"
-                >
-                  <div *ngIf="f.password.errors.required">
-                    {{ 'PROFILE_CREATE.PASSWORD_INVALID' | translate }}
-                  </div>
-                  <div *ngIf="f.password.errors.minlength">
-                    {{ 'PROFILE_CREATE.PASS_MINLENGTH' | translate }}
+                  <div
+                    *ngIf="f.password.invalid && f.password.touched"
+                    class="invalid-feedback"
+                  >
+                    <div *ngIf="f.password.errors.required">
+                      {{ 'PROFILE_CREATE.PASSWORD_INVALID' | translate }}
+                    </div>
+                    <div *ngIf="f.password.errors.minlength">
+                      {{ 'PROFILE_CREATE.PASS_MINLENGTH' | translate }}
+                    </div>
                   </div>
                 </div>
                 <div class="row mt-3">
-                  <div class="col-6">
+                  <div class="col-5">
                     <button
                       class="btn btn-info px-4"
                       type="submit"
@@ -70,7 +73,7 @@
                       {{ 'LOGIN.TITLE' | translate }}
                     </button>
                   </div>
-                  <div class="col-6 text-right">
+                  <div class="col-7 text-right">
                     <button
                       type="button"
                       class="btn btn-outline-info"
