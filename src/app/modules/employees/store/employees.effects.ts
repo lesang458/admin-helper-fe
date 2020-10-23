@@ -180,12 +180,6 @@ export class EmployeeEffects {
     })
   );
 
-  public sortBy(property: string, type: number): string {
-    const sortType = type === 1 ? 'asc' : 'desc';
-    const sortProp = this.sortProperties[property];
-    return `${sortProp}:${sortType}`;
-  }
-
   @Effect()
   fetchDayOffRequest = this.actions$.pipe(
     ofType(EmployeesActions.FETCH_DAY_OFF_REQUEST),
@@ -230,6 +224,12 @@ export class EmployeeEffects {
         );
     })
   );
+
+  public sortBy(property: string, type: number): string {
+    const sortType = type === 1 ? 'asc' : 'desc';
+    const sortProp = this.sortProperties[property];
+    return `${sortProp}:${sortType}`;
+  }
 
   constructor(
     private actions$: Actions,

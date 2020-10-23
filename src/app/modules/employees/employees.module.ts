@@ -21,7 +21,13 @@ import { EmployeeInfoComponent } from './pages/employee-info/employee-info.compo
 import { StatusConfirmComponent } from './components/status-confirm/status-confirm.component';
 import { DayOffRequestComponent } from './pages/dayoff-request/dayoff-request.component';
 import { DayOffRequestListComponent } from './components/dayoff-request-list/dayoff-request-list.component';
+import { INgxSelectOptions, NgxSelectModule } from 'ngx-select-ex';
 
+const CustomSelectOptions: INgxSelectOptions = {
+  optionValueField: 'id',
+  optionTextField: 'name',
+  keepSelectedItems: false,
+};
 @NgModule({
   declarations: [
     GeneralListComponent,
@@ -42,6 +48,7 @@ import { DayOffRequestListComponent } from './components/dayoff-request-list/day
     CommonModule,
     SharedModule,
     FormsModule,
+    NgxSelectModule.forRoot(CustomSelectOptions),
     RouterModule.forChild(EMPLOYEES_ROUTES),
     ReactiveFormsModule,
     PaginationModule.forRoot(),
