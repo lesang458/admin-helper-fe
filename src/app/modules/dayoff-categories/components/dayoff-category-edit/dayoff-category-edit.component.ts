@@ -65,8 +65,8 @@ export class DayOffCategoryEditComponent implements OnInit {
         this.paramEmployee = {
           search: '',
           status: 'ACTIVE',
-          page: 1,
-          perPage: 300,
+          page: -1,
+          perPage: '',
           sort: {
             sortNameType: 0,
             sortBirthDateType: 0,

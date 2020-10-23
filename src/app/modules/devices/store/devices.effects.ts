@@ -192,21 +192,6 @@ export class DeviceEffects {
     })
   );
 
-  @Effect()
-  deleteDeviceCategory = this.actions$.pipe(
-    ofType(DevicesActions.DELETE_DEVICE_CATEGORY),
-    switchMap((action: DevicesActions.DeleteDeviceCategory) => {
-      return this.http
-        .delete(`${environment.APILink}/device_categories/${action.payload}`)
-        .pipe(
-          map(() => {
-            this.notify.showSuccess('MESSAGE.DELETE_SUCCESS');
-            return new DevicesActions.FetchDeviceCategories();
-          })
-        );
-    })
-  );
-
   constructor(
     private actions$: Actions,
     private http: HttpClient,

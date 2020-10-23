@@ -79,6 +79,7 @@
     "FIRST_NAME": "First name",
     "LAST_NAME": "Last name",
     "DAY_OFF_INFO": "Day off infomation",
+    "DAY_OFF_REQUEST": "Day off request",
     "HOUR": "Hours (day)",
     "FIRST_NAME_INVALID": "First Name is required",
     "FIRST_NAME_MIN_LENGTH": "First name must be at least 2 characters",

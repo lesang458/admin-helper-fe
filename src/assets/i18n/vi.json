@@ -79,6 +79,7 @@
     "FIRST_NAME": "Tên",
     "LAST_NAME": "Họ",
     "DAY_OFF_INFO": "Thông tin ngày nghỉ",
+    "DAY_OFF_REQUEST": "Lịch sử ngày phép",
     "HOUR": "Số ngày (ngày)",
     "FIRST_NAME_INVALID": "Hãy nhập họ",
     "FIRST_NAME_MIN_LENGTH": "Họ phải trên 2 ký tự",

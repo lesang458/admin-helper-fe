@@ -26,9 +26,6 @@ export class ErrorInterceptor implements HttpInterceptor {
   ): Observable<HttpEvent<any>> {
     return next.handle(request).pipe(
       catchError((err) => {
-        if (err.status === 404) {
-          this.router.navigate([`/${RouteConstant.page404}`]);
-        }
         if (err.status >= 500) {
           this.router.navigate([`/${RouteConstant.page5xx}`]);
         }

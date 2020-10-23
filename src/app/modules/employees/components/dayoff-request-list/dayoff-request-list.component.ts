@@ -8,7 +8,7 @@ import * as EmployeeActions from '../../store/employees.actions';
 import * as DayOffCategoriesActions from 'src/app/modules/dayoff-categories/store/dayoff-categories.actions';
 import { DayOffCategory } from 'src/app/shared/models/dayoff-category.model';
 import { RouteConstant } from 'src/app/shared/constants/route.constant';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { tap, map } from 'rxjs/operators';
 import { SearchParams } from 'src/app/modules/employees/store/employees.actions';
 import { RequestDayOffComponent } from '../request-day-off/request-day-off.component';
@@ -36,10 +36,12 @@ export class DayOffRequestListComponent implements OnInit {
   public bsModalRef: BsModalRef;
   public searchParams: SearchParams;
   public editData: any;
+  public id = this.route.snapshot.params.id;
   constructor(
     private store: Store<fromApp.AppState>,
     private router: Router,
-    private modalService: BsModalService
+    private modalService: BsModalService,
+    private route: ActivatedRoute
   ) {}
 
   ngOnInit(): void {
@@ -68,6 +70,9 @@ export class DayOffRequestListComponent implements OnInit {
     this.selectedToDate.valueChanges.subscribe(() => {
       this.onDataChanged();
     });
+    if (this.id) {
+      this.onDataChanged();
+    }
   }
 
   public onDataChanged(): void {
@@ -82,10 +87,11 @@ export class DayOffRequestListComponent implements OnInit {
     const toDate = this.validFromDate;
     this.searchParams = {
       page,
-      perPage: 10,
+      perPage: this.id ? 5 : 10,
       dayOffCategoryId,
       fromDate,
       toDate,
+      userId: this.id ? this.id : '',
     };
     this.store.dispatch(
       new EmployeeActions.FetchDayOffRequest(this.searchParams)

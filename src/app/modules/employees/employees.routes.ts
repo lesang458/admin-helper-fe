@@ -10,6 +10,7 @@ import { UpdatePasswordComponent } from './pages/update-password/update-password
 import { RouteConstant } from 'src/app/shared/constants/route.constant';
 import { EmployeeInfoComponent } from './pages/employee-info/employee-info.component';
 import { DayOffRequestComponent } from './pages/dayoff-request/dayoff-request.component';
+import { EmployeeCreatePageComponent } from './pages/employee-create-page/employee-create-page.component';
 
 export const EMPLOYEES_ROUTES: Routes = [
   { path: '', redirectTo: `/${RouteConstant.employees}`, pathMatch: 'full' },
@@ -34,7 +35,7 @@ export const EMPLOYEES_ROUTES: Routes = [
       },
       {
         path: `create`,
-        component: EmployeeInfoComponent,
+        component: EmployeeCreatePageComponent,
         data: {
           i18nKey: 'EMPLOYEE_CREATE',
         },

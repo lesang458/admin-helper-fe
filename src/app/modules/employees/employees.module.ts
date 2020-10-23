@@ -8,6 +8,7 @@ import { DayoffComponent } from './pages/dayoff/dayoff.component';
 import { DayoffTableComponent } from './components/dayoff-table/dayoff-table.component';
 import { RequestDayOffComponent } from './components/request-day-off/request-day-off.component';
 import { PaginationModule } from 'ngx-bootstrap/pagination';
+import { TabsModule } from 'ngx-bootstrap/tabs';
 import { ModalModule, BsModalRef } from 'ngx-bootstrap/modal';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { LoginComponent } from 'src/app/shared/components/login/login.component';
@@ -21,6 +22,8 @@ import { StatusConfirmComponent } from './components/status-confirm/status-confi
 import { DayOffRequestComponent } from './pages/dayoff-request/dayoff-request.component';
 import { DayOffRequestListComponent } from './components/dayoff-request-list/dayoff-request-list.component';
 import { INgxSelectOptions, NgxSelectModule } from 'ngx-select-ex';
+import { EmployeeCreateComponent } from './components/employee-create/employee-create.component';
+import { EmployeeCreatePageComponent } from './pages/employee-create-page/employee-create-page.component';
 
 const CustomSelectOptions: INgxSelectOptions = {
   optionValueField: 'id',
@@ -42,6 +45,8 @@ const CustomSelectOptions: INgxSelectOptions = {
     EmployeeInfoComponent,
     DayOffRequestComponent,
     DayOffRequestListComponent,
+    EmployeeCreateComponent,
+    EmployeeCreatePageComponent,
   ],
   imports: [
     CommonModule,
@@ -53,6 +58,7 @@ const CustomSelectOptions: INgxSelectOptions = {
     PaginationModule.forRoot(),
     ModalModule.forRoot(),
     TooltipModule.forRoot(),
+    TabsModule.forRoot(),
   ],
   providers: [BsModalRef, DatePipe],
 })

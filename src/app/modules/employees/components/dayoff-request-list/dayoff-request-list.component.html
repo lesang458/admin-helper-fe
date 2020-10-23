@@ -1,4 +1,4 @@
-<div class="card">
+<div [ngClass]="id ? 'card-emp' : 'card'">
   <div class="card-body">
     <div class="row">
       <div class="col-3">
@@ -63,13 +63,13 @@
       </div>
     </div>
     <div class="table-responsive" *ngIf="data$ | async as data">
-      <table class="table table-bordered table-striped">
+      <table [ngClass]="id ? 'table table-emp' : 'table table-bordered table-striped'">
         <thead>
           <tr>
-            <th scope="col" class="col-name">
+            <th scope="col" class="col-email">
               {{ 'DAY_OFF_CATEGORIES_PAGE.NAME' | translate }}
             </th>
-            <th scope="col" class="col-name">
+            <th scope="col" class="col-email">
               {{ 'LOGIN.EMAIL' | translate }}
             </th>
             <th scope="col" class="col-name">
@@ -91,17 +91,17 @@
         </thead>
         <tbody>
           <tr *ngFor="let item of data.dayOffRequest.data; let i = index">
-            <td class="align-middle">
+            <td class="align-middle email-td">
               <a class="link-a" (click)="navigateEmployeeDetail(item.id)">
                 {{ item.user.lastName + ' ' + item.user.firstName }}
               </a>
             </td>
-            <td class="align-middle">{{ item.user.email }}</td>
+            <td class="align-middle email-td">{{ item.user.email }}</td>
             <td class="align-middle">{{ item.fromDate | date: 'dd/MM/yyyy' }}</td>
             <td class="align-middle">{{ item.toDate| date: 'dd/MM/yyyy' }}</td>
             <td class="align-middle text-right">{{ item.hoursPerDay }}</td>
             <td class="align-middle text-center">{{ item.dayOffCategory.name | titlecase }}</td>
-            <td>
+            <td class="align-middle">
               <div class="d-flex justify-content-center align-middle">
                 <button
                   class="btn btn-outline-primary mr-2"
@@ -125,7 +125,7 @@
         <pagination
           [totalItems]="data.dayOffRequest.meta?.totalCount"
           [maxSize]="3"
-          [itemsPerPage]="10"
+          [itemsPerPage]="id ? 5 : 10"
           [(ngModel)]="currentPage"
           (pageChanged)="onPageChanged($event.page)"
           class="pagination-md justify-content-end"
