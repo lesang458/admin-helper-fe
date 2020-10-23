@@ -1,7 +1,19 @@
 <div class="card">
   <div class="card-body">
     <div class="row">
-      <div class="col-4" *ngIf="types$ | async as types">
+      <div class="col-3">
+        <div class="example-block emp-style">
+          <div class="example-block__item">
+              <ngx-select [allowClear]="true"
+                          [items]="employeeObs"
+                          [noResultsFound]="'DAY_OFF_CATEGORIES_PAGE.NO_RESULT' | translate"
+                          placeholder="{{ 'DAY_OFF_CATEGORIES_PAGE.ENTER_EMP' | translate }}"
+                          (selectionChanges)="doSelectOptions($event)">
+              </ngx-select>
+          </div>
+        </div>
+      </div>
+      <div class="col-3" *ngIf="types$ | async as types">
         <div class="form-group">
           <label class="d-inline-block mr-3 ml-2" for="day-off-type">
             {{ 'SIDEBAR.LINK_6' | translate }}
@@ -21,7 +33,7 @@
           </select>
         </div>
       </div>
-      <div class="col-4">
+      <div class="col-3">
         <div class="form-group">
           <label class="d-inline-block mr-3 ml-2" for="from-date">
             {{ 'REQUEST_DAY_OFF.FROM_DATE' | translate }}
@@ -35,7 +47,7 @@
           />
         </div>
       </div>
-      <div class="col-4">
+      <div class="col-3">
         <div class="form-group">
           <label class="d-inline-block mr-3 ml-2" for="to-date">
             {{ 'REQUEST_DAY_OFF.TO_DATE' | translate }}

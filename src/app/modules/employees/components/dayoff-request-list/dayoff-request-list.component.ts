@@ -13,6 +13,7 @@ import { tap, map } from 'rxjs/operators';
 import { SearchParams } from 'src/app/modules/employees/store/employees.actions';
 import { RequestDayOffComponent } from '../request-day-off/request-day-off.component';
 import { DayOffRequest } from 'src/app/shared/models/dayoff-request.model';
+import { INgxSelectOption } from 'ngx-select-ex';
 
 @Component({
   selector: 'ah-dayoff-request-list',
@@ -20,6 +21,9 @@ import { DayOffRequest } from 'src/app/shared/models/dayoff-request.model';
   styleUrls: ['./dayoff-request-list.component.scss'],
 })
 export class DayOffRequestListComponent implements OnInit {
+  public employeeObs = [];
+  public paramEmployee: SearchParams;
+  public selectedEmployeeId: number;
   public searchInput = new FormControl('');
   public selectedType = new FormControl('');
   public selectedFromDate = new FormControl('');
@@ -39,6 +43,7 @@ export class DayOffRequestListComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    this.changeOption();
     this.data$ = this.store.select('employees');
     this.types$ = this.store.select('dayoffCategories').pipe(
       tap((data) => {
@@ -97,5 +102,48 @@ export class DayOffRequestListComponent implements OnInit {
       initialState,
     });
     this.bsModalRef.content.closeBtnName = 'Close';
+  }
+
+  public changeOption(): void {
+    this.store
+      .select((s) => s.employees)
+      .subscribe((data) => {
+        if (this.employeeObs.length === 0) {
+          data.employees.map((value) => {
+            this.employeeObs.push({
+              id: value.id,
+              name: value.lastName + ' ' + value.firstName,
+            });
+          });
+        }
+        this.paramEmployee = {
+          search: '',
+          status: 'ACTIVE',
+          page: 1,
+          perPage: 300,
+          sort: {
+            sortNameType: 0,
+            sortBirthDateType: 0,
+            sortJoinDateType: 0,
+          },
+        };
+      });
+    this.store.dispatch(
+      new EmployeeActions.SearchEmployees(this.paramEmployee)
+    );
+  }
+
+  public doSelectOptions(options: INgxSelectOption[]): void {
+    if (options.length === 0) {
+      this.store.dispatch(
+        new EmployeeActions.FetchDayOffRequest(this.paramEmployee)
+      );
+    } else {
+      options.map((data) => {
+        this.store.dispatch(
+          new EmployeeActions.FetchDayOffRequest({ userId: `${data.value}` })
+        );
+      });
+    }
   }
 }
