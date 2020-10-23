@@ -9,6 +9,7 @@ import {
   Validators,
   FormBuilder,
   FormArray,
+  AbstractControl,
 } from '@angular/forms';
 import { TranslateService } from '@ngx-translate/core';
 
@@ -36,7 +37,7 @@ export class EmployeeCreateComponent implements OnInit {
       Validators.minLength(10),
       Validators.maxLength(12),
     ]),
-    birthdate: new FormControl(''),
+    birthdate: new FormControl('', this.birthdayValidator),
     joinDate: new FormControl(''),
     dayOffInfos: this.formBuilder.array([]),
   });
@@ -63,7 +64,7 @@ export class EmployeeCreateComponent implements OnInit {
               dayOffCategoryId: value.id,
               hours: [
                 value.totalHoursDefault / 8,
-                Validators.pattern('^[0-9]*$'),
+                Validators.min(0),
               ],
             })
           )
@@ -84,13 +85,10 @@ export class EmployeeCreateComponent implements OnInit {
     return new Date().toISOString().split('T')[0];
   }
 
-  public changeValueDate(): boolean {
-    let d = new Date(this.f.birthdate.value);
-    const toDay = new Date(this.getToday());
-    if (d > toDay) {
-      return true;
-    }
-    return false;
+  private birthdayValidator(control: AbstractControl): { [key: string]: boolean } | null {
+    const date = new Date(control.value);
+    const toDay = new Date();
+    return date > toDay  ? { invalidDate: true } : null;
   }
 
   public getPhoneErrorMessage(): string {
