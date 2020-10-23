@@ -8,7 +8,7 @@ import { AuthGuardService } from 'src/app/core/helpers/auth.guard';
 import { ErrorComponent } from 'src/app/shared/components/error/error.component';
 import { UpdatePasswordComponent } from './pages/update-password/update-password.component';
 import { RouteConstant } from 'src/app/shared/constants/route.constant';
-import { EmployeeInfoComponent } from './pages/employee-info/employee-info.component';
+import { EmployeeDetailsComponent } from './pages/employee-details/employee-details.component';
 import { DayOffRequestComponent } from './pages/dayoff-request/dayoff-request.component';
 
 export const EMPLOYEES_ROUTES: Routes = [
@@ -34,21 +34,21 @@ export const EMPLOYEES_ROUTES: Routes = [
       },
       {
         path: `create`,
-        component: EmployeeInfoComponent,
+        component: EmployeeDetailsComponent,
         data: {
           i18nKey: 'EMPLOYEE_CREATE',
         },
       },
       {
         path: `:id`,
-        component: EmployeeInfoComponent,
+        component: EmployeeDetailsComponent,
         data: {
           i18nKey: 'EMPLOYEE_DETAIL',
         },
       },
       {
         path: `:id/edit`,
-        component: EmployeeInfoComponent,
+        component: EmployeeDetailsComponent,
         data: {
           i18nKey: 'EMPLOYEE_EDIT',
         },
