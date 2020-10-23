@@ -211,6 +211,9 @@ export class EmployeeEffects {
       if (action.payload.toDate) {
         params = params.append(ParamsConstant.toDate, action.payload.toDate);
       }
+      if (action.payload.userId) {
+        params = params.append(ParamsConstant.userId, action.payload.userId);
+      }
       return this.http
         .get<PaginatedData<DayOffRequest[]>>(
           `${environment.APILink}/day_off_request`,

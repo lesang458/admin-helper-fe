@@ -13,3 +13,28 @@ table {
     }
   }
 }
+
+.card-emp {
+  .card-body {
+    padding: 8px;
+  }
+  .table-emp {
+    thead {
+      background-color: rgba(0, 0, 21, 0.075);
+      .col-email {
+        display: none;
+      }
+      .col-hour {
+        white-space: nowrap;
+      }
+    }
+    tbody {
+      tr {
+        height: 86px;
+      }
+      .email-td {
+        display: none;
+      }
+    }
+  }
+}
