@@ -1,0 +1,26 @@
+.card {
+  .main-container {
+    b {
+      font-size: 16px;
+    }
+    .mess-invalid {
+      color: red;
+      margin-top: 5px;
+    }
+    .badge{
+      width: 95px;
+    }
+  
+  .tabset-style {
+    width: 100%;
+  }
+  .left-tab {
+    margin: 10px;
+    max-width: 48%;
+  }
+  .d-flex {
+    justify-content: space-between;
+    align-items: center;
+  }
+ } 
+}
