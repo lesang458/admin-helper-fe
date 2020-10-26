@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { AfterViewChecked, ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import * as fromApp from '../../../../store/app.reducer';
 import * as EmployeeActions from '../../store/employees.actions';
@@ -18,7 +18,7 @@ import { TranslateService } from '@ngx-translate/core';
   templateUrl: './employee-create.component.html',
   styleUrls: ['./employee-create.component.scss'],
 })
-export class EmployeeCreateComponent implements OnInit {
+export class EmployeeCreateComponent implements OnInit, AfterViewChecked {
   public hourChecked = [];
   public employeeForm = new FormGroup({
     firstName: new FormControl('', [
@@ -31,7 +31,7 @@ export class EmployeeCreateComponent implements OnInit {
     ]),
     email: new FormControl('', Validators.email),
     password: new FormControl('', Validators.minLength(6)),
-    confirmPassword: new FormControl(''),
+    confirmPassword: new FormControl('', Validators.minLength(6)),
     phoneNumber: new FormControl('', [
       Validators.pattern('^[0-9]*$'),
       Validators.minLength(10),
@@ -48,7 +48,8 @@ export class EmployeeCreateComponent implements OnInit {
   constructor(
     private store: Store<fromApp.AppState>,
     private formBuilder: FormBuilder,
-    public translateService: TranslateService
+    public translateService: TranslateService,
+    private cdr: ChangeDetectorRef
   ) {}
 
   ngOnInit(): void {
@@ -73,6 +74,10 @@ export class EmployeeCreateComponent implements OnInit {
     });
   }
 
+  ngAfterViewChecked(): void {
+    this.cdr.detectChanges();
+  }
+
   get dayOffInfos(): FormArray {
     return this.dayOffForm.get('dayOffInfos') as FormArray;
   }
@@ -89,6 +94,31 @@ export class EmployeeCreateComponent implements OnInit {
     const date = new Date(control.value);
     const toDay = new Date();
     return date > toDay  ? { invalidDate: true } : null;
+  }
+
+  public passwordIsIncorrect(): boolean {
+    const statusValidate = (
+      this.f.password.value !== this.f.confirmPassword.value
+    );
+    if (statusValidate) {
+      this.f.confirmPassword.setErrors({ incorrect:  true });
+    } else {
+      this.f.confirmPassword.setErrors({ incorrect: null});
+      this.f.confirmPassword.updateValueAndValidity();
+    }
+    return statusValidate;
+  }
+
+  public getErrorMessage(): string {
+    if (this.f.confirmPassword.errors?.required) {
+      return this.translateService.instant('PROFILE_CREATE.PASSWORD_INVALID');
+    }
+    if (this.passwordIsIncorrect()) {
+      return this.translateService.instant('RESET_PASSWORD.INCORRECT');
+    }
+    if (this.f.confirmPassword.errors?.minlength) {
+      return this.translateService.instant('PROFILE_CREATE.PASS_MINLENGTH');
+    }
   }
 
   public getPhoneErrorMessage(): string {
@@ -139,13 +169,5 @@ export class EmployeeCreateComponent implements OnInit {
       }
     );
     this.store.dispatch(new EmployeeActions.CreateEmployee(employee));
-  }
-
-  public disableSaveBtn(): boolean {
-    return (
-      this.f.firstName.value.trim().length === 0 ||
-      this.f.lastName.value.trim().length === 0 ||
-      this.f.email.value.trim().length === 0
-    );
   }
 }
