@@ -11,6 +11,7 @@ import { RouteConstant } from 'src/app/shared/constants/route.constant';
 import { EmployeeDetailsComponent } from './pages/employee-details/employee-details.component';
 import { DayOffRequestComponent } from './pages/dayoff-request/dayoff-request.component';
 import { EmployeeCreatePageComponent } from './pages/employee-create-page/employee-create-page.component';
+import { EmployeeEditPageComponent } from './pages/employee-edit-page/employee-edit-page.component';
 
 export const EMPLOYEES_ROUTES: Routes = [
   { path: '', redirectTo: `/${RouteConstant.employees}`, pathMatch: 'full' },
@@ -49,7 +50,7 @@ export const EMPLOYEES_ROUTES: Routes = [
       },
       {
         path: `:id/edit`,
-        component: EmployeeDetailsComponent,
+        component: EmployeeEditPageComponent,
         data: {
           i18nKey: 'EMPLOYEE_EDIT',
         },
