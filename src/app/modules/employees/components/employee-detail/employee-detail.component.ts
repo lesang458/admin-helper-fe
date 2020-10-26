@@ -8,7 +8,6 @@ import * as DevicesActions from '../../../devices/store/devices.actions';
 import { SearchDevice } from '../../../devices/store/devices.actions';
 import { Observable } from 'rxjs';
 import { State } from '../../../devices/store/devices.reducer';
-import { FormGroup, Validators, FormBuilder, FormArray } from '@angular/forms';
 import { RouteConstant } from 'src/app/shared/constants/route.constant';
 import { TranslateService } from '@ngx-translate/core';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
@@ -25,14 +24,10 @@ export class EmployeeDetailComponent implements OnInit {
   public searchParams: SearchDevice;
   public device$: Observable<State>;
   public id: number;
-  public dayOffForm = new FormGroup({
-    dayOffInfos: this.formBuilder.array([]),
-  });
 
   constructor(
     private store: Store<fromApp.AppState>,
     private route: ActivatedRoute,
-    private formBuilder: FormBuilder,
     private router: Router,
     public translateService: TranslateService,
     private modalService: BsModalService
@@ -61,10 +56,6 @@ export class EmployeeDetailComponent implements OnInit {
     this.router.navigateByUrl(
       `/${RouteConstant.employees}/${this.id}/edit${bl ? '?dayoff=true' : ''}`
     );
-  }
-
-  get dayOffInfos(): FormArray {
-    return this.dayOffForm.get('dayOffInfos') as FormArray;
   }
 
   public openModalWithComponent(selectedEmployee, searchParams): void {
