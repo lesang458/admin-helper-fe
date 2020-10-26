@@ -46,23 +46,6 @@ export class EmployeeDetailComponent implements OnInit {
       .subscribe((data: Employee) => {
         if (data) {
           this.employee = data;
-          this.dayOffForm = new FormGroup({
-            dayOffInfos: this.formBuilder.array(
-              data?.dayOffInfos?.map((value) =>
-                this.formBuilder.group({
-                  availableHours: value.availableHours / 8,
-                  categoryName: value.categoryName,
-                  dayOffCategoryId: value.dayOffCategoryId,
-                  hours: [
-                    {
-                      value: value.hours / 8,
-                      disabled: true,
-                    },
-                  ],
-                })
-              )
-            ),
-          });
         }
       });
     this.device$ = this.store.select('devices');
