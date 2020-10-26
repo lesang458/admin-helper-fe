@@ -19,7 +19,9 @@
         height: auto !important;
       }
     }
-
+    .dayoff{
+      padding: 0.5rem 1.5rem 1.5rem 1.5rem !important;
+    }
     .card-body {
       padding: 0.5rem;
     }
@@ -66,13 +68,6 @@
     .form-control:disabled{
       background-color: transparent;
       border: none;
-    }
-  }
-
-  .text-right {
-    padding-right: 0;
-    button {
-      width: 115px;
     }
   }
 
