@@ -35,11 +35,7 @@ export const EMPLOYEES_ROUTES: Routes = [
       },
       {
         path: `create`,
-<<<<<<< HEAD
-        component: EmployeeDetailsComponent,
-=======
         component: EmployeeCreatePageComponent,
->>>>>>> develop
         data: {
           i18nKey: 'EMPLOYEE_CREATE',
         },
