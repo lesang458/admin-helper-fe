@@ -209,6 +209,10 @@ export class EmployeeEditComponent implements OnInit, AfterViewChecked {
     );
   }
 
+  public navigateDetail(): void {
+    this.router.navigateByUrl(`/${RouteConstant.employees}/${this.id}`);
+  }
+
   public onSubmit(): void {
     this.employeeForm.value.dayOffInfosAttributes = this.dayOffForm.value.dayOffInfos;
     const employee = { ...this.employeeForm.value };

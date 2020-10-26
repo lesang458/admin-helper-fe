@@ -22,14 +22,24 @@
                   </span>
                 </span>
               </div>
-              <button
-                type="submit"
-                class="btn btn-success mr-2"
-                [disabled]="employeeForm.invalid || dayOffForm.invalid"
+              <div>
+                <button
+                  type="submit"
+                  class="btn btn-success mr-2"
+                  [disabled]="employeeForm.invalid || dayOffForm.invalid"
+                  >
+                  <span class="cil-save mr-1"></span>
+                  {{ 'PROFILE_CREATE.SAVE' | translate }}
+                </button>
+                <button
+                type="button"
+                class="btn btn-info mr-2"
+                (click)="navigateDetail()"
                 >
-                <span class="cil-save mr-1"></span>
-                {{ 'PROFILE_CREATE.SAVE' | translate }}
-            </button>
+                <span class="cil-list mr-1"></span>
+                {{ 'EMPLOYEE_EDIT.DETAIL' | translate }}
+                </button>
+              </div>
             </div>
             <div class="row ml-2 mr-2">
                 <div class="col-lg-6 col-md-12">
