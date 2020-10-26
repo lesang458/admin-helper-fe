@@ -10,7 +10,7 @@
                     <button
                       type="button"
                       class="btn btn-info"
-                      (click)="openModalWithComponent(null, 'create')"
+                      (click)="navigateEdit()"
                     >
                       <span class="cil-brush"></span>
                       {{ 'DEVICE_TABLE.EDIT' | translate }}
@@ -108,7 +108,7 @@
                       <button
                         type="button"
                         class="btn btn-info"
-                        (click)="openModalWithComponent(null, 'create')"
+                        (click)="navigateEdit(true)"
                       >
                         <span class="cil-brush"></span>
                         {{ 'DEVICE_TABLE.EDIT' | translate }}
