@@ -17,7 +17,7 @@ import { UpdatePasswordComponent } from './pages/update-password/update-password
 import { CommonModule, DatePipe } from '@angular/common';
 import { TooltipModule } from 'ngx-bootstrap/tooltip';
 import { EmployeeDetailComponent } from './components/employee-detail/employee-detail.component';
-import { EmployeeInfoComponent } from './pages/employee-info/employee-info.component';
+import { EmployeeDetailsComponent } from './pages/employee-details/employee-details.component';
 import { StatusConfirmComponent } from './components/status-confirm/status-confirm.component';
 import { DayOffRequestComponent } from './pages/dayoff-request/dayoff-request.component';
 import { DayOffRequestListComponent } from './components/dayoff-request-list/dayoff-request-list.component';
@@ -44,7 +44,7 @@ const CustomSelectOptions: INgxSelectOptions = {
     AuthComponent,
     UpdatePasswordComponent,
     EmployeeDetailComponent,
-    EmployeeInfoComponent,
+    EmployeeDetailsComponent,
     DayOffRequestComponent,
     DayOffRequestListComponent,
     EmployeeCreateComponent,
