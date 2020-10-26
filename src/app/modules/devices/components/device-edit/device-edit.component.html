@@ -15,7 +15,7 @@
   </button>
 </div>
 <hr class="mt-0 mb-0" />
-<form [formGroup]="deviceForm" (ngSubmit)="onSubmit()">
+<form [formGroup]="deviceForm" (ngSubmit)="onSubmit()" class="auto-validated">
   <div class="modal-body mb-0 pb-0">
     <div class="row">
       <div class="col-12">
@@ -27,24 +27,13 @@
             id="name"
             class="form-control"
             formControlName="name"
-            inputFormatter
+            ahInputFormatter
           />
           <div
-            *ngIf="(f.name.invalid || f.name.value.trim().length < 2 || f.name.value.trim().length > 40) && f.name.touched"
-            class="invalid-message"
+            *ngIf="f.name.invalid && f.name.touched"
+            class="invalid-feedback"
           >
-            <div *ngIf="f.name.value.trim().length > 1 && f.name.value.trim().length < 41">
-              {{ getNameErrorMessage() }}
-            </div>
-            <div *ngIf="f.name.value.trim().length===0">
-              {{ 'DEVICE_EDIT.DEVICE_NAME_REQUIRED' | translate }}
-            </div>
-            <div *ngIf="f.name.value.trim().length===1">
-              {{ 'DEVICE_EDIT.DEVICE_NAME_MIN_LENGTH' | translate }}
-            </div>
-            <div *ngIf="f.name.value.trim().length>40">
-              {{ 'DEVICE_EDIT.DEVICE_NAME_MAX_LENGTH' | translate }}
-            </div>
+            {{ getNameErrorMessage() }}
           </div>
         </div>
       </div>
@@ -65,7 +54,7 @@
           />
           <div
             *ngIf="f.price.invalid && f.price.touched"
-            class="invalid-message"
+            class="invalid-feedback"
           >
             {{ getPriceErrorMessage() }}
           </div>
@@ -103,11 +92,11 @@
             class="form-control"
             rows="3"
             formControlName="description"
-            inputFormatter
+            ahInputFormatter
           ></textarea>
           <div
             *ngIf="f.description.invalid && f.description.touched"
-            class="invalid-message"
+            class="invalid-feedback"
           >
             {{ 'DEVICE_EDIT.DESCRIPTION_MIN_LENGTH' | translate }}
           </div>

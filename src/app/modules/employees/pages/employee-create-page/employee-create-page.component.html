@@ -1,0 +1,14 @@
+<div class="c-app">
+  <div
+    ah-sidebar
+    class="c-sidebar c-sidebar-dark c-sidebar-fixed c-sidebar-lg-show"
+    [class.c-sidebar-minimized]="titleService.isMinimized | async"
+    id="sidebar"
+  ></div>
+  <div class="c-wrapper c-fixed-components">
+    <ah-header [title]="title"></ah-header>
+    <ah-body>
+      <ah-employee-create></ah-employee-create>
+    </ah-body>
+  </div>
+</div>

@@ -1,0 +1,257 @@
+<div class="card">
+  <div class="card-body">
+    <form [formGroup]="employeeForm" (ngSubmit)="onSubmit()" class="auto-validated">
+      <div class="text-right">
+        <button
+          type="submit"
+          class="btn btn-success mb-4"
+          [disabled]="employeeForm.invalid || dayOffForm.invalid || (employeeForm.value.password !== employeeForm.value.confirmPassword) || disableSaveBtn()"
+          >
+          <span class="cil-save mr-1"></span>
+          {{ 'PROFILE_CREATE.SAVE' | translate }}
+        </button>
+      </div>
+      <div class="main-container row">
+        <div class="col-lg-6 col-md-12">
+            <b class="mr-2 ml-2">{{ 'EMPLOYEE_DETAIL.EMPLOYEE_INFO' | translate }}</b>
+                <div class="info style'">
+                  <div class="form-group row mb-4">
+                    <label for="firstName" class="col-sm-3 col-form-label">{{ 'PROFILE_CREATE.FIRST_NAME' | translate }}</label>
+                    <div class="col-sm-9">
+                      <input
+                        id="firstName"
+                        type="text"
+                        class="form-control"
+                        formControlName="firstName"
+                        required
+                        ahInputFormatter
+                      />
+                      <div
+                        *ngIf="f.firstName.invalid && f.firstName.touched"
+                        class="invalid-feedback"
+                      >
+                        <div *ngIf="f.firstName.errors?.required">
+                          {{ 'PROFILE_CREATE.FIRST_NAME_INVALID' | translate }}
+                        </div>
+                        <div *ngIf="f.firstName.errors?.minlength">
+                          {{ 'PROFILE_CREATE.FIRST_NAME_MIN_LENGTH' | translate }}
+                        </div>
+                        <div *ngIf="f.firstName.errors?.maxlength">
+                          {{ 'PROFILE_CREATE.FIRST_NAME_MAX_LENGTH' | translate }}
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="form-group row mb-4">
+                    <label for="lastName" class="col-sm-3 col-form-label">{{ 'PROFILE_CREATE.LAST_NAME' | translate }}</label>
+                    <div class="col-sm-9">
+                      <input
+                        id="lastName"
+                        type="text"
+                        class="form-control"
+                        formControlName="lastName"
+                        required
+                        ahInputFormatter
+                      />
+                      <div
+                        *ngIf="f.lastName.invalid && f.lastName.touched"
+                        class="invalid-feedback"
+                      >
+                        <div *ngIf="f.lastName.errors?.required">
+                          {{ 'PROFILE_CREATE.LAST_NAME_INVALID' | translate }}
+                        </div>
+                        <div *ngIf="f.lastName.errors?.minlength">
+                          {{ 'PROFILE_CREATE.LAST_NAME_MIN_LENGTH' | translate }}
+                        </div>
+                        <div *ngIf="f.lastName.errors?.maxlength">
+                          {{ 'PROFILE_CREATE.LAST_NAME_MAX_LENGTH' | translate }}
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="form-group row mb-4">
+                    <label for="email" class="col-sm-3 col-form-label">{{ 'LOGIN.EMAIL' | translate }}</label>
+                    <div class="col-sm-9">
+                      <input
+                        id="email"
+                        type="text"
+                        class="form-control"
+                        formControlName="email"
+                        required
+                        ahInputFormatter
+                      />
+                      <div
+                        *ngIf="f.email.invalid && f.email.touched"
+                        class="invalid-feedback"
+                      >
+                        <div [ngSwitch]="f.email.errors?.required">
+                          <div *ngSwitchCase="true">
+                            {{ 'PROFILE_CREATE.EMAIL_INVALID' | translate }}
+                          </div>
+                          <div *ngSwitchDefault>
+                            {{ 'PROFILE_CREATE.IS_EMAIL' | translate }}
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="form-group row mb-4">
+                    <label for="pass" class="col-sm-3 col-form-label">{{ 'LOGIN.PASS' | translate }}</label>
+                    <div class="col-sm-9">
+                      <input
+                        id="pass"
+                        type="password"
+                        class="form-control"
+                        formControlName="password"
+                        required
+                        ahInputFormatter
+                      />
+                      <div
+                      *ngIf="f.password.invalid && f.password.touched"
+                      class="invalid-feedback"
+                      >
+                        <div *ngIf="f.password.errors.required">
+                          {{ 'PROFILE_CREATE.PASSWORD_INVALID' | translate }}
+                        </div>
+                        <div *ngIf="f.password.errors.minlength">
+                          {{ 'PROFILE_CREATE.PASS_MINLENGTH' | translate }}
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="form-group row mb-4">
+                    <label for="confirmPassword" class="col-sm-3 col-form-label">{{ 'EMPLOYEE_CREATE.CONFIRM_PASS' | translate }}</label>
+                    <div class="col-sm-9">
+                      <input
+                        id="confirmPassword"
+                        type="password"
+                        class="form-control"
+                        formControlName="confirmPassword"
+                        required
+                      />
+                      <div
+                        *ngIf="employeeForm.value.password !== employeeForm.value.confirmPassword"
+                        class="mess-invalid">
+                        {{ 'EMPLOYEE_CREATE.PASSWORD_MATCH' | translate }}
+                      </div>
+                    </div>
+                  </div>
+                  <div class="form-group row mb-4">
+                    <label for="birthdate" class="col-sm-3 col-form-label">{{ 'GENERAL_LIST.BIRTHDAY' | translate }}</label>
+                    <div class="col-sm-9">
+                      <input
+                        type="date"
+                        id="birthdate"
+                        class="form-control"
+                        [max]="getToday()"
+                        formControlName="birthdate"
+                        required
+                      />
+                      <div
+                        *ngIf="f.birthdate.invalid && f.birthdate.touched"
+                        class="invalid-feedback"
+                        >
+                        <div *ngIf="f.birthdate.errors.required">
+                          {{ 'PROFILE_CREATE.BIRTHDAY_INVALID' | translate }}
+                        </div>
+                        <div *ngIf="f.birthdate.errors.invalidDate">
+                          {{ 'PROFILE_CREATE.BIRTHDAY_MAX' | translate }}
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="form-group row mb-4">
+                    <label for="phone" class="col-sm-3 col-form-label">{{ 'GENERAL_LIST.PHONE_NUMBER' | translate }}</label>
+                    <div class="col-sm-9">
+                      <input
+                        id="phone"
+                        type="text"
+                        class="form-control"
+                        formControlName="phoneNumber"
+                        required
+                      />
+                      <div
+                        *ngIf="f.phoneNumber.invalid && f.phoneNumber.touched"
+                        class="invalid-feedback"
+                      >
+                      {{ getPhoneErrorMessage() }}
+                      </div>
+                    </div>
+                  </div>
+                  <div class="form-group row mb-4">
+                    <label for="joinDate" class="col-sm-3 col-form-label">{{ 'GENERAL_LIST.JOIN_DATE' | translate }}</label>
+                    <div class="col-sm-9">
+                      <input
+                        id="joinDate"
+                        type="date"
+                        class="form-control"
+                        formControlName="joinDate"
+                        required
+                      />
+                        <div
+                          *ngIf="f.joinDate.invalid && f.joinDate.touched"
+                          class="invalid-feedback"
+                          >
+                        <div *ngIf="f.joinDate.errors.required">
+                          {{ 'PROFILE_CREATE.JOIN_DATE_INVALID' | translate }}
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+              </div>
+        </div>
+        <div class="col-lg-6 col-md-12" *ngIf="dayOffInfos.controls.length > 0">
+            <form [formGroup]="dayOffForm" class="auto-validated">
+                <b class="ml-2">{{ 'PROFILE_CREATE.DAY_OFF_INFO' | translate }}</b>
+                <div class="info" formArrayName="dayOffInfos">
+                  <div 
+                    class="form-group row mb-4" 
+                    *ngFor="let item of dayOffInfos.controls; let i = index" 
+                    [formGroupName]="i"
+                    >
+                    <label class="col-sm-3 col-form-label">{{ dayOffInfos.at(i).get('categoryName').value | titlecase }}</label>
+                    <div class="col-sm-7">
+                      <div class="input-group">
+                        <div class="input-group-prepend">
+                          <div class="input-group-text">
+                            <input
+                              type="checkbox"
+                              aria-label="Checkbox for following text input"
+                              (change)="checkCheckBoxValue($event, dayOffInfos.at(i).get('dayOffCategoryId').value)"
+                              checked>
+                          </div>
+                        </div>
+                        <input
+                          type="number"
+                          class="form-control text-right"
+                          formControlName="hours"
+                          required
+                        />
+                        <div
+                          *ngIf="dayOffInfos.controls[i].get('hours').invalid && dayOffInfos.controls[i].get('hours').touched"
+                          class="invalid-feedback"
+                        >
+                          <div *ngIf="dayOffInfos.controls[i].get('hours').errors.required">
+                            {{ 'PROFILE_CREATE.HOURS_INVALID' | translate }}
+                          </div>
+                          <div *ngIf="dayOffInfos.controls[i].get('hours').errors.min">
+                            {{ 'PROFILE_CREATE.HOURS_MIN' | translate }}
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <label class="col-sm-2 col-form-label">{{ 'EMPLOYEE_DETAIL.DAY' | translate }}</label>
+                  </div>
+                </div>
+                <div
+                  *ngIf="dayOffInfos.controls.length === 0"
+                  class="alert alert-warning text-center mt-2 ml-2 mr-2"
+                  role="alert">
+                  {{ 'DAY_OFF_TABLE.NO_RESULT' | translate }}
+              </div>
+            </form>
+          </div>
+        </div>
+    </form>
+  </div>
+</div>

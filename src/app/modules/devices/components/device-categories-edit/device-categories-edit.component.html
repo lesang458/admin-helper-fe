@@ -1,4 +1,4 @@
-<form [formGroup]="f" (ngSubmit)="onSubmit()">
+<form [formGroup]="f" (ngSubmit)="onSubmit()" class="auto-validated">
   <div class="modal-header">
     <h4 *ngIf="type === 'create'" class="modal-title pull-left">
       {{ 'DEVICE_CATEGORIES_PAGE.CREATE' | translate }}
@@ -29,16 +29,16 @@
         class="form-control"
         id="name"
         formControlName="name"
-        inputFormatter
+        ahInputFormatter
       />
       <div
-        *ngIf="(f.get('name').invalid || f.value.name.trim().length === 0 || f.value.name.trim().length > 100) && f.get('name').touched"
-        class="mess-invalid"
+        *ngIf="f.get('name').invalid && f.get('name').touched"
+        class="invalid-feedback"
       >
-        <div *ngIf="f.get('name').errors?.required || f.value.name.trim().length === 0">
+        <div *ngIf="f.get('name').errors?.required">
           {{ 'DAY_OFF_CATEGORIES_PAGE.NAME_REQUIRED' | translate }}
         </div>
-        <div *ngIf="f.get('name').errors?.maxlength || f.value.name.trim().length > 100">
+        <div *ngIf="f.get('name').errors?.maxlength">
           {{ 'DEVICE_CATEGORIES_PAGE.NAME_MAXLENGTH' | translate }}
         </div>
       </div>
@@ -51,7 +51,7 @@
         class="form-control"
         id="description"
         formControlName="description"
-        inputFormatter
+        ahInputFormatter
       ></textarea>
     </div>
     <div class="form-group col-md-12" *ngIf="type === 'delete'">

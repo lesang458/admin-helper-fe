@@ -1,4 +1,4 @@
-<form [formGroup]="f" (ngSubmit)="onSubmit()">
+<form [formGroup]="f" (ngSubmit)="onSubmit()" class="auto-validated">
   <div class="modal-header">
     <h4 *ngIf="type === 'create'" class="modal-title pull-left">
       {{ 'DAY_OFF_CATEGORIES_PAGE.CREATE_TITLE' | translate }}
@@ -26,24 +26,13 @@
         class="form-control"
         id="name"
         formControlName="name"
-        inputFormatter
+        ahInputFormatter
       />
       <div
-        *ngIf="(f.get('name').invalid || f.value.name.trim().length < 2 || f.value.name.trim().leng > 20) && f.get('name').touched"
-        class="mess-invalid"
+        *ngIf="f.get('name').invalid && f.get('name').touched"
+        class="invalid-feedback"
       >
-        <div *ngIf="f.value.name.trim().length===0">
-          {{ 'DAY_OFF_CATEGORIES_PAGE.NAME_REQUIRED' | translate }}
-        </div>
-        <div *ngIf="f.value.name.trim().length===1">
-          {{ 'DAY_OFF_CATEGORIES_PAGE.NAME_MINLENGTH' | translate }}
-        </div>
-        <div *ngIf="f.value.name.trim().length>20">
-          {{ 'DAY_OFF_CATEGORIES_PAGE.NAME_MAXLENGTH' | translate }}
-        </div>
-        <div *ngIf="f.value.name.trim().length<20 && f.value.name.trim().length>1">
-          {{ getNameErrorMessage() }}
-        </div>
+        {{ getNameErrorMessage() }}
       </div>
     </div>
     <div class="form-group col-md-12">
@@ -58,7 +47,7 @@
       />
       <div
         *ngIf="f.get('days').invalid && f.get('days').touched"
-        class="mess-invalid"
+        class="invalid-feedback"
       >
         <div *ngIf="f.get('days').errors.required">
           {{ 'DAY_OFF_CATEGORIES_PAGE.DAYS_REQUIRED' | translate }}
@@ -124,11 +113,11 @@
         class="form-control"
         id="description"
         formControlName="description"
-        inputFormatter
+        ahInputFormatter
       ></textarea>
       <div
         *ngIf="f.get('description').invalid && f.get('description').touched"
-        class="mess-invalid"
+        class="invalid-feedback"
       >
         {{ 'DEVICE_EDIT.DESCRIPTION_MIN_LENGTH' | translate }}
       </div>

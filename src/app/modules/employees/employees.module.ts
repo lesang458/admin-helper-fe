@@ -22,6 +22,8 @@ import { StatusConfirmComponent } from './components/status-confirm/status-confi
 import { DayOffRequestComponent } from './pages/dayoff-request/dayoff-request.component';
 import { DayOffRequestListComponent } from './components/dayoff-request-list/dayoff-request-list.component';
 import { INgxSelectOptions, NgxSelectModule } from 'ngx-select-ex';
+import { EmployeeCreateComponent } from './components/employee-create/employee-create.component';
+import { EmployeeCreatePageComponent } from './pages/employee-create-page/employee-create-page.component';
 
 const CustomSelectOptions: INgxSelectOptions = {
   optionValueField: 'id',
@@ -43,6 +45,8 @@ const CustomSelectOptions: INgxSelectOptions = {
     EmployeeDetailsComponent,
     DayOffRequestComponent,
     DayOffRequestListComponent,
+    EmployeeCreateComponent,
+    EmployeeCreatePageComponent,
   ],
   imports: [
     CommonModule,
