@@ -92,7 +92,7 @@
         <tbody>
           <tr *ngFor="let item of data.dayOffRequest.data; let i = index">
             <td class="align-middle email-td">
-              <a class="link-a" (click)="navigateEmployeeDetail(item.id)">
+              <a class="link-a" (click)="navigateEmployeeDetail(item.user.id)">
                 {{ item.user.lastName + ' ' + item.user.firstName }}
               </a>
             </td>
