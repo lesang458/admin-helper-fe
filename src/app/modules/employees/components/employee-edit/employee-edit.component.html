@@ -1,0 +1,257 @@
+<div class="card">
+  <div class="card-body">
+    <form [formGroup]="employeeForm" (ngSubmit)="onSubmit()">
+      <div class="main-container row">
+        <tabset class="tabset-style">
+          <tab heading="{{ 'EMPLOYEE_DETAIL.EMPLOYEE_INFO' | translate }}" class="mt-2">
+            <div class="d-flex mt-3 mb-2">
+            <div>
+              <b class="mr-2 ml-2">{{ 'EMPLOYEE_DETAIL.EMPLOYEE_INFO' | translate }}</b>
+              <span>
+                <span
+                  class="badge rounded-pill badge-danger p-2"
+                  *ngIf="employee?.status !== 'ACTIVE'"
+                >
+                  {{ 'GENERAL_LIST.FORMER' | translate }}
+                </span>
+                  <span
+                    class="badge rounded-pill badge-success p-2"
+                    *ngIf="employee?.status === 'ACTIVE'"
+                  >
+                    {{ 'GENERAL_LIST.ACTIVE' | translate }}
+                  </span>
+                </span>
+              </div>
+              <button
+                type="submit"
+                class="btn btn-success mr-2"
+                [disabled]="employeeForm.invalid || dayOffForm.invalid || changeValueDate() || disableSaveBtn()"
+                >
+                <span class="cil-save mr-1"></span>
+                {{ 'PROFILE_CREATE.SAVE' | translate }}
+            </button>
+            </div>
+            <div class="info style row">
+                <div class="col-lg-6 col-md-12 left-tab">
+                  <div class="form-group row mb-4">
+                    <label for="firstName" class="col-sm-3 col-form-label">{{ 'PROFILE_CREATE.FIRST_NAME' | translate }}</label>
+                      <div class="col-sm-9">
+                            <input
+                              id="firstName"
+                              type="text"
+                              class="form-control"
+                              formControlName="firstName"
+                              required
+                              inputFormatter
+                            />
+                            <div
+                              *ngIf="(f.firstName.invalid || f.firstName.value.trim().length < 2 || f.firstName.value.trim().length > 20) && f.firstName.touched"
+                              class="mess-invalid"
+                            >
+                              <div *ngIf="f.firstName.errors?.required || f.firstName.value.trim().length === 0">
+                                {{ 'PROFILE_CREATE.FIRST_NAME_INVALID' | translate }}
+                              </div>
+                              <div *ngIf="(f.firstName.errors?.minlength || f.firstName.value.trim().length===1) && f.firstName.value.trim().length !== 0">
+                                {{ 'PROFILE_CREATE.FIRST_NAME_MIN_LENGTH' | translate }}
+                              </div>
+                              <div *ngIf="(f.firstName.errors?.maxlength || f.firstName.value.trim().length>20) && f.firstName.value.trim().length !== 0">
+                                {{ 'PROFILE_CREATE.FIRST_NAME_MAX_LENGTH' | translate }}
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="form-group row mb-4">
+                          <label for="lastName" class="col-sm-3 col-form-label">{{ 'PROFILE_CREATE.LAST_NAME' | translate }}</label>
+                          <div class="col-sm-9">
+                            <input
+                              id="lastName"
+                              type="text"
+                              class="form-control"
+                              formControlName="lastName"
+                              required
+                              inputFormatter
+                            />
+                            <div
+                            *ngIf="(f.lastName.invalid || f.lastName.value.trim().length < 2 || f.lastName.value.trim().length > 20) && f.lastName.touched"
+                            class="mess-invalid"
+                          >
+                              <div *ngIf="f.lastName.errors?.required || f.lastName.value.trim().length === 0">
+                                {{ 'PROFILE_CREATE.LAST_NAME_INVALID' | translate }}
+                              </div>
+                              <div *ngIf="(f.lastName.errors?.minlength || f.lastName.value.trim().length === 1) && f.lastName.value.trim().length !== 0">
+                                {{ 'PROFILE_CREATE.LAST_NAME_MIN_LENGTH' | translate }}
+                              </div>
+                              <div *ngIf="(f.lastName.errors?.maxlength ||  f.lastName.value.trim().length > 20) && f.lastName.value.trim().length !== 0">
+                                {{ 'PROFILE_CREATE.LAST_NAME_MAX_LENGTH' | translate }}
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="form-group row mb-4">
+                          <label for="email" class="col-sm-3 col-form-label">{{ 'LOGIN.EMAIL' | translate }}</label>
+                          <div class="col-sm-9">
+                            <input
+                              id="email"
+                              type="text"
+                              class="form-control"
+                              formControlName="email"
+                              required
+                              inputFormatter
+                            />
+                            <div
+                              *ngIf="(f.email.invalid || f.email.value.trim().length === 0) && f.email.touched"
+                              class="mess-invalid"
+                            >
+                              <div [ngSwitch]="f.email.errors?.required || f.email.value.trim().length === 0">
+                                <div *ngSwitchCase="true">
+                                  {{ 'PROFILE_CREATE.EMAIL_INVALID' | translate }}
+                                </div>
+                                <div *ngSwitchDefault>
+                                  {{ 'PROFILE_CREATE.IS_EMAIL' | translate }}
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-md-12 left-tab">
+                      <div class="form-group row mb-4">
+                        <label for="birthdate" class="col-sm-3 col-form-label">{{ 'GENERAL_LIST.BIRTHDAY' | translate }}</label>
+                        <div class="col-sm-9">
+                          <input
+                            type="date"
+                            id="birthdate"
+                            class="form-control"
+                            [max]="getToday()"
+                            formControlName="birthdate"
+                            (change)="changeValueDate()"
+                            required
+                          />
+                          <div *ngIf="changeValueDate()" class="mess-invalid">
+                            {{ 'PROFILE_CREATE.BIRTHDAY_MAX' | translate }}
+                          </div>
+                          <div
+                            *ngIf="f.birthdate.invalid && f.birthdate.touched"
+                            class="mess-invalid"
+                            >
+                            <div *ngIf="f.birthdate.errors.required">
+                              {{ 'PROFILE_CREATE.BIRTHDAY_INVALID' | translate }}
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="form-group row mb-4">
+                        <label for="phone" class="col-sm-3 col-form-label">{{ 'GENERAL_LIST.PHONE_NUMBER' | translate }}</label>
+                        <div class="col-sm-9">
+                          <input
+                            id="phone"
+                            type="text"
+                            class="form-control"
+                            formControlName="phoneNumber"
+                            required
+                          />
+                          <div
+                            *ngIf="f.phoneNumber.invalid && f.phoneNumber.touched"
+                            class="mess-invalid"
+                          >
+                          {{ getPhoneErrorMessage() }}
+                          </div>
+                        </div>
+                      </div>
+                      <div class="form-group row mb-4">
+                        <label for="joinDate" class="col-sm-3 col-form-label">{{ 'GENERAL_LIST.JOIN_DATE' | translate }}</label>
+                        <div class="col-sm-9">
+                          <input
+                            id="joinDate"
+                            type="date"
+                            class="form-control"
+                            formControlName="joinDate"
+                            required
+                          />
+                            <div
+                              *ngIf="f.joinDate.invalid && f.joinDate.touched"
+                              class="mess-invalid"
+                              >
+                            <div *ngIf="f.joinDate.errors.required">
+                              {{ 'PROFILE_CREATE.JOIN_DATE_INVALID' | translate }}
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                  </div>
+              </div>
+          </tab>
+          <tab heading="{{ 'PROFILE_CREATE.DAY_OFF_INFO' | translate }}" class="mt-2">
+            <form [formGroup]="dayOffForm">
+              <b class="ml-2">{{ 'PROFILE_CREATE.DAY_OFF_INFO' | translate }}</b>
+              <div class="info" formArrayName="dayOffInfos">
+                <div 
+                  class="form-group row mb-4" 
+                  *ngFor="let item of dayOffInfos.controls; let i = index" 
+                  [formGroupName]="i"
+                  >
+                  <div class="col-sm-2"></div>
+                  <label class="col-sm-1 col-form-label">{{ dayOffInfos.at(i).get('categoryName').value | titlecase }}</label>
+                  <div class="col-sm-5">
+                      <input
+                        type="number"
+                        class="form-control text-right"
+                        formControlName="hours"
+                        required
+                      />
+                    <div
+                     *ngIf="dayOffInfos.controls[i].get('hours').invalid && dayOffInfos.controls[i].get('hours').touched"
+                     class="mess-invalid"
+                    >
+                      <div *ngIf="dayOffInfos.controls[i].get('hours').errors.required">
+                        {{ 'PROFILE_CREATE.HOURS_INVALID' | translate }}
+                      </div>
+                      <div *ngIf="dayOffInfos.controls[i].get('hours').errors.pattern">
+                        {{ 'PROFILE_CREATE.HOURS_PATTERN' | translate }}
+                      </div>
+                    </div>
+                  </div>
+                  <label class="col-sm-1 col-form-label">{{ 'EMPLOYEE_DETAIL.DAY' | translate }}</label>
+                  <div class="col-sm-1">
+                    <button
+                      class="btn btn-outline-danger"
+                      (click)="removeDayoffCategory(types, dayOffInfos.at(i))">
+                      <i class="cil-minus"></i>
+                    </button>
+                  </div>
+                  <div class="col-sm-2"></div>
+                </div>
+                <div class="form-group row">
+                  <div class="col-sm-2"></div>
+                  <label class="d-inline-block label-sel col-sm-1" for="day-off-type">
+                    {{ 'EMPLOYEE_DETAIL.DAY_OFF_INFO' | translate }}
+                  </label>
+                  <select
+                    [formControl]="selectedType"
+                    class="form-control d-inline-block col-sm-5 select"
+                    id="day-off-type"
+                    style="width: auto;"
+                    (change)="addDayoffCatetory(types)"
+                  >
+                    <option value="No select">
+                      {{ 'EMPLOYEE_DETAIL.NO_SELECT' | translate }}
+                    </option>
+                    <option *ngFor="let item of types" [value]="item?.id">
+                      {{ item?.name | titlecase }}
+                    </option>
+                  </select>
+                </div>
+              </div>
+              <div
+                *ngIf="dayOffInfos.controls.length === 0"
+                class="alert alert-warning text-center mt-2 ml-2 mr-2"
+                role="alert">
+                {{ 'DAY_OFF_TABLE.NO_RESULT' | translate }}
+            </div>
+          </form>
+        </tab>
+        </tabset>
+      </div>
+    </form>
+  </div>
+</div>
