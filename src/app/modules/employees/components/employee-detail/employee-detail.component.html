@@ -3,18 +3,19 @@
       <div class="main-container row">
         <tabset class="tabset-style">
           <tab heading="{{ 'EMPLOYEE_DETAIL.EMPLOYEE_INFO' | translate }}">
-            <div class="mt-2 mb-2 mr-4 text-right">
-              <button
-                type="button"
-                class="btn btn-outline-success"
-                (click)="navigateEdit()"
-              >
-                {{ 'DEVICE_TABLE.EDIT' | translate }}
-              </button>
-            </div>
             <div class="row-1">
               <div class="card">
                 <div class="card-body">
+                  <div class="mt-2 mb-2 mr-4 text-right">
+                    <button
+                      type="button"
+                      class="btn btn-info"
+                      (click)="openModalWithComponent(null, 'create')"
+                    >
+                      <span class="cil-brush"></span>
+                      {{ 'DEVICE_TABLE.EDIT' | translate }}
+                    </button>
+                  </div>
                   <div class="row">
                     <div class="col-lg-6 col-md-12 left-tab">
                       <b class="mr-2 ml-2">{{ 'EMPLOYEE_DETAIL.EMPLOYEE_INFO' | translate }}</b>
@@ -103,12 +104,13 @@
                 <form [formGroup]="dayOffForm" class="row">
                   <div class="card-body col-lg-6 col-md-12">
                     <b class="ml-2">{{ 'PROFILE_CREATE.DAY_OFF_INFO' | translate }}</b>
-                    <div class="d-flex float-right mt-2 mb-2 mr-2">
+                    <div class="mt-2 mb-2 mr-2 text-right">
                       <button
                         type="button"
-                        class="btn btn-outline-success"
-                        (click)="navigateEdit(true)"
+                        class="btn btn-info"
+                        (click)="openModalWithComponent(null, 'create')"
                       >
+                        <span class="cil-brush"></span>
                         {{ 'DEVICE_TABLE.EDIT' | translate }}
                       </button>
                     </div>
@@ -142,14 +144,14 @@
                   <div class="col-lg-6 col-md-12 request-dayoff">
                     <div class="infor">
                       <b class="ml-2">{{ 'PROFILE_CREATE.DAY_OFF_REQUEST' | translate }}</b>
-                      <div class="d-flex float-right mt-2 mb-2 mr-2">
+                      <div class="mt-2 mb-2 mr-2 text-right">
                         <button
                           type="button"
-                          class="btn btn-outline-info"
-                          (click)="openModalWithComponent(employee,searchParams)"
+                          class="btn btn-info auto-width"
+                          (click)="openModalWithComponent(null, 'create')"
                         >
-                        {{ 'DAY_OFF_TABLE.SUBMIT_TIME_OFF' | translate }}
                           <i class="fa fa-calendar-plus-o"></i>
+                          {{ 'DAY_OFF_TABLE.SUBMIT_TIME_OFF' | translate }}
                         </button>
                       </div>
                       <ah-dayoff-request-list></ah-dayoff-request-list>
