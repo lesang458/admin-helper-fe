@@ -24,6 +24,7 @@ export class EmployeeDetailComponent implements OnInit {
   public searchParams: SearchDevice;
   public device$: Observable<State>;
   public id: number;
+  public dayoff = this.route.snapshot.queryParams.dayoff;
 
   constructor(
     private store: Store<fromApp.AppState>,
@@ -35,6 +36,7 @@ export class EmployeeDetailComponent implements OnInit {
 
   ngOnInit(): void {
     this.id = this.route.snapshot.params.id;
+
     this.store.dispatch(new EmployeeActions.DetailEmployee(this.id));
     this.store
       .select((s) => s.employees.detaiEmployee)
@@ -58,8 +60,17 @@ export class EmployeeDetailComponent implements OnInit {
     );
   }
 
+  public navigateTab(isDayOff?: boolean): void {
+    this.router.navigateByUrl(
+      `/${RouteConstant.employees}/${this.id}${isDayOff ? '?dayoff=true' : ''}`
+    );
+  }
+
   public openModalWithComponent(selectedEmployee, searchParams): void {
-    const initialState = { selectedEmployee, searchParams };
+    const initialState = {
+      selectedEmployee,
+      searchParams,
+    };
     this.bsModalRef = this.modalService.show(RequestDayOffComponent, {
       initialState,
     });

@@ -63,7 +63,7 @@
       </div>
     </div>
     <div class="table-responsive" *ngIf="data$ | async as data">
-      <table [ngClass]="id ? 'table table-emp' : 'table table-bordered table-striped'">
+      <table *ngIf="data.dayOffRequest?.data?.length > 0" [ngClass]="id ? 'table table-emp' : 'table table-bordered table-striped'">
         <thead>
           <tr>
             <th scope="col" class="col-email">

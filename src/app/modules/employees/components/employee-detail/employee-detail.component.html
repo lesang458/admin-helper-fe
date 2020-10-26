@@ -2,7 +2,7 @@
   <div class="card-body">
       <div class="main-container row">
         <tabset class="tabset-style">
-          <tab heading="{{ 'EMPLOYEE_DETAIL.EMPLOYEE_INFO' | translate }}">
+          <tab heading="{{ 'EMPLOYEE_DETAIL.EMPLOYEE_INFO' | translate }}" (selectTab) = "navigateTab()">
             <div class="row-1">
               <div class="card">
                 <div class="card-body">
@@ -105,7 +105,7 @@
               </div>
             </div>
           </tab>
-          <tab heading="{{ 'PROFILE_CREATE.DAY_OFF_INFO' | translate }}">
+          <tab heading="{{ 'PROFILE_CREATE.DAY_OFF_INFO' | translate }}" [active]="dayoff" (selectTab) = "navigateTab(true)">
             <div class="row-1">
               <div class="card">
                 <div class="row">

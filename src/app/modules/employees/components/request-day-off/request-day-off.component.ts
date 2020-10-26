@@ -10,6 +10,7 @@ import { RequestDayOffModel } from 'src/app/shared/models/request-day-off.model'
 import { DatePipe } from '@angular/common';
 import { BsModalRef } from 'ngx-bootstrap/modal';
 import { debounceTime } from 'rxjs/operators';
+import { ActivatedRoute } from '@angular/router';
 
 const milisecondOfADay = 86400000;
 @Component({
@@ -40,7 +41,8 @@ export class RequestDayOffComponent implements OnInit {
     private store: Store<fromApp.AppState>,
     public translate: TranslateService,
     private datePipe: DatePipe,
-    public bsModalRef: BsModalRef
+    public bsModalRef: BsModalRef,
+    private route: ActivatedRoute
   ) {}
 
   ngOnInit(): void {
@@ -211,14 +213,11 @@ export class RequestDayOffComponent implements OnInit {
       notes: notes,
     };
     const searchParams = {
-      search: '',
-      perPage: 10,
       page: 1,
-      sort: {
-        sortNameType: true,
-        sortBirthDateType: true,
-        sortJoinDateType: true,
-      },
+      perPage: this.route.snapshot.queryParams.dayoff ? 5 : 10,
+      userId: this.route.snapshot.queryParams.dayoff
+        ? this.selectedEmployee.id
+        : '',
     };
     if (this.editData) {
       this.store.dispatch(

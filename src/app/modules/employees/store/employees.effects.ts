@@ -140,6 +140,7 @@ export class EmployeeEffects {
       const body: RequestDayOffModel = {
         ...snakecaseKeys(action.payload.body),
       };
+
       const id = body.id;
       delete body.id;
       return this.http
@@ -150,7 +151,7 @@ export class EmployeeEffects {
         .pipe(
           map(() => {
             this.notify.showSuccess('MESSAGE.REQUEST_DAY_OFF');
-            return new EmployeesActions.FetchDayOff(
+            return new EmployeesActions.FetchDayOffRequest(
               action.payload.searchParams
             );
           })
