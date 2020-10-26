@@ -36,7 +36,7 @@
           width: 28%;
           margin-right: 10px;
         }
-      } 
+      }
     }
 
     .thead-style {
@@ -45,15 +45,15 @@
         height: auto !important;
       }
     }
-  
+
     .card-body {
       padding: 0.5rem;
-    } 
+    }
     .card {
       padding: 5px;
       border: none !important;
     }
-  
+
     .row-1 {
       .info {
         padding: 8px 25px 25px 25px;
@@ -94,7 +94,7 @@
       border: none;
     }
   }
-  
+
   .text-right {
     button {
       width: 115px;
@@ -109,5 +109,9 @@
 
   .tabset-style {
     width: 100%;
+  }
+
+  .auto-width {
+    width: auto !important;
   }
 }

@@ -1,385 +1,166 @@
 <div class="card">
   <div class="card-body">
-    <form [formGroup]="employeeForm" (ngSubmit)="onSubmit()">
-      <div class="text-right">
-        <button
-          *ngIf="edit || create"
-          type="submit"
-          class="btn btn-success mb-3"
-          [disabled]="employeeForm.invalid || dayOffForm.invalid || (employeeForm.value.password !== employeeForm.value.confirmPassword) || changeValueDate() || disableSaveBtn()"
-          >
-          <span class="cil-save mr-1"></span>
-          {{ 'PROFILE_CREATE.SAVE' | translate }}
-        </button>
-        <button *ngIf="!edit && !create" type="button" class="btn btn-info mb-3 ml-2" (click)="navigateEdit()">
-          <span class="cil-brush mr-1"></span>
-          {{ 'EMPLOYEE_EDIT.EDIT' | translate }}
-        </button>
-        <button *ngIf="edit" type="button" class="btn btn-info mb-3 ml-2" (click)="navigateDetail()">
-          <span class="cil-address-book mr-1"></span>
-          {{ 'EMPLOYEE_EDIT.DETAIL' | translate }}
-        </button>
-      </div>
       <div class="main-container row">
         <tabset class="tabset-style">
           <tab heading="{{ 'EMPLOYEE_DETAIL.EMPLOYEE_INFO' | translate }}">
             <div class="row-1">
               <div class="card">
                 <div class="card-body">
-                <b class="mr-2 ml-2">{{ 'EMPLOYEE_DETAIL.EMPLOYEE_INFO' | translate }}</b>
-                  <span *ngIf="!create">
-                    <span
-                      class="badge rounded-pill badge-danger p-2"
-                      *ngIf="employee?.status !== 'ACTIVE'"
+                  <div class="mt-2 mb-2 mr-4 text-right">
+                    <button
+                      type="button"
+                      class="btn btn-info"
+                      (click)="navigateEdit()"
                     >
-                      {{ 'GENERAL_LIST.FORMER' | translate }}
-                    </span>
-                    <span
-                      class="badge rounded-pill badge-success p-2"
-                      *ngIf="employee?.status === 'ACTIVE'"
-                      >
-                      {{ 'GENERAL_LIST.ACTIVE' | translate }}
-                    </span>
-                    </span>
-                    <div [ngClass]="(edit || create) ? 'info style row' : 'info padd row'">
-                      <table class="table col-lg-6 col-md-12 left-tab">
-                        <thead class="thead-style" *ngIf="!edit && !create">
-                          <tr>
-                            <th scope="col" class="td-cate">{{ 'EMPLOYEE_DETAIL.TITLE_EMP' | translate }}</th>
-                            <th scope="col">{{ 'EMPLOYEE_DETAIL.CONTENT' | translate }}</th>
-                          </tr>
-                        </thead>
-                        <tbody>
-                          <tr>
-                            <th scope="row" class="border-style">{{ 'PROFILE_CREATE.FIRST_NAME' | translate }}</th>
-                            <td class="border-style">
-                              <input
-                                type="text"
-                                class="form-control"
-                                formControlName="firstName"
-                                tabindex="1"
-                                required
-                                inputFormatter
-                            />
-                              <div
-                                *ngIf="(f.firstName.invalid || f.firstName.value.trim().length < 2 || f.firstName.value.trim().length > 20) && f.firstName.touched"
-                                class="mess-invalid"
-                              >
-                                <div *ngIf="f.firstName.errors?.required || f.firstName.value.trim().length === 0">
-                                  {{ 'PROFILE_CREATE.FIRST_NAME_INVALID' | translate }}
-                                </div>
-                                <div *ngIf="(f.firstName.errors?.minlength || f.firstName.value.trim().length===1) && f.firstName.value.trim().length !== 0">
-                                  {{ 'PROFILE_CREATE.FIRST_NAME_MIN_LENGTH' | translate }}
-                                </div>
-                                <div *ngIf="(f.firstName.errors?.maxlength || f.firstName.value.trim().length>20) && f.firstName.value.trim().length !== 0">
-                                  {{ 'PROFILE_CREATE.FIRST_NAME_MAX_LENGTH' | translate }}
-                                </div>
-                            </div>
-                          </td>
-                        </tr>
-                        <tr>
-                          <th scope="row">{{ 'PROFILE_CREATE.LAST_NAME' | translate }}</th>
-                          <td>
-                            <input
-                              type="text"
-                              class="form-control"
-                              formControlName="lastName"
-                              tabindex="2"
-                              required
-                              inputFormatter
-                            />
-                            <div
-                              *ngIf="(f.lastName.invalid || f.lastName.value.trim().length < 2 || f.lastName.value.trim().length > 20) && f.lastName.touched"
-                              class="mess-invalid"
-                            >
-                              <div *ngIf="f.lastName.errors?.required || f.lastName.value.trim().length === 0">
-                                {{ 'PROFILE_CREATE.LAST_NAME_INVALID' | translate }}
-                              </div>
-                              <div *ngIf="(f.lastName.errors?.minlength || f.lastName.value.trim().length === 1) && f.lastName.value.trim().length !== 0">
-                                {{ 'PROFILE_CREATE.LAST_NAME_MIN_LENGTH' | translate }}
-                              </div>
-                              <div *ngIf="(f.lastName.errors?.maxlength ||  f.lastName.value.trim().length > 20) && f.lastName.value.trim().length !== 0">
-                                {{ 'PROFILE_CREATE.LAST_NAME_MAX_LENGTH' | translate }}
-                              </div>
-                            </div>
-                            </td>
-                          </tr>
-                          <tr>
-                            <th scope="row">{{ 'LOGIN.EMAIL' | translate }}</th>
-                            <td colspan="3">
-                              <input
-                                type="text"
-                                class="form-control"
-                                formControlName="email"
-                                tabindex="3"
-                                required
-                                inputFormatter
-                              />
-                              <div
-                                *ngIf="(f.email.invalid || f.email.value.trim().length === 0) && f.email.touched"
-                                class="mess-invalid"
-                              >
-                                <div [ngSwitch]="f.email.errors?.required || f.email.value.trim().length === 0">
-                                  <div *ngSwitchCase="true">
-                                    {{ 'PROFILE_CREATE.EMAIL_INVALID' | translate }}
-                                  </div>
-                                  <div *ngSwitchDefault>
-                                    {{ 'PROFILE_CREATE.IS_EMAIL' | translate }}
-                                  </div>
-                                </div>
-                              </div>
-                            </td>
-                          </tr>
-                          <tr *ngIf="create">
-                            <th scope="row">{{ 'LOGIN.PASS' | translate }}</th>
-                            <td colspan="3">
-                            <input
-                              type="password"
-                              class="form-control"
-                              id="exampleFormControlInput4"
-                              formControlName="password"
-                              tabindex="4"
-                              required
-                          />
-                            <div
-                              *ngIf="f.password.invalid && f.password.touched"
-                              class="mess-invalid"
-                            >
-                              <div *ngIf="f.password.errors.required">
-                                {{ 'PROFILE_CREATE.PASSWORD_INVALID' | translate }}
-                              </div>
-                              <div *ngIf="f.password.errors.minlength">
-                                {{ 'PROFILE_CREATE.PASS_MINLENGTH' | translate }}
-                              </div>
-                            </div>
-                          </td>
-                        </tr>
-                      </tbody>
-                    </table>
-                    <table class="table col-lg-6 col-md-12">
-                      <thead class="thead-style" *ngIf="!edit && !create">
-                        <tr>
-                          <th scope="col" class="td-cate">{{ 'EMPLOYEE_DETAIL.TITLE_EMP' | translate }}</th>
-                          <th scope="col">{{ 'EMPLOYEE_DETAIL.CONTENT' | translate }}</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        <tr *ngIf="create">
-                          <th scope="row">{{ 'EMPLOYEE_CREATE.CONFIRM_PASS' | translate }}</th>
-                          <td colspan="3">
-                            <input
-                              type="password"
-                              class="form-control"
-                              id="exampleFormControlInput11"
-                              formControlName="confirmPassword"
-                              tabindex="5"
-                            />
-                            <div
-                              *ngIf="employeeForm.value.password !== employeeForm.value.confirmPassword"
-                              class="mess-invalid">
-                              {{ 'EMPLOYEE_CREATE.PASSWORD_MATCH' | translate }}
-                            </div>
-                          </td>
-                          </tr>
-                          <tr>
-                          <th scope="row">{{ 'GENERAL_LIST.BIRTHDAY' | translate }}</th>
-                          <td colspan="3">
-                            <input
-                              type="date"
-                              class="form-control"
-                              [max]="getToday()"
-                              formControlName="birthdate"
-                              (change)="changeValueDate()"
-                              tabindex="6"
-                              required
-                            />
-                            <div *ngIf="changeValueDate()" class="mess-invalid">
-                              {{ 'PROFILE_CREATE.BIRTHDAY_MAX' | translate }}
-                            </div>
-                            <div
-                              *ngIf="f.birthdate.invalid && f.birthdate.touched"
-                              class="mess-invalid"
-                              >
-                              <div *ngIf="f.birthdate.errors.required">
-                                {{ 'PROFILE_CREATE.BIRTHDAY_INVALID' | translate }}
-                              </div>
-                            </div>
-                          </td>
-                          </tr>
-                          <tr>
-                          <th scope="row">{{ 'GENERAL_LIST.PHONE_NUMBER' | translate }}</th>
-                          <td>
-                            <input
-                              type="text"
-                              class="form-control"
-                              formControlName="phoneNumber"
-                              tabindex="7"
-                              required
-                            />
-                            <div
-                              *ngIf="f.phoneNumber.invalid && f.phoneNumber.touched"
-                              class="mess-invalid"
-                            >
-                            {{ getPhoneErrorMessage() }}
-                            </div>
-                          </td>
-                          </tr>
-                          <tr>
-                          <th scope="row">{{ 'GENERAL_LIST.JOIN_DATE' | translate }}</th>
-                          <td>
-                            <input
-                              type="date"
-                              class="form-control"
-                              formControlName="joinDate"
-                              tabindex="8"
-                              required
-                            />
-                            <div
-                              *ngIf="f.joinDate.invalid && f.joinDate.touched"
-                              class="mess-invalid"
-                            >
-                              <div *ngIf="f.joinDate.errors.required">
-                                {{ 'PROFILE_CREATE.JOIN_DATE_INVALID' | translate }}
-                              </div>
-                            </div>
-                          </td>
-                          </tr>
-                    </tbody>
-                  </table>
+                      <span class="cil-brush"></span>
+                      {{ 'DEVICE_TABLE.EDIT' | translate }}
+                    </button>
+                  </div>
+                  <div class="row">
+                    <div class="col-lg-6 col-md-12 left-tab">
+                      <b class="mr-2 ml-2">{{ 'EMPLOYEE_DETAIL.EMPLOYEE_INFO' | translate }}</b>
+                        <div class="info padd row">
+                          <table class="table">
+                            <thead class="thead-style">
+                              <tr>
+                                <th scope="col" class="td-cate">{{ 'EMPLOYEE_DETAIL.TITLE_EMP' | translate }}</th>
+                                <th scope="col">{{ 'EMPLOYEE_DETAIL.CONTENT' | translate }}</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              <tr>
+                                <th scope="row" class="border-style">{{ 'PROFILE_CREATE.FIRST_NAME' | translate }}</th>
+                                <td class="border-style">
+                                  {{ employee?.firstName }}
+                                </td>
+                              </tr>
+                              <tr>
+                                <th scope="row">{{ 'PROFILE_CREATE.LAST_NAME' | translate }}</th>
+                                <td>
+                                  {{ employee?.lastName }}
+                                </td>
+                              </tr>
+                              <tr>
+                                <th scope="row">{{ 'LOGIN.EMAIL' | translate }}</th>
+                                <td colspan="3">
+                                  {{ employee?.email }}
+                                </td>
+                              </tr><tr>
+                                <th scope="row">{{ 'GENERAL_LIST.BIRTHDAY' | translate }}</th>
+                                <td colspan="3">
+                                  {{ employee?.birthdate }}
+                                </td>
+                              </tr>
+                              <tr>
+                              <th scope="row">{{ 'GENERAL_LIST.PHONE_NUMBER' | translate }}</th>
+                                <td>
+                                  {{ employee?.phoneNumber }}
+                                </td>
+                              </tr>
+                              <tr>
+                                <th scope="row">{{ 'GENERAL_LIST.JOIN_DATE' | translate }}</th>
+                                <td>
+                                  {{ employee?.joinDate }}
+                                </td>
+                              </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </div>
+                    <div class="col-6">
+                      <b class="ml-2">{{ 'EMPLOYEE_DETAIL.DEVICE' | translate }}</b>
+                      <div class="infor" *ngIf="device$ | async as data">
+                        <table class="table" *ngIf="data.devices.data?.length > 0">
+                          <thead class="thead-style">
+                            <tr>
+                              <th scope="col" class="td-cate">{{ 'DEVICE_EDIT.DEVICE_NAME' | translate }}</th>
+                              <th scope="col" class="td-hour">{{ 'DEVICE_TABLE.CATEGORY_NAME' | translate }}</th>
+                              <th scope="col" class="text-right td-hour">{{ 'DEVICE_TABLE.PRICE' | translate }}</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr *ngFor="let item of data.devices.data; let i = index">
+                              <td>{{ item.name }}</td>
+                              <td>{{ item.categoryName }}</td>
+                              <td class="text-right">{{ item.price | currency: 'VND' }}</td>
+                            </tr>
+                          </tbody>
+                        </table>
+                        <div
+                          *ngIf="data.devices.data?.length === 0"
+                          class="alert alert-warning text-center"
+                          role="alert">
+                          {{ 'EMPLOYEE_DETAIL.NO_RESULT' | translate }}
+                        </div>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
           </tab>
           <tab heading="{{ 'PROFILE_CREATE.DAY_OFF_INFO' | translate }}">
-              <div [ngClass]="(create || edit) ? 'card day' : 'card'">
-                <form [formGroup]="dayOffForm" class="row">
+              <div class="card">
+                <div class="row">
                   <div class="card-body col-lg-6 col-md-12">
                     <b class="ml-2">{{ 'PROFILE_CREATE.DAY_OFF_INFO' | translate }}</b>
+                    <div class="mt-2 mb-2 mr-2 text-right">
+                      <button
+                        type="button"
+                        class="btn btn-info"
+                        (click)="navigateEdit(true)"
+                      >
+                        <span class="cil-brush"></span>
+                        {{ 'DEVICE_TABLE.EDIT' | translate }}
+                      </button>
+                    </div>
                     <div class="infor">
-                      <table class="table" *ngIf="dayOffInfos.controls.length > 0">
-                        <thead class="thead-style" *ngIf="!edit && !create">
+                      <table class="table" *ngIf="employee?.dayOffInfos.length > 0">
+                        <thead class="thead-style">
                           <tr>
                             <th scope="col" class="td-cate">{{ 'PROFILE_CREATE.DAY_OFF_CATE' | translate }}</th>
                             <th scope="col" class="text-right td-hour">{{ 'PROFILE_CREATE.HOUR' | translate }}</th>
-                            <th scope="col" class="text-right td-hour" *ngIf="!edit && !create">{{ 'PROFILE_CREATE.AVAILABLE_HOURS' | translate }}</th>
+                            <th scope="col" class="text-right td-hour">{{ 'PROFILE_CREATE.AVAILABLE_HOURS' | translate }}</th>
                           </tr>
                         </thead>
-                        <tbody formArrayName="dayOffInfos">
-                          <tr *ngFor="let item of dayOffInfos.controls; let i = index" [formGroupName]="i">
-                            <td class="font-weight-bold td-cate">{{ dayOffInfos.at(i).get('categoryName').value | titlecase }}</td>
-                            <td>
-                              <div class="input-group">
-                                <div class="input-group-prepend" *ngIf="create">
-                                  <div class="input-group-text">
-                                    <input
-                                      type="checkbox"
-                                      aria-label="Checkbox for following text input"
-                                      (change)="checkCheckBoxValue($event, dayOffInfos.at(i).get('dayOffCategoryId').value)"
-                                      checked>
-                                  </div>
-                                </div>
-                                <input
-                                  type="number"
-                                  class="form-control text-right"
-                                  formControlName="hours"
-                                  tabindex="{{9 + i}}"
-                                  required
-                                />
-                              </div>
-                            <div
-                              *ngIf="dayOffInfos.controls[i].get('hours').invalid && dayOffInfos.controls[i].get('hours').touched"
-                              class="mess-invalid"
-                              >
-                                <div *ngIf="dayOffInfos.controls[i].get('hours').errors.required">
-                                  {{ 'PROFILE_CREATE.HOURS_INVALID' | translate }}
-                                </div>
-                                <div *ngIf="dayOffInfos.controls[i].get('hours').errors.pattern">
-                                  {{ 'PROFILE_CREATE.HOURS_PATTERN' | translate }}
-                                </div>
-                            </div>
+                        <tbody>
+                          <tr *ngFor="let item of employee?.dayOffInfos">
+                            <td class="font-weight-bold td-cate">{{ item.categoryName | titlecase }}</td>
+                            <td class="td-style text-right">
+                              {{ item.hours / 8 }}
                             </td>
-                            <td class="td-style text-right" *ngIf="!edit && !create">{{ dayOffInfos.at(i).get('availableHours').value }}</td>
-                            <td *ngIf="edit || create">{{ 'EMPLOYEE_DETAIL.DAY' | translate }}</td>
-                            <td *ngIf="edit">
-                              <button
-                                class="btn btn-outline-danger"
-                                (click)="removeDayoffCategory(types, dayOffInfos.at(i))">
-                                <i class="cil-minus"></i>
-                              </button>
-                            </td>
+                            <td class="td-style text-right">{{ item.availableHours > 0 ? item.availableHours / 8 : 0 }}</td>
                           </tr>
                         </tbody>
                       </table>
-                      <div class="form-group" *ngIf="edit">
-                        <label class="d-inline-block font-weight-bold label-sel" for="day-off-type">
-                          {{ 'EMPLOYEE_DETAIL.DAY_OFF_INFO' | translate }}
-                        </label>
-                        <select
-                          [formControl]="selectedType"
-                          class="form-control d-inline-block"
-                          id="day-off-type"
-                          style="width: auto;"
-                          (change)="addDayoffCatetory(types)"
-                        >
-                          <option value="No select">
-                            {{ 'EMPLOYEE_DETAIL.NO_SELECT' | translate }}
-                          </option>
-                          <option *ngFor="let item of types" [value]="item?.id">
-                            {{ item?.name | titlecase }}
-                          </option>
-                        </select>
-                      </div>
                     </div>
                     <div
-                      *ngIf="dayOffInfos.controls.length === 0 && !edit && !create"
+                      *ngIf="employee?.dayOffInfos.length === 0"
                       class="alert alert-warning text-center mt-2 ml-2 mr-2"
                       role="alert">
                       {{ 'DAY_OFF_TABLE.NO_RESULT' | translate }}
                     </div>
                   </div>
-                  <div class="col-lg-6 col-md-12 request-dayoff" *ngIf="!edit && !create">
+                  <div class="col-lg-6 col-md-12 request-dayoff">
                     <div class="infor">
                       <b class="ml-2">{{ 'PROFILE_CREATE.DAY_OFF_REQUEST' | translate }}</b>
+                      <div class="mt-2 mb-2 mr-2 text-right">
+                        <button
+                          type="button"
+                          class="btn btn-info auto-width"
+                          (click)="openModalWithComponent(null, 'create')"
+                        >
+                          <i class="fa fa-calendar-plus-o"></i>
+                          {{ 'DAY_OFF_TABLE.SUBMIT_TIME_OFF' | translate }}
+                        </button>
+                      </div>
                       <ah-dayoff-request-list></ah-dayoff-request-list>
                     </div>
                   </div>
-                </form>
-              </div>
-            </tab>
-            <tab heading="{{ 'EMPLOYEE_DETAIL.DEVICE' | translate }}" *ngIf="!edit && !create">
-              <div class="card">
-                <div class="card-body">
-                  <b class="ml-2">{{ 'EMPLOYEE_DETAIL.DEVICE' | translate }}</b>
-                    <div class="infor" *ngIf="device$ | async as data">
-                      <table class="table" *ngIf="data.devices.data?.length > 0">
-                        <thead class="thead-style">
-                          <tr>
-                            <th scope="col" class="td-cate">{{ 'DEVICE_EDIT.DEVICE_NAME' | translate }}</th>
-                            <th scope="col" class="td-hour">{{ 'DEVICE_TABLE.CATEGORY_NAME' | translate }}</th>
-                            <th scope="col" class="text-right td-hour">{{ 'DEVICE_TABLE.PRICE' | translate }}</th>
-                          </tr>
-                        </thead>
-                        <tbody>
-                          <tr *ngFor="let item of data.devices.data; let i = index">
-                            <td>{{ item.name }}</td>
-                            <td>{{ item.categoryName }}</td>
-                            <td class="text-right">{{ item.price | currency: 'VND' }}</td>
-                          </tr>
-                        </tbody>
-                      </table>
-                      <div
-                        *ngIf="data.devices.data?.length === 0"
-                        class="alert alert-warning text-center"
-                        role="alert">
-                        {{ 'EMPLOYEE_DETAIL.NO_RESULT' | translate }}
-                      </div>
-                    </div>
-                  </div>
                 </div>
+              </div>
             </tab>
           </tabset>
         </div>
-    </form>
   </div>
 </div>
