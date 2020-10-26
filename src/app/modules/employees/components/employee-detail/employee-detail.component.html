@@ -6,19 +6,23 @@
             <div class="row-1">
               <div class="card">
                 <div class="card-body">
-                  <div class="mt-2 mb-2 mr-4 text-right">
-                    <button
-                      type="button"
-                      class="btn btn-info"
-                      (click)="navigateEdit()"
-                    >
-                      <span class="cil-brush"></span>
-                      {{ 'DEVICE_TABLE.EDIT' | translate }}
-                    </button>
-                  </div>
                   <div class="row">
-                    <div class="col-lg-6 col-md-12 left-tab">
-                      <b class="mr-2 ml-2">{{ 'EMPLOYEE_DETAIL.EMPLOYEE_INFO' | translate }}</b>
+                    <div class="col-6">
+                      <div class="d-flex align-center">
+                        <div class="text-left col-6">
+                          <b>{{ 'EMPLOYEE_DETAIL.EMPLOYEE_INFO' | translate }}</b>
+                        </div>
+                        <div class="mt-2 mb-2 text-right col-6">
+                          <button
+                            type="button"
+                            class="btn btn-info"
+                            (click)="navigateEdit()"
+                          >
+                            <span class="cil-brush"></span>
+                            {{ 'DEVICE_TABLE.EDIT' | translate }}
+                          </button>
+                        </div>
+                      </div>
                         <div class="info padd row">
                           <table class="table">
                             <thead class="thead-style">
@@ -68,8 +72,10 @@
                       </div>
                     </div>
                     <div class="col-6">
-                      <b class="ml-2">{{ 'EMPLOYEE_DETAIL.DEVICE' | translate }}</b>
-                      <div class="infor" *ngIf="device$ | async as data">
+                      <div class="d-flex align-center">
+                        <b>{{ 'EMPLOYEE_DETAIL.DEVICE' | translate }}</b>
+                      </div>
+                      <div class="info padd row" *ngIf="device$ | async as data">
                         <table class="table" *ngIf="data.devices.data?.length > 0">
                           <thead class="thead-style">
                             <tr>
@@ -100,19 +106,24 @@
             </div>
           </tab>
           <tab heading="{{ 'PROFILE_CREATE.DAY_OFF_INFO' | translate }}">
+            <div class="row-1">
               <div class="card">
                 <div class="row">
                   <div class="card-body col-lg-6 col-md-12">
-                    <b class="ml-2">{{ 'PROFILE_CREATE.DAY_OFF_INFO' | translate }}</b>
-                    <div class="mt-2 mb-2 mr-2 text-right">
-                      <button
-                        type="button"
-                        class="btn btn-info"
-                        (click)="navigateEdit(true)"
-                      >
-                        <span class="cil-brush"></span>
-                        {{ 'DEVICE_TABLE.EDIT' | translate }}
-                      </button>
+                    <div class="d-flex align-center">
+                      <div class="text-left col-6">
+                        <b>{{ 'PROFILE_CREATE.DAY_OFF_INFO' | translate }}</b>
+                      </div>
+                      <div class="mt-2 mb-2 text-right col-6">
+                        <button
+                          type="button"
+                          class="btn btn-info"
+                          (click)="navigateEdit(true)"
+                        >
+                          <span class="cil-brush"></span>
+                          {{ 'DEVICE_TABLE.EDIT' | translate }}
+                        </button>
+                      </div>
                     </div>
                     <div class="infor">
                       <table class="table" *ngIf="employee?.dayOffInfos.length > 0">
@@ -143,24 +154,29 @@
                   </div>
                   <div class="col-lg-6 col-md-12 request-dayoff">
                     <div class="infor">
-                      <b class="ml-2">{{ 'PROFILE_CREATE.DAY_OFF_REQUEST' | translate }}</b>
-                      <div class="mt-2 mb-2 mr-2 text-right">
-                        <button
-                          type="button"
-                          class="btn btn-info auto-width"
-                          (click)="openModalWithComponent(null, 'create')"
-                        >
-                          <i class="fa fa-calendar-plus-o"></i>
-                          {{ 'DAY_OFF_TABLE.SUBMIT_TIME_OFF' | translate }}
-                        </button>
+                      <div class="d-flex align-center">
+                        <div class="text-left col-6">
+                          <b>{{ 'PROFILE_CREATE.DAY_OFF_REQUEST' | translate }}</b>
+                        </div>
+                        <div class="mt-2 mb-2 text-right col-6">
+                          <button
+                            type="button"
+                            class="btn btn-info auto-width"
+                            (click)="openModalWithComponent(null, 'create')"
+                          >
+                            <i class="fa fa-calendar-plus-o"></i>
+                            {{ 'DAY_OFF_TABLE.SUBMIT_TIME_OFF' | translate }}
+                          </button>
+                        </div>
                       </div>
                       <ah-dayoff-request-list></ah-dayoff-request-list>
                     </div>
                   </div>
                 </div>
               </div>
-            </tab>
-          </tabset>
-        </div>
+            </div>
+          </tab>
+        </tabset>
+      </div>
   </div>
 </div>

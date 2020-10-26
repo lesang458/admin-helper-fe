@@ -12,32 +12,6 @@
     b {
       font-size: 16px;
     }
-    .card {
-      border: 1px solid #c7c8ca;
-      border-radius: 4px;
-      .table-striped {
-        padding: 10px;
-      }
-      .infor {
-        padding: 10px;
-        .td-cate {
-          width: 28%;
-        }
-        .td-hour {
-          width: 36%;
-        }
-        tr {
-          height: 86px;
-        }
-        th, td {
-          vertical-align: inherit;
-        }
-        .label-sel{
-          width: 28%;
-          margin-right: 10px;
-        }
-      }
-    }
 
     .thead-style {
       background-color: rgba(0,0,21,.075);
@@ -58,7 +32,7 @@
       .info {
         padding: 8px 25px 25px 25px;
         tr {
-          height: 86px;
+          height: 60px;
         }
         th, td {
           vertical-align: inherit;
@@ -99,6 +73,11 @@
     button {
       width: 115px;
     }
+  }
+
+  .align-center {
+    align-items: center;
+    height: 50px !important;
   }
 
   .day {
