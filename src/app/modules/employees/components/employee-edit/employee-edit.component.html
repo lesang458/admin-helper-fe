@@ -3,7 +3,7 @@
     <form [formGroup]="employeeForm" (ngSubmit)="onSubmit()">
       <div class="main-container row">
         <tabset class="tabset-style">
-          <tab heading="{{ 'EMPLOYEE_DETAIL.EMPLOYEE_INFO' | translate }}" class="mt-2">
+          <tab heading="{{ 'EMPLOYEE_DETAIL.EMPLOYEE_INFO' | translate }}" class="mt-2" (selectTab) = "navigateTab()">
             <div class="d-flex mt-3 mb-2">
             <div>
               <b class="mr-2 ml-2">{{ 'EMPLOYEE_DETAIL.EMPLOYEE_INFO' | translate }}</b>
@@ -181,7 +181,7 @@
                   </div>
               </div>
           </tab>
-          <tab heading="{{ 'PROFILE_CREATE.DAY_OFF_INFO' | translate }}" class="mt-2">
+          <tab heading="{{ 'PROFILE_CREATE.DAY_OFF_INFO' | translate }}" class="mt-2" [active] = "dayoff" (selectTab)="navigateTab(true)">
             <form [formGroup]="dayOffForm">
               <b class="ml-2">{{ 'PROFILE_CREATE.DAY_OFF_INFO' | translate }}</b>
               <div class="info" formArrayName="dayOffInfos">

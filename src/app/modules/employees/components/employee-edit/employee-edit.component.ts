@@ -16,7 +16,6 @@ import {
 import { RouteConstant } from 'src/app/shared/constants/route.constant';
 import { TranslateService } from '@ngx-translate/core';
 import { DayOffCategory } from 'src/app/shared/models/dayoff-category.model';
-import { dayoffCategoriesReducer } from 'src/app/modules/dayoff-categories/store/dayoff-categories.reducer';
 
 @Component({
   selector: 'ah-employee-edit',
@@ -28,6 +27,7 @@ export class EmployeeEditComponent implements OnInit {
   public employee: Employee;
   public types: DayOffCategory[];
   public id: number;
+  public dayoff = this.route.snapshot.queryParams.dayoff;
   public hourChecked = [];
   public selectedType = new FormControl('');
   public employeeForm = new FormGroup({
@@ -107,14 +107,6 @@ export class EmployeeEditComponent implements OnInit {
     this.store.dispatch(
       new DayOffActions.FetchDayOffCategories({ status: 'active' })
     );
-  }
-
-  public navigateEdit(): void {
-    this.router.navigateByUrl(`/${RouteConstant.employees}/${this.id}/edit`);
-  }
-
-  public navigateDetail(): void {
-    this.router.navigateByUrl(`/${RouteConstant.employees}/${this.id}`);
   }
 
   get dayOffInfos(): FormArray {
@@ -200,6 +192,14 @@ export class EmployeeEditComponent implements OnInit {
       types.push(param);
       this.selectedType.patchValue('No select');
     }
+  }
+
+  public navigateTab(isDayOff?: boolean): void {
+    this.router.navigateByUrl(
+      `/${RouteConstant.employees}/${this.id}/edit${
+        isDayOff ? '?dayoff=true' : ''
+      }`
+    );
   }
 
   public onSubmit(): void {
