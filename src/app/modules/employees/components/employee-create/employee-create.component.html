@@ -5,14 +5,14 @@
         <button
           type="submit"
           class="btn btn-success mb-4"
-          [disabled]="employeeForm.invalid || dayOffForm.invalid || (employeeForm.value.password !== employeeForm.value.confirmPassword) || disableSaveBtn()"
+          [disabled]="employeeForm.invalid || dayOffForm.invalid"
           >
           <span class="cil-save mr-1"></span>
           {{ 'PROFILE_CREATE.SAVE' | translate }}
         </button>
       </div>
       <div class="main-container row">
-        <div class="col-lg-6 col-md-12">
+        <div class="col-xl-6 col-md-12">
             <b class="mr-2 ml-2">{{ 'EMPLOYEE_DETAIL.EMPLOYEE_INFO' | translate }}</b>
                 <div class="info style'">
                   <div class="form-group row mb-4">
@@ -130,9 +130,9 @@
                         required
                       />
                       <div
-                        *ngIf="employeeForm.value.password !== employeeForm.value.confirmPassword"
-                        class="mess-invalid">
-                        {{ 'EMPLOYEE_CREATE.PASSWORD_MATCH' | translate }}
+                        *ngIf="(f.confirmPassword.invalid || passwordIsIncorrect()) && f.confirmPassword.touched"
+                        class="invalid-feedback">
+                        {{ getErrorMessage() }}
                       </div>
                     </div>
                   </div>
@@ -200,7 +200,7 @@
                   </div>
               </div>
         </div>
-        <div class="col-lg-6 col-md-12" *ngIf="dayOffInfos.controls.length > 0">
+        <div class="col-xl-6 col-md-12" *ngIf="dayOffInfos.controls.length > 0">
             <form [formGroup]="dayOffForm" class="auto-validated">
                 <b class="ml-2">{{ 'PROFILE_CREATE.DAY_OFF_INFO' | translate }}</b>
                 <div class="info" formArrayName="dayOffInfos">

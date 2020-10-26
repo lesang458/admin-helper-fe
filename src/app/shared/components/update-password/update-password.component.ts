@@ -1,5 +1,5 @@
 import { TranslateService } from '@ngx-translate/core';
-import { Component, OnInit } from '@angular/core';
+import { AfterViewChecked, ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Store } from '@ngrx/store';
 import * as fromApp from '../../../store/app.reducer';
@@ -13,7 +13,7 @@ import { RouteConstant } from '../../constants/route.constant';
   templateUrl: './update-password.component.html',
   styleUrls: ['./update-password.component.scss'],
 })
-export class UpdatePasswordComponent implements OnInit {
+export class UpdatePasswordComponent implements OnInit, AfterViewChecked {
   public isChangePw: boolean;
   public disabled = true;
   public verify = 0;
@@ -32,7 +32,8 @@ export class UpdatePasswordComponent implements OnInit {
     private translate: TranslateService,
     private store: Store<fromApp.AppState>,
     private auth: AuthService,
-    private router: Router
+    private router: Router,
+    private cdr: ChangeDetectorRef
   ) {
     router.events.subscribe((val: NavigationEnd) => {
       if (val.url && val.url !== `/${RouteConstant.resetPassword}`) {
@@ -50,6 +51,10 @@ export class UpdatePasswordComponent implements OnInit {
     this.updatePwForm.valueChanges.subscribe(() => {
       this.disabled = this.updatePwForm.invalid;
     });
+  }
+
+  ngAfterViewChecked(): void {
+    this.cdr.detectChanges();
   }
 
   get f() {
@@ -101,10 +106,16 @@ export class UpdatePasswordComponent implements OnInit {
   }
 
   public passwordIsIncorrect(): boolean {
-    return (
-      this.f.newPassword.value !== this.f.confirmPassword.value &&
-      (this.f.confirmPassword.touched || this.f.confirmPassword.dirty)
+    const statusValidate = (
+      this.f.newPassword.value !== this.f.confirmPassword.value
     );
+    if (statusValidate) {
+      this.f.confirmPassword.setErrors({ incorrect:  true });
+    } else {
+      this.f.confirmPassword.setErrors({ incorrect: null});
+      this.f.confirmPassword.updateValueAndValidity();
+    }
+    return statusValidate;
   }
 
   public getBtnName(): string {
@@ -114,11 +125,11 @@ export class UpdatePasswordComponent implements OnInit {
   }
 
   public getErrorMessage(): string {
-    if (this.passwordIsIncorrect()) {
-      return this.translate.instant('RESET_PASSWORD.INCORRECT');
-    }
     if (this.f.confirmPassword.errors?.required) {
       return this.translate.instant('PROFILE_CREATE.PASSWORD_INVALID');
+    }
+    if (this.passwordIsIncorrect()) {
+      return this.translate.instant('RESET_PASSWORD.INCORRECT');
     }
     if (this.f.confirmPassword.errors?.minlength) {
       return this.translate.instant('PROFILE_CREATE.PASS_MINLENGTH');
