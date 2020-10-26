@@ -16,6 +16,7 @@ import {
 import { RouteConstant } from 'src/app/shared/constants/route.constant';
 import { TranslateService } from '@ngx-translate/core';
 import { DayOffCategory } from 'src/app/shared/models/dayoff-category.model';
+import { dayoffCategoriesReducer } from 'src/app/modules/dayoff-categories/store/dayoff-categories.reducer';
 
 @Component({
   selector: 'ah-employee-edit',
@@ -89,9 +90,11 @@ export class EmployeeEditComponent implements OnInit {
                   availableHours: value.availableHours / 8,
                   categoryName: value.categoryName,
                   dayOffCategoryId: value.dayOffCategoryId,
+                  status: value.status,
                   hours: [
                     {
                       value: value.hours / 8,
+                      disabled: false,
                     },
                     Validators.pattern('^[0-9]*$'),
                   ],
@@ -174,6 +177,7 @@ export class EmployeeEditComponent implements OnInit {
         categoryName: filter[0]?.name,
         dayOffCategoryId: filter[0]?.id,
         hours: filter[0].totalHoursDefault / 8,
+        status: filter[0].status,
       });
       this.dayOffInfos.push(dayOffForm);
       this.types = types.filter((e) => e.id !== filter[0]?.id);
@@ -191,6 +195,7 @@ export class EmployeeEditComponent implements OnInit {
         id: dayOff.controls.dayOffCategoryId.value,
         name: dayOff.controls.categoryName.value,
         totalHoursDefault: dayOff.controls.hours.value * 8,
+        status: dayOff.status,
       };
       types.push(param);
       this.selectedType.patchValue('No select');
