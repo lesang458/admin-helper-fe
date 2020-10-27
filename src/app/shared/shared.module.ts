@@ -14,6 +14,7 @@ import { ErrorComponent } from './components/error/error.component';
 import { UpdatePasswordComponent } from './components/update-password/update-password.component';
 import { ConfirmNotifyComponent } from './components/confirm-notify/confirm-notify.component';
 import { InputFormatDirective } from './directives/input-format.directive';
+import { NumberFormatDirective } from './directives/number-format.directive';
 
 const modules = [
   CommonModule,
@@ -30,6 +31,7 @@ const components = [
   ErrorComponent,
   UpdatePasswordComponent,
   InputFormatDirective,
+  NumberFormatDirective
 ];
 
 @NgModule({
