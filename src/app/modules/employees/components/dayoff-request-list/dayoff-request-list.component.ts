@@ -99,7 +99,7 @@ export class DayOffRequestListComponent implements OnInit {
   }
 
   public navigateEmployeeDetail(id): void {
-    this.router.navigateByUrl(`/${RouteConstant.employees}/${id}`);
+    this.router.navigateByUrl(`/${RouteConstant.employees}/${id}?dayoff=true`);
   }
 
   public openModalWithComponent(editData: DayOffRequest): void {
