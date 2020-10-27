@@ -75,7 +75,7 @@ export class EmployeeEditComponent implements OnInit, AfterViewChecked {
       .subscribe((data: Employee) => {
         if (data) {
           this.store.select('dayoffCategories').subscribe((arr) => {
-            arr.dayoff.map((val) => {
+            arr.dayoff.forEach((val) => {
               this.arr.push(val.id);
             });
             this.selectedType.patchValue('No select');

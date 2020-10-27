@@ -55,7 +55,7 @@ export class DayOffCategoryEditComponent implements OnInit {
       .select((s) => s.employees)
       .subscribe((data) => {
         if (this.employeeObs.length === 0) {
-          data.employees.map((value) => {
+          data.employees.forEach((value) => {
             this.employeeObs.push({
               id: value.id,
               name: value.lastName + ' ' + value.firstName,
@@ -81,7 +81,7 @@ export class DayOffCategoryEditComponent implements OnInit {
 
   public doSelectOptions(options: INgxSelectOption[]): void {
     options.length < this.arrEmpId.length ? (this.arrEmpId = []) : null;
-    options.map((data) => {
+    options.forEach((data) => {
       if (this.arrEmpId.indexOf(data.value) === -1) {
         this.arrEmpId.push(data.value);
       }

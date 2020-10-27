@@ -115,7 +115,7 @@ export class DayOffRequestListComponent implements OnInit {
       .select((s) => s.employees)
       .subscribe((data) => {
         if (this.employeeObs.length === 0) {
-          data.employees.map((value) => {
+          data.employees.forEach((value) => {
             this.employeeObs.push({
               id: value.id,
               name: value.lastName + ' ' + value.firstName,
@@ -145,7 +145,7 @@ export class DayOffRequestListComponent implements OnInit {
         new EmployeeActions.FetchDayOffRequest(this.paramEmployee)
       );
     } else {
-      options.map((data) => {
+      options.forEach((data) => {
         this.store.dispatch(
           new EmployeeActions.FetchDayOffRequest({ userId: `${data.value}` })
         );
