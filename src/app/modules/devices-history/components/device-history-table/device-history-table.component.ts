@@ -111,4 +111,8 @@ export class DeviceHistoryTableComponent implements OnInit {
       ? this.datePipe.transform(date, 'dd/MM/yyyy')
       : this.translate.instant('DEVICE_HISTORY.PRESENT');
   }
+
+  public cancel(): void {
+    this.router.navigateByUrl(`/${RouteConstant.devices}`);
+  }
 }

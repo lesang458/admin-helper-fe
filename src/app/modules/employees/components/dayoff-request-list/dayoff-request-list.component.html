@@ -1,17 +1,20 @@
 <div [ngClass]="id ? 'card-emp' : 'card'">
   <div class="card-body">
     <div class="row search">
-      <div class="col-3">
-        <div class="example-block emp-style">
-          <div class="example-block__item">
-              <ngx-select [allowClear]="true"
-                          [items]="employeeObs"
-                          [noResultsFound]="'DAY_OFF_CATEGORIES_PAGE.NO_RESULT' | translate"
-                          placeholder="{{ 'DAY_OFF_CATEGORIES_PAGE.ENTER_EMP' | translate }}"
-                          (selectionChanges)="doSelectOptions($event)">
-              </ngx-select>
+      <div class="col-3 d-flex">
+          <ngx-select 
+            class="flex-fill"
+            [(ngModel)]="selectedEmployeeId"
+            [items]="employeeObs"
+            [noResultsFound]="'DAY_OFF_CATEGORIES_PAGE.NO_RESULT' | translate"
+            placeholder="{{ 'DAY_OFF_CATEGORIES_PAGE.ENTER_EMP' | translate }}"
+            (selectionChanges)="doSelectOptions($event)">
+          </ngx-select>
+          <div class="form-group" *ngIf="selectedEmployeeId.length !== 0">
+            <button class="btn btn-outline-danger ml-2" (click)="clear()">
+              <i class="cil-x"></i>
+            </button>
           </div>
-        </div>
       </div>
       <div class="col-3" *ngIf="types$ | async as types">
         <div class="form-group">

@@ -23,7 +23,7 @@ import { INgxSelectOption } from 'ngx-select-ex';
 export class DayOffRequestListComponent implements OnInit {
   public employeeObs = [];
   public paramEmployee: SearchParams;
-  public selectedEmployeeId = '';
+  public selectedEmployeeId: number[] = [];
   public searchInput = new FormControl('');
   public selectedType = new FormControl('');
   public selectedFromDate = new FormControl('');
@@ -91,7 +91,7 @@ export class DayOffRequestListComponent implements OnInit {
       dayOffCategoryId,
       fromDate,
       toDate,
-      userId: this.id ? this.id : this.selectedEmployeeId,
+      userId: this.id ? this.id : this.selectedEmployeeId.toString(),
     };
     this.store.dispatch(
       new EmployeeActions.FetchDayOffRequest(this.searchParams)
@@ -139,15 +139,14 @@ export class DayOffRequestListComponent implements OnInit {
     );
   }
 
+  public clear(): void {
+    this.selectedEmployeeId = [];
+    this.onDataChanged();
+  }
+
   public doSelectOptions(options: INgxSelectOption[]): void {
-    if (options.length === 0) {
-      this.selectedEmployeeId = '';
-      this.onPageChanged(1);
-    } else {
-      options.forEach((data) => {
-        this.selectedEmployeeId = data.value.toString();
-        this.onPageChanged(1);
-      });
-    }
+    this.selectedEmployeeId = options.map((option) => option.data.id);
+    console.log(this.selectedEmployeeId);
+    this.onDataChanged();
   }
 }
