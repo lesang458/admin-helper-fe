@@ -146,7 +146,6 @@ export class DayOffRequestListComponent implements OnInit {
 
   public doSelectOptions(options: INgxSelectOption[]): void {
     this.selectedEmployeeId = options.map((option) => option.data.id);
-    console.log(this.selectedEmployeeId);
     this.onDataChanged();
   }
 }
