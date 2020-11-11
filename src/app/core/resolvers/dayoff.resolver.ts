@@ -24,6 +24,7 @@ export class DayoffResolver implements Resolve<void> {
         sortJoinDateType: 0,
       },
       status: 'ACTIVE',
+      fullInfo: 'true',
     };
     this.store.dispatch(new EmployeeActions.FetchDayOff(searchParams));
   }

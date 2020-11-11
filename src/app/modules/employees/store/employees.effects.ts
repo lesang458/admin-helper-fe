@@ -45,6 +45,13 @@ export class EmployeeEffects {
           params = params.append(ParamsConstant.status, action.payload.status);
         }
 
+        if (action.payload.status) {
+          params = params.append(
+            ParamsConstant.fullInfo,
+            action.payload.fullInfo
+          );
+        }
+
         return this.http
           .get<PaginatedData<Employee[]>>(`${environment.APILink}/employees`, {
             observe: 'response',
@@ -53,7 +60,9 @@ export class EmployeeEffects {
           .pipe(
             map((response) => {
               const data = camelcaseKeys(response.body, { deep: true });
-              data.meta = data.meta ? data.meta : { totalCount: data.data.length};
+              data.meta = data.meta
+                ? data.meta
+                : { totalCount: data.data.length };
               return action.type === EmployeesActions.FETCH_DAY_OFF
                 ? new EmployeesActions.SetDayOff(data)
                 : new EmployeesActions.GetEmployeesSuccess(data);

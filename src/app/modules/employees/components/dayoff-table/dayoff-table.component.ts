@@ -39,6 +39,7 @@ export class DayoffTableComponent implements OnInit {
       sortJoinDateType: 0,
     },
     status: 'ACTIVE',
+    fullInfo: 'true',
   };
   public data$: Observable<PaginatedData<Employee[]>>;
   public types$: Observable<DayOffCategory[]>;
@@ -94,6 +95,7 @@ export class DayoffTableComponent implements OnInit {
         sortJoinDateType: 0,
       },
       status: 'ACTIVE',
+      fullInfo: 'true',
     };
     this.store.dispatch(new EmployeeActions.FetchDayOff(this.searchParams));
   }

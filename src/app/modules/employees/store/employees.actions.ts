@@ -14,6 +14,7 @@ export interface SearchParams {
   fromDate?: string;
   toDate?: string;
   userId?;
+  fullInfo?: string;
 }
 
 export interface EmployeesParam {
