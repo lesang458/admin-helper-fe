@@ -1,23 +1,30 @@
 <div [ngClass]="id ? 'card-emp' : 'card'">
   <div class="card-body">
     <div class="row search">
-      <div class="col-3 d-flex">
-          <ngx-select 
-            class="flex-fill"
-            [(ngModel)]="selectedEmployeeId"
-            [items]="employeeObs"
-            [noResultsFound]="'DAY_OFF_CATEGORIES_PAGE.NO_RESULT' | translate"
-            placeholder="{{ 'DAY_OFF_CATEGORIES_PAGE.ENTER_EMP' | translate }}"
-            (selectionChanges)="doSelectOptions($event)">
-          </ngx-select>
-          <div class="form-group" *ngIf="selectedEmployeeId.length !== 0">
-            <button class="btn btn-outline-danger ml-2" (click)="clear()">
-              <i class="cil-x"></i>
-            </button>
+      <div class="col-3">
+          <div class="form-group d-flex flex-column">
+            <label>
+              {{ 'DAY_OFF_CATEGORIES_PAGE.EMP' | translate }}
+            </label>
+            <div class="d-flex">
+              <ngx-select 
+                class="flex-fill"
+                [(ngModel)]="selectedEmployeeId"
+                [items]="employeeObs"
+                [noResultsFound]="'DAY_OFF_CATEGORIES_PAGE.NO_RESULT' | translate"
+                placeholder="{{ 'DAY_OFF_CATEGORIES_PAGE.ENTER_EMP' | translate }}"
+                (selectionChanges)="doSelectOptions($event)">
+              </ngx-select>
+              <div class="form-group" *ngIf="selectedEmployeeId.length !== 0">
+                <button class="btn btn-outline-danger ml-2" (click)="clear()">
+                  <i class="cil-x"></i>
+                </button>
+              </div>
+            </div>
           </div>
       </div>
       <div class="col-3" *ngIf="types$ | async as types">
-        <div class="form-group">
+        <div class="form-group d-flex flex-column">
           <label class="d-inline-block mr-3 ml-2" for="day-off-type">
             {{ 'SIDEBAR.LINK_6' | translate }}
           </label>
@@ -37,7 +44,7 @@
         </div>
       </div>
       <div class="col-3">
-        <div class="form-group">
+        <div class="form-group d-flex flex-column">
           <label class="d-inline-block mr-3 ml-2" for="from-date">
             {{ 'REQUEST_DAY_OFF.FROM_DATE' | translate }}
           </label>
@@ -51,7 +58,7 @@
         </div>
       </div>
       <div class="col-3">
-        <div class="form-group">
+        <div class="form-group d-flex flex-column">
           <label class="d-inline-block mr-3 ml-2" for="to-date">
             {{ 'REQUEST_DAY_OFF.TO_DATE' | translate }}
           </label>
@@ -107,7 +114,7 @@
             <td class="align-middle">
               <div class="d-flex justify-content-center align-middle">
                 <button
-                  class="btn btn-outline-primary mr-2"
+                  class="btn btn-outline-primary"
                   (click)="openModalWithComponent(item)"
                 >
                   <span class="cil-brush"></span>

@@ -161,7 +161,8 @@
     "CATEGORY_NAME": "Loại ngày nghỉ",
     "APPLY_EMP": "Áp dụng cho nhân viên",
     "ENTER_EMP": "Nhập tên nhân viên",
-    "NO_RESULT": "Không có nhân viên nào"
+    "NO_RESULT": "Không có nhân viên nào",
+    "EMP": "Nhân viên"
   },
   "DAY_OFF_REQUEST_PAGE": {
     "TITLE": "Danh sách lịch sử nghỉ phép"

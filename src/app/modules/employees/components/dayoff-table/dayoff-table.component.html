@@ -1,7 +1,7 @@
 <div class="card">
   <div class="card-body" *ngIf="types$ | async as types">
     <div class="row mb-2">
-      <div class="col-7">
+      <div class="col-md-7 mb-2">
         <div class="input-group">
           <div class="input-group-prepend">
             <div class="input-group-text">
@@ -19,7 +19,7 @@
           />
         </div>
       </div>
-      <div class="col-5">
+      <div class="col-md-5">
         <div class="form-group">
           <label class="d-inline-block mr-3 ml-2" for="day-off-type">
             {{ 'PROFILE_CREATE.DAY_OFF_CATE' | translate }}

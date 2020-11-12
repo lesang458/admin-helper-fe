@@ -161,7 +161,8 @@
     "CATEGORY_NAME": "Category name",
     "APPLY_EMP": "Apply for employee",
     "ENTER_EMP": "Enter employee name",
-    "NO_RESULT": "No results found"
+    "NO_RESULT": "No results found",
+    "EMP": "Employee"
   },
   "DAY_OFF_REQUEST_PAGE": {
     "TITLE": "Day off request history List"

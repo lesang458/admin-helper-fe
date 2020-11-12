@@ -93,16 +93,15 @@
       </div>
     </div>
     <div class="form-group col-md-12" *ngIf="f.get('applyForAllEmployees').value === 'false'">
-      <div class="example-block emp-style">
-        <div class="example-block__item">
-            <ngx-select [multiple]="true"
-                        [items]="employeeObs"
-                        [autoClearSearch]="true"
-                        [noResultsFound]="'DAY_OFF_CATEGORIES_PAGE.NO_RESULT' | translate"
-                        placeholder="{{ 'DAY_OFF_CATEGORIES_PAGE.ENTER_EMP' | translate }}"
-                        (selectionChanges)="doSelectOptions($event)">
-            </ngx-select>
-        </div>
+      <div class="emp-style">
+        <ngx-select 
+          [multiple]="true"
+          [items]="employeeObs"
+          [autoClearSearch]="true"
+          [noResultsFound]="'DAY_OFF_CATEGORIES_PAGE.NO_RESULT' | translate"
+          placeholder="{{ 'DAY_OFF_CATEGORIES_PAGE.ENTER_EMP' | translate }}"
+          (selectionChanges)="doSelectOptions($event)">
+        </ngx-select>
       </div>
     </div>
     <div class="form-group col-md-12">

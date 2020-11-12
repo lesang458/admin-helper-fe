@@ -1,5 +1,4 @@
 .card {
-
   .input-group-text {
     cursor: pointer;
   }
@@ -18,10 +17,10 @@
     width: 10%;
   }
 
-  .badge{
+  .badge {
     width: 95px;
   }
-  
+
   .align-middle {
     a {
       cursor: pointer;
@@ -34,5 +33,11 @@
 
   td {
     vertical-align: inherit;
+  }
+
+  @media screen and (max-width: 768px) {
+    .row {
+      flex-direction: column-reverse;
+    }
   }
 }

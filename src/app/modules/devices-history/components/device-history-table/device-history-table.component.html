@@ -6,13 +6,13 @@
       </div>
     </div>
     <div class="row">
-      <div class="col-4">
-        <div class="form-group">
+      <div class="col-4 col-xl-3">
+        <div class="d-flex flex-column">
           <label class="d-inline-block mr-3 ml-2" for="status-type">
             {{ 'GENERAL_LIST.STATUS' | translate }}
           </label>
           <select
-            class="form-control w-auto d-inline-block"
+            class="form-control d-inline-block"
             id="status-type"
             [formControl]="searchStatusFormControl"
           >
@@ -31,8 +31,8 @@
           </select>
         </div>
       </div>
-      <div class="col-4">
-        <div class="form-group">
+      <div class="col-4 col-xl-3">
+        <div class="d-flex flex-column">
           <label class="d-inline-block mr-3 ml-2" for="from-date">
             {{ 'REQUEST_DAY_OFF.FROM_DATE' | translate }}
           </label>
@@ -45,8 +45,8 @@
           />
         </div>
       </div>
-      <div class="col-4">
-        <div class="form-group">
+      <div class="col-4 col-xl-3">
+        <div class="d-flex flex-column">
           <label class="d-inline-block mr-3 ml-2" for="to-date">
             {{ 'REQUEST_DAY_OFF.TO_DATE' | translate }}
           </label>
@@ -58,6 +58,7 @@
             [formControl]="selectedToDate"
           />
         </div>
+      </div>
       </div>
       <div class="table-responsive p-2" *ngIf="data$ | async as data">
         <div
@@ -141,6 +142,5 @@
           </pagination>
         </div>
       </div>
-    </div>
-  </div>
+    </div>  
 </div>

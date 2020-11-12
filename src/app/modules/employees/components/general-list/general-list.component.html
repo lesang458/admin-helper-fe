@@ -1,47 +1,51 @@
 <div class="card">
   <div class="card-body">
-    <div class="row mb-4">
-      <div class="col-4">
-        <div class="input-group">
-          <div class="input-group-prepend">
-            <div class="input-group-text">
-              <i class="cil-search"></i>
+    <div class="row mb-3 ">
+      <div class="col-md-8 col-sm-12">
+        <div class="row flex-row">
+          <div class="col-md-6 col-sm-12 mb-2">
+            <div class="input-group">
+              <div class="input-group-prepend">
+                <div class="input-group-text">
+                  <i class="cil-search"></i>
+                </div>
+              </div>
+              <input
+                type="search"
+                class="form-control sticky-top"
+                [formControl]="searchFormControl"
+                placeholder="{{ 'GENERAL_LIST.PLACEHOLDER' | translate }}"
+                (blur)="onSearchSubmit()"
+                (search)="onSearchSubmit()"
+              />
             </div>
           </div>
-          <input
-            type="search"
-            class="form-control sticky-top"
-            [formControl]="searchFormControl"
-            placeholder="{{ 'GENERAL_LIST.PLACEHOLDER' | translate }}"
-            (blur)="onSearchSubmit()"
-            (search)="onSearchSubmit()"
-          />
+          <div class="col-md-6 col-sm-12">
+            <div class="form-group mb-0">
+              <label class="d-inline-block mr-3 ml-2" for="status-type">
+                {{ 'GENERAL_LIST.STATUS' | translate }}
+              </label>
+              <select
+                class="form-control d-inline-block"
+                style="width: auto"
+                id="status-type"
+                [formControl]="searchStatusFormControl"
+              >
+                <option selected value="">
+                  {{ 'GENERAL_LIST.ALL' | translate }}
+                </option>
+                <option value="ACTIVE">
+                  {{ 'GENERAL_LIST.ACTIVE' | translate }}
+                </option>
+                <option value="FORMER">
+                  {{ 'GENERAL_LIST.FORMER' | translate }}
+                </option>
+              </select>
+            </div>
+          </div>
         </div>
       </div>
-      <div class="col-4">
-        <div class="form-group">
-          <label class="d-inline-block mr-3 ml-2" for="status-type">
-            {{ 'GENERAL_LIST.STATUS' | translate }}
-          </label>
-          <select
-            class="form-control d-inline-block"
-            style="width: auto"
-            id="status-type"
-            [formControl]="searchStatusFormControl"
-          >
-            <option selected value="">
-              {{ 'GENERAL_LIST.ALL' | translate }}
-            </option>
-            <option value="ACTIVE">
-              {{ 'GENERAL_LIST.ACTIVE' | translate }}
-            </option>
-            <option value="FORMER">
-              {{ 'GENERAL_LIST.FORMER' | translate }}
-            </option>
-          </select>
-        </div>
-      </div>
-      <div class="col-4 text-right">
+      <div class="col-md-4 col-sm-12 text-right mb-2">
         <button
           type="button"
           (click)="navigateCreate()"
