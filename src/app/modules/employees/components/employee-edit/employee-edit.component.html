@@ -194,9 +194,15 @@
           <tab heading="{{ 'PROFILE_CREATE.DAY_OFF_INFO' | translate }}" class="mt-2" [active] = "dayoff" (selectTab)="navigateTab(true)">
             <form [formGroup]="dayOffForm">
               <b class="ml-2">{{ 'PROFILE_CREATE.DAY_OFF_INFO' | translate }}</b>
+              <div
+                *ngIf="dayOffInfos.controls.length === 0"
+                class="alert alert-warning text-center mt-2 ml-2 mr-2"
+                role="alert">
+                {{ 'DAY_OFF_TABLE.NO_RESULT' | translate }}
+              </div>
               <div class="info" formArrayName="dayOffInfos">
                 <div 
-                  class="form-group row mb-4" 
+                  class="form-group row mb-4 mr-3 ml-3" 
                   *ngFor="let item of dayOffInfos.controls; let i = index" 
                   [formGroupName]="i"
                   >
@@ -221,7 +227,7 @@
                       </div>
                     </div>
                   </div>
-                  <label class="col-sm-1 col-form-label">{{ 'EMPLOYEE_DETAIL.DAY' | translate }}</label>
+                  <label class="col-sm-2 col-md-2 col-lg-1 col-form-label">{{ 'EMPLOYEE_DETAIL.DAY' | translate }}</label>
                   <div class="col-sm-1">
                     <button
                       class="btn btn-outline-danger"
@@ -229,9 +235,9 @@
                       <i class="cil-minus"></i>
                     </button>
                   </div>
-                  <div class="col-sm-1"></div>
+                  <div class="col-1 .d-md-none .d-lg-block"></div>
                 </div>
-                <div class="form-group row">
+                <div class="form-group row ml-3">
                   <div class="col-sm-1"></div>
                   <label class="d-inline-block label-sel col-sm-3" for="day-off-type">
                     {{ 'EMPLOYEE_DETAIL.DAY_OFF_INFO' | translate }}
@@ -254,12 +260,6 @@
                   </div>
                 </div>
               </div>
-              <div
-                *ngIf="dayOffInfos.controls.length === 0"
-                class="alert alert-warning text-center mt-2 ml-2 mr-2"
-                role="alert">
-                {{ 'DAY_OFF_TABLE.NO_RESULT' | translate }}
-            </div>
           </form>
         </tab>
         </tabset>
