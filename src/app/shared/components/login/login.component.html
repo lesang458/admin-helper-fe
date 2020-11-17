@@ -1,13 +1,10 @@
 <div class="c-app flex-row align-items-center">
   <div class="container">
     <div class="row justify-content-center">
-      <div class="col-md-6">
+      <div class="col-md-9">
         <div class="card-group">
           <div class="card p-4">
             <div class="card-body">
-              <div class="d-flex justify-content-center mb-2">
-                <img src="assets/brand/logo-black.svg" alt="Logo" width="55%">
-              </div>
               <h1>{{ 'LOGIN.TITLE' | translate }}</h1>
               <p class="text-muted">{{ 'LOGIN.SIGN_IN' | translate }}</p>
               <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="auto-validated">
@@ -63,39 +60,39 @@
                     </div>
                   </div>
                 </div>
-                <div class="row mt-3">
-                  <div class="col-5">
-                    <button
-                      class="btn btn-info px-4"
-                      type="submit"
-                      [disabled]="loginForm.invalid"
-                    >
-                      {{ 'LOGIN.TITLE' | translate }}
-                    </button>
-                  </div>
-                  <div class="col-7 text-right">
-                    <button
-                      type="button"
-                      class="btn btn-outline-info"
-                      (click)="signInWithGoogle()"
-                    >
-                      <i class="fa fa-google-plus mr-2"></i>
-                      {{ 'LOGIN.SIGN_IN_GG' | translate }}
-                    </button>
-                  </div>
-                </div>
-                <div class="row mt-2">
-                  <div class="col-6">
-                    <button
-                      class="btn btn-ghost-info px-2"
+                <div class="d-flex flex-column">
+                  <div class="mt-2 text-right">
+                    <a
+                      class="text-info"
                       type="button"
                       (click)="onNavigateToResetPage()"
+                      >
+                    {{ 'LOGIN.FORGOT_PASSWORD' | translate }}
+                  </a>
+                  </div>  
+                  <button
+                    class="btn btn-info px-4 mt-3"
+                    type="submit"
+                    [disabled]="loginForm.invalid"
                     >
-                      {{ 'LOGIN.FORGOT_PASSWORD' | translate }}
-                    </button>
-                  </div>
-                </div>
+                  {{ 'LOGIN.TITLE' | translate }}
+                  </button>           
+                  <button
+                    type="button"
+                    class="btn btn-outline-info mt-2"
+                    (click)="signInWithGoogle()"
+                    >
+                  <i class="fa fa-google-plus mr-2"></i>
+                  {{ 'LOGIN.SIGN_IN_GG' | translate }}
+                  </button>
+               </div>
               </form>
+            </div>
+          </div>
+          <div class="card bg-secondary text-white p-4 d-md-down-none">
+            <div class="card-boby d-flex flex-column justify-content-center h-100">
+              <img src="assets/brand/logo-black.svg" alt="Logo" width="70%" class="ml-auto mr-auto mb-2">
+              <h2 class="ml-auto mr-auto">Go Digital.</h2>
             </div>
           </div>
         </div>

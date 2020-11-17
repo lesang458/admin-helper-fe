@@ -5,6 +5,8 @@ import {
   Pagination,
 } from 'src/app/shared/models/pagination.model';
 import { DayOffRequest } from 'src/app/shared/models/dayoff-request.model';
+import { DeviceHistory } from 'src/app/shared/models/devices-history.model';
+import { Device } from 'src/app/shared/models/device.model';
 
 export interface State {
   employees: Employee[];
@@ -12,6 +14,8 @@ export interface State {
   dayOff: PaginatedData<Employee[]>;
   detaiEmployee: Employee;
   dayOffRequest: PaginatedData<DayOffRequest[]>;
+  deviceHistories: DeviceHistory[];
+  devices: Device[];
 }
 
 const initDayOff = new PaginatedData<Employee[]>();
@@ -29,6 +33,8 @@ export const initialState: State = {
   dayOff: initDayOff,
   detaiEmployee: null,
   dayOffRequest: initDayOffRequest,
+  deviceHistories: [],
+  devices: [],
 };
 
 export function employeeReducer(
@@ -56,6 +62,16 @@ export function employeeReducer(
       return {
         ...state,
         dayOffRequest: action.payload,
+      };
+    case EmployeesActions.SET_EMPLOYEE_DEVICE_HISTORIES:
+      return {
+        ...state,
+        deviceHistories: action.payload,
+      };
+    case EmployeesActions.SET_EMPLOYEE_DEVICES:
+      return {
+        ...state,
+        devices: action.payload,
       };
     default:
       return state;

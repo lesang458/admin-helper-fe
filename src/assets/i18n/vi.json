@@ -35,7 +35,7 @@
     "TITLE": "Chi tiết nhân viên",
     "DEVICE": "Thiết bị được giao",
     "EMPLOYEE_INFO": "Thông tin chung",
-    "NO_RESULT": "Không có thiết bị nào được bàn giao",
+    "NO_RESULT": "Không có thiết bị nào được bàn giao.",
     "TITLE_EMP": "Chủ đề",
     "CONTENT": "Nội dung",
     "NO_SELECT": "Không chọn",
@@ -188,7 +188,8 @@
     "TITLE_DETAIL": "Chi tiết lịch sử thiết bị",
     "DEVICE_INFO": "Thông tin thiết bị",
     "USER_INFO": "Thông tin người dùng",
-    "PRESENT": "Hiện tại"
+    "PRESENT": "Hiện tại",
+    "BACK": "Quay lại"
   },
   "DEVICE_ASSIGN": {
     "TITLE": "Cung cấp thiết bị cho nhân viên",

@@ -14,6 +14,8 @@ import { NotifyService } from 'src/app/core/services/notify.service';
 import { RouteConstant } from 'src/app/shared/constants/route.constant';
 import { Router } from '@angular/router';
 import { DayOffRequest } from 'src/app/shared/models/dayoff-request.model';
+import { DeviceHistory } from 'src/app/shared/models/devices-history.model';
+import { Device } from 'src/app/shared/models/device.model';
 
 @Injectable()
 export class EmployeeEffects {
@@ -231,6 +233,44 @@ export class EmployeeEffects {
           map((response) => {
             const data = camelcaseKeys(response.body, { deep: true });
             return new EmployeesActions.SetDayOffRequest(data);
+          })
+        );
+    })
+  );
+
+  @Effect()
+  fetchDeviceHistories = this.actions$.pipe(
+    ofType(EmployeesActions.FETCH_EMPLOYEE_DEVICE_HISTORIES),
+    switchMap((action: EmployeesActions.FetchEmployeeDeviceHistories) => {
+      const params = new HttpParams().append(ParamsConstant.page, '-1');
+      return this.http
+        .get<PaginatedData<DeviceHistory[]>>(
+          `${environment.APILink}/employees/${action.payload}/device_histories`,
+          { params }
+        )
+        .pipe(
+          map((data) => {
+            const result = camelcaseKeys(data.data, { deep: true }).reverse();
+            return new EmployeesActions.SetEmployeeDeviceHistories(result);
+          })
+        );
+    })
+  );
+
+  @Effect()
+  fetchDevices = this.actions$.pipe(
+    ofType(EmployeesActions.FETCH_EMPLOYEE_DEVICES),
+    switchMap((action: EmployeesActions.FetchEmployeeDevices) => {
+      const params = new HttpParams().append(ParamsConstant.page, '-1');
+      return this.http
+        .get<PaginatedData<Device[]>>(
+          `${environment.APILink}/employees/${action.payload}/devices`,
+          { params }
+        )
+        .pipe(
+          map((data) => {
+            const result = camelcaseKeys(data.data, { deep: true });
+            return new EmployeesActions.SetEmployeeDevices(result);
           })
         );
     })

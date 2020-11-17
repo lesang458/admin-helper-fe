@@ -35,7 +35,7 @@
     "TITLE": "Employee Detail",
     "DEVICE": "Assigned devices",
     "EMPLOYEE_INFO": "General Information",
-    "NO_RESULT": "No assigned device",
+    "NO_RESULT": "No assigned device.",
     "TITLE_EMP": "Title",
     "CONTENT": "Content",
     "NO_SELECT": "No select",
@@ -189,7 +189,8 @@
     "TITLE_DETAIL": "Detail device history",
     "DEVICE_INFO": "Device information",
     "USER_INFO": "User information",
-    "PRESENT": "Present"
+    "PRESENT": "Present",
+    "BACK": "Back"
   },
   "DEVICE_ASSIGN": {
     "TITLE": "Provide device to user",

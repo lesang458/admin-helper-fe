@@ -1,4 +1,5 @@
 .card {
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.15);
   .card-header {
     .c-icon {
       transition: 0.3s transform ease-in-out;
@@ -27,7 +28,7 @@
     color: black;
   }
 
-  .badge{
+  .badge {
     width: 75px;
   }
 }
@@ -38,6 +39,6 @@ div {
   }
 
   .col-action {
-    width: 10%
+    width: 10%;
   }
 }

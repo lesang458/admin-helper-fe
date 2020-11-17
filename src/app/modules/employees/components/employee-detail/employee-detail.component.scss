@@ -1,10 +1,19 @@
 .card {
   .style {
-    th, td {
+    th,
+    td {
       border-top: none;
     }
   }
   .main-container {
+    position: relative;
+
+    .back-button {
+      position: absolute;
+      right: 10px;
+      top: 0;
+    }
+
     .border-style {
       border-top: none;
     }
@@ -14,12 +23,12 @@
     }
 
     .thead-style {
-      background-color: rgba(0,0,21,.075);
+      background-color: rgba(0, 0, 21, 0.075);
       tr {
         height: auto !important;
       }
     }
-    .dayoff{
+    .dayoff {
       padding: 0.5rem 1.5rem 1.5rem 1.5rem !important;
     }
     .card-body {
@@ -36,7 +45,8 @@
         tr {
           height: 60px;
         }
-        th, td {
+        th,
+        td {
           vertical-align: inherit;
         }
         th {
@@ -62,10 +72,10 @@
       color: red;
       margin-top: 5px;
     }
-    .badge{
+    .badge {
       width: 95px;
     }
-    .form-control:disabled{
+    .form-control:disabled {
       background-color: transparent;
       border: none;
     }

@@ -2,7 +2,10 @@
   <div class="card-body">
     <div class="row mb-1">
       <div class="col-sm text-right">
-        <button class="btn btn-info" (click)="cancel()"><i class="fa fa-arrow-left mr-2"></i>Back</button>
+        <button class="btn btn-secondary" (click)="cancel()">
+          <i class="fa fa-arrow-left mr-1"></i>
+          {{ 'DEVICE_HISTORY.BACK' | translate}}
+        </button>
       </div>
     </div>
     <div class="row">

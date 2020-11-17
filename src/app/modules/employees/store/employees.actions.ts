@@ -3,6 +3,8 @@ import { Employee } from 'src/app/shared/models/employees.model';
 import { PaginatedData } from 'src/app/shared/models/pagination.model';
 import { RequestDayOffModel } from 'src/app/shared/models/request-day-off.model';
 import { DayOffRequest } from 'src/app/shared/models/dayoff-request.model';
+import { DeviceHistory } from 'src/app/shared/models/devices-history.model';
+import { Device } from 'src/app/shared/models/device.model';
 
 export interface SearchParams {
   search?: string;
@@ -37,6 +39,12 @@ export const REQUEST_DAY_OFF = '[Employees] Request Day Off';
 export const UPDATE_REQUEST_DAY_OFF = '[Employees] Update Request Day Off';
 export const FETCH_DAY_OFF_REQUEST = '[Employees] Fetch Day Off Request';
 export const SET_DAY_OFF_REQUEST = '[Employees] Set Day Off Request';
+export const FETCH_EMPLOYEE_DEVICE_HISTORIES =
+  '[Employees] Fetch Employee Device Histories';
+export const SET_EMPLOYEE_DEVICE_HISTORIES =
+  '[Employees] Set Employee Device Histories';
+export const FETCH_EMPLOYEE_DEVICES = '[Employees] Fetch Employee Devices';
+export const SET_EMPLOYEE_DEVICES = '[Employees] Set Employee Devices';
 
 export class GetEmployeesSuccess implements Action {
   readonly type = GET_EMPLOYEES_SUCCESS;
@@ -103,6 +111,26 @@ export class SetDayOffRequest implements Action {
   constructor(public payload: PaginatedData<DayOffRequest[]>) {}
 }
 
+export class FetchEmployeeDeviceHistories implements Action {
+  readonly type = FETCH_EMPLOYEE_DEVICE_HISTORIES;
+  constructor(public payload: number) {}
+}
+
+export class SetEmployeeDeviceHistories implements Action {
+  readonly type = SET_EMPLOYEE_DEVICE_HISTORIES;
+  constructor(public payload: DeviceHistory[]) {}
+}
+
+export class FetchEmployeeDevices implements Action {
+  readonly type = FETCH_EMPLOYEE_DEVICES;
+  constructor(public payload: number) {}
+}
+
+export class SetEmployeeDevices implements Action {
+  readonly type = SET_EMPLOYEE_DEVICES;
+  constructor(public payload: Device[]) {}
+}
+
 export type EmployeesActions =
   | GetEmployeesSuccess
   | SearchEmployees
@@ -115,4 +143,8 @@ export type EmployeesActions =
   | EditEmployee
   | RequestDayOff
   | FetchDayOffRequest
-  | SetDayOffRequest;
+  | SetDayOffRequest
+  | FetchEmployeeDeviceHistories
+  | SetEmployeeDeviceHistories
+  | FetchEmployeeDevices
+  | SetEmployeeDevices;
