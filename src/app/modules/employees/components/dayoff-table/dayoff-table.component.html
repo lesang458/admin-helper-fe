@@ -73,7 +73,7 @@
         <tbody>
           <tr *ngFor="let item of data.data; let i = index">
             <td class="align-middle">
-              <a class="link-a" (click)="navigateEmployeeDetail(item.id)">
+              <a class="link-a" (click)="navigateToDetailPage(item.id)">
                 {{ item.lastName + ' ' + item.firstName }}
               </a>
             </td>
@@ -97,6 +97,13 @@
                   tooltip="{{ 'DAY_OFF_TABLE.SUBMIT_TIME_OFF' | translate }}"
                 >
                   <i class="fa fa-calendar-plus-o"></i>
+                </button>
+                <button
+                  type="button"
+                  class="btn btn-outline-primary ml-2"
+                  (click)="navigateToEditPage(item.id)"
+                >
+                  <i class="cil-brush"></i>
                 </button>
               </div>
             </td>

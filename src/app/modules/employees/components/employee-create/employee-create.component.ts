@@ -1,4 +1,9 @@
-import { AfterViewChecked, ChangeDetectorRef, Component, OnInit } from '@angular/core';
+import {
+  AfterViewChecked,
+  ChangeDetectorRef,
+  Component,
+  OnInit,
+} from '@angular/core';
 import { Store } from '@ngrx/store';
 import * as fromApp from '../../../../store/app.reducer';
 import * as EmployeeActions from '../../store/employees.actions';
@@ -12,6 +17,8 @@ import {
   AbstractControl,
 } from '@angular/forms';
 import { TranslateService } from '@ngx-translate/core';
+import { Router } from '@angular/router';
+import { RouteConstant } from 'src/app/shared/constants/route.constant';
 
 @Component({
   selector: 'ah-employee-create',
@@ -39,7 +46,6 @@ export class EmployeeCreateComponent implements OnInit, AfterViewChecked {
     ]),
     birthdate: new FormControl('', this.birthdayValidator),
     joinDate: new FormControl(''),
-    dayOffInfos: this.formBuilder.array([]),
   });
   public dayOffForm = new FormGroup({
     dayOffInfos: this.formBuilder.array([]),
@@ -49,7 +55,8 @@ export class EmployeeCreateComponent implements OnInit, AfterViewChecked {
     private store: Store<fromApp.AppState>,
     private formBuilder: FormBuilder,
     public translateService: TranslateService,
-    private cdr: ChangeDetectorRef
+    private cdr: ChangeDetectorRef,
+    private router: Router
   ) {}
 
   ngOnInit(): void {
@@ -63,10 +70,7 @@ export class EmployeeCreateComponent implements OnInit, AfterViewChecked {
             this.formBuilder.group({
               categoryName: value.name,
               dayOffCategoryId: value.id,
-              hours: [
-                value.totalHoursDefault / 8,
-                Validators.min(0),
-              ],
+              hours: [value.totalHoursDefault / 8, Validators.min(1)],
             })
           )
         ),
@@ -90,20 +94,21 @@ export class EmployeeCreateComponent implements OnInit, AfterViewChecked {
     return new Date().toISOString().split('T')[0];
   }
 
-  private birthdayValidator(control: AbstractControl): { [key: string]: boolean } | null {
+  private birthdayValidator(
+    control: AbstractControl
+  ): { [key: string]: boolean } | null {
     const date = new Date(control.value);
     const toDay = new Date();
-    return date > toDay  ? { invalidDate: true } : null;
+    return date > toDay ? { invalidDate: true } : null;
   }
 
   public passwordIsIncorrect(): boolean {
-    const statusValidate = (
-      this.f.password.value !== this.f.confirmPassword.value
-    );
+    const statusValidate =
+      this.f.password.value !== this.f.confirmPassword.value;
     if (statusValidate) {
-      this.f.confirmPassword.setErrors({ incorrect:  true });
+      this.f.confirmPassword.setErrors({ incorrect: true });
     } else {
-      this.f.confirmPassword.setErrors({ incorrect: null});
+      this.f.confirmPassword.setErrors({ incorrect: null });
       this.f.confirmPassword.updateValueAndValidity();
     }
     return statusValidate;
@@ -155,7 +160,6 @@ export class EmployeeCreateComponent implements OnInit, AfterViewChecked {
     this.employeeForm.value.dayOffInfosAttributes = this.dayOffForm.value.dayOffInfos;
     const employee = { ...this.employeeForm.value };
     delete employee.confirmPassword;
-    delete employee.dayOffInfos;
     employee.dayOffInfosAttributes.forEach((element, index) => {
       if (this.dayOffInfos.at(index).get('hours').value === element.hours) {
         element.hours = element.hours * 8;
@@ -169,5 +173,9 @@ export class EmployeeCreateComponent implements OnInit, AfterViewChecked {
       }
     );
     this.store.dispatch(new EmployeeActions.CreateEmployee(employee));
+  }
+
+  public back(): void {
+    this.router.navigateByUrl(`/${RouteConstant.employees}`);
   }
 }

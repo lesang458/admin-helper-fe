@@ -116,8 +116,14 @@ export class DayoffTableComponent implements OnInit {
     return 0;
   }
 
-  public navigateEmployeeDetail(id): void {
+  public navigateToDetailPage(id: number): void {
     this.router.navigateByUrl(`/${RouteConstant.employees}/${id}?dayoff=true`);
+  }
+
+  public navigateToEditPage(id: number): void {
+    this.router.navigateByUrl(
+      `/${RouteConstant.employees}/${id}/edit?dayoff=true`
+    );
   }
 
   public onSearchSubmit(): void {

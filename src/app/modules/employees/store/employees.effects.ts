@@ -115,7 +115,9 @@ export class EmployeeEffects {
         .pipe(
           map(() => {
             this.notify.showSuccess('PROFILE_CREATE.EDIT_SUCCESS');
-            this.router.navigateByUrl(`/${RouteConstant.employees}`);
+            action.payload.employee.hasOwnProperty('dayOffInfosAttributes')
+              ? this.router.navigateByUrl(`/${RouteConstant.dayOff}`)
+              : this.router.navigateByUrl(`/${RouteConstant.employees}`);
           })
         );
     })

@@ -33,7 +33,6 @@ export class EmployeeEditComponent implements OnInit, AfterViewChecked {
   public types: DayOffCategory[];
   public id: number;
   public dayoff = this.route.snapshot.queryParams.dayoff;
-  public hourChecked = [];
   public selectedType = new FormControl('');
   public employeeForm = new FormGroup({
     firstName: new FormControl('', [
@@ -99,7 +98,7 @@ export class EmployeeEditComponent implements OnInit, AfterViewChecked {
                       value: value.hours / 8,
                       disabled: false,
                     },
-                    Validators.pattern('^[0-9]*$'),
+                    Validators.min(1),
                   ],
                 })
               )
@@ -157,15 +156,6 @@ export class EmployeeEditComponent implements OnInit, AfterViewChecked {
     );
   }
 
-  public checkCheckBoxValue(event, id: number): void {
-    if (!event.target.checked) {
-      this.hourChecked.push(id);
-    } else {
-      const index = this.hourChecked.indexOf(id);
-      this.hourChecked.splice(index, 1);
-    }
-  }
-
   public addDayoffCatetory(types: DayOffCategory[]): void {
     if (this.selectedType.value !== 'No select') {
       const filter = types.filter(
@@ -208,26 +198,26 @@ export class EmployeeEditComponent implements OnInit, AfterViewChecked {
     );
   }
 
-  public navigateDetail(): void {
-    this.router.navigateByUrl(`/${RouteConstant.employees}/${this.id}`);
+  public navigateDetail(isDayOff?: boolean): void {
+    this.router.navigateByUrl(
+      `/${RouteConstant.employees}/${this.id}${isDayOff ? '?dayoff=true' : ''}`
+    );
   }
 
-  public onSubmit(): void {
-    this.employeeForm.value.dayOffInfosAttributes = this.dayOffForm.value.dayOffInfos;
-    const employee = { ...this.employeeForm.value };
-    delete employee.dayOffInfos;
-    employee.dayOffInfosAttributes.forEach((element, index) => {
-      if (this.dayOffInfos.at(index).get('hours').value === element.hours) {
-        element.hours = element.hours * 8;
-      }
-      delete element.categoryName;
-      delete element?.availableHours;
-    });
-    employee.dayOffInfosAttributes = employee.dayOffInfosAttributes.filter(
-      (element) => {
-        return this.hourChecked.indexOf(element.dayOffCategoryId) === -1;
-      }
-    );
+  public onSubmit(isDayOff: boolean): void {
+    let employee: Employee = {};
+    if (isDayOff) {
+      employee.dayOffInfosAttributes = this.dayOffInfos.value;
+      employee.dayOffInfosAttributes.forEach((element, index) => {
+        if (this.dayOffInfos.at(index).get('hours').value === element.hours) {
+          element.hours = element.hours * 8;
+        }
+        delete element.categoryName;
+        delete element?.availableHours;
+      });
+    } else {
+      employee = this.employeeForm.value;
+    }
     const id = this.id;
     const params = { id, employee };
     this.store.dispatch(new EmployeeActions.EditEmployee(params));

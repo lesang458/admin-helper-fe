@@ -6,12 +6,9 @@
     b {
       font-size: 16px;
     }
-    .badge{
-      width: 95px;
+    .d-flex {
+      justify-content: space-between;
+      align-items: center;
     }
-  .d-flex {
-    justify-content: space-between;
-    align-items: center;
   }
- }
 }
