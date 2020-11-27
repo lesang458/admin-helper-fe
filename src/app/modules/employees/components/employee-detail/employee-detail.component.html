@@ -143,68 +143,70 @@
           <tab heading="{{ 'PROFILE_CREATE.DAY_OFF_INFO' | translate }}" [active]="dayoff" (selectTab) = "navigateTab(true)">
             <div class="row-1">
               <div class="card">
-                <div class="row">
-                  <div class="card-body dayoff col-lg-6 col-md-12">
-                    <div class="d-flex align-center justify-content-between">
-                      <div class="text-left">
-                        <b>{{ 'PROFILE_CREATE.DAY_OFF_INFO' | translate }}</b>
-                      </div>
-                      <div class="mt-2 mb-2">
-                        <button
-                          type="button"
-                          class="btn btn-info"
-                          (click)="navigateEdit(true)"
-                        >
-                          <span class="cil-brush"></span>
-                          {{ 'DEVICE_TABLE.EDIT' | translate }}
-                        </button>
-                      </div>
-                    </div>
-                    <div class="infor">
-                      <table class="table" *ngIf="employee?.dayOffInfos.length > 0">
-                        <thead class="thead-style">
-                          <tr>
-                            <th scope="col" class="td-cate">{{ 'PROFILE_CREATE.DAY_OFF_CATE' | translate }}</th>
-                            <th scope="col" class="text-right td-hour">{{ 'PROFILE_CREATE.HOUR' | translate }}</th>
-                            <th scope="col" class="text-right td-hour">{{ 'PROFILE_CREATE.AVAILABLE_HOURS' | translate }}</th>
-                          </tr>
-                        </thead>
-                        <tbody>
-                          <tr *ngFor="let item of employee?.dayOffInfos">
-                            <td class="font-weight-bold td-cate">{{ item.categoryName | titlecase }}</td>
-                            <td class="td-style text-right">
-                              {{ item.hours / 8 }}
-                            </td>
-                            <td class="td-style text-right">{{ item.availableHours > 0 ? item.availableHours / 8 : 0 }}</td>
-                          </tr>
-                        </tbody>
-                      </table>
-                    </div>
-                    <div
-                      *ngIf="employee?.dayOffInfos.length === 0"
-                      class="alert alert-warning text-center mt-2 ml-2 mr-2"
-                      role="alert">
-                      {{ 'DAY_OFF_TABLE.NO_RESULT' | translate }}
-                    </div>
-                  </div>
-                  <div class="dayoff col-lg-6 col-md-12">
-                    <div class="infor">
+                <div class="card-body">
+                  <div class="row">
+                    <div class="col-lg-6 col-md-12">
                       <div class="d-flex align-center justify-content-between">
                         <div class="text-left">
-                          <b>{{ 'PROFILE_CREATE.DAY_OFF_REQUEST' | translate }}</b>
+                          <b>{{ 'PROFILE_CREATE.DAY_OFF_INFO' | translate }}</b>
                         </div>
                         <div class="mt-2 mb-2">
                           <button
                             type="button"
-                            class="btn btn-info auto-width"
-                            (click)="openModalWithComponent(employee, 'create')"
+                            class="btn btn-info"
+                            (click)="navigateEdit(true)"
                           >
-                            <i class="fa fa-calendar-plus-o"></i>
-                            {{ 'DAY_OFF_TABLE.SUBMIT_TIME_OFF' | translate }}
+                            <span class="cil-brush"></span>
+                            {{ 'DEVICE_TABLE.EDIT' | translate }}
                           </button>
                         </div>
                       </div>
-                      <ah-dayoff-request-list></ah-dayoff-request-list>
+                      <div class="infor">
+                        <table class="table" *ngIf="employee?.dayOffInfos.length > 0">
+                          <thead class="thead-style">
+                            <tr>
+                              <th scope="col" class="td-cate">{{ 'PROFILE_CREATE.DAY_OFF_CATE' | translate }}</th>
+                              <th scope="col" class="text-right td-hour">{{ 'PROFILE_CREATE.HOUR' | translate }}</th>
+                              <th scope="col" class="text-right td-hour">{{ 'PROFILE_CREATE.AVAILABLE_HOURS' | translate }}</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr *ngFor="let item of employee?.dayOffInfos">
+                              <td class="font-weight-bold td-cate">{{ item.categoryName | titlecase }}</td>
+                              <td class="td-style text-right">
+                                {{ item.hours / 8 }}
+                              </td>
+                              <td class="td-style text-right">{{ item.availableHours > 0 ? item.availableHours / 8 : 0 }}</td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div
+                        *ngIf="employee?.dayOffInfos.length === 0"
+                        class="alert alert-warning text-center mt-2 ml-2 mr-2"
+                        role="alert">
+                        {{ 'DAY_OFF_TABLE.NO_RESULT' | translate }}
+                      </div>
+                    </div>
+                    <div class="dayoff col-lg-6 col-md-12">
+                      <div class="infor">
+                        <div class="d-flex align-center justify-content-between">
+                          <div class="text-left">
+                            <b>{{ 'PROFILE_CREATE.DAY_OFF_REQUEST' | translate }}</b>
+                          </div>
+                          <div class="mt-2 mb-2">
+                            <button
+                              type="button"
+                              class="btn btn-info auto-width"
+                              (click)="openModalWithComponent(employee, 'create')"
+                            >
+                              <i class="fa fa-calendar-plus-o"></i>
+                              {{ 'DAY_OFF_TABLE.SUBMIT_TIME_OFF' | translate }}
+                            </button>
+                          </div>
+                        </div>
+                        <ah-dayoff-request-list></ah-dayoff-request-list>
+                      </div>
                     </div>
                   </div>
                 </div>

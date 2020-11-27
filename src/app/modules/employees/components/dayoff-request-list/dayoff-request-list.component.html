@@ -1,7 +1,7 @@
 <div [ngClass]="id ? 'card-emp' : 'card'">
   <div class="card-body">
     <div class="row search">
-      <div class="col-3">
+      <div class="col-sm-3">
           <div class="form-group d-flex flex-column">
             <label>
               {{ 'DAY_OFF_CATEGORIES_PAGE.EMP' | translate }}
@@ -23,7 +23,7 @@
             </div>
           </div>
       </div>
-      <div class="col-3" *ngIf="types$ | async as types">
+      <div class="col-sm-3" *ngIf="types$ | async as types">
         <div class="form-group d-flex flex-column">
           <label class="d-inline-block mr-3 ml-2" for="day-off-type">
             {{ 'PROFILE_CREATE.DAY_OFF_CATE' | translate }}
@@ -43,7 +43,7 @@
           </select>
         </div>
       </div>
-      <div class="col-3">
+      <div class="col-sm-3">
         <div class="form-group d-flex flex-column">
           <label class="d-inline-block mr-3 ml-2" for="from-date">
             {{ 'REQUEST_DAY_OFF.FROM_DATE' | translate }}
@@ -57,7 +57,7 @@
           />
         </div>
       </div>
-      <div class="col-3">
+      <div class="col-sm-3">
         <div class="form-group d-flex flex-column">
           <label class="d-inline-block mr-3 ml-2" for="to-date">
             {{ 'REQUEST_DAY_OFF.TO_DATE' | translate }}
@@ -94,6 +94,9 @@
             <th scope="col" class="text-center">
               {{ 'DAY_OFF_CATEGORIES_PAGE.CATEGORY_NAME' | translate }}
             </th>
+            <th scope="col" class="text-center">
+              {{ 'GENERAL_LIST.STATUS' | translate }}
+            </th>
             <th scope="col" class="col-action text-center">
               {{ 'DAY_OFF_TABLE.ACTION' | translate }}
             </th>
@@ -111,6 +114,28 @@
             <td class="align-middle">{{ item.toDate| date: 'dd/MM/yyyy' }}</td>
             <td class="align-middle text-right">{{ item.hoursPerDay }}</td>
             <td class="align-middle text-center">{{ item.dayOffCategory.name | titlecase }}</td>
+            <td class="align-middle text-center">
+              <span
+                class="badge rounded-pill badge-info py-2 px-3"
+                *ngIf="item.status === 'pending'">
+                {{ 'DAY_OFF_REQUEST_PAGE.PENDING' | translate }}
+              </span>
+              <span
+                class="badge rounded-pill badge-success py-2 px-3"
+                *ngIf="item.status === 'approved'">
+                {{ 'DAY_OFF_REQUEST_PAGE.APPROVED' | translate }}
+              </span>
+              <span
+                class="badge rounded-pill badge-danger py-2 px-3"
+                *ngIf="item.status === 'cancelled'">
+                {{ 'DAY_OFF_REQUEST_PAGE.CANCELLED' | translate }}
+              </span>
+              <span
+                class="badge rounded-pill badge-danger py-2 px-3"
+                *ngIf="item.status === 'denied'">
+                {{ 'DAY_OFF_REQUEST_PAGE.DENIED' | translate }}
+              </span>
+            </td>
             <td class="align-middle">
               <div class="d-flex justify-content-center align-middle">
                 <button

@@ -6,7 +6,7 @@
     "LINK_5": "Lịch sử thiết bị",
     "LINK_6": "Loại ngày phép",
     "LINK_7": "Loại thiết bị",
-    "LINK_8": "Lịch sử nghỉ phép"
+    "LINK_8": "Quản lý yêu cầu nghỉ phép"
   },
   "HEADER": {
     "VIETNAMESE": "Tiếng việt",
@@ -165,7 +165,11 @@
     "EMP": "Nhân viên"
   },
   "DAY_OFF_REQUEST_PAGE": {
-    "TITLE": "Danh sách lịch sử nghỉ phép"
+    "TITLE": "Danh sách yêu cầu nghỉ phép",
+    "PENDING": "Đang xử lý",
+    "APPROVED": "Đã duyệt",
+    "CANCELLED": "Đã hủy",
+    "DENIED": "Đã từ chối"
   },
   "DEVICE_EDIT": {
     "EDIT_TITLE": "Chỉnh sửa thông tin thiết bị.",

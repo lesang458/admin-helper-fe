@@ -3,10 +3,10 @@
     "LINK_1": "Employee Management",
     "LINK_2": "Day off Management",
     "LINK_4": "Device Management",
-    "LINK_5": "Devices History",
+    "LINK_5": "Device Histories",
     "LINK_6": "Day off Categories",
     "LINK_7": "Device Categories",
-    "LINK_8": "Day off Request History"
+    "LINK_8": "Day off Request Management"
   },
   "HEADER": {
     "VIETNAMESE": "Vietnamese",
@@ -165,7 +165,11 @@
     "EMP": "Employee"
   },
   "DAY_OFF_REQUEST_PAGE": {
-    "TITLE": "Day off request history List"
+    "TITLE": "Day off requests List",
+    "PENDING": "Pending",
+    "APPROVED": "Approved",
+    "CANCELLED": "Cancelled",
+    "DENIED": "Denied"
   },
   "DEVICE_EDIT": {
     "EDIT_TITLE": "Edit Device",
@@ -180,7 +184,7 @@
     "PRICE_MIN": "Price must be at least 1d"
   },
   "DEVICE_HISTORY": {
-    "TITLE": "Devices history list",
+    "TITLE": "Devices histories list",
     "FULL_NAME": "User name",
     "DEVICE_NAME": "Device name",
     "DISCARDED": "Discarded",
