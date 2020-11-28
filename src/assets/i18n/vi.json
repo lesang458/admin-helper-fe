@@ -169,7 +169,21 @@
     "PENDING": "Đang xử lý",
     "APPROVED": "Đã duyệt",
     "CANCELLED": "Đã hủy",
-    "DENIED": "Đã từ chối"
+    "DENIED": "Đã từ chối",
+    "APPROVE": "Duyệt",
+    "CANCEL": "Hủy bỏ",
+    "DENY": "Từ chối",
+    "DELETE": "Xóa"
+  },
+  "CONFIRM_MODAL":{
+    "APPROVE_TITLE": "Xác nhận duyệt yêu cầu nghỉ phép",
+    "APPROVE_PARAM": "Yêu cầu này sẽ được chấp thuận. Thao tác này không thể hoàn tác. Bạn có muốn tiếp tục?",
+    "DENY_TITLE": "Xác nhận từ chối yêu cầu nghỉ phép",
+    "DENY_PARAM": "Yêu cầu này sẽ bị từ chối. Thao tác này không thể hoàn tác. Bạn có muốn tiếp tục?",
+    "CANCEL_TITLE": "Xác nhận hủy yêu cầu ngày phép",
+    "CANCEL_PARAM": "Yêu cầu này sẽ bị hủy bỏ. Thao tác này không thể hoàn tác. Bạn có muốn tiếp tục?",
+    "DELETE_TITLE": "Xác nhận xóa yêu cầu ngày phép",
+    "DELETE_PARAM": "Yêu cầu này sẽ bị xóa. Thao tác này không thể hoàn tác. Bạn có muốn tiếp tục?"
   },
   "DEVICE_EDIT": {
     "EDIT_TITLE": "Chỉnh sửa thông tin thiết bị.",

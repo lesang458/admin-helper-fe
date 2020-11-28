@@ -138,12 +138,54 @@
             </td>
             <td class="align-middle">
               <div class="d-flex justify-content-center align-middle">
-                <button
-                  class="btn btn-outline-primary"
-                  (click)="openModalWithComponent(item)"
+                <div class="dropleft">
+                  <button
+                    [id]="'dropdownBtn' + i"
+                    data-toggle="dropdown"
+                    aria-haspopup="true"
+                    aria-expanded="false"
+                    class="btn btn-outline-primary"
+                    (click)="openModalWithComponent(item)"
+                  >
+                    <span class="cil-options"></span>
+                  </button>
+                  <div
+                  [attr.aria-labelledby]="'dropdownBtn' + i"
+                  class="dropdown-menu pt-0 pb-0"
                 >
-                  <span class="cil-brush"></span>
-                </button>
+                  <div class="dropdown-header bg-light py-2">
+                    <strong>{{ 'GENERAL_LIST.ACTIONS' | translate }}</strong>
+                  </div>
+                  <a
+                    class="dropdown-item pointer text-success"
+                    *ngIf="item.status === 'pending'"
+                    (click)="openConfirmModal(item.id, 'approve', searchParams)"
+                    ><i class="cil-task mr-3"></i>
+                    {{ 'DAY_OFF_REQUEST_PAGE.APPROVE' | translate }}
+                  </a>
+                  <a
+                    class="dropdown-item pointer text-warning"
+                    (click)="openConfirmModal(item.id, 'deny', searchParams)"
+                    *ngIf="item.status === 'pending'"
+                    ><i class="cil-history mr-3"></i>
+                    {{ 'DAY_OFF_REQUEST_PAGE.DENY' | translate }}
+                  </a>
+                  <a
+                    class="dropdown-item pointer text-info"
+                    (click)="openModalWithComponent(item)"
+                    *ngIf="item.status === 'pending' || item.status === 'approved'"
+                    ><i class="cil-brush mr-3"></i>
+                    {{ 'DEVICE_TABLE.EDIT' | translate }}
+                  </a>
+                  <a
+                    class="dropdown-item pointer text-danger"
+                    *ngIf="item.status !== 'DISCARDED'"
+                    (click)="openConfirmModal(item.id, 'delete', searchParams)" 
+                    ><i class="cil-trash mr-3"></i>
+                    {{ 'DAY_OFF_REQUEST_PAGE.DELETE' | translate }}
+                  </a>
+                </div>
+                </div>
               </div>
             </td>
           </tr>

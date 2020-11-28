@@ -1,0 +1,24 @@
+<div class="modal-header">
+  <h4 class="modal-title pull-left">
+    {{ getTitle() }}
+  </h4>
+  <button
+    type="button"
+    class="pull-right close"
+    aria-label="Close"
+    (click)="bsModalRef.hide()"
+    >
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<hr class="mt-0 mb-0" />
+<div class="modal-body">{{ getParam() }}</div>
+<div class="modal-footer">
+  <button type="button" class="btn btn-secondary" (click)="bsModalRef.hide()">
+    {{ 'PROFILE_STATUS_CHANGE.ABORT' | translate }}
+  </button>
+  <button type="button" class="btn btn-danger" (click)="onConfirm()">
+    {{ 'PROFILE_STATUS_CHANGE.ACCEPT' | translate }}
+  </button>
+</div>
+  

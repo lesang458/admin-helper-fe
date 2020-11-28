@@ -37,14 +37,18 @@ export const DETAIL_EMPLOYEE_SUCCESS = '[Employees] Detail Employee Success';
 export const EDIT_EMPLOYEE = '[Employees] Edit Employee';
 export const REQUEST_DAY_OFF = '[Employees] Request Day Off';
 export const UPDATE_REQUEST_DAY_OFF = '[Employees] Update Request Day Off';
-export const FETCH_DAY_OFF_REQUEST = '[Employees] Fetch Day Off Request';
-export const SET_DAY_OFF_REQUEST = '[Employees] Set Day Off Request';
 export const FETCH_EMPLOYEE_DEVICE_HISTORIES =
   '[Employees] Fetch Employee Device Histories';
 export const SET_EMPLOYEE_DEVICE_HISTORIES =
   '[Employees] Set Employee Device Histories';
 export const FETCH_EMPLOYEE_DEVICES = '[Employees] Fetch Employee Devices';
 export const SET_EMPLOYEE_DEVICES = '[Employees] Set Employee Devices';
+export const FETCH_DAY_OFF_REQUEST = '[Employees] Fetch Day Off Request';
+export const SET_DAY_OFF_REQUEST = '[Employees] Set Day Off Request';
+export const APPROVE_REQUEST = '[Employees] Approve Day Off Request';
+export const CANCEL_REQUEST = '[Employees] Cancel Day Off Request';
+export const DENY_REQUEST = '[Employees] Deny Day Off Request';
+export const DELETE_REQUEST = '[Employees] Delete Day Off Request';
 
 export class GetEmployeesSuccess implements Action {
   readonly type = GET_EMPLOYEES_SUCCESS;
@@ -93,22 +97,22 @@ export class EditEmployee implements Action {
 export class RequestDayOff implements Action {
   readonly type = REQUEST_DAY_OFF;
   constructor(
-    public payload: { body: RequestDayOffModel; searchParams: SearchParams }
+    public payload: {
+      body: RequestDayOffModel;
+      searchParams: SearchParams;
+      id: number;
+    }
   ) {}
 }
 export class UpdateRequestDayOff implements Action {
   readonly type = UPDATE_REQUEST_DAY_OFF;
   constructor(
-    public payload: { body: RequestDayOffModel; searchParams: SearchParams }
+    public payload: {
+      body: RequestDayOffModel;
+      searchParams: SearchParams;
+      id: number;
+    }
   ) {}
-}
-export class FetchDayOffRequest implements Action {
-  readonly type = FETCH_DAY_OFF_REQUEST;
-  constructor(public payload: SearchParams) {}
-}
-export class SetDayOffRequest implements Action {
-  readonly type = SET_DAY_OFF_REQUEST;
-  constructor(public payload: PaginatedData<DayOffRequest[]>) {}
 }
 
 export class FetchEmployeeDeviceHistories implements Action {
@@ -131,6 +135,47 @@ export class SetEmployeeDevices implements Action {
   constructor(public payload: Device[]) {}
 }
 
+export class FetchDayOffRequest implements Action {
+  readonly type = FETCH_DAY_OFF_REQUEST;
+  constructor(public payload: SearchParams) {}
+}
+export class SetDayOffRequest implements Action {
+  readonly type = SET_DAY_OFF_REQUEST;
+  constructor(public payload: PaginatedData<DayOffRequest[]>) {}
+}
+
+export class ApproveDayOffRequest implements Action {
+  readonly type = APPROVE_REQUEST;
+  constructor(public payload: { id: number; searchParams: SearchParams }) {}
+}
+
+export class CancelDayOffRequest implements Action {
+  readonly type = CANCEL_REQUEST;
+  constructor(
+    public payload: {
+      id: number;
+      searchParams: SearchParams;
+      employeeId: number;
+    }
+  ) {}
+}
+
+export class DenyDayOffRequest implements Action {
+  readonly type = DENY_REQUEST;
+  constructor(public payload: { id: number; searchParams: SearchParams }) {}
+}
+
+export class DeleteDayOffRequest implements Action {
+  readonly type = DELETE_REQUEST;
+  constructor(
+    public payload: {
+      id: number;
+      searchParams: SearchParams;
+      employeeId: number;
+    }
+  ) {}
+}
+
 export type EmployeesActions =
   | GetEmployeesSuccess
   | SearchEmployees
@@ -147,4 +192,8 @@ export type EmployeesActions =
   | FetchEmployeeDeviceHistories
   | SetEmployeeDeviceHistories
   | FetchEmployeeDevices
-  | SetEmployeeDevices;
+  | SetEmployeeDevices
+  | ApproveDayOffRequest
+  | CancelDayOffRequest
+  | DenyDayOffRequest
+  | DeleteDayOffRequest;

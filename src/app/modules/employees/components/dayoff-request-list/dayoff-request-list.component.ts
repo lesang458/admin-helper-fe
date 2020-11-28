@@ -14,6 +14,7 @@ import { SearchParams } from 'src/app/modules/employees/store/employees.actions'
 import { RequestDayOffComponent } from '../request-day-off/request-day-off.component';
 import { DayOffRequest } from 'src/app/shared/models/dayoff-request.model';
 import { INgxSelectOption } from 'ngx-select-ex';
+import { ConfirmModalComponent } from '../confirm-modal/confirm-modal.component';
 
 @Component({
   selector: 'ah-dayoff-request-list',
@@ -45,7 +46,7 @@ export class DayOffRequestListComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.changeOption();
+    this.onDataChanged();
     this.data$ = this.store.select('employees');
     this.types$ = this.store.select('dayoffCategories').pipe(
       tap((data) => {
@@ -57,9 +58,6 @@ export class DayOffRequestListComponent implements OnInit {
         return data.dayoff;
       })
     );
-    this.store.dispatch(
-      new DayOffCategoriesActions.FetchDayOffCategories({ status: '' })
-    );
     this.selectedType.valueChanges.subscribe(() => {
       this.onDataChanged();
     });
@@ -70,8 +68,12 @@ export class DayOffRequestListComponent implements OnInit {
     this.selectedToDate.valueChanges.subscribe(() => {
       this.onDataChanged();
     });
-    if (this.id) {
-      this.onDataChanged();
+
+    if (!this.id) {
+      this.changeOption();
+      this.store.dispatch(
+        new DayOffCategoriesActions.FetchDayOffCategories({ status: '' })
+      );
     }
   }
 
@@ -103,7 +105,8 @@ export class DayOffRequestListComponent implements OnInit {
   }
 
   public openModalWithComponent(editData: DayOffRequest): void {
-    const initialState = { editData };
+    const id = this.id;
+    const initialState = { editData, id };
     this.bsModalRef = this.modalService.show(RequestDayOffComponent, {
       initialState,
     });
@@ -147,5 +150,18 @@ export class DayOffRequestListComponent implements OnInit {
   public doSelectOptions(options: INgxSelectOption[]): void {
     this.selectedEmployeeId = options.map((option) => option.data.id);
     this.onDataChanged();
+  }
+
+  public openConfirmModal(
+    id: number,
+    type: string,
+    params: SearchParams
+  ): void {
+    const employeeId = this.id;
+    const initialState = { id, employeeId, type, params };
+    this.bsModalRef = this.modalService.show(ConfirmModalComponent, {
+      initialState,
+    });
+    this.bsModalRef.content.closeBtnName = 'Close';
   }
 }

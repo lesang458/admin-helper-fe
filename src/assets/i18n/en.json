@@ -169,7 +169,21 @@
     "PENDING": "Pending",
     "APPROVED": "Approved",
     "CANCELLED": "Cancelled",
-    "DENIED": "Denied"
+    "DENIED": "Denied",
+    "APPROVE": "Aprrove",
+    "CANCEL": "Cancel",
+    "DENY": "Deny",
+    "DELETE": "Delete"
+  },
+  "CONFIRM_MODAL":{
+    "APPROVE_TITLE": "Confirm approve day off request",
+    "APPROVE_PARAM": "This request will be appproved. This action cannot be undone. Do you want to continue?",
+    "DENY_TITLE": "Confirm deny day off request",
+    "DENY_PARAM": "This request will be denied. This action cannot be undone. Do you want to continue?",
+    "CANCEL_TITLE": "Confirm cancel day off request",
+    "CANCEL_PARAM": "This request will be cancelled. This action cannot be undone. Do you want to continue?",
+    "DELETE_TITLE": "Confirm delete day off request",
+    "DELETE_PARAM": "This request will be deleted. This action cannot be undone. Do you want to continue?"
   },
   "DEVICE_EDIT": {
     "EDIT_TITLE": "Edit Device",

@@ -67,9 +67,11 @@ export class EmployeeDetailComponent implements OnInit {
   }
 
   public openModalWithComponent(selectedEmployee, searchParams): void {
+    const id = this.id;
     const initialState = {
       selectedEmployee,
       searchParams,
+      id,
     };
     this.bsModalRef = this.modalService.show(RequestDayOffComponent, {
       initialState,

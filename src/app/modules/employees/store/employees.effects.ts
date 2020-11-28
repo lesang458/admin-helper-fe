@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Employee } from 'src/app/shared/models/employees.model';
 import { Actions, ofType, Effect } from '@ngrx/effects';
 import * as EmployeesActions from './employees.actions';
-import { switchMap, map } from 'rxjs/operators';
+import { switchMap, map, mergeMap } from 'rxjs/operators';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { environment } from 'src/environments/environment.prod';
 import { PaginatedData } from 'src/app/shared/models/pagination.model';
@@ -163,11 +163,22 @@ export class EmployeeEffects {
           body
         )
         .pipe(
-          map(() => {
+          mergeMap(() => {
             this.notify.showSuccess('MESSAGE.REQUEST_DAY_OFF');
-            return new EmployeesActions.FetchDayOffRequest(
-              action.payload.searchParams
-            );
+            const array: (
+              | EmployeesActions.FetchDayOffRequest
+              | EmployeesActions.DetailEmployee
+            )[] = [
+              new EmployeesActions.FetchDayOffRequest(
+                action.payload.searchParams
+              ),
+            ];
+            if (action.payload.id) {
+              array.push(
+                new EmployeesActions.DetailEmployee(action.payload.id)
+              );
+            }
+            return array;
           })
         );
     })
@@ -185,11 +196,22 @@ export class EmployeeEffects {
       return this.http
         .put(`${environment.APILink}/day_off_request/${id}`, body)
         .pipe(
-          map(() => {
+          mergeMap(() => {
             this.notify.showSuccess('MESSAGE.REQUEST_DAY_OFF');
-            return new EmployeesActions.FetchDayOffRequest(
-              action.payload.searchParams
-            );
+            const array: (
+              | EmployeesActions.FetchDayOffRequest
+              | EmployeesActions.DetailEmployee
+            )[] = [
+              new EmployeesActions.FetchDayOffRequest(
+                action.payload.searchParams
+              ),
+            ];
+            if (action.payload.id) {
+              array.push(
+                new EmployeesActions.DetailEmployee(action.payload.id)
+              );
+            }
+            return array;
           })
         );
     })
@@ -273,6 +295,101 @@ export class EmployeeEffects {
           map((data) => {
             const result = camelcaseKeys(data.data, { deep: true });
             return new EmployeesActions.SetEmployeeDevices(result);
+          })
+        );
+    })
+  );
+
+  @Effect()
+  approveRequest = this.actions$.pipe(
+    ofType(EmployeesActions.APPROVE_REQUEST),
+    switchMap((action: EmployeesActions.ApproveDayOffRequest) => {
+      return this.http
+        .patch(
+          `${environment.APILink}/day_off_request/${action.payload.id}/approve`,
+          {}
+        )
+        .pipe(
+          map(() => {
+            return new EmployeesActions.FetchDayOffRequest(
+              action.payload.searchParams
+            );
+          })
+        );
+    })
+  );
+
+  @Effect()
+  cancelRequest = this.actions$.pipe(
+    ofType(EmployeesActions.CANCEL_REQUEST),
+    switchMap((action: EmployeesActions.CancelDayOffRequest) => {
+      return this.http
+        .patch(
+          `${environment.APILink}/day_off_request/${action.payload.id}/cancel`,
+          {}
+        )
+        .pipe(
+          mergeMap(() => {
+            const array: (
+              | EmployeesActions.FetchDayOffRequest
+              | EmployeesActions.DetailEmployee
+            )[] = [
+              new EmployeesActions.FetchDayOffRequest(
+                action.payload.searchParams
+              ),
+            ];
+            if (action.payload.employeeId) {
+              array.push(
+                new EmployeesActions.DetailEmployee(action.payload.employeeId)
+              );
+            }
+            return array;
+          })
+        );
+    })
+  );
+
+  @Effect()
+  denyRequest = this.actions$.pipe(
+    ofType(EmployeesActions.DENY_REQUEST),
+    switchMap((action: EmployeesActions.DenyDayOffRequest) => {
+      return this.http
+        .patch(
+          `${environment.APILink}/day_off_request/${action.payload.id}/deny`,
+          {}
+        )
+        .pipe(
+          map(() => {
+            return new EmployeesActions.FetchDayOffRequest(
+              action.payload.searchParams
+            );
+          })
+        );
+    })
+  );
+
+  @Effect()
+  deleteRequest = this.actions$.pipe(
+    ofType(EmployeesActions.DELETE_REQUEST),
+    switchMap((action: EmployeesActions.DeleteDayOffRequest) => {
+      return this.http
+        .delete(`${environment.APILink}/day_off_request/${action.payload.id}/`)
+        .pipe(
+          mergeMap(() => {
+            const array: (
+              | EmployeesActions.FetchDayOffRequest
+              | EmployeesActions.DetailEmployee
+            )[] = [
+              new EmployeesActions.FetchDayOffRequest(
+                action.payload.searchParams
+              ),
+            ];
+            if (action.payload.employeeId) {
+              array.push(
+                new EmployeesActions.DetailEmployee(action.payload.employeeId)
+              );
+            }
+            return array;
           })
         );
     })

@@ -21,6 +21,7 @@ const milisecondOfADay = 86400000;
 export class RequestDayOffComponent implements OnInit {
   public selectedEmployee: Employee;
   public searchParams: SearchParams;
+  public id: number;
   public editData: any;
   public currentDateString: string;
   public dayOffAvailable: number;
@@ -204,6 +205,7 @@ export class RequestDayOffComponent implements OnInit {
     if (this.dayOffs < 1) {
       notes = this.f.get('morningBreak').value ? 'Morning' : 'Afternoon';
     }
+
     const body: RequestDayOffModel = {
       id: this.editData ? this.editData.id : this.selectedEmployee.id,
       fromDate: this.f.get('fromDate').value,
@@ -212,6 +214,7 @@ export class RequestDayOffComponent implements OnInit {
       dayOffCategoryId: this.dayOffInfos.dayOffCategoryId,
       notes: notes,
     };
+
     const searchParams = {
       page: 1,
       perPage: this.route.snapshot.queryParams.dayoff ? 5 : 10,
@@ -219,21 +222,14 @@ export class RequestDayOffComponent implements OnInit {
         ? this.selectedEmployee.id
         : '',
     };
+    const id = this.id;
+    const params = { id, body, searchParams };
     if (this.editData) {
-      this.store.dispatch(
-        new EmployeeActions.UpdateRequestDayOff({
-          body,
-          searchParams,
-        })
-      );
+      this.store.dispatch(new EmployeeActions.UpdateRequestDayOff(params));
     } else {
-      this.store.dispatch(
-        new EmployeeActions.RequestDayOff({
-          body,
-          searchParams,
-        })
-      );
+      this.store.dispatch(new EmployeeActions.RequestDayOff(params));
     }
+
     this.bsModalRef.hide();
   }
 }
