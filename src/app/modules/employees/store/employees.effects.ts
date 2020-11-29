@@ -311,6 +311,7 @@ export class EmployeeEffects {
         )
         .pipe(
           map(() => {
+            this.notify.showSuccess('MESSAGE.APPROVE_SUCCESS');
             return new EmployeesActions.FetchDayOffRequest(
               action.payload.searchParams
             );
@@ -330,6 +331,7 @@ export class EmployeeEffects {
         )
         .pipe(
           mergeMap(() => {
+            this.notify.showSuccess('MESSAGE.CANCEL_SUCCESS');
             const array: (
               | EmployeesActions.FetchDayOffRequest
               | EmployeesActions.DetailEmployee
@@ -360,6 +362,7 @@ export class EmployeeEffects {
         )
         .pipe(
           map(() => {
+            this.notify.showSuccess('MESSAGE.DENY_SUCCESS');
             return new EmployeesActions.FetchDayOffRequest(
               action.payload.searchParams
             );
@@ -376,6 +379,7 @@ export class EmployeeEffects {
         .delete(`${environment.APILink}/day_off_request/${action.payload.id}/`)
         .pipe(
           mergeMap(() => {
+            this.notify.showSuccess('MESSAGE.DELETE_REQUEST_SUCCESS');
             const array: (
               | EmployeesActions.FetchDayOffRequest
               | EmployeesActions.DetailEmployee

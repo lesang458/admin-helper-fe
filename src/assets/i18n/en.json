@@ -284,7 +284,11 @@
     "CHANGE_SUCCESSFULLY": "Change password successfully",
     "PASSWORD_INCORRECT": "Your password was incorrect!",
     "SERVER_ERROR": "Internal Server Error",
-    "DAY_OFF_CATEGORY_IS_INACTIVED": "Day off category inactivated!"
+    "DAY_OFF_CATEGORY_IS_INACTIVED": "Day off category inactivated!",
+    "CANCEL_SUCCESS": "Cancel request successfully",
+    "DELETE_REQUEST_SUCCESS": "Delete request successfully",
+    "APPROVE_SUCCESS": "Approve request successfully",
+    "DENY_SUCCESS": "Deny request successfully"
   },
   "CONFIRM_NOTIFY": {
     "DAY_OFF_DEACTIVE": "Deactive this day off category?",

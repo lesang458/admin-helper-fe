@@ -137,8 +137,14 @@
               </span>
             </td>
             <td class="align-middle">
-              <div class="d-flex justify-content-center align-middle">
-                <div class="dropleft">
+              <div class="d-flex justify-content-center">
+                <button 
+                  class="btn btn-outline-danger" 
+                  (click)="openConfirmModal(item.id, 'cancel', searchParams)"
+                  *ngIf="!isAdmin()">
+                  <i class="fa fa-window-close"></i>
+                </button>
+                <div class="dropleft" *ngIf="isAdmin()">
                   <button
                     [id]="'dropdownBtn' + i"
                     data-toggle="dropdown"
@@ -167,7 +173,7 @@
                     class="dropdown-item pointer text-warning"
                     (click)="openConfirmModal(item.id, 'deny', searchParams)"
                     *ngIf="item.status === 'pending'"
-                    ><i class="cil-history mr-3"></i>
+                    ><i class="fa fa-window-close mr-3"></i>
                     {{ 'DAY_OFF_REQUEST_PAGE.DENY' | translate }}
                   </a>
                   <a

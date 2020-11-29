@@ -49,4 +49,9 @@ export class HeaderComponent implements OnInit {
   public navigateToAccountInfor(): void {
     this.router.navigateByUrl(`/${RouteConstant.accountInformation}`);
   }
+
+  public isAdmin(): boolean {
+    const roles = localStorage.getItem('roles');
+    return roles.includes('ADMIN');
+  }
 }

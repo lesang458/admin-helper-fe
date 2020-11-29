@@ -1,5 +1,6 @@
 <header class="c-header c-header-light c-header-fixed c-header-with-subheader">
   <button
+    *ngIf="isAdmin()"
     class="c-header-toggler c-class-toggler d-lg-none mfe-auto"
     type="button"
     data-target="#sidebar"
@@ -8,6 +9,7 @@
     <i class="c-icon c-icon-lg cil-menu"></i>
   </button>
   <button
+    *ngIf="isAdmin()"
     class="c-header-toggler c-class-toggler mfs-3 d-md-down-none"
     type="button"
     data-target="#sidebar"

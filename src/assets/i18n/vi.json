@@ -283,7 +283,11 @@
     "CHANGE_SUCCESSFULLY": "Thay đổi mật khẩu thành công",
     "PASSWORD_INCORRECT": "Mật khẩu của bạn không đúng!",
     "SERVER_ERROR": "Lỗi máy chủ nội bộ",
-    "DAY_OFF_CATEGORY_IS_INACTIVED": "Loại ngày nghỉ này đã bị vô hiệu hóa!"
+    "DAY_OFF_CATEGORY_IS_INACTIVED": "Loại ngày nghỉ này đã bị vô hiệu hóa!",
+    "CANCEL_SUCCESS": "Hủy bỏ yêu cầu thành công!",
+    "DELETE_REQUEST_SUCCESS": "Xóa yêu cầu thành công!",
+    "APPROVE_SUCCESS": "Phê duyệt yêu cầu thành công!",
+    "DENY_SUCCESS": "Từ chối yêu cầu thành công!"
   },
   "CONFIRM_NOTIFY": {
     "DAY_OFF_DEACTIVE": "Vô hiệu hóa loại ngày phép này?",

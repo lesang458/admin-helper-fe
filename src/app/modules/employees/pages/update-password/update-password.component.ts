@@ -15,4 +15,9 @@ export class UpdatePasswordComponent implements OnInit {
   ngOnInit(): void {
     this.isChangePassword = this.auth.isAuthenticated();
   }
+
+  public isAdmin(): boolean {
+    const roles = localStorage.getItem('roles');
+    return roles.includes('ADMIN');
+  }
 }

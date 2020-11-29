@@ -167,4 +167,9 @@ export class DayOffRequestListComponent implements OnInit {
     });
     this.bsModalRef.content.closeBtnName = 'Close';
   }
+
+  public isAdmin(): boolean {
+    const roles = localStorage.getItem('roles');
+    return roles.includes('ADMIN');
+  }
 }

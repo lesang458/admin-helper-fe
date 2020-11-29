@@ -12,6 +12,7 @@ import { EmployeeDetailsComponent } from './pages/employee-details/employee-deta
 import { DayOffRequestComponent } from './pages/dayoff-request/dayoff-request.component';
 import { EmployeeCreatePageComponent } from './pages/employee-create-page/employee-create-page.component';
 import { EmployeeEditPageComponent } from './pages/employee-edit-page/employee-edit-page.component';
+import { AdminGuard } from 'src/app/core/helpers/admin.guard';
 
 export const EMPLOYEES_ROUTES: Routes = [
   { path: '', redirectTo: `/${RouteConstant.employees}`, pathMatch: 'full' },
@@ -25,7 +26,7 @@ export const EMPLOYEES_ROUTES: Routes = [
   },
   {
     path: `${RouteConstant.employees}`,
-    canActivateChild: [AuthGuardService],
+    canActivateChild: [AuthGuardService, AdminGuard],
     children: [
       {
         path: '',
@@ -60,7 +61,7 @@ export const EMPLOYEES_ROUTES: Routes = [
   {
     path: `${RouteConstant.dayOff}`,
     component: DayoffComponent,
-    canActivate: [AuthGuardService],
+    canActivate: [AuthGuardService, AdminGuard],
     resolve: { dayoff: DayoffResolver },
     data: {
       i18nKey: 'DAY_OFF_TABLE',
@@ -109,7 +110,7 @@ export const EMPLOYEES_ROUTES: Routes = [
   {
     path: `${RouteConstant.dayOffRequest}`,
     component: DayOffRequestComponent,
-    canActivate: [AuthGuardService],
+    canActivate: [AuthGuardService, AdminGuard],
     data: {
       i18nKey: 'DAY_OFF_REQUEST_PAGE',
     },

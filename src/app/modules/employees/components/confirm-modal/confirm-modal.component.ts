@@ -44,9 +44,9 @@ export class ConfirmModalComponent implements OnInit {
       case 'approve':
         return this.translate.instant('CONFIRM_MODAL.APPROVE_PARAM');
       case 'cancel':
-        return this.translate.instant('CONFIRM_MODAL.CANCEL_TITLE');
+        return this.translate.instant('CONFIRM_MODAL.CANCEL_PARAM');
       case 'deny':
-        return this.translate.instant('CONFIRM_MODAL.DENY_TITLE');
+        return this.translate.instant('CONFIRM_MODAL.DENY_PARAM');
     }
   }
 

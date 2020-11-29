@@ -10,4 +10,9 @@ export class EmployeeDetailsComponent implements OnInit {
   constructor(public titleService: TitleService) {}
 
   ngOnInit(): void {}
+
+  public isAdmin(): boolean {
+    const roles = localStorage.getItem('roles');
+    return roles.includes('ADMIN');
+  }
 }
