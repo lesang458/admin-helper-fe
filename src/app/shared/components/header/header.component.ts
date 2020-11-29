@@ -45,4 +45,8 @@ export class HeaderComponent implements OnInit {
   public navigateToHome(): void {
     this.router.navigateByUrl(`/${RouteConstant.employees}`);
   }
+
+  public navigateToAccountInfor(): void {
+    this.router.navigateByUrl(`/${RouteConstant.accountInformation}`);
+  }
 }

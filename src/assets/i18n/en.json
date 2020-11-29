@@ -292,5 +292,8 @@
     "CONTENT_CONFIRM": "This category's status will be changed. Do you want to continue?",
     "DEACTIVE_SUCCESS": "This category's status has been changed to 'DEACTIVE' successfully!",
     "ACTIVE_SUCCESS": "This category's status has been changed to 'ACTIVE' successfully!"
+  },
+  "ACCOUNT_INFORMATION": {
+    "TITLE": "Account Information"
   }
 }

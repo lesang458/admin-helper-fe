@@ -60,6 +60,14 @@
         <a
           class="dropdown-item pointer"
           role="button"
+          (click)="navigateToAccountInfor()"
+        >
+          <i class="c-icon mr-3 fa fa-user"></i>
+          {{ 'ACCOUNT_INFORMATION.TITLE' | translate }}
+        </a>
+        <a
+          class="dropdown-item pointer"
+          role="button"
           (click)="changePassword()"
         >
           <i class="c-icon mr-3 fa fa-unlock-alt"></i>

@@ -28,6 +28,7 @@ export class AuthEffect {
             data?.user?.lastName + ' ' + data?.user?.firstName
           );
           localStorage.setItem('id', data?.user?.id);
+          localStorage.setItem('roles', data.user.roles);
           return new AuthActions.LoginSuccess(data);
         })
       );
@@ -50,6 +51,7 @@ export class AuthEffect {
               data?.user?.lastName + ' ' + data?.user?.firstName
             );
             localStorage.setItem('id', data?.user?.id);
+            localStorage.setItem('roles', data.user.roles);
             return new AuthActions.LoginSuccess(data);
           })
         );
@@ -70,6 +72,7 @@ export class AuthEffect {
     tap(() => {
       localStorage.removeItem('token');
       localStorage.removeItem('userName');
+      localStorage.removeItem('roles');
       this.router.navigate([`${RouteConstant.login}`]);
     })
   );

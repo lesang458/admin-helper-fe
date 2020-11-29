@@ -114,4 +114,20 @@ export const EMPLOYEES_ROUTES: Routes = [
       i18nKey: 'DAY_OFF_REQUEST_PAGE',
     },
   },
+  {
+    path: `${RouteConstant.accountInformation}`,
+    component: EmployeeDetailsComponent,
+    canActivate: [AuthGuardService],
+    data: {
+      i18nKey: 'ACCOUNT_INFORMATION',
+    },
+  },
+  {
+    path: `${RouteConstant.accountInformation}/edit`,
+    component: EmployeeEditPageComponent,
+    canActivate: [AuthGuardService],
+    data: {
+      i18nKey: 'ACCOUNT_INFORMATION',
+    },
+  },
 ];

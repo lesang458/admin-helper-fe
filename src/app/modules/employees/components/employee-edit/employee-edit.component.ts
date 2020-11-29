@@ -31,8 +31,10 @@ export class EmployeeEditComponent implements OnInit, AfterViewChecked {
   private arr = [];
   public employee: Employee;
   public types: DayOffCategory[];
-  public id: number;
+  public id = this.route.snapshot.params.id;
   public dayoff = this.route.snapshot.queryParams.dayoff;
+  public isAccountDetailPage =
+    this.route.snapshot.url[0].path === RouteConstant.accountInformation;
   public selectedType = new FormControl('');
   public employeeForm = new FormGroup({
     firstName: new FormControl('', [
@@ -66,7 +68,9 @@ export class EmployeeEditComponent implements OnInit, AfterViewChecked {
   ) {}
 
   ngOnInit(): void {
-    this.id = this.route.snapshot.params.id;
+    if (this.isAccountDetailPage) {
+      this.id = localStorage.getItem('id');
+    }
     this.store.dispatch(new EmployeeActions.DetailEmployee(this.id));
     this.store
       .select((s) => s.employees.detaiEmployee)
@@ -191,17 +195,29 @@ export class EmployeeEditComponent implements OnInit, AfterViewChecked {
   }
 
   public navigateTab(isDayOff?: boolean): void {
-    this.router.navigateByUrl(
-      `/${RouteConstant.employees}/${this.id}/edit${
-        isDayOff ? '?dayoff=true' : ''
-      }`
-    );
+    const queryParams = `${isDayOff ? '?dayoff=true' : ''}`;
+    if (this.isAccountDetailPage) {
+      this.router.navigateByUrl(
+        `/${RouteConstant.accountInformation}/edit${queryParams}`
+      );
+    } else {
+      this.router.navigateByUrl(
+        `/${RouteConstant.employees}/${this.id}/edit${queryParams}`
+      );
+    }
   }
 
   public navigateDetail(isDayOff?: boolean): void {
-    this.router.navigateByUrl(
-      `/${RouteConstant.employees}/${this.id}${isDayOff ? '?dayoff=true' : ''}`
-    );
+    const queryParams = `${isDayOff ? '?dayoff=true' : ''}`;
+    if (this.isAccountDetailPage) {
+      this.router.navigateByUrl(
+        `/${RouteConstant.accountInformation}${queryParams}`
+      );
+    } else {
+      this.router.navigateByUrl(
+        `/${RouteConstant.employees}/${this.id}${queryParams}`
+      );
+    }
   }
 
   public onSubmit(isDayOff: boolean): void {

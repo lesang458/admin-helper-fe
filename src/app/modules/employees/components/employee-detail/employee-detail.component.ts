@@ -5,7 +5,6 @@ import * as EmployeeActions from '../../store/employees.actions';
 import { Employee } from 'src/app/shared/models/employees.model';
 import { ActivatedRoute, Router } from '@angular/router';
 import { SearchDevice } from '../../../devices/store/devices.actions';
-import { Observable } from 'rxjs';
 import { RouteConstant } from 'src/app/shared/constants/route.constant';
 import { TranslateService } from '@ngx-translate/core';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
@@ -23,10 +22,12 @@ export class EmployeeDetailComponent implements OnInit {
   public bsModalRef: BsModalRef;
   public employee: Employee;
   public searchParams: SearchDevice;
-  public id: number;
+  public id = this.route.snapshot.params.id;
   public dayoff = this.route.snapshot.queryParams.dayoff;
   public deviceHistories: DeviceHistory[];
   public devices: Device[];
+  public isAccountDetailPage =
+    this.route.snapshot.url[0].path === RouteConstant.accountInformation;
 
   constructor(
     private store: Store<fromApp.AppState>,
@@ -38,8 +39,9 @@ export class EmployeeDetailComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.id = this.route.snapshot.params.id;
-
+    if (!this.id) {
+      this.id = localStorage.getItem('id');
+    }
     this.store.dispatch(new EmployeeActions.DetailEmployee(this.id));
     this.store.dispatch(
       new EmployeeActions.FetchEmployeeDeviceHistories(this.id)
@@ -54,16 +56,30 @@ export class EmployeeDetailComponent implements OnInit {
     });
   }
 
-  public navigateEdit(bl?: boolean): void {
-    this.router.navigateByUrl(
-      `/${RouteConstant.employees}/${this.id}/edit${bl ? '?dayoff=true' : ''}`
-    );
+  public navigateEdit(isDayOff?: boolean): void {
+    const queryParams = `${isDayOff ? '?dayoff=true' : ''}`;
+    if (this.isAccountDetailPage) {
+      this.router.navigateByUrl(
+        `/${RouteConstant.accountInformation}/edit${queryParams}`
+      );
+    } else {
+      this.router.navigateByUrl(
+        `/${RouteConstant.employees}/${this.id}/edit${queryParams}`
+      );
+    }
   }
 
   public navigateTab(isDayOff?: boolean): void {
-    this.router.navigateByUrl(
-      `/${RouteConstant.employees}/${this.id}${isDayOff ? '?dayoff=true' : ''}`
-    );
+    const queryParams = `${isDayOff ? '?dayoff=true' : ''}`;
+    if (this.isAccountDetailPage) {
+      this.router.navigateByUrl(
+        `/${RouteConstant.accountInformation}${queryParams}`
+      );
+    } else {
+      this.router.navigateByUrl(
+        `/${RouteConstant.employees}/${this.id}${queryParams}`
+      );
+    }
   }
 
   public openModalWithComponent(selectedEmployee, searchParams): void {

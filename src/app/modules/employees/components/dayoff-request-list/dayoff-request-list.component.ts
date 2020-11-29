@@ -46,6 +46,9 @@ export class DayOffRequestListComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    if (this.route.snapshot.url[0].path === RouteConstant.accountInformation) {
+      this.id = localStorage.getItem('id');
+    }
     this.onDataChanged();
     this.data$ = this.store.select('employees');
     this.types$ = this.store.select('dayoffCategories').pipe(
