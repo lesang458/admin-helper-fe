@@ -28,16 +28,16 @@ export class AuthGuardService implements CanActivate, CanActivateChild {
     state: RouterStateSnapshot
   ): boolean | UrlTree {
     if (this.browserSupportService.isIE()) {
-      return this.router.createUrlTree([`${RouteConstant.notSupported}`]);
+      return this.router.createUrlTree([RouteConstant.notSupported]);
     }
     const checkUrlLogin = route.routeConfig.path === RouteConstant.login;
     const checkUrlReset =
       route.routeConfig.path === RouteConstant.resetPassword;
     if (this.auth.isAuthenticated() && (checkUrlLogin || checkUrlReset)) {
-      return this.router.createUrlTree(['']);
+      return this.router.createUrlTree([RouteConstant.employees]);
     }
     if (!this.auth.isAuthenticated() && !(checkUrlLogin || checkUrlReset)) {
-      return this.router.createUrlTree([`${RouteConstant.login}`]);
+      return this.router.createUrlTree([RouteConstant.login]);
     }
     return true;
   }

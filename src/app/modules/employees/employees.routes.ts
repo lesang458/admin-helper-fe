@@ -15,7 +15,7 @@ import { EmployeeEditPageComponent } from './pages/employee-edit-page/employee-e
 import { AdminGuard } from 'src/app/core/helpers/admin.guard';
 
 export const EMPLOYEES_ROUTES: Routes = [
-  { path: '', redirectTo: `/${RouteConstant.employees}`, pathMatch: 'full' },
+  { path: '', redirectTo: `/${RouteConstant.login}`, pathMatch: 'full' },
   {
     path: `${RouteConstant.login}`,
     component: AuthComponent,
@@ -126,7 +126,7 @@ export const EMPLOYEES_ROUTES: Routes = [
   {
     path: `${RouteConstant.accountInformation}/edit`,
     component: EmployeeEditPageComponent,
-    canActivate: [AuthGuardService],
+    canActivate: [AuthGuardService, AdminGuard],
     data: {
       i18nKey: 'ACCOUNT_INFORMATION',
     },

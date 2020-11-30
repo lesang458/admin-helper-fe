@@ -141,7 +141,7 @@
                 <button 
                   class="btn btn-outline-danger" 
                   (click)="openConfirmModal(item.id, 'cancel', searchParams)"
-                  *ngIf="!isAdmin()">
+                  *ngIf="!isAdmin() && item.status === 'pending'">
                   <i class="fa fa-window-close"></i>
                 </button>
                 <div class="dropleft" *ngIf="isAdmin()">

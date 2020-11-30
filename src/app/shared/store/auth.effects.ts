@@ -62,7 +62,7 @@ export class AuthEffect {
   authRedirect = this.actions$.pipe(
     ofType(AuthActions.LOGIN_SUCCESS),
     tap(() => {
-      this.router.navigate(['/']);
+      this.router.navigate([`/${RouteConstant.employees}`]);
     })
   );
 

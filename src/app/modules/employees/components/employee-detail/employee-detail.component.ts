@@ -106,4 +106,9 @@ export class EmployeeDetailComponent implements OnInit {
       ? this.router.navigateByUrl(`/${RouteConstant.dayOff}`)
       : this.router.navigateByUrl(`/${RouteConstant.employees}`);
   }
+
+  public isAdmin(): boolean {
+    const roles = localStorage.getItem('roles');
+    return roles.includes('ADMIN');
+  }
 }
