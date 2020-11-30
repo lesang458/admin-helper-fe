@@ -33,7 +33,7 @@ export class EmployeeEditComponent implements OnInit, AfterViewChecked {
   public types: DayOffCategory[];
   public id = this.route.snapshot.params.id;
   public dayoff = this.route.snapshot.queryParams.dayoff;
-  public isAccountDetailPage =
+  public isAccountInfoPage =
     this.route.snapshot.url[0].path === RouteConstant.accountInformation;
   public selectedType = new FormControl('');
   public employeeForm = new FormGroup({
@@ -68,7 +68,7 @@ export class EmployeeEditComponent implements OnInit, AfterViewChecked {
   ) {}
 
   ngOnInit(): void {
-    if (this.isAccountDetailPage) {
+    if (this.isAccountInfoPage) {
       this.id = localStorage.getItem('id');
     }
     this.store.dispatch(new EmployeeActions.DetailEmployee(this.id));
@@ -196,7 +196,7 @@ export class EmployeeEditComponent implements OnInit, AfterViewChecked {
 
   public navigateTab(isDayOff?: boolean): void {
     const queryParams = `${isDayOff ? '?dayoff=true' : ''}`;
-    if (this.isAccountDetailPage) {
+    if (this.isAccountInfoPage) {
       this.router.navigateByUrl(
         `/${RouteConstant.accountInformation}/edit${queryParams}`
       );
@@ -209,7 +209,7 @@ export class EmployeeEditComponent implements OnInit, AfterViewChecked {
 
   public navigateDetail(isDayOff?: boolean): void {
     const queryParams = `${isDayOff ? '?dayoff=true' : ''}`;
-    if (this.isAccountDetailPage) {
+    if (this.isAccountInfoPage) {
       this.router.navigateByUrl(
         `/${RouteConstant.accountInformation}${queryParams}`
       );
@@ -234,8 +234,9 @@ export class EmployeeEditComponent implements OnInit, AfterViewChecked {
     } else {
       employee = this.employeeForm.value;
     }
+    const isAccountInfo = this.isAccountInfoPage;
     const id = this.id;
-    const params = { id, employee };
+    const params = { id, employee, isAccountInfo };
     this.store.dispatch(new EmployeeActions.EditEmployee(params));
   }
 }

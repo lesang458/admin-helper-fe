@@ -24,6 +24,7 @@ export interface EmployeesParam {
   employee?: Employee;
   searchParams?: SearchParams;
   status?: string;
+  isAccountInfo?: boolean;
 }
 
 export const GET_EMPLOYEES_SUCCESS = '[Employees] Get Employees Success';
