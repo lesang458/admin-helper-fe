@@ -3,6 +3,6 @@ export interface RequestDayOffModel {
   toDate: string;
   hoursPerDay: number;
   id?: string;
-  dayOffCategoryId: number;
+  dayOffCategoryId?: number;
   notes?: string;
 }

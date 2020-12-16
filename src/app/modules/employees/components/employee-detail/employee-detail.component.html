@@ -77,6 +77,12 @@
                                   {{ employee?.joinDate }}
                                 </td>
                               </tr>
+                              <tr>
+                                <th scope="row">{{ 'EMPLOYEE_DETAIL.SALARY' | translate }}</th>
+                                <td>
+                                  {{ employee?.salaryPerMonth | currency: 'VND' }}
+                                </td>
+                              </tr>
                           </tbody>
                         </table>
                       </div>

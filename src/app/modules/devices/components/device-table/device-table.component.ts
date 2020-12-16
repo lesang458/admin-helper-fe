@@ -63,7 +63,7 @@ export class DeviceTableComponent implements OnInit {
   public onPageChanged(page: number): void {
     this.searchParams = {
       page,
-      perPage: 5,
+      perPage: 7,
       status: this.selectedStatus.value,
       deviceCategoryId: this.selectedCategory.value,
     };

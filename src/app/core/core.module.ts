@@ -13,7 +13,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     CommonModule,
     BrowserModule,
     BrowserAnimationsModule,
-    ToastrModule.forRoot({ closeButton: true, timeOut: 10000 }),
+    ToastrModule.forRoot({ closeButton: true, timeOut: 2000 }),
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true },

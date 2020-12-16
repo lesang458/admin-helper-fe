@@ -113,7 +113,7 @@
             <td class="align-middle">{{ item.fromDate | date: 'dd/MM/yyyy' }}</td>
             <td class="align-middle">{{ item.toDate| date: 'dd/MM/yyyy' }}</td>
             <td class="align-middle text-right">{{ item.hoursPerDay }}</td>
-            <td class="align-middle text-center">{{ item.dayOffCategory.name | titlecase }}</td>
+            <td class="align-middle text-center">{{ (item.dayOffCategory ? item.dayOffCategory.name : 'Non-paid leave') | titlecase }}</td>
             <td class="align-middle text-center">
               <span
                 class="badge rounded-pill badge-info py-2 px-3"

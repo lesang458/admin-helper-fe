@@ -47,13 +47,11 @@
         <input
           type="date"
           min="{{ f.get('fromDate').value | date: 'yyyy-MM-dd' }}"
+          [max]="getMaxDate()"
           class="form-control"
           id="exampleFormControlInput3"
           formControlName="toDate"
         />
-        <div *ngIf="toDateError" class="mess-invalid">
-          {{ 'REQUEST_DAY_OFF.TO_DATE_ERROR' | translate }}
-        </div>
       </div>
 
       <div *ngIf="dayOffs < 2">
@@ -102,14 +100,14 @@
           <option
             *ngFor="let item of selectedEmployee?.dayOffInfos"
             [value]="item.categoryName"
-            [selected]="item.dayOffCategoryId === this.editData?.dayOffCategory.id"
           >
             {{ item.categoryName | titlecase }}
           </option>
+          <option value="">Non-paid leave</option>
         </select>
       </div>
 
-      <div class="modal-body-custom ml-3 mr-3">
+      <div class="modal-body-custom ml-3 mr-3" *ngIf="f.get('kindOfLeave').value !== ''">
         <div class="alert alert-success" role="alert">
           {{ 'REQUEST_DAY_OFF.DAY_OFF_AVAILABLE' | translate }}:
           {{ dayOffAvailable }}
@@ -123,29 +121,12 @@
         <hr />
       </div>
 
-      <div *ngIf="dayOffAvailable < dayOffs" class="modal-body">
-        <div class="form-check">
-          <input
-            class="form-check-input pointer"
-            type="checkbox"
-            value=""
-            id="defaultCheck3"
-            formControlName="unpaidLeave"
-          />
-          <label class="form-check-label pointer" for="defaultCheck3">
-            {{ 'REQUEST_DAY_OFF.UNPAID_LEAVE' | translate }}
-            {{ dayOffs - dayOffAvailable }}
-            {{ dayOffs - dayOffAvailable > 1 ? setDays() : setDay() }}
-          </label>
-        </div>
-      </div>
-
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" (click)="bsModalRef.hide()">
           {{ 'PROFILE_CREATE.CLOSE' | translate }}
         </button>
         <button
-          [disabled]="dayOffAvailable < dayOffs && !f.get('unpaidLeave').value"
+          [disabled]="dayOffAvailable === 0"
           (click)="onSave()"
           type="button"
           class="btn btn-success"

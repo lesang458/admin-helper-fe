@@ -27,7 +27,7 @@ export class RequestDayOffComponent implements OnInit {
   public dayOffAvailable: number;
   public dayOffs: number;
   public dayOffInfos: any;
-  public toDateError = false;
+  public maxDate = new Date();
   public f = new FormGroup({
     fullName: new FormControl(),
     fromDate: new FormControl(),
@@ -35,7 +35,6 @@ export class RequestDayOffComponent implements OnInit {
     morningBreak: new FormControl(),
     afternoonBreak: new FormControl(),
     kindOfLeave: new FormControl(),
-    unpaidLeave: new FormControl(),
   });
   private currentDate = new Date();
   constructor(
@@ -71,7 +70,9 @@ export class RequestDayOffComponent implements OnInit {
           this.editData.notes === 'Afternoon' ||
           (this.editData.hoursPerDay === 8 &&
             this.editData.fromDate === this.editData.toDate),
-        kindOfLeave: this.editData.dayOffCategory.name,
+        kindOfLeave: this.editData.dayOffCategory
+          ? this.editData.dayOffCategory.name
+          : '',
       });
 
       if (this.selectedEmployee?.id !== this.editData.user.id) {
@@ -114,21 +115,23 @@ export class RequestDayOffComponent implements OnInit {
   }
 
   public setDayOffs(): void {
-    const to = new Date(`${this.f.get('toDate').value}`).getTime();
-    const from = new Date(`${this.f.get('fromDate').value}`).getTime();
+    const toDate = new Date(this.f.get('toDate').value);
+    const fromDate = new Date(this.f.get('fromDate').value);
+    const to = toDate.getTime();
+    const from = fromDate.getTime();
+    this.maxDate.setDate(
+      fromDate.getDate() + ~~((this.dayOffAvailable * 9) / 7)
+    );
     if (to < from) {
       this.f.get('toDate').setValue(this.f.get('fromDate').value);
       this.dayOffs = 1;
-      setTimeout(() => {
-        this.toDateError = true;
-      }, 300);
-      setTimeout(() => {
-        this.toDateError = false;
-      }, 4000);
-      this.toDateError = true;
     } else {
+      if (to > this.maxDate.getTime()) {
+        this.f.get('toDate').setValue(this.f.get('fromDate').value);
+        this.dayOffs = 1;
+      }
       if (this.dayOffs) {
-        this.dayOffs = (to - from) / milisecondOfADay + 1;
+        this.dayOffs = this.getNumWorkDays(fromDate, toDate);
         if (this.dayOffs === 1) {
           this.f.patchValue({
             morningBreak: true,
@@ -139,9 +142,25 @@ export class RequestDayOffComponent implements OnInit {
         this.dayOffs =
           this.editData?.hoursPerDay === 4
             ? 0.5
-            : (to - from) / milisecondOfADay + 1;
+            : this.getNumWorkDays(fromDate, toDate);
       }
     }
+  }
+
+  public getMaxDate(): string {
+    return this.maxDate.toISOString().split('T')[0];
+  }
+
+  public getNumWorkDays(startDate, endDate): number {
+    let numWorkDays = 0;
+    let currentDate = new Date(startDate);
+    while (currentDate <= endDate) {
+      if (currentDate.getDay() !== 0 && currentDate.getDay() !== 6) {
+        numWorkDays++;
+      }
+      currentDate.setDate(currentDate.getDate() + 1);
+    }
+    return numWorkDays;
   }
 
   public setDateString(ascDays: number = 1, dateString?: string): string {
@@ -161,25 +180,30 @@ export class RequestDayOffComponent implements OnInit {
   }
 
   public setHoursAvailable(): void {
-    this.dayOffInfos = this.selectedEmployee?.dayOffInfos.filter((item) => {
+    this.dayOffInfos = this.selectedEmployee?.dayOffInfos.find((item) => {
       return item.categoryName === this.f.get('kindOfLeave').value;
-    })[0];
+    });
     let dayOffReturn = 0;
-    if (
-      this.editData &&
-      this.dayOffInfos?.dayOffCategoryId === this.editData.dayOffCategory.id
-    ) {
-      dayOffReturn =
-        this.editData.hoursPerDay === 4
-          ? 0.5
-          : (+new Date(this.editData.toDate) -
-              +new Date(this.editData.fromDate)) /
-              milisecondOfADay +
-            1;
+    if (this.editData && this.editData.dayOffCategory) {
+      if (
+        this.dayOffInfos?.dayOffCategoryId === this.editData.dayOffCategory.id
+      ) {
+        dayOffReturn =
+          this.editData.hoursPerDay === 4
+            ? 0.5
+            : this.getNumWorkDays(
+                new Date(this.editData.fromDate),
+                new Date(this.editData.toDate)
+              );
+      }
     }
 
     this.dayOffAvailable = this.dayOffInfos?.availableHours / 8 + dayOffReturn;
     this.dayOffAvailable < 0 ? (this.dayOffAvailable = 0) : null;
+    if (!this.dayOffInfos) {
+      this.dayOffAvailable = 5;
+    }
+    this.setDayOffs();
   }
 
   public onDayOffChanged(controlName: string, value: boolean): void {
@@ -211,7 +235,9 @@ export class RequestDayOffComponent implements OnInit {
       fromDate: this.f.get('fromDate').value,
       toDate: this.f.get('toDate').value,
       hoursPerDay: this.dayOffs < 1 ? 4 : 8,
-      dayOffCategoryId: this.dayOffInfos.dayOffCategoryId,
+      dayOffCategoryId: this.dayOffInfos
+        ? this.dayOffInfos.dayOffCategoryId
+        : null,
       notes: notes,
     };
 
