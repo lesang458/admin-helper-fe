@@ -37,6 +37,10 @@ export class EmployeeCreateComponent implements OnInit, AfterViewChecked {
       Validators.maxLength(20),
     ]),
     email: new FormControl('', Validators.email),
+    salaryPerMonth: new FormControl(0, [
+      Validators.required,
+      Validators.min(1),
+    ]),
     password: new FormControl('', Validators.minLength(6)),
     confirmPassword: new FormControl('', Validators.minLength(6)),
     phoneNumber: new FormControl('', [

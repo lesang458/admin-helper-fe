@@ -27,6 +27,7 @@ import { EmployeeCreatePageComponent } from './pages/employee-create-page/employ
 import { EmployeeEditComponent } from './components/employee-edit/employee-edit.component';
 import { EmployeeEditPageComponent } from './pages/employee-edit-page/employee-edit-page.component';
 import { ConfirmModalComponent } from './components/confirm-modal/confirm-modal.component';
+import { NgxCurrencyModule } from 'ngx-currency';
 
 const CustomSelectOptions: INgxSelectOptions = {
   optionValueField: 'id',
@@ -58,6 +59,7 @@ const CustomSelectOptions: INgxSelectOptions = {
     CommonModule,
     SharedModule,
     FormsModule,
+    NgxCurrencyModule,
     NgxSelectModule.forRoot(CustomSelectOptions),
     RouterModule.forChild(EMPLOYEES_ROUTES),
     ReactiveFormsModule,

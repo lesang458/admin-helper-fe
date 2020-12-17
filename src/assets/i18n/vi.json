@@ -97,6 +97,8 @@
     "PHONE_NUMBER_PATTERN": "Số điện thoại phải là số",
     "PHONE_NUMBER_MINLENGTH": "Số điện thoại phải trên 10 ký tự",
     "PHONE_NUMBER_MAXLENGTH": "Số điện thoại không vượt quá 12 ký tự",
+    "SALARY_INVALID": "Hãy nhập mức lương",
+    "SALARY_MIN": "Mức lương không được nhỏ hơn 1",
     "HOURS_INVALID": "Hãy nhập số ngày",
     "HOURS_MIN": "Số ngày phép không được nhỏ hơn 1",
     "AVAILABLE_HOURS": "Số ngày có sẵn (ngày)",

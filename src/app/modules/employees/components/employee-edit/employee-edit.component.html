@@ -123,6 +123,34 @@
                       </div>
                     </div>
                   </div>
+                  <div class="form-group row mb-4">
+                    <label for="salary" class="col-sm-3 col-form-label">{{ 'EMPLOYEE_DETAIL.SALARY' | translate }}</label>
+                    <div class="col-sm-9">
+                      <input
+                        id="salary"
+                        class="form-control text-left"
+                        formControlName="salaryPerMonth"
+                        required
+                        ahNumberFormatter
+                        currencyMask
+                        [options]="{ prefix: 'đ ', precision: '0', nullable: 'true' }"
+                        autocomplete="off"
+                      />
+                      <div
+                        *ngIf="f.salaryPerMonth.invalid && f.salaryPerMonth.touched"
+                        class="invalid-feedback"
+                      >
+                        <div [ngSwitch]="f.salaryPerMonth.errors?.required">
+                          <div *ngSwitchCase="true">
+                            {{ 'PROFILE_CREATE.SALARY_INVALID' | translate }}
+                          </div>
+                          <div *ngSwitchDefault>
+                            {{ 'PROFILE_CREATE.SALARY_MIN' | translate }}
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
                 </div>
                 <div class="col-lg-6 col-md-12 left-tab">
                   <div class="form-group row mb-4">
@@ -251,7 +279,7 @@
                     </div>
                   </div>
                   <label class="col-sm-2 col-md-2 col-lg-1 col-form-label">{{ 'EMPLOYEE_DETAIL.DAY' | translate }}</label>
-                  <div class="col-sm-1">
+                  <div class="col-sm-1" *ngIf="isNew(dayOffInfos.controls[i].get('dayOffCategoryId').value)">
                     <button
                       class="btn btn-outline-danger"
                       (click)="removeDayoffCategory(types, dayOffInfos.at(i))">

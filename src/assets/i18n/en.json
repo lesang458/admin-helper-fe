@@ -97,6 +97,8 @@
     "PHONE_NUMBER_PATTERN": "Phone number must be number",
     "PHONE_NUMBER_MINLENGTH": "Phone number must be at least 10 characters",
     "PHONE_NUMBER_MAXLENGTH": "Phone number must not exceed 12 characters",
+    "SALARY_INVALID": "Salary is required",
+    "SALARY_MIN": "Sallary must be at least 1",
     "HOURS_INVALID": "Days is required",
     "HOURS_MIN": "Days must be at least 1",
     "AVAILABLE_HOURS": "Available hours (day)",

@@ -28,7 +28,7 @@ import { RouteConstant } from 'src/app/shared/constants/route.constant';
   styleUrls: ['./employee-edit.component.scss'],
 })
 export class EmployeeEditComponent implements OnInit, AfterViewChecked {
-  private arr = [];
+  public arr = [];
   public employee: Employee;
   public types: DayOffCategory[];
   public id = this.route.snapshot.params.id;
@@ -46,6 +46,10 @@ export class EmployeeEditComponent implements OnInit, AfterViewChecked {
       Validators.maxLength(20),
     ]),
     email: new FormControl('', Validators.email),
+    salaryPerMonth: new FormControl(0, [
+      Validators.required,
+      Validators.min(1),
+    ]),
     phoneNumber: new FormControl('', [
       Validators.pattern('^[0-9]*$'),
       Validators.minLength(10),
@@ -77,9 +81,6 @@ export class EmployeeEditComponent implements OnInit, AfterViewChecked {
       .subscribe((data: Employee) => {
         if (data) {
           this.store.select('dayoffCategories').subscribe((arr) => {
-            arr.dayoff.forEach((val) => {
-              this.arr.push(val.id);
-            });
             this.selectedType.patchValue('No select');
             this.types = arr.dayoff.filter((obj) => {
               return !data?.dayOffInfos.some((obj2) => {
@@ -131,6 +132,10 @@ export class EmployeeEditComponent implements OnInit, AfterViewChecked {
     return new Date().toISOString().split('T')[0];
   }
 
+  public isNew(id): boolean {
+    return this.arr.findIndex((value) => value === +id) !== -1;
+  }
+
   private birthdayValidator(
     control: AbstractControl
   ): { [key: string]: boolean } | null {
@@ -162,17 +167,18 @@ export class EmployeeEditComponent implements OnInit, AfterViewChecked {
 
   public addDayoffCatetory(types: DayOffCategory[]): void {
     if (this.selectedType.value !== 'No select') {
-      const filter = types.filter(
+      const filter = types.find(
         (e) => e.id.toString() === this.selectedType.value
       );
       const dayOffForm = this.formBuilder.group({
-        categoryName: filter[0]?.name,
-        dayOffCategoryId: filter[0]?.id,
-        hours: filter[0].totalHoursDefault / 8,
-        status: filter[0].status,
+        categoryName: filter?.name,
+        dayOffCategoryId: filter?.id,
+        hours: filter?.totalHoursDefault / 8,
+        status: filter?.status,
       });
+      this.arr.push(+this.selectedType.value);
       this.dayOffInfos.push(dayOffForm);
-      this.types = types.filter((e) => e.id !== filter[0]?.id);
+      this.types = types.filter((e) => e.id !== filter?.id);
       this.selectedType.patchValue('No select');
     }
   }
@@ -182,16 +188,19 @@ export class EmployeeEditComponent implements OnInit, AfterViewChecked {
       (e) => e.dayOffCategoryId === dayOff.controls.dayOffCategoryId.value
     );
     this.dayOffInfos.removeAt(index);
-    if (this.arr.indexOf(dayOff.controls.dayOffCategoryId.value) !== -1) {
-      const param = {
-        id: dayOff.controls.dayOffCategoryId.value,
-        name: dayOff.controls.categoryName.value,
-        totalHoursDefault: dayOff.controls.hours.value * 8,
-        status: dayOff.status,
-      };
-      types.push(param);
-      this.selectedType.patchValue('No select');
-    }
+
+    const param = {
+      id: dayOff.controls.dayOffCategoryId.value,
+      name: dayOff.controls.categoryName.value,
+      totalHoursDefault: dayOff.controls.hours.value * 8,
+      status: dayOff.status,
+    };
+    this.arr = this.arr.filter(
+      (value) => value !== +dayOff.controls.dayOffCategoryId.value
+    );
+    console.log(this.arr);
+    types.push(param);
+    this.selectedType.patchValue('No select');
   }
 
   public navigateTab(isDayOff?: boolean): void {

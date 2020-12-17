@@ -104,6 +104,34 @@
                     </div>
                   </div>
                   <div class="form-group row mb-4">
+                    <label for="salary" class="col-sm-3 col-form-label">{{ 'EMPLOYEE_DETAIL.SALARY' | translate }}</label>
+                    <div class="col-sm-9">
+                      <input
+                        id="salary"
+                        class="form-control text-left"
+                        formControlName="salaryPerMonth"
+                        required
+                        ahNumberFormatter
+                        currencyMask
+                        [options]="{ prefix: 'đ ', precision: '0', nullable: 'true' }"
+                        autocomplete="off"
+                      />
+                      <div
+                        *ngIf="f.salaryPerMonth.invalid && f.salaryPerMonth.touched"
+                        class="invalid-feedback"
+                      >
+                        <div [ngSwitch]="f.salaryPerMonth.errors?.required">
+                          <div *ngSwitchCase="true">
+                            {{ 'PROFILE_CREATE.SALARY_INVALID' | translate }}
+                          </div>
+                          <div *ngSwitchDefault>
+                            {{ 'PROFILE_CREATE.SALARY_MIN' | translate }}
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="form-group row mb-4">
                     <label for="pass" class="col-sm-3 col-form-label">{{ 'LOGIN.PASS' | translate }}</label>
                     <div class="col-sm-9">
                       <input
