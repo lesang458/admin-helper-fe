@@ -310,6 +310,7 @@
     "TOTAL_NON_PAID": "Total non-paid days off",
     "TOTAL": "Total",
     "SALARY_PER_DAY": "Salary per day",
-    "MONTHLY": "Monthly payroll "
+    "MONTHLY": "Monthly payroll ",
+    "EXPORT": "Export xlsx file"
   }
 }

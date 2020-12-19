@@ -9,6 +9,7 @@ import { PaginatedData } from 'src/app/shared/models/pagination.model';
 import * as fromApp from '../../../../store/app.reducer';
 import { SearchParams } from '../../store/employees.actions';
 import * as EmployeeActions from '../../store/employees.actions';
+import { ExcelService } from 'src/app/core/services/excel.service';
 
 @Component({
   selector: 'ah-payroll-detail',
@@ -27,7 +28,8 @@ export class PayrollDetailComponent implements OnInit {
   public numWorkDays: number;
   constructor(
     public translateService: TranslateService,
-    private store: Store<fromApp.AppState>
+    private store: Store<fromApp.AppState>,
+    private excelService: ExcelService
   ) {}
 
   ngOnInit(): void {
@@ -86,5 +88,32 @@ export class PayrollDetailComponent implements OnInit {
   public onSelectMonth(month: number): void {
     this.selectedMonth = month;
     this.currentPage === 1 ? this.onPageChanged(1) : (this.currentPage = 1);
+  }
+
+  public exportFile(): void {
+    this.excelService
+      .getData(new Date(this.year, this.selectedMonth - 1, 1))
+      .subscribe((result) => {
+        const data = result.map((employee) => {
+          return {
+            Name: employee.lastName + ' ' + employee.firstName,
+            Birthday: employee.birthdate,
+            Salary: employee.salaryPerMonth,
+            TotalPaidDaysOff: employee.totalPaidDaysOff,
+            TotalNonPaidDaysOff: employee.totalNonPaidDaysOff,
+            SalaryPerDay: Math.floor(
+              employee.salaryPerMonth / this.numWorkDays
+            ),
+            Total: Math.floor(
+              employee.salaryPerMonth *
+                (1 - employee.totalNonPaidDaysOff / this.numWorkDays)
+            ),
+          };
+        });
+        this.excelService.exportAsExcelFile(
+          data,
+          `Monthly Payroll ${this.selectedMonth}/${this.year}`
+        );
+      });
   }
 }

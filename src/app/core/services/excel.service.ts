@@ -5,6 +5,9 @@ import { Observable } from 'rxjs';
 import { Employee } from 'src/app/shared/models/employees.model';
 import * as XLSX from 'xlsx';
 import { environment } from 'src/environments/environment.prod';
+import { map } from 'rxjs/operators';
+import { PaginatedData } from 'src/app/shared/models/pagination.model';
+import * as camelcaseKeys from 'camelcase-keys';
 
 const EXCEL_TYPE =
   'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;charset=UTF-8';
@@ -42,8 +45,10 @@ export class ExcelService {
       .append('page', '-1')
       .append('full_info', 'true')
       .append('month', month.toDateString());
-    return this.http.get<Employee[]>(`${environment.APILink}\employees`, {
-      params,
-    });
+    return this.http
+      .get<PaginatedData<Employee[]>>(`${environment.APILink}/employees`, {
+        params,
+      })
+      .pipe(map((result) => camelcaseKeys(result.data, { deep: true })));
   }
 }

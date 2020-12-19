@@ -309,6 +309,7 @@
     "TOTAL_NON_PAID": "Số ngày nghỉ không lương",
     "TOTAL": "Tổng cộng",
     "SALARY_PER_DAY": "Lương theo ngày",
-    "MONTHLY": "Bảng lương tháng "
+    "MONTHLY": "Bảng lương tháng ",
+    "EXPORT": "Xuất file xlsx"
   }
 }
