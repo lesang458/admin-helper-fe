@@ -13,6 +13,7 @@ import { DayOffRequestComponent } from './pages/dayoff-request/dayoff-request.co
 import { EmployeeCreatePageComponent } from './pages/employee-create-page/employee-create-page.component';
 import { EmployeeEditPageComponent } from './pages/employee-edit-page/employee-edit-page.component';
 import { AdminGuard } from 'src/app/core/helpers/admin.guard';
+import { PayrollPageComponent } from './pages/payroll-page/payroll-page.component';
 
 export const EMPLOYEES_ROUTES: Routes = [
   { path: '', redirectTo: `/${RouteConstant.login}`, pathMatch: 'full' },
@@ -129,6 +130,14 @@ export const EMPLOYEES_ROUTES: Routes = [
     canActivate: [AuthGuardService, AdminGuard],
     data: {
       i18nKey: 'ACCOUNT_INFORMATION',
+    },
+  },
+  {
+    path: RouteConstant.payroll,
+    component: PayrollPageComponent,
+    canActivate: [AuthGuardService, AdminGuard],
+    data: {
+      i18nKey: 'PAYROLL',
     },
   },
 ];

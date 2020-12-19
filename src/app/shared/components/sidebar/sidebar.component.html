@@ -79,11 +79,21 @@
     type="button"
     [class.active]="router.isActive(dayOffRequestUrl, true)"
   >
-  <a class="c-sidebar-nav-link" (click)="navigateToDayOffRequestPage()">
-    <i class="c-sidebar-nav-icon cil-storage"></i>
-    {{ 'SIDEBAR.LINK_8' | translate }}
-  </a>
-</li>
+    <a class="c-sidebar-nav-link" (click)="navigateToDayOffRequestPage()">
+      <i class="c-sidebar-nav-icon cil-storage"></i>
+      {{ 'SIDEBAR.LINK_8' | translate }}
+    </a>
+  </li>
+  <li
+    class="c-sidebar-nav-item"
+    type="button"
+    [class.active]="router.isActive(payrollUrl, true)"
+  >
+    <a class="c-sidebar-nav-link" (click)="navigateToPayrollPage()">
+      <i class="c-sidebar-nav-icon cil-money"></i>
+      {{ 'SIDEBAR.LINK_9' | translate }}
+    </a>
+  </li>
   <li class="c-sidebar-nav-divider"></li>
 </ul>
 <button

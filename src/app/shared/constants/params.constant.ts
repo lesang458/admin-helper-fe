@@ -13,4 +13,5 @@ export class ParamsConstant {
   public static readonly fromDate = 'from_date';
   public static readonly toDate = 'to_date';
   public static readonly fullInfo = 'full_info';
+  public static readonly month = 'month';
 }

@@ -28,6 +28,8 @@ import { EmployeeEditComponent } from './components/employee-edit/employee-edit.
 import { EmployeeEditPageComponent } from './pages/employee-edit-page/employee-edit-page.component';
 import { ConfirmModalComponent } from './components/confirm-modal/confirm-modal.component';
 import { NgxCurrencyModule } from 'ngx-currency';
+import { PayrollDetailComponent } from './components/payroll-detail/payroll-detail.component';
+import { PayrollPageComponent } from './pages/payroll-page/payroll-page.component';
 
 const CustomSelectOptions: INgxSelectOptions = {
   optionValueField: 'id',
@@ -54,6 +56,8 @@ const CustomSelectOptions: INgxSelectOptions = {
     EmployeeEditComponent,
     EmployeeEditPageComponent,
     ConfirmModalComponent,
+    PayrollDetailComponent,
+    PayrollPageComponent,
   ],
   imports: [
     CommonModule,

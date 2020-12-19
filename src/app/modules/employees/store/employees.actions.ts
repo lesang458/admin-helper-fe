@@ -17,6 +17,7 @@ export interface SearchParams {
   toDate?: string;
   userId?;
   fullInfo?: string;
+  month?: Date;
 }
 
 export interface EmployeesParam {

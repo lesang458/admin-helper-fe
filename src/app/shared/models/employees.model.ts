@@ -13,4 +13,6 @@ export interface Employee {
   token?: string;
   user?: Employee;
   salaryPerMonth?: number;
+  totalNonPaidDaysOff?: number;
+  totalPaidDaysOff?: number;
 }

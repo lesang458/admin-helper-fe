@@ -13,4 +13,5 @@ export class RouteConstant {
   public static readonly dayOffRequest = 'day-off-request';
   public static readonly notSupported = 'not-supported';
   public static readonly accountInformation = 'account-information';
+  public static readonly payroll = 'payroll';
 }

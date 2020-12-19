@@ -6,7 +6,8 @@
     "LINK_5": "Device Histories",
     "LINK_6": "Day off Categories",
     "LINK_7": "Device Categories",
-    "LINK_8": "Day off Request Management"
+    "LINK_8": "Day off Request Management",
+    "LINK_9": "Payroll"
   },
   "HEADER": {
     "VIETNAMESE": "Vietnamese",
@@ -177,7 +178,7 @@
     "DENY": "Deny",
     "DELETE": "Delete"
   },
-  "CONFIRM_MODAL":{
+  "CONFIRM_MODAL": {
     "APPROVE_TITLE": "Confirm approve day off request",
     "APPROVE_PARAM": "This request will be appproved. This action cannot be undone. Do you want to continue?",
     "DENY_TITLE": "Confirm deny day off request",
@@ -301,5 +302,14 @@
   },
   "ACCOUNT_INFORMATION": {
     "TITLE": "Account Information"
+  },
+  "PAYROLL": {
+    "TITLE": "Monthly Payroll",
+    "MONTH": "Month",
+    "TOTAL_PAID": "Total paid days off",
+    "TOTAL_NON_PAID": "Total non-paid days off",
+    "TOTAL": "Total",
+    "SALARY_PER_DAY": "Salary per day",
+    "MONTHLY": "Monthly payroll "
   }
 }

@@ -6,7 +6,8 @@
     "LINK_5": "Lịch sử thiết bị",
     "LINK_6": "Loại ngày phép",
     "LINK_7": "Loại thiết bị",
-    "LINK_8": "Quản lý yêu cầu nghỉ phép"
+    "LINK_8": "Quản lý yêu cầu nghỉ phép",
+    "LINK_9": "Bảng lương"
   },
   "HEADER": {
     "VIETNAMESE": "Tiếng việt",
@@ -177,7 +178,7 @@
     "DENY": "Từ chối",
     "DELETE": "Xóa"
   },
-  "CONFIRM_MODAL":{
+  "CONFIRM_MODAL": {
     "APPROVE_TITLE": "Xác nhận duyệt yêu cầu nghỉ phép",
     "APPROVE_PARAM": "Yêu cầu này sẽ được chấp thuận. Thao tác này không thể hoàn tác. Bạn có muốn tiếp tục?",
     "DENY_TITLE": "Xác nhận từ chối yêu cầu nghỉ phép",
@@ -300,5 +301,14 @@
   },
   "ACCOUNT_INFORMATION": {
     "TITLE": "Thông tin tài khoản"
+  },
+  "PAYROLL": {
+    "TITLE": "Bảng lương tháng",
+    "MONTH": "Tháng",
+    "TOTAL_PAID": "Số ngày nghỉ được trả lương",
+    "TOTAL_NON_PAID": "Số ngày nghỉ không lương",
+    "TOTAL": "Tổng cộng",
+    "SALARY_PER_DAY": "Lương theo ngày",
+    "MONTHLY": "Bảng lương tháng "
   }
 }

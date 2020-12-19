@@ -47,7 +47,14 @@ export class EmployeeEffects {
           params = params.append(ParamsConstant.status, action.payload.status);
         }
 
-        if (action.payload.status) {
+        if (action.payload.month) {
+          params = params.append(
+            ParamsConstant.month,
+            action.payload.month.toDateString()
+          );
+        }
+
+        if (action.payload.fullInfo) {
           params = params.append(
             ParamsConstant.fullInfo,
             action.payload.fullInfo
