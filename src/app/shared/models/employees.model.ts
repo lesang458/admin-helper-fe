@@ -16,4 +16,5 @@ export interface Employee {
   totalNonPaidDaysOff?: number;
   totalPaidDaysOff?: number;
   certificate?: string;
+  position?: string;
 }

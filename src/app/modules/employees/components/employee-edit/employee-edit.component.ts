@@ -58,6 +58,7 @@ export class EmployeeEditComponent implements OnInit, AfterViewChecked {
     birthdate: new FormControl('', this.birthdayValidator),
     joinDate: new FormControl(''),
     certificate: new FormControl('', Validators.required),
+    position: new FormControl('', Validators.required),
   });
   public dayOffForm = new FormGroup({
     dayOffInfos: this.formBuilder.array([]),

@@ -151,6 +151,27 @@
                       </div>
                     </div>
                   </div>
+                  <div class="form-group row mb-4">
+                    <label for="position" class="col-sm-3 col-form-label">{{ 'EMPLOYEE_DETAIL.POSITION' | translate }}</label>
+                    <div class="col-sm-9">
+                      <select
+                        class="form-control"
+                        formControlName="position" 
+                        name="position" 
+                        id="position">
+                        <option value="JUNIOR_DEV">Junior Developer</option>
+                        <option value="SENIOR_DEV">Senior Developer</option>
+                        <option value="JUNIOR_BA">Junior BA</option>
+                        <option value="SENIOR_BA">Senior BA</option>
+                        <option value="JUNIOR_QA">Junior QA</option>
+                        <option value="SENIOR_QA">Senior QA</option>
+                        <option value="PM">Project Manager</option>
+                        <option value="HR">HR</option>
+                        <option value="FRESHER">Fresher</option>
+                        <option value="INTERN">Intern</option>
+                      </select>
+                    </div>
+                  </div>
                 </div>
                 <div class="col-lg-6 col-md-12 left-tab">
                   <div class="form-group row mb-4">

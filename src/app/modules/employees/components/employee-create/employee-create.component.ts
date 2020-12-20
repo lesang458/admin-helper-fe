@@ -51,6 +51,7 @@ export class EmployeeCreateComponent implements OnInit, AfterViewChecked {
     birthdate: new FormControl('', this.birthdayValidator),
     joinDate: new FormControl(''),
     certificate: new FormControl('UNIVERSITY', Validators.required),
+    position: new FormControl('JUNIOR_DEV', Validators.required),
   });
   public dayOffForm = new FormGroup({
     dayOffInfos: this.formBuilder.array([]),

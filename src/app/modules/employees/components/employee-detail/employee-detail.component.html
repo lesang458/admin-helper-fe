@@ -98,6 +98,19 @@
                                   {{ 'EMPLOYEE_DETAIL.MASTER' | translate }}
                                 </td>
                               </tr>
+                              <tr [ngSwitch]="employee?.position">
+                                <th scope="row">{{ 'EMPLOYEE_DETAIL.POSITION' | translate }}</th>
+                                <td *ngSwitchCase="'INTERN'">Intern</td>
+                                <td *ngSwitchCase="'FRESHER'">Fresher</td>
+                                <td *ngSwitchCase="'JUNIOR_DEV'">Junior Developer</td>
+                                <td *ngSwitchCase="'SENIOR_DEV'">Senior Developer</td>
+                                <td *ngSwitchCase="'JUNIOR_BA'">Junior BA</td>
+                                <td *ngSwitchCase="'SENIOR_BA'">Senior BA</td>
+                                <td *ngSwitchCase="'JUNIOR_QA'">Junior QA</td>
+                                <td *ngSwitchCase="'SENIOR_QA'">Senior QA</td>
+                                <td *ngSwitchCase="'HR'">HR</td>
+                                <td *ngSwitchCase="'PM'">Project Manager</td>
+                              </tr>
                           </tbody>
                         </table>
                       </div>
