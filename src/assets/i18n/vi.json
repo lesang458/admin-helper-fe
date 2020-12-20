@@ -42,7 +42,13 @@
     "NO_SELECT": "Không chọn",
     "DAY_OFF_INFO": "Thêm thông tin ngày phép",
     "DAY": "(Ngày)",
-    "SALARY": "Mức lương"
+    "SALARY": "Mức lương",
+    "CERTIFICATE": "Bằng cấp",
+    "UNIVERSITY": "Đại học",
+    "COLLEGE": "Cao đẳng",
+    "INTERMEDIATE": "Trung cấp",
+    "MASTER": "Thạc sĩ",
+    "POSITION": "Chức vụ"
   },
   "EMPLOYEE_EDIT": {
     "TITLE": "Chỉnh sửa hồ sơ nhân viên",

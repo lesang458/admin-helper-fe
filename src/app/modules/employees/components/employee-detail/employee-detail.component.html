@@ -83,6 +83,21 @@
                                   {{ employee?.salaryPerMonth | currency: 'VND' }}
                                 </td>
                               </tr>
+                              <tr [ngSwitch]="employee?.certificate">
+                                <th scope="row">{{ 'EMPLOYEE_DETAIL.CERTIFICATE' | translate }}</th>
+                                <td *ngSwitchCase="'UNIVERSITY'">
+                                  {{ 'EMPLOYEE_DETAIL.UNIVERSITY' | translate }}
+                                </td>
+                                <td *ngSwitchCase="'COLLEGE'">
+                                  {{ 'EMPLOYEE_DETAIL.COLLEGE' | translate }}
+                                </td>
+                                <td *ngSwitchCase="'INTERMEDIATE'">
+                                  {{ 'EMPLOYEE_DETAIL.INTERMEDIATE' | translate }}
+                                </td>
+                                <td *ngSwitchCase="'MASTER'">
+                                  {{ 'EMPLOYEE_DETAIL.MASTER' | translate }}
+                                </td>
+                              </tr>
                           </tbody>
                         </table>
                       </div>

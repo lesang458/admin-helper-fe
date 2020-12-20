@@ -42,7 +42,13 @@
     "NO_SELECT": "No select",
     "DAY_OFF_INFO": "Add day off information",
     "DAY": "(Day)",
-    "SALARY": "Salary"
+    "SALARY": "Salary",
+    "CERTIFICATE": "Certificate",
+    "UNIVERSITY": "University",
+    "COLLEGE": "College",
+    "INTERMEDIATE": "Intermediate",
+    "MASTER": "Master",
+    "POSITION": "Position"
   },
   "EMPLOYEE_EDIT": {
     "TITLE": "Edit Employee Profile",

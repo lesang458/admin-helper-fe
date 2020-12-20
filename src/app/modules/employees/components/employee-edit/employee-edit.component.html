@@ -216,6 +216,21 @@
                       </div>
                     </div>
                   </div>
+                  <div class="form-group row mb-4">
+                    <label for="certificate" class="col-sm-3 col-form-label">{{ 'EMPLOYEE_DETAIL.CERTIFICATE' | translate }}</label>
+                    <div class="col-sm-9">
+                      <select
+                        class="form-control"
+                        formControlName="certificate" 
+                        name="certificate" 
+                        id="certificate">
+                        <option value="MASTER">{{ 'EMPLOYEE_DETAIL.MASTER' | translate }}</option>
+                        <option value="UNIVERSITY">{{ 'EMPLOYEE_DETAIL.UNIVERSITY' | translate }}</option>
+                        <option value="COLLEGE">{{ 'EMPLOYEE_DETAIL.COLLEGE' | translate }}</option>
+                        <option value="INTERMEDIATE">{{ 'EMPLOYEE_DETAIL.INTERMEDIATE' | translate }}</option>
+                      </select>
+                    </div>
+                  </div>
                 </div>
               </div>
             </form>
